@@ -9,6 +9,23 @@
 }
 
 @media (max-width: 767px) {
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 4rem;
+    }
+
+    nav > div {
+        height: 10vh;
+    }
+
+    #default-carousel {
+        height: 88vh;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -21,4 +38,21 @@
 }
 
 @media (max-width: 1280px) {
+}
+
+html,
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 10;
+}
+
+nav, main {
+    max-width: 1280px;
+    margin: auto;
 }

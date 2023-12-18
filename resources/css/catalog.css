@@ -8,24 +8,103 @@
     #default-carousel {
         aspect-ratio: 4/3;
     }
+
+    .products {
+        padding: 1%;
+    }
+
+    h1, .product {
+        margin-top: 10%;
+    }
+
+    .product {
+        width: 45%;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        margin-bottom: 2.5%;
+    }
 }
 
 @media (min-width: 768px) {
+    h1, .product {
+        margin-top: 8%;
+    }
+
+    .product {
+        margin-bottom: 2%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
     #default-carousel {
-        aspect-ratio: 4/2;
+        /*aspect-ratio: 4/2;*/
+    }
+
+    .products {
+        padding: 0 2%;
+    }
+
+    .product {
+        width: 30%;
+    }
+
+    .product:nth-child(3n + 3) {
+        margin-left: 5%;
+        margin-right: 5%;
     }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
 }
 
-@media (min-width: 1024px) and (max-width: 1280px) {
+@media (min-width: 1024px) and (max-width: 1279px) {
 }
 
 @media (min-width: 1280px) {
+    .product {
+        width: 22%;
+        max-width: 320px;
+    }
+
+    .product:nth-child(4n + 2) {
+        margin-right: 2%;
+    }
+
+    .product:nth-child(4n + 3) {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .product:nth-child(4n + 4) {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .product:nth-child(4n + 5) {
+        margin-left: 2%;
+    }
 }
 
 @media (max-width: 1280px) {
+}
+
+
+h1 {
+    margin-bottom: 0;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product {
+    max-width: 320px;
+}
+
+.product-thumbnail > img {
+    aspect-ratio: 2/3;
+    object-fit: cover;
 }
 
 #default-carousel {
@@ -33,9 +112,10 @@
     margin: auto;
 }
 
-.carousel-text-container > div {
+.carousel-text-container > div,
+.carousel-text-container > h2 {
     margin: 0.5% auto;
     padding: 0.5%;
     background-color: rgb(255, 255, 255, 0.2);
-    backdrop-filter: blur(25px);
+    /*backdrop-filter: blur(1px);*/
 }
