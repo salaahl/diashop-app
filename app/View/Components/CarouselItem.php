@@ -13,9 +13,9 @@ class CarouselItem extends Component
     public string $text;
 
     public function __construct(
-        $image = "/images/placeholder.png",
-        $title = "Titre",
-        $text = "Texte du slider",
+        $image,
+        $title,
+        $text,
     ) {
         $this->image = $image;
         $this->title = $title;

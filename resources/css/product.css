@@ -5,9 +5,77 @@
 }
 
 @media (max-width: 767px) {
+    #default-carousel {
+        height: 50vh;
+        width: fit-content;
+        aspect-ratio: 3/4;
+        margin: auto;
+    }
+
+    #buttons {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 768px) {
+    main {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #default-carousel > div {
+        aspect-ratio: 3/4;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
+    main {
+        padding: 0 1%;
+    }
+
+    #product-detail-container {
+        margin-left: 2%;
+    }
+
+    #default-carousel > div {
+        height: 70vh;
+    }
+
+    #buttons {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+    main {
+        padding: 0 1%;
+    }
+}
+
+@media (min-width: 1024px) {
+    #product-detail-container {
+        margin-left: 5%;
+    }
+
+    #default-carousel > div {
+        height: 88vh;
+    }
+
+    #buttons > button:nth-of-type(1) {
+        width: 60%;
+    }
+
+    #buttons > button:nth-of-type(2) {
+        width: fit-content;
+        margin-left: 5%;
+    }
+}
+
+@media (max-width: 1024px) {
+    #buttons > button {
+        width: 100%;
+        margin: 2.5% 0;
+    }
 }
 
 @media (min-width: 1024px) and (max-width: 1280px) {
@@ -17,4 +85,33 @@
 }
 
 @media (max-width: 1280px) {
+}
+
+#default-carousel > div:first-child {
+    border-radius: 0.5rem;
+}
+
+#carousel-container .carousel {
+    width: fit-content;
+}
+
+#product-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 50%;
+    text-align: justify;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+#title {
+    margin-bottom: 5%;
+}
+
+.carousel-item > img {
+    object-fit: cover;
 }

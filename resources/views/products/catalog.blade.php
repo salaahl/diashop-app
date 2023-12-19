@@ -17,7 +17,7 @@
 @endsection
 
 @section('main')
-<section>
+<section id="carousel-container">
     <x-carousel>
         <x-slot name="items">
             <x-carousel-item image="/images/placeholder.png" title="Titre 1" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
@@ -36,17 +36,20 @@
         </x-slot>
     </x-carousel>
 </section>
-<section class="products">
+<section id="products-container">
     <!-- Penser à placer une variable dans le h1 -->
     <h1>Femmes</h1>
-    <x-product image="/images/placeholder.png" title="Article 1" description="Lorem ipsum dolor sit amet" price=9 />
-    <x-product image="/images/placeholder.png" title="Article 2" description="Lorem ipsum dolor sit amet" price=9 />
-    <x-product image="/images/placeholder.png" title="Article 3" description="Lorem ipsum dolor sit amet" price=9 />
-    <x-product image="/images/placeholder.png" title="Article 4" description="Lorem ipsum dolor sit amet" price=9 />
-    <x-product image="/images/placeholder.png" title="Article 5" description="Lorem ipsum dolor sit amet" price=9 />
-    <x-product image="/images/placeholder.png" title="Article 6" description="Lorem ipsum dolor sit amet" price=9 />
-    <x-product image="/images/placeholder.png" title="Article 7" description="Lorem ipsum dolor sit amet" price=9 />
-    <x-product image="/images/placeholder.png" title="Article 8" description="Lorem ipsum dolor sit amet" price=9 />
+    <div id="filters" class="w-full p-4 bg-gray-100">
+        <h3>Filtres</h3>
+    </div>
+    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 1" description="Lorem ipsum dolor sit amet" price=9 />
+    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 2" description="Lorem ipsum dolor sit amet" price=9 />
+    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 3" description="Lorem ipsum dolor sit amet" price=9 />
+    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 4" description="Lorem ipsum dolor sit amet" price=9 />
+    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 5" description="Lorem ipsum dolor sit amet" price=9 />
+    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 6" description="Lorem ipsum dolor sit amet" price=9 />
+    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 7" description="Lorem ipsum dolor sit amet" price=9 />
+    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 8" description="Lorem ipsum dolor sit amet" price=9 />
 </section>
 @endsection
 

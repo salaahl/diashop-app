@@ -5,16 +5,25 @@
 }
 
 @media (max-width: 767px) {
+    main {
+        padding: 0 !important;
+    }
+
     #default-carousel {
         aspect-ratio: 4/3;
     }
 
-    .products {
+    #products-container {
         padding: 1%;
     }
 
-    h1, .product {
+    h1,
+    .product {
         margin-top: 10%;
+    }
+
+    h1 {
+        margin-bottom: 10%;
     }
 
     .product {
@@ -26,8 +35,17 @@
 }
 
 @media (min-width: 768px) {
-    h1, .product {
+    h1,
+    .product {
         margin-top: 8%;
+    }
+
+    h1 {
+        margin-bottom: 8%;
+    }
+
+    #default-carousel {
+        height: 88vh;
     }
 
     .product {
@@ -36,11 +54,7 @@
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
-    #default-carousel {
-        /*aspect-ratio: 4/2;*/
-    }
-
-    .products {
+    #products-container {
         padding: 0 2%;
     }
 
@@ -48,7 +62,7 @@
         width: 30%;
     }
 
-    .product:nth-child(3n + 3) {
+    .product:nth-child(3n + 4) {
         margin-left: 5%;
         margin-right: 5%;
     }
@@ -61,17 +75,15 @@
 }
 
 @media (min-width: 1280px) {
+    .filters {
+        border-radius: 0.5rem;
+    }
     .product {
         width: 22%;
         max-width: 320px;
     }
 
-    .product:nth-child(4n + 2) {
-        margin-right: 2%;
-    }
-
     .product:nth-child(4n + 3) {
-        margin-left: 2%;
         margin-right: 2%;
     }
 
@@ -82,29 +94,15 @@
 
     .product:nth-child(4n + 5) {
         margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .product:nth-child(4n + 6) {
+        margin-left: 2%;
     }
 }
 
 @media (max-width: 1280px) {
-}
-
-
-h1 {
-    margin-bottom: 0;
-}
-
-.products {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.product {
-    max-width: 320px;
-}
-
-.product-thumbnail > img {
-    aspect-ratio: 2/3;
-    object-fit: cover;
 }
 
 #default-carousel {
@@ -112,10 +110,22 @@ h1 {
     margin: auto;
 }
 
-.carousel-text-container > div,
-.carousel-text-container > h2 {
-    margin: 0.5% auto;
-    padding: 0.5%;
-    background-color: rgb(255, 255, 255, 0.2);
-    /*backdrop-filter: blur(1px);*/
+#products-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#filters {
+    width: 100%;
+}
+
+.product {
+    max-width: 320px;
+}
+
+.product-thumbnail {
+    aspect-ratio: 3/4;
+    background-size: cover;
+    background-position: center;
+    transition: 0.5s all;
 }
