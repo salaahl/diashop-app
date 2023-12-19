@@ -5,16 +5,132 @@
 }
 
 @media (max-width: 767px) {
+    main {
+        padding: 0 !important;
+    }
+
+    #default-carousel {
+        aspect-ratio: 4/3;
+    }
+
+    #products-container {
+        padding: 1%;
+    }
+
+    #headers,
+    #women,
+    #men {
+        margin-top: 10%;
+    }
+
+    #headers {
+        margin-bottom: 10%;
+    }
+
+    #woman h3, #men h3 {
+        font-size: medium;
+    }
+
+    .product {
+        min-width: 45%;
+        margin-bottom: 2.5%;
+    }
+}
+
+@media (min-width: 768px) {
+    #headers,
+    .product {
+        margin-top: 8%;
+    }
+
+    #headers {
+        margin-bottom: 8%;
+    }
+
+    #default-carousel {
+        height: 88vh;
+    }
+
+    .product {
+        margin-bottom: 2%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+    #woman h3, #men h3 {
+        font-size: xx-large;
+    }
+
+    #products-container {
+        padding: 0 2%;
+    }
+
+    .product {
+        min-width: 30%;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
 }
 
-@media (min-width: 1024px) and (max-width: 1280px) {
+@media (min-width: 1024px) and (max-width: 1279px) {
 }
 
 @media (min-width: 1280px) {
+    #woman h3, #men h3 {
+        font-size: xxx-large;
+    }
+    
+    #products-container #woman {
+        flex-direction: row-reverse;
+    }
+
+    .product {
+        min-width: 22%;
+        max-width: 320px;
+    }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1279px) {
+}
+
+
+#woman h3, #men h3 {
+    text-align: center;
+    align-self: center;
+    transform: rotateZ(270deg);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+#woman a, #men a {
+    text-align: center;
+    align-self: center;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+#default-carousel {
+    max-width: 1280px;
+    margin: auto;
+}
+
+#products-container #men,
+#products-container #woman {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+}
+
+.product {
+    max-width: 320px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.product-thumbnail {
+    aspect-ratio: 3/4;
+    background-size: cover;
+    background-position: center;
+    transition: 0.5s all;
 }

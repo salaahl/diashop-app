@@ -14,8 +14,8 @@ class CarouselItem extends Component
 
     public function __construct(
         $image,
-        $title,
-        $text,
+        $title = "",
+        $text = "",
     ) {
         $this->image = $image;
         $this->title = $title;

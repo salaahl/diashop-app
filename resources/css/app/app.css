@@ -13,6 +13,10 @@
         font-size: 2rem;
     }
 
+    h2 {
+        font-size: 1rem;
+    }
+
     main {
         padding: 0 5%;
     }
@@ -21,6 +25,10 @@
 @media (min-width: 768px) {
     h1 {
         font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
     }
 
     nav > div {
@@ -50,6 +58,12 @@ h1 {
     text-transform: uppercase;
     text-align: center;
     font-weight: 10;
+}
+
+h2 {
+    width: 100%;
+    text-align: center;
+    font-weight: 5;
 }
 
 h3 {
@@ -118,4 +132,48 @@ main {
 .button-stylised-1-custom:focus {
     background-color: black;
     color: white;
+}
+
+.radio-toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin: 5% 0;
+    max-width: 250px;
+}
+
+.radio-toolbar input[type="radio"] {
+    display: none;
+}
+
+.radio-toolbar label {
+    display: inline-block;
+    padding: 4px 11px;
+    cursor: pointer;
+    background-color: #f3f4f6;
+    border-radius: 0.25rem;
+    font-weight: 500;
+}
+
+.radio-toolbar input[type="radio"]:checked + label {
+    background-color: black;
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
 }

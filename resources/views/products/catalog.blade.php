@@ -38,18 +38,29 @@
 </section>
 <section id="products-container">
     <!-- Penser à placer une variable dans le h1 -->
-    <h1>Femmes</h1>
-    <div id="filters" class="w-full p-4 bg-gray-100">
-        <h3>Filtres</h3>
+    <div id="headers">
+        <h1>Femme</h1>
+        <!-- Version hommes : Découvrez notre collection masculine : élégance, sophistication et confiance ! -->
+        <h2>Découvrez notre collection féminine : élégance, style et confiance !</h2>
     </div>
-    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 1" description="Lorem ipsum dolor sit amet" price=9 />
-    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 2" description="Lorem ipsum dolor sit amet" price=9 />
-    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 3" description="Lorem ipsum dolor sit amet" price=9 />
-    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 4" description="Lorem ipsum dolor sit amet" price=9 />
-    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 5" description="Lorem ipsum dolor sit amet" price=9 />
-    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 6" description="Lorem ipsum dolor sit amet" price=9 />
-    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 7" description="Lorem ipsum dolor sit amet" price=9 />
-    <x-product article_link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 8" description="Lorem ipsum dolor sit amet" price=9 />
+    <nav id="filters" class="w-full p-2 xl:rounded-md bg-gray-100">
+        <h3>Filtres</h3>
+        <select id="underline_select" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+            <option selected disabled>Trier par</option>
+            <option value="price-highest">Prix : ascendant</option>
+            <option value="price-lowest">Prix : descendant</option>
+            <option value="new">Nouveautés</option>
+            <option value="bestsellers">Meilleures ventes</option>
+        </select>
+    </nav>
+    <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 1" description="Lorem ipsum dolor sit amet" price=9 />
+    <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 2" description="Lorem ipsum dolor sit amet" price=9 />
+    <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 3" description="Lorem ipsum dolor sit amet" price=9 />
+    <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 4" description="Lorem ipsum dolor sit amet" price=9 />
+    <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 5" description="Lorem ipsum dolor sit amet" price=9 />
+    <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 6" description="Lorem ipsum dolor sit amet" price=9 />
+    <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 7" description="Lorem ipsum dolor sit amet" price=9 />
+    <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 8" description="Lorem ipsum dolor sit amet" price=9 />
 </section>
 @endsection
 

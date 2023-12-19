@@ -9,20 +9,16 @@
         padding: 0 !important;
     }
 
-    #default-carousel {
-        aspect-ratio: 4/3;
-    }
-
     #products-container {
         padding: 1%;
     }
 
-    h1,
+    #headers,
     .product {
         margin-top: 10%;
     }
 
-    h1 {
+    #headers {
         margin-bottom: 10%;
     }
 
@@ -35,17 +31,13 @@
 }
 
 @media (min-width: 768px) {
-    h1,
+    #headers,
     .product {
         margin-top: 8%;
     }
 
-    h1 {
+    #headers {
         margin-bottom: 8%;
-    }
-
-    #default-carousel {
-        height: 88vh;
     }
 
     .product {
@@ -105,9 +97,14 @@
 @media (max-width: 1280px) {
 }
 
-#default-carousel {
-    max-width: 1280px;
-    margin: auto;
+
+#underline_select {
+    width: 20%;
+    min-width: 150px;
+}
+
+#headers {
+    width: 100%;
 }
 
 #products-container {
@@ -116,6 +113,9 @@
 }
 
 #filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
 

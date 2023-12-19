@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BasketController;
@@ -21,9 +22,7 @@ Route::get('/404', function () {
     abort(404);
 });
 
-Route::get('/', function () {
-    return redirect()->route('woman.catalog');
-});
+Route::get('/', [MainController::class, 'home'])->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard/', function () {
@@ -47,9 +46,9 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-Route::get('men/catalog', [ProductController::class, 'index'])->name('men.catalog');
+Route::get('men/catalog', [MainController::class, 'catalog'])->name('men.catalog');
 Route::get('men/{slug}', [ProductController::class, 'show'])->name('men.product');
-Route::get('woman/catalog', [ProductController::class, 'index'])->name('woman.catalog');
+Route::get('woman/catalog', [MainController::class, 'catalog'])->name('woman.catalog');
 Route::get('woman/{slug}', [ProductController::class, 'show'])->name('woman.product');
 
 Route::get('basket/', [BasketController::class, 'show'])->name('basket.show');
@@ -60,5 +59,18 @@ Route::delete('basket/', [BasketController::class, 'destroy'])->name('basket.des
 Route::post('checkout/', [StripePaymentController::class, 'checkout'])->name('checkout');
 Route::post('stripe_webhooks/', [StripePaymentController::class, 'webhooks'])->name('webhooks');
 
+Route::get('contact-us/', [MainController::class, 'contactUs'])->name('contactus');
+Route::get('about-me/', function () {
+    return view('about-me');
+});
+Route::get('deliveries-and-returns/', function () {
+    return view('deliveries-and-returns');
+});
+Route::get('refunds/', function () {
+    return view('refunds');
+});
+Route::get('terms-and-conditions/', function () {
+    return view('terms-and-conditions');
+});
 
 require __DIR__ . '/auth.php';
