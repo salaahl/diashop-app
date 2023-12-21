@@ -40,7 +40,8 @@ Route::middleware('auth')->group(function () {
         Route::get('catalogs/', [ProductController::class, 'catalogs'])->name('catalogs.show');
         Route::get('men/catalog/', [ProductController::class, 'catalog'])->name('manage.men.catalog');
         Route::get('woman/catalog/', [ProductController::class, 'catalog'])->name('manage.woman.catalog');
-        Route::put('add/product/', [ProductController::class, 'create'])->name('create.product');
+        Route::get('add/product/', [ProductController::class, 'create'])->name('create.product');
+        Route::put('add/product/', [ProductController::class, 'store'])->name('store.product');
         Route::patch('update/product/', [ProductController::class, 'update'])->name('update.product');
         Route::delete('delete/product/', [ProductController::class, 'destroy'])->name('destroy.product');
     });

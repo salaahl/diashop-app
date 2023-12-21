@@ -7,11 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Option;
 use App\Models\Order;
-use App\Models\Tag;
+use App\Models\Favorite;
+use App\Models\Brand;
 
 class Product extends Model
 {
     use HasFactory;
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
 
     public function category()
     {
@@ -23,13 +29,13 @@ class Product extends Model
         return $this->hasMany(Option::class);
     }
 
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class);
-    }
-
     public function orders()
     {
         return $this->belongsToMany(Order::class);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
     }
 }

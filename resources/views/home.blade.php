@@ -4,7 +4,6 @@
 @parent
 @endsection
 
-<!-- Remplacer cette partie par une variable avec le nom de la page -->
 @section('title', 'Accueil')
 
 @section('links')

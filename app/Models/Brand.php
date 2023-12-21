@@ -6,17 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product;
 
-class Tag extends Model
+class Brand extends Model
 {
     use HasFactory;
 
     public function products()
     {
-        return $this->belongsToMany(Product::class);
-    }
-
-    public function catalog()
-    {
-        return $this->belongsTo(Catalog::class);
+        return $this->hasMany(Product::class);
     }
 }
