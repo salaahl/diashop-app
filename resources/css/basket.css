@@ -30,7 +30,7 @@
         width: 65%;
     }
 
-    div:has(> #address-container) {
+    div:has(> form) {
         width: 30%;
     }
 }
