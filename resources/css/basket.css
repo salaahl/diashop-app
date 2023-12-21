@@ -1,0 +1,87 @@
+@media (prefers-color-scheme: light) {
+}
+
+@media (prefers-color-scheme: dark) {
+}
+
+@media (max-width: 767px) {
+    #summary-container .column-one,
+    #summary-container .column-four {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+}
+
+@media (min-width: 1024px) {
+    main {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #summary-container {
+        width: 65%;
+    }
+
+    div:has(> #address-container) {
+        width: 30%;
+    }
+}
+
+@media (max-width: 1023px) {
+    #address-container {
+        margin-top: 5%;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+}
+
+@media (min-width: 1280px) {
+}
+
+@media (max-width: 1279px) {
+    main {
+        padding: 0 2%;
+    }
+}
+
+table {
+    text-align: center;
+    text-align-last: center;
+}
+
+img {
+    max-width: 100px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+}
+
+div:has(> input[type="number"]) {
+    margin: auto 5%;
+}
+
+.quantity-input {
+    max-width: 60px;
+}
+
+div:has(> table) {
+    height: fit-content;
+    overflow: auto;
+}
+
+#address-container {
+    margin-bottom: 5%;
+}
+
+#address-container .input-container {
+    margin-bottom: 2%;
+}
+
