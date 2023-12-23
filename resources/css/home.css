@@ -27,7 +27,8 @@
         margin-bottom: 10%;
     }
 
-    #woman h3, #men h3 {
+    #woman h3,
+    #men h3 {
         font-size: medium;
     }
 
@@ -57,7 +58,8 @@
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
-    #woman h3, #men h3 {
+    #woman h3,
+    #men h3 {
         font-size: xx-large;
     }
 
@@ -77,10 +79,11 @@
 }
 
 @media (min-width: 1280px) {
-    #woman h3, #men h3 {
+    #woman h3,
+    #men h3 {
         font-size: xxx-large;
     }
-    
+
     #products-container #woman {
         flex-direction: row-reverse;
     }
@@ -94,8 +97,8 @@
 @media (max-width: 1279px) {
 }
 
-
-#woman h3, #men h3 {
+#woman h3,
+#men h3 {
     text-align: center;
     align-self: center;
     transform: rotateZ(270deg);
@@ -103,7 +106,8 @@
     font-weight: 500;
 }
 
-#woman a, #men a {
+#woman a,
+#men a {
     text-align: center;
     align-self: center;
     text-transform: uppercase;
@@ -133,4 +137,40 @@
     background-size: cover;
     background-position: center;
     transition: 0.5s all;
+}
+
+#woman,
+#men {
+    animation: fade-in linear;
+    animation-timeline: view();
+    animation-range: entry;
+}
+
+@keyframes fade-in {
+    from {
+        scale: 0.5;
+        opacity: 0;
+    }
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+#woman,
+#men {
+    animation: fade-in linear;
+    animation-timeline: view();
+    animation-range: entry;
+}
+
+@keyframes fade-in {
+    from {
+        scale: 0.5;
+        opacity: 0;
+    }
+    to {
+        scale: 1;
+        opacity: 1;
+    }
 }
