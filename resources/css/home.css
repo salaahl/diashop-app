@@ -75,12 +75,62 @@
 @media (min-width: 768px) and (max-width: 1023px) {
 }
 
+@media (max-width: 1023px) {
+    #products-container #men, #products-container #woman {
+        overflow: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    @supports (animation-timeline: view()) {
+        #products-container #woman > * {
+            animation: translate-right-to-left linear;
+        }
+    
+        #products-container #men > * {
+            animation: translate-left-to-right linear;
+        }
+        
+        #products-container #men > *,
+        #products-container #woman > * {
+            animation-timeline: view();
+            animation-range: 35%;
+        }
+        
+        @keyframes translate-right-to-left {
+            from {
+                translate: 0rem;
+            }
+            
+            to {
+                translate: -50rem;
+            }
+        }
+        
+        @keyframes translate-left-to-right {
+            from {
+                translate: 0rem;
+            }
+            
+            to {
+                translate: 50rem;
+            }
+        }
+    }
+
+    @supports not (animation-timeline: view()) {
+        #products-container #men, #products-container #woman {
+            overflow: auto;
+        }
+    }
+}
+
 @media (min-width: 1024px) and (max-width: 1279px) {
 }
 
 @media (min-width: 1280px) {
-    #woman h3,
-    #men h3 {
+    #products-container #woman h3,
+    #products-container #men h3 {
         font-size: xxx-large;
     }
 
@@ -97,8 +147,8 @@
 @media (max-width: 1279px) {
 }
 
-#woman h3,
-#men h3 {
+#products-container #woman h3,
+#products-container #men h3 {
     text-align: center;
     align-self: center;
     transform: rotateZ(270deg);
@@ -106,15 +156,15 @@
     font-weight: 500;
 }
 
-#woman a,
-#men a {
+#products-container #woman a,
+#products-container #men a {
     text-align: center;
     align-self: center;
     text-transform: uppercase;
     font-weight: 500;
 }
 
-#default-carousel {
+#carousel-container #default-carousel {
     max-width: 1280px;
     margin: auto;
 }
@@ -123,54 +173,17 @@
 #products-container #woman {
     display: flex;
     flex-wrap: nowrap;
-    overflow: auto;
 }
 
-.product {
+#products-container .product {
     max-width: 320px;
     margin-left: 2.5%;
     margin-right: 2.5%;
 }
 
-.product-thumbnail {
+.product .product-thumbnail {
     aspect-ratio: 3/4;
     background-size: cover;
     background-position: center;
     transition: 0.5s all;
-}
-
-#woman,
-#men {
-    animation: fade-in linear;
-    animation-timeline: view();
-    animation-range: entry;
-}
-
-@keyframes fade-in {
-    from {
-        scale: 0.5;
-        opacity: 0;
-    }
-    to {
-        scale: 1;
-        opacity: 1;
-    }
-}
-
-#woman,
-#men {
-    animation: fade-in linear;
-    animation-timeline: view();
-    animation-range: entry;
-}
-
-@keyframes fade-in {
-    from {
-        scale: 0.5;
-        opacity: 0;
-    }
-    to {
-        scale: 1;
-        opacity: 1;
-    }
 }
