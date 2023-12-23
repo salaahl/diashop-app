@@ -82,7 +82,7 @@
 }
 
 @media (min-width: 1024px) {
-    @supports (animation-timeline: view()) {
+    @supports (animation-timeline: view()) {   
         #products-container #woman > * {
             animation: translate-right-to-left linear;
         }
@@ -94,26 +94,26 @@
         #products-container #men > *,
         #products-container #woman > * {
             animation-timeline: view();
-            animation-range: 35%;
+            animation-range: var(--animation-range);
         }
-        
+
         @keyframes translate-right-to-left {
             from {
-                translate: 0rem;
+                translate: var(--translate-x-start-right-to-left);
             }
-            
+        
             to {
-                translate: -50rem;
+                translate: var(--translate-x-end-right-to-left);
             }
         }
         
         @keyframes translate-left-to-right {
             from {
-                translate: 0rem;
+                translate: var(--translate-x-start-left-to-right);
             }
-            
+        
             to {
-                translate: 50rem;
+                translate: var(--translate-x-end-left-to-right);
             }
         }
     }
@@ -126,9 +126,24 @@
 }
 
 @media (min-width: 1024px) and (max-width: 1279px) {
+    :root {
+        --animation-range: 35%;
+        --translate-x-start-right-to-left: 0rem;
+        --translate-x-start-left-to-right: 0rem;
+        --translate-x-end-right-to-left: -100rem;
+        --translate-x-end-left-to-right: 100rem;
+    }
 }
 
 @media (min-width: 1280px) {
+    :root {
+        --animation-range: 0%;
+        --translate-x-start-right-to-left: 0rem;
+        --translate-x-start-left-to-right: 0rem;
+        --translate-x-end-right-to-left: -45rem;
+        --translate-x-end-left-to-right: 45rem;
+    }
+    
     #products-container #woman h3,
     #products-container #men h3 {
         font-size: xxx-large;
