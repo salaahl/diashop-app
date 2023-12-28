@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Option;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Option;
+use Illuminate\Support\Facades\Redirect;
 
 class OptionController extends Controller
 {
@@ -20,7 +22,11 @@ class OptionController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+
+        return view('manage/add-option', [
+            "products" => $products,
+        ]);
     }
 
     /**
@@ -28,7 +34,35 @@ class OptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "product_id" => ['required', 'integer'],
+            "color" => ['required', 'string', 'min:2', 'max:60'],
+            "thumbnail_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "thumbnail_two" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "picture_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "picture_two" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
+            "picture_three" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
+            "picture_four" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
+        ]);
+
+        if (!Option::where([
+            ["color", $request->color],
+            ["product_id", $request->product_id]
+        ])->first()) {
+            $option = new Option();
+            $option->color = $request->color;
+            $option->img_thumbnail = [$request->thumbnail_one->getClientOriginalName(), $request->thumbnail_two->getClientOriginalName()];
+            $option->img_fullsize = [
+                $request->picture_one->getClientOriginalName(),
+                isset($request->picture_two) ?? $request->picture_two->getClientOriginalName(),
+                isset($request->picture_three) ?? $request->picture_three->getClientOriginalName(),
+                isset($request->picture_four) ?? $request->picture_four->getClientOriginalName()
+            ];
+            $option->product_id = $request->product_id;
+            $option->save();
+        } else {
+            return Redirect::back()->withErrors(['msg' => 'Erreur. Cette variante de l\'article existe déjà.']);
+        }
     }
 
     /**

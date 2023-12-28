@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="author" lang="fr" content="Salaha SOKHONA">
     <meta name="copyright" content="Salaha SOKHONA pour Diashop.">
-    <meta name="description" content="Vente de prêt à porter.">
+    <meta name="description" content="Site de vente de prêt à porter.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @show
@@ -24,7 +24,13 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen">
+
+    <!-- Page Loader -->
+    <div id="loader-container">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="main-container min-h-screen" style="opacity: 0;">
 
         <!-- Page Heading -->
         <header>
@@ -48,6 +54,12 @@
         <!-- Page Scripts -->
         @section('scripts')
         @vite(['resources/js/app.js', 'node_modules/flowbite/dist/flowbite.min.js'])
+        <script>
+            window.addEventListener("load", () => {
+                document.querySelector("#loader-container").style.display = "none";
+                document.querySelector(".main-container").style.opacity = "1";
+            });
+        </script>
         @show
 
     </div>

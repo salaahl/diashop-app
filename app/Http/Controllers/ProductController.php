@@ -3,7 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Option;
+use App\Models\Catalog;
+use App\Models\Category;
+use App\Models\Brand;
+use App\Models\Size;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\File;
+use Exception;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
@@ -20,7 +30,15 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('manage/add-product');
+        $catalogs = Catalog::all();
+        $categories = Category::all();
+        $brands = Brand::all();
+
+        return view('manage/add-product', [
+            "catalogs" => $catalogs,
+            "categories" => $categories,
+            "brands" => $brands
+        ]);
     }
 
     /**
@@ -28,15 +46,70 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => ['required', 'string', 'min:2', 'max:60'],
+            "catalog_id" => ['required', 'integer'],
+            "category_id" => ['required', 'integer'],
+            "brand_id" => ['required', 'integer'],
+            "price" => ['required', 'numeric'],
+            "description" => ['required', 'string', 'min:2', 'max:400'],
+        ]);
+
+        if (!Product::where([
+            ["name", $request->name],
+            ["brand_id", $request->brand_id],
+            ["category_id", $request->category_id],
+            ["catalog_id", $request->catalog_id],
+        ])->first()) {
+            $product = new Product();
+            $product->catalog_id = $request->catalog_id;
+            $product->category_id = $request->category_id;
+            $product->brand_id = $request->brand_id;
+            $product->name = $request->name;
+            $product->price = $request->price;
+            $product->description = $request->description;
+            $product->save();
+        } else {
+            return Redirect::back()->withErrors(['msg' => 'Erreur. Ce produit existe déjà.']);
+        }
+
+        return redirect()->route('home');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show($slug1, $slug2)
     {
-        return view('products/product');
+        $product = Product::where("name", $slug1)->first();
+        // -1 étant donné que l'array commence à compter à partir de zéro contrairement à mes id
+        $options = $product->options[$slug2 - 1];
+
+        return view('products/product', [
+            "product" => $product,
+            "options" => $options,
+            "sizes" => $options->sizes,
+        ]);
+    }
+
+    public function getQuantity(Request $request)
+    {
+        try {
+            $size = Size::where([
+                ["size", $request->size],
+                ["option_id", $request->option_id],
+            ])->first()->quantity;
+
+            return response()->json([
+                'size' => $size,
+            ]);
+        } catch (Exception $e) {
+            http_response_code(500);
+
+            return response()->json([
+                'error' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**

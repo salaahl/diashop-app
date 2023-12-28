@@ -11,13 +11,23 @@ class Option extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'img_thumbnail' => 'array',
+        'img_fullsize' => 'array',
+    ];
+
     public function product()
     {
         return $this->belongsTo(Product::class);
     }
 
-    public function size()
+    public function sizes()
     {
-        return $this->belongsTo(Size::class);
+        return $this->hasMany(Size::class);
     }
 }

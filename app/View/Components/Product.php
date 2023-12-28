@@ -13,7 +13,7 @@ class Product extends Component
     public string $hover;
     public string $title;
     public string $description;
-    public float $price;
+    public string $price;
 
     public function __construct(
         $link,

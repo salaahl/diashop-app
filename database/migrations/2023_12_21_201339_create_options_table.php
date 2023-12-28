@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('options', function (Blueprint $table) {
             $table->id();
             $table->string('color');
-            $table->integer('quantity');
-            $table->string('img_thumbnail');
-            $table->string('img_fullsize');
-            $table->foreignId('size_id')
+            $table->json('img_thumbnail');
+            $table->json('img_fullsize');
+            $table->foreignId('product_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');

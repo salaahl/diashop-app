@@ -10,8 +10,8 @@ class Size extends Model
 {
     use HasFactory;
 
-    public function options()
+    public function option()
     {
-        return $this->hasMany(Option::class);
+        return $this->belongsTo(Option::class);
     }
 }

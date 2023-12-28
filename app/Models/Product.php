@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
-use App\Models\Option;
+use App\Models\Catalog;
 use App\Models\Order;
-use App\Models\Favorite;
 use App\Models\Brand;
 
 class Product extends Model
@@ -17,6 +16,11 @@ class Product extends Model
     public function brand()
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    public function catalog()
+    {
+        return $this->belongsTo(Catalog::class);
     }
 
     public function category()
@@ -34,8 +38,9 @@ class Product extends Model
         return $this->belongsToMany(Order::class);
     }
 
+    // Permet de récupérer les utilisateurs ayant mis le produit en favori
     public function favorites()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->belongsToMany(User::class);
     }
 }

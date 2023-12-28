@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CatalogController extends Controller
 {
@@ -20,7 +21,7 @@ class CatalogController extends Controller
      */
     public function create()
     {
-        //
+        return view('manage/add-catalog');
     }
 
     /**
@@ -28,7 +29,17 @@ class CatalogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "gender" => ['required', 'string', 'min:2', 'max:60'],
+        ]);
+
+        if (!Catalog::where("gender", $request->gender)->first()) {
+            $catalog = new Catalog();
+            $catalog->gender = $request->gender;
+            $catalog->save();
+        } else {
+            return Redirect::back()->withErrors(['msg' => 'Erreur. Ce catalogue existe déjà.']);
+        }
     }
 
     /**

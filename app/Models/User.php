@@ -20,7 +20,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'firstname',
+        'lastname',
         'email',
         'password',
     ];
@@ -53,5 +54,11 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+
+    // Permet de récupérer les produits mis en favori par l'utilisateur
+    public function favorites()
+    {
+        return $this->belongsToMany(Product::class);
     }
 }

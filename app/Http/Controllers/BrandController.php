@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class BrandController extends Controller
 {
@@ -20,7 +21,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('manage/add-brand');
     }
 
     /**
@@ -28,7 +29,17 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "brand" => ['required', 'string', 'min:2', 'max:60'],
+        ]);
+
+        if (!Brand::where("name", $request->brand)->first()) {
+            $brand = new Brand();
+            $brand->name = $request->brand;
+            $brand->save();
+        } else {
+            return Redirect::back()->withErrors(['msg' => 'Erreur. Cette marque existe déjà.']);
+        }
     }
 
     /**

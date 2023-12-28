@@ -9,13 +9,6 @@
 @section('links')
 @parent
 <!-- @vite('resources/css/manage/create.css') -->
-@endsection
-
-@section('header')
-@parent
-@endsection
-
-@section('main')
 <style>
     main {
         max-width: 100%;
@@ -26,7 +19,13 @@
         margin-top: 0 !important;
     }
 </style>
+@endsection
 
+@section('header')
+@parent
+@endsection
+
+@section('main')
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -71,7 +70,6 @@
         </div>
     </form>
 </x-guest-layout>
-
 @endsection
 
 @section('scripts')

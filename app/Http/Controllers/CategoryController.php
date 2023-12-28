@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
@@ -20,7 +21,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('manage/add-category');
     }
 
     /**
@@ -28,7 +29,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "category" => ['required', 'string', 'min:2', 'max:60'],
+        ]);
+
+        if (!Category::where([
+            ["name", $request->category],
+        ])->first()) {
+            $category = new Category();
+            $category->name = $request->category;
+            $category->save();
+        } else {
+            return Redirect::back()->withErrors(['msg' => 'Erreur. Cette catégorie existe déjà.']);
+        }
     }
 
     /**

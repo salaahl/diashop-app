@@ -76,21 +76,22 @@
 }
 
 @media (max-width: 1023px) {
-    #products-container #men, #products-container #woman {
+    #products-container #men,
+    #products-container #woman {
         overflow: auto;
     }
 }
 
 @media (min-width: 1024px) {
-    @supports (animation-timeline: view()) {   
+    @supports (animation-timeline: view()) {
         #products-container #woman > * {
-            animation: translate-right-to-left linear;
-        }
-    
-        #products-container #men > * {
             animation: translate-left-to-right linear;
         }
-        
+
+        #products-container #men > * {
+            animation: translate-right-to-left linear;
+        }
+
         #products-container #men > *,
         #products-container #woman > * {
             animation-timeline: view();
@@ -101,17 +102,17 @@
             from {
                 translate: var(--translate-x-start-right-to-left);
             }
-        
+
             to {
                 translate: var(--translate-x-end-right-to-left);
             }
         }
-        
+
         @keyframes translate-left-to-right {
             from {
                 translate: var(--translate-x-start-left-to-right);
             }
-        
+
             to {
                 translate: var(--translate-x-end-left-to-right);
             }
@@ -119,9 +120,14 @@
     }
 
     @supports not (animation-timeline: view()) {
-        #products-container #men, #products-container #woman {
+        #products-container #men,
+        #products-container #woman {
             overflow: auto;
         }
+    }
+
+    #products-container #woman {
+        flex-direction: row-reverse;
     }
 }
 
@@ -137,20 +143,16 @@
 
 @media (min-width: 1280px) {
     :root {
-        --animation-range: 0%;
+        --animation-range: 10%;
         --translate-x-start-right-to-left: 0rem;
         --translate-x-start-left-to-right: 0rem;
         --translate-x-end-right-to-left: -45rem;
         --translate-x-end-left-to-right: 45rem;
     }
-    
+
     #products-container #woman h3,
     #products-container #men h3 {
         font-size: xxx-large;
-    }
-
-    #products-container #woman {
-        flex-direction: row-reverse;
     }
 
     .product {
@@ -162,6 +164,15 @@
 @media (max-width: 1279px) {
 }
 
+@supports (animation-timeline: view()) {
+}
+
+#carousel-container {
+    animation: fade linear;
+    animation-timeline: view();
+    animation-range: 70%;
+}
+
 #products-container #woman h3,
 #products-container #men h3 {
     text-align: center;
@@ -171,8 +182,8 @@
     font-weight: 500;
 }
 
-#products-container #woman a,
-#products-container #men a {
+#products-container #woman > a,
+#products-container #men > a {
     text-align: center;
     align-self: center;
     text-transform: uppercase;
@@ -201,4 +212,37 @@
     background-size: cover;
     background-position: center;
     transition: 0.5s all;
+}
+
+.product .short-description {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.catalog-button {
+    transition: all 0.3s ease-in-out;
+    padding-block: 0.5rem;
+    padding-inline: 1.25rem;
+    background-color: #0a0a0a;
+    border-radius: 5px;
+    color: #ffff;
+    font-weight: bold;
+    border: 3px solid #ffffff4d;
+    font-size: 15px;
+}
+
+.catalog-button:hover {
+    transform: scale(1.05);
+    border-color: #fff9;
+}
+
+@keyframes fade {
+    from {
+        filter: opacity(1);
+    }
+
+    to {
+        filter: opacity(0);
+    }
 }

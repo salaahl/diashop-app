@@ -8,7 +8,7 @@
 
 @section('links')
 @parent
-@vite(['resources/css/home.css', 'resources/js/home.js'])
+@vite('resources/css/home.css')
 @endsection
 
 @section('header')
@@ -40,22 +40,71 @@
         <h1>Accueil</h1>
         <h2>Découvrez nos collections : élégance, style et confiance !</h2>
     </div>
+    @if($woman_products)
     <div id="woman">
         <h3>Femme</h3>
-        <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 1" description="Lorem ipsum dolor sit amet" price=9.99 />
-        <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 1" description="Lorem ipsum dolor sit amet" price=9.99 />
-        <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 2" description="Lorem ipsum dolor sit amet" price=9.99 />
-        <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 3" description="Lorem ipsum dolor sit amet" price=9.99 />
-        <a href="#">Accéder au catalogue</a>
+        @php($i = 0)
+        @foreach($woman_products as $product)
+        @if($i <= 4) @if(count($product->options) > 1)
+            @foreach($product->options as $option)
+            <x-product link="./{{ $product->name }}/{{ $option->id }}" image="/images/{{ $option->img_thumbnail[0] }}" hover="/images/{{ $option->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
+            @php($i = $i + 1)
+            @endforeach
+            @else
+            <x-product link="./{{ $product->name }}/{{ $product->options[0]->id }}" image="/images/{{ $product->options[0]->img_thumbnail[0] }}" hover="/images/{{ $product->options[0]->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
+            @php($i = $i + 1)
+            @endif
+            @endif
+            @endforeach
+            <article class="product" style="min-width: unset; aspect-ratio: unset; text-align: center;">
+                <a href="{{ route('woman.catalog') }}">
+                    <div class="product-thumbnail flex justify-center items-center" style="height: 100%; width: 100%;">
+                        <button class="catalog-button">
+                            Accéder au catalogue
+                        </button>
+                    </div>
+                    <div class="product-details">
+                        <h4 class="title uppercase"></h4>
+                        <div class="short-description text-sm"></div>
+                        <div class="price"></div>
+                    </div>
+                </a>
+            </article>
     </div>
+    @endif
+
+    @if($men_products)
     <div id="men">
         <h3>Homme</h3>
-        <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 1" description="Lorem ipsum dolor sit amet" price=9.99 />
-        <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 4" description="Lorem ipsum dolor sit amet" price=9.99 />
-        <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 5" description="Lorem ipsum dolor sit amet" price=9.99 />
-        <x-product link="./article" image="/images/placeholder.png" hover="/images/placeholder2.png" title="Article 6" description="Lorem ipsum dolor sit amet" price=9.99 />
-        <a href="#">Accéder au catalogue</a>
+        @php($i = 0)
+        @foreach($men_products as $product)
+        @if($i <= 4) @if(count($product->options) > 1)
+            @foreach($product->options as $option)
+            <x-product link="./{{ $product->name }}/{{ $option->id }}" image="/images/{{ $option->img_thumbnail[0] }}" hover="/images/{{ $option->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
+            @php($i = $i + 1)
+            @endforeach
+            @else
+            <x-product link="./{{ $product->name }}/{{ $product->options[0]->id }}" image="/images/{{ $product->options[0]->img_thumbnail[0] }}" hover="/images/{{ $product->options[0]->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
+            @php($i = $i + 1)
+            @endif
+            @endif
+            @endforeach
+            <article class="product" style="min-width: unset; aspect-ratio: unset; text-align: center;">
+                <a href="{{ route('men.catalog') }}">
+                    <div class="product-thumbnail flex justify-center items-center" style="height: 100%; width: 100%;">
+                        <button class="catalog-button">
+                            Accéder au catalogue
+                        </button>
+                    </div>
+                    <div class="product-details">
+                        <h4 class="title uppercase"></h4>
+                        <div class="short-description text-sm"></div>
+                        <div class="price"></div>
+                    </div>
+                </a>
+            </article>
     </div>
+    @endif
 </section>
 @endsection
 

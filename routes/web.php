@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OptionController;
+use App\Http\Controllers\SizeController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\StripePaymentController;
@@ -34,23 +39,45 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('profile/', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Rendre ces routes uniquement accessibles à un admin
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'is.admin'])->group(function () {
     Route::prefix('manage/')->group(function () {
         Route::get('catalogs/', [ProductController::class, 'catalogs'])->name('catalogs.show');
         Route::get('men/catalog/', [ProductController::class, 'catalog'])->name('manage.men.catalog');
         Route::get('woman/catalog/', [ProductController::class, 'catalog'])->name('manage.woman.catalog');
         Route::get('add/product/', [ProductController::class, 'create'])->name('create.product');
-        Route::put('add/product/', [ProductController::class, 'store'])->name('store.product');
+        Route::post('add/product/', [ProductController::class, 'store'])->name('store.product');
         Route::patch('update/product/', [ProductController::class, 'update'])->name('update.product');
         Route::delete('delete/product/', [ProductController::class, 'destroy'])->name('destroy.product');
+        Route::get('add/catalog/', [CatalogController::class, 'create'])->name('create.catalog');
+        Route::post('add/catalog/', [CatalogController::class, 'store'])->name('store.catalog');
+        Route::patch('update/catalog/', [CatalogController::class, 'update'])->name('update.catalog');
+        Route::delete('delete/catalog/', [CatalogController::class, 'destroy'])->name('destroy.catalog');
+        Route::get('add/category/', [CategoryController::class, 'create'])->name('create.category');
+        Route::post('add/category/', [CategoryController::class, 'store'])->name('store.category');
+        Route::patch('update/category/', [CategoryController::class, 'update'])->name('update.category');
+        Route::delete('delete/category/', [CategoryController::class, 'destroy'])->name('destroy.category');
+        Route::get('add/brand/', [BrandController::class, 'create'])->name('create.brand');
+        Route::post('add/brand/', [BrandController::class, 'store'])->name('store.brand');
+        Route::patch('update/brand/', [BrandController::class, 'update'])->name('update.brand');
+        Route::delete('delete/brand/', [BrandController::class, 'destroy'])->name('destroy.brand');
+        Route::get('add/option/', [OptionController::class, 'create'])->name('create.option');
+        Route::post('add/option/', [OptionController::class, 'store'])->name('store.option');
+        Route::patch('update/option/', [OptionController::class, 'update'])->name('update.option');
+        Route::delete('delete/option/', [OptionController::class, 'destroy'])->name('destroy.option');
+        Route::get('add/size/', [SizeController::class, 'create'])->name('create.size');
+        Route::post('add/size/', [SizeController::class, 'store'])->name('store.size');
+        Route::patch('update/size/', [SizeController::class, 'update'])->name('update.size');
+        Route::delete('delete/size/', [SizeController::class, 'destroy'])->name('destroy.size');
     });
 });
 
 Route::get('men/catalog', [MainController::class, 'catalog'])->name('men.catalog');
-Route::get('men/{slug}', [ProductController::class, 'show'])->name('men.product');
+Route::post('men/catalog', [MainController::class, 'catalog'])->name('men.catalog.post');
+Route::get('men/{slug1}/{slug2}', [ProductController::class, 'show'])->name('men.product');
 Route::get('woman/catalog', [MainController::class, 'catalog'])->name('woman.catalog');
-Route::get('woman/{slug}', [ProductController::class, 'show'])->name('woman.product');
+Route::post('woman/catalog', [MainController::class, 'catalog'])->name('woman.catalog.post');
+Route::get('woman/{slug1}/{slug2}', [ProductController::class, 'show'])->name('woman.product');
+Route::post('get-quantity/', [ProductController::class, 'getQuantity'])->name('product.get-quantity');
 
 Route::get('basket/', [BasketController::class, 'show'])->name('basket.show');
 Route::put('basket/', [BasketController::class, 'store'])->name('basket.store');

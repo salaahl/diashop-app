@@ -68,7 +68,7 @@
                     <h4>529€</h4>
                 </td>
                 <td class="column-five min-[425px]:px-6 py-4">
-                    <button type="button" class="remove-button focus:outline-none text-red bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm min-[425px]:px-5 py-2.5 me-2 mb-2">Supprimer</button>
+                    <button type="button" class="remove-button focus:outline-none text-red bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm min-[425px]:px-5 p-2.5 text-white">Supprimer</button>
                 </td>
             </tr>
         </tbody>
@@ -130,13 +130,9 @@
                 </thead>
                 <tbody>
                     <tr class="bg-white border-b hover:bg-gray-50">
-                        <td class="address p-4">
+                        <td class="p-4">
                             <h3>Total : 300€</h3>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b hover:bg-gray-50">
-                        <td class="column-one p-4">
-                            <button type="submit" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Payer</button>
+                            <button type="submit" class="mt-8 mx-0 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5">Payer</button>
                         </td>
                     </tr>
                 </tbody>

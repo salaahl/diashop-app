@@ -27,7 +27,7 @@
 </style>
 
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register.post') }}">
         @csrf
 
         <!-- Firstname -->
@@ -39,9 +39,9 @@
 
         <!-- Lastname -->
         <div class="mt-4">
-            <x-input-label for="surname" :value="__('Nom de famille')" />
-            <x-text-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autofocus autocomplete="surname" />
-            <x-input-error :messages="$errors->get('surname')" class="mt-2" />
+            <x-input-label for="lastname" :value="__('Nom de famille')" />
+            <x-text-input id="lastname" class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname')" required autofocus autocomplete="lastname" />
+            <x-input-error :messages="$errors->get('lastname')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
@@ -71,7 +71,7 @@
             </a>
 
             <x-primary-button class="ms-4">
-                {{ __('S\'inscrire') }}
+                {{ __('Valider') }}
             </x-primary-button>
         </div>
     </form>

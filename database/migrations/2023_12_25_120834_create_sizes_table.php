@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('sizes', function (Blueprint $table) {
             $table->id();
             $table->string('size');
-            $table->foreignId('product_id')
+            $table->integer('quantity');
+            $table->foreignId('option_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
