@@ -31,7 +31,7 @@
         font-size: 1.5rem;
     }
 
-    nav > div {
+    #nav-inner {
         height: 10vh;
     }
 }

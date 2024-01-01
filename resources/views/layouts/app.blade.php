@@ -44,25 +44,25 @@
             @yield('main')
         </main>
 
-        <!-- Page Footer -->
-        <footer>
-            @section('footer')
-            @include('components.footer')
-            @show
-        </footer>
-
-        <!-- Page Scripts -->
-        @section('scripts')
-        @vite(['resources/js/app.js', 'node_modules/flowbite/dist/flowbite.min.js'])
-        <script>
-            window.addEventListener("load", () => {
-                document.querySelector("#loader-container").style.display = "none";
-                document.querySelector(".main-container").style.opacity = "1";
-            });
-        </script>
-        @show
-
     </div>
+
+    <!-- Page Footer -->
+    <footer>
+        @section('footer')
+        @include('components.footer')
+        @show
+    </footer>
+
+    <!-- Page Scripts -->
+    @section('scripts')
+    @vite(['resources/js/app.js', 'node_modules/flowbite/dist/flowbite.min.js'])
+    <script>
+        window.addEventListener("load", () => {
+            document.querySelector("#loader-container").style.display = "none";
+            document.querySelector(".main-container").style.opacity = "1";
+        });
+    </script>
+    @show
 </body>
 
 </html>

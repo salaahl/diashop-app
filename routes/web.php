@@ -41,8 +41,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::middleware(['auth', 'is.admin'])->group(function () {
     Route::prefix('manage/')->group(function () {
-        Route::get('catalogs/', [ProductController::class, 'catalogs'])->name('catalogs.show');
-        Route::get('men/catalog/', [ProductController::class, 'catalog'])->name('manage.men.catalog');
+        Route::get('index/', function () {
+            return view('manage.index');
+        })->name('manage.index');
+        Route::get('catalogs/', [ProductController::class, 'catalogs'])->name('manage.catalogs');
+        Route::get('categories/', [ProductController::class, 'catalog'])->name('manage.categories');
+        Route::get('brands/', [ProductController::class, 'catalog'])->name('manage.brands');
+        Route::get('products/', [ProductController::class, 'catalog'])->name('manage.products');
+        Route::get('options/', [ProductController::class, 'catalog'])->name('manage.options');
+        Route::get('sizes/', [ProductController::class, 'catalog'])->name('manage.sizes');
         Route::get('woman/catalog/', [ProductController::class, 'catalog'])->name('manage.woman.catalog');
         Route::get('add/product/', [ProductController::class, 'create'])->name('create.product');
         Route::post('add/product/', [ProductController::class, 'store'])->name('store.product');
@@ -73,16 +80,17 @@ Route::middleware(['auth', 'is.admin'])->group(function () {
 
 Route::get('men/catalog', [MainController::class, 'catalog'])->name('men.catalog');
 Route::post('men/catalog', [MainController::class, 'catalog'])->name('men.catalog.post');
-Route::get('men/{slug1}/{slug2}', [ProductController::class, 'show'])->name('men.product');
+Route::get('men/{slug1}/{slug2?}', [ProductController::class, 'show'])->name('men.product');
 Route::get('woman/catalog', [MainController::class, 'catalog'])->name('woman.catalog');
 Route::post('woman/catalog', [MainController::class, 'catalog'])->name('woman.catalog.post');
-Route::get('woman/{slug1}/{slug2}', [ProductController::class, 'show'])->name('woman.product');
+Route::get('woman/{slug1}/{slug2?}', [ProductController::class, 'show'])->name('woman.product');
 Route::post('get-quantity/', [ProductController::class, 'getQuantity'])->name('product.get-quantity');
 
 Route::get('basket/', [BasketController::class, 'show'])->name('basket.show');
-Route::put('basket/', [BasketController::class, 'store'])->name('basket.store');
-Route::patch('basket/', [BasketController::class, 'update'])->name('basket.update');
-Route::delete('basket/', [BasketController::class, 'destroy'])->name('basket.destroy');
+Route::put('basket/store', [BasketController::class, 'store'])->name('basket.store');
+Route::patch('basket/update', [BasketController::class, 'update'])->name('basket.update');
+Route::delete('basket/remove', [BasketController::class, 'remove'])->name('basket.remove');
+Route::get('basket/destroy', [BasketController::class, 'destroy'])->name('basket.destroy');
 
 Route::post('checkout/', [StripePaymentController::class, 'checkout'])->name('checkout');
 Route::post('stripe_webhooks/', [StripePaymentController::class, 'webhooks'])->name('webhooks');

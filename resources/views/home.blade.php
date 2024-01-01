@@ -19,11 +19,10 @@
 <section id="carousel-container">
     <x-carousel>
         <x-slot name="items">
-            <x-carousel-item image="/images/placeholder.png" title="Titre 1" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
+            <x-carousel-item image="/images/carousel-placeholder.jpg" title="Titre 1" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
             <x-carousel-item image="/images/placeholder.png" title="Titre 2" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
             <x-carousel-item image="/images/placeholder.png" title="Titre 3" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
             <x-carousel-item image="/images/placeholder.png" title="Titre 4" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
-            <x-carousel-item image="/images/placeholder.png" title="Titre 5" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
         </x-slot>
 
         <x-slot name="buttons">
@@ -43,17 +42,13 @@
     @if($woman_products)
     <div id="woman">
         <h3>Femme</h3>
-        @php($i = 0)
         @foreach($woman_products as $product)
-        @if($i <= 4) @if(count($product->options) > 1)
-            @foreach($product->options as $option)
-            <x-product link="./{{ $product->name }}/{{ $option->id }}" image="/images/{{ $option->img_thumbnail[0] }}" hover="/images/{{ $option->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
-            @php($i = $i + 1)
-            @endforeach
+        @if(count($product->options) > 1)
+        @for($i = 0; $i < count($product->options); $i++)
+            <x-product link="./woman/{{ $product->name }}/{{ $i }}" image="/images/{{ $product->options[$i]->img_thumbnail[0] }}" hover="/images/{{ $product->options[$i]->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
+            @endfor
             @else
-            <x-product link="./{{ $product->name }}/{{ $product->options[0]->id }}" image="/images/{{ $product->options[0]->img_thumbnail[0] }}" hover="/images/{{ $product->options[0]->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
-            @php($i = $i + 1)
-            @endif
+            <x-product link="./woman/{{ $product->name }}" image="/images/{{ $product->options[0]->img_thumbnail[0] }}" hover="/images/{{ $product->options[0]->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
             @endif
             @endforeach
             <article class="product" style="min-width: unset; aspect-ratio: unset; text-align: center;">
@@ -76,17 +71,13 @@
     @if($men_products)
     <div id="men">
         <h3>Homme</h3>
-        @php($i = 0)
-        @foreach($men_products as $product)
-        @if($i <= 4) @if(count($product->options) > 1)
-            @foreach($product->options as $option)
-            <x-product link="./{{ $product->name }}/{{ $option->id }}" image="/images/{{ $option->img_thumbnail[0] }}" hover="/images/{{ $option->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
-            @php($i = $i + 1)
-            @endforeach
+        @foreach($woman_products as $product)
+        @if(count($product->options) > 1)
+        @for($i = 0; $i < count($product->options); $i++)
+            <x-product link="./men/{{ $product->name }}/{{ $i }}" image="/images/{{ $product->options[$i]->img_thumbnail[0] }}" hover="/images/{{ $product->options[$i]->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
+            @endfor
             @else
-            <x-product link="./{{ $product->name }}/{{ $product->options[0]->id }}" image="/images/{{ $product->options[0]->img_thumbnail[0] }}" hover="/images/{{ $product->options[0]->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
-            @php($i = $i + 1)
-            @endif
+            <x-product link="./men/{{ $product->name }}" image="/images/{{ $product->options[0]->img_thumbnail[0] }}" hover="/images/{{ $product->options[0]->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
             @endif
             @endforeach
             <article class="product" style="min-width: unset; aspect-ratio: unset; text-align: center;">

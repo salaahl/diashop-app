@@ -17,7 +17,7 @@
 <style>
     @media (min-width: 768px) {
         h2 {
-            text-align: unset!important;
+            text-align: unset !important;
         }
     }
 
@@ -39,25 +39,23 @@
             <x-carousel-item image="/images/{{ $image }}" />
             @endforeach
         </x-slot>
-
-        <!-- Trouver le moyen d'aligner cette partir sur le nombre d'images -->
         <x-slot name="buttons">
             @for ($i = 0; $i < count($options->img_fullsize); $i++)
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide {{ $i + 1 }}" data-carousel-slide-to="{{ $i }}"></button>
-            @endfor
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide {{ $i + 1 }}" data-carousel-slide-to="{{ $i }}"></button>
+                @endfor
         </x-slot>
     </x-carousel>
 </section>
 <section id="product-detail-container">
     <div id="product-detail">
         <div>
-            <h2 id="title">{{ $product->name }}</h2>
+            <h2 id="title" class="flex justify-between align-center">{{ $product->name }} <span>{{ $product->price }}€</span></h2>
             <div id="description">{{ $product->description }}</div>
         </div>
         <div>
             <div class="radio-toolbar">
                 @foreach($sizes as $size)
-                <input type="radio" name="radios" id="{{ $size->size }}" value="{{ $size->size }}">
+                <input type="radio" name="size" id="{{ $size->size }}" value="{{ $size->size }}">
                 <label class="radio_label" for="{{ $size->size }}">{{ $size->size }}</label>
                 @endforeach
             </div>
@@ -69,8 +67,10 @@
                 </select>
             </div>
             <div id="buttons">
-                <button class="button-stylised-1" role="button">Ajouter au panier</button>
-                <button class="button-stylised-1 button-stylised-1-custom" role="button">Ajouter aux favoris</button>
+                <button id="add-basket" class="button-stylised-1" role="button">Ajouter au panier</button>
+                @auth
+                <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom" role="button">Ajouter aux favoris</button>
+                @endauth
             </div>
             <div id="delivery-and-return-details">
                 <h4 class="text-sm">Couleur : {{ $options->color }}</h4>
@@ -120,5 +120,63 @@
                 });
         });
     })
+
+    //
+    document.getElementById("add-basket").addEventListener('click', function() {
+        if (document.querySelector('input[type="radio"]:checked') && document.querySelector("#quantity").value) {
+            let data = {
+                size: document.querySelector('input[type="radio"]:checked').value,
+                quantity: parseInt(document.querySelector("#quantity").value),
+                option_id: parseInt('{{ $product->options[0]->id }}'),
+            };
+
+            const request = new Request('/basket/store', {
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers: {
+                    "X-CSRF-TOKEN": document
+                        .querySelector('[name="csrf-token"]')
+                        .getAttribute("content"),
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            fetch(request)
+                .then((response) => response.json())
+                .then((data) => {})
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        } else {
+            alert('Veuillez d\'abord sélectionner une taille et une quantité.');
+        }
+    });
+
+    //
+    if (document.getElementById("add-favorite")) {
+        document.getElementById("add-favorite").addEventListener('click', function() {
+            let data = {
+                option_id: '{{ $product->options[0]->id }}',
+            };
+
+            const request = new Request('/add-favorite', {
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers: {
+                    "X-CSRF-TOKEN": document
+                        .querySelector('[name="csrf-token"]')
+                        .getAttribute("content"),
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            fetch(request)
+                .then((response) => response.json())
+                .then((data) => {})
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        });
+    }
 </script>
 @endsection

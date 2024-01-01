@@ -25,7 +25,30 @@ function updateQuantity(quantityInput, delta) {
     var currentQuantity = parseInt(quantity.value);
     var newQuantity = currentQuantity + delta;
     if (newQuantity > 0) {
-        quantity.value = newQuantity;
+        let data = {
+            option_id: quantity.closest("tr").querySelector("input").value,
+            quantity: newQuantity,
+        };
+
+        const request = new Request("/basket/update", {
+            method: "PATCH",
+            body: JSON.stringify(data),
+            headers: {
+                "X-CSRF-TOKEN": document
+                    .querySelector('[name="csrf-token"]')
+                    .getAttribute("content"),
+                "Content-Type": "application/json",
+            },
+        });
+
+        fetch(request)
+            .then((response) => response.json())
+            .then((data) => {
+                quantity.value = newQuantity;
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
     }
 }
 
@@ -34,6 +57,29 @@ function removeProduct(product) {
      * Mettre ici le code qui ira supprimer le produit dans le back-end
      * puis conditionner le product.remove à la réussite de la fonction
      */
-    product.remove();
-    alert("Produit supprimé: " + product);
+    //
+    let data = {
+        option_id: product.querySelector("input").value,
+    };
+
+    const request = new Request("/basket/remove", {
+        method: "DELETE",
+        body: JSON.stringify(data),
+        headers: {
+            "X-CSRF-TOKEN": document
+                .querySelector('[name="csrf-token"]')
+                .getAttribute("content"),
+            "Content-Type": "application/json",
+        },
+    });
+
+    fetch(request)
+        .then((response) => response.json())
+        .then((data) => {
+            product.remove();
+            alert("Produit supprimé: " + product);
+        })
+        .catch((error) => {
+            console.log(error.message);
+        });
 }

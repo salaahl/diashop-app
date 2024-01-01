@@ -84,16 +84,16 @@
 
 @media (min-width: 1024px) {
     @supports (animation-timeline: view()) {
-        #products-container #woman > * {
+        #products-container #woman {
             animation: translate-left-to-right linear;
         }
 
-        #products-container #men > * {
+        #products-container #men {
             animation: translate-right-to-left linear;
         }
 
-        #products-container #men > *,
-        #products-container #woman > * {
+        #products-container #men,
+        #products-container #woman {
             animation-timeline: view();
             animation-range: var(--animation-range);
         }
@@ -133,7 +133,7 @@
 
 @media (min-width: 1024px) and (max-width: 1279px) {
     :root {
-        --animation-range: 35%;
+        --animation-range: 40%;
         --translate-x-start-right-to-left: 0rem;
         --translate-x-start-left-to-right: 0rem;
         --translate-x-end-right-to-left: -100rem;
@@ -143,7 +143,7 @@
 
 @media (min-width: 1280px) {
     :root {
-        --animation-range: 10%;
+        --animation-range: 20%;
         --translate-x-start-right-to-left: 0rem;
         --translate-x-start-left-to-right: 0rem;
         --translate-x-end-right-to-left: -45rem;

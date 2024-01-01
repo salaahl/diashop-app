@@ -49,15 +49,15 @@ class OptionController extends Controller
             ["color", $request->color],
             ["product_id", $request->product_id]
         ])->first()) {
+            $images = [$request->picture_one->getClientOriginalName()];
+            isset($request->picture_two) ?? $images[] = $request->picture_two->getClientOriginalName();
+            isset($request->picture_three) ?? $images[] = $request->picture_three->getClientOriginalName();
+            isset($request->picture_four) ?? $images[] = $request->picture_four->getClientOriginalName();
+
             $option = new Option();
             $option->color = $request->color;
             $option->img_thumbnail = [$request->thumbnail_one->getClientOriginalName(), $request->thumbnail_two->getClientOriginalName()];
-            $option->img_fullsize = [
-                $request->picture_one->getClientOriginalName(),
-                isset($request->picture_two) ?? $request->picture_two->getClientOriginalName(),
-                isset($request->picture_three) ?? $request->picture_three->getClientOriginalName(),
-                isset($request->picture_four) ?? $request->picture_four->getClientOriginalName()
-            ];
+            $option->img_fullsize = $images;
             $option->product_id = $request->product_id;
             $option->save();
         } else {

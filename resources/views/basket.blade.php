@@ -8,7 +8,7 @@
 
 @section('links')
 @parent
-@vite(['resources/css/basket.css', 'resources/js/basket.js'])
+@vite('resources/css/basket.css')
 @endsection
 
 @section('header')
@@ -16,7 +16,11 @@
 @endsection
 
 @section('main')
+@if (session()->has('message'))
+<div class="alert alert-info">{{ session('message') }}</div>
+@endif
 <div id="summary-container" class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    @if (session()->has("basket"))
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
@@ -26,6 +30,9 @@
                 <th scope="col" class="column-two min-[425px]:px-6 py-3">
                     Article
                 </th>
+                <th scope="col" class="column-two min-[425px]:px-6 py-3">
+                    Taille
+                </th>
                 <th scope="col" class="column-three min-[425px]:px-6 py-3">
                     Quantité
                 </th>
@@ -33,17 +40,23 @@
                     Prix
                 </th>
                 <th scope="col" class="column-five min-[425px]:px-6 py-3">
-                    <span class="sr-only">Supprimer</span>
+                    Supprimer
                 </th>
             </tr>
         </thead>
         <tbody>
+            @php($total = 0)
+            @foreach(session('basket') as $products)
+            @foreach($products as $product)
             <tr class="bg-white border-b hover:bg-gray-50">
                 <td class="column-one p-4">
                     <img src="/images/placeholder.png" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
                 </td>
                 <td class="column-two min-[425px]:px-6 py-4 font-semibold text-gray-900">
-                    <h4>Article 1</h4>
+                    <h4>{{ $product['name'] }}</h4>
+                </td>
+                <td class="column-two min-[425px]:px-6 py-4 font-semibold text-gray-900">
+                    <h4>{{ $product['size'] }}</h4>
                 </td>
                 <td class="column-three min-[425px]:px-6 py-4">
                     <div class="flex justify-center items-center">
@@ -54,7 +67,7 @@
                             </svg>
                         </button>
                         <div>
-                            <input type="number" class="quantity-input bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1" value="1" required>
+                            <input type="number" name="quantity" class="quantity-input bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1" value="{{ $product['quantity'] }}" required>
                         </div>
                         <button class="quantity-button quantity-up inline-flex items-center justify-center h-6 w-6 p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button">
                             <span class="sr-only">Augmenter la quantité</span>
@@ -65,12 +78,18 @@
                     </div>
                 </td>
                 <td class="column-four min-[425px]:px-6 py-4 font-semibold text-gray-900">
-                    <h4>529€</h4>
+                    <h4 class="price">{{ $product['price'] }}</h4>
+                    @php($total += $product['price'] * $product['quantity'])
                 </td>
                 <td class="column-five min-[425px]:px-6 py-4">
-                    <button type="button" class="remove-button focus:outline-none text-red bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm min-[425px]:px-5 p-2.5 text-white">Supprimer</button>
+                    <div class="flex justify-center align-center">
+                    <button type="button" class="remove-button focus:outline-none text-red bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm min-[425px]:px-5 p-2.5 text-white">X</button>
+                    </div>
+                    <input name="option_id" type="hidden" value="{{ $product['option_id'] }}" />
                 </td>
             </tr>
+            @endforeach
+            @endforeach
         </tbody>
     </table>
 </div>
@@ -131,7 +150,7 @@
                 <tbody>
                     <tr class="bg-white border-b hover:bg-gray-50">
                         <td class="p-4">
-                            <h3>Total : 300€</h3>
+                            <h3 id="total">{{ $total }}<span>€</span></h3>
                             <button type="submit" class="mt-8 mx-0 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5">Payer</button>
                         </td>
                     </tr>
@@ -140,8 +159,10 @@
         </div>
     </form>
 </div>
+@endif
 @endsection
 
 @section('scripts')
 @parent
+@vite('resources/js/basket.js')
 @endsection

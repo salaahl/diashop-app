@@ -79,11 +79,21 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($slug1, $slug2)
+    public function show($slug1, $slug2 = 0)
     {
-        $product = Product::where("name", $slug1)->first();
-        // -1 étant donné que l'array commence à compter à partir de zéro contrairement à mes id
-        $options = $product->options[$slug2 - 1];
+        $catalog = null;
+
+        if (strpos(url()->current(), 'woman') && Catalog::where("gender", "Femme")->first()) {
+            $catalog = Catalog::where("gender", "Femme")->first()->id;
+        } else if (strpos(url()->current(), 'men') && Catalog::where("gender", "Homme")->first()) {
+            $catalog = Catalog::where("gender", "Homme")->first()->id;
+        }
+
+        $product = Product::where([
+            ["name", $slug1],
+            ['catalog_id', $catalog],
+        ])->first();
+        $options = $product->options[$slug2];
 
         return view('products/product', [
             "product" => $product,

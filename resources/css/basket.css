@@ -64,12 +64,26 @@ img {
     object-fit: cover;
 }
 
+.column-one {
+    width: 150px;
+}
+
 div:has(> input[type="number"]) {
     margin: auto 5%;
 }
 
 .quantity-input {
     max-width: 60px;
+}
+
+.remove-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    height: 30px;
+    aspect-ratio: 1;
+    border-radius: 99px;
 }
 
 div:has(> table) {
@@ -84,4 +98,3 @@ div:has(> table) {
 #address-container .input-container {
     margin-bottom: 2%;
 }
-
