@@ -50,7 +50,7 @@
             @foreach($products as $product)
             <tr class="bg-white border-b hover:bg-gray-50">
                 <td class="column-one p-4">
-                    <img src="/images/placeholder.png" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
+                    <img src="/images/{{ $product['thumbnail'] }}" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
                 </td>
                 <td class="column-two min-[425px]:px-6 py-4 font-semibold text-gray-900">
                     <h4>{{ $product['name'] }}</h4>
@@ -150,8 +150,8 @@
                 <tbody>
                     <tr class="bg-white border-b hover:bg-gray-50">
                         <td class="p-4">
-                            <h3 id="total">{{ $total }}<span>€</span></h3>
-                            <button type="submit" class="mt-8 mx-0 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5">Payer</button>
+                            <h3 id="total">{{ $total }}</h3><span>€</span>
+                            <a href="{{ route('checkout.show') }}" class="">Payer</a>
                         </td>
                     </tr>
                 </tbody>

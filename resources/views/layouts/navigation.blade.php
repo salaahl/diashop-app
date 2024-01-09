@@ -21,7 +21,13 @@
                     <a href="{{ route('woman.catalog') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Femme</a>
                 </li>
                 <li>
-                    <a href="{{ route('basket.show') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Panier</a>
+                    <a href="{{ route('basket.show') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Panier
+                        @if(session("basket"))
+                        <span id="basket-counter">
+                            {{ count(session("basket")) }}
+                        </span>
+                        @endif
+                    </a>
                 </li>
                 @guest
                 <li>

@@ -33,8 +33,12 @@
     }
 
     .product {
-        min-width: 45%;
+        width: 45%;
         margin-bottom: 2.5%;
+    }
+
+    .catalog-container {
+        width: 100%;
     }
 }
 
@@ -55,6 +59,10 @@
     .product {
         margin-bottom: 2%;
     }
+
+    .catalog-container {
+        width: 48%;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
@@ -68,7 +76,7 @@
     }
 
     .product {
-        min-width: 30%;
+        width: 30%;
     }
 }
 
@@ -143,7 +151,7 @@
 
 @media (min-width: 1280px) {
     :root {
-        --animation-range: 20%;
+        --animation-range: 30%;
         --translate-x-start-right-to-left: 0rem;
         --translate-x-start-left-to-right: 0rem;
         --translate-x-end-right-to-left: -45rem;
@@ -156,7 +164,7 @@
     }
 
     .product {
-        min-width: 22%;
+        width: 22%;
         max-width: 320px;
     }
 }
@@ -220,21 +228,33 @@
     overflow: hidden;
 }
 
-.catalog-button {
-    transition: all 0.3s ease-in-out;
-    padding-block: 0.5rem;
-    padding-inline: 1.25rem;
-    background-color: #0a0a0a;
-    border-radius: 5px;
-    color: #ffff;
-    font-weight: bold;
-    border: 3px solid #ffffff4d;
-    font-size: 15px;
+#catalogs {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.catalog-button:hover {
-    transform: scale(1.05);
-    border-color: #fff9;
+.catalog-container {
+    aspect-ratio: 3/4;
+}
+
+.catalog {
+    height: 80%;
+}
+
+.catalog img {
+    height: 100%;
+    object-fit: cover;
+}
+
+#catalogs h3 {
+    height: 5%;
+    margin: 2.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @keyframes fade {

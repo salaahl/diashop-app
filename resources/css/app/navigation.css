@@ -24,3 +24,23 @@
 
 @media (max-width: 1280px) {
 }
+
+a:has(> #basket-counter) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#basket-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+    margin-left: 5px;
+    font-size: x-small;
+    font-weight: 900;
+    color: white;
+    background-color: black;
+    border-radius: 99px;
+}

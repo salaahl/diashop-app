@@ -44,7 +44,7 @@ function updateQuantity(quantityInput, delta) {
         fetch(request)
             .then((response) => response.json())
             .then((data) => {
-                quantity.value = newQuantity;
+                location.reload();
             })
             .catch((error) => {
                 console.log(error.message);

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Catalog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Exception;
 
 class CategoryController extends Controller
 {
@@ -21,7 +23,11 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('manage/add-category');
+        $catalogs = Catalog::all();
+
+        return view('manage/add-category', [
+            "catalogs" => $catalogs
+        ]);
     }
 
     /**
@@ -30,14 +36,17 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            "catalog_id" => ['required', 'integer'],
             "category" => ['required', 'string', 'min:2', 'max:60'],
         ]);
 
         if (!Category::where([
             ["name", $request->category],
+            ["catalog_id", $request->catalog_id],
         ])->first()) {
             $category = new Category();
             $category->name = $request->category;
+            $category->catalog_id = $request->catalog_id;
             $category->save();
         } else {
             return Redirect::back()->withErrors(['msg' => 'Erreur. Cette catégorie existe déjà.']);
@@ -50,6 +59,21 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         //
+    }
+
+    public function getCategories(Request $request)
+    {
+        try {
+            return response()->json([
+                'categories' => Category::where("catalog_id", $request->catalog_id)->get(),
+            ]);
+            http_response_code(200);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ]);
+            http_response_code(500);
+        }
     }
 
     /**

@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Catalog;
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\Option;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function home(Product $product)
+    public function home()
     {
         $woman_catalog = null;
         $men_catalog = null;
@@ -21,12 +23,19 @@ class MainController extends Controller
             $men_catalog = Catalog::where("gender", "Homme")->first()->id;
         }
 
-        $woman_products = Product::where("catalog_id", $woman_catalog)->orderBy('created_at', 'DESC')->limit(4)->get();
-        $men_products = Product::where("catalog_id", $men_catalog)->orderBy('created_at', 'DESC')->limit(4)->get();
+        $woman_options = Option::where(
+            "product_id",
+            Product::where("catalog_id", $woman_catalog)->first()->id
+        )->orderBy('created_at', 'DESC')->limit(5)->get();
+
+        $men_options = Option::where(
+            "product_id",
+            Product::where("catalog_id", $men_catalog)->first()->id
+        )->orderBy('created_at', 'DESC')->limit(5)->get();
 
         return view('home', [
-            "woman_products" => $woman_products,
-            "men_products" => $men_products
+            "woman_options" => $woman_options,
+            "men_options" => $men_options
         ]);
     }
 
@@ -59,19 +68,11 @@ class MainController extends Controller
                 $products = Product::where("catalog_id", $catalog)->orderBy('created_at', 'ASC')->paginate(12);
         }
 
-        $categories = [];
-
-        foreach ($products as $product) {
-            if (!in_array($product->category->name, $categories)) {
-                $categories[] = $product->category->name;
-            }
-        }
-
         return view('products/catalog', [
             "products" => $products,
             "h1" => $h1,
             "h2" => $h2,
-            "categories" => $categories
+            "categories" => Category::where("catalog_id", $catalog)->get()
         ]);
     }
 }

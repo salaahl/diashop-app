@@ -23,27 +23,24 @@
             @csrf
             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6 items-end">
                 <div class="col-span-2 md:col-span-1">
-                    <label for="catalog_id" class="sr-only uppercase">Choisissez un catalogue</label>
+                    <label for="catalog_id" class="sr-only uppercase">Selectionnez un catalogue</label>
                     <select id="catalog_id" name="catalog_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                        <option disabled selected>Choisissez un catalogue</option>
+                        <option disabled selected>Selectionnez un catalogue</option>
                         @foreach($catalogs as $catalog)
                         <option value="{{ $catalog->id }}">{{ $catalog->gender }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="col-span-2 md:col-span-1">
-                    <label for="category_id" class="sr-only uppercase">Choisissez une catégorie</label>
+                    <label for="category_id" class="sr-only uppercase">Selectionnez une catégorie</label>
                     <select id="category_id" name="category_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                        <option disabled selected>Choisissez une catégorie</option>
-                        @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
+                        <option disabled selected>Selectionnez une catégorie</option>
                     </select>
                 </div>
                 <div class="col-span-2 md:col-span-1">
-                    <label for="brand_id" class="sr-only uppercase">Choisissez une marque</label>
+                    <label for="brand_id" class="sr-only uppercase">Selectionnez une marque</label>
                     <select id="brand_id" name="brand_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                        <option disabled selected>Choisissez une marque</option>
+                        <option disabled selected>Selectionnez une marque</option>
                         @foreach($brands as $brand)
                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                         @endforeach
@@ -51,7 +48,7 @@
                 </div>
                 <div class="col-span-2 md:col-span-1">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 uppercase">Nom</label>
-                    <input type="text" name="name" id="name" minlength="2" maxlength="60" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Marque de l'article">
+                    <input type="text" name="name" id="name" minlength="2" maxlength="60" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Nom de l'article">
                 </div>
                 <div class="col-span-2 md:col-span-1">
                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900 uppercase">Description</label>
@@ -81,4 +78,39 @@
 
 @section('scripts')
 @parent
+<script>
+        document.querySelector('#catalog_id').addEventListener('change', function() {
+            let data = {
+                catalog_id: this.value,
+            };
+
+            const request = new Request('/manage/get-categories', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    "X-CSRF-TOKEN": document
+                        .querySelector('[name="csrf-token"]')
+                        .getAttribute("content"),
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            fetch(request)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data.categories)
+                    const select = document.querySelector('#category_id');
+                    let options;
+
+                    for (let i = 0; i < data.categories.length; i++) {
+                        options += '<option value="' + data.categories[i].id + '">' + data.categories[i].name + '</option>';
+                    }
+
+                    select.innerHTML = '<option selected>Selectionnez une catégorie</option>' + options;
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        });
+</script>
 @endsection

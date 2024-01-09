@@ -46,11 +46,13 @@ Route::middleware(['auth', 'is.admin'])->group(function () {
         })->name('manage.index');
         Route::get('catalogs/', [ProductController::class, 'catalogs'])->name('manage.catalogs');
         Route::get('categories/', [ProductController::class, 'catalog'])->name('manage.categories');
+        Route::post('get-categories/', [CategoryController::class, 'getCategories'])->name('manage.get-categories');
         Route::get('brands/', [ProductController::class, 'catalog'])->name('manage.brands');
         Route::get('products/', [ProductController::class, 'catalog'])->name('manage.products');
         Route::get('options/', [ProductController::class, 'catalog'])->name('manage.options');
         Route::get('sizes/', [ProductController::class, 'catalog'])->name('manage.sizes');
         Route::get('woman/catalog/', [ProductController::class, 'catalog'])->name('manage.woman.catalog');
+
         Route::get('add/product/', [ProductController::class, 'create'])->name('create.product');
         Route::post('add/product/', [ProductController::class, 'store'])->name('store.product');
         Route::patch('update/product/', [ProductController::class, 'update'])->name('update.product');
@@ -92,7 +94,14 @@ Route::patch('basket/update', [BasketController::class, 'update'])->name('basket
 Route::delete('basket/remove', [BasketController::class, 'remove'])->name('basket.remove');
 Route::get('basket/destroy', [BasketController::class, 'destroy'])->name('basket.destroy');
 
-Route::post('checkout/', [StripePaymentController::class, 'checkout'])->name('checkout');
+Route::get('checkout/', function () {
+    return view('stripe/checkout');
+})->name('checkout.show');
+Route::post('checkout/', [StripePaymentController::class, 'checkout'])->name('checkout.post');
+Route::get('return/{slug}',  function () {
+    return view('stripe/return');
+})->name('return.show');
+Route::post('status/', [StripePaymentController::class, 'status'])->name('status.post');
 Route::post('stripe_webhooks/', [StripePaymentController::class, 'webhooks'])->name('webhooks');
 
 Route::get('contact-us/', [MainController::class, 'contactUs'])->name('contactus');

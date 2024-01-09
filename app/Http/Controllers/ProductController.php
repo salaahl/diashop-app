@@ -31,12 +31,10 @@ class ProductController extends Controller
     public function create()
     {
         $catalogs = Catalog::all();
-        $categories = Category::all();
         $brands = Brand::all();
 
         return view('manage/add-product', [
             "catalogs" => $catalogs,
-            "categories" => $categories,
             "brands" => $brands
         ]);
     }
