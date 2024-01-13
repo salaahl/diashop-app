@@ -18,24 +18,35 @@
     #product-detail > div:nth-of-type(1) {
         margin-bottom: 5%;
     }
+
+    #other-products-container {
+        justify-content: space-between;
+    }
+
+    #other-products-container .product {
+        min-width: 45%;
+        margin-bottom: 2.5%;
+    }
 }
 
 @media (min-width: 768px) {
-    main {
+    main > div:first-of-type {
         display: flex;
         justify-content: space-between;
+        margin-bottom: 5%;
     }
 
     #default-carousel > div {
         aspect-ratio: 3/4;
     }
+
+    #products-container .product {
+        margin-top: 8%;
+        margin-bottom: 2%;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-    main {
-        padding: 0 1%;
-    }
-
     #product-detail-container {
         margin-left: 2%;
     }
@@ -50,8 +61,17 @@
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
-    main {
-        padding: 0 1%;
+    #products-details-container {
+        width: 48%;
+
+    }
+
+    #other-products-container .product {
+        min-width: 30%;
+    }
+
+    #other-products-container .product:nth-of-type(2) {
+        margin: auto 5%;
     }
 }
 
@@ -85,11 +105,27 @@
 @media (min-width: 1024px) and (max-width: 1280px) {
 }
 
-@media (min-width: 1280px) {
-}
-
 @media (max-width: 1280px) {
 }
+
+@media (min-width: 1280px) {
+    #other-products-container .product {
+        min-width: 22%;
+    }
+
+    #other-products-container .product:nth-of-type(1) {
+        margin-right: 2%;
+    }
+
+    #other-products-container .product:nth-of-type(2), #other-products-container .product:nth-of-type(3) {
+        margin: auto 2%;
+    }
+
+    #other-products-container .product:nth-of-type(4) {
+        margin-left: 2%;
+    }
+}
+
 
 #default-carousel > div:first-child {
     border-radius: 0.5rem;
@@ -97,6 +133,10 @@
 
 #carousel-container .carousel {
     width: fit-content;
+}
+
+#product-detail-container {
+    width: 100%;
 }
 
 #product-detail {
@@ -119,4 +159,27 @@
 
 .carousel-item > img {
     object-fit: cover;
+}
+
+/* Aside */
+#other-products-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product {
+    max-width: 320px;
+}
+
+.product .short-description {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.product-thumbnail {
+    aspect-ratio: 3/4;
+    background-size: cover;
+    background-position: center;
+    transition: 0.5s all;
 }

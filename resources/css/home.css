@@ -13,8 +13,30 @@
         aspect-ratio: 4/3;
     }
 
-    #products-container {
-        padding: 1%;
+    #products-container,
+    #catalogs-container,
+    #aboutme-container,
+    #instagram-container {
+        margin-bottom: 15%;
+        padding: 2%;
+    }
+
+    #aboutme-container {
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    #aboutme-container > div {
+        padding: 5%;
+    }
+
+    #aboutme-container > .text-container {
+        width: 100%;
+    }
+
+    #aboutme-container > .img-container {
+        margin-bottom: 10%;
+        width: 80%;
     }
 
     #headers,
@@ -23,22 +45,22 @@
         margin-top: 10%;
     }
 
-    #headers {
-        margin-bottom: 10%;
-    }
-
     #woman h3,
     #men h3 {
         font-size: medium;
     }
 
     .product {
-        width: 45%;
+        min-width: 45%;
         margin-bottom: 2.5%;
     }
 
-    .catalog-container {
-        width: 100%;
+    #catalogs-container .catalog {
+        width: 85%;
+    }
+
+    #catalogs-container .catalog:first-of-type {
+        margin-bottom: 5%;
     }
 }
 
@@ -48,20 +70,39 @@
         margin-top: 8%;
     }
 
-    #headers {
-        margin-bottom: 8%;
+    #products-container,
+    #catalogs-container,
+    #aboutme-container,
+    #instagram-container {
+        margin-bottom: 20%;
     }
 
     #default-carousel {
         height: 88vh;
     }
 
-    .product {
+    #products-container .product {
         margin-bottom: 2%;
     }
 
-    .catalog-container {
-        width: 48%;
+    #catalogs-container .catalog {
+        width: 40%;
+    }
+
+    #aboutme-container {
+        justify-content: space-evenly;
+    }
+
+    #aboutme-container > div {
+        padding: 2%;
+    }
+
+    #aboutme-container .img-container {
+        width: 30%;
+    }
+
+    #aboutme-container .text-container {
+        width: 58%;
     }
 }
 
@@ -71,12 +112,15 @@
         font-size: xx-large;
     }
 
-    #products-container {
+    #products-container,
+    #catalogs-container,
+    #aboutme-container,
+    #instagram-container {
         padding: 0 2%;
     }
 
     .product {
-        width: 30%;
+        min-width: 30%;
     }
 }
 
@@ -154,8 +198,8 @@
         --animation-range: 30%;
         --translate-x-start-right-to-left: 0rem;
         --translate-x-start-left-to-right: 0rem;
-        --translate-x-end-right-to-left: -45rem;
-        --translate-x-end-left-to-right: 45rem;
+        --translate-x-end-right-to-left: -50rem;
+        --translate-x-end-left-to-right: 50rem;
     }
 
     #products-container #woman h3,
@@ -164,7 +208,7 @@
     }
 
     .product {
-        width: 22%;
+        min-width: 22%;
         max-width: 320px;
     }
 }
@@ -228,33 +272,59 @@
     overflow: hidden;
 }
 
-#catalogs {
+#catalogs-container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
-.catalog-container {
+.catalog img {
     aspect-ratio: 3/4;
 }
 
-.catalog {
-    height: 80%;
-}
-
-.catalog img {
-    height: 100%;
-    object-fit: cover;
-}
-
-#catalogs h3 {
+#catalogs-container h3 {
     height: 5%;
     margin: 2.5%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#aboutme-container {
+    display: flex;
+    align-items: center;
+}
+
+#aboutme-container .img-container,
+#aboutme-container .img-container img {
+    border-radius: 300px;
+}
+
+#aboutme-container .img-container {
+    height: 100%;
+}
+
+#aboutme-container .img-container img {
+    height: 100%;
+    aspect-ratio: 1;
+}
+
+#aboutme-container .text-container {
+    height: 100%;
+}
+
+#instagram-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#instagram-container h2 {
+    margin-bottom: 5%;
+    font-weight: normal;
 }
 
 @keyframes fade {

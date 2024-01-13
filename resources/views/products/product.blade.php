@@ -32,54 +32,66 @@
 @endsection
 
 @section('main')
-<section class="carousel-container">
-    <x-carousel>
-        <x-slot name="items">
-            @foreach($options->img_fullsize as $image)
-            <x-carousel-item image="/images/{{ $image }}" />
-            @endforeach
-        </x-slot>
-        <x-slot name="buttons">
-            @for ($i = 0; $i < count($options->img_fullsize); $i++)
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide {{ $i + 1 }}" data-carousel-slide-to="{{ $i }}"></button>
-                @endfor
-        </x-slot>
-    </x-carousel>
-</section>
-<section id="product-detail-container">
-    <div id="product-detail">
-        <div>
-            <h2 id="title" class="flex justify-between align-center">{{ $product->name }} <span>{{ $product->price }}€</span></h2>
-            <div id="description">{{ $product->description }}</div>
-        </div>
-        <div>
-            <div class="radio-toolbar">
-                @foreach($sizes as $size)
-                <input type="radio" name="size" id="{{ $size->size }}" value="{{ $size->size }}">
-                <label class="radio_label" for="{{ $size->size }}">{{ $size->size }}</label>
+<div class="w-full">
+    <section class="carousel-container">
+        <x-carousel>
+            <x-slot name="items">
+                @foreach($options->img_fullsize as $image)
+                <x-carousel-item image="/images/{{ $image }}" />
                 @endforeach
+            </x-slot>
+            <x-slot name="buttons">
+                @for ($i = 0; $i < count($options->img_fullsize); $i++)
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide {{ $i + 1 }}" data-carousel-slide-to="{{ $i }}"></button>
+                    @endfor
+            </x-slot>
+        </x-carousel>
+    </section>
+    <section id="product-detail-container">
+        <div id="product-detail">
+            <div>
+                <h2 id="title" class="flex justify-between align-center">{{ $product->name }} <span>{{ $product->price }}€</span></h2>
+                <div id="description">{{ $product->description }}</div>
             </div>
             <div>
-                <!-- Aligner la quantité de façon asynchrone avec un eventListener sur les tailles -->
-                <label for="quantity" class="sr-only">Underline select</label>
-                <select id="quantity" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                    <option selected>Selectionner une quantité</option>
-                </select>
-            </div>
-            <div id="buttons">
-                <button id="add-basket" class="button-stylised-1" role="button">Ajouter au panier</button>
-                @auth
-                <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom" role="button">Ajouter aux favoris</button>
-                @endauth
-            </div>
-            <div id="delivery-and-return-details">
-                <h4 class="text-sm">Couleur : {{ $options->color }}</h4>
-                <h4 class="text-sm">Livraison sous cinq jours ouvrés.</h4>
-                <h4 class="text-sm">Retour possible sous 7 jours à compter de la date de livraison.</h4>
+                <div class="radio-toolbar">
+                    @foreach($sizes as $size)
+                    <input type="radio" name="size" id="{{ $size->size }}" value="{{ $size->size }}">
+                    <label class="radio_label" for="{{ $size->size }}">{{ $size->size }}</label>
+                    @endforeach
+                </div>
+                <div>
+                    <!-- Aligner la quantité de façon asynchrone avec un eventListener sur les tailles -->
+                    <label for="quantity" class="sr-only">Underline select</label>
+                    <select id="quantity" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                        <option selected>Selectionner une quantité</option>
+                    </select>
+                </div>
+                <div id="buttons">
+                    <button id="add-basket" class="button-stylised-1" role="button">Ajouter au panier</button>
+                    @auth
+                    <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom" role="button">Ajouter aux favoris</button>
+                    @endauth
+                </div>
+                <div id="delivery-and-return-details">
+                    <h4 class="text-sm">Couleur : {{ $options->color }}</h4>
+                    <h4 class="text-sm">Livraison sous cinq jours ouvrés.</h4>
+                    <h4 class="text-sm">Retour possible sous 7 jours à compter de la date de livraison.</h4>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+</div>
+@if(count($product->options) > 1)
+<section id="other-products-container">
+    <h3 class="w-full text-center mb-8 uppercase">Plus de produits :</h3>
+    @foreach($product->options->take(4) as $option)
+    @if($option->id !== basename(url()->current()))
+    <x-product link="./{{ $option->id }}" image="/images/{{ $option->img_thumbnail[0] }}" hover="/images/{{ $option->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
+    @endif
+    @endforeach
 </section>
+@endif
 @endsection
 
 @section('scripts')

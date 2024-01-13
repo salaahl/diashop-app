@@ -57,6 +57,19 @@
     @section('scripts')
     @vite(['resources/js/app.js', 'node_modules/flowbite/dist/flowbite.min.js'])
     <script>
+        /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.querySelector("header").style.top = "0%";
+            } else {
+                document.querySelector("header").style.top = "-10%";
+            }
+            prevScrollpos = currentScrollPos;
+        }
+
+        // Loader des pages
         window.addEventListener("load", () => {
             document.querySelector("#loader-container").style.display = "none";
             document.querySelector(".main-container").style.opacity = "1";

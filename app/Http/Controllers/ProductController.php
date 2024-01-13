@@ -91,12 +91,13 @@ class ProductController extends Controller
             ["name", $slug1],
             ['catalog_id', $catalog],
         ])->first();
-        $options = $product->options[$slug2];
+        $options = Option::where("id", $slug2)->first();
+        $sizes = Size::where("option_id", $options->id)->get();
 
         return view('products/product', [
             "product" => $product,
             "options" => $options,
-            "sizes" => $options->sizes,
+            "sizes" => $sizes,
         ]);
     }
 

@@ -82,10 +82,14 @@ Route::middleware(['auth', 'is.admin'])->group(function () {
 
 Route::get('men/catalog', [MainController::class, 'catalog'])->name('men.catalog');
 Route::post('men/catalog', [MainController::class, 'catalog'])->name('men.catalog.post');
-Route::get('men/{slug1}/{slug2?}', [ProductController::class, 'show'])->name('men.product');
+Route::get('men/catalog/{slug}', [MainController::class, 'category'])->name('men.category');
+Route::post('men/catalog/{slug}', [MainController::class, 'category'])->name('men.category.post');
+Route::get('men/catalog/{slug1}/{slug2?}', [ProductController::class, 'show'])->name('men.product');
 Route::get('woman/catalog', [MainController::class, 'catalog'])->name('woman.catalog');
 Route::post('woman/catalog', [MainController::class, 'catalog'])->name('woman.catalog.post');
-Route::get('woman/{slug1}/{slug2?}', [ProductController::class, 'show'])->name('woman.product');
+Route::get('woman/catalog/{slug}', [MainController::class, 'category'])->name('woman.category');
+Route::post('men/catalog/{slug}', [MainController::class, 'category'])->name('men.category.post');
+Route::get('woman/catalog/{slug1}/{slug2?}', [ProductController::class, 'show'])->name('woman.product');
 Route::post('get-quantity/', [ProductController::class, 'getQuantity'])->name('product.get-quantity');
 
 Route::get('basket/', [BasketController::class, 'show'])->name('basket.show');
