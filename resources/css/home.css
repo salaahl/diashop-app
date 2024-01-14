@@ -9,21 +9,47 @@
         padding: 0 !important;
     }
 
-    #default-carousel {
-        aspect-ratio: 4/3;
-    }
-
     #products-container,
-    #catalogs-container,
     #aboutme-container,
     #instagram-container {
-        margin-bottom: 15%;
-        padding: 2%;
+        padding: var(--container-padding-y) var(--container-padding-x);
+    }
+
+    #default-carousel {
+        aspect-ratio: 1;
+    }
+
+    #products-container #men,
+    #products-container #woman {
+        margin-top: 10%;
+    }
+
+    #woman h3,
+    #men h3 {
+        font-size: medium;
+    }
+
+    .product {
+        min-width: 45%;
+        margin-bottom: 2.5%;
+    }
+
+    #catalogs-container {
+        flex-direction: column;
+    }
+
+    #catalogs-container .catalog {
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 1;
+    }
+
+    #catalogs-container .catalog .img-placeholder {
+        background-size: cover;
     }
 
     #aboutme-container {
         flex-direction: column;
-        justify-content: space-around;
     }
 
     #aboutme-container > div {
@@ -38,43 +64,12 @@
         margin-bottom: 10%;
         width: 80%;
     }
-
-    #headers,
-    #women,
-    #men {
-        margin-top: 10%;
-    }
-
-    #woman h3,
-    #men h3 {
-        font-size: medium;
-    }
-
-    .product {
-        min-width: 45%;
-        margin-bottom: 2.5%;
-    }
-
-    #catalogs-container .catalog {
-        width: 85%;
-    }
-
-    #catalogs-container .catalog:first-of-type {
-        margin-bottom: 5%;
-    }
 }
 
 @media (min-width: 768px) {
-    #headers,
-    .product {
+    #products-container #men,
+    #products-container #woman {
         margin-top: 8%;
-    }
-
-    #products-container,
-    #catalogs-container,
-    #aboutme-container,
-    #instagram-container {
-        margin-bottom: 20%;
     }
 
     #default-carousel {
@@ -86,15 +81,16 @@
     }
 
     #catalogs-container .catalog {
-        width: 40%;
+        height: 80vh;
+        width: 50%;
     }
 
-    #aboutme-container {
-        justify-content: space-evenly;
+    #catalogs-container .catalog:hover {
+        width: 100%;
     }
 
-    #aboutme-container > div {
-        padding: 2%;
+    #catalogs-container .catalog .img-placeholder {
+        background-size: 70vw;
     }
 
     #aboutme-container .img-container {
@@ -107,16 +103,16 @@
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
-    #woman h3,
-    #men h3 {
-        font-size: xx-large;
-    }
-
     #products-container,
     #catalogs-container,
     #aboutme-container,
     #instagram-container {
-        padding: 0 2%;
+        padding: var(--container-padding-y) var(--container-padding-x);
+    }
+
+    #products-container #woman h3,
+    #products-container #men h3 {
+        font-size: xx-large;
     }
 
     .product {
@@ -202,6 +198,17 @@
         --translate-x-end-left-to-right: 50rem;
     }
 
+    #products-container,
+    #catalogs-container,
+    #aboutme-container,
+    #instagram-container {
+        padding: var(--container-padding-y) var(--container-padding-x);
+    }
+
+    #carousel-container {
+        padding: 0 var(--container-padding-x);
+    }
+
     #products-container #woman h3,
     #products-container #men h3 {
         font-size: xxx-large;
@@ -255,8 +262,8 @@
 
 #products-container .product {
     max-width: 320px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
 }
 
 .product .product-thumbnail {
@@ -275,26 +282,66 @@
 #catalogs-container {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.catalog img {
-    aspect-ratio: 3/4;
-}
-
-#catalogs-container h3 {
-    height: 5%;
-    margin: 2.5%;
-    display: flex;
+    flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
 }
 
+#catalogs-container .catalog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.25s;
+    overflow: hidden;
+}
+
+#catalogs-container .catalog .img-placeholder {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+}
+
+#catalogs-container .catalog:first-of-type .img-placeholder {
+    background-position: center;
+    background-image: url("/public/images/woman_catalog-placeholder.jpg");
+}
+
+#catalogs-container .catalog:last-of-type .img-placeholder {
+    background-position: center right;
+    background-image: url("/public/images/man_catalog-placeholder.jpg");
+}
+
+#catalogs-container .catalog > a {
+    height: 100%;
+    width: 100%;
+}
+
+#catalogs-container .catalog > a {
+    height: 100%;
+    width: 100%;
+}
+
+#catalogs-container .catalog h3 {
+    padding: 1.5% 5%;
+    border-radius: 60px;
+    font-weight: 400;
+    background-color: black;
+    color: white;
+}
+
 #aboutme-container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    background-image: linear-gradient(rgb(0, 0, 0, 0.25), rgb(0, 0, 0, 0.25)),
+        url("/public/images/aboutme-bg-placeholder.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #aboutme-container .img-container,
@@ -303,7 +350,7 @@
 }
 
 #aboutme-container .img-container {
-    height: 100%;
+    padding: 2%;
 }
 
 #aboutme-container .img-container img {
@@ -311,8 +358,8 @@
     aspect-ratio: 1;
 }
 
-#aboutme-container .text-container {
-    height: 100%;
+#aboutme-container .text-container > * {
+    margin-bottom: 2%;
 }
 
 #instagram-container {

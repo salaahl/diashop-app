@@ -1,4 +1,4 @@
-<nav class="bg-white">
+<nav class="max-md:bg-white">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
             <span class="self-center text-2xl font-semibold whitespace-nowrap">Diashop</span>
@@ -10,7 +10,7 @@
             </svg>
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
-            <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
+            <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg max-md:bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
                 <li>
                     <a href="{{ route('home') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Accueil</a>
                 </li>
@@ -19,7 +19,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg></button>
                     <!-- Dropdown menu -->
-                    <div id="dropdownNavbarWoman" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                    <div id="dropdownNavbarWoman" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg md:shadow w-44">
                         <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                             @foreach(\App\Models\Category::where("catalog_id",
                             \App\Models\Catalog::where("gender", "Femme")->first()->id
@@ -35,7 +35,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg></button>
                     <!-- Dropdown menu -->
-                    <div id="dropdownNavbarMen" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                    <div id="dropdownNavbarMen" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg md:shadow w-44">
                         <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                             @foreach(\App\Models\Category::where("catalog_id",
                             \App\Models\Catalog::where("gender", "Homme")->first()->id

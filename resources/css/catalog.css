@@ -6,11 +6,7 @@
 
 @media (max-width: 767px) {
     main {
-        padding: 0 !important;
-    }
-
-    #products-container {
-        padding: 1%;
+        padding: var(--container-padding-y) var(--container-padding-x);
     }
 
     #headers,
@@ -23,10 +19,9 @@
     }
 
     .product {
-        width: 45%;
-        margin-left: 2.5%;
-        margin-right: 2.5%;
-        margin-bottom: 2.5%;
+        width: 49%;
+        margin-left: 0.5%;
+        margin-right: 0.5%;
     }
 }
 
@@ -37,26 +32,22 @@
     }
 
     #headers {
-        margin-bottom: 8%;
+        margin-bottom: 5%;
     }
 
     .product {
-        margin-bottom: 2%;
+        width: 33%;
+    }
+
+    .product:nth-child(3n + 4) {
+        margin-left: 0.5%;
+        margin-right: 0.5%;
     }
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
     main {
-        padding: 0 2%;
-    }
-
-    .product {
-        width: 30%;
-    }
-
-    .product:nth-child(3n + 4) {
-        margin-left: 5%;
-        margin-right: 5%;
+        padding: var(--container-padding-y) var(--container-padding-x);
     }
 }
 
@@ -70,27 +61,9 @@
     .filters {
         border-radius: 0.5rem;
     }
-    .product {
-        width: 22%;
-        max-width: 320px;
-    }
 
-    .product:nth-child(4n + 3) {
-        margin-right: 2%;
-    }
-
-    .product:nth-child(4n + 4) {
-        margin-left: 2%;
-        margin-right: 2%;
-    }
-
-    .product:nth-child(4n + 5) {
-        margin-left: 2%;
-        margin-right: 2%;
-    }
-
-    .product:nth-child(4n + 6) {
-        margin-left: 2%;
+    main {
+        padding: var(--container-padding-y) var(--container-padding-x);
     }
 }
 
@@ -116,10 +89,6 @@ main {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-}
-
-.product {
-    max-width: 320px;
 }
 
 .product .short-description {
