@@ -21,6 +21,7 @@
                     <!-- Dropdown menu -->
                     <div id="dropdownNavbarWoman" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg md:shadow w-44">
                         <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                            @if(\App\Models\Category::all())
                             @foreach(\App\Models\Category::where("catalog_id",
                             \App\Models\Catalog::where("gender", "Femme")->first()->id
                             )->get() as $category)
@@ -28,6 +29,7 @@
                                 <a href="{{ route('woman.category', $category->name) }}" class="block px-4 py-2 hover:bg-gray-100">{{ $category->name }}</a>
                             </li>
                             @endforeach
+                            @endif
                     </div>
                 </li>
                 <li>
@@ -37,6 +39,7 @@
                     <!-- Dropdown menu -->
                     <div id="dropdownNavbarMen" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg md:shadow w-44">
                         <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                            @if(\App\Models\Category::all())
                             @foreach(\App\Models\Category::where("catalog_id",
                             \App\Models\Catalog::where("gender", "Homme")->first()->id
                             )->get() as $category)
@@ -44,6 +47,7 @@
                                 <a href="{{ route('men.category', $category->name) }}" class="block px-4 py-2 hover:bg-gray-100">{{ $category->name }}</a>
                             </li>
                             @endforeach
+                            @endif
                     </div>
                 </li>
                 <li>
