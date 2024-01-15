@@ -14,6 +14,7 @@
     <title>@yield('title')</title>
 
     @section('links')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +56,8 @@
 
     <!-- Page Scripts -->
     @section('scripts')
-    @vite(['resources/js/app.js', 'node_modules/flowbite/dist/flowbite.min.js'])
+    @vite('resources/js/app.js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     <script>
         /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
         var prevScrollpos = window.pageYOffset;
