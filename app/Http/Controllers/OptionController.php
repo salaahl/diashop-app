@@ -50,9 +50,9 @@ class OptionController extends Controller
             ["product_id", $request->product_id]
         ])->first()) {
             $images = [$request->picture_one->getClientOriginalName()];
-            isset($request->picture_two) ?? $images[] = $request->picture_two->getClientOriginalName();
-            isset($request->picture_three) ?? $images[] = $request->picture_three->getClientOriginalName();
-            isset($request->picture_four) ?? $images[] = $request->picture_four->getClientOriginalName();
+            if($request->picture_two) $images[] = $request->picture_two->getClientOriginalName();
+            if($request->picture_three) $images[] = $request->picture_three->getClientOriginalName();
+            if($request->picture_four) $images[] = $request->picture_four->getClientOriginalName();
 
             $option = new Option();
             $option->color = $request->color;
