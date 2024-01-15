@@ -8,7 +8,6 @@
 
 @section('links')
 @parent
-<!-- @vite('resources/css/manage/create.css') -->
 <style>
     main {
         max-width: 100%;

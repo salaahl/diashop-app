@@ -8,13 +8,6 @@
 
 @section('links')
 @parent
-@endsection
-
-@section('header')
-@parent
-@endsection
-
-@section('main')
 <style>
     main {
         max-width: 100%;
@@ -25,7 +18,13 @@
         margin-top: 0 !important;
     }
 </style>
+@endsection
 
+@section('header')
+@parent
+@endsection
+
+@section('main')
 <x-guest-layout>
     <form method="POST" action="{{ route('register.post') }}">
         @csrf
