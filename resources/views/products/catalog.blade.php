@@ -2,6 +2,7 @@
 
 @section('meta')
 @parent
+<meta name="description" content="{{ $meta_description }}">
 @endsection
 
 @section('title', $h1)
@@ -35,10 +36,10 @@
 @foreach($products as $product)
 @if(count($product->options) > 1)
 @for($i = 0; $i < count($product->options); $i++)
-    <x-product link="./{{ $product->name }}/{{ $product->options[$i]->id }}" image="/images/{{ $product->options[$i]->img_thumbnail[0] }}" hover="/images/{{ $product->options[$i]->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
+    <x-product link="./catalog/{{ $product->name }}/{{ $product->options[$i]->id }}" image="/images/{{ $product->options[$i]->img_thumbnail[0] }}" hover="/images/{{ $product->options[$i]->img_thumbnail[1] }}" title="{{ $product->name }}" brand="{{ $product->brand->name }}" price="{{ $product->price }}" />
     @endfor
     @else
-    <x-product link="./{{ $product->name }}" image="/images/{{ $product->options[0]->img_thumbnail[0] }}" hover="/images/{{ $product->options[0]->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
+    <x-product link="./catalog/{{ $product->name }}" image="/images/{{ $product->options[0]->img_thumbnail[0] }}" hover="/images/{{ $product->options[0]->img_thumbnail[1] }}" title="{{ $product->name }}" brand="{{ $product->brand->name }}" price="{{ $product->price }}" />
     @endif
     @endforeach
     <aside>

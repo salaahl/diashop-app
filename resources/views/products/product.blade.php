@@ -85,9 +85,9 @@
 @if(count($product->options) > 1)
 <section id="other-products-container">
     <h3 class="w-full text-center mb-8 uppercase">Plus de produits :</h3>
-    @foreach($product->options->take(4) as $option)
+    @foreach($product->options->take(3) as $option)
     @if($option->id !== basename(url()->current()))
-    <x-product link="./{{ $option->id }}" image="/images/{{ $option->img_thumbnail[0] }}" hover="/images/{{ $option->img_thumbnail[1] }}" title="{{ $product->name }}" description="{{ $product->description }}" price="{{ $product->price }}" />
+    <x-product link="./{{ $option->id }}" image="/images/{{ $option->img_thumbnail[0] }}" hover="/images/{{ $option->img_thumbnail[1] }}" title="{{ $product->name }}" brand="{{ $product->brand->name }}" price="{{ $product->price }}" />
     @endif
     @endforeach
 </section>

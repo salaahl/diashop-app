@@ -2,6 +2,7 @@
 
 @section('meta')
 @parent
+<meta name="description" content="Découvrez notre collection de prêt-à-porter tendance et de haute qualité. Trouvez les dernières tendances de la mode pour hommes et femmes.">
 @endsection
 
 @section('title', 'Accueil')
@@ -42,7 +43,7 @@
     <div id="woman">
         <h3 class="uppercase">Femme</h3>
         @foreach($woman_options as $option)
-        <x-product link="/woman/catalog/{{ $option->product->name }}/{{ $option->id }}" image="/images/{{ $option->img_thumbnail[0] }}" hover="/images/{{ $option->img_thumbnail[1] }}" title="{{ $option->product->name }}" description="{{ $option->product->description }}" price="{{ $option->product->price }}" />
+        <x-product link="/woman/catalog/{{ $option->product->name }}/{{ $option->id }}" image="/images/{{ $option->img_thumbnail[0] }}" hover="/images/{{ $option->img_thumbnail[1] }}" title="{{ $option->product->name }}" brand="{{ $option->product->brand->name }}" price="{{ $option->product->price }}" />
         @endforeach
     </div>
     @endif
@@ -51,21 +52,21 @@
     <div id="men">
         <h3 class="uppercase">Homme</h3>
         @foreach($men_options as $option)
-        <x-product link="/men/catalog/{{ $option->product->name }}/{{ $option->id }}" image="/images/{{ $option->img_thumbnail[0] }}" hover="/images/{{ $option->img_thumbnail[1] }}" title="{{ $option->product->name }}" description="{{ $option->product->description }}" price="{{ $option->product->price }}" />
+        <x-product link="/men/catalog/{{ $option->product->name }}/{{ $option->id }}" image="/images/{{ $option->img_thumbnail[0] }}" hover="/images/{{ $option->img_thumbnail[1] }}" title="{{ $option->product->name }}" brand="{{ $option->product->brand->name }}" price="{{ $option->product->price }}" />
         @endforeach
     </div>
     @endif
 </section>
 <section id="catalogs-container" class="md:min-h-screen">
     <article class="catalog">
-        <a href="#">
+        <a href="{{ route('woman.catalog') }}">
             <div class="img-placeholder">
                 <h3 class="uppercase">Femme</h3>
             </div>
         </a>
     </article>
     <article class="catalog">
-        <a href="#">
+        <a href="{{ route('men.catalog') }}">
             <div class="img-placeholder">
                 <h3 class="uppercase">Homme</h3>
             </div>

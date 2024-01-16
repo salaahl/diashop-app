@@ -44,10 +44,6 @@
         aspect-ratio: 1;
     }
 
-    #catalogs-container .catalog .img-placeholder {
-        background-size: cover;
-    }
-
     #aboutme-container {
         flex-direction: column;
     }
@@ -81,16 +77,12 @@
     }
 
     #catalogs-container .catalog {
-        height: 80vh;
+        height: 90vh;
         width: 50%;
     }
 
     #catalogs-container .catalog:hover {
         width: 100%;
-    }
-
-    #catalogs-container .catalog .img-placeholder {
-        background-size: 70vw;
     }
 
     #aboutme-container .img-container {
@@ -266,19 +258,6 @@
     margin-right: 0.5%;
 }
 
-.product .product-thumbnail {
-    aspect-ratio: 3/4;
-    background-size: cover;
-    background-position: center;
-    transition: 0.5s all;
-}
-
-.product .short-description {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
 #catalogs-container {
     width: 100%;
     display: flex;
@@ -288,11 +267,18 @@
 }
 
 #catalogs-container .catalog {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     transition: all 0.25s;
     overflow: hidden;
+}
+
+#catalogs-container .catalog:first-of-type {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#catalogs-container .catalog:last-of-type {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 #catalogs-container .catalog .img-placeholder {
@@ -301,7 +287,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #catalogs-container .catalog:first-of-type .img-placeholder {
@@ -314,20 +300,9 @@
     background-image: url("/public/images/man_catalog-placeholder.jpg");
 }
 
-#catalogs-container .catalog > a {
-    height: 100%;
-    width: 100%;
-}
-
-#catalogs-container .catalog > a {
-    height: 100%;
-    width: 100%;
-}
-
 #catalogs-container .catalog h3 {
     padding: 1.5% 5%;
     border-radius: 60px;
-    font-weight: 400;
     background-color: black;
     color: white;
 }

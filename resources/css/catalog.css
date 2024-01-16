@@ -6,7 +6,7 @@
 
 @media (max-width: 767px) {
     main {
-        padding: var(--container-padding-y) var(--container-padding-x);
+        padding: 0 var(--container-padding-x);
     }
 
     #headers,
@@ -47,7 +47,7 @@
 
 @media (min-width: 768px) and (max-width: 1279px) {
     main {
-        padding: var(--container-padding-y) var(--container-padding-x);
+        padding: 0 var(--container-padding-x);
     }
 }
 
@@ -63,7 +63,7 @@
     }
 
     main {
-        padding: var(--container-padding-y) var(--container-padding-x);
+        padding: 0 var(--container-padding-x);
     }
 }
 
@@ -89,17 +89,4 @@ main {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-}
-
-.product .short-description {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.product-thumbnail {
-    aspect-ratio: 3/4;
-    background-size: cover;
-    background-position: center;
-    transition: 0.5s all;
 }
