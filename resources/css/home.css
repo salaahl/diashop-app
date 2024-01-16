@@ -15,10 +15,6 @@
         padding: var(--container-padding-y) var(--container-padding-x);
     }
 
-    #default-carousel {
-        aspect-ratio: 1;
-    }
-
     #products-container #men,
     #products-container #woman {
         margin-top: 10%;
@@ -68,21 +64,31 @@
         margin-top: 8%;
     }
 
-    #default-carousel {
-        height: 88vh;
-    }
-
     #products-container .product {
         margin-bottom: 2%;
     }
 
+    #catalogs-container {
+        display: flex;
+    }
+
     #catalogs-container .catalog {
-        height: 90vh;
+        height: auto;
         width: 50%;
     }
 
     #catalogs-container .catalog:hover {
         width: 100%;
+    }
+
+    #catalogs-container .catalog:first-of-type {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    #catalogs-container .catalog:last-of-type {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
 
     #aboutme-container .img-container {
@@ -96,10 +102,13 @@
 
 @media (min-width: 768px) and (max-width: 1279px) {
     #products-container,
-    #catalogs-container,
     #aboutme-container,
     #instagram-container {
         padding: var(--container-padding-y) var(--container-padding-x);
+    }
+
+    #catalogs-container {
+        padding: 0 var(--container-padding-x);
     }
 
     #products-container #woman h3,
@@ -191,13 +200,12 @@
     }
 
     #products-container,
-    #catalogs-container,
     #aboutme-container,
     #instagram-container {
         padding: var(--container-padding-y) var(--container-padding-x);
     }
 
-    #carousel-container {
+    #catalogs-container {
         padding: 0 var(--container-padding-x);
     }
 
@@ -215,10 +223,7 @@
 @media (max-width: 1279px) {
 }
 
-@supports (animation-timeline: view()) {
-}
-
-#carousel-container {
+#catalogs-container {
     animation: fade linear;
     animation-timeline: view();
     animation-range: 70%;
@@ -241,11 +246,6 @@
     font-weight: 500;
 }
 
-#carousel-container #default-carousel {
-    max-width: 1280px;
-    margin: auto;
-}
-
 #products-container #men,
 #products-container #woman {
     display: flex;
@@ -260,25 +260,11 @@
 
 #catalogs-container {
     width: 100%;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
 }
 
 #catalogs-container .catalog {
     transition: all 0.25s;
     overflow: hidden;
-}
-
-#catalogs-container .catalog:first-of-type {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-#catalogs-container .catalog:last-of-type {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
 
 #catalogs-container .catalog .img-placeholder {

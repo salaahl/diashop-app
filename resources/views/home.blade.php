@@ -17,22 +17,21 @@
 @endsection
 
 @section('main')
-<section id="carousel-container">
-    <x-carousel>
-        <x-slot name="items">
-            <x-carousel-item image="/images/carousel-placeholder.jpg" title="Titre 1" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
-            <x-carousel-item image="/images/placeholder.png" title="Titre 2" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
-            <x-carousel-item image="/images/placeholder.png" title="Titre 3" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
-            <x-carousel-item image="/images/placeholder.png" title="Titre 4" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
-        </x-slot>
-
-        <x-slot name="buttons">
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-        </x-slot>
-    </x-carousel>
+<section id="catalogs-container" class="md:min-h-[90vh]">
+    <article class="catalog">
+        <a href="{{ route('woman.catalog') }}">
+            <div class="img-placeholder">
+                <h3 class="uppercase">Femme</h3>
+            </div>
+        </a>
+    </article>
+    <article class="catalog">
+        <a href="{{ route('men.catalog') }}">
+            <div class="img-placeholder">
+                <h3 class="uppercase">Homme</h3>
+            </div>
+        </a>
+    </article>
 </section>
 <section id="products-container" class="min-h-screen">
     <div id="headers">
@@ -56,23 +55,6 @@
         @endforeach
     </div>
     @endif
-</section>
-<section id="catalogs-container" class="md:min-h-screen">
-    <article class="catalog">
-        <a href="{{ route('woman.catalog') }}">
-            <div class="img-placeholder">
-                <h3 class="uppercase">Femme</h3>
-            </div>
-        </a>
-    </article>
-    <article class="catalog">
-        <a href="{{ route('men.catalog') }}">
-            <div class="img-placeholder">
-                <h3 class="uppercase">Homme</h3>
-            </div>
-        </a>
-    </article>
-
 </section>
 <section id="aboutme-container" class="min-h-screen">
     <div class="img-container bg-slate-100">

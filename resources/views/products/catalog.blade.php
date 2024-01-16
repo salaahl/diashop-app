@@ -2,7 +2,7 @@
 
 @section('meta')
 @parent
-<meta name="description" content="{{ $meta_description }}">
+<meta name="description" content="">
 @endsection
 
 @section('title', $h1)
