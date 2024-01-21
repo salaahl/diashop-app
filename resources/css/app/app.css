@@ -14,34 +14,12 @@
         --container-padding-y: 5%;
     }
 
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1rem;
-    }
-
     header {
         padding: 0 var(--container-padding-x);
     }
 }
 
 @media (min-width: 768px) {
-    h1 {
-        font-size: 4rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    #nav-inner {
-        height: 10vh;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
@@ -52,6 +30,57 @@
 
     header {
         padding: 0 var(--container-padding-x);
+    }
+}
+
+@media (max-width: 1023px) {
+    #navbar-dropdown {
+        display: block;
+    }
+
+    div:has(#navbar-dropdown-btn[aria-expanded="false"]) #navbar-dropdown {
+        max-height: 0;
+        transition: all 1s;
+        overflow: hidden;
+    }
+
+    div:has(#navbar-dropdown-btn[aria-expanded="true"]) #navbar-dropdown {
+        max-height: 500px;
+        margin-bottom: 1.5rem;
+        transition: all 1s;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 1024px) {
+    #navbar {
+        display: flex;
+        align-items: center;
+        height: 10vh;
+    }
+
+    #dropdownNavbarWoman,
+    #dropdownNavbarMen {
+        position: absolute;
+        height: 0;
+        width: -webkit-fill-available;
+        inset: 10vh 0 0 0;
+        transform: unset;
+        overflow: hidden;
+        margin: 0 auto;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+        transition: all 0.25s ease-in-out;
+    }
+
+    li:has(> #dropdownNavbarLinkWoman):hover #dropdownNavbarLinkWoman,
+    li:has(> #dropdownNavbarLinkMen):hover #dropdownNavbarLinkMen {
+        color: black;
+        font-weight: 500;
+    }
+
+    li:has(> #dropdownNavbarWoman):hover #dropdownNavbarWoman,
+    li:has(> #dropdownNavbarMen):hover #dropdownNavbarMen {
+        height: 6vh;
     }
 }
 
@@ -72,6 +101,10 @@
 @media (max-width: 1280px) {
 }
 
+* {
+    font-weight: 400;
+}
+
 html,
 body {
     height: 100%;
@@ -84,25 +117,42 @@ body {
     display: contents;
 }
 
-main {
-    margin: auto;
-}
-
 h1 {
     width: 100%;
     text-transform: uppercase;
     text-align: center;
-    font-weight: 10;
+    font-size: xx-large;
+    font-weight: 400;
 }
 
 h2 {
     width: 100%;
     text-align: center;
-    font-weight: 5;
+    font-size: x-large;
+    font-weight: 200;
 }
 
 h3 {
+    font-size: large;
+    font-weight: 200;
+}
+
+h4 {
+    font-size: medium;
+    font-weight: 200;
+}
+
+header {
+    transition: all 0.5s;
+}
+
+#navbar-dropdown li a span:hover {
+    color: black;
     font-weight: 500;
+}
+
+main {
+    margin: auto;
 }
 
 header {
@@ -262,20 +312,23 @@ img {
     background-color: rgb(255, 255, 255, 0.9);
 }
 
-.product .product-thumbnail {
+/* Paramètres globaux du container d'une carte "produit" */
+.thumbnail {
     aspect-ratio: 3/4;
     background-size: cover;
     background-position: center;
+    overflow: hidden;
     transition: 0.5s all;
 }
 
-.product-thumbnail:hover img:last-child {
+.product .thumbnail:hover img:last-child {
     opacity: 1;
     height: 100%;
     width: 100%;
 }
-.product-thumbnail:hover img:first-child,
-.product-thumbnail img:last-child {
+
+.product .thumbnail:hover img:first-child,
+.product .thumbnail img:last-child {
     transition: opacity 1s ease-out;
     opacity: 0;
     height: 0;
@@ -283,7 +336,7 @@ img {
     overflow: hidden;
 }
 
-.product .short-description {
+.short-description {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;

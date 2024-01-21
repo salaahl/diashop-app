@@ -36,9 +36,6 @@
 }
 
 @media (max-width: 1023px) {
-    #address-container {
-        margin-top: 5%;
-    }
 }
 
 @media (min-width: 1024px) and (max-width: 1279px) {
@@ -89,12 +86,4 @@ div:has(> input[type="number"]) {
 div:has(> table) {
     height: fit-content;
     overflow: auto;
-}
-
-#address-container {
-    margin-bottom: 5%;
-}
-
-#address-container .input-container {
-    margin-bottom: 2%;
 }

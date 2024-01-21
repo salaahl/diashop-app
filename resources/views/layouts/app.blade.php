@@ -33,7 +33,7 @@
     <div class="main-container min-h-screen" style="opacity: 0;">
 
         <!-- Page Heading -->
-        <header>
+        <header class="bg-white">
             @section('header')
             @include('layouts.navigation')
             @show

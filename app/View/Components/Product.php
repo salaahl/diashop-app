@@ -12,7 +12,6 @@ class Product extends Component
     public string $image;
     public string $hover;
     public string $title;
-    public string $brand;
     public string $price;
 
     public function __construct(
@@ -20,14 +19,12 @@ class Product extends Component
         $image,
         $hover,
         $title,
-        $brand,
         $price
     ) {
         $this->link = $link;
         $this->image = $image;
         $this->hover = $hover;
         $this->title = $title;
-        $this->brand = $brand;
         $this->price = $price;
     }
 

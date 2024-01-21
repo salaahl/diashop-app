@@ -21,12 +21,21 @@
     <h1>{{ $h1 }}</h1>
     <h2>{{ $h2 }}</h2>
 </div>
-<nav id="filters" class="w-full p-2 xl:rounded-md bg-gray-100">
-    <div id="categories">
-        @foreach($categories as $category)
-        <a href="./{{ $category->name }}" class="p-2 text-nowrap @if(strpos(url()->current(), $category->name)) bg-gray-300 @else bg-gray-200 @endif">{{ $category->name }}</a>
-        @endforeach
-    </div>
+<div id="categories" class="flex w-full mb-10 overflow-x-auto">
+    @foreach($categories as $category)
+    <article class="category">
+        <a href="./{{ $category->name }}">
+            <div class="thumbnail border-4">
+                <img src='{{ asset("/images/$category->name.jpg") }}' />
+            </div>
+            <div class="details">
+                <h4 class="title text-center capitalize">{{ $category->name }}</h4>
+            </div>
+        </a>
+    </article>
+    @endforeach
+</div>
+<nav id="filters" class="w-full py-2">
     <select id="filter_select" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
         <option value="new" @if(request()->get('filter') == 'new' || !request()->get('filter')) selected @endif>Nouveautés</option>
         <option value="price-highest" @if(request()->get('filter') == 'price-highest') selected @endif>Prix : ascendant</option>
@@ -36,13 +45,13 @@
 @foreach($products as $product)
 @if(count($product->options) > 1)
 @for($i = 0; $i < count($product->options); $i++)
-    <x-product link="./catalog/{{ $product->name }}/{{ $product->options[$i]->id }}" image="/images/{{ $product->options[$i]->img_thumbnail[0] }}" hover="/images/{{ $product->options[$i]->img_thumbnail[1] }}" title="{{ $product->name }}" brand="{{ $product->brand->name }}" price="{{ $product->price }}" />
+    <x-product link="/{{ $product->catalog->gender == 'Femme'?'woman':'men' }}/catalog/{{ $product->category->name }}/{{ $product->name }}/{{ $product->options[$i]->id }}" image="/images/{{ $product->options[$i]->img_thumbnail[0] }}" hover="/images/{{ $product->options[$i]->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
     @endfor
     @else
-    <x-product link="./catalog/{{ $product->name }}" image="/images/{{ $product->options[0]->img_thumbnail[0] }}" hover="/images/{{ $product->options[0]->img_thumbnail[1] }}" title="{{ $product->name }}" brand="{{ $product->brand->name }}" price="{{ $product->price }}" />
+    <x-product link="/{{ $product->catalog->gender == 'Femme'?'woman':'men' }}/catalog/{{ $product->category->name }}/{{ $product->name }}" image="/images/{{ $product->options[0]->img_thumbnail[0] }}" hover="/images/{{ $product->options[0]->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
     @endif
     @endforeach
-    <aside>
+    <aside class="w-full">
         {{ $products->links() }}
     </aside>
     @endsection

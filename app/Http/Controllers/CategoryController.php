@@ -38,6 +38,7 @@ class CategoryController extends Controller
         $request->validate([
             "catalog_id" => ['required', 'integer'],
             "category" => ['required', 'string', 'min:2', 'max:60'],
+            "img_thumbnail" => ['required', 'file', 'mimes:jpg,jpeg,png'],
         ]);
 
         if (!Category::where([
@@ -46,6 +47,7 @@ class CategoryController extends Controller
         ])->first()) {
             $category = new Category();
             $category->name = $request->category;
+            $category->img_thumbnail = $request->img_thumbnail;
             $category->catalog_id = $request->catalog_id;
             $category->save();
         } else {

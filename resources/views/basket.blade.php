@@ -19,8 +19,8 @@
 @if (session()->has('message'))
 <div class="alert alert-info">{{ session('message') }}</div>
 @endif
+@if (session()->has("basket"))
 <div id="summary-container" class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    @if (session()->has("basket"))
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
@@ -83,7 +83,7 @@
                 </td>
                 <td class="column-five min-[425px]:px-6 py-4">
                     <div class="flex justify-center align-center">
-                    <button type="button" class="remove-button focus:outline-none text-red bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm min-[425px]:px-5 p-2.5 text-white">X</button>
+                        <button type="button" class="remove-button focus:outline-none text-red bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm min-[425px]:px-5 p-2.5 text-white">X</button>
                     </div>
                     <input name="option_id" type="hidden" value="{{ $product['option_id'] }}" />
                 </td>
@@ -95,49 +95,6 @@
 </div>
 <div>
     <form>
-        <div id="address-container" class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                    <tr>
-                        <th scope="col" class="column-two px-6 py-3">
-                            Adresse
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b hover:bg-gray-50">
-                        <td class="address p-4">
-                            <div class="relative input-container z-0 w-full mb-5 group">
-                                <label for="floating_firstname" class="peer-focus:font-medium text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Prénom</label>
-                                <input type="text" name="floating_firstname" id="floating_firstname" class="block pb-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            </div>
-                            <div class="relative input-container z-0 w-full mb-5 group">
-                                <label for="floating_lastname" class="peer-focus:font-medium text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nom</label>
-                                <input type="text" name="floating_lastname" id="floating_lastname" class="block pb-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            </div>
-                            <div class="relative input-container z-0 w-full mb-5 group">
-                                <label for="floating_address" class="peer-focus:font-medium text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Adresse</label>
-                                <input type="text" name="floating_address" id="floating_address" class="block pb-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            </div>
-                            <div class="grid md:grid-cols-2 md:gap-6">
-                                <div class="relative input-container z-0 w-full mb-5 group">
-                                    <label for="floating_postal_code" class="peer-focus:font-medium text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Code postal</label>
-                                    <input type="text" name="floating_postal_code" id="floating_postal_code" class="block pb-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                </div>
-                                <div class="relative input-container z-0 w-full mb-5 group">
-                                    <label for="floating_city" class="peer-focus:font-medium text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Ville</label>
-                                    <input type="text" name="floating_city" id="floating_city" class="block pb-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                </div>
-                            </div>
-                            <div class="relative input-container z-0 w-full mb-5 group">
-                                <label for="floating_phone" class="peer-focus:font-medium text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Numéro de téléphone</label>
-                                <input type="tel" name="floating_phone" id="floating_phone" class="block pb-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
         <div id="total-container" class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -158,6 +115,11 @@
             </table>
         </div>
     </form>
+</div>
+@else
+<div id="basket-empty" class="h-[90vh] w-full flex flex-col justify-center items-center">
+    <h1>Vous n'avez pas de produits dans votre panier</h1>
+    <a href="/" class="m-5 py-3 px-6 bg-gray-800 text-white rounded-full">Retourner sur la page d'accueil</a>
 </div>
 @endif
 @endsection

@@ -9,27 +9,6 @@
         padding: 0 !important;
     }
 
-    #products-container,
-    #aboutme-container,
-    #instagram-container {
-        padding: var(--container-padding-y) var(--container-padding-x);
-    }
-
-    #products-container #men,
-    #products-container #woman {
-        margin-top: 10%;
-    }
-
-    #woman h3,
-    #men h3 {
-        font-size: medium;
-    }
-
-    .product {
-        min-width: 45%;
-        margin-bottom: 2.5%;
-    }
-
     #catalogs-container {
         flex-direction: column;
     }
@@ -39,35 +18,9 @@
         width: 100%;
         aspect-ratio: 1;
     }
-
-    #aboutme-container {
-        flex-direction: column;
-    }
-
-    #aboutme-container > div {
-        padding: 5%;
-    }
-
-    #aboutme-container > .text-container {
-        width: 100%;
-    }
-
-    #aboutme-container > .img-container {
-        margin-bottom: 10%;
-        width: 80%;
-    }
 }
 
 @media (min-width: 768px) {
-    #products-container #men,
-    #products-container #woman {
-        margin-top: 8%;
-    }
-
-    #products-container .product {
-        margin-bottom: 2%;
-    }
-
     #catalogs-container {
         display: flex;
     }
@@ -90,34 +43,11 @@
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
     }
-
-    #aboutme-container .img-container {
-        width: 30%;
-    }
-
-    #aboutme-container .text-container {
-        width: 58%;
-    }
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
-    #products-container,
-    #aboutme-container,
-    #instagram-container {
-        padding: var(--container-padding-y) var(--container-padding-x);
-    }
-
     #catalogs-container {
         padding: 0 var(--container-padding-x);
-    }
-
-    #products-container #woman h3,
-    #products-container #men h3 {
-        font-size: xx-large;
-    }
-
-    .product {
-        min-width: 30%;
     }
 }
 
@@ -125,137 +55,21 @@
 }
 
 @media (max-width: 1023px) {
-    #products-container #men,
-    #products-container #woman {
-        overflow: auto;
-    }
 }
 
 @media (min-width: 1024px) {
-    @supports (animation-timeline: view()) {
-        #products-container #woman {
-            animation: translate-left-to-right linear;
-        }
-
-        #products-container #men {
-            animation: translate-right-to-left linear;
-        }
-
-        #products-container #men,
-        #products-container #woman {
-            animation-timeline: view();
-            animation-range: var(--animation-range);
-        }
-
-        @keyframes translate-right-to-left {
-            from {
-                translate: var(--translate-x-start-right-to-left);
-            }
-
-            to {
-                translate: var(--translate-x-end-right-to-left);
-            }
-        }
-
-        @keyframes translate-left-to-right {
-            from {
-                translate: var(--translate-x-start-left-to-right);
-            }
-
-            to {
-                translate: var(--translate-x-end-left-to-right);
-            }
-        }
-    }
-
-    @supports not (animation-timeline: view()) {
-        #products-container #men,
-        #products-container #woman {
-            overflow: auto;
-        }
-    }
-
-    #products-container #woman {
-        flex-direction: row-reverse;
-    }
 }
 
 @media (min-width: 1024px) and (max-width: 1279px) {
-    :root {
-        --animation-range: 40%;
-        --translate-x-start-right-to-left: 0rem;
-        --translate-x-start-left-to-right: 0rem;
-        --translate-x-end-right-to-left: -100rem;
-        --translate-x-end-left-to-right: 100rem;
-    }
 }
 
 @media (min-width: 1280px) {
-    :root {
-        --animation-range: 30%;
-        --translate-x-start-right-to-left: 0rem;
-        --translate-x-start-left-to-right: 0rem;
-        --translate-x-end-right-to-left: -50rem;
-        --translate-x-end-left-to-right: 50rem;
-    }
-
-    #products-container,
-    #aboutme-container,
-    #instagram-container {
-        padding: var(--container-padding-y) var(--container-padding-x);
-    }
-
     #catalogs-container {
         padding: 0 var(--container-padding-x);
-    }
-
-    #products-container #woman h3,
-    #products-container #men h3 {
-        font-size: xxx-large;
-    }
-
-    .product {
-        min-width: 22%;
-        max-width: 320px;
     }
 }
 
 @media (max-width: 1279px) {
-}
-
-#catalogs-container {
-    animation: fade linear;
-    animation-timeline: view();
-    animation-range: 70%;
-}
-
-#products-container #woman h3,
-#products-container #men h3 {
-    text-align: center;
-    align-self: center;
-    transform: rotateZ(270deg);
-    text-transform: uppercase;
-    font-weight: 500;
-}
-
-#products-container #woman > a,
-#products-container #men > a {
-    text-align: center;
-    align-self: center;
-    text-transform: uppercase;
-    font-weight: 500;
-}
-
-#products-container #men,
-#products-container #woman {
-    display: flex;
-    flex-wrap: nowrap;
-}
-
-#products-container .product {
-    max-width: 320px;
-    margin-left: 0.5%;
-    margin-right: 0.5%;
 }
 
 #catalogs-container {
@@ -291,56 +105,4 @@
     border-radius: 60px;
     background-color: black;
     color: white;
-}
-
-#aboutme-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-image: linear-gradient(rgb(0, 0, 0, 0.25), rgb(0, 0, 0, 0.25)),
-        url("/public/images/aboutme-bg-placeholder.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#aboutme-container .img-container,
-#aboutme-container .img-container img {
-    border-radius: 300px;
-}
-
-#aboutme-container .img-container {
-    padding: 2%;
-}
-
-#aboutme-container .img-container img {
-    height: 100%;
-    aspect-ratio: 1;
-}
-
-#aboutme-container .text-container > * {
-    margin-bottom: 2%;
-}
-
-#instagram-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-#instagram-container h2 {
-    margin-bottom: 5%;
-    font-weight: normal;
-}
-
-@keyframes fade {
-    from {
-        filter: opacity(1);
-    }
-
-    to {
-        filter: opacity(0);
-    }
 }

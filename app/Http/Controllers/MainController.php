@@ -10,35 +10,6 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function home()
-    {
-        $woman_catalog = null;
-        $men_catalog = null;
-
-        if (Catalog::where("gender", "Femme")->first()) {
-            $woman_catalog = Catalog::where("gender", "Femme")->first()->id;
-        }
-
-        if (Catalog::where("gender", "Homme")->first()) {
-            $men_catalog = Catalog::where("gender", "Homme")->first()->id;
-        }
-
-        $woman_options = Option::where(
-            "product_id",
-            Product::where("catalog_id", $woman_catalog)->first()->id
-        )->orderBy('created_at', 'DESC')->limit(5)->get();
-
-        $men_options = Option::where(
-            "product_id",
-            Product::where("catalog_id", $men_catalog)->first()->id
-        )->orderBy('created_at', 'DESC')->limit(5)->get();
-
-        return view('home', [
-            "woman_options" => $woman_options,
-            "men_options" => $men_options
-        ]);
-    }
-
     public function catalog(Request $request, Catalog $catalog)
     {
         $h1 = null;

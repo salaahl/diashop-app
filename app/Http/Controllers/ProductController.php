@@ -77,7 +77,7 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($slug1, $slug2 = 0)
+    public function show($slug1, $slug2, $slug3 = 0)
     {
         $catalog = null;
 
@@ -88,10 +88,10 @@ class ProductController extends Controller
         }
 
         $product = Product::where([
-            ["name", $slug1],
+            ["name", $slug2],
             ['catalog_id', $catalog],
         ])->first();
-        $options = Option::where("id", $slug2)->first();
+        $options = Option::where("id", $slug3)->first();
         $sizes = Size::where("option_id", $options->id)->get();
 
         return view('products/product', [
