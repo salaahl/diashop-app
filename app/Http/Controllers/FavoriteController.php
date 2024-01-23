@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Favorite;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Option;
+use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
@@ -28,7 +31,18 @@ class FavoriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "option_id" => ['required', 'integer'],
+        ]);
+
+        $user = Auth::user();
+
+        $favorite = new Favorite();
+
+        $favorite->user_id = $user->id;
+        $favorite->option_id = $request->option_id;
+
+        $favorite->save();
     }
 
     /**
@@ -36,7 +50,15 @@ class FavoriteController extends Controller
      */
     public function show(Favorite $favorite)
     {
-        //
+        $user = Auth::user();
+
+        $favorites = User::where("email", $user->email)->first()->favorites;
+
+        $products = Option::whereIn("id", $favorites->id)->get();
+
+        return view('favorites', [
+            "products" => $products,
+        ]);
     }
 
     /**

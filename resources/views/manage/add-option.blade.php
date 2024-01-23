@@ -26,7 +26,7 @@
                     <select id="product_id" name="product_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                         <option disabled selected>Choisissez un produit</option>
                         @foreach($products as $product)
-                        <option value="{{ $product->id }}">{{ $product->name }} - {{ $product->brand->name }} - {{ $product->category->name }} - {{ $product->catalog->gender }}</option>
+                        <option value="{{ $product->id }}">{{ $product->name }} - {{ $product->category->name }} - {{ $product->catalog->gender }}</option>
                         @endforeach
                     </select>
                 </div>

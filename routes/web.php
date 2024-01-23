@@ -8,6 +8,7 @@ use App\Http\Controllers\OptionController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\StripePaymentController;
 use Illuminate\Support\Facades\Route;
@@ -35,10 +36,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard/', function () {
         return view('profile.dashboard');
     })->name('dashboard');
-    Route::get('orders/', [ProfileController::class, 'orders'])->name('orders.');
+
     Route::get('profile/', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('profile/', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('profile/', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('favorites/', [FavoriteController::class, 'show'])->name('favorites.show');
+    Route::put('favorites/add', [FavoriteController::class, 'store'])->name('favorites.store');
+    Route::delete('favorites/remove', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
+
+    Route::get('orders/', [ProfileController::class, 'orders'])->name('orders.');
 });
 
 Route::middleware(['auth', 'is.admin'])->group(function () {
@@ -82,6 +89,7 @@ Route::middleware(['auth', 'is.admin'])->group(function () {
     });
 });
 
+Route::post('search/', [MainController::class, 'search'])->name('search.product');
 Route::get('men/catalog', [MainController::class, 'catalog'])->name('men.catalog');
 Route::post('men/catalog', [MainController::class, 'catalog'])->name('men.catalog.post');
 Route::get('men/catalog/{slug}', [MainController::class, 'category'])->name('men.category');
@@ -98,6 +106,7 @@ Route::get('basket/', [BasketController::class, 'show'])->name('basket.show');
 Route::put('basket/store', [BasketController::class, 'store'])->name('basket.store');
 Route::patch('basket/update', [BasketController::class, 'update'])->name('basket.update');
 Route::delete('basket/remove', [BasketController::class, 'remove'])->name('basket.remove');
+// Remettre en "delete" à la fin de mes tests
 Route::get('basket/destroy', [BasketController::class, 'destroy'])->name('basket.destroy');
 
 Route::get('checkout/', function () {
@@ -110,16 +119,13 @@ Route::get('return/{slug}',  function () {
 Route::post('status/', [StripePaymentController::class, 'status'])->name('status.post');
 Route::post('stripe_webhooks/', [StripePaymentController::class, 'webhooks'])->name('webhooks');
 
-Route::get('contact-us/', [MainController::class, 'contactUs'])->name('contactus');
+Route::get('contact-us/', [MainController::class, 'contactUs'])->name('contact-us');
 Route::get('about-me/', function () {
     return view('about-me');
-});
+})->name('about-me');
 Route::get('deliveries-and-returns/', function () {
     return view('deliveries-and-returns');
-});
-Route::get('refunds/', function () {
-    return view('refunds');
-});
+})->name('deliveries-and-returns');
 Route::get('terms-and-conditions/', function () {
     return view('terms-and-conditions');
 });

@@ -10,71 +10,30 @@
 @section('links')
 @parent
 <style>
-    @media (max-width: 767px) {
-        #aboutme-container {
-            flex-direction: column;
-            padding: var(--container-padding-y) var(--container-padding-x);
+    @media (min-width: 768px) {
+        #about-me>div:last-of-type {
+            opacity: 0;
         }
 
-        #aboutme-container>div {
-            padding: 5%;
+        #about-me>div:last-of-type img {
+            box-shadow: -20px -15px 10px hsl(0deg 0% 0% / 0.25);
         }
 
-        #aboutme-container>.text-container {
-            width: 100%;
-        }
-
-        #aboutme-container>.img-container {
-            margin-bottom: 10%;
-            width: 80%;
+        .animateFadeSlideIn {
+            animation: fadeSlideIn 2s forwards;
         }
     }
 
-    @media (min-width: 768px) and (max-width: 1279px) {
-        #aboutme-container {
-            padding: var(--container-padding-y) var(--container-padding-x);
+    @keyframes fadeSlideIn {
+        from {
+            margin-top: -5vh;
+            opacity: 0;
         }
-    }
 
-    @media (min-width: 1280px) {
-
-        #aboutme-container {
-            padding: var(--container-padding-y) var(--container-padding-x);
+        to {
+            margin-top: -35vh;
+            opacity: 1;
         }
-    }
-
-    footer > section {
-        margin: 0!important;
-    }
-
-    #aboutme-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-image: linear-gradient(rgb(0, 0, 0, 0.25), rgb(0, 0, 0, 0.25)),
-            url("/public/images/aboutme-bg-placeholder.jpg");
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    #aboutme-container .img-container,
-    #aboutme-container .img-container img {
-        border-radius: 300px;
-    }
-
-    #aboutme-container .img-container {
-        padding: 2%;
-    }
-
-    #aboutme-container .img-container img {
-        height: 100%;
-        aspect-ratio: 1;
-    }
-
-    #aboutme-container .text-container>* {
-        margin-bottom: 2%;
     }
 </style>
 @endsection
@@ -84,27 +43,27 @@
 @endsection
 
 @section('main')
-<section id="aboutme-container" class="min-h-screen">
-    <div class="img-container bg-slate-100">
-        <img src="{{ asset('/images/aboutme-placeholder.jpg') }}" class="" alt="...">
-    </div>
-    <div class="text-container text-justify">
-        <h2 class="text-justify text-5xl md:w-min mb-4 p-4 bg-gray-800 text-white uppercase">A propos de nous</h2>
-        <p class="bg-gray-800 text-white p-1">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo
+<section id="about-me" class="min-h-screen">
+    <div class="h-[10vh] md:h-[40vh] w-full flex justify-center items-center overflow-hidden bg-gray-800"></div>
+    <div class="min-h-[40vh] w-full max-w-screen-xl mx-auto px-2 xl:px-0 mt-[-10vh] flex flex-col justify-center">
+        <h1 class=" h-[10vh] flex justify-center items-center text-white font-lighter">A propos de nous</h1>
+        <img src="{{ asset('images/placeholder.png')}}" class="h-2/4 w-auto md:h-[50vh] mx-auto aspect-square rounded-full object-cover">
+        <p class="mt-10 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-            est
-            laborum.
-        </p>
-        <a href="#" class="bg-gray-800 text-white p-1">En savoir plus</a>
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+            laborum.</p>
+        <p class="mt-10 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua !</p>
     </div>
 </section>
 @endsection
 
 @section('scripts')
 @parent
+<script>
+    window.addEventListener("load", () => {
+        document.querySelector("#about-me > div:last-of-type").classList.add("animateFadeSlideIn");
+    });
+</script>
 @endsection

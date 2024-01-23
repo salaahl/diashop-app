@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Address;
 use App\Models\Order;
+use App\Models\Favorite;
 
 class User extends Authenticatable
 {
@@ -59,6 +60,6 @@ class User extends Authenticatable
     // Permet de récupérer les produits mis en favori par l'utilisateur
     public function favorites()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->hasMany(Favorite::class);
     }
 }

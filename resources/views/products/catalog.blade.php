@@ -25,8 +25,8 @@
     @foreach($categories as $category)
     <article class="category">
         <a href="./{{ $category->name }}">
-            <div class="thumbnail border-4">
-                <img src='{{ asset("/images/$category->name.jpg") }}' />
+            <div class="thumbnail">
+                <img src='{{ asset("/images/$category->img_thumbnail") }}' />
             </div>
             <div class="details">
                 <h4 class="title text-center capitalize">{{ $category->name }}</h4>
@@ -48,7 +48,7 @@
     <x-product link="/{{ $product->catalog->gender == 'Femme'?'woman':'men' }}/catalog/{{ $product->category->name }}/{{ $product->name }}/{{ $product->options[$i]->id }}" image="/images/{{ $product->options[$i]->img_thumbnail[0] }}" hover="/images/{{ $product->options[$i]->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
     @endfor
     @else
-    <x-product link="/{{ $product->catalog->gender == 'Femme'?'woman':'men' }}/catalog/{{ $product->category->name }}/{{ $product->name }}" image="/images/{{ $product->options[0]->img_thumbnail[0] }}" hover="/images/{{ $product->options[0]->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
+    <x-product link="/{{ $product->catalog->gender == 'Femme'?'woman':'men' }}/catalog/{{ $product->category->name }}/{{ $product->name }}/{{ $product->options[0]->id }}" image="/images/{{ $product->options[0]->img_thumbnail[0] }}" hover="/images/{{ $product->options[0]->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
     @endif
     @endforeach
     <aside class="w-full">

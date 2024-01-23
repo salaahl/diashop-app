@@ -1,19 +1,17 @@
-<section class="bg-gray-50 mt-10">
+<section class="flex justify-center items-center pt-10">
+    <p class="-mx-5 -my-2 text-gray-500">Payement sécurisé by <a href="https://stripe.com/fr" class="font-bold">STRIPE</a></p>
+</section>
+<section>
     <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
         <nav class="flex flex-wrap justify-center -mx-5 -my-2">
             <div class="px-5 py-2">
-                <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                <a href="{{ route('about-me') }}" class="text-base leading-6 text-gray-500 hover:text-gray-900">
                     À propos de nous
                 </a>
             </div>
             <div class="px-5 py-2">
-                <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                <a href="{{ route ('deliveries-and-returns') }}" class="text-base leading-6 text-gray-500 hover:text-gray-900">
                     Livraisons et retours
-                </a>
-            </div>
-            <div class="px-5 py-2">
-                <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
-                    Remboursements
                 </a>
             </div>
             <div class="px-5 py-2">
@@ -48,7 +46,7 @@
             </a>
         </div>
         <p class="mt-8 text-base leading-6 text-center text-gray-400">
-            © 2024 Salaha SOKHONA pour DiaShop, Inc. Tous droits réservés.
+            © 2024 Salaha SOKHONA pour DiaShop-b, Inc. Tous droits réservés.
         </p>
     </div>
 </section>

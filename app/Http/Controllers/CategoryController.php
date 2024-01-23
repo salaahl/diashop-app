@@ -46,8 +46,8 @@ class CategoryController extends Controller
             ["catalog_id", $request->catalog_id],
         ])->first()) {
             $category = new Category();
-            $category->name = $request->category;
-            $category->img_thumbnail = $request->img_thumbnail;
+            $category->name = strtolower($request->category);
+            $category->img_thumbnail = $request->img_thumbnail->getClientOriginalName();
             $category->catalog_id = $request->catalog_id;
             $category->save();
         } else {

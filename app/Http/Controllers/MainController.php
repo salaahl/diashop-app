@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Option;
 use Illuminate\Http\Request;
+use Exception;
 
 class MainController extends Controller
 {
@@ -106,5 +107,65 @@ class MainController extends Controller
             "h2" => $h2,
             "categories" => Category::where("catalog_id", $catalog)->get()
         ]);
+    }
+
+    public function search(Request $request)
+    {
+        $result = [];
+
+        try {
+            $products = Product::where([
+                ["name", "like", "%" . $request->input . "%"],
+                ["catalog_id", $request->catalog_id],
+            ])->limit(3)->get();
+
+            $index = 0;
+
+            foreach ($products as $product) {
+                if (count($product->options) > 1) {
+                    for ($i = 0; $i < count($product->options); $i++) {
+                        if ($index <= 5) {
+                            $result[] = [
+                                "gender" => $product->catalog->gender,
+                                "category" => $product->category->name,
+                                "name" => $product->name,
+                                "option_id" => $product->options[$i]->id,
+                                "img_thumbnail" => [
+                                    0 => $product->options[$i]->img_thumbnail[0],
+                                    1 => $product->options[$i]->img_thumbnail[1]
+                                ],
+                                "price" => $product->price,
+                            ];
+                        }
+                        $index = $index + 1;
+                    }
+                } else {
+                    if ($index <= 5) {
+                        $result[] = [
+                            "gender" => $product->catalog->gender,
+                            "category" => $product->category->name,
+                            "name" => $product->name,
+                            "option_id" => $product->options[0]->id,
+                            "img_thumbnail" => [
+                                0 => $product->options[0]->img_thumbnail[0],
+                                1 => $product->options[0]->img_thumbnail[1]
+                            ],
+                            "price" => $product->price,
+                        ];
+                        $index = $index + 1;
+                    }
+                }
+            }
+
+            return response()->json([
+                'result' => $result,
+            ]);
+            http_response_code(200);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ]);
+            http_response_code(500);
+        }
     }
 }

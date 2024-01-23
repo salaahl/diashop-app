@@ -7,16 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Catalog;
 use App\Models\Order;
-use App\Models\Brand;
 
 class Product extends Model
 {
     use HasFactory;
-
-    public function brand()
-    {
-        return $this->belongsTo(Brand::class);
-    }
 
     public function catalog()
     {
@@ -36,11 +30,5 @@ class Product extends Model
     public function orders()
     {
         return $this->belongsToMany(Order::class);
-    }
-
-    // Permet de récupérer les utilisateurs ayant mis le produit en favori
-    public function favorites()
-    {
-        return $this->belongsToMany(User::class);
     }
 }

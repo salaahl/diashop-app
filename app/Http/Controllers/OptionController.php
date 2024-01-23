@@ -55,7 +55,7 @@ class OptionController extends Controller
             if($request->picture_four) $images[] = $request->picture_four->getClientOriginalName();
 
             $option = new Option();
-            $option->color = $request->color;
+            $option->color = strtolower($request->color);
             $option->img_thumbnail = [$request->thumbnail_one->getClientOriginalName(), $request->thumbnail_two->getClientOriginalName()];
             $option->img_fullsize = $images;
             $option->product_id = $request->product_id;

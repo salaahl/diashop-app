@@ -2,20 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (prefers-color-scheme: light) {
-}
-
-@media (prefers-color-scheme: dark) {
-}
-
 @media (max-width: 767px) {
     :root {
         --container-padding-x: 2%;
         --container-padding-y: 5%;
     }
 
-    header {
+    header,
+    #search-container {
         padding: 0 var(--container-padding-x);
+    }
+
+    #search-container .product {
+        width: 49%;
+        margin-left: 0.5%;
+        margin-right: 0.5%;
     }
 }
 
@@ -28,7 +29,8 @@
         --container-padding-y: 2%;
     }
 
-    header {
+    header,
+    #search-container {
         padding: 0 var(--container-padding-x);
     }
 }
@@ -46,9 +48,19 @@
 
     div:has(#navbar-dropdown-btn[aria-expanded="true"]) #navbar-dropdown {
         max-height: 500px;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.5rem;
         transition: all 1s;
         overflow: hidden;
+    }
+
+    #search-container.show {
+        height: 100vh;
+        position: absolute;
+        top: 0;
+    }
+
+    #search-container.hide {
+        top: 0;
     }
 }
 
@@ -59,6 +71,7 @@
         height: 10vh;
     }
 
+    #dropdownDashboard,
     #dropdownNavbarWoman,
     #dropdownNavbarMen {
         position: absolute;
@@ -78,13 +91,33 @@
         font-weight: 500;
     }
 
+    li:has(> #dropdownDashboard):hover #dropdownDashboard,
     li:has(> #dropdownNavbarWoman):hover #dropdownNavbarWoman,
     li:has(> #dropdownNavbarMen):hover #dropdownNavbarMen {
         height: 6vh;
     }
-}
 
-@media (min-width: 1024px) and (max-width: 1280px) {
+    #search-container {
+        padding-bottom: 1%;
+    }
+
+    #search-container.show {
+        height: 80vh;
+        box-shadow: 0px 20vh 20px 20px rgb(0, 0, 0, 0.5);
+    }
+
+    #search-container.hide {
+        box-shadow: unset;
+    }
+
+    #search-container .product {
+        height: fit-content;
+        width: 19%;
+    }
+
+    #search-container .product:not(.product:last-of-type) {
+        margin: 0 1% 0 0;
+    }
 }
 
 @media (min-width: 1280px) {
@@ -93,12 +126,10 @@
         --container-padding-y: 5%;
     }
 
-    header {
+    header,
+    #search-container {
         padding: 0 var(--container-padding-x);
     }
-}
-
-@media (max-width: 1280px) {
 }
 
 * {
@@ -142,8 +173,16 @@ h4 {
     font-weight: 200;
 }
 
-header {
-    transition: all 0.5s;
+header,
+#search-container.show {
+    transition: height 0.5s, box-shadow 0.5s;
+    transition-delay: 0s, 0.5s;
+    transition-property: height, box-shadow;
+}
+
+#search-container.hide {
+    height: 0;
+    transition: height 0.5s;
 }
 
 #navbar-dropdown li a span:hover {
@@ -169,6 +208,7 @@ img {
     object-fit: cover;
 }
 
+/* Boutons, radios et divers */
 .button-stylised-1 {
     background-color: #222;
     border-radius: 4px;
@@ -264,7 +304,7 @@ img {
     background-color: #a8bbbf;
 }
 
-/* Loader CSS */
+/* Loader des pages */
 #loader-container {
     height: 100%;
     width: 100%;
@@ -305,6 +345,7 @@ img {
     animation: bounce 1s 0.5s ease-in-out alternate infinite;
 }
 
+/* Carousel (utilisé pour l'instant seulement sur la page "produit") */
 .carousel-text-container > div,
 .carousel-text-container > h3 {
     margin: 0.5% auto;
@@ -315,8 +356,6 @@ img {
 /* Paramètres globaux du container d'une carte "produit" */
 .thumbnail {
     aspect-ratio: 3/4;
-    background-size: cover;
-    background-position: center;
     overflow: hidden;
     transition: 0.5s all;
 }
@@ -342,6 +381,7 @@ img {
     overflow: hidden;
 }
 
+/* Keyframes */
 @keyframes bounce {
     50% {
         transform: translateX(-50%);

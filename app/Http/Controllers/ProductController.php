@@ -6,7 +6,6 @@ use App\Models\Product;
 use App\Models\Option;
 use App\Models\Catalog;
 use App\Models\Category;
-use App\Models\Brand;
 use App\Models\Size;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -31,11 +30,9 @@ class ProductController extends Controller
     public function create()
     {
         $catalogs = Catalog::all();
-        $brands = Brand::all();
 
         return view('manage/add-product', [
             "catalogs" => $catalogs,
-            "brands" => $brands
         ]);
     }
 
@@ -48,24 +45,21 @@ class ProductController extends Controller
             "name" => ['required', 'string', 'min:2', 'max:60'],
             "catalog_id" => ['required', 'integer'],
             "category_id" => ['required', 'integer'],
-            "brand_id" => ['required', 'integer'],
             "price" => ['required', 'numeric'],
             "description" => ['required', 'string', 'min:2', 'max:400'],
         ]);
 
         if (!Product::where([
             ["name", $request->name],
-            ["brand_id", $request->brand_id],
             ["category_id", $request->category_id],
             ["catalog_id", $request->catalog_id],
         ])->first()) {
             $product = new Product();
             $product->catalog_id = $request->catalog_id;
             $product->category_id = $request->category_id;
-            $product->brand_id = $request->brand_id;
-            $product->name = $request->name;
+            $product->name = strtolower($request->name);
             $product->price = $request->price;
-            $product->description = $request->description;
+            $product->description = strtolower($request->description);
             $product->save();
         } else {
             return Redirect::back()->withErrors(['msg' => 'Erreur. Ce produit existe déjà.']);

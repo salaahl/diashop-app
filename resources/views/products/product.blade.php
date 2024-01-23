@@ -74,9 +74,8 @@
                     @endauth
                 </div>
                 <div id="delivery-and-return-details">
-                    <h4 class="text-sm">Couleur : {{ $options->color }}</h4>
-                    <h4 class="text-sm">Livraison sous cinq jours ouvrés.</h4>
-                    <h4 class="text-sm">Retour possible sous 7 jours à compter de la date de livraison.</h4>
+                    <h4 class="text-sm text-gray-500">Livraison sous cinq jours ouvrés.</h4>
+                    <h4 class="text-sm text-gray-500">Retour possible sous quatorze jours à compter de la date de livraison.</h4>
                 </div>
             </div>
         </div>
@@ -171,7 +170,7 @@
                 option_id: '{{ $product->options[0]->id }}',
             };
 
-            const request = new Request('/add-favorite', {
+            const request = new Request('/favorites/add', {
                 method: 'PUT',
                 body: JSON.stringify(data),
                 headers: {

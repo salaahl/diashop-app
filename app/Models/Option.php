@@ -30,4 +30,10 @@ class Option extends Model
     {
         return $this->hasMany(Size::class);
     }
+
+    // Permet de récupérer les utilisateurs ayant mis le produit en favori
+    public function favorites()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

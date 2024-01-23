@@ -35,7 +35,7 @@ class CatalogController extends Controller
 
         if (!Catalog::where("gender", $request->gender)->first()) {
             $catalog = new Catalog();
-            $catalog->gender = $request->gender;
+            $catalog->gender = strtolower($request->gender);
             $catalog->save();
         } else {
             return Redirect::back()->withErrors(['msg' => 'Erreur. Ce catalogue existe déjà.']);

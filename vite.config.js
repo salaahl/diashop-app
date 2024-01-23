@@ -18,6 +18,7 @@ export default defineConfig({
                 "resources/js/stripe/checkout.js",
                 "resources/js/stripe/return.js",
                 "resources/js/app.js",
+                "resources/js/search-product.js",
                 "resources/js/basket.js",
                 "resources/js/bootstrap.js",
                 "resources/js/catalog.js",
