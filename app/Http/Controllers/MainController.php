@@ -15,7 +15,8 @@ class MainController extends Controller
     {
         $products = null;
         $query = explode("/", url()->current());
-        $catalog_id = Catalog::where("gender", $query[2])->first()->id;
+        $catalog_name = $query[2] == "woman" ? "femme" : "homme";
+        $catalog_id = Catalog::where("gender", $catalog_name)->first()->id;
         $categories = Category::where("catalog_id", $catalog_id)->get();
         
         switch ($request->filter) {
@@ -42,7 +43,8 @@ class MainController extends Controller
     {
         $products = null;
         $query = explode("/", url()->current());
-        $catalog_id = Catalog::where("gender", $query[2])->first()->id;
+        $catalog_name = $query[2] == "woman" ? "femme" : "homme";
+        $catalog_id = Catalog::where("gender", $catalog_name)->first()->id;
         $categories = Category::where("catalog_id", $catalog_id)->get();
 
         switch ($request->filter) {
