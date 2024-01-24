@@ -4,11 +4,11 @@ $h1 = null;
 $h2 = null;
 $meta_description = null;
 
-if($query[2] == "woman") {
+if($query[1] == "woman") {
     $h1 = "Femme";
     $h2 = "Découvrez notre collection féminine : élégance, style et confiance !";
     $meta_description = "Découvrez notre collection de prêt-à-porter pour femmes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
-} elseif($query[2] == "men") {
+} elseif($query[1] == "men") {
     $h1 = "Homme";
     $h2 = "Découvrez notre collection masculine : élégance, sophistication et confiance !";
     $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
