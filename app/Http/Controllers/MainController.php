@@ -14,8 +14,8 @@ class MainController extends Controller
     public function catalog(Request $request, Catalog $catalog)
     {
         $products = null;
-        $query = explode("/", url()->current(), 2);
-        $catalog_id = Catalog::where("gender", $query[1])->first()->id;
+        $query = explode("/", url()->current());
+        $catalog_id = Catalog::where("gender", $query[2])->first()->id;
         $categories = Category::where("catalog_id", $catalog_id)->get();
         
         switch ($request->filter) {
@@ -41,8 +41,8 @@ class MainController extends Controller
     public function category($slug, Request $request, Catalog $catalog)
     {
         $products = null;
-        $query = explode("/", url()->current(), 2);
-        $catalog_id = Catalog::where("gender", $query[1])->first()->id;
+        $query = explode("/", url()->current());
+        $catalog_id = Catalog::where("gender", $query[2])->first()->id;
         $categories = Category::where("catalog_id", $catalog_id)->get();
 
         switch ($request->filter) {
