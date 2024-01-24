@@ -13,7 +13,8 @@ class MainController extends Controller
 {
     public function catalog(Request $request, Catalog $catalog)
     {
-        $query = ("/", url()->current(), 2);
+        $products = null;
+        $query = explode("/", url()->current(), 2);
         $catalog_id = Catalog::where("gender", $query[1])->first()->id;
         $categories = Category::where("catalog_id", $catalog_id)->get();
         
@@ -39,24 +40,16 @@ class MainController extends Controller
 
     public function category($slug, Request $request, Catalog $catalog)
     {
-        $h1 = null;
-        $h2 = null;
-
-        if (url()->current() == route('woman.category', $slug) && Catalog::where("gender", "Femme")->first()) {
-            $catalog = Catalog::where("gender", "Femme")->first()->id;
-            $h1 = "Femme";
-            $h2 = "Découvrez notre collection féminine : élégance, style et confiance !";
-        } else if (url()->current() == route('men.category', $slug) && Catalog::where("gender", "Homme")->first()) {
-            $catalog = Catalog::where("gender", "Homme")->first()->id;
-            $h1 = "Homme";
-            $h2 = "Découvrez notre collection masculine : élégance, sophistication et confiance !";
-        }
+        $products = null;
+        $query = explode("/", url()->current(), 2);
+        $catalog_id = Catalog::where("gender", $query[1])->first()->id;
+        $categories = Category::where("catalog_id", $catalog_id)->get();
 
         switch ($request->filter) {
             case "new":
                 $products = Product::where(
                     "category_id",
-                    Category::where("catalog_id", $catalog)
+                    Category::where("catalog_id", $catalog_id)
                         ->where("name", $slug)
                         ->first()->id
                 )->orderBy('created_at', 'ASC')->paginate(12);
@@ -64,7 +57,7 @@ class MainController extends Controller
             case "price-lowest":
                 $products = Product::where(
                     "category_id",
-                    Category::where("catalog_id", $catalog)
+                    Category::where("catalog_id", $catalog_id)
                         ->where("name", $slug)
                         ->first()->id
                 )->orderBy('price', 'ASC')->paginate(12);
@@ -72,7 +65,7 @@ class MainController extends Controller
             case "price-highest":
                 $products = Product::where(
                     "category_id",
-                    Category::where("catalog_id", $catalog)
+                    Category::where("catalog_id", $catalog_id)
                         ->where("name", $slug)
                         ->first()->id
                 )->orderBy('price', 'DESC')->paginate(12);
@@ -80,7 +73,7 @@ class MainController extends Controller
             default:
                 $products = Product::where(
                     "category_id",
-                    Category::where("catalog_id", $catalog)
+                    Category::where("catalog_id", $catalog_id)
                         ->where("name", $slug)
                         ->first()->id
                 )->orderBy('created_at', 'ASC')->paginate(12);
@@ -88,9 +81,7 @@ class MainController extends Controller
 
         return view('products/catalog', [
             "products" => $products,
-            "h1" => $h1,
-            "h2" => $h2,
-            "categories" => Category::where("catalog_id", $catalog)->get()
+            "categories" => $categories
         ]);
     }
 
