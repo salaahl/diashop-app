@@ -1,10 +1,10 @@
 @php
-$query = explode("/", url()->current(), 2)
-@if($query[1] == "femme")
+$query = explode("/", url()->current())
+@if($query[2] == "femme")
 $h1 = "Femme";
 $h2 = "Découvrez notre collection féminine : élégance, style et confiance !";
 $meta_description = "Découvrez notre collection de prêt-à-porter pour femmes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
-@elseif($query[1] == "homme")
+@elseif($query[2] == "homme")
 $h1 = "Homme";
 $h2 = "Découvrez notre collection masculine : élégance, sophistication et confiance !";
 $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
