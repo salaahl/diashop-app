@@ -1,5 +1,5 @@
 @php
-$query = ("/", url()->current(), 2)
+$query = explode("/", url()->current(), 2)
 @if($query[1] == "femme")
 $h1 = "Femme";
 $h2 = "Découvrez notre collection féminine : élégance, style et confiance !";
