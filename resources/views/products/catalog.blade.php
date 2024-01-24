@@ -1,5 +1,9 @@
 @php
 $query = explode("/", url()->current());
+$h1 = null;
+$h2 = null;
+$meta_description = null;
+
 if($query[2] == "woman") {
     $h1 = "Femme";
     $h2 = "Découvrez notre collection féminine : élégance, style et confiance !";
