@@ -274,7 +274,7 @@ img {
 @media (max-width: 767px) {
     :root {
         --container-padding-x: 2%;
-        --container-padding-y: 5%;
+        --container-padding-y: auto;
     }
 
     #search-container .product {
@@ -290,7 +290,7 @@ img {
 @media (min-width: 768px) and (max-width: 1279px) {
     :root {
         --container-padding-x: 4%;
-        --container-padding-y: 2%;
+        --container-padding-y: auto;
     }
 }
 
@@ -387,7 +387,7 @@ img {
 @media (min-width: 1280px) {
     :root {
         --container-padding-x: 0%;
-        --container-padding-y: 5%;
+        --container-padding-y: auto;
     }
 
     header,
