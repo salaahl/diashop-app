@@ -1,5 +1,6 @@
 #catalogs-container {
     width: 100%;
+    padding: 0 var(--container-padding-x);
 }
 
 #catalogs-container .catalog {
@@ -68,11 +69,5 @@
     #catalogs-container .catalog:last-of-type {
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1279px) {
-    #catalogs-container {
-        padding: 0 var(--container-padding-x);
     }
 }
