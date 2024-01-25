@@ -1,11 +1,3 @@
-main {
-    padding: var(--container-padding-y) var(--container-padding-x);
-}
-
-main > div:first-of-type {
-    padding: 0 var(--container-padding-x);
-}
-
 #carousel-container .carousel {
     width: fit-content;
 }
