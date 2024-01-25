@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Catalog;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\Option;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -13,12 +12,11 @@ class MainController extends Controller
 {
     public function catalog(Request $request, Catalog $catalog)
     {
-        $products = null;
         $query = explode("/", url()->current());
-        $catalog_name = $query[2] == "woman" ? "femme" : "homme";
+        $catalog_name = $query[3] == "woman" ? "femme" : "homme";
         $catalog_id = Catalog::where("gender", $catalog_name)->first()->id;
         $categories = Category::where("catalog_id", $catalog_id)->get();
-        
+
         switch ($request->filter) {
             case "new":
                 $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'ASC')->paginate(12);
@@ -41,9 +39,8 @@ class MainController extends Controller
 
     public function category($slug, Request $request, Catalog $catalog)
     {
-        $products = null;
         $query = explode("/", url()->current());
-        $catalog_name = $query[2] == "woman" ? "femme" : "homme";
+        $catalog_name = $query[3] == "woman" ? "femme" : "homme";
         $catalog_id = Catalog::where("gender", $catalog_name)->first()->id;
         $categories = Category::where("catalog_id", $catalog_id)->get();
 
@@ -104,7 +101,7 @@ class MainController extends Controller
                     for ($i = 0; $i < count($product->options); $i++) {
                         if ($index <= 5) {
                             $result[] = [
-                                "gender" => $product->catalog->gender,
+                                "gender" => $product->catalog->gender == "woman" ? "woman" : "men",
                                 "category" => $product->category->name,
                                 "name" => $product->name,
                                 "option_id" => $product->options[$i]->id,
@@ -120,7 +117,7 @@ class MainController extends Controller
                 } else {
                     if ($index <= 5) {
                         $result[] = [
-                            "gender" => $product->catalog->gender,
+                            "gender" => $product->catalog->gender == "woman" ? "woman" : "men",
                             "category" => $product->category->name,
                             "name" => $product->name,
                             "option_id" => $product->options[0]->id,

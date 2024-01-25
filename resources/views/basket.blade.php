@@ -93,28 +93,34 @@
         </tbody>
     </table>
 </div>
-<div>
-    <form>
+<div class="h-[85vh] flex flex-col justify-between items-center">
+    <form class="w-full">
         <div id="total-container" class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" class="column-two px-6 py-3">
-                            Payement
+                            Total
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="bg-white border-b hover:bg-gray-50">
                         <td class="p-4">
-                            <h3 id="total">{{ $total }}</h3><span>€</span>
-                            <a href="{{ route('checkout.show') }}" class="">Payer</a>
+                            <h3 id="total" class="inline font-medium">{{ $total }}</h3><span class="ml-1 font-medium">€</span>
+                            <h4 class="text-sm text-gray-500">+ 4.99€ de frais de livraison</h4>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </form>
+    <a href="{{ route('checkout.show') }}" class="button-stylised-1">
+        <span>Payer</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="hidden h-[15px] ml-2">
+            <path fill="#000000" d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z" />
+        </svg>
+    </a>
 </div>
 @else
 <div id="basket-empty" class="h-[90vh] w-full flex flex-col justify-center items-center">

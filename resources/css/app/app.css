@@ -68,7 +68,7 @@ header,
     transition: height 0.5s;
 }
 
-#navbar-dropdown li a span:hover {
+#navbar-dropdown li:hover * {
     color: black;
     font-weight: 500;
 }
@@ -95,16 +95,17 @@ img {
 
 /* Boutons, radios et divers */
 .button-stylised-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #222;
     border-radius: 4px;
     border-style: none;
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
-    display: inline-block;
     font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
     font-size: 16px;
-    font-weight: 700;
     line-height: 1.5;
     margin: 0;
     max-width: none;
@@ -122,9 +123,23 @@ img {
     width: 100%;
 }
 
+.button-stylised-1 > span {
+    font-weight: bold;
+}
+
 .button-stylised-1:hover,
 .button-stylised-1:focus {
     transition: 0.25s all;
+}
+
+.button-stylised-1:hover > span,
+.button-stylised-1:focus > span {
+    display: none;
+}
+
+.button-stylised-1:hover > svg,
+.button-stylised-1:focus > svg {
+    display: block;
 }
 
 .button-stylised-1:hover:not(.button-stylised-1-custom),
@@ -274,7 +289,7 @@ img {
 @media (max-width: 767px) {
     :root {
         --container-padding-x: 2%;
-        --container-padding-y: auto;
+        --container-padding-y: 0;
     }
 
     #search-container .product {
@@ -290,7 +305,7 @@ img {
 @media (min-width: 768px) and (max-width: 1279px) {
     :root {
         --container-padding-x: 4%;
-        --container-padding-y: auto;
+        --container-padding-y: 0;
     }
 }
 
@@ -387,7 +402,7 @@ img {
 @media (min-width: 1280px) {
     :root {
         --container-padding-x: 0%;
-        --container-padding-y: auto;
+        --container-padding-y: 0;
     }
 
     header,

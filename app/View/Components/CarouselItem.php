@@ -9,17 +9,11 @@ use Illuminate\View\Component;
 class CarouselItem extends Component
 {
     public string $image;
-    public string $title;
-    public string $text;
 
     public function __construct(
-        $image,
-        $title = "",
-        $text = "",
+        $image
     ) {
         $this->image = $image;
-        $this->title = $title;
-        $this->text = $text;
     }
 
     /**

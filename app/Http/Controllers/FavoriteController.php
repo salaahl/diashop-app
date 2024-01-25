@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Favorite;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Product;
 use App\Models\Option;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,14 +50,17 @@ class FavoriteController extends Controller
      */
     public function show(Favorite $favorite)
     {
-        $user = Auth::user();
+        $options_id = [];
+        $favorites = Auth::user()->favorites;
 
-        $favorites = User::where("email", $user->email)->first()->favorites;
+        foreach ($favorites as $favorite) {
+            $options_id[] = $favorite->id;
+        }
 
-        $products = Option::whereIn("id", $favorites->id)->get();
+        $options = Option::whereIn("id", $options_id)->orderBy('created_at', 'ASC')->paginate(12);
 
         return view('favorites', [
-            "products" => $products,
+            "options" => $options,
         ]);
     }
 

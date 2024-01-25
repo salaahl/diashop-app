@@ -4,14 +4,14 @@ $h1 = null;
 $h2 = null;
 $meta_description = null;
 
-if($query[1] == "woman") {
-    $h1 = "Femme";
-    $h2 = "Découvrez notre collection féminine : élégance, style et confiance !";
-    $meta_description = "Découvrez notre collection de prêt-à-porter pour femmes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
-} elseif($query[1] == "men") {
-    $h1 = "Homme";
-    $h2 = "Découvrez notre collection masculine : élégance, sophistication et confiance !";
-    $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
+if($query[3] == "woman") {
+$h1 = "Femme";
+$h2 = "Découvrez notre collection féminine : élégance, style et confiance !";
+$meta_description = "Découvrez notre collection de prêt-à-porter pour femmes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
+} elseif($query[3] == "men") {
+$h1 = "Homme";
+$h2 = "Découvrez notre collection masculine : élégance, sophistication et confiance !";
+$meta_description = "Découvrez notre collection de prêt-à-porter pour hommes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
 }
 @endphp
 
@@ -41,7 +41,7 @@ if($query[1] == "woman") {
 <div id="categories" class="flex w-full mb-10 overflow-x-auto">
     @foreach($categories as $category)
     <article class="category">
-        <a href="./{{ $category->name }}">
+        <a href="./catalog/{{ $category->name }}">
             <div class="thumbnail">
                 <img src='{{ asset("/images/$category->img_thumbnail") }}' />
             </div>

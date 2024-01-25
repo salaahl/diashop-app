@@ -1,11 +1,11 @@
-<div id="default-carousel" class="relative w-full" data-carousel="static">
+<div id="default-carousel" class="relative w-fit m-auto" data-carousel="static">
     <!-- Carousel wrapper -->
-    <div class="relative h-full overflow-hidden xl:rounded-lg">
+    <div class="relative max-w-[95vw] md:max-w-[50vw] h-[80vh] md:h-[89vh] aspect-[3/4] overflow-hidden rounded-lg">
         <!-- Items -->
         {{ $items }}
     </div>
     <!-- Slider indicators -->
-    <div id="indicators" class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
         {{ $buttons }}
     </div>
     <!-- Slider controls -->
