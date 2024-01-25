@@ -59,7 +59,8 @@ header,
 #search-container > div {
     padding: 0 var(--container-padding-x);
     max-width: 1280px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #search-container.hide {
@@ -319,6 +320,10 @@ img {
 
     #search-container.hide {
         top: 0;
+    }
+
+    #search-container .product {
+        margin-bottom: 10%;
     }
 }
 
