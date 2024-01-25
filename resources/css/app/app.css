@@ -385,6 +385,12 @@ img {
     #search-container {
         padding: 0 var(--container-padding-x);
     }
+
+    #dropdownDashboard,
+    #dropdownNavbarWoman,
+    #dropdownNavbarMen {
+        border-radius: 10px;
+    }
 }
 
 
