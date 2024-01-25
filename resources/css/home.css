@@ -83,7 +83,4 @@ main {
 }
 
 @media (min-width: 1280px) {
-    #catalogs-container {
-        padding: 0 var(--container-padding-x);
-    }
 }
