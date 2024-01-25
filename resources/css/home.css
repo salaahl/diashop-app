@@ -1,14 +1,45 @@
-@media (prefers-color-scheme: light) {
+main {
+    max-width: 1280px;
+    margin: auto;
 }
 
-@media (prefers-color-scheme: dark) {
+#catalogs-container {
+    width: 100%;
 }
+
+#catalogs-container .catalog {
+    transition: all 0.25s;
+    overflow: hidden;
+}
+
+#catalogs-container .catalog .img-placeholder {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+}
+
+#catalogs-container .catalog:first-of-type .img-placeholder {
+    background-position: center;
+    background-image: url("/public/images/woman_catalog-placeholder.jpg");
+}
+
+#catalogs-container .catalog:last-of-type .img-placeholder {
+    background-position: center right;
+    background-image: url("/public/images/man_catalog-placeholder.jpg");
+}
+
+#catalogs-container .catalog h3 {
+    padding: 1.5% 5%;
+    border-radius: 60px;
+    background-color: black;
+    color: white;
+}
+
 
 @media (max-width: 767px) {
-    main {
-        padding: 0 !important;
-    }
-
     #catalogs-container {
         flex-direction: column;
     }
@@ -51,58 +82,8 @@
     }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
-}
-
-@media (max-width: 1023px) {
-}
-
-@media (min-width: 1024px) {
-}
-
-@media (min-width: 1024px) and (max-width: 1279px) {
-}
-
 @media (min-width: 1280px) {
     #catalogs-container {
         padding: 0 var(--container-padding-x);
     }
-}
-
-@media (max-width: 1279px) {
-}
-
-#catalogs-container {
-    width: 100%;
-}
-
-#catalogs-container .catalog {
-    transition: all 0.25s;
-    overflow: hidden;
-}
-
-#catalogs-container .catalog .img-placeholder {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-size: cover;
-}
-
-#catalogs-container .catalog:first-of-type .img-placeholder {
-    background-position: center;
-    background-image: url("/public/images/woman_catalog-placeholder.jpg");
-}
-
-#catalogs-container .catalog:last-of-type .img-placeholder {
-    background-position: center right;
-    background-image: url("/public/images/man_catalog-placeholder.jpg");
-}
-
-#catalogs-container .catalog h3 {
-    padding: 1.5% 5%;
-    border-radius: 60px;
-    background-color: black;
-    color: white;
 }
