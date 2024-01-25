@@ -1,3 +1,11 @@
+main {
+    padding: var(--container-padding-y) var(--container-padding-x);
+}
+
+main > div:first-of-type {
+    padding: 0 var(--container-padding-x);
+}
+
 #carousel-container .carousel {
     width: fit-content;
 }
@@ -39,10 +47,6 @@
 }
 
 @media (max-width: 767px) {
-    main {
-        padding: var(--container-padding-y) var(--container-padding-x);
-    }
-
     #default-carousel {
         width: 100%;
         aspect-ratio: 3/4;
@@ -113,10 +117,6 @@
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
-    main {
-        padding: var(--container-padding-y) var(--container-padding-x);
-    }
-
     #products-details-container {
         width: 48%;
     }
@@ -146,11 +146,5 @@
     #buttons > button {
         width: 100%;
         margin: 2.5% 0;
-    }
-}
-
-@media (min-width: 1280px) {
-    main {
-        padding: var(--container-padding-y) var(--container-padding-x);
     }
 }
