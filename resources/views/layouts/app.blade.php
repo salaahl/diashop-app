@@ -36,7 +36,7 @@
             @section('header')
             @include('layouts.navigation')
             <section id="search-container" class="h-0 w-full flex flex-col justify-between absolute left-0 bg-white overflow-hidden">
-                <div>
+                <div class="w-full">
                     <div class="w-full flex justify-between mt-10">
                         <div class="w-[48%] flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
                             <input checked id="bordered-radio-1" type="radio" value="1" name="bordered-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
