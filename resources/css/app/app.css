@@ -238,6 +238,10 @@ img {
 }
 
 /* Paramètres globaux du container d'une carte "produit" */
+#search-container .product {
+    margin-bottom: 0;
+}
+
 .thumbnail {
     aspect-ratio: 3/4;
     overflow: hidden;
