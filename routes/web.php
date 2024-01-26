@@ -89,7 +89,8 @@ Route::middleware(['auth', 'is.admin'])->group(function () {
     });
 });
 
-Route::post('search/', [MainController::class, 'search'])->name('search.product');
+Route::get('search/{slug}', [MainController::class, 'search'])->name('search.product');
+Route::post('search/', [MainController::class, 'searchAsync'])->name('search.product.async');
 Route::get('men/catalog', [MainController::class, 'catalog'])->name('men.catalog');
 Route::post('men/catalog', [MainController::class, 'catalog'])->name('men.catalog.post');
 Route::get('men/catalog/{slug}', [MainController::class, 'category'])->name('men.category');
