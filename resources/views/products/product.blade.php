@@ -4,7 +4,6 @@
 @parent
 @endsection
 
-<!-- Remplacer cette partie par une variable avec le nom de la page -->
 @section('title', $product->name)
 
 @section('links')
@@ -14,21 +13,6 @@
 
 @section('header')
 @parent
-<style>
-    @media (min-width: 768px) {
-        h2 {
-            text-align: unset !important;
-        }
-    }
-
-    #default-carousel>button>span {
-        background-color: black;
-    }
-
-    #default-carousel>#indicators {
-        display: none;
-    }
-</style>
 @endsection
 
 @section('main')
@@ -36,12 +20,12 @@
     <section class="carousel-container">
         <x-carousel>
             <x-slot name="items">
-                @foreach($options->img_fullsize as $image)
+                @foreach($product->img_fullsize as $image)
                 <x-carousel-item image="/images/{{ $image }}" />
                 @endforeach
             </x-slot>
             <x-slot name="buttons">
-                @for ($i = 0; $i < count($options->img_fullsize); $i++)
+                @for ($i = 0; $i < count($product->img_fullsize); $i++)
                     <button type="button" class="w-3 h-3 rounded-full" aria-current="{{ $i == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $i + 1 }}" data-carousel-slide-to="{{ $i }}"></button>
                     @endfor
             </x-slot>
@@ -62,7 +46,6 @@
                     @endforeach
                 </div>
                 <div>
-                    <!-- Aligner la quantité de façon asynchrone avec un eventListener sur les tailles -->
                     <label for="quantity" class="sr-only">Underline select</label>
                     <select id="quantity" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                         <option selected>Selectionner une quantité</option>
@@ -92,12 +75,13 @@
         </div>
     </section>
 </div>
-@if(count($product->options) > 1)
+<!-- L'idée serait de mettre des produits ici avec une recherche 'like' -->
+@if(0 > 1)
 <section id="other-products-container">
     <h3 class="w-full text-center mb-8 uppercase">Plus de produits :</h3>
-    @foreach($product->options->take(3) as $option)
-    @if($option->id !== basename(url()->current()))
-    <x-product link="./{{ $option->id }}" image="/images/{{ $option->img_thumbnail[0] }}" hover="/images/{{ $option->img_thumbnail[1] }}" title="{{ $product->name }}" brand="{{ $product->brand->name }}" price="{{ $product->price }}" />
+    @foreach($product->take(3) as $product)
+    @if($product->id !== basename(url()->current()))
+    <x-product link="/{{ $product->catalog->gender == 'Femme'?'woman':'men' }}/catalog/{{ $product->category->name }}/{{ $product->name }}/{{ $product->id }}" image="/images/{{ $product->img_thumbnail[0] }}" hover="/images/{{ $product->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
     @endif
     @endforeach
 </section>
@@ -110,8 +94,8 @@
     document.querySelectorAll('.radio_label').forEach((radio) => {
         radio.addEventListener('click', function() {
             let data = {
-                size: this.previousElementSibling.value,
-                option_id: '{{ $product->options[0]->id }}',
+                size: this.previousElementSibling.value.toLowerCase(),
+                product_id: '{{ $product->id }}',
             };
 
             const request = new Request('/get-quantity', {
@@ -149,7 +133,7 @@
             let data = {
                 size: document.querySelector('input[type="radio"]:checked').value,
                 quantity: parseInt(document.querySelector("#quantity").value),
-                option_id: parseInt('{{ $product->options[0]->id }}'),
+                product_id: parseInt('{{ $product->id }}'),
             };
 
             const request = new Request('/basket/store', {
@@ -178,7 +162,7 @@
     if (document.getElementById("add-favorite")) {
         document.getElementById("add-favorite").addEventListener('click', function() {
             let data = {
-                option_id: '{{ $product->options[0]->id }}',
+                product_id: '{{ $product->id }}',
             };
 
             const request = new Request('/favorites/add', {
