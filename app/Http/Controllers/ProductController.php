@@ -80,11 +80,11 @@ class ProductController extends Controller
             $product->img_fullsize = $images;
 
             $quantity_per_size = [];
-            if($request->quantity_s) $quantity_per_size[] = ["s", $request->quantity_s];
-            if($request->quantity_m) $quantity_per_size[] = ["m", $request->quantity_m];
-            if($request->quantity_l) $quantity_per_size[] = ["l", $request->quantity_l];
-            if($request->quantity_xl) $quantity_per_size[] = ["xl", $request->quantity_xl];
-            if($request->quantity_xxl) $quantity_per_size[] = ["xxl", $request->quantity_xxl];
+            if($request->quantity_s) $quantity_per_size["s"] = $request->quantity_s;
+            if($request->quantity_m) $quantity_per_size["m"] = $request->quantity_m;
+            if($request->quantity_l) $quantity_per_size["l"] = $request->quantity_l;
+            if($request->quantity_xl) $quantity_per_size["xl"] = $request->quantity_xl;
+            if($request->quantity_xxl) $quantity_per_size["xxl"] = $request->quantity_xxl;
             $product->quantity_per_size = $quantity_per_size;
             
             $product->save();
@@ -105,6 +105,22 @@ class ProductController extends Controller
         return view('products/product', [
             "product" => $product
         ]);
+    }
+
+    public function getQuantity(Request $request)
+    {
+        try {
+            $quantity = Product::where('product_id', $request->product_id)->first()->quantity_per_size[$request->size];
+            
+            return response()->json([
+                'quantity' => $quantity
+            ]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            return response()->json([
+                'error' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**
