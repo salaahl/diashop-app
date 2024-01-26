@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Option;
 use App\Models\Catalog;
 use App\Models\Category;
-use App\Models\Size;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -47,6 +45,18 @@ class ProductController extends Controller
             "category_id" => ['required', 'integer'],
             "price" => ['required', 'numeric'],
             "description" => ['required', 'string', 'min:2', 'max:400'],
+            "color" => ['required', 'string', 'min:2', 'max:60'],
+            "thumbnail_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "thumbnail_two" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "picture_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "picture_two" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
+            "picture_three" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
+            "picture_four" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
+            "quantity_s" => ['nullable', 'integer'],
+            "quantity_m" => ['nullable', 'integer'],
+            "quantity_l" => ['nullable', 'integer'],
+            "quantity_xl" => ['nullable', 'integer'],
+            "quantity_xxl" => ['nullable', 'integer'],
         ]);
 
         if (!Product::where([
@@ -60,6 +70,23 @@ class ProductController extends Controller
             $product->name = strtolower($request->name);
             $product->price = $request->price;
             $product->description = strtolower($request->description);
+            $product->color = strtolower($request->color);
+            $product->img_thumbnail = [$request->thumbnail_one->getClientOriginalName(), $request->thumbnail_two->getClientOriginalName()];
+
+            $images = [$request->picture_one->getClientOriginalName()];
+            if($request->picture_two) $images[] = $request->picture_two->getClientOriginalName();
+            if($request->picture_three) $images[] = $request->picture_three->getClientOriginalName();
+            if($request->picture_four) $images[] = $request->picture_four->getClientOriginalName();
+            $product->img_fullsize = $images;
+
+            $quantity_per_size = [];
+            if($request->quantity_s) $quantity_per_size[] = ["s", $request->quantity_s];
+            if($request->quantity_m) $quantity_per_size[] = ["m", $request->quantity_m];
+            if($request->quantity_l) $quantity_per_size[] = ["l", $request->quantity_l];
+            if($request->quantity_xl) $quantity_per_size[] = ["xl", $request->quantity_xl];
+            if($request->quantity_xxl) $quantity_per_size[] = ["xxl", $request->quantity_xxl];
+            $product->quantity_per_size = $quantity_per_size;
+            
             $product->save();
         } else {
             return Redirect::back()->withErrors(['msg' => 'Erreur. Ce produit existe déjà.']);
