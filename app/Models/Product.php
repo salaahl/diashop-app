@@ -12,19 +12,20 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function catalog()
-    {
-        return $this->belongsTo(Catalog::class);
-    }
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'quantity_per_size' => 'array',
+        'img_thumbnail' => 'array',
+        'img_fullsize' => 'array',
+    ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-
-    public function options()
-    {
-        return $this->hasMany(Option::class);
     }
 
     public function orders()
