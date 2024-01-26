@@ -11,13 +11,13 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
-
     public function catalog()
     {
         return $this->belongsTo(Catalog::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 }
