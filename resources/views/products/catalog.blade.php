@@ -41,7 +41,7 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 <div id="categories" class="flex w-full mb-10 overflow-x-auto">
     @foreach($categories as $category)
     <article class="category">
-        <a href="./catalog/{{ $category->name }}">
+        <a href="/{{ $query[3] }}/catalog/{{ $category->name }}">
             <div class="thumbnail">
                 <img src='{{ asset("/images/$category->img_thumbnail") }}' />
             </div>
