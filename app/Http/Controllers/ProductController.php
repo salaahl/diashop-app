@@ -98,48 +98,13 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($slug1, $slug2, $slug3 = 0)
+    public function show($category, $product_id)
     {
-        $catalog = null;
-
-        if (strpos(url()->current(), 'woman') && Catalog::where("gender", "Femme")->first()) {
-            $catalog = Catalog::where("gender", "Femme")->first()->id;
-        } else if (strpos(url()->current(), 'men') && Catalog::where("gender", "Homme")->first()) {
-            $catalog = Catalog::where("gender", "Homme")->first()->id;
-        }
-
-        $product = Product::where([
-            ["name", $slug2],
-            ['catalog_id', $catalog],
-        ])->first();
-        $options = Option::where("id", $slug3)->first();
-        $sizes = Size::where("option_id", $options->id)->get();
+        $product = Product::where('product_id', $product_id)->first();
 
         return view('products/product', [
-            "product" => $product,
-            "options" => $options,
-            "sizes" => $sizes,
+            "product" => $product
         ]);
-    }
-
-    public function getQuantity(Request $request)
-    {
-        try {
-            $size = Size::where([
-                ["size", $request->size],
-                ["option_id", $request->option_id],
-            ])->first()->quantity;
-
-            return response()->json([
-                'size' => $size,
-            ]);
-        } catch (Exception $e) {
-            http_response_code(500);
-
-            return response()->json([
-                'error' => $e->getMessage(),
-            ]);
-        }
     }
 
     /**
