@@ -26,7 +26,7 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 
 @section('links')
 @parent
-@vite(['resources/css/catalog.css', 'resources/js/catalog.js'])
+@vite(['resources/css/products_list.css', 'resources/js/products_list.js'])
 @endsection
 
 @section('header')
@@ -38,6 +38,7 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
     <h1>{{ $h1 }}</h1>
     <h2>{{ $h2 }}</h2>
 </div>
+@if($categories)
 <div id="categories" class="flex w-full mb-10 overflow-x-auto">
     @foreach($categories as $category)
     <article class="category">
@@ -52,6 +53,8 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
     </article>
     @endforeach
 </div>
+@endif
+@if($query[4] == "catalog")
 <nav id="filters" class="w-full py-2">
     <select id="filter_select" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
         <option value="new" @if(request()->get('filter') == 'new' || !request()->get('filter')) selected @endif>Nouveautés</option>
@@ -59,41 +62,36 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
         <option value="price-lowest" @if(request()->get('filter') == 'price-lowest') selected @endif>Prix : descendant</option>
     </select>
 </nav>
+@endif
 @foreach($products as $product)
-@if(count($product->options) > 1)
-@for($i = 0; $i < count($product->options); $i++)
-    <x-product link="/{{ $product->catalog->gender == 'Femme'?'woman':'men' }}/catalog/{{ $product->category->name }}/{{ $product->name }}/{{ $product->options[$i]->id }}" image="/images/{{ $product->options[$i]->img_thumbnail[0] }}" hover="/images/{{ $product->options[$i]->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
-    @endfor
-    @else
-    <x-product link="/{{ $product->catalog->gender == 'Femme'?'woman':'men' }}/catalog/{{ $product->category->name }}/{{ $product->name }}/{{ $product->options[0]->id }}" image="/images/{{ $product->options[0]->img_thumbnail[0] }}" hover="/images/{{ $product->options[0]->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
-    @endif
-    @endforeach
-    <aside class="w-full">
-        {{ $products->links() }}
-    </aside>
-    @endsection
+    <x-product link="/{{ $product->catalog->gender == 'Femme'?'woman':'men' }}/catalog/{{ $product->category->name }}/{{ $product->name }}/{{ $product->id }}" image="/images/{{ $product->img_thumbnail[0] }}" hover="/images/{{ $product->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
+@endforeach
+<aside class="w-full">
+    {{ $products->links() }}
+</aside>
+@endsection
 
-    @section('scripts')
-    @parent
-    <script>
-        document.getElementById("filter_select").addEventListener("change", () => {
-            var myform = document.createElement("form");
-            myform.action = "";
-            myform.method = "post";
+@section('scripts')
+@parent
+<script>
+    document.getElementById("filter_select").addEventListener("change", () => {
+        var myform = document.createElement("form");
+        myform.action = "";
+        myform.method = "post";
 
-            filter = document.createElement("input");
-            filter.value = document.getElementById("filter_select").value;
-            filter.name = "filter";
+        filter = document.createElement("input");
+        filter.value = document.getElementById("filter_select").value;
+        filter.name = "filter";
 
-            token = document.createElement("input");
-            token.value = "{{ csrf_token() }}";
-            token.name = "_token";
+        token = document.createElement("input");
+        token.value = "{{ csrf_token() }}";
+        token.name = "_token";
 
-            myform.appendChild(filter);
-            myform.appendChild(token);
+        myform.appendChild(filter);
+        myform.appendChild(token);
 
-            document.body.appendChild(myform);
-            myform.submit();
-        });
-    </script>
-    @endsection
+        document.body.appendChild(myform);
+        myform.submit();
+    });
+</script>
+@endsection
