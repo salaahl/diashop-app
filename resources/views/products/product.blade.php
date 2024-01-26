@@ -115,7 +115,7 @@
                     const select = document.querySelector('#quantity');
                     let options;
 
-                    for (let i = 1; i < data.size + 1; i++) {
+                    for (let i = 1; i < data.quantity + 1; i++) {
                         options += '<option value="' + i + '">' + i + '</option>';
                     }
 
