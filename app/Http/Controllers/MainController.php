@@ -31,7 +31,7 @@ class MainController extends Controller
                 $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'ASC')->paginate(12);
         }
 
-        return view('products/catalog', [
+        return view('products/list', [
             "products" => $products,
             "categories" => $categories,
         ]);
@@ -78,62 +78,34 @@ class MainController extends Controller
                 )->orderBy('created_at', 'ASC')->paginate(12);
         }
 
-        return view('products/catalog', [
+        return view('products/list', [
             "products" => $products,
             "categories" => $categories
         ]);
     }
 
-    public function search(Request $request)
+    public function search($input, $catalog_id)
     {
-        $result = [];
+        $products = Product::where([
+            ["name", "like", "%" . $input . "%"],
+            ["catalog_id", $catalog_id],
+        ])->limit(5)->get();
 
+        return view('products/list', [
+            "products" => $products
+        ]);
+    }
+    
+    public function searchAsync(Request $request)
+    {
         try {
             $products = Product::where([
                 ["name", "like", "%" . $request->input . "%"],
                 ["catalog_id", $request->catalog_id],
-            ])->limit(3)->get();
-
-            $index = 0;
-
-            foreach ($products as $product) {
-                if (count($product->options) > 1) {
-                    for ($i = 0; $i < count($product->options); $i++) {
-                        if ($index <= 5) {
-                            $result[] = [
-                                "gender" => $product->catalog->gender == "woman" ? "woman" : "men",
-                                "category" => $product->category->name,
-                                "name" => $product->name,
-                                "option_id" => $product->options[$i]->id,
-                                "img_thumbnail" => [
-                                    0 => $product->options[$i]->img_thumbnail[0],
-                                    1 => $product->options[$i]->img_thumbnail[1]
-                                ],
-                                "price" => $product->price,
-                            ];
-                        }
-                        $index = $index + 1;
-                    }
-                } else {
-                    if ($index <= 5) {
-                        $result[] = [
-                            "gender" => $product->catalog->gender == "woman" ? "woman" : "men",
-                            "category" => $product->category->name,
-                            "name" => $product->name,
-                            "option_id" => $product->options[0]->id,
-                            "img_thumbnail" => [
-                                0 => $product->options[0]->img_thumbnail[0],
-                                1 => $product->options[0]->img_thumbnail[1]
-                            ],
-                            "price" => $product->price,
-                        ];
-                        $index = $index + 1;
-                    }
-                }
-            }
+            ])->limit(5)->get();
 
             return response()->json([
-                'result' => $result,
+                'products' => $products,
             ]);
             http_response_code(200);
         } catch (Exception $e) {
