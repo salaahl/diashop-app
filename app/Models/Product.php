@@ -23,6 +23,11 @@ class Product extends Model
         'img_fullsize' => 'array',
     ];
 
+    public function catalog()
+    {
+        return $this->belongsTo(Catalog::class);
+    }
+    
     public function category()
     {
         return $this->belongsTo(Category::class);
