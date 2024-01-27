@@ -31,13 +31,13 @@ a:has(> #basket-counter) {
 }
 
 @media (min-width: 1024px) {
-    li:has(> #dropdownNavbarWoman) svg,
-    li:has(> #dropdownNavbarMen) svg {
+    li:has(> #dropdownNavbarLinkWoman) > a > svg,
+    li:has(> #dropdownNavbarLinkMen) > a > svg {
         transition: all 1s;
     }
     
-    li:has(> #dropdownNavbarWoman):hover svg,
-    li:has(> #dropdownNavbarMen:hover svg {
+    li:has(> #dropdownNavbarWoman):hover  > a > svg ,
+    li:has(> #dropdownNavbarMen:hover  > a > svg {
         transform: rotateZ(180deg);
     }
 }
