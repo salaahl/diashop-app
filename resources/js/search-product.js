@@ -42,34 +42,42 @@ document.querySelector("#default-search").addEventListener("input", (e) => {
             fetch(request)
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data.result);
-                    if (data.result != "") {
-                        data.result.forEach((product) => {
+                    if (data.products != "") {
+                        data.products.forEach((product) => {
+                            let gender =
+                                product.gender == "femme" ? "woman" : "men";
+
+                            let names = product.name
+                                .replace(/[[\]\"]/g, "")
+                                .split(",", 2);
+
+                            let thumbnails = product.img_thumbnail
+                                .replace(/[ [\]\"]/g, "")
+                                .split(",", 2);
+                            console.log(product);
                             $("#search-results").innerHTML +=
                                 '<article class="product">' +
                                 '<a href="/' +
-                                product["gender"] +
+                                gender +
                                 "/catalog/" +
-                                product["category"] +
+                                names[0] +
                                 "/" +
-                                product["name"] +
-                                "/" +
-                                product["option_id"] +
+                                product.id +
                                 '">' +
                                 '<div class="thumbnail">' +
                                 '<img src="/images/' +
-                                product["img_thumbnail"][0] +
+                                thumbnails[0] +
                                 '" />' +
                                 '<img src="/images/' +
-                                product["img_thumbnail"][1] +
+                                thumbnails[1] +
                                 '" />' +
                                 "</div>" +
                                 '<div class="details">' +
-                                '<h4 class="title capitalize">' +
-                                product["name"] +
+                                '<h4 class="title">' +
+                                names[1] +
                                 "</h4>" +
                                 '<div class="price">' +
-                                product["price"] +
+                                product.price +
                                 "</div>" +
                                 "</div>" +
                                 "</a>" +

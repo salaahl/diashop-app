@@ -40,9 +40,9 @@
             </div>
             <div>
                 <div class="radio-toolbar">
-                    @foreach($sizes as $size)
-                    <input type="radio" name="size" id="{{ $size->size }}" value="{{ $size->size }}">
-                    <label class="radio_label" for="{{ $size->size }}">{{ $size->size }}</label>
+                    @foreach($product->quantity_per_size as $size)
+                    <input type="radio" name="size" id="{{ array_search($size, $product->quantity_per_size) }}" value="{{ array_search($size, $product->quantity_per_size) }}">
+                    <label class="radio_label" for="{{ array_search($size, $product->quantity_per_size) }}">{{ array_search($size, $product->quantity_per_size) }}</label>
                     @endforeach
                 </div>
                 <div>

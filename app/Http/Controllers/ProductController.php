@@ -100,7 +100,7 @@ class ProductController extends Controller
      */
     public function show($category, $product_id)
     {
-        $product = Product::where('product_id', $product_id)->first();
+        $product = Product::where('id', $product_id)->first();
 
         return view('products/product', [
             "product" => $product

@@ -41,7 +41,7 @@
         <div class="mb-10">
             <label for="catalog_id" class="sr-only uppercase">Choisissez une catégorie</label>
             <select id="catalog_id" name="catalog_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                <option disabled selected>Choisissez une catégorie</option>
+                <option disabled selected>Choisissez un catalogue</option>
                 @foreach($catalogs as $catalog)
                 <option value="{{ $catalog->id }}">{{ $catalog->gender }}</option>
                 @endforeach

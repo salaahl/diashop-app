@@ -4,9 +4,6 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\OptionController;
-use App\Http\Controllers\SizeController;
-use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\BasketController;
@@ -74,22 +71,10 @@ Route::middleware(['auth', 'is.admin'])->group(function () {
         Route::post('add/category/', [CategoryController::class, 'store'])->name('store.category');
         Route::patch('update/category/', [CategoryController::class, 'update'])->name('update.category');
         Route::delete('delete/category/', [CategoryController::class, 'destroy'])->name('destroy.category');
-        Route::get('add/brand/', [BrandController::class, 'create'])->name('create.brand');
-        Route::post('add/brand/', [BrandController::class, 'store'])->name('store.brand');
-        Route::patch('update/brand/', [BrandController::class, 'update'])->name('update.brand');
-        Route::delete('delete/brand/', [BrandController::class, 'destroy'])->name('destroy.brand');
-        Route::get('add/option/', [OptionController::class, 'create'])->name('create.option');
-        Route::post('add/option/', [OptionController::class, 'store'])->name('store.option');
-        Route::patch('update/option/', [OptionController::class, 'update'])->name('update.option');
-        Route::delete('delete/option/', [OptionController::class, 'destroy'])->name('destroy.option');
-        Route::get('add/size/', [SizeController::class, 'create'])->name('create.size');
-        Route::post('add/size/', [SizeController::class, 'store'])->name('store.size');
-        Route::patch('update/size/', [SizeController::class, 'update'])->name('update.size');
-        Route::delete('delete/size/', [SizeController::class, 'destroy'])->name('destroy.size');
     });
 });
 
-Route::get('search/{product}', [MainController::class, 'search'])->name('search.product');
+Route::get('search/{product?}', [MainController::class, 'search'])->name('search.product');
 Route::post('search/', [MainController::class, 'searchAsync'])->name('search.product.async');
 Route::get('men/catalog', [MainController::class, 'catalog'])->name('men.catalog');
 Route::post('men/catalog', [MainController::class, 'catalog'])->name('men.catalog.post');
@@ -99,7 +84,7 @@ Route::get('men/catalog/{category}/{product_id}', [ProductController::class, 'sh
 Route::get('woman/catalog', [MainController::class, 'catalog'])->name('woman.catalog');
 Route::post('woman/catalog', [MainController::class, 'catalog'])->name('woman.catalog.post');
 Route::get('woman/catalog/{category}', [MainController::class, 'category'])->name('woman.category');
-Route::post('men/catalog/{category}', [MainController::class, 'category'])->name('men.category.post');
+Route::post('woman/catalog/{category}', [MainController::class, 'category'])->name('woman.category.post');
 Route::get('woman/catalog/{category}/{product_id}', [ProductController::class, 'show'])->name('woman.product');
 Route::post('get-quantity/', [ProductController::class, 'getQuantity'])->name('product.get-quantity');
 

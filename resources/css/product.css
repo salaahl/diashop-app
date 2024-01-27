@@ -1,3 +1,7 @@
+h2 {
+    text-align: start;
+}
+
 #carousel-container .carousel {
     width: fit-content;
 }
