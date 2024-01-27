@@ -261,13 +261,13 @@ img {
 .thumbnail {
     aspect-ratio: 3/4;
     overflow: hidden;
-    transition: 0.5s all;
 }
 
 .product .thumbnail:hover img:last-child {
     opacity: 1;
     height: 100%;
     width: 100%;
+    transition: opacity 1s ease-out;
 }
 
 .product .thumbnail:hover img:first-child,
