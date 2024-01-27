@@ -24,6 +24,11 @@ a:has(> #basket-counter) {
         transition: 0.5s all;
     }
     
+    #dropdownNavbarLinkMenBtn[aria-expanded="false"] svg,
+    #dropdownNavbarLinkWomanBtn[aria-expanded="false"] svg {
+        transform: rotateZ(0deg);
+    }
+    
     #dropdownNavbarLinkMenBtn[aria-expanded="true"],
     #dropdownNavbarLinkWomanBtn[aria-expanded="true"] {
         transform: rotateZ(180deg);
@@ -31,18 +36,14 @@ a:has(> #basket-counter) {
 }
 
 @media (min-width: 1024px) {
-    li svg {
-        background: black;
-        transition: all 1s;
-    }
-    
     li:has(> #dropdownNavbarLinkWoman) > a > svg,
     li:has(> #dropdownNavbarLinkMen) > a > svg {
+        transform: rotateZ(0deg);
         transition: all 1s;
     }
     
-    li:has(> #dropdownNavbarWoman):hover  > a > svg ,
-    li:has(> #dropdownNavbarMen:hover  > a > svg {
+    li:has(> #dropdownNavbarWoman):hover > a > svg,
+    li:has(> #dropdownNavbarMen:hover > a > svg {
         transform: rotateZ(180deg);
     }
 }
