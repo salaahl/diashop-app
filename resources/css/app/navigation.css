@@ -43,7 +43,7 @@ a:has(> #basket-counter) {
     }
     
     li:has(> #dropdownNavbarWoman):hover > a > svg,
-    li:has(> #dropdownNavbarMen:hover > a > svg {
+    li:has(> #dropdownNavbarMen):hover > a > svg {
         transform: rotateZ(180deg);
     }
 }
