@@ -28,7 +28,7 @@
                         </svg>
                     </button>
                     <!-- Dropdown menu -->
-                    <div id="dropdownNavbarWoman" class="z-10 hidden lg:flex align-center w-full max-lg:rounded-b-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
+                    <div id="dropdownNavbarWoman" class="z-10 lg:flex align-center w-full max-lg:rounded-b-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
                         <ul class="lg:flex max-w-screen-xl lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                             @if(\App\Models\Catalog::where("gender", "femme")->first())
                             @foreach(\App\Models\Category::where("catalog_id",
@@ -57,7 +57,7 @@
                         </svg>
                     </button>
                     <!-- Dropdown menu -->
-                    <div id="dropdownNavbarMen" class="z-10 hidden lg:flex align-center w-full max-lg:rounded-b-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
+                    <div id="dropdownNavbarMen" class="z-10 lg:flex align-center w-full max-lg:rounded-b-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
                         <ul class="lg:flex max-w-screen-xl lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                             @if(\App\Models\Catalog::where("gender", "homme")->first())
                             @foreach(\App\Models\Category::where("catalog_id",
@@ -89,7 +89,7 @@
                         </svg>
                     </button>
                     <!-- Dropdown menu -->
-                    <div id="dropdownDashboard" class="z-10 hidden lg:flex align-center w-full max-lg:rounded-b-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
+                    <div id="dropdownDashboard" class="z-10 lg:flex align-center w-full max-lg:rounded-b-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
                         <ul class="lg:flex max-w-screen-xl lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                             <li class="self-center">
                                 <a href="{{ route('favorites.show') }}" class="block my-2 lg:mr-4 px-4 py-2 rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">
