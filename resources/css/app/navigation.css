@@ -13,16 +13,16 @@
     }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
-}
-
-@media (min-width: 1024px) and (max-width: 1280px) {
-}
-
-@media (min-width: 1280px) {
-}
-
-@media (max-width: 1280px) {
+@media (min-width: 1024px) {
+    li:has(#dropdownNavbarWoman) svg,
+    li:has(#dropdownNavbarMen) svg {
+        transition: all 1s;
+    }
+    
+    li:has(#dropdownNavbarWoman):hover svg,
+    li:has(#dropdownNavbarMen:hover svg {
+        transform: rotateZ(180deg);
+    }
 }
 
 a:has(> #basket-counter) {
