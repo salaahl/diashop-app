@@ -17,9 +17,10 @@
                 <li class="h-full w-full lg:flex lg:items-center lg:flex lg:align-center">
                     <a href="{{ route('woman.catalog') }}" id="dropdownNavbarLinkWoman" class="hidden lg:flex items-center justify-between w-full py-2 px-3 uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">Femme</a>
                     <button id="dropdownNavbarLinkWomanBtn" data-collapse-toggle="dropdownNavbarWoman" type="button" class="lg:hidden flex items-center justify-between w-full py-2 px-3 uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">Femme
-                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg></button>
+                    </button>
+                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                    </svg>
                     <!-- Dropdown menu -->
                     <div id="dropdownNavbarWoman" class="z-10 hidden lg:flex align-center w-full max-lg:rounded-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
                         <ul class="lg:flex max-w-screen-xl lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
@@ -39,9 +40,10 @@
                 <li class="h-full w-full lg:flex lg:items-center lg:flex lg:align-center">
                     <a href="{{ route('men.catalog') }}" id="dropdownNavbarLinkMen" class="hidden lg:flex items-center justify-between w-full py-2 px-3 uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">Homme</a>
                     <button id="dropdownNavbarLinkMenBtn" data-collapse-toggle="dropdownNavbarMen" type="button" class="lg:hidden flex items-center justify-between w-full py-2 px-3 uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">Homme
-                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg></button>
+                    </button>
+                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                    </svg>
                     <!-- Dropdown menu -->
                     <div id="dropdownNavbarMen" class="z-10 hidden lg:flex align-center w-full max-lg:rounded-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
                         <ul class="lg:flex max-w-screen-xl lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
