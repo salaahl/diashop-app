@@ -19,11 +19,6 @@ a:has(> #basket-counter) {
 }
 
 @media (max-width: 1023px) {
-    #dropdownNavbarLinkMenBtn svg,
-    #dropdownNavbarLinkWomanBtn svg {
-        transition: 0.5s all;
-    }
-    
     #dropdownNavbarLinkMenBtn[aria-expanded="false"] svg,
     #dropdownNavbarLinkWomanBtn[aria-expanded="false"] svg {
         transform: rotateZ(0deg);
@@ -32,18 +27,6 @@ a:has(> #basket-counter) {
     #dropdownNavbarLinkMenBtn[aria-expanded="true"] svg,
     #dropdownNavbarLinkWomanBtn[aria-expanded="true"] svg {
         transform: rotateZ(180deg);
-    }
-
-    #dropdownDashboard,
-    #dropdownNavbarWoman, 
-    #dropdownNavbarMen {
-        height: 0;
-    }
-
-    #dashboardBtn[aria-expanded="true"] #dropdownDashboard,
-    #dropdownNavbarLinkWomanBtn[aria-expanded="true"] #dropdownNavbarWoman, 
-    #dropdownNavbarLinkMenBtn[aria-expanded="true"] #dropdownNavbarMen {
-        height: 0;
     }
 }
 
