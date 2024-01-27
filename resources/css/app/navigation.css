@@ -31,6 +31,11 @@ a:has(> #basket-counter) {
 }
 
 @media (min-width: 1024px) {
+    li svg {
+        background: black;
+        transition: all 1s;
+    }
+    
     li:has(> #dropdownNavbarLinkWoman) > a > svg,
     li:has(> #dropdownNavbarLinkMen) > a > svg {
         transition: all 1s;
