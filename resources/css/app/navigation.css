@@ -29,8 +29,8 @@ a:has(> #basket-counter) {
         transform: rotateZ(0deg);
     }
     
-    #dropdownNavbarLinkMenBtn[aria-expanded="true"],
-    #dropdownNavbarLinkWomanBtn[aria-expanded="true"] {
+    #dropdownNavbarLinkMenBtn[aria-expanded="true"] svg,
+    #dropdownNavbarLinkWomanBtn[aria-expanded="true"] svg {
         transform: rotateZ(180deg);
     }
 }
@@ -39,7 +39,7 @@ a:has(> #basket-counter) {
     li:has(> #dropdownNavbarLinkWoman) > a > svg,
     li:has(> #dropdownNavbarLinkMen) > a > svg {
         transform: rotateZ(0deg);
-        transition: all 1s;
+        transition: all 0.25s;
     }
     
     li:has(> #dropdownNavbarWoman):hover > a > svg,
