@@ -14,7 +14,7 @@
         </div>
         <div class="h-full w-full lg:flex lg:justify-between" id="navbar-dropdown">
             <ul class="flex flex-col items-center font-medium p-4 lg:p-0 max-lg:rounded-lg border border-gray-100 max-lg:bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
-                <li class="h-full w-full flex items-center">
+                <li class="h-full w-full">
                     <a href="{{ route('woman.catalog') }}" id="dropdownNavbarLinkWoman" class="hidden lg:flex items-center justify-center w-full py-2 text-sm uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">Femme</a>
                     <button id="dropdownNavbarLinkWomanBtn" data-collapse-toggle="dropdownNavbarWoman" type="button" class="lg:hidden flex items-center justify-between w-full py-2 text-sm uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
                         <span>Femme</span>
@@ -41,7 +41,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="h-full w-full flex items-center">
+                <li class="h-full w-full">
                     <a href="{{ route('men.catalog') }}" id="dropdownNavbarLinkMen" class="hidden lg:flex items-center justify-center w-full py-2 text-sm uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">Homme</a>
                     <button id="dropdownNavbarLinkMenBtn" data-collapse-toggle="dropdownNavbarMen" type="button" class="lg:hidden flex items-center justify-between w-full py-2 text-sm uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
                         <span>Homme</span>
@@ -71,7 +71,7 @@
             </ul>
             <ul class="flex flex-col lg:items-center font-medium p-4 lg:p-0 mt-4 max-lg:rounded-lg border border-gray-100 max-lg:bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
                 @auth
-                <li class="h-full w-full flex items-center">
+                <li class="h-full w-full">
                     <a href="{{ route('dashboard') }}" id="dashboardLink" class="hidden lg:flex items-center justify-center w-full py-2 whitespace-nowrap text-gray-900 text-sm uppercase rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">Mon profil</a>
                     <button id="dashboardBtn" data-collapse-toggle="dropdownDashboard" type="button" class="lg:hidden flex items-center justify-between w-full py-2 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" height="20" width="18" viewBox="0 0 448 512" class="lg:hidden">
