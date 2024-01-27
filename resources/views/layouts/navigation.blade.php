@@ -14,11 +14,11 @@
         </div>
         <div class="h-full w-full lg:flex lg:justify-between" id="navbar-dropdown">
             <ul class="flex flex-col items-center font-medium p-4 lg:p-0 max-lg:rounded-lg border border-gray-100 max-lg:bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
-                <li class="h-full w-full lg:flex lg:items-center lg:flex lg:align-center">
+                <li class="h-full w-full flex items-center">
                     <a href="{{ route('woman.catalog') }}" id="dropdownNavbarLinkWoman" class="hidden lg:flex items-center justify-between w-full py-2 px-3 uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">Femme</a>
                     <button id="dropdownNavbarLinkWomanBtn" data-collapse-toggle="dropdownNavbarWoman" type="button" class="lg:hidden flex items-center justify-between w-full py-2 px-3 uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">Femme
                     </button>
-                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <svg class="w-2.5 h-2.5 lg:ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                     </svg>
                     <!-- Dropdown menu -->
@@ -37,11 +37,11 @@
                         </ul>
                     </div>
                 </li>
-                <li class="h-full w-full lg:flex lg:items-center lg:flex lg:align-center">
+                <li class="h-full w-full flex items-center">
                     <a href="{{ route('men.catalog') }}" id="dropdownNavbarLinkMen" class="hidden lg:flex items-center justify-between w-full py-2 px-3 uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">Homme</a>
                     <button id="dropdownNavbarLinkMenBtn" data-collapse-toggle="dropdownNavbarMen" type="button" class="lg:hidden flex items-center justify-between w-full py-2 px-3 uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">Homme
                     </button>
-                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <svg class="w-2.5 h-2.5 lg:ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                     </svg>
                     <!-- Dropdown menu -->
@@ -63,7 +63,7 @@
             </ul>
             <ul class="flex flex-col lg:items-center font-medium p-4 lg:p-0 mt-4 max-lg:rounded-lg border border-gray-100 max-lg:bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
                 @auth
-                <li class="h-full w-full lg:flex lg:items-center lg:flex lg:align-center">
+                <li class="h-full w-full flex items-center">
                     <a href="{{ route('dashboard') }}" id="dashboardLink" class="hidden lg:flex items-center justify-between w-full py-2 px-3 whitespace-nowrap text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">Mon profil</a>
                     <button id="dashboardBtn" data-collapse-toggle="dropdownDashboard" type="button" class="lg:hidden flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
                         <div class="flex items-center">
@@ -72,7 +72,7 @@
                             </svg>
                             <span class="ml-5">Mon profil<span>
                         </div>
-                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <svg class="w-2.5 h-2.5 lg:ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg>
                     </button>
