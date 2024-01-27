@@ -33,6 +33,18 @@ a:has(> #basket-counter) {
     #dropdownNavbarLinkWomanBtn[aria-expanded="true"] svg {
         transform: rotateZ(180deg);
     }
+
+    #dropdownDashboard,
+    #dropdownNavbarWoman, 
+    #dropdownNavbarMen {
+        height: 0;
+    }
+
+    #dashboardBtn[aria-expanded="true"] #dropdownDashboard,
+    #dropdownNavbarLinkWomanBtn[aria-expanded="true"] #dropdownNavbarWoman, 
+    #dropdownNavbarLinkMenBtn[aria-expanded="true"] #dropdownNavbarMen {
+        height: 0;
+    }
 }
 
 @media (min-width: 1024px) {
