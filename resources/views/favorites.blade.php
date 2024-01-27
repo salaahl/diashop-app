@@ -9,7 +9,7 @@
 
 @section('links')
 @parent
-@vite(['resources/css/catalog.css', 'resources/js/catalog.js'])
+@vite(['resources/css/products_list.css', 'resources/js/products_list.js'])
 @endsection
 
 @section('header')
