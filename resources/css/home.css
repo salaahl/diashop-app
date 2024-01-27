@@ -36,8 +36,9 @@
 
 
 @media (max-width: 767px) {
+    main, 
     #catalogs-container {
-        flex-direction: column;
+        padding: 0;
     }
 
     #catalogs-container .catalog {
