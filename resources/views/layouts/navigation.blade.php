@@ -14,7 +14,7 @@
         </div>
         <div class="h-full w-full lg:flex lg:justify-between" id="navbar-dropdown">
             <ul class="flex flex-col items-center font-medium p-4 lg:p-0 max-lg:rounded-lg border border-gray-100 max-lg:bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
-                <li class="h-full w-full">
+                <li class="h-full w-full lg:flex lg:justify-center lg:items-center">
                     <a href="{{ route('woman.catalog') }}" id="dropdownNavbarLinkWoman" class="hidden lg:flex items-center justify-between w-full py-2 text-sm uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
                         <span>Femme</span>
                         <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -23,8 +23,8 @@
                     </a>
                     <button id="dropdownNavbarLinkWomanBtn" data-collapse-toggle="dropdownNavbarWoman" type="button" class="lg:hidden flex items-center justify-between w-full py-2 text-sm uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
                         <span>Femme</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="20" width="18" viewBox="0 0 448 512" class="lg:hidden">
-                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg>
                     </button>
                     <!-- Dropdown menu -->
@@ -43,7 +43,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="h-full w-full">
+                <li class="h-full w-full lg:flex lg:justify-center lg:items-center">
                     <a href="{{ route('men.catalog') }}" id="dropdownNavbarLinkMen" class="hidden lg:flex items-center justify-between w-full py-2 text-sm uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
                         <span>Homme</span>
                         <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -75,7 +75,7 @@
             </ul>
             <ul class="flex flex-col lg:items-center font-medium p-4 lg:p-0 mt-4 max-lg:rounded-lg border border-gray-100 max-lg:bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
                 @auth
-                <li class="h-full w-full">
+                <li class="h-full w-full lg:flex lg:justify-center lg:items-center">
                     <a href="{{ route('dashboard') }}" id="dashboardLink" class="hidden lg:flex items-center justify-center w-full py-2 whitespace-nowrap text-gray-900 text-sm uppercase rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
                         <span>Mon profil</span>
                         <svg class="w-2.5 h-2.5 lg:ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -83,7 +83,7 @@
                         </svg>
                     </a>
                     <button id="dashboardBtn" data-collapse-toggle="dropdownDashboard" type="button" class="lg:hidden flex items-center justify-between w-full py-2 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
-                        <div>
+                        <div class="flex">
                             <svg xmlns="http://www.w3.org/2000/svg" height="20" width="18" viewBox="0 0 448 512" class="lg:hidden">
                                 <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
                             </svg>
