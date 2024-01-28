@@ -45,36 +45,30 @@ document.querySelector("#default-search").addEventListener("input", (e) => {
                     if (data.products != "") {
                         data.products.forEach((product) => {
                             let gender =
-                                product.gender == "femme" ? "woman" : "men";
+                                data.catalog.gender == "femme"
+                                    ? "woman"
+                                    : "men";
 
-                            let names = product.name
-                                .replace(/[[\]\"]/g, "")
-                                .split(",", 2);
-
-                            let thumbnails = product.img_thumbnail
-                                .replace(/[ [\]\"]/g, "")
-                                .split(",", 2);
-                            console.log(product);
                             $("#search-results").innerHTML +=
                                 '<article class="product">' +
                                 '<a href="/' +
                                 gender +
                                 "/catalog/" +
-                                names[0] +
+                                product.name +
                                 "/" +
                                 product.id +
                                 '">' +
                                 '<div class="thumbnail">' +
                                 '<img src="/images/' +
-                                thumbnails[0] +
+                                product.img_thumbnail[0] +
                                 '" />' +
                                 '<img src="/images/' +
-                                thumbnails[1] +
+                                product.img_thumbnail[1] +
                                 '" />' +
                                 "</div>" +
                                 '<div class="details">' +
                                 '<h4 class="title">' +
-                                names[1] +
+                                product.name +
                                 "</h4>" +
                                 '<div class="price">' +
                                 product.price +

@@ -7,7 +7,6 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Exception;
-use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
@@ -87,12 +86,15 @@ class MainController extends Controller
 
     public function search($input, $catalog_id)
     {
+        $catalog = Catalog::where("id", $catalog_id)->get();
+
         $products = Product::where([
             ["name", "like", "%" . $input . "%"],
             ["catalog_id", $catalog_id],
         ])->limit(5)->get();
 
         return view('products/list', [
+            'catalog' => $catalog,
             "products" => $products
         ]);
     }
@@ -100,14 +102,16 @@ class MainController extends Controller
     public function searchAsync(Request $request)
     {
         try {
-            $products = DB::table('products')
-            ->join('catalogs', 'products.catalog_id', '=', 'catalogs.id')
-            ->where("products.name", "like", "%$request->input%")
-            ->where("catalogs.id", "=", $request->catalog_id)
-            ->get();
+            $catalog = Catalog::where("id", $request->catalog_id)->get();
+
+            $products = Product::where([
+                ["name", "like", "%" . $request->input . "%"],
+                ["catalog_id", $request->catalog_id],
+            ])->limit(5)->get();
 
             return response()->json([
-                "products" => $products
+                'catalog' => $catalog,
+                'products' => $products
             ]);
             http_response_code(200);
         } catch (Exception $e) {

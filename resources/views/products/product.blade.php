@@ -40,9 +40,9 @@
             </div>
             <div>
                 <div class="radio-toolbar">
-                    @foreach($product->quantity_per_size as $size)
-                    <input type="radio" name="size" id="{{ array_search($size, $product->quantity_per_size) }}" value="{{ array_search($size, $product->quantity_per_size) }}">
-                    <label class="radio_label" for="{{ array_search($size, $product->quantity_per_size) }}">{{ array_search($size, $product->quantity_per_size) }}</label>
+                    @foreach($product->quantity_per_size as $size => $quantity)
+                    <input type="radio" name="size" id="{{ $size }}" value="{{ $size }}">
+                    <label class="radio_label uppercase" for="{{ $size }}">{{ $size }}</label>
                     @endforeach
                 </div>
                 <div>
@@ -98,6 +98,7 @@
                 product_id: '{{ $product->id }}',
             };
 
+            console.log(data)
             const request = new Request('/get-quantity', {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -115,8 +116,8 @@
                     const select = document.querySelector('#quantity');
                     let options;
 
-                    for (let i = 1; i < data.quantity + 1; i++) {
-                        options += '<option value="' + i + '">' + i + '</option>';
+                    for (let i = 0; i < data.quantity; i++) {
+                        options += '<option value="' + (i + 1) + '">' + (i + 1) + '</option>';
                     }
 
                     select.innerHTML = '<option selected>Selectionner une quantité</option>' + options;
@@ -149,7 +150,9 @@
 
             fetch(request)
                 .then((response) => response.json())
-                .then((data) => {})
+                .then((data) => {
+                    alert("Article ajouté au panier !")
+                })
                 .catch((error) => {
                     console.log(error.message);
                 });
@@ -178,7 +181,9 @@
 
             fetch(request)
                 .then((response) => response.json())
-                .then((data) => {})
+                .then((data) => {
+                    alert("Article ajouté aux favoris !")
+                })
                 .catch((error) => {
                     console.log(error.message);
                 });

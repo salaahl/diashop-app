@@ -75,12 +75,15 @@ header,
 
 main {
     max-width: 1280px;
-    padding: var(--container-padding-y) var(--container-padding-x);
+    padding-top: var(--container-padding-y);
+    padding-left: var(--container-padding-x);
+    padding-right: var(--container-padding-x);
     margin: auto;
 }
 
 header {
-    position: sticky;
+    position: fixed;
+    width: 100%;
     top: 0;
     z-index: 999;
     background-color: rgb(255, 255, 255, 0.8);
@@ -291,7 +294,7 @@ img {
 @media (max-width: 767px) {
     :root {
         --container-padding-x: 2%;
-        --container-padding-y: 0;
+        --container-padding-y: 10vh;
     }
 
     #search-container .product {
@@ -307,7 +310,7 @@ img {
 @media (min-width: 768px) and (max-width: 1279px) {
     :root {
         --container-padding-x: 4%;
-        --container-padding-y: 0;
+        --container-padding-y: 10vh;
     }
 }
 
@@ -316,14 +319,15 @@ img {
         display: block;
     }
 
-    div:has(#navbar-dropdown-btn[aria-expanded="false"]) #navbar-dropdown {
+    #navbar:has(#navbar-dropdown-btn[aria-expanded="false"]) #navbar-dropdown {
         max-height: 0;
         transition: all 1s;
         overflow: hidden;
     }
 
-    div:has(#navbar-dropdown-btn[aria-expanded="true"]) #navbar-dropdown {
-        max-height: 500px;
+    #navbar:has(#navbar-dropdown-btn[aria-expanded="true"]) #navbar-dropdown {
+        height: 100dvh;
+        max-height: 1024px;
         margin-bottom: 0.5rem;
         transition: all 1s;
         overflow: hidden;
@@ -404,7 +408,7 @@ img {
 @media (min-width: 1280px) {
     :root {
         --container-padding-x: 0%;
-        --container-padding-y: 0;
+        --container-padding-y: 10vh;
     }
 
     header,
