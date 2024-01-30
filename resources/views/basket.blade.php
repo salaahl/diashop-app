@@ -50,7 +50,7 @@
                     <img src="/images/{{ $product['thumbnail'] }}" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
                 </td>
                 <td class="column-two pl-2 py-4 font-semibold text-gray-900">
-                    <h4 class="text-center">{{ $product['name'] }}</h4>
+                    <h4 class="text-center">{{ ucfirst($product['name']) }}</h4>
                 </td>
                 <td class="column-two py-4 font-semibold text-gray-900">
                     <h4 class="size uppercase">{{ $product['size'] }}</h4>

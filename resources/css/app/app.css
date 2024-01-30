@@ -336,21 +336,20 @@ img {
 
     #navbar-dropdown {
         display: block;
+        overflow: hidden;
     }
 
     #navbar:has(#navbar-dropdown-btn[aria-expanded="false"]) #navbar-dropdown {
         height: 0;
         max-height: 0;
-        transition: all 1s;
-        overflow: hidden;
+        transition: all 0.25s;
     }
 
     #navbar:has(#navbar-dropdown-btn[aria-expanded="true"]) #navbar-dropdown {
-        height: 100dvh;
+        height: 100vh;
         max-height: 1024px;
         margin-bottom: 0.5rem;
-        transition: all 1s;
-        overflow: hidden;
+        transition: all 0.5s;
     }
 
     #search-container.show {

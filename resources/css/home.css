@@ -18,7 +18,7 @@
 }
 
 #catalogs-container .catalog:first-of-type .img-placeholder {
-    background-position: center;
+    background-position: center left -270px;
     background-image: url("/public/images/woman_catalog-placeholder.jpg");
 }
 
@@ -34,9 +34,8 @@
     color: white;
 }
 
-
 @media (max-width: 767px) {
-    main, 
+    main,
     #catalogs-container {
         padding-left: 0;
         padding-right: 0;

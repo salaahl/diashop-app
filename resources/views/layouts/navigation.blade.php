@@ -34,6 +34,9 @@
                         <!-- Dropdown menu -->
                         <div id="dropdownNavbarWoman" class="hidden z-10 lg:flex align-center w-full max-lg:rounded-b-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
                             <ul class="lg:flex max-w-screen-xl lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                                <li class="lg:hidden self-center">
+                                    <a href="{{ route('woman.catalog') }}" class="block my-2 lg:mr-4 px-4 py-2 rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">Tout</a>
+                                </li>
                                 @if(\App\Models\Catalog::where("gender", "femme")->first())
                                 @foreach(\App\Models\Category::where("catalog_id",
                                 \App\Models\Catalog::where("gender", "femme")->first()->id
@@ -63,6 +66,9 @@
                         <!-- Dropdown menu -->
                         <div id="dropdownNavbarMen" class="hidden z-10 lg:flex align-center w-full max-lg:rounded-b-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
                             <ul class="lg:flex max-w-screen-xl lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                                <li class="lg:hidden self-center">
+                                    <a href="{{ route('woman.catalog') }}" class="block my-2 lg:mr-4 px-4 py-2 rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">Tout</a>
+                                </li>
                                 @if(\App\Models\Catalog::where("gender", "homme")->first())
                                 @foreach(\App\Models\Category::where("catalog_id",
                                 \App\Models\Catalog::where("gender", "homme")->first()->id
