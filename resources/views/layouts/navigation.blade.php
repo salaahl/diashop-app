@@ -10,6 +10,9 @@
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
                 </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="hidden h-[15px]">
+                    <path fill="#000000" d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" />
+                </svg>
             </button>
         </div>
         <div class="h-full w-full" id="navbar-dropdown">
@@ -73,6 +76,11 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="h-full w-full lg:flex lg:items-center lg:flex lg:align-center">
+                        <button id="search-btn" class="w-full flex justify-between items-center p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0 lg:p-0">
+                            <span class="text-sm uppercase whitespace-nowrap lg:m-0">Rechercher</span>
+                        </button>
+                    </li>
                 </ul>
                 <ul class="lg:h-full max-lg:w-full flex flex-col lg:items-center font-medium p-4 lg:p-0 mt-4 max-lg:rounded-b-lg border border-gray-100 max-lg:bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
                     @auth
@@ -106,11 +114,6 @@
                         </div>
                     </li>
                     @endauth
-                    <li class="h-full w-full lg:flex lg:items-center lg:flex lg:align-center">
-                        <button id="search-btn" class="w-full flex justify-between items-center p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0 lg:p-0">
-                            <span class="text-sm uppercase whitespace-nowrap lg:m-0">Rechercher</span>
-                        </button>
-                    </li>
                     <li class="h-full w-full lg:flex lg:items-center lg:flex lg:align-center">
                         <a href="{{ route('basket.show') }}" class="flex justify-between items-center p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0  lg:p-0">
                             <span class="text-sm uppercase whitespace-nowrap lg:m-0">Panier</span>

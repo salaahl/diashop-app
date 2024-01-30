@@ -39,7 +39,7 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
     <h2>{{ $h2 }}</h2>
 </div>
 @if($categories)
-<div id="categories" class="flex w-full mb-10 overflow-x-auto">
+<div id="categories" class="flex w-full my-8 overflow-x-auto">
     @foreach($categories as $category)
     <article class="category">
         <a href="/{{ $query[3] }}/catalog/{{ $category->name }}">
