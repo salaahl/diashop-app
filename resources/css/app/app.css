@@ -313,6 +313,7 @@ img {
     }
 
     #navbar:has(#navbar-dropdown-btn[aria-expanded="false"]) #navbar-dropdown {
+        height: 0;
         max-height: 0;
         transition: all 1s;
         overflow: hidden;
