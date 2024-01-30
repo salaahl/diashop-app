@@ -26,8 +26,8 @@
             @endforeach
         </ul>
     </section>
-    <section id="product-details-container" class="w-full md:w-2/4 md:pl-6">
-        <div id="product-detail" class="md:h-screen md:mt-[-10vh] md:py-[10vh] sticky top-0">
+    <section id="product-details-container" class="w-full md:w-2/4">
+        <div id="product-detail" class="md:h-screen md:mt-[-10vh] max-md:pt-4 md:py-[10vh] sticky top-0">
             <div>
                 <h2 id="title">{{ ucfirst($product->name) }}</h2>
                 <h2 id="price">{{ $product->price }}€</h2>
@@ -72,8 +72,8 @@
     </section>
 </div>
 <!-- L'idée serait de mettre des produits ici avec une recherche 'like' -->
-<section id="other-products-container">
-    <h3 class="w-full text-center mb-8 uppercase">Plus d'articles :</h3>
+<section id="other-products-container" class="mb-6">
+    <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
     @foreach($product->category->products->take(3) as $product)
     @if($product->id !== basename(url()->current()))
     <x-product link="./{{ $product->id }}" image="/images/{{ $product->img_thumbnail[0] }}" hover="/images/{{ $product->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />

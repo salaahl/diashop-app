@@ -9,10 +9,14 @@
 @section('links')
 @parent
 <script src="https://js.stripe.com/v3/"></script>
+<style>
+main {
+    padding: 0;
+}
+</style>
 @endsection
 
 @section('header')
-@parent
 @endsection
 
 @section('main')

@@ -21,12 +21,14 @@ class BasketSessionRepository implements BasketInterfaceRepository
 
         // Les informations du produit à ajouter
         $product_details = [
-            'product_id' => $product->id,
+            'id' => $product->id,
             'name' => $product->name,
             'price' => $product->price,
             'size' => $size,
             'quantity' => $quantity,
             'thumbnail' => $product->img_thumbnail[0],
+            'gender' => $product->catalog->gender,
+            'category' => $product->category->name
         ];
 
         $basket[$product_id][$size] = $product_details; // On ajoute ou on met à jour le produit au panier
@@ -50,7 +52,7 @@ class BasketSessionRepository implements BasketInterfaceRepository
         if (empty($basket[$product_id])) unset($basket[$product_id]); // On supprime également la clé du produit si elle ne contient plus rien
         session()->put("basket", $basket); // On enregistre le panier
         // Si le panier est désormais vide alors supprimer
-        if(empty(session()->get("basket"))) {
+        if (empty(session()->get("basket"))) {
             $this->destroy();
         }
     }

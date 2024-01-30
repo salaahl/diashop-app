@@ -47,7 +47,9 @@
             @foreach($products as $product)
             <tr class="bg-white border-b hover:bg-gray-50">
                 <td class="column-one p-4">
-                    <img src="/images/{{ $product['thumbnail'] }}" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
+                    <a href="/{{ $product['gender'] }}/catalog/{{ $product['category'] }}/{{ $product['id'] }}">
+                        <img src="/images/{{ $product['thumbnail'] }}" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
+                    </a>
                 </td>
                 <td class="column-two pl-2 py-4 font-semibold text-gray-900">
                     <h4 class="text-center">{{ ucfirst($product['name']) }}</h4>
@@ -82,7 +84,7 @@
                     <div class="flex justify-center align-center">
                         <button type="button" class="remove-button focus:outline-none text-red bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm min-[425px]:px-5 p-2.5 text-white">X</button>
                     </div>
-                    <input name="product_id" type="hidden" value="{{ $product['product_id'] }}" />
+                    <input name="product_id" type="hidden" value="{{ $product['id'] }}" />
                 </td>
             </tr>
             @endforeach
@@ -112,12 +114,15 @@
             </table>
         </div>
     </form>
-    <a href="{{ route('checkout.show') }}" class="button-stylised-1 mt-8 mb-2">
-        <span>Payer</span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="hidden h-[15px] ml-2">
-            <path fill="#000000" d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z" />
-        </svg>
-    </a>
+    <div class="w-full mt-8 mb-2">
+        <h4 class="mb-4 text-sm text-center text-gray-500">Options de payement à la prochaine étape</h4>
+        <a href="{{ route('checkout.show') }}" class="button-stylised-1">
+            <span>Payer</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="hidden h-[15px] ml-2">
+                <path fill="#000000" d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z" />
+            </svg>
+        </a>
+    </div>
 </div>
 @else
 <div id="basket-empty" class="h-[90vh] w-full flex flex-col justify-center items-center">
