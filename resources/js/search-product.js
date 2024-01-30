@@ -25,7 +25,8 @@ document.querySelector("#default-search").addEventListener("input", (e) => {
 
             let data = {
                 input: $("#default-search").value,
-                catalog_id: $("#search-container input:checked").value,
+                catalog_id: $("#search-container input[type='radio']:checked")
+                    .value,
             };
 
             const request = new Request("/search", {
@@ -42,8 +43,8 @@ document.querySelector("#default-search").addEventListener("input", (e) => {
             fetch(request)
                 .then((response) => response.json())
                 .then((data) => {
-                    if (data.products != "") {
-                        data.products.forEach((product) => {
+                    if (data.results != "") {
+                        data.results.forEach((product) => {
                             let gender =
                                 data.catalog.gender == "femme"
                                     ? "woman"
@@ -54,24 +55,24 @@ document.querySelector("#default-search").addEventListener("input", (e) => {
                                 '<a href="/' +
                                 gender +
                                 "/catalog/" +
-                                product.name +
+                                product["category"] +
                                 "/" +
-                                product.id +
+                                product["id"] +
                                 '">' +
                                 '<div class="thumbnail">' +
                                 '<img src="/images/' +
-                                product.img_thumbnail[0] +
+                                product["img_thumbnail"][0] +
                                 '" />' +
                                 '<img src="/images/' +
-                                product.img_thumbnail[1] +
+                                product["img_thumbnail"][1] +
                                 '" />' +
                                 "</div>" +
                                 '<div class="details">' +
                                 '<h4 class="title">' +
-                                product.name +
+                                product["name"] +
                                 "</h4>" +
                                 '<div class="price">' +
-                                product.price +
+                                product["price"] +
                                 "</div>" +
                                 "</div>" +
                                 "</a>" +

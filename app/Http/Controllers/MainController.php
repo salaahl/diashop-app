@@ -98,20 +98,33 @@ class MainController extends Controller
             "products" => $products
         ]);
     }
-    
+
     public function searchAsync(Request $request)
     {
         try {
-            $catalog = Catalog::where("id", $request->catalog_id)->get();
-
+            $results = [];
+            $catalog = Catalog::where("id", $request->catalog_id)->first();
             $products = Product::where([
                 ["name", "like", "%" . $request->input . "%"],
-                ["catalog_id", $request->catalog_id],
+                ["catalog_id", $catalog->id],
             ])->limit(5)->get();
+
+            foreach ($products as $product) {
+                $results[] = [
+                    "id" => $product->id,
+                    "name" => $product->name,
+                    "category" => $product->category->name,
+                    "img_thumbnail" => [
+                        0 => $product->img_thumbnail[0],
+                        1 => $product->img_thumbnail[1]
+                    ],
+                    "price" => $product->price,
+                ];
+            }
 
             return response()->json([
                 'catalog' => $catalog,
-                'products' => $products
+                'results' => $results
             ]);
             http_response_code(200);
         } catch (Exception $e) {

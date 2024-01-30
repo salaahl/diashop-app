@@ -16,9 +16,6 @@
 @endsection
 
 @section('main')
-@if (session()->has('message'))
-<div class="alert alert-info">{{ session('message') }}</div>
-@endif
 @if (session()->has("basket"))
 <div id="summary-container" class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
@@ -27,19 +24,19 @@
                 <th scope="col" class="column-one px-16 py-3">
                     <span class="sr-only">Image</span>
                 </th>
-                <th scope="col" class="column-two min-[425px]:px-6 py-3">
+                <th scope="col" class="column-two  py-3">
                     Article
                 </th>
-                <th scope="col" class="column-two min-[425px]:px-6 py-3">
+                <th scope="col" class="column-two  py-3">
                     Taille
                 </th>
-                <th scope="col" class="column-three min-[425px]:px-6 py-3">
+                <th scope="col" class="column-three  py-3">
                     Quantité
                 </th>
-                <th scope="col" class="column-four min-[425px]:px-6 py-3">
+                <th scope="col" class="column-four  py-3">
                     Prix
                 </th>
-                <th scope="col" class="column-five min-[425px]:px-6 py-3">
+                <th scope="col" class="column-five  py-3">
                     Supprimer
                 </th>
             </tr>
@@ -52,13 +49,13 @@
                 <td class="column-one p-4">
                     <img src="/images/{{ $product['thumbnail'] }}" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
                 </td>
-                <td class="column-two min-[425px]:px-6 py-4 font-semibold text-gray-900">
-                    <h4>{{ $product['name'] }}</h4>
+                <td class="column-two pl-2 py-4 font-semibold text-gray-900">
+                    <h4 class="text-center">{{ $product['name'] }}</h4>
                 </td>
-                <td class="column-two min-[425px]:px-6 py-4 font-semibold text-gray-900">
-                    <h4>{{ $product['size'] }}</h4>
+                <td class="column-two py-4 font-semibold text-gray-900">
+                    <h4 class="size uppercase">{{ $product['size'] }}</h4>
                 </td>
-                <td class="column-three min-[425px]:px-6 py-4">
+                <td class="column-three  py-4">
                     <div class="flex justify-center items-center">
                         <button class="quantity-button quantity-down inline-flex items-center justify-center p-1 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button">
                             <span class="sr-only">Baisser la quantité</span>
@@ -77,15 +74,15 @@
                         </button>
                     </div>
                 </td>
-                <td class="column-four min-[425px]:px-6 py-4 font-semibold text-gray-900">
+                <td class="column-four  py-4 font-semibold text-gray-900">
                     <h4 class="price">{{ $product['price'] }}</h4>
                     @php($total += $product['price'] * $product['quantity'])
                 </td>
-                <td class="column-five min-[425px]:px-6 py-4">
+                <td class="column-five  py-4">
                     <div class="flex justify-center align-center">
                         <button type="button" class="remove-button focus:outline-none text-red bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm min-[425px]:px-5 p-2.5 text-white">X</button>
                     </div>
-                    <input name="option_id" type="hidden" value="{{ $product['option_id'] }}" />
+                    <input name="product_id" type="hidden" value="{{ $product['product_id'] }}" />
                 </td>
             </tr>
             @endforeach
@@ -93,7 +90,7 @@
         </tbody>
     </table>
 </div>
-<div class="h-[85vh] flex flex-col justify-between items-center">
+<div class="lg:h-[85vh] flex flex-col justify-between items-center">
     <form class="w-full">
         <div id="total-container" class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500">
@@ -115,7 +112,7 @@
             </table>
         </div>
     </form>
-    <a href="{{ route('checkout.show') }}" class="button-stylised-1">
+    <a href="{{ route('checkout.show') }}" class="button-stylised-1 mt-8 mb-2">
         <span>Payer</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="hidden h-[15px] ml-2">
             <path fill="#000000" d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z" />

@@ -38,11 +38,12 @@
 @media (max-width: 767px) {
     main, 
     #catalogs-container {
-        padding: 0;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     #catalogs-container .catalog {
-        height: 100%;
+        height: 50vh;
         width: 100%;
         aspect-ratio: 1;
     }

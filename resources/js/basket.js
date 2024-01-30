@@ -26,7 +26,13 @@ function updateQuantity(quantityInput, delta) {
     var newQuantity = currentQuantity + delta;
     if (newQuantity > 0) {
         let data = {
-            option_id: quantity.closest("tr").querySelector("input").value,
+            product_id: quantity
+                .closest("tr")
+                .querySelector('[name="product_id"]').value,
+            size: quantity
+                .closest("tr")
+                .querySelector(".size")
+                .innerHTML.toLowerCase(),
             quantity: newQuantity,
         };
 
@@ -59,7 +65,11 @@ function removeProduct(product) {
      */
     //
     let data = {
-        option_id: product.querySelector("input").value,
+        product_id: product.querySelector("input").value,
+        size: product
+            .closest("tr")
+            .querySelector(".size")
+            .innerHTML.toLowerCase(),
     };
 
     const request = new Request("/basket/remove", {
@@ -76,8 +86,7 @@ function removeProduct(product) {
     fetch(request)
         .then((response) => response.json())
         .then((data) => {
-            product.remove();
-            alert("Produit supprimé: " + product);
+            location.reload();
         })
         .catch((error) => {
             console.log(error.message);

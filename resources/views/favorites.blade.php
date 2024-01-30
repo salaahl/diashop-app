@@ -20,11 +20,11 @@
 <div id="headers">
     <h1>Mes favoris</h1>
 </div>
-@foreach($options as $option)
-<x-product link="/{{ $option->product->catalog->gender == 'Femme'?'woman':'men' }}/catalog/{{ $option->product->category->name }}/{{ $option->product->name }}/{{ $option->id }}" image="/images/{{ $option->img_thumbnail[0] }}" hover="/images/{{ $option->img_thumbnail[1] }}" title="{{ $option->product->name }}" price="{{ $option->product->price }}" />
+@foreach($products as $product)
+<x-product link="/{{ $product->catalog->gender == 'Femme'?'woman':'men' }}/catalog/{{ $product->category->name }}/{{ $product->name }}/{{ $product->id }}" image="/images/{{ $product->img_thumbnail[0] }}" hover="/images/{{ $product->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
 @endforeach
 <aside class="w-full">
-    {{ $options->links() }}
+    {{ $products->links() }}
 </aside>
 @endsection
 

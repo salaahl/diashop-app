@@ -34,9 +34,9 @@
     <section id="product-detail-container">
         <div id="product-detail">
             <div>
-                <h2 id="title">{{ $product->name }}</h2>
+                <h2 id="title">{{ ucfirst($product->name) }}</h2>
                 <h2 id="price">{{ $product->price }}€</h2>
-                <div id="description">{{ $product->description }}</div>
+                <div id="description">{{ ucfirst($product->description) }}</div>
             </div>
             <div>
                 <div class="radio-toolbar">
@@ -98,8 +98,7 @@
                 product_id: '{{ $product->id }}',
             };
 
-            console.log(data)
-            const request = new Request('/get-quantity', {
+            const request = new Request('{{ route("product.get-quantity")}}', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -130,14 +129,14 @@
 
     //
     document.getElementById("add-basket").addEventListener('click', function() {
-        if (document.querySelector('input[type="radio"]:checked') && document.querySelector("#quantity").value) {
+        if (document.querySelector('#product-detail-container input[type="radio"]:checked') && document.querySelector("#quantity").value) {
             let data = {
-                size: document.querySelector('input[type="radio"]:checked').value,
+                size: document.querySelector('#product-detail-container input[type="radio"]:checked').value,
                 quantity: parseInt(document.querySelector("#quantity").value),
                 product_id: parseInt('{{ $product->id }}'),
             };
 
-            const request = new Request('/basket/store', {
+            const request = new Request("{{ route('basket.store') }}", {
                 method: 'PUT',
                 body: JSON.stringify(data),
                 headers: {
@@ -165,10 +164,10 @@
     if (document.getElementById("add-favorite")) {
         document.getElementById("add-favorite").addEventListener('click', function() {
             let data = {
-                product_id: '{{ $product->id }}',
+                product_id: parseInt('{{ $product->id }}'),
             };
 
-            const request = new Request('/favorites/add', {
+            const request = new Request("{{ route('favorites.store') }}", {
                 method: 'PUT',
                 body: JSON.stringify(data),
                 headers: {

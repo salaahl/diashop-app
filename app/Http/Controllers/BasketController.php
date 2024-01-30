@@ -30,11 +30,11 @@ class BasketController extends Controller
             $request->validate([
                 "size" => ["required"],
                 "quantity" => ["required", "numeric", "min:1"],
-                "option_id" => ["required", "numeric"],
+                "product_id" => ["required", "numeric"],
             ]);
 
             // Ajout/Mise à jour du produit au panier avec sa quantité
-            $this->basketRepository->store($request->size, $request->quantity, $request->option_id);
+            $this->basketRepository->store($request->product_id, $request->size, $request->quantity);
         } catch (Exception $e) {
             return response()->json([
                 'http_response_code' => http_response_code(500),
@@ -50,7 +50,7 @@ class BasketController extends Controller
     {
         try {
             // Suppression du produit du panier par son identifiant
-            $this->basketRepository->update($request->option_id, $request->quantity);
+            $this->basketRepository->update($request->product_id, $request->size, $request->quantity);
         } catch (Exception $e) {
             return response()->json([
                 'http_response_code' => http_response_code(500),
@@ -66,12 +66,7 @@ class BasketController extends Controller
     {
         try {
             // Suppression du produit du panier par son identifiant
-            $this->basketRepository->remove($request->option_id);
-
-            // Si c'est la dernier produit et que le panier est par conséquent vide
-            if (session('basket')) {
-                $this->basketRepository->destroy();
-            }
+            $this->basketRepository->remove($request->product_id, $request->size);
         } catch (Exception $e) {
             return response()->json([
                 'http_response_code' => http_response_code(500),

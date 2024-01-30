@@ -14,19 +14,19 @@ class BasketSessionRepository implements BasketInterfaceRepository
     }
 
     # Ajouter/Mettre à jour un produit du panier
-    public function store($size, $quantity, $product_id)
+    public function store($product_id, $size, $quantity)
     {
         $basket = session()->get("basket");
-        $product = Product::where("id", $product_id)->get();
+        $product = Product::where("id", $product_id)->first();
 
         // Les informations du produit à ajouter
         $product_details = [
-            'thumbnail' => $product->img_thumbnail[0],
+            'product_id' => $product->id,
             'name' => $product->name,
             'price' => $product->price,
             'size' => $size,
             'quantity' => $quantity,
-            'product_id' => $product_id
+            'thumbnail' => $product->img_thumbnail[0],
         ];
 
         $basket[$product_id][$size] = $product_details; // On ajoute ou on met à jour le produit au panier
@@ -34,21 +34,25 @@ class BasketSessionRepository implements BasketInterfaceRepository
     }
 
     # Mettre à jour un produit du panier
-    public function update($product_id, $quantity)
+    public function update($product_id, $size, $quantity)
     {
         $basket = session()->get("basket");
-        $product = Product::where('id', $product_id)->get();
 
-        $basket[$product_id - 1]['quantity'] = $quantity; // On ajoute ou on met à jour le produit au panier
+        $basket[$product_id][$size]['quantity'] = $quantity; // On ajoute ou on met à jour le produit au panier
         session()->put("basket", $basket); // On enregistre le panier
     }
 
     # Retirer un produit du panier
-    public function remove($product_id)
+    public function remove($product_id, $size)
     {
         $basket = session()->get("basket"); // On récupère le panier en session
-        unset($basket[$product_id]); // On supprime le produit du tableau $basket
+        unset($basket[$product_id][$size]); // On supprime le produit du tableau $basket
+        if (empty($basket[$product_id])) unset($basket[$product_id]); // On supprime également la clé du produit si elle ne contient plus rien
         session()->put("basket", $basket); // On enregistre le panier
+        // Si le panier est désormais vide alors supprimer
+        if(empty(session()->get("basket"))) {
+            $this->destroy();
+        }
     }
 
     # Vider le panier

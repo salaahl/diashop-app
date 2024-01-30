@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
     font-weight: 400;
 }
@@ -98,6 +97,7 @@ img {
 
 /* Boutons, radios et divers */
 .button-stylised-1 {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,7 +110,6 @@ img {
     font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
-    margin: 0;
     max-width: none;
     min-height: 44px;
     min-width: 10px;
@@ -123,16 +122,11 @@ img {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: 100%;
+    transition: 0.25s background-color;
 }
 
 .button-stylised-1 > span {
     font-weight: bold;
-}
-
-.button-stylised-1:hover,
-.button-stylised-1:focus {
-    transition: 0.25s all;
 }
 
 .button-stylised-1:hover > span,
@@ -290,7 +284,6 @@ img {
     overflow: hidden;
 }
 
-
 @media (max-width: 767px) {
     :root {
         --container-padding-x: 2%;
@@ -422,7 +415,6 @@ img {
         border-radius: 10px;
     }
 }
-
 
 /* Keyframes */
 @keyframes bounce {

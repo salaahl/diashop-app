@@ -39,6 +39,48 @@ class StripePaymentController extends Controller
                     'mode' => 'payment',
                     'billing_address_collection' => 'required',
                     'shipping_address_collection' => ['allowed_countries' => ['FR']],
+                    'shipping_options' => [
+                        [
+                            'shipping_rate_data' => [
+                                'type' => 'fixed_amount',
+                                'fixed_amount' => [
+                                    'amount' => 499,
+                                    'currency' => 'eur',
+                                ],
+                                'display_name' => 'Livraison par La Poste',
+                                'delivery_estimate' => [
+                                    'minimum' => [
+                                        'unit' => 'business_day',
+                                        'value' => 5,
+                                    ],
+                                    'maximum' => [
+                                        'unit' => 'business_day',
+                                        'value' => 7,
+                                    ],
+                                ],
+                            ],
+                        ],
+                        [
+                            'shipping_rate_data' => [
+                                'type' => 'fixed_amount',
+                                'fixed_amount' => [
+                                    'amount' => 1000,
+                                    'currency' => 'eur',
+                                ],
+                                'display_name' => 'Livraison par UPS',
+                                'delivery_estimate' => [
+                                    'minimum' => [
+                                        'unit' => 'business_day',
+                                        'value' => 2,
+                                    ],
+                                    'maximum' => [
+                                        'unit' => 'business_day',
+                                        'value' => 4,
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                     'custom_text' => [
                         'shipping_address' => [
                             'message' => 'Comptez un délai de cinq jours ouvrés pour la livraison.',
@@ -89,7 +131,4 @@ class StripePaymentController extends Controller
             http_response_code(500);
         }
     }
-
-
-    
 }

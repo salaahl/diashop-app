@@ -61,7 +61,7 @@
                         </div>
                     </form>
                 </div>
-                <div id="search-results" class="w-full flex flex-wrap items-center mt-10 overflow-auto lg:overflow-hidden"></div>
+                <div id="search-results" class="w-full flex flex-wrap mt-10 overflow-auto lg:overflow-hidden"></div>
                 <div id="search-footer" class="h-[10%] w-full flex justify-center items-center">
                     <button id="close-search-btn" class="button-stylised-1">
                         <span>Fermer</span>

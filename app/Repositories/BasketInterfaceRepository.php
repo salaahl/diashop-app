@@ -8,13 +8,13 @@ interface BasketInterfaceRepository
     public function show();
 
     // Ajouter un produit au panier
-    public function store($size, $quantity, $option_id);
+    public function store($product_id, $size, $quantity);
 
     // Mettre à jour la quantité d'un produit au panier
-    public function update($option_id, $quantity);
+    public function update($product_id, $size, $quantity);
 
     // Retirer un produit du panier
-    public function remove($option_id);
+    public function remove($product_id, $size);
 
     // Vider le panier
     public function destroy();

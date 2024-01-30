@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Favorite;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Option;
 use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
@@ -32,17 +31,22 @@ class FavoriteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "option_id" => ['required', 'integer'],
+            "product_id" => ['required', 'integer'],
         ]);
 
         $user = Auth::user();
 
-        $favorite = new Favorite();
+        foreach ($user->favorites as $user_favorite) {
+            if ($user_favorite->product_id == $request->product_id) {
+                $user_favorite->delete();
+            } else {
+                $favorite = new Favorite();
+                $favorite->user_id = $user->id;
+                $favorite->product_id = $request->product_id;
 
-        $favorite->user_id = $user->id;
-        $favorite->option_id = $request->option_id;
-
-        $favorite->save();
+                $favorite->save();
+            }
+        }
     }
 
     /**
@@ -50,17 +54,17 @@ class FavoriteController extends Controller
      */
     public function show(Favorite $favorite)
     {
-        $options_id = [];
+        $products_id = [];
         $favorites = Auth::user()->favorites;
 
         foreach ($favorites as $favorite) {
-            $options_id[] = $favorite->id;
+            $products_id[] = $favorite->product_id;
         }
 
-        $options = Option::whereIn("id", $options_id)->orderBy('created_at', 'ASC')->paginate(12);
+        $products = Product::whereIn("id", $products_id)->orderBy('created_at', 'ASC')->paginate(12);
 
         return view('favorites', [
-            "options" => $options,
+            "products" => $products,
         ]);
     }
 

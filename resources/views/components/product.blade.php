@@ -5,7 +5,7 @@
             <img src="{{ $hover }}" />
         </div>
         <div class="details">
-            <h4 class="title capitalize">{{ $title }}</h4>
+            <h4 class="title">{{ ucfirst($title) }}</h4>
             <div class="price">{{ $price }}</div>
         </div>
     </a>
