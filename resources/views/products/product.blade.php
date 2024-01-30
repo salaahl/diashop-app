@@ -17,23 +17,17 @@
 
 @section('main')
 <div class="flex flex-wrap flex-col lg:flex-row">
-    <section id="product-images-container" class="h-[75vh] lg:h-auto w-full lg:w-2/4 lg:min-h-screen bg-gray-200">
+    <section id="product-images-container" class="h-[70vh] lg:h-auto w-full lg:w-2/4 lg:min-h-screen bg-gray-200">
       <ul class="flex flex-nowrap lg:block snap-x	lg:snap-y	snap-mandatory overflow-auto">
         @foreach($product->img_fullsize as $image)
-        <li class="lg:h-[100vh] min-h-full min-w-[100vw] lg:min-w-[50vw]">
+        <li class="h-[70vh] lg:h-[90vh] min-h-full min-w-[100vw] lg:min-w-[50vw]">
           <img src="{{ $image }}" class="h-full w-full object-cover object-center" />
         </li>
         @endforeach
-        <li class="lg:h-[100vh] min-h-full min-w-[100vw] lg:min-w-[50vw]">
-          <img src="cool-background.svg" class="h-full w-full object-cover object-center" />
-        </li>
-        <li class="lg:h-[100vh] min-h-full min-w-[100vw] lg:min-w-[50vw]">
-          <img src="cool-background.svg" class="h-full w-full object-cover object-center" />
-        </li>
       </ul>
     </section>
-    <section id="product-details-container" class="w-full lg:w-2/4 min-h-[50vh] lg:min-h-[100vh] bg-gray-600">
-      <div id="product-detail" class="h-[100vh] sticky top-0">
+    <section id="product-details-container" class="w-full lg:w-2/4 min-h-[50vh] lg:min-h-[90vh] bg-gray-600">
+      <div id="product-detail" class="h-[90vh] sticky top-0">
         <div>
           <h2 id="title">{{ ucfirst($product->name) }}</h2>
           <h2 id="price">{{ $product->price }}€</h2>
