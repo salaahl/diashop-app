@@ -1,6 +1,3 @@
-<section class="flex justify-center items-center pt-10">
-    <p class="-mx-5 -my-2 text-gray-500">Payement sécurisé by <a href="https://stripe.com/fr" class="font-bold">STRIPE</a></p>
-</section>
 <section>
     <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
         <nav class="flex flex-wrap justify-center -mx-5 -my-2">
@@ -45,6 +42,7 @@
                 </svg>
             </a>
         </div>
+        <p class="mt-8 text-base leading-6 text-center text-gray-400">Payement sécurisé by <a href="https://stripe.com/fr" class="font-bold">STRIPE</a></p>
         <p class="mt-8 text-base leading-6 text-center text-gray-400">
             © 2024 Salaha SOKHONA pour DiaShop-b, Inc. Tous droits réservés.
         </p>
