@@ -6,7 +6,7 @@
         </div>
         <div class="details">
             <h4 class="title">{{ ucfirst($title) }}</h4>
-            <div class="price">{{ $price }}</div>
+            <div class="price text-sm">{{ $price }}</div>
         </div>
     </a>
 </article>

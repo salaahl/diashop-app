@@ -1,7 +1,7 @@
 <nav id="navbar" class="bg-white">
     <div class="h-full w-full max-w-screen-xl flex flex-wrap items-center justify-end lg:justify-between mx-auto max-[1023px]-px-4 xl:p-0">
         <a href="/" class="h-[10vh] flex flex-col justify-center items-center absolute top-0 left-2/4 right-2/4">
-            <span class="self-center text-sm uppercase font-semibold whitespace-nowrap">Diashop-b</span>
+            <span class="self-center uppercase font-semibold whitespace-nowrap">Diashop-b</span>
             <span class="self-center m-0 text-sm uppercase whitespace-nowrap">Paris</span>
         </a>
         <div class="h-[10vh] flex items-center">

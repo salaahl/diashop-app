@@ -28,7 +28,7 @@ class MainController extends Controller
                 $products = Product::where("catalog_id", $catalog_id)->orderBy('price', 'DESC')->paginate(12);
                 break;
             default:
-                $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'ASC')->paginate(5);
+                $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'ASC')->paginate(1);
         }
 
         return view('products/list', [

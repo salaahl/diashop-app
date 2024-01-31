@@ -7,17 +7,6 @@ main {
     width: 100%;
 }
 
-#filters {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    width: 100%;
-}
-
-.product {
-    margin-bottom: 10%;
-}
-
 
 @media (max-width: 767px) {
     #headers {
@@ -37,8 +26,6 @@ main {
 
     .product {
         width: 49%;
-        margin-left: 0.5%;
-        margin-right: 0.5%;
     }
 }
 
