@@ -47,7 +47,7 @@
             @foreach($products as $product)
             <tr class="bg-white border-b hover:bg-gray-50">
                 <td class="column-one p-4">
-                    <a href="/{{ $product['gender'] }}/catalog/{{ $product['category'] }}/{{ $product['id'] }}">
+                    <a href="/{{ $product['gender'] == 'woman' ? 'woman': 'men' }}/catalog/{{ $product['category'] }}/{{ $product['id'] }}">
                         <img src="/images/{{ $product['thumbnail'] }}" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
                     </a>
                 </td>
@@ -115,7 +115,7 @@
         </div>
     </form>
     <div class="w-full mt-8 mb-2">
-        <h4 class="mb-4 text-sm text-center text-gray-500">Options de payement à la prochaine étape</h4>
+        <h4 class="mb-4 text-sm text-center text-gray-500">Options de payement disponiles : Visa, Mastercard, CB & Paypal</h4>
         <a href="{{ route('checkout.show') }}" class="button-stylised-1">
             <span>Payer</span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="hidden h-[15px] ml-2">
