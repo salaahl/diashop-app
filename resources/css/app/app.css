@@ -57,7 +57,7 @@ header,
 
 #search-container > div {
     padding: 0 var(--container-padding-x);
-    max-width: 1280px;
+    max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -73,7 +73,7 @@ header,
 }
 
 main {
-    max-width: 1280px;
+    max-width: 1440px;
     padding-top: var(--container-padding-y);
     padding-left: var(--container-padding-x);
     padding-right: var(--container-padding-x);
@@ -283,6 +283,7 @@ img {
     overflow: hidden;
 }
 
+
 @media (max-width: 767px) {
     :root {
         --h1-font-size: x-large;
@@ -380,7 +381,9 @@ img {
         position: absolute;
         height: 0;
         width: -webkit-fill-available;
-        max-width: 1280px;
+        max-width: 1440px;
+        padding-left: var(--container-padding-x);
+        padding-right: var(--container-padding-x);
         inset: 10vh 0 0 0;
         transform: unset;
         overflow: hidden;
@@ -426,10 +429,15 @@ img {
 
 @media (min-width: 1280px) {
     :root {
-        --container-padding-x: 0%;
+        --container-padding-x: 2%;
         --container-padding-y: 0;
     }
 
+    main {
+        padding-left: var(--container-padding-x);
+        padding-right: var(--container-padding-x);
+    }
+    
     header,
     #search-container {
         padding: 0 var(--container-padding-x);
@@ -442,6 +450,14 @@ img {
         border-bottom-right-radius: 10px;
     }
 }
+
+@media (min-width: 1536px) {
+    :root {
+        --container-padding-x: 0;
+        --container-padding-y: 0;
+    }
+}
+
 
 /* Keyframes */
 @keyframes bounce {
