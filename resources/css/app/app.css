@@ -91,7 +91,7 @@ header {
 img {
     height: 100%;
     width: 100%;
-    object-fit: contains;
+    object-fit: cover;
 }
 
 /* Boutons, radios et divers */
