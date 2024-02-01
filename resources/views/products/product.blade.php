@@ -70,7 +70,9 @@
         </div>
     </section>
 </div>
-<!-- L'idée serait de mettre des produits ici avec une recherche 'like' -->
+<!-- S'il y en a mininum 2 dans la catégorie :
+L'idée serait ensuite de mettre des produits ici avec une recherche 'like' -->
+@if($product->category->products->take(2)
 <section id="other-products-container" class="mb-6">
     <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
     @foreach($product->category->products->take(3) as $product)
@@ -79,6 +81,7 @@
     @endif
     @endforeach
 </section>
+@endif
 @endsection
 
 @section('scripts')
