@@ -35,23 +35,23 @@
             </div>
             <div>
                 <div class="radio-toolbar">
-                    @if($product->quantity_per_size["s"])
+                    @if(isset($product->quantity_per_size["s"]))
                     <input type="radio" name="size" id="s" value="s">
                     <label class="radio_label" for="s">S</label>
                     @endif
-                    @if($product->quantity_per_size["m"])
+                    @if(isset($product->quantity_per_size["m"]))
                     <input type="radio" name="size" id="m" value="m">
                     <label class="radio_label" for="m">M</label>
                     @endif
-                    @if($product->quantity_per_size["l"])
+                    @if(isset($product->quantity_per_size["l"]))
                     <input type="radio" name="size" id="l" value="l">
                     <label class="radio_label" for="l">L</label>
                     @endif
-                    @if($product->quantity_per_size["xl"])
+                    @if(isset($product->quantity_per_size["xl"]))
                     <input type="radio" name="size" id="xl" value="xl">
                     <label class="radio_label" for="xl">XL</label>
                     @endif
-                    @if($product->quantity_per_size["xxl"])
+                    @if(isset($product->quantity_per_size["xxl"]))
                     <input type="radio" name="size" id="xxl" value="xxl">
                     <label class="radio_label" for="xxl">XXL</label>
                     @endif
