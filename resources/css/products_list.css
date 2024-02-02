@@ -11,6 +11,14 @@ main {
     filter: grayscale(1);
 }
 
+#filters {
+    margin-bottom: 1rem;
+}
+
+.product {
+    margin-bottom: 2rem;
+}
+
 .category.selected {
     filter: grayscale(0);
 }
