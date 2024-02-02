@@ -17,7 +17,7 @@
 
 @section('main')
 <div class="flex flex-wrap lg:flex-nowrap flex-col md:flex-row">
-    <section id="product-images-container" class="w-full md:w-auto">
+    <section id="product-images-container" class="w-full lg:w-auto">
         <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
             @foreach($product->img_fullsize as $image)
             <li class="h-[70vh] min-w-[100vw] md:min-w-[auto] md:h-[90vh] lg:aspect-square snap-start">
@@ -26,7 +26,7 @@
             @endforeach
         </ul>
     </section>
-    <section id="product-details-container" class="w-full md:w-auto">
+    <section id="product-details-container" class="w-full lg:w-auto">
         <div id="product-detail" class="md:h-screen md:mt-[-10vh] max-md:pt-4 md:py-[10vh] sticky top-0">
             <div>
                 <h2 id="title">{{ ucfirst($product->name) }}</h2>
