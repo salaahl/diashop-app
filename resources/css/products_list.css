@@ -11,7 +11,7 @@ main {
     filter: grayscale(1);
 }
 
-.category .selected {
+.category.selected {
     filter: grayscale(0);
 }
 
