@@ -35,10 +35,26 @@
             </div>
             <div>
                 <div class="radio-toolbar">
-                    @foreach($product->quantity_per_size as $size => $quantity)
-                    <input type="radio" name="size" id="{{ $size }}" value="{{ $size }}">
-                    <label class="radio_label uppercase" for="{{ $size }}">{{ $size }}</label>
-                    @endforeach
+                    @if($product->quantity_per_size["s"])
+                    <input type="radio" name="size" id="s" value="s">
+                    <label class="radio_label" for="s">S</label>
+                    @endif
+                    @if($product->quantity_per_size["m"])
+                    <input type="radio" name="size" id="m" value="m">
+                    <label class="radio_label" for="m">M</label>
+                    @endif
+                    @if($product->quantity_per_size["l"])
+                    <input type="radio" name="size" id="l" value="l">
+                    <label class="radio_label" for="l">L</label>
+                    @endif
+                    @if($product->quantity_per_size["xl"])
+                    <input type="radio" name="size" id="xl" value="xl">
+                    <label class="radio_label" for="xl">XL</label>
+                    @endif
+                    @if($product->quantity_per_size["xxl"])
+                    <input type="radio" name="size" id="xxl" value="xxl">
+                    <label class="radio_label" for="xxl">XXL</label>
+                    @endif
                 </div>
                 <div>
                     <label for="quantity" class="sr-only">Underline select</label>
