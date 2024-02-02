@@ -41,7 +41,7 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 @if($categories)
 <div id="categories" class="flex w-full my-8 overflow-x-auto">
     @foreach($categories as $category)
-    <article class="category">
+    <article class="category" @if(isset($query[5])) @if($query[5] == $category->name) selected @endif @endif>
         <a href="/{{ $query[3] }}/catalog/{{ $category->name }}">
             <div class="thumbnail">
                 <img src='{{ asset("/images/$category->img_thumbnail") }}' />
