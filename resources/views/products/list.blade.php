@@ -43,8 +43,10 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
     @foreach($categories as $category)
     <article 
         @if(isset($query[5])) 
-            @if($query[5] == $category->name) 
-            class="category selected" 
+            @if($query[5] == $category->name)
+                class="category selected"
+            @else
+                class="category"
             @endif 
         @else 
             class="category"
