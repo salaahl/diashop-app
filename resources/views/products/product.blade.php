@@ -73,7 +73,7 @@
 <!-- S'il y en a mininum 2 dans la catégorie :
 L'idée serait ensuite de mettre des produits ici avec une recherche 'like' -->
 @if($product->category->products->take(2))
-<section id="other-products-container" class="xl:mx-[-2%] xl:mb-6 px-6 pb-6 bg-stone-200">
+<section id="other-products-container" class="2xl:mx-[-2%] mt-6 2xl:mb-6 px-6 pb-6 bg-stone-200">
     <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
     @foreach($product->category->products->take(3) as $product)
     @if($product->id !== basename(url()->current()))
