@@ -21,7 +21,7 @@ class CatalogController extends Controller
      */
     public function create()
     {
-        return view('manage/add-catalog');
+        return view('administrator/add/catalog');
     }
 
     /**
@@ -47,23 +47,37 @@ class CatalogController extends Controller
      */
     public function show(Catalog $catalog)
     {
-        //
+        $catalogs = Catalog::all();
+
+        return view('administrator/show/list', [
+            "catalogs" => $catalogs
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Catalog $catalog)
+    public function edit($catalog_id)
     {
-        //
+        $catalog = Catalog::where("id", $catalog_id)->first();
+
+        return view('administrator/add/catalog', [
+            "catalog" => $catalog
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Catalog $catalog)
+    public function update($catalog_id, Request $request)
     {
-        //
+        $request->validate([
+            "gender" => ['required', 'string', 'min:2', 'max:60'],
+        ]);
+
+        $catalog = Catalog::where("id", $catalog_id)->first();
+        $catalog->gender = strtolower($request->gender);
+        $catalog->save();
     }
 
     /**

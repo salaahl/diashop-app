@@ -46,46 +46,49 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'is.admin'])->group(function () {
-    Route::prefix('manage/')->group(function () {
-        Route::get('index/', function () {
-            return view('manage.index');
-        })->name('manage.index');
-        Route::get('catalogs/', [ProductController::class, 'catalogs'])->name('manage.catalogs');
-        Route::get('categories/', [ProductController::class, 'catalog'])->name('manage.categories');
-        Route::post('get-categories/', [CategoryController::class, 'getCategories'])->name('manage.get-categories');
-        Route::get('brands/', [ProductController::class, 'catalog'])->name('manage.brands');
-        Route::get('products/', [ProductController::class, 'catalog'])->name('manage.products');
-        Route::get('options/', [ProductController::class, 'catalog'])->name('manage.options');
-        Route::get('sizes/', [ProductController::class, 'catalog'])->name('manage.sizes');
-        Route::get('woman/catalog/', [ProductController::class, 'catalog'])->name('manage.woman.catalog');
+    Route::prefix('administrator')->group(function () {
+        Route::get('/', function () {
+            return view('administrator.dashboard');
+        })->name('administrator.dashboard');
+        Route::get('/show/catalogs/', [CatalogController::class, 'show'])->name('administrator.show.catalogs');
+        Route::get('/show/categories/', [CategoryController::class, 'show'])->name('administrator.show.categories');
+        Route::post('/get-categories/', [CategoryController::class, 'getCategories'])->name('administrator.get-categories');
+        Route::get('/show/products/', [ProductController::class, 'show'])->name('administrator.show.products');
 
-        Route::get('add/product/', [ProductController::class, 'create'])->name('create.product');
-        Route::post('add/product/', [ProductController::class, 'store'])->name('store.product');
-        Route::patch('update/product/', [ProductController::class, 'update'])->name('update.product');
-        Route::delete('delete/product/', [ProductController::class, 'destroy'])->name('destroy.product');
-        Route::get('add/catalog/', [CatalogController::class, 'create'])->name('create.catalog');
-        Route::post('add/catalog/', [CatalogController::class, 'store'])->name('store.catalog');
-        Route::patch('update/catalog/', [CatalogController::class, 'update'])->name('update.catalog');
-        Route::delete('delete/catalog/', [CatalogController::class, 'destroy'])->name('destroy.catalog');
-        Route::get('add/category/', [CategoryController::class, 'create'])->name('create.category');
-        Route::post('add/category/', [CategoryController::class, 'store'])->name('store.category');
-        Route::patch('update/category/', [CategoryController::class, 'update'])->name('update.category');
-        Route::delete('delete/category/', [CategoryController::class, 'destroy'])->name('destroy.category');
+        Route::get('/add/catalog/', [CatalogController::class, 'create'])->name('create.catalog');
+        Route::post('/add/catalog/', [CatalogController::class, 'store'])->name('store.catalog');
+        Route::get('/edit/catalog/{catalog_id}', [CatalogController::class, 'edit'])->name('edit.catalog');
+        Route::post('/update/catalog/{catalog_id}', [CatalogController::class, 'update'])->name('update.catalog');
+        Route::delete('/delete/catalog/', [CatalogController::class, 'destroy'])->name('destroy.catalog');
+
+        Route::get('/add/category/', [CategoryController::class, 'create'])->name('create.category');
+        Route::post('/add/category/', [CategoryController::class, 'store'])->name('store.category');
+        Route::get('/edit/category/{category_id}', [CategoryController::class, 'edit'])->name('edit.category');
+        Route::post('/update/category/{category_id}', [CategoryController::class, 'update'])->name('update.category');
+        Route::delete('/delete/category/', [CategoryController::class, 'destroy'])->name('destroy.category');
+
+        Route::get('/add/product/', [ProductController::class, 'create'])->name('create.product');
+        Route::post('/add/product/', [ProductController::class, 'store'])->name('store.product');
+        Route::get('/edit/product/{product_id}', [ProductController::class, 'edit'])->name('edit.product');
+        Route::post('/update/product/{product_id}', [ProductController::class, 'update'])->name('update.product');
+        Route::delete('/delete/product/', [ProductController::class, 'destroy'])->name('destroy.product');
     });
 });
 
-Route::get('search/{product?}', [MainController::class, 'search'])->name('search.product');
+Route::get('search/{query?}', [MainController::class, 'search'])->name('search.product');
 Route::post('search/', [MainController::class, 'searchAsync'])->name('search.product.async');
+
 Route::get('men/catalog', [MainController::class, 'catalog'])->name('men.catalog');
 Route::post('men/catalog', [MainController::class, 'catalog'])->name('men.catalog.post');
 Route::get('men/catalog/{category}', [MainController::class, 'category'])->name('men.category');
 Route::post('men/catalog/{category}', [MainController::class, 'category'])->name('men.category.post');
-Route::get('men/catalog/{category}/{product_id}', [ProductController::class, 'show'])->name('men.product');
+Route::get('men/catalog/{category}/{product_id}', [MainController::class, 'product'])->name('men.product');
+
 Route::get('woman/catalog', [MainController::class, 'catalog'])->name('woman.catalog');
 Route::post('woman/catalog', [MainController::class, 'catalog'])->name('woman.catalog.post');
 Route::get('woman/catalog/{category}', [MainController::class, 'category'])->name('woman.category');
 Route::post('woman/catalog/{category}', [MainController::class, 'category'])->name('woman.category.post');
-Route::get('woman/catalog/{category}/{product_id}', [ProductController::class, 'show'])->name('woman.product');
+Route::get('woman/catalog/{category}/{product_id}', [MainController::class, 'product'])->name('woman.product');
 Route::post('get-quantity/', [ProductController::class, 'getQuantity'])->name('product.get-quantity');
 
 Route::get('basket/', [BasketController::class, 'show'])->name('basket.show');
@@ -103,7 +106,7 @@ Route::get('return/{slug}',  function () {
     return view('stripe/return');
 })->name('return.show');
 Route::post('status/', [StripePaymentController::class, 'status'])->name('status.post');
-Route::post('stripe_webhooks/', [StripePaymentController::class, 'webhooks'])->name('webhooks');
+Route::post('webhooks/', [StripePaymentController::class, 'webhooks'])->name('webhooks');
 
 Route::get('contact-us/', [MainController::class, 'contactUs'])->name('contact-us');
 Route::get('about-me/', function () {

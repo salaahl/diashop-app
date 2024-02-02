@@ -29,8 +29,8 @@ class ProductController extends Controller
     {
         $catalogs = Catalog::all();
 
-        return view('manage/add-product', [
-            "catalogs" => $catalogs,
+        return view('administrator/add/product', [
+            "catalogs" => $catalogs
         ]);
     }
 
@@ -73,20 +73,19 @@ class ProductController extends Controller
             $product->color = strtolower($request->color);
             $product->img_thumbnail = [$request->thumbnail_one->getClientOriginalName(), $request->thumbnail_two->getClientOriginalName()];
 
-            $images = [$request->picture_one->getClientOriginalName()];
-            if($request->picture_two) $images[] = $request->picture_two->getClientOriginalName();
-            if($request->picture_three) $images[] = $request->picture_three->getClientOriginalName();
-            if($request->picture_four) $images[] = $request->picture_four->getClientOriginalName();
+            $images = [$request->picture_one->getClientOriginalName(), $request->picture_two->getClientOriginalName()];
+            if ($request->picture_three) $images[] = $request->picture_three->getClientOriginalName();
+            if ($request->picture_four) $images[] = $request->picture_four->getClientOriginalName();
             $product->img_fullsize = $images;
 
             $quantity_per_size = [];
-            if($request->quantity_s) $quantity_per_size["s"] = $request->quantity_s;
-            if($request->quantity_m) $quantity_per_size["m"] = $request->quantity_m;
-            if($request->quantity_l) $quantity_per_size["l"] = $request->quantity_l;
-            if($request->quantity_xl) $quantity_per_size["xl"] = $request->quantity_xl;
-            if($request->quantity_xxl) $quantity_per_size["xxl"] = $request->quantity_xxl;
+            if ($request->quantity_s) $quantity_per_size["s"] = $request->quantity_s;
+            if ($request->quantity_m) $quantity_per_size["m"] = $request->quantity_m;
+            if ($request->quantity_l) $quantity_per_size["l"] = $request->quantity_l;
+            if ($request->quantity_xl) $quantity_per_size["xl"] = $request->quantity_xl;
+            if ($request->quantity_xxl) $quantity_per_size["xxl"] = $request->quantity_xxl;
             $product->quantity_per_size = $quantity_per_size;
-            
+
             $product->save();
         } else {
             return Redirect::back()->withErrors(['msg' => 'Erreur. Ce produit existe déjà.']);
@@ -98,12 +97,12 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($category, $product_id)
+    public function show()
     {
-        $product = Product::where('id', $product_id)->first();
+        $products = Product::all();
 
-        return view('products/product', [
-            "product" => $product
+        return view('administrator/show/list', [
+            "products" => $products
         ]);
     }
 
@@ -111,7 +110,7 @@ class ProductController extends Controller
     {
         try {
             $quantity = Product::where('id', $request->product_id)->first()->quantity_per_size[$request->size];
-            
+
             return response()->json([
                 'quantity' => $quantity
             ]);
@@ -126,17 +125,66 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit($product_id)
     {
-        //
+        $catalogs = Catalog::all();
+        $product = Product::where("id", $product_id)->first();
+
+        return view('administrator/add/product', [
+            "catalogs" => $catalogs,
+            "product" => $product
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update($product_id, Request $request)
     {
-        //
+        $request->validate([
+            "name" => ['required', 'string', 'min:2', 'max:60'],
+            "catalog_id" => ['required', 'integer'],
+            "category_id" => ['required', 'integer'],
+            "price" => ['required', 'numeric'],
+            "description" => ['required', 'string', 'min:2', 'max:400'],
+            "color" => ['required', 'string', 'min:2', 'max:60'],
+            "thumbnail_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "thumbnail_two" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "picture_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "picture_two" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
+            "picture_three" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
+            "picture_four" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
+            "quantity_s" => ['nullable', 'integer'],
+            "quantity_m" => ['nullable', 'integer'],
+            "quantity_l" => ['nullable', 'integer'],
+            "quantity_xl" => ['nullable', 'integer'],
+            "quantity_xxl" => ['nullable', 'integer'],
+        ]);
+
+        $product = Product::where("id", $product_id)->first();
+
+        $product->catalog_id = $request->catalog_id;
+        $product->category_id = $request->category_id;
+        $product->name = strtolower($request->name);
+        $product->price = $request->price;
+        $product->description = strtolower($request->description);
+        $product->color = strtolower($request->color);
+        $product->img_thumbnail = [$request->thumbnail_one->getClientOriginalName(), $request->thumbnail_two->getClientOriginalName()];
+
+        $images = [$request->picture_one->getClientOriginalName(), $request->picture_two->getClientOriginalName()];
+        if ($request->picture_three) $images[] = $request->picture_three->getClientOriginalName();
+        if ($request->picture_four) $images[] = $request->picture_four->getClientOriginalName();
+        $product->img_fullsize = $images;
+
+        $quantity_per_size = [];
+        if ($request->quantity_s) $quantity_per_size["s"] = $request->quantity_s;
+        if ($request->quantity_m) $quantity_per_size["m"] = $request->quantity_m;
+        if ($request->quantity_l) $quantity_per_size["l"] = $request->quantity_l;
+        if ($request->quantity_xl) $quantity_per_size["xl"] = $request->quantity_xl;
+        if ($request->quantity_xxl) $quantity_per_size["xxl"] = $request->quantity_xxl;
+        $product->quantity_per_size = $quantity_per_size;
+
+        $product->save();
     }
 
     /**

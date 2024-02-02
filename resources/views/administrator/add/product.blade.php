@@ -4,7 +4,7 @@
 @parent
 @endsection
 
-@section('title', 'Ajouter un nouveau produit')
+@section('title', 'Ajouter/mettre à jour un article')
 
 @section('links')
 @parent
@@ -17,14 +17,18 @@
 @section('main')
 <section class="bg-white">
     <div class="py-8 mx-auto lg:py-16">
-        <h1 class="mb-4 text-xl font-bold text-gray-900 uppercase">Ajouter un nouvel article</h1>
-        <form action="{{ route('store.product') }}" enctype="multipart/form-data" method="POST">
+        <h1 class="mb-4 text-xl font-bold text-gray-900 uppercase">Ajouter/mettre à jour un article</h1>
+        <form @if($product) action="{{ route('update.product', $product->id) }}" @else action="{{ route('store.product') }}" @endif enctype="multipart/form-data" method="POST">
             @csrf
             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6 items-end">
                 <div class="col-span-2 md:col-span-1">
                     <label for="catalog_id" class="sr-only uppercase">Selectionnez un catalogue</label>
-                    <select id="catalog_id" name="catalog_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                    <select id="catalog_id" name="catalog_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
+                        @if($product)
+                        <option value="{{ $product->catalog->id }}" selected>{{ $product->catalog->gender }}</option>
+                        @else
                         <option disabled selected>Selectionnez un catalogue</option>
+                        @endif
                         @foreach($catalogs as $catalog)
                         <option value="{{ $catalog->id }}">{{ $catalog->gender }}</option>
                         @endforeach
@@ -32,52 +36,65 @@
                 </div>
                 <div class="col-span-2 md:col-span-1">
                     <label for="category_id" class="sr-only uppercase">Selectionnez une catégorie</label>
-                    <select id="category_id" name="category_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                    <select id="category_id" name="category_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
+                        @if($product)
+                        <option value="{{ $product->category->id }}" selected>{{ $product->category->name }}</option>
+                        @else
                         <option disabled selected>Selectionnez une catégorie</option>
+                        @endif
                     </select>
                 </div>
 
                 <div class="col-span-2 md:col-span-1 h-full flex flex-col justify-between">
                     <div>
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 uppercase">Nom</label>
-                        <input type="text" name="name" id="name" minlength="2" maxlength="60" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Nom de l'article">
+                        <input type="text" name="name" id="name" minlength="2" maxlength="60" @if($product) value="{{ $product->name }}" @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Nom de l'article" required>
                     </div>
                     <div>
                         <label for="price" class="block mb-2 text-sm font-medium text-gray-900 uppercase">Prix</label>
-                        <input type="float" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Renseigner le prix sans mettre le signe € (ex : 9.99)">
+                        <input type="float" name="price" id="price" @if($product) value="{{ $product->price }}" @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Renseigner le prix sans mettre le signe € (ex : 9.99)" required>
                     </div>
                     <div>
                         <label for="color" class="sr-only uppercase">Couleur</label>
-                        <select id="color" name="color" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                        <select id="color" name="color" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
+                            @if($product)
+                            <option value="{{ $product->color }}">{{ $product->color }}</option>
+                            @else
                             <option disabled selected>Selectionner une couleur</option>
-                            <option value="blanc">Blanc</option>
-                            <option value="noir">Noir</option>
-                            <option value="bleu">Bleu</option>
-                            <option value="rouge">Rouge</option>
-                            <option value="jaune">Jaune</option>
-                            <option value="vert">Vert</option>
-                            <option value="orange">Orange</option>
-                            <option value="marron">Marron</option>
-                            <option value="rose">Rose</option>
-                            <option value="gris">Gris</option>
-                            <option value="violet">Violet</option>
+                            @endif
+                            <option value="blanc">blanc</option>
+                            <option value="noir">noir</option>
+                            <option value="bleu">bleu</option>
+                            <option value="rouge">rouge</option>
+                            <option value="jaune">jaune</option>
+                            <option value="vert">vert</option>
+                            <option value="orange">orange</option>
+                            <option value="beige">beige</option>
+                            <option value="marron">marron</option>
+                            <option value="rose">rose</option>
+                            <option value="gris">gris</option>
+                            <option value="violet">violet</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-span-2 md:col-span-1">
                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900 uppercase">Description</label>
-                    <textarea id="description" name="description" rows="8" minlength="2" maxlength="400" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Entrez la description du produit ici :"></textarea>
+                    @if($product)
+                    <textarea id="description" name="description" rows="8" minlength="2" maxlength="400" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Entrez la description du produit ici :" required>{{ $product->description }}</textarea>
+                    @else
+                    <textarea id="description" name="description" rows="8" minlength="2" maxlength="400" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Entrez la description du produit ici :" required></textarea>
+                    @endif
                 </div>
                 <div class="col-span-2 md:col-span-1">
-                    <h3 class="mb-4 font-semibold text-gray-900 text-sm">IMAGES <span class="text-sm text-gray-500">(ajouter au moins les deux miniatures et l'image 1. Formats acceptés : SVG, PNG ou JPG).</span></h3>
+                    <h3 class="mb-4 font-semibold text-gray-900 text-sm">IMAGES <span class="text-sm text-gray-500">(ajouter au moins les deux miniatures et les images 1 et 2. Formats acceptés : SVG, PNG ou JPG).</span></h3>
                     <label class="block mb-2 text-sm font-medium text-gray-900" for="thumbnail_one">Miniature 1</label>
-                    <input aria-describedby="thumbnail_one_input_help" id="thumbnail_one" type="file" name="thumbnail_one" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
+                    <input aria-describedby="thumbnail_one_input_help" id="thumbnail_one" type="file" name="thumbnail_one" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
                     <label class="block mb-2 text-sm font-medium text-gray-900" for="thumbnail_two">Miniature 2</label>
-                    <input aria-describedby="thumbnail_two_input_help" id="thumbnail_two" type="file" name="thumbnail_two" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
+                    <input aria-describedby="thumbnail_two_input_help" id="thumbnail_two" type="file" name="thumbnail_two" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
                     <label class="block mb-2 text-sm font-medium text-gray-900" for="picture_one">Image 1</label>
-                    <input aria-describedby="picture_one_input_help" id="picture_one" type="file" name="picture_one" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
+                    <input aria-describedby="picture_one_input_help" id="picture_one" type="file" name="picture_one" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
                     <label class="block mb-2 text-sm font-medium text-gray-900" for="picture_two">Image 2</label>
-                    <input aria-describedby="picture_two_input_help" id="picture_two" type="file" name="picture_two" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
+                    <input aria-describedby="picture_two_input_help" id="picture_two" type="file" name="picture_two" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
                     <label class="block mb-2 text-sm font-medium text-gray-900" for="picture_three">Image 3</label>
                     <input aria-describedby="picture_three_input_help" id="picture_three" type="file" name="picture_three" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
                     <label class="block mb-2 text-sm font-medium text-gray-900" for="picture_four">Image 4</label>
@@ -96,7 +113,7 @@
                         </h4>
                         <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
                             <div class="py-5 border-b border-gray-200 ">
-                                <input type="number" name="quantity_s" class="w-full m-2 text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Quantité">
+                                <input type="number" name="quantity_s" @if(isset($product->quantity_per_size['s'])) value="{{ $product->quantity_per_size['s'] }}" @endif class="w-full m-2 text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Quantité">
                             </div>
                         </div>
                         <h4 id="accordion-flush-heading-2">
@@ -109,7 +126,7 @@
                         </h4>
                         <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
                             <div class="py-5 border-b border-gray-200 ">
-                                <input type="number" name="quantity_m" class="w-full m-2 text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Quantité">
+                                <input type="number" name="quantity_m" @if(isset($product->quantity_per_size['m'])) value="{{ $product->quantity_per_size['m'] }}" @endif class="w-full m-2 text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Quantité">
                             </div>
                         </div>
                         <h4 id="accordion-flush-heading-3">
@@ -122,7 +139,7 @@
                         </h4>
                         <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
                             <div class="py-5 border-b border-gray-200 ">
-                                <input type="number" name="quantity_l" class="w-full m-2 text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Quantité">
+                                <input type="number" name="quantity_l" @if(isset($product->quantity_per_size['l'])) value="{{ $product->quantity_per_size['l'] }}" @endif class="w-full m-2 text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Quantité">
                             </div>
                         </div>
                         <h4 id="accordion-flush-heading-4">
@@ -135,7 +152,7 @@
                         </h4>
                         <div id="accordion-flush-body-4" class="hidden" aria-labelledby="accordion-flush-heading-4">
                             <div class="py-5 border-b border-gray-200 ">
-                                <input type="number" name="quantity_xl" class="w-full m-2 text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Quantité">
+                                <input type="number" name="quantity_xl" @if(isset($product->quantity_per_size['xl'])) value="{{ $product->quantity_per_size['xl'] }}" @endif class="w-full m-2 text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Quantité">
                             </div>
                         </div>
                         <h4 id="accordion-flush-heading-5">
@@ -148,7 +165,7 @@
                         </h4>
                         <div id="accordion-flush-body-5" class="hidden" aria-labelledby="accordion-flush-heading-5">
                             <div class="py-5 border-b border-gray-200 ">
-                                <input type="number" name="quantity_xxl" class="w-full m-2 text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Quantité">
+                                <input type="number" name="quantity_xxl" @if(isset($product->quantity_per_size['xxl'])) value="{{ $product->quantity_per_size['xxl'] }}" @endif class="w-full m-2 text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Quantité">
                             </div>
                         </div>
                     </div>
@@ -180,7 +197,7 @@
             catalog_id: this.value,
         };
 
-        const request = new Request('/manage/get-categories', {
+        const request = new Request('/administrator/get-categories', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {

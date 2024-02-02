@@ -21,11 +21,11 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($category_id = null)
     {
         $catalogs = Catalog::all();
 
-        return view('manage/add-category', [
+        return view('administrator/add/category', [
             "catalogs" => $catalogs
         ]);
     }
@@ -58,9 +58,13 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show()
     {
-        //
+        $categories = Category::all();
+
+        return view('administrator/show/list', [
+            "categories" => $categories
+        ]);
     }
 
     public function getCategories(Request $request)
@@ -81,17 +85,33 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit($category_id)
     {
-        //
+        $catalogs = Catalog::all();
+        $category = Category::where("id", $category_id)->first();
+
+        return view('administrator/add/category', [
+            "catalogs" => $catalogs,
+            "category" => $category
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update($category_id, Request $request)
     {
-        //
+        $request->validate([
+            "catalog_id" => ['required', 'integer'],
+            "category" => ['required', 'string', 'min:2', 'max:60'],
+            "img_thumbnail" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+        ]);
+
+        $category = Category::where("id", $category_id)->first();
+        $category->name = strtolower($request->category);
+        $category->img_thumbnail = $request->img_thumbnail->getClientOriginalName();
+        $category->catalog_id = $request->catalog_id;
+        $category->save();
     }
 
     /**

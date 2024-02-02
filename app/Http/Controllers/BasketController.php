@@ -9,7 +9,6 @@ use App\Repositories\BasketSessionRepository;
 
 class BasketController extends Controller
 {
-
     protected BasketSessionRepository $basketRepository; // L'instance BasketSessionRepository
 
     public function __construct(BasketInterfaceRepository $basketRepository)

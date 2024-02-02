@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('ammount');
-            $table->string('billing_address_id');
-            $table->string('shipping_address_id');
-            $table->foreignId('user_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->string('fullname');
+            $table->string('email');
+            $table->json('ammount');
+            $table->json('products_list');
+            $table->json('billing_address');
+            $table->json('shipping_address');
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }

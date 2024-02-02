@@ -84,6 +84,18 @@ class MainController extends Controller
         ]);
     }
 
+    /**
+     * Display the specified resource.
+     */
+    public function product($catalog, $product_id)
+    {
+        $product = Product::where('id', $product_id)->first();
+
+        return view('products/product', [
+            "product" => $product
+        ]);
+    }
+
     public function search($input, $catalog_id)
     {
         $catalog = Catalog::where("id", $catalog_id)->get();

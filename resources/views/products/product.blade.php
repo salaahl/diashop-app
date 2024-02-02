@@ -92,7 +92,7 @@ L'idée serait ensuite de mettre des produits ici avec une recherche 'like' -->
 <section id="other-products-container" class="mt-10 xl:mb-10 px-6 pb-6 bg-stone-200">
     <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
     @foreach($product->category->products->take(3) as $product)
-    @if($product->id !== basename(url()->current()))
+    @if($product->id != basename(url()->current()))
     <x-product link="./{{ $product->id }}" image="/images/{{ $product->img_thumbnail[0] }}" hover="/images/{{ $product->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
     @endif
     @endforeach

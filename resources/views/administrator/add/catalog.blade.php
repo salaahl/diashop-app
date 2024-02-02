@@ -4,7 +4,7 @@
 @parent
 @endsection
 
-@section('title', 'Ajouter un nouveau catalogue')
+@section('title', 'Ajouter un catalogue')
 
 @section('links')
 @parent
@@ -35,11 +35,11 @@
 
 @section('main')
 <div>
-    <h1 class="mb-4 text-xl font-bold text-gray-900 uppercase">Ajouter un nouveau catalogue</h1>
-    <form action="{{ route('store.catalog') }}" enctype="multipart/form-data" method="POST">
+    <h1 class="mb-4 text-xl font-bold text-gray-900 uppercase">Ajouter/mettre à jour un catalogue</h1>
+    <form @if($catalog) action="{{ route('update.catalog', $catalog->id) }}" @else action="{{ route('store.catalog') }}" @endif enctype="multipart/form-data" method="POST">
         @csrf
         <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 uppercase">Catalogue</label>
-        <input type="text" name="gender" id="gender" minlength="2" maxlength="60" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Nom du catalogue (exemple : homme)">
+        <input type="text" name="gender" id="gender" minlength="2" maxlength="60" @if($catalog) value="{{ $catalog->gender }}" @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Nom du catalogue (exemple : homme)" required>
         <button type="submit" class="w-full px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center bg-gray-900 text-white rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-primary-800">
             Ajouter
         </button>
