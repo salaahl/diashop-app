@@ -46,7 +46,7 @@
     </div>
 </li>
 @endforeach
-<aside class="w-full">
+<aside class="w-full my-4">
     {{ $catalogs->links() }}
 </aside>
 @elseif(isset($categories))
@@ -65,7 +65,7 @@
     </div>
 </li>
 @endforeach
-<aside class="w-full">
+<aside class="w-full my-4">
     {{ $categories->links() }}
 </aside>
 @elseif(isset($products))
@@ -85,7 +85,7 @@
     </div>
 </li>
 @endforeach
-<aside class="w-full">
+<aside class="w-full my-4">
     {{ $products->links() }}
 </aside>
 @endif
