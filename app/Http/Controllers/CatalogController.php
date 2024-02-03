@@ -45,7 +45,7 @@ class CatalogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Catalog $catalog)
+    public function show(Request $request)
     {
         $catalogs = null;
 
