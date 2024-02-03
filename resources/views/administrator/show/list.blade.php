@@ -9,7 +9,7 @@
 @section('links')
 @parent
 <style>
-    .button-stylised-1 {
+    .button-stylised-1, button-stylised-1-custom {
         width: auto;
     }
 </style>
