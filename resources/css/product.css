@@ -25,7 +25,7 @@ h2 {
     flex-wrap: wrap;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
     ::-webkit-scrollbar:horizontal {
         display: none;
     }
@@ -37,6 +37,11 @@ h2 {
 
     #buttons {
         flex-direction: column;
+    }
+
+    #buttons > button {
+        width: 100%;
+        margin: 2.5% 0;
     }
 
     #product-details-container {
@@ -62,7 +67,7 @@ h2 {
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     main > div:first-of-type {
         display: flex;
         justify-content: space-between;
@@ -81,15 +86,7 @@ h2 {
     #other-products-container .product:nth-of-type(2) {
         margin: auto 5%;
     }
-}
 
-@media (min-width: 768px) and (max-width: 1023px) {
-    #buttons {
-        flex-direction: column;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1279px) {
     main {
         padding-left: 0;
         padding-right: 0;
@@ -98,16 +95,7 @@ h2 {
     #product-details-container {
         padding: 0 1.5rem;
     }
-}
 
-@media (max-width: 1024px) {
-    #buttons > button {
-        width: 100%;
-        margin: 2.5% 0;
-    }
-}
-
-@media (min-width: 1024px) {
     #buttons > button:nth-of-type(1) {
         width: 100%;
     }
@@ -122,5 +110,6 @@ h2 {
 @media (min-width: 1280px) {
     #product-details-container {
         padding-left: 1.5rem;
+        padding-right: 0;
     }
 }

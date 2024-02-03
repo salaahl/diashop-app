@@ -16,18 +16,18 @@
 @endsection
 
 @section('main')
-<div class="flex flex-wrap lg:flex-nowrap flex-col md:flex-row">
-    <section id="product-images-container" class="w-full lg:w-auto">
-        <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
+<div class="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row">
+    <section id="product-images-container" class="w-full lg:w-2/4">
+        <ul class="flex flex-nowrap lg:block snap-x snap-mandatory overflow-auto">
             @foreach($product->img_fullsize as $image)
-            <li class="h-[70vh] min-w-[100vw] md:min-w-[auto] md:h-[90vh] lg:aspect-square snap-start">
+            <li class="h-[70vh] min-w-[100vw] lg:min-w-[auto] lg:h-[90vh] snap-start">
                 <img src="/images/{{ $image }}" class="h-full w-full object-cover object-center" />
             </li>
             @endforeach
         </ul>
     </section>
-    <section id="product-details-container" class="w-full lg:w-auto">
-        <div id="product-detail" class="md:h-screen md:mt-[-10vh] max-md:pt-4 md:py-[10vh] sticky top-0">
+    <section id="product-details-container" class="w-full lg:w-2/4">
+        <div id="product-detail" class="lg:h-screen lg:mt-[-10vh] max-lg:pt-4 lg:py-[10vh] sticky top-0">
             <div>
                 <h2 id="title">{{ ucfirst($product->name) }}</h2>
                 <h2 id="price">{{ $product->price }}€</h2>
@@ -89,7 +89,7 @@
 <!-- S'il y en a mininum 2 dans la catégorie :
 L'idée serait ensuite de mettre des produits ici avec une recherche 'like' -->
 @if($product->category->products->take(2))
-<section id="other-products-container" class="mt-10 xl:mb-10 px-6 pb-6 bg-stone-200">
+<section id="other-products-container" class="mt-10 xl:mt-20 xl:mb-10 px-6 pb-6 bg-stone-200">
     <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
     @foreach($product->category->products->take(3) as $product)
     @if($product->id != basename(url()->current()))
