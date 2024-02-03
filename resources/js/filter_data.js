@@ -7,7 +7,7 @@ document.getElementById("filter_select").addEventListener("change", () => {
     filter.value = document.getElementById("filter_select").value;
     filter.name = "filter";
     
-    token = document.createElement("input");
+    let token = document.createElement("input");
     token.value = document.querySelector('[name="csrf-token"]').getAttribute("content");
     token.name = "_token";
     
