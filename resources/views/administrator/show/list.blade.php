@@ -84,4 +84,5 @@
 
 @section('scripts')
 @parent
+@vite('resources/js/filter_data.js')
 @endsection
