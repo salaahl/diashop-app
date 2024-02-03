@@ -17,20 +17,35 @@
 @section('main')
 @if(isset($catalogs))
 @foreach ($catalogs as $catalog)
-<li>
-    <a href="../update/catalog/{{ $catalog->id }}">Modifier</a>
+<li class="flex">
+    <h3>{{ $catalog->name }}</h3>
+    <a href="../edit/catalog/{{ $catalog->id }}" class="button-stylised-1">Modifier</a>
+    <form method="POST" action="../delete/catalog/{{ $catalog->id }}" onSubmit="return confirm('Etes-vous sûr ? Cette action est irreversible')">
+        @csrf
+        <button role="submit" class="button-stylised-1 button-stylised-1-custom">Supprimer</button>
+    </form>
 </li>
 @endforeach
 @elseif(isset($categories))
 @foreach ($categories as $category)
-<li>
-    <a href="../update/category/{{ $category->id }}">Modifier</a>
+<li class="flex">
+    <h3>{{ $category->name }}</h3>
+    <a href="../edit/category/{{ $category->id }}" class="button-stylised-1">Modifier</a>
+    <form method="POST" action="../delete/category/{{ $category->id }}" onSubmit="return confirm('Etes-vous sûr ? Cette action est irreversible')">
+        @csrf
+        <button role="submit" class="button-stylised-1 button-stylised-1-custom">Supprimer</button>
+    </form>
 </li>
 @endforeach
 @elseif(isset($products))
 @foreach ($products as $product)
-<li>
-    <a href="../update/product/{{ $product->id }}">Modifier</a>
+<li class="flex">
+    <h3>{{ $product->name }}</h3>
+    <a href="../edit/product/{{ $product->id }}" class="button-stylised-1">Modifier</a>
+    <form method="POST" action="../delete/product/{{ $product->id }}" onSubmit="return confirm('Etes-vous sûr ? Cette action est irreversible')">
+        @csrf
+        <button role="submit" class="button-stylised-1 button-stylised-1-custom">Supprimer</button>
+    </form>
 </li>
 @endforeach
 @endif
