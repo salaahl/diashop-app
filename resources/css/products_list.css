@@ -11,10 +11,6 @@ main {
     filter: grayscale(1);
 }
 
-#filters {
-    margin-bottom: 1rem;
-}
-
 .product {
     margin-bottom: 2rem;
 }
@@ -35,7 +31,7 @@ main {
         margin: 0 1%;
     }
 
-    #filters, .product {
+    .product {
         margin-left: 0.5%;
         margin-right: 0.5%;
     }
