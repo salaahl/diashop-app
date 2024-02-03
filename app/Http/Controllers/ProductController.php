@@ -52,6 +52,7 @@ class ProductController extends Controller
             "picture_two" => ['required', 'file', 'mimes:jpg,jpeg,png'],
             "picture_three" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
             "picture_four" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
+            "quantity_os" => ['nullable', 'integer'],
             "quantity_s" => ['nullable', 'integer'],
             "quantity_m" => ['nullable', 'integer'],
             "quantity_l" => ['nullable', 'integer'],
@@ -79,6 +80,7 @@ class ProductController extends Controller
             $product->img_fullsize = $images;
 
             $quantity_per_size = [];
+            if ($request->quantity_os) $quantity_per_size["os"] = $request->quantity_os;
             if ($request->quantity_s) $quantity_per_size["s"] = $request->quantity_s;
             if ($request->quantity_m) $quantity_per_size["m"] = $request->quantity_m;
             if ($request->quantity_l) $quantity_per_size["l"] = $request->quantity_l;
