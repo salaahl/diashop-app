@@ -35,9 +35,9 @@
             </div>
             <div>
                 <div class="radio-toolbar">
-                    @if(isset($product->quantity_per_size["taille_unique"]))
-                    <input type="radio" name="size" id="taille_unique" value="taille_unique">
-                    <label class="radio_label" for="taille_unique">Taille unique</label>
+                    @if(isset($product->quantity_per_size["os"]))
+                    <input type="radio" name="size" id="os" value="os">
+                    <label class="radio_label" for="os">Taille unique</label>
                     @endif
                     @if(isset($product->quantity_per_size["s"]))
                     <input type="radio" name="size" id="s" value="s">
