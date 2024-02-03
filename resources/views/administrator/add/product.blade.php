@@ -18,13 +18,13 @@
 <section class="bg-white">
     <div class="py-8 mx-auto lg:py-16">
         <h1 class="mb-4 text-xl font-bold text-gray-900 uppercase">Ajouter/mettre à jour un article</h1>
-        <form @if($product) action="{{ route('update.product', $product->id) }}" @else action="{{ route('store.product') }}" @endif enctype="multipart/form-data" method="POST">
+        <form @if(isset($product)) action="{{ route('update.product', $product->id) }}" @else action="{{ route('store.product') }}" @endif enctype="multipart/form-data" method="POST">
             @csrf
             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6 items-end">
                 <div class="col-span-2 md:col-span-1">
                     <label for="catalog_id" class="sr-only uppercase">Selectionnez un catalogue</label>
                     <select id="catalog_id" name="catalog_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
-                        @if($product)
+                        @if(isset($product))
                         <option value="{{ $product->catalog->id }}" selected>{{ $product->catalog->gender }}</option>
                         @else
                         <option disabled selected>Selectionnez un catalogue</option>
@@ -37,7 +37,7 @@
                 <div class="col-span-2 md:col-span-1">
                     <label for="category_id" class="sr-only uppercase">Selectionnez une catégorie</label>
                     <select id="category_id" name="category_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
-                        @if($product)
+                        @if(isset($product))
                         <option value="{{ $product->category->id }}" selected>{{ $product->category->name }}</option>
                         @else
                         <option disabled selected>Selectionnez une catégorie</option>
@@ -48,16 +48,16 @@
                 <div class="col-span-2 md:col-span-1 h-full flex flex-col justify-between">
                     <div>
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 uppercase">Nom</label>
-                        <input type="text" name="name" id="name" minlength="2" maxlength="60" @if($product) value="{{ $product->name }}" @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Nom de l'article" required>
+                        <input type="text" name="name" id="name" minlength="2" maxlength="60" @if(isset($product)) value="{{ $product->name }}" @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Nom de l'article" required>
                     </div>
                     <div>
                         <label for="price" class="block mb-2 text-sm font-medium text-gray-900 uppercase">Prix</label>
-                        <input type="float" name="price" id="price" @if($product) value="{{ $product->price }}" @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Renseigner le prix sans mettre le signe € (ex : 9.99)" required>
+                        <input type="float" name="price" id="price" @if(isset($product)) value="{{ $product->price }}" @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Renseigner le prix sans mettre le signe € (ex : 9.99)" required>
                     </div>
                     <div>
                         <label for="color" class="sr-only uppercase">Couleur</label>
                         <select id="color" name="color" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
-                            @if($product)
+                            @if(isset($product))
                             <option value="{{ $product->color }}">{{ $product->color }}</option>
                             @else
                             <option disabled selected>Selectionner une couleur</option>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="col-span-2 md:col-span-1">
                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900 uppercase">Description</label>
-                    @if($product)
+                    @if(isset($product))
                     <textarea id="description" name="description" rows="8" minlength="2" maxlength="400" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Entrez la description du produit ici :" required>{{ $product->description }}</textarea>
                     @else
                     <textarea id="description" name="description" rows="8" minlength="2" maxlength="400" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Entrez la description du produit ici :" required></textarea>
