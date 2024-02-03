@@ -96,7 +96,6 @@ img {
 
 /* Boutons, radios et divers */
 .button-stylised-1 {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,11 +106,7 @@ img {
     color: #fff;
     cursor: pointer;
     font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    max-width: none;
     min-height: 44px;
-    min-width: 10px;
     outline: none;
     overflow: hidden;
     padding: 9px 20px 8px;
