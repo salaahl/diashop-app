@@ -59,19 +59,19 @@ Route::middleware(['auth', 'is.admin'])->group(function () {
         Route::post('/add/catalog/', [CatalogController::class, 'store'])->name('store.catalog');
         Route::get('/edit/catalog/{catalog_id}', [CatalogController::class, 'edit'])->name('edit.catalog');
         Route::post('/update/catalog/{catalog_id}', [CatalogController::class, 'update'])->name('update.catalog');
-        Route::delete('/delete/catalog/', [CatalogController::class, 'destroy'])->name('destroy.catalog');
+        Route::post('/delete/catalog/{catalog_id}', [CatalogController::class, 'destroy'])->name('destroy.catalog');
 
         Route::get('/add/category/', [CategoryController::class, 'create'])->name('create.category');
         Route::post('/add/category/', [CategoryController::class, 'store'])->name('store.category');
         Route::get('/edit/category/{category_id}', [CategoryController::class, 'edit'])->name('edit.category');
         Route::post('/update/category/{category_id}', [CategoryController::class, 'update'])->name('update.category');
-        Route::delete('/delete/category/', [CategoryController::class, 'destroy'])->name('destroy.category');
+        Route::post('/delete/category/{category_id}', [CategoryController::class, 'destroy'])->name('destroy.category');
 
         Route::get('/add/product/', [ProductController::class, 'create'])->name('create.product');
         Route::post('/add/product/', [ProductController::class, 'store'])->name('store.product');
         Route::get('/edit/product/{product_id}', [ProductController::class, 'edit'])->name('edit.product');
         Route::post('/update/product/{product_id}', [ProductController::class, 'update'])->name('update.product');
-        Route::delete('/delete/product/', [ProductController::class, 'destroy'])->name('destroy.product');
+        Route::post('/delete/product/{product_id}', [ProductController::class, 'destroy'])->name('destroy.product');
     });
 });
 
