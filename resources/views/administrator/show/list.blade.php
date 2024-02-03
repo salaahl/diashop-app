@@ -25,10 +25,10 @@
 <nav id="filters" class="w-full flex justify-between items-center p-2 my-2 bg-gray-100 rounded-t-lg">
     <h4>Trier par :</h4>
     <select id="filter_select" class="block py-2.5 px-0 text-sm text-gray-500 bg-transparent border-0 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-        <option value="alphabetical-asc" @if(request()->get('filter') == 'alphabetical-asc' || !request()->get('filter')) selected @endif>A-Z</option>
-        <option value="alphabetical-desc" @if(request()->get('filter') == 'alphabetical-desc') selected @endif>Z-A</option>
-        <option value="created-at-asc" @if(request()->get('filter') == 'created-at-asc') selected @endif>Du plus récent au plus ancien</option>
-        <option value="created-at-desc" @if(request()->get('filter') == 'created-at-desc') selected @endif>Du plus ancien au plus récent</option>
+        <option value="alphabetical_asc" @if(request()->get('filter') == 'alphabetical_asc' || !request()->get('filter')) selected @endif>A-Z</option>
+        <option value="alphabetical_desc" @if(request()->get('filter') == 'alphabetical_desc') selected @endif>Z-A</option>
+        <option value="created_at_asc" @if(request()->get('filter') == 'created_at_asc') selected @endif>Du plus récent au plus ancien</option>
+        <option value="created_at_desc" @if(request()->get('filter') == 'created_at_desc') selected @endif>Du plus ancien au plus récent</option>
     </select>
 </nav>
 @if(isset($catalogs))
