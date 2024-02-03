@@ -90,7 +90,7 @@
 
     <!-- Page Scripts -->
     @section('scripts')
-    @vite(['resources/js/app.js', 'resources/js/search-product.js'])
+    @vite(['resources/js/app.js', 'resources/js/search_product.js'])
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     @show
 </body>
