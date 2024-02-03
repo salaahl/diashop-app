@@ -49,6 +49,24 @@ class CatalogController extends Controller
     {
         $catalogs = Catalog::all();
 
+        // A finir
+        switch ($request->filter) {
+            case "alphabetical-asc":
+                $catalogs = Catalog::all()->orderBy('created_at', 'ASC')->paginate(12);
+                break;
+            case "alphabetical-desc":
+                $products = Product::where("catalog_id", $catalog_id)->orderBy('price', 'ASC')->paginate(12);
+                break;
+            case "created-at-asc":
+                $products = Product::where("catalog_id", $catalog_id)->orderBy('price', 'DESC')->paginate(12);
+                break;
+            case "created-at-desc":
+                $products = Product::where("catalog_id", $catalog_id)->orderBy('price', 'DESC')->paginate(12);
+                break;
+            default:
+                $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'ASC')->paginate(4);
+        }
+
         return view('administrator/show/list', [
             "catalogs" => $catalogs
         ]);
