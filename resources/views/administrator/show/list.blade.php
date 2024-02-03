@@ -33,7 +33,7 @@
 </nav>
 @if(isset($catalogs))
 @foreach($catalogs as $catalog)
-<li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-lg bg-gray-200">
+<li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-md bg-gray-200">
     <div class="w-screen lg:w-auto flex justify-between">
         <h4>{{ ucfirst($catalog->gender) }}</h4>
     </div>
@@ -51,7 +51,7 @@
 </aside>
 @elseif(isset($categories))
 @foreach($categories as $category)
-<li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-lg bg-gray-200">
+<li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-md bg-gray-200">
     <div class="w-screen lg:w-auto flex justify-between">
         <h4 class="mr-1">{{ ucfirst($category->name) }} -</h4>
         <h4>{{ ucfirst($category->catalog->gender) }}</h4>
@@ -70,7 +70,7 @@
 </aside>
 @elseif(isset($products))
 @foreach($products as $product)
-<li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-lg bg-gray-200">
+<li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-md bg-gray-200">
     <div class="w-screen lg:w-auto flex justify-between">
         <h4 class="mr-1">{{ ucfirst($product->name) }} -</h4>
         <h4 class="mr-1">{{ ucfirst($product->catalog->gender) }} -</h4>
