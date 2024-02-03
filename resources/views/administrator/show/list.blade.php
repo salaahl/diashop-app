@@ -31,60 +31,67 @@
         <option value="created_at_desc" @if(request()->get('filter') == 'created_at_desc') selected @endif>Du plus ancien au plus récent</option>
     </select>
 </nav>
+<ul>
+    @if(isset($catalogs))
+    @foreach($catalogs as $catalog)
+    <li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-md bg-gray-200">
+        <div class="w-screen lg:w-auto flex justify-between">
+            <h4>{{ ucfirst($catalog->gender) }}</h4>
+        </div>
+        <div class="w-screen lg:w-auto flex justify-between">
+            <a href="../edit/catalog/{{ $catalog->id }}" class="button-stylised-1 lg:min-w-[10vw] lg:mr-[40px]">Modifier</a>
+            <form method="POST" action="../delete/catalog/{{ $catalog->id }}" class="min-w-[45vw] lg:min-w-[10vw]" onSubmit="return confirm('Etes-vous sûr ? Cette action est irreversible')">
+                @csrf
+                <button role="submit" class="button-stylised-1 button-stylised-1-custom w-full">Supprimer</button>
+            </form>
+        </div>
+    </li>
+    @endforeach
+    @elseif(isset($categories))
+    @foreach($categories as $category)
+    <li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-md bg-gray-200">
+        <div class="w-screen lg:w-auto flex justify-between">
+            <h4 class="mr-1">{{ ucfirst($category->name) }} -</h4>
+            <h4>{{ ucfirst($category->catalog->gender) }}</h4>
+        </div>
+        <div class="w-screen lg:w-auto flex justify-between">
+            <a href="../edit/category/{{ $category->id }}" class="button-stylised-1 min-w-[45vw] lg:min-w-[10vw] lg:mr-[40px]">Modifier</a>
+            <form method="POST" action="../delete/category/{{ $category->id }}" class="min-w-[45vw] lg:min-w-[10vw]" onSubmit="return confirm('Etes-vous sûr ? Cette action est irreversible')">
+                @csrf
+                <button role="submit" class="button-stylised-1 button-stylised-1-custom w-full">Supprimer</button>
+            </form>
+        </div>
+    </li>
+    @endforeach
+    @elseif(isset($products))
+    @foreach($products as $product)
+    <li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-md bg-gray-200">
+        <div class="w-screen lg:w-auto flex justify-between">
+            <h4 class="mr-1">{{ ucfirst($product->name) }} -</h4>
+            <h4 class="mr-1">{{ ucfirst($product->catalog->gender) }} -</h4>
+            <h4>{{ ucfirst($product->category->name) }}</h4>
+        </div>
+        <div class="w-screen lg:w-auto flex justify-between">
+            <a href="../edit/product/{{ $product->id }}" class="button-stylised-1 min-w-[45vw] lg:min-w-[10vw] lg:mr-[40px]">Modifier</a>
+            <form method="POST" action="../delete/product/{{ $product->id }}" class="min-w-[45vw] lg:min-w-[10vw]" onSubmit="return confirm('Etes-vous sûr ? Cette action est irreversible')">
+                @csrf
+                <button role="submit" class="button-stylised-1 button-stylised-1-custom w-full">Supprimer</button>
+            </form>
+        </div>
+    </li>
+    @endforeach
+    @endif
+</ul>
+
 @if(isset($catalogs))
-@foreach($catalogs as $catalog)
-<li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-md bg-gray-200">
-    <div class="w-screen lg:w-auto flex justify-between">
-        <h4>{{ ucfirst($catalog->gender) }}</h4>
-    </div>
-    <div class="w-screen lg:w-auto flex justify-between">
-        <a href="../edit/catalog/{{ $catalog->id }}" class="button-stylised-1 lg:min-w-[10vw] lg:mr-[40px]">Modifier</a>
-        <form method="POST" action="../delete/catalog/{{ $catalog->id }}" class="min-w-[45vw] lg:min-w-[10vw]" onSubmit="return confirm('Etes-vous sûr ? Cette action est irreversible')">
-            @csrf
-            <button role="submit" class="button-stylised-1 button-stylised-1-custom w-full">Supprimer</button>
-        </form>
-    </div>
-</li>
-@endforeach
 <aside class="w-full my-4">
     {{ $catalogs->links() }}
 </aside>
 @elseif(isset($categories))
-@foreach($categories as $category)
-<li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-md bg-gray-200">
-    <div class="w-screen lg:w-auto flex justify-between">
-        <h4 class="mr-1">{{ ucfirst($category->name) }} -</h4>
-        <h4>{{ ucfirst($category->catalog->gender) }}</h4>
-    </div>
-    <div class="w-screen lg:w-auto flex justify-between">
-        <a href="../edit/category/{{ $category->id }}" class="button-stylised-1 min-w-[45vw] lg:min-w-[10vw] lg:mr-[40px]">Modifier</a>
-        <form method="POST" action="../delete/category/{{ $category->id }}" class="min-w-[45vw] lg:min-w-[10vw]" onSubmit="return confirm('Etes-vous sûr ? Cette action est irreversible')">
-            @csrf
-            <button role="submit" class="button-stylised-1 button-stylised-1-custom w-full">Supprimer</button>
-        </form>
-    </div>
-</li>
-@endforeach
 <aside class="w-full my-4">
     {{ $categories->links() }}
 </aside>
 @elseif(isset($products))
-@foreach($products as $product)
-<li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-md bg-gray-200">
-    <div class="w-screen lg:w-auto flex justify-between">
-        <h4 class="mr-1">{{ ucfirst($product->name) }} -</h4>
-        <h4 class="mr-1">{{ ucfirst($product->catalog->gender) }} -</h4>
-        <h4>{{ ucfirst($product->category->name) }}</h4>
-    </div>
-    <div class="w-screen lg:w-auto flex justify-between">
-        <a href="../edit/product/{{ $product->id }}" class="button-stylised-1 min-w-[45vw] lg:min-w-[10vw] lg:mr-[40px]">Modifier</a>
-        <form method="POST" action="../delete/product/{{ $product->id }}" class="min-w-[45vw] lg:min-w-[10vw]" onSubmit="return confirm('Etes-vous sûr ? Cette action est irreversible')">
-            @csrf
-            <button role="submit" class="button-stylised-1 button-stylised-1-custom w-full">Supprimer</button>
-        </form>
-    </div>
-</li>
-@endforeach
 <aside class="w-full my-4">
     {{ $products->links() }}
 </aside>
