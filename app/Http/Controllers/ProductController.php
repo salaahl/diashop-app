@@ -11,7 +11,6 @@ use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
 use Exception;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -106,10 +105,10 @@ class ProductController extends Controller
 
         switch ($request->filter) {
             case "alphabetical_asc":
-                $products = Product::all()->orderBy('name', 'ASC')->paginate(12);
+                $products = Product::orderBy('name', 'ASC')->paginate(12);
                 break;
             case "alphabetical_desc":
-                $products = Product::all()->orderBy('name', 'DESC')->paginate(12);
+                $products = Product::orderBy('name', 'DESC')->paginate(12);
                 break;
             case "created_at_asc":
                 $products = Product::all()->orderBy('created_at', 'ASC')->paginate(12);
@@ -118,7 +117,7 @@ class ProductController extends Controller
                 $products = Product::all()->orderBy('created_at', 'DESC')->paginate(12);
                 break;
             default:
-                $products = DB::table('products')->orderBy('name', 'ASC')->paginate(12);
+                $products = Product::orderBy('name', 'ASC')->paginate(12);
         }
 
         return view('administrator/show/list', [
