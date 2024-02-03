@@ -12,14 +12,26 @@
 
 @section('header')
 @parent
-<style>
-</style>
 @endsection
 
 @section('main')
-<section>Ajouter un catalogue, une catégorie ou un article</section>
+<h1 class="my-20">Tableau de bord</h1>
 <section>
-    <h2>Management de mes entités</h2>
+    <h2 class="mb-6">Ajouter</h2>
+    <ul>
+        <li>
+            <a href="./add/catalog">Ajouter un catalogue</a>
+        </li>
+        <li>
+            <a href="./add/category">Ajouter une catégorie</a>
+        </li>
+        <li>
+            <a href="./add/product">Ajouter un article</a>
+        </li>
+    </ul>
+</section>
+<section>
+    <h2 class="mb-6">Management de mes entités</h2>
     <ul>
         <li>
             <a href="#">Modifier ou supprimer un catalogue</a>
