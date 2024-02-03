@@ -77,7 +77,7 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 @foreach($products as $product)
     <x-product link="/{{ $query[3] }}/catalog/{{ $product->category->name }}/{{ $product->id }}" image="/images/{{ $product->img_thumbnail[0] }}" hover="/images/{{ $product->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
 @endforeach
-<aside class="w-full">
+<aside class="w-full mt-[-1rem] mb-4">
     {{ $products->links() }}
 </aside>
 @endsection
