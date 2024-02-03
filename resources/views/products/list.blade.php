@@ -65,7 +65,7 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 </div>
 @endif
 @if($query[4] == "catalog")
-<nav id="filters" class="w-full flex justify-between items-center p-2 mx-2 my-4 bg-gray-100 rounded-t-lg">
+<nav id="filters" class="w-full flex justify-between items-center p-2 my-4 bg-gray-100 rounded-t-lg">
     <h4>Trier par :</h4>
     <select id="filter_select" class="block py-2.5 px-0 text-sm text-gray-500 bg-transparent border-0 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
         <option value="new" @if(request()->get('filter') == 'new' || !request()->get('filter')) selected @endif>Nouveautés</option>
