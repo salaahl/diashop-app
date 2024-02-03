@@ -168,6 +168,19 @@
                                 <input type="number" name="quantity_xxl" @if(isset($product->quantity_per_size['xxl'])) value="{{ $product->quantity_per_size['xxl'] }}" @endif class="w-full m-2 text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Quantité">
                             </div>
                         </div>
+                        <h4 id="accordion-flush-heading-6">
+                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right  border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-6" aria-expanded="false" aria-controls="accordion-flush-body-6">
+                                <span>Taille unique</span>
+                                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+                                </svg>
+                            </button>
+                        </h4>
+                        <div id="accordion-flush-body-6" class="hidden" aria-labelledby="accordion-flush-heading-6">
+                            <div class="py-5 border-b border-gray-200 ">
+                                <input type="number" name="quantity_os" @if(isset($product->quantity_per_size['os'])) value="{{ $product->quantity_per_size['os'] }}" @endif class="w-full m-2 text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Quantité">
+                            </div>
+                        </div>
                     </div>
                     <button type="submit" class="w-full px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center bg-gray-900 text-white rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-primary-800">
                         Add product
