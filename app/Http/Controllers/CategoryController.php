@@ -64,19 +64,19 @@ class CategoryController extends Controller
 
         switch ($request->filter) {
             case "alphabetical_asc":
-                $categories = Category::all()->orderBy('name', 'ASC')->paginate(12);
+                $categories = Category::orderBy('name', 'ASC')->paginate(12);
                 break;
             case "alphabetical_desc":
-                $categories = Category::all()->orderBy('name', 'DESC')->paginate(12);
+                $categories = Category::orderBy('name', 'DESC')->paginate(12);
                 break;
             case "created_at_asc":
-                $categories = Category::all()->orderBy('created_at', 'ASC')->paginate(12);
+                $categories = Category::orderBy('created_at', 'ASC')->paginate(12);
                 break;
             case "created_at_desc":
-                $categories = Category::all()->orderBy('created_at', 'DESC')->paginate(12);
+                $categories = Category::orderBy('created_at', 'DESC')->paginate(12);
                 break;
             default:
-                $categories = Category::orderBy('name')->paginate(12);
+                $categories = Category::orderBy('name', 'ASC')->paginate(12);
         }
 
         return view('administrator/show/list', [
