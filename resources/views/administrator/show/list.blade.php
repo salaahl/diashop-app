@@ -16,6 +16,7 @@
 
 @section('main')
 @if(isset($catalogs))
+<h1>Catalogues</h1>
 @foreach($catalogs as $catalog)
 <li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-lg bg-gray-200">
     <div class="w-screen lg:w-auto flex justify-between">
@@ -31,10 +32,11 @@
 </li>
 @endforeach
 @elseif(isset($categories))
+<h1>Catégories</h1>
 @foreach($categories as $category)
 <li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-lg bg-gray-200">
     <div class="w-screen lg:w-auto flex justify-between">
-        <h3>{{ $category->catalog->gender }}</h3>
+        <h3>{{ $category->catalog->gender }} - </h3>
         <h3>{{ $category->name }}</h3>
     </div>
     <div class="w-screen lg:w-auto flex justify-between">
@@ -47,11 +49,12 @@
 </li>
 @endforeach
 @elseif(isset($products))
+<h1>Articles</h1>
 @foreach($products as $product)
 <li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-lg bg-gray-200">
     <div class="w-screen lg:w-auto flex justify-between">
-        <h3>{{ $product->catalog->gender }}</h3>
-        <h3>{{ $product->category->name }}</h3>
+        <h3>{{ $product->catalog->gender }} - </h3>
+        <h3>{{ $product->category->name }} - </h3>
         <h3>{{ $product->name }}</h3>
     </div>
     <div class="w-screen lg:w-auto flex justify-between">
