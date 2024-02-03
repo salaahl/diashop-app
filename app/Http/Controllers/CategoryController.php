@@ -117,8 +117,8 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($category_id)
     {
-        //
+        $category = Category::where("id", $category_id)->delete();
     }
 }
