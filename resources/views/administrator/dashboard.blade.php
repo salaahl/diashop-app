@@ -17,7 +17,7 @@
 @section('main')
 <h1 class="my-20">Tableau de bord</h1>
 <section>
-    <h2 class="mb-6">Ajouter</h2>
+    <h3 class="mb-6">Ajouter</h3>
     <ul>
         <li>
             <a href="./add/catalog">Ajouter un catalogue</a>
@@ -31,16 +31,16 @@
     </ul>
 </section>
 <section>
-    <h2 class="mb-6">Management de mes entités</h2>
+    <h3 class="mb-6">Management de mes entités</h3>
     <ul>
         <li>
-            <a href="#">Modifier ou supprimer un catalogue</a>
+            <a href="./show/catalogs">Modifier ou supprimer un catalogue</a>
         </li>
         <li>
-            <a href="#">Modifier ou supprimer une catégorie</a>
+            <a href="./show/categories">Modifier ou supprimer une catégorie</a>
         </li>
         <li>
-            <a href="#">Modifier ou supprimer un article</a>
+            <a href="./show/products">Modifier ou supprimer un article</a>
         </li>
     </ul>
 </section>
