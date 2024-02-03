@@ -76,7 +76,7 @@ class CategoryController extends Controller
                 $categories = Category::all()->orderBy('created_at', 'DESC')->paginate(12);
                 break;
             default:
-                $categories = Category::sortBy('name')->paginate(12);
+                $categories = Category::orderBy('name')->paginate(12);
         }
 
         return view('administrator/show/list', [
