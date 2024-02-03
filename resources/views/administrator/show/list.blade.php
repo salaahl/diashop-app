@@ -21,11 +21,11 @@
 
 @section('main')
 @if(isset($catalogs))
-@foreach ($catalogs as $catalog)
+@foreach($catalogs as $catalog)
 <li class="flex justify-between">
-    <h3>{{ $catalog->name }}</h3>
+    <h3>{{ $catalog->gender }}</h3>
     <div class="flex">
-        <a href="../edit/catalog/{{ $catalog->id }}" class="button-stylised-1">Modifier</a>
+        <a href="../edit/catalog/{{ $catalog->id }}" class="button-stylised-1 lg:min-w-[10%]">Modifier</a>
         <form method="POST" action="../delete/catalog/{{ $catalog->id }}" onSubmit="return confirm('Etes-vous sûr ? Cette action est irreversible')">
             @csrf
             <button role="submit" class="button-stylised-1 button-stylised-1-custom">Supprimer</button>
@@ -34,11 +34,11 @@
 </li>
 @endforeach
 @elseif(isset($categories))
-@foreach ($categories as $category)
-<li class="flex">
+@foreach($categories as $category)
+<li class="flex justify-between">
     <h3>{{ $category->name }}</h3>
     <div class="flex">
-        <a href="../edit/category/{{ $category->id }}" class="button-stylised-1">Modifier</a>
+        <a href="../edit/category/{{ $category->id }}" class="button-stylised-1 lg:min-w-[10%]">Modifier</a>
         <form method="POST" action="../delete/category/{{ $category->id }}" onSubmit="return confirm('Etes-vous sûr ? Cette action est irreversible')">
             @csrf
             <button role="submit" class="button-stylised-1 button-stylised-1-custom">Supprimer</button>
@@ -47,11 +47,11 @@
 </li>
 @endforeach
 @elseif(isset($products))
-@foreach ($products as $product)
-<li class="flex">
+@foreach($products as $product)
+<li class="flex justify-between">
     <h3>{{ $product->name }}</h3>
     <div class="flex">
-        <a href="../edit/product/{{ $product->id }}" class="button-stylised-1">Modifier</a>
+        <a href="../edit/product/{{ $product->id }}" class="button-stylised-1 lg:min-w-[10%]">Modifier</a>
         <form method="POST" action="../delete/product/{{ $product->id }}" onSubmit="return confirm('Etes-vous sûr ? Cette action est irreversible')">
             @csrf
             <button role="submit" class="button-stylised-1 button-stylised-1-custom">Supprimer</button>
