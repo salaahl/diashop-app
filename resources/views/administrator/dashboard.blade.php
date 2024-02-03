@@ -17,7 +17,7 @@
 @section('main')
 <h1 class="my-20">Tableau de bord</h1>
 <section class="mb-20">
-    <h3 class="mb-4">Ajouter</h3>
+    <h3 class="mb-2">Ajouter</h3>
     <ul>
         <li>
             <a href="./administrator/add/catalog">Ajouter un catalogue</a>
@@ -31,7 +31,7 @@
     </ul>
 </section>
 <section class="mb-20">
-    <h3 class="mb-4">Management de mes entités</h3>
+    <h3 class="mb-2">Management de mes entités</h3>
     <ul>
         <li>
             <a href="./administrator/show/catalogs">Modifier ou supprimer un catalogue</a>
