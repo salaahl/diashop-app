@@ -58,7 +58,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(Request $request)
     {
         $categories = null;
 
