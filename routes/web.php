@@ -51,9 +51,12 @@ Route::middleware(['auth', 'is.admin'])->group(function () {
             return view('administrator.dashboard');
         })->name('administrator.dashboard');
         Route::get('/show/catalogs/', [CatalogController::class, 'show'])->name('administrator.show.catalogs');
+        Route::post('/show/catalogs/', [CatalogController::class, 'show'])->name('administrator.show.catalogs.post');
         Route::get('/show/categories/', [CategoryController::class, 'show'])->name('administrator.show.categories');
+        Route::post('/show/categories/', [CategoryController::class, 'show'])->name('administrator.show.categories.post');
         Route::post('/get-categories/', [CategoryController::class, 'getCategories'])->name('administrator.get-categories');
         Route::get('/show/products/', [ProductController::class, 'show'])->name('administrator.show.products');
+        Route::post('/show/products/', [ProductController::class, 'show'])->name('administrator.show.products.post');
 
         Route::get('/add/catalog/', [CatalogController::class, 'create'])->name('create.catalog');
         Route::post('/add/catalog/', [CatalogController::class, 'store'])->name('store.catalog');
