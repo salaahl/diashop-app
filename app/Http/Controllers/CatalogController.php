@@ -63,7 +63,7 @@ class CatalogController extends Controller
                 $catalogs = Catalog::all()->orderBy('created_at', 'DESC')->paginate(12);
                 break;
             default:
-                $catalogs = Catalog::all()->orderBy('name', 'ASC')->paginate(12);
+                $catalogs = Catalog::all()->sortBy('name')->paginate(12);
         }
 
         return view('administrator/show/list', [
