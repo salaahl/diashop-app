@@ -45,10 +45,10 @@
         </form>
     </div>
 </li>
+@endforeach
 <aside class="w-full">
     {{ $catalogs->links() }}
 </aside>
-@endforeach
 @elseif(isset($categories))
 @foreach($categories as $category)
 <li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-lg bg-gray-200">
@@ -64,10 +64,10 @@
         </form>
     </div>
 </li>
+@endforeach
 <aside class="w-full">
     {{ $categories->links() }}
 </aside>
-@endforeach
 @elseif(isset($products))
 @foreach($products as $product)
 <li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-lg bg-gray-200">
@@ -84,10 +84,10 @@
         </form>
     </div>
 </li>
+@endforeach
 <aside class="w-full">
     {{ $products->links() }}
 </aside>
-@endforeach
 @endif
 @endsection
 
