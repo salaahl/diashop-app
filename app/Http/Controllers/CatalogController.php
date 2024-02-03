@@ -83,8 +83,8 @@ class CatalogController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Catalog $catalog)
+    public function destroy($catalog_id)
     {
-        //
+        $catalog = Catalog::where("id", $catalog_id)->delete();
     }
 }
