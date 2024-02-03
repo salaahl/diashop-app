@@ -111,10 +111,10 @@ class ProductController extends Controller
                 $products = Product::orderBy('name', 'DESC')->paginate(12);
                 break;
             case "created_at_asc":
-                $products = Product::all()->orderBy('created_at', 'ASC')->paginate(12);
+                $products = Product::orderBy('created_at', 'ASC')->paginate(12);
                 break;
             case "created_at_desc":
-                $products = Product::all()->orderBy('created_at', 'DESC')->paginate(12);
+                $products = Product::orderBy('created_at', 'DESC')->paginate(12);
                 break;
             default:
                 $products = Product::orderBy('name', 'ASC')->paginate(12);
