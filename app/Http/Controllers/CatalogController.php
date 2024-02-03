@@ -51,19 +51,19 @@ class CatalogController extends Controller
 
         switch ($request->filter) {
             case "alphabetical_asc":
-                $catalogs = Catalog::all()->orderBy('name', 'ASC')->paginate(12);
+                $catalogs = Catalog::orderBy('name', 'ASC')->paginate(12);
                 break;
             case "alphabetical_desc":
-                $catalogs = Catalog::all()->orderBy('name', 'DESC')->paginate(12);
+                $catalogs = Catalog::orderBy('name', 'DESC')->paginate(12);
                 break;
             case "created_at_asc":
-                $catalogs = Catalog::all()->orderBy('created_at', 'ASC')->paginate(12);
+                $catalogs = Catalog::orderBy('created_at', 'ASC')->paginate(12);
                 break;
             case "created_at_desc":
-                $catalogs = Catalog::all()->orderBy('created_at', 'DESC')->paginate(12);
+                $catalogs = Catalog::orderBy('created_at', 'DESC')->paginate(12);
                 break;
             default:
-                $catalogs = Catalog::paginate(12);
+                $catalogs = Catalog::orderBy('name', 'ASC')->paginate(12);
         }
 
         return view('administrator/show/list', [
