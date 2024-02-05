@@ -15,7 +15,7 @@
 @endsection
 
 @section('main')
-<h1 class="my-20">Tableau de bord</h1>
+<h1>Tableau de bord</h1>
 <section class="mb-20">
     <h3 class="mb-2">Ajouter</h3>
     <ul>

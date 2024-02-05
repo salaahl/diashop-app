@@ -10,11 +10,9 @@ use Exception;
 
 class MainController extends Controller
 {
-    public function catalog(Request $request, Catalog $catalog)
+    public function catalog($gender, Request $request)
     {
-        $query = explode("/", url()->current());
-        $catalog_name = $query[3] == "woman" ? "femme" : "homme";
-        $catalog_id = Catalog::where("gender", $catalog_name)->first()->id;
+        $catalog_id = Catalog::where("gender", $gender)->first()->id;
         $categories = Category::where("catalog_id", $catalog_id)->get();
 
         switch ($request->filter) {
@@ -37,11 +35,9 @@ class MainController extends Controller
         ]);
     }
 
-    public function category($slug, Request $request, Catalog $catalog)
+    public function category($gender, $category, Request $request)
     {
-        $query = explode("/", url()->current());
-        $catalog_name = $query[3] == "woman" ? "femme" : "homme";
-        $catalog_id = Catalog::where("gender", $catalog_name)->first()->id;
+        $catalog_id = Catalog::where("gender", $gender)->first()->id;
         $categories = Category::where("catalog_id", $catalog_id)->get();
 
         switch ($request->filter) {
@@ -49,7 +45,7 @@ class MainController extends Controller
                 $products = Product::where(
                     "category_id",
                     Category::where("catalog_id", $catalog_id)
-                        ->where("name", $slug)
+                        ->where("name", $category)
                         ->first()->id
                 )->orderBy('created_at', 'ASC')->paginate(12);
                 break;
@@ -57,7 +53,7 @@ class MainController extends Controller
                 $products = Product::where(
                     "category_id",
                     Category::where("catalog_id", $catalog_id)
-                        ->where("name", $slug)
+                        ->where("name", $category)
                         ->first()->id
                 )->orderBy('price', 'ASC')->paginate(12);
                 break;
@@ -65,7 +61,7 @@ class MainController extends Controller
                 $products = Product::where(
                     "category_id",
                     Category::where("catalog_id", $catalog_id)
-                        ->where("name", $slug)
+                        ->where("name", $category)
                         ->first()->id
                 )->orderBy('price', 'DESC')->paginate(12);
                 break;
@@ -73,7 +69,7 @@ class MainController extends Controller
                 $products = Product::where(
                     "category_id",
                     Category::where("catalog_id", $catalog_id)
-                        ->where("name", $slug)
+                        ->where("name", $category)
                         ->first()->id
                 )->orderBy('created_at', 'ASC')->paginate(12);
         }
@@ -87,7 +83,7 @@ class MainController extends Controller
     /**
      * Display the specified resource.
      */
-    public function product($catalog, $product_id)
+    public function product($gender, $category, $product_id)
     {
         $product = Product::where('id', $product_id)->first();
 

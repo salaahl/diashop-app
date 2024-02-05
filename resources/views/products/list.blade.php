@@ -4,11 +4,11 @@ $h1 = null;
 $h2 = null;
 $meta_description = null;
 
-if($query[3] == "woman") {
+if($query[3] == "femme") {
 $h1 = "Femme";
 $h2 = "Découvrez notre collection féminine : élégance, style et confiance !";
 $meta_description = "Découvrez notre collection de prêt-à-porter pour femmes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
-} elseif($query[3] == "men") {
+} elseif($query[3] == "homme") {
 $h1 = "Homme";
 $h2 = "Découvrez notre collection masculine : élégance, sophistication et confiance !";
 $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
@@ -26,7 +26,7 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 
 @section('links')
 @parent
-@vite(['resources/css/products_list.css', 'resources/js/products_list.js'])
+@vite('resources/css/products_list.css')
 @endsection
 
 @section('header')
@@ -41,18 +41,13 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 @if($categories)
 <div id="categories" class="flex w-full my-8 overflow-x-auto">
     @foreach($categories as $category)
-    <article 
-        @if(isset($query[5])) 
-            @if($query[5] == $category->name)
-                class="category selected"
-            @else
-                class="category"
-            @endif 
-        @else 
-            class="category"
+    <article @if(basename(url()->current()) == $category->name)
+        class="category selected"
+        @else
+        class="category"
         @endif
         >
-        <a href="/{{ $query[3] }}/catalog/{{ $category->name }}">
+        <a href="{{ route('catalog', [$category->catalog->gender, $category->name]) }}">
             <div class="thumbnail">
                 <img src='{{ asset("/images/$category->img_thumbnail") }}' />
             </div>
@@ -64,18 +59,16 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
     @endforeach
 </div>
 @endif
-@if($query[4] == "catalog")
 <nav id="filters" class="w-full flex justify-between items-center p-2 my-4 bg-gray-100 rounded-t-lg">
     <h4>Trier par :</h4>
     <select id="filter_select" class="block py-2.5 px-0 text-sm text-gray-500 bg-transparent border-0 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
         <option value="new" @if(request()->get('filter') == 'new' || !request()->get('filter')) selected @endif>Nouveautés</option>
-        <option value="price-highest" @if(request()->get('filter') == 'price-highest') selected @endif>Prix : ascendant</option>
-        <option value="price-lowest" @if(request()->get('filter') == 'price-lowest') selected @endif>Prix : descendant</option>
+        <option value="price-lowest" @if(request()->get('filter') == 'price-lowest') selected @endif>Prix : ascendant</option>
+        <option value="price-highest" @if(request()->get('filter') == 'price-highest') selected @endif>Prix : descendant</option>
     </select>
 </nav>
-@endif
 @foreach($products as $product)
-    <x-product link="/{{ $query[3] }}/catalog/{{ $product->category->name }}/{{ $product->id }}" image="/images/{{ $product->img_thumbnail[0] }}" hover="/images/{{ $product->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
+<x-product link="{{ route('product', [$product->catalog->gender, $product->category->name, $product->id]) }}" image="/images/{{ $product->img_thumbnail[0] }}" hover="/images/{{ $product->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
 @endforeach
 <aside class="w-full mt-[-1rem] mb-4">
     {{ $products->links() }}

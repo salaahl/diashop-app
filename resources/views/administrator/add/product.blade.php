@@ -17,7 +17,7 @@
 @section('main')
 <section class="bg-white">
     <div class="py-8 mx-auto lg:py-16">
-        <h1 class="mb-4 text-xl font-bold text-gray-900 uppercase">Ajouter/mettre à jour un article</h1>
+        <h1 class="text-xl font-bold text-gray-900 uppercase">Ajouter/mettre à jour un article</h1>
         <form @if(isset($product)) action="{{ route('update.product', $product->id) }}" @else action="{{ route('store.product') }}" @endif enctype="multipart/form-data" method="POST">
             @csrf
             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6 items-end">

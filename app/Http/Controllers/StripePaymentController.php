@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Models\Product;
+use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 
 class StripePaymentController extends Controller
 {
@@ -47,7 +50,7 @@ class StripePaymentController extends Controller
                                     'amount' => 499,
                                     'currency' => 'eur',
                                 ],
-                                'display_name' => 'Livraison par La Poste',
+                                'display_name' => 'Livraison standard',
                                 'delivery_estimate' => [
                                     'minimum' => [
                                         'unit' => 'business_day',
@@ -67,7 +70,7 @@ class StripePaymentController extends Controller
                                     'amount' => 1000,
                                     'currency' => 'eur',
                                 ],
-                                'display_name' => 'Livraison par UPS',
+                                'display_name' => 'Livraison express',
                                 'delivery_estimate' => [
                                     'minimum' => [
                                         'unit' => 'business_day',
@@ -83,10 +86,10 @@ class StripePaymentController extends Controller
                     ],
                     'custom_text' => [
                         'shipping_address' => [
-                            'message' => 'Comptez un délai de cinq jours ouvrés pour la livraison.',
+                            'message' => 'Comptez un délai de deux jours ouvrés pour la livraison express et de cinq jours ouvrés pour la livraison standard.',
                         ],
                     ],
-                    'return_url' => $APP_URL . 'return/{CHECKOUT_SESSION_ID}',
+                    'return_url' => $APP_URL . 'confirmation/{CHECKOUT_SESSION_ID}',
                     'automatic_tax' => [
                         'enabled' => true,
                     ],
@@ -119,9 +122,79 @@ class StripePaymentController extends Controller
 
             $session = $stripe->checkout->sessions->retrieve($jsonObj->session_id);
 
+            if ($session->status == "complete" && session()->get("basket")) {
+                // Je retire la quantité commandée
+                foreach (session()->get("basket") as $products) {
+                    foreach ($products as $item) {
+                        $product = Product::where("id", $item['id'])->first();
+                        $product_quantity = $product->quantity_per_size;
+                        $product_quantity[$item['size']] -= $item['quantity'];
+                        $product->quantity_per_size = $product_quantity;
+                        $product->save();
+                    }
+                }
+
+                // Je génère la facture
+                do {
+                    $number = rand();
+                } while (Order::where("command_number", $number)->first());
+
+                $order = new Order();
+                $order->command_number = $number;
+                $order->fullname = $session->customer_details->name;
+                $order->email = $session->customer_details->email;
+
+                $products = [];
+                foreach (session()->get("basket") as $products) {
+                    foreach ($products as $item) {
+                        $products[$item["id"]] = [
+                            $item["size"] => [
+                                "name" => $item["name"],
+                                "size" => $item["size"],
+                                "price" => $item["price"],
+                                "quantity" => $item["quantity"]
+                            ]
+                        ];
+                    }
+                }
+                $order->products = $products;
+
+                $billing_address = [
+                    $session->customer_details->name,
+                    $session->customer_details->address['line1'],
+                    $session->customer_details->address['line2'],
+                    $session->customer_details->address['postal_code'],
+                    $session->customer_details->address['city'],
+                    $session->customer_details->address['country']
+                ];
+                $order->billing_address = $billing_address;
+
+                $shipping_address = [
+                    $session->shipping_details->name,
+                    $session->shipping_details->address['line1'],
+                    $session->shipping_details->address['line2'],
+                    $session->shipping_details->address['postal_code'],
+                    $session->shipping_details->address['city'],
+                    $session->shipping_details->address['country']
+                ];
+                $order->shipping_address = $shipping_address;
+
+                if ($session->customer_details->phone) $order->phone = $session->customer_details->phone;
+                if (Auth::user()) $order->user_id = Auth::user()->id;
+                $order->ammount = [
+                    "shipping_cost" => $session->shipping_cost->amount_total,
+                    "amount_total" => $session->amount_total
+                ];
+                $order->save();
+            }
+
             return response()->json([
+                'command_number' => $number,
                 'status' => $session->status,
-                'customer_email' => $session->customer_details->email
+                'customer_details' => $session->customer_details,
+                'shipping_details' => $session->shipping_details,
+                'amount_total' => $session->amount_total,
+                'shipping_cost' => $session->shipping_cost
             ]);
             http_response_code(200);
         } catch (Exception $e) {

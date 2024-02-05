@@ -35,7 +35,7 @@
 
 @section('main')
 <div>
-    <h1 class="mb-4 text-xl font-bold text-gray-900 uppercase">Ajouter/mettre à jour une catégorie</h1>
+    <h1 class="text-xl font-bold text-gray-900 uppercase">Ajouter/mettre à jour une catégorie</h1>
     <form @if(isset($category)) action="{{ route('update.category', $category->id) }}" @else action="{{ route('store.category') }}" @endif enctype="multipart/form-data" method="POST">
         @csrf
         <div class="mb-10">

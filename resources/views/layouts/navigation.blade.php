@@ -1,5 +1,5 @@
-<nav id="navbar" class="bg-white">
-    <div class="h-full w-full max-w-screen-xl flex flex-wrap items-center justify-end lg:justify-between mx-auto max-[1023px]-px-4 xl:p-0">
+<nav id="navbar">
+    <div class="h-full w-full flex flex-wrap items-center justify-end lg:justify-between mx-auto max-[1023px]-px-4 xl:p-0">
         <a href="/" class="h-[10vh] flex flex-col justify-center items-center absolute top-0 left-2/4 right-2/4">
             <span class="self-center uppercase font-semibold whitespace-nowrap">Diashop-b</span>
             <span class="self-center m-0 text-sm uppercase whitespace-nowrap">Paris</span>
@@ -18,70 +18,38 @@
         <div class="h-full w-full" id="navbar-dropdown">
             <div class="h-full flex max-lg:flex-col lg:justify-between items-center">
                 <ul class="lg:h-full max-lg:w-full flex flex-col items-center font-medium p-4 lg:p-0 max-lg:rounded-lg border border-gray-100 max-lg:bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
+                    @foreach(\App\Models\Catalog::all() as $catalog)
                     <li class="h-full w-full lg:flex lg:justify-center lg:items-center">
-                        <a href="{{ route('woman.catalog') }}" id="dropdownNavbarLinkWoman" class="hidden lg:flex items-center justify-between w-full py-2 text-sm uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
-                            <span>Femme</span>
+                        <a href="{{ route('catalog', $catalog->gender) }}" class="dropdownNavbarLinkCatalog hidden lg:flex items-center justify-between w-full py-2 text-sm uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
+                            <span>{{ ucfirst($catalog->gender) }}</span>
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </a>
-                        <button id="dropdownNavbarLinkWomanBtn" data-collapse-toggle="dropdownNavbarWoman" type="button" class="lg:hidden flex items-center justify-between w-full p-2 text-sm uppercase text-gray-900 rounded-t-lg hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
-                            <span>Femme</span>
+                        <button data-collapse-toggle="dropdownNavbar{{ ucfirst($catalog->gender) }}" type="button" class="dropdownNavbarLinkCatalogBtn lg:hidden flex items-center justify-between w-full p-2 text-sm uppercase text-gray-900 rounded-t-lg hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
+                            <span>{{ ucfirst($catalog->gender) }}</span>
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </button>
-                        <!-- Dropdown menu -->
-                        <div id="dropdownNavbarWoman" class="hidden z-10 lg:flex align-center w-full max-lg:rounded-b-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
+                        <!-- Dropdown catalog menu -->
+                        <div id="dropdownNavbar{{ ucfirst($catalog->gender) }}" class="dropdownNavbarCatalog hidden z-10 lg:flex align-center w-full max-lg:rounded-b-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
                             <ul class="lg:flex max-w-screen-xl lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                                 <li class="lg:hidden self-center">
-                                    <a href="{{ route('woman.catalog') }}" class="block my-2 lg:mr-4 px-4 py-2 rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">Tout</a>
+                                    <a href="{{ route('catalog', $catalog->gender) }}" class="block my-2 lg:mr-4 px-4 py-2 rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">Tout</a>
                                 </li>
-                                @if(\App\Models\Catalog::where("gender", "femme")->first())
-                                @foreach(\App\Models\Category::where("catalog_id",
-                                \App\Models\Catalog::where("gender", "femme")->first()->id
-                                )->get() as $category)
+                                @if(\App\Models\Category::where("catalog_id", $catalog->id)->first())
+                                @foreach(\App\Models\Category::where("catalog_id", $catalog->id)->get() as $category)
                                 <li class="self-center">
-                                    <a href="{{ route('woman.category', $category->name) }}" class="block my-2 lg:mr-4 px-4 py-2 rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">{{
-                    ucfirst($category->name) }}</a>
+                                    <a href="{{ route('category', [$category->catalog->gender, $category->name]) }}" class="block my-2 lg:mr-4 px-4 py-2 rounded-[5px] lg:rounded-full hover:bg-gray-200 whitespace-nowrap transition-all">
+                                        {{ ucfirst($category->name) }}</a>
                                 </li>
                                 @endforeach
                                 @endif
                             </ul>
                         </div>
                     </li>
-                    <li class="h-full w-full lg:flex lg:justify-center lg:items-center">
-                        <a href="{{ route('men.catalog') }}" id="dropdownNavbarLinkMen" class="hidden lg:flex items-center justify-between w-full py-2 text-sm uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
-                            <span>Homme</span>
-                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                        </a>
-                        <button id="dropdownNavbarLinkMenBtn" data-collapse-toggle="dropdownNavbarMen" type="button" class="lg:hidden flex items-center justify-between w-full p-2 text-sm uppercase text-gray-900 rounded-t-lg hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
-                            <span>Homme</span>
-                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-                        <!-- Dropdown menu -->
-                        <div id="dropdownNavbarMen" class="hidden z-10 lg:flex align-center w-full max-lg:rounded-b-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
-                            <ul class="lg:flex max-w-screen-xl lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
-                                <li class="lg:hidden self-center">
-                                    <a href="{{ route('woman.catalog') }}" class="block my-2 lg:mr-4 px-4 py-2 rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">Tout</a>
-                                </li>
-                                @if(\App\Models\Catalog::where("gender", "homme")->first())
-                                @foreach(\App\Models\Category::where("catalog_id",
-                                \App\Models\Catalog::where("gender", "homme")->first()->id
-                                )->get() as $category)
-                                <li class="self-center">
-                                    <a href="{{ route('men.category', $category->name) }}" class="block my-2 lg:mr-4 px-4 py-2 rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">{{
-                    ucfirst($category->name) }}</a>
-                                </li>
-                                @endforeach
-                                @endif
-                            </ul>
-                        </div>
-                    </li>
+                    @endforeach
                     <li class="h-full w-full lg:flex lg:items-center lg:flex lg:align-center">
                         <button id="search-btn" class="w-full flex justify-between items-center p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0 lg:p-0">
                             <span class="text-sm uppercase whitespace-nowrap lg:m-0">Rechercher</span>
@@ -107,12 +75,12 @@
                         <div id="dropdownDashboard" class="hidden z-10 lg:flex align-center w-full max-lg:rounded-b-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
                             <ul class="lg:flex max-w-screen-xl lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                                 <li class="self-center">
-                                    <a href="{{ route('favorites.show') }}" class="block my-2 lg:mr-4 px-4 py-2 rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">
+                                    <a href="{{ route('favorites.show') }}" class="block my-2 lg:mr-4 px-4 py-2 whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">
                                         Mes favoris
                                     </a>
                                 </li>
                                 <li class="self-center">
-                                    <a href="{{ route('profile.edit') }}" class="block my-2 lg:mr-4 px-4 py-2 rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">
+                                    <a href="{{ route('profile.edit') }}" class="block my-2 lg:mr-4 px-4 py-2 whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">
                                         Modifier mes informations
                                     </a>
                                 </li>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\Favorite;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -34,18 +35,21 @@ class FavoriteController extends Controller
             "product_id" => ['required', 'integer'],
         ]);
 
-        $user = Auth::user();
+        try {
+            $user = Auth::user();
+            $favorite = new Favorite();
 
-        foreach ($user->favorites as $user_favorite) {
-            if ($user_favorite->product_id == $request->product_id) {
-                $user_favorite->delete();
-            } else {
-                $favorite = new Favorite();
-                $favorite->user_id = $user->id;
-                $favorite->product_id = $request->product_id;
+            $favorite->user_id = $user->id;
+            $favorite->product_id = $request->product_id;
+            $favorite->save();
 
-                $favorite->save();
-            }
+            return response()->json([
+                'status' => http_response_code(200),
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ]);
         }
     }
 
@@ -87,8 +91,24 @@ class FavoriteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Favorite $favorite)
+    public function destroy(Request $request)
     {
-        //
+        try {
+            $user = Auth::user();
+            $favorite = Favorite::where([
+                ["user_id", $user->id],
+                ["product_id", $request->product_id]
+            ])->first();
+
+            $favorite->delete();
+
+            return response()->json([
+                'status' => http_response_code(200),
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ]);
+        }
     }
 }

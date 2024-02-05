@@ -1,18 +1,6 @@
-main {
-    min-height: 100vh;
-    display: flex;
-    justify-content: space-between;
-}
-
 table {
     text-align: center;
     text-align-last: center;
-}
-
-img {
-    max-width: 100px;
-    aspect-ratio: 3/4;
-    object-fit: cover;
 }
 
 .column-one {
@@ -44,6 +32,7 @@ div:has(> table) {
 
 @media (max-width: 767px) {
     main {
+        min-height: 100vh;
         flex-direction: column;
     }
 
@@ -54,11 +43,7 @@ div:has(> table) {
 }
 
 @media (min-width: 768px) {
-    #summary-container {
-        width: 65%;
-    }
-
-    div:has(> form) {
-        width: 30%;
+    main {
+        min-height: 90vh;
     }
 }

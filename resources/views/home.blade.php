@@ -19,14 +19,14 @@
 @section('main')
 <section id="catalogs-container" class="md:min-h-[89vh]">
     <article class="catalog">
-        <a href="{{ route('woman.catalog') }}">
+        <a href="{{ route('catalog', 'femme') }}">
             <div class="img-placeholder">
                 <h3 class="uppercase">Femme</h3>
             </div>
         </a>
     </article>
     <article class="catalog">
-        <a href="{{ route('men.catalog') }}">
+        <a href="{{ route('catalog', 'homme') }}">
             <div class="img-placeholder">
                 <h3 class="uppercase">Homme</h3>
             </div>

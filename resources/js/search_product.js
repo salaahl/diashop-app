@@ -53,8 +53,8 @@ document.querySelector("#default-search").addEventListener("input", (e) => {
                             $("#search-results").innerHTML +=
                                 '<article class="product">' +
                                 '<a href="/' +
-                                gender +
-                                "/catalog/" +
+                                "catalog/" +
+                                gender + "/" +
                                 product["category"] +
                                 "/" +
                                 product["id"] +

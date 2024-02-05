@@ -16,11 +16,11 @@
 
 @section('main')
 @if(isset($catalogs))
-<h1 class="my-20">Catalogues</h1>
+<h1>Catalogues</h1>
 @elseif(isset($categories))
-<h1 class="my-20">Catégories</h1>
+<h1>Catégories</h1>
 @elseif(isset($products))
-<h1 class="my-20">Articles</h1>
+<h1>Articles</h1>
 @endif
 <nav id="filters" class="w-full flex justify-between items-center p-2 my-4 bg-gray-100 rounded-t-lg">
     <h4>Trier par :</h4>

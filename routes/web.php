@@ -81,17 +81,12 @@ Route::middleware(['auth', 'is.admin'])->group(function () {
 Route::get('search/{query?}', [MainController::class, 'search'])->name('search.product');
 Route::post('search/', [MainController::class, 'searchAsync'])->name('search.product.async');
 
-Route::get('men/catalog', [MainController::class, 'catalog'])->name('men.catalog');
-Route::post('men/catalog', [MainController::class, 'catalog'])->name('men.catalog.post');
-Route::get('men/catalog/{category}', [MainController::class, 'category'])->name('men.category');
-Route::post('men/catalog/{category}', [MainController::class, 'category'])->name('men.category.post');
-Route::get('men/catalog/{category}/{product_id}', [MainController::class, 'product'])->name('men.product');
+Route::get('catalog/{gender}/', [MainController::class, 'catalog'])->name('catalog');
+Route::post('catalog/{gender}/', [MainController::class, 'catalog'])->name('catalog.post');
+Route::get('catalog/{gender}/{category}', [MainController::class, 'category'])->name('category');
+Route::post('catalog/{gender}/{category}', [MainController::class, 'category'])->name('category.post');
+Route::get('catalog/{gender}/{category}/{product_id}', [MainController::class, 'product'])->name('product');
 
-Route::get('woman/catalog', [MainController::class, 'catalog'])->name('woman.catalog');
-Route::post('woman/catalog', [MainController::class, 'catalog'])->name('woman.catalog.post');
-Route::get('woman/catalog/{category}', [MainController::class, 'category'])->name('woman.category');
-Route::post('woman/catalog/{category}', [MainController::class, 'category'])->name('woman.category.post');
-Route::get('woman/catalog/{category}/{product_id}', [MainController::class, 'product'])->name('woman.product');
 Route::post('get-quantity/', [ProductController::class, 'getQuantity'])->name('product.get-quantity');
 
 Route::get('basket/', [BasketController::class, 'show'])->name('basket.show');
@@ -105,9 +100,9 @@ Route::get('checkout/', function () {
     return view('stripe/checkout');
 })->name('checkout.show');
 Route::post('checkout/', [StripePaymentController::class, 'checkout'])->name('checkout.post');
-Route::get('return/{slug}',  function () {
-    return view('stripe/return');
-})->name('return.show');
+Route::get('confirmation/{slug}',  function () {
+    return view('stripe/confirmation');
+})->name('confirmation.show');
 Route::post('status/', [StripePaymentController::class, 'status'])->name('status.post');
 Route::post('webhooks/', [StripePaymentController::class, 'webhooks'])->name('webhooks');
 

@@ -11,10 +11,17 @@ class Order extends Model
 {
     use HasFactory;
 
-    public function products()
-    {
-        return $this->belongsToMany(Product::class);
-    }
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'products' => 'array',
+        'billing_address' => 'array',
+        'shipping_address' => 'array',
+        'ammount' => 'array'
+    ];
 
     public function user()
     {

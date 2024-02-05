@@ -36,7 +36,7 @@
 
 @section('main')
 <section id="deliveries-and-returns" class="min-h-[90vh] flex flex-col justify-between text-justify">
-    <h1 class="min-h-[15vh] flex justify-center items-center mb-6 text-white bg-gray-800">Livraisons et retours</h1>
+    <h1 class="min-h-[15vh] flex justify-center items-center text-white bg-gray-800">Livraisons et retours</h1>
     <article class="mb-3">
         <h3>Livraison express avec DiaShop-b</h3>
         <p>Bienvenue sur notre page dédiée à la livraison chez DiaShop-b, votre destination mode incontournable. Chez DiaShop-b, nous nous efforçons de rendre votre expérience d'achat aussi agréable que possible, de la commande à la réception de votre colis.</p>

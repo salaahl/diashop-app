@@ -17,10 +17,6 @@ document.querySelectorAll(".remove-button").forEach((button) => {
 });
 
 function updateQuantity(quantityInput, delta) {
-    /*
-     * Mettre ici le code qui ira mettre à jour le produit dans le back-end puis conditionner le product.remove à la réussite de la fonction.
-     * Ajouter également un timer pour éviter les appels trop rapprochés.
-     */
     var quantity = quantityInput;
     var currentQuantity = parseInt(quantity.value);
     var newQuantity = currentQuantity + delta;
@@ -59,11 +55,6 @@ function updateQuantity(quantityInput, delta) {
 }
 
 function removeProduct(product) {
-    /*
-     * Mettre ici le code qui ira supprimer le produit dans le back-end
-     * puis conditionner le product.remove à la réussite de la fonction
-     */
-    //
     let data = {
         product_id: product.querySelector("input").value,
         size: product
