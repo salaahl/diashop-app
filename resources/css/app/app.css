@@ -52,8 +52,19 @@ header,
 header,
 #search-container.show {
     transition: height 0.5s, background-color 0.5s, box-shadow 0.5s;
-    transition-delay: 0s, 0.5s, 0.5s;
+    transition-delay: 0s, 0s, 0.5s;
     transition-property: height, background-color, box-shadow;
+}
+
+header:has(#search-container.show),
+#search-container.show {
+    background-color: white;
+}
+
+#search-container.hide {
+    height: 0;
+    transition: height 0.5s, background-color 0.5s;
+    transition-delay: 0s, 0.5s;
 }
 
 #search-container > div {
@@ -61,11 +72,6 @@ header,
     max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
-}
-
-#search-container.hide {
-    height: 0;
-    transition: height 0.5s background-color 0.5s;
 }
 
 #navbar > div,
@@ -350,11 +356,6 @@ img {
         margin-bottom: 0.5rem;
         background-color: white;
         transition: all 0.5s;
-    }
-
-    header:has(> #search-container.show),
-    #search-container.show {
-        background-color: white;
     }
 
     #search-container.show {

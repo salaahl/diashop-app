@@ -140,6 +140,15 @@ L'idée serait ensuite de mettre des produits ici avec une recherche 'like' -->
 @section('scripts')
 @parent
 <script>
+    window.addEventListener("load", () => {
+        if (window.innerWidth < 767 && document.querySelector("#product-images-container li:nth-of-type(2)")) {
+            setTimeout(function() {
+                document.querySelector("#product-images-container li:first-of-type").style.animation = "translate 2s";
+                document.querySelector("#product-images-container li:nth-of-type(2)").style.animation = "translate 2s";
+            }, 4000);
+        }
+    });
+
     let url = window.location.href;
 
     document.querySelectorAll('.radio_label').forEach((radio) => {

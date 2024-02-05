@@ -93,7 +93,7 @@ class ProductController extends Controller
             return Redirect::back()->withErrors(['msg' => 'Erreur. Ce produit existe déjà.']);
         }
 
-        return redirect()->route('home');
+        return redirect()->route('administrator.dashboard');
     }
 
     /**
@@ -204,6 +204,8 @@ class ProductController extends Controller
         $product->quantity_per_size = $quantity_per_size;
 
         $product->save();
+
+        return redirect()->route('administrator.dashboard');
     }
 
     /**
@@ -212,5 +214,7 @@ class ProductController extends Controller
     public function destroy($product_id)
     {
         $product = Product::where("id", $product_id)->delete();
+
+        return redirect()->route('administrator.dashboard');
     }
 }

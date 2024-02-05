@@ -42,9 +42,9 @@
                 </svg>
             </a>
         </div>
-        <p class="mt-8 text-base leading-6 text-center text-gray-400">Payement sécurisé by <a href="https://stripe.com/fr" class="font-bold">STRIPE</a></p>
-        <p class="mt-8 text-base leading-6 text-center text-gray-400">
-            © 2024 Salaha SOKHONA pour DiaShop-b, Inc. Tous droits réservés.
+        <p class="mt-8 text-base leading-6 text-center text-gray-400">Payement sécurisé by <a href="https://stripe.com/fr" target="_blank" class="font-bold">STRIPE</a></p>
+        <p class="mt-8 text-sm leading-6 text-center text-gray-400">
+            <a href="https://www.linkedin.com/in/salaha-sokhona/" target="_blank">© 2024 Salaha SOKHONA pour DiaShop-b, Inc. Tous droits réservés.</a>
         </p>
     </div>
 </section>

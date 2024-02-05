@@ -4,11 +4,11 @@ $h1 = null;
 $h2 = null;
 $meta_description = null;
 
-if($query[3] == "femme") {
+if($query[4] == "femme") {
 $h1 = "Femme";
 $h2 = "Découvrez notre collection féminine : élégance, style et confiance !";
 $meta_description = "Découvrez notre collection de prêt-à-porter pour femmes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
-} elseif($query[3] == "homme") {
+} elseif($query[4] == "homme") {
 $h1 = "Homme";
 $h2 = "Découvrez notre collection masculine : élégance, sophistication et confiance !";
 $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
@@ -47,7 +47,7 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
         class="category"
         @endif
         >
-        <a href="{{ route('catalog', [$category->catalog->gender, $category->name]) }}">
+        <a href="{{ '/catalog/' . $category->catalog->gender . '/' . $category->name }}">
             <div class="thumbnail">
                 <img src='{{ asset("/images/$category->img_thumbnail") }}' />
             </div>

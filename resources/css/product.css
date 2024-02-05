@@ -78,3 +78,18 @@ h2 {
         padding-left: 1.5rem;
     }
 }
+
+
+@keyframes translate {
+    0% {
+        transform: translateX(0);
+    }
+  
+    60% {
+        transform: translateX(-20vw);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+  }

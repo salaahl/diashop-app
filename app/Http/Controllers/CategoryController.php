@@ -53,6 +53,8 @@ class CategoryController extends Controller
         } else {
             return Redirect::back()->withErrors(['msg' => 'Erreur. Cette catégorie existe déjà.']);
         }
+
+        return redirect()->route('administrator.dashboard');
     }
 
     /**
@@ -129,6 +131,8 @@ class CategoryController extends Controller
         $category->img_thumbnail = $request->img_thumbnail->getClientOriginalName();
         $category->catalog_id = $request->catalog_id;
         $category->save();
+
+        return redirect()->route('administrator.dashboard');
     }
 
     /**
@@ -137,5 +141,7 @@ class CategoryController extends Controller
     public function destroy($category_id)
     {
         $category = Category::where("id", $category_id)->delete();
+
+        return redirect()->route('administrator.dashboard');
     }
 }

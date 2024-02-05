@@ -49,7 +49,7 @@
     <!-- Page Footer -->
     <footer class="bg-gray-50">
         @section('footer')
-        @include('components.footer')
+        @include('layouts.footer')
         @show
     </footer>
 

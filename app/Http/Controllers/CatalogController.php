@@ -40,6 +40,8 @@ class CatalogController extends Controller
         } else {
             return Redirect::back()->withErrors(['msg' => 'Erreur. Ce catalogue existe déjà.']);
         }
+
+        return redirect()->route('administrator.dashboard');
     }
 
     /**
@@ -95,6 +97,8 @@ class CatalogController extends Controller
         $catalog = Catalog::where("id", $catalog_id)->first();
         $catalog->gender = strtolower($request->gender);
         $catalog->save();
+
+        return redirect()->route('administrator.dashboard');
     }
 
     /**
@@ -103,5 +107,7 @@ class CatalogController extends Controller
     public function destroy($catalog_id)
     {
         $catalog = Catalog::where("id", $catalog_id)->delete();
+
+        return redirect()->route('administrator.dashboard');
     }
 }
