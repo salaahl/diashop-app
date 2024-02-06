@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Catalog;
 use App\Models\Category;
 use App\Models\Product;
+use App\Mail\ConfirmationEmail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Exception;
 
 class MainController extends Controller
@@ -141,5 +143,28 @@ class MainController extends Controller
             ]);
             http_response_code(500);
         }
+    }
+
+    public function sendConfirmationEmail(Request $request)
+    {
+        $userEmail = 'sokhona.salaha@gmail.com';
+
+        $data = [
+            'fullname' => 'Salaha Sokhona',
+            'command_date' => '06/02/2024',
+            'command_number' => 123456789,
+            'product1' => 'Produit 1',
+            'address' => [
+                'line1' => '115, rue de Bagnolet',
+                'line2' => '',
+                'postal_code' => '75020',
+                'city' => 'Paris',
+                'country' => 'FR',
+            ],
+            'shipping_date' => '08/02/2024',
+            'total_ammount' => 10000 / 100,
+        ];
+
+        Mail::to($userEmail)->send(new ConfirmationEmail($data));
     }
 }

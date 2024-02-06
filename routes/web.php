@@ -105,6 +105,7 @@ Route::get('confirmation/{slug}',  function () {
 })->name('confirmation.show');
 Route::post('status/', [StripePaymentController::class, 'status'])->name('status.post');
 Route::post('webhooks/', [StripePaymentController::class, 'webhooks'])->name('webhooks');
+Route::get('send-email/', [MainController::class, 'sendConfirmationEmail'])->name('confirmation-email');
 
 Route::get('contact-us/', [MainController::class, 'contactUs'])->name('contact-us');
 Route::get('about-me/', function () {
