@@ -80,6 +80,11 @@
                                     </a>
                                 </li>
                                 <li class="self-center">
+                                    <a href="{{ route('orders') }}" class="block my-2 lg:mr-4 px-4 py-2 whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">
+                                        Mes commandes
+                                    </a>
+                                </li>
+                                <li class="self-center">
                                     <a href="{{ route('profile.edit') }}" class="block my-2 lg:mr-4 px-4 py-2 whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">
                                         Modifier mes informations
                                     </a>

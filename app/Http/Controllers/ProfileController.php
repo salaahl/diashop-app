@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Order;
 
 class ProfileController extends Controller
 {
@@ -56,5 +57,18 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function orders()
+    {
+        $user = Auth::user();
+        $orders = Order::where("user_id", 1)->orderBy('created_at', 'ASC')->paginate(12);
+
+        return view('orders', [
+            "orders" => $orders,
+        ]);
     }
 }

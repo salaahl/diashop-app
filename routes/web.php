@@ -42,7 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('favorites/add', [FavoriteController::class, 'store'])->name('favorites.store');
     Route::delete('favorites/remove', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
 
-    Route::get('orders/', [ProfileController::class, 'orders'])->name('orders.');
+    Route::get('orders/', [ProfileController::class, 'orders'])->name('orders');
 });
 
 Route::middleware(['auth', 'is.admin'])->group(function () {

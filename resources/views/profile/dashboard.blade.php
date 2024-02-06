@@ -1,17 +1,28 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+@section('meta')
+@parent
+@endsection
+
+@section('title', 'Mon profil')
+
+@section('links')
+@parent
+@endsection
+
+@section('header')
+@parent
+@endsection
+
+@section('main')
+<h1>Mon profil</h1>
+<div class="min-h-[90vh] w-[100vw] absolute top-[10vh] left-0 right-0 flex flex-col justify-center items-center px-4">
+    <h2 class="w-3/4 lg:w-2/4 mb-4 p-4 uppercase rounded-full bg-gray-200"><a href="{{ route('orders') }}">Mes commandes</a></h2>
+    <h2 class="w-3/4 lg:w-2/4 mb-4 p-4 uppercase rounded-full bg-gray-200"><a href="{{ route('favorites.show') }}">Mes favoris</a></h2>
+    <h2 class="w-3/4 lg:w-2/4 mb-4 p-4 uppercase rounded-full bg-gray-200"><a href="{{ route('profile.edit') }}">Modifier mes informations</a></h2>
+</div>
+@endsection
+
+@section('scripts')
+@parent
+@endsection
