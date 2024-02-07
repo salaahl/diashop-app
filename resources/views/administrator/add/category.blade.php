@@ -4,8 +4,6 @@
 @parent
 @endsection
 
-@section('title', 'Ajouter/mettre à jour une catégorie')
-
 @section('links')
 @parent
 @endsection
