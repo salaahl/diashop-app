@@ -5,11 +5,11 @@ $h2 = null;
 $meta_description = null;
 
 if($query[4] == "femme") {
-$h1 = "Femme";
+$h1 = "femme";
 $h2 = "Découvrez notre collection féminine : élégance, style et confiance !";
 $meta_description = "Découvrez notre collection de prêt-à-porter pour femmes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
 } elseif($query[4] == "homme") {
-$h1 = "Homme";
+$h1 = "homme";
 $h2 = "Découvrez notre collection masculine : élégance, sophistication et confiance !";
 $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
 }
@@ -22,7 +22,7 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 <meta name="description" content="{{ $meta_description }}">
 @endsection
 
-@section('title', ' - ' . $h1)
+@section('title', 'Catalogue ' . $h1 . ' - ')
 
 @section('links')
 @parent
