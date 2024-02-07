@@ -4,7 +4,7 @@
 @parent
 @endsection
 
-@section('title', 'Connexion')
+@section('title', ' - connexion')
 
 @section('links')
 @parent
