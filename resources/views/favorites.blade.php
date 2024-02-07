@@ -4,7 +4,7 @@
 @parent
 @endsection
 
-@section('title', 'Mes favoris')
+@section('title', ' - mes favoris')
 
 @section('links')
 @parent
