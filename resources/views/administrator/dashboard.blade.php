@@ -4,7 +4,7 @@
 @parent
 @endsection
 
-@section('title', ' - tableau de bord')
+@section('title', 'Mon profil - ')
 
 @section('links')
 @parent
