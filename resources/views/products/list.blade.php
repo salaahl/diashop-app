@@ -19,10 +19,8 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 
 @section('meta')
 @parent
-<meta name="description" content="">
+<meta name="description" content="{{ $meta_description }}">
 @endsection
-
-@section('title', $h1)
 
 @section('links')
 @parent
