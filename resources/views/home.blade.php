@@ -5,8 +5,6 @@
 <meta name="description" content="Découvrez notre collection de prêt-à-porter tendance et de haute qualité. Trouvez les dernières tendances de la mode pour hommes et femmes.">
 @endsection
 
-@section('title', 'Accueil')
-
 @section('links')
 @parent
 @vite('resources/css/home.css')
