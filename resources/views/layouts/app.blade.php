@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @show
 
-    <title>DiaShop-b - @yield('title')</title>
+    <title>DiaShop-b@yield('title')</title>
 
     @section('links')
     <!-- Fonts -->
