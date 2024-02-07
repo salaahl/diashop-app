@@ -4,6 +4,8 @@
 @parent
 @endsection
 
+@section('title', ' - ' . $product->name)
+
 @section('links')
 @parent
 @vite('resources/css/product.css')
