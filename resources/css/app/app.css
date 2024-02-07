@@ -454,6 +454,13 @@ img {
         --container-padding-x: 0;
         --container-padding-y: 0;
     }
+
+    #navbar .dropdownNavbarCatalog {
+        left: 0;
+        right: 0;
+        margin-left: calc((100vw - 1440px)/2);
+        margin-right: auto;
+    }
 }
 
 /* Keyframes */
