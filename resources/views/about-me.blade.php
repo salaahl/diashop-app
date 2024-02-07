@@ -5,7 +5,7 @@
 <meta name="description" content="Découvrez qui nous sommes chez DiaShop-b. Plongez dans notre histoire, notre passion pour la mode et notre engagement envers nos clients." />
 @endsection
 
-@section('title', ' - à propos de nous')
+@section('title', 'A propos de nous - ')
 
 @section('links')
 @parent
