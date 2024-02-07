@@ -22,6 +22,8 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 <meta name="description" content="{{ $meta_description }}">
 @endsection
 
+@section('title', ' - ' . $h1)
+
 @section('links')
 @parent
 @vite('resources/css/products_list.css')
