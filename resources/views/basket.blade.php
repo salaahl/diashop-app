@@ -4,7 +4,7 @@
 @parent
 @endsection
 
-@section('title', ' - panier')
+@section('title', 'Panier - ')
 
 @section('links')
 @parent
