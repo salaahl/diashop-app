@@ -2,14 +2,13 @@
 
 @section('meta')
 @parent
-<meta name="description" content="">
 @endsection
 
-@section('title', 'Favoris')
+@section('title', 'Mes favoris')
 
 @section('links')
 @parent
-@vite(['resources/css/products_list.css', 'resources/js/products_list.js'])
+@vite('resources/css/products_list.css')
 @endsection
 
 @section('header')
