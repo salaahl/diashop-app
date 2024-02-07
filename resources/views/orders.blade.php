@@ -4,7 +4,7 @@
 @parent
 @endsection
 
-@section('title', ' - mes commandes')
+@section('title', 'Mes commandes - ')
 
 @section('links')
 @parent
