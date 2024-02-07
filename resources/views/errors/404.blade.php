@@ -4,8 +4,6 @@
 @parent
 @endsection
 
-@section('title', 'Page introuvable')
-
 @section('links')
 @parent
 @vite('resources/css/404.css')
