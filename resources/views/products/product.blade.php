@@ -4,7 +4,7 @@
 @parent
 @endsection
 
-@section('title', ' - ' . $product->name)
+@section('title', $product->name . ' - ')
 
 @section('links')
 @parent
