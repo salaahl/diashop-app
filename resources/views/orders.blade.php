@@ -19,8 +19,17 @@
 @if(isset($orders))
 <section id="command-container">
     @foreach($orders as $order)
-    <article class="command">
-        <h4>Commande numéro : {{ $order->command_number }}</h4>
+    <article class="command mb-10">
+        <h4>Numéro de commande : {{ $order->command_number }}</h4>
+        <div class="product">
+            <h4>[Nom du produit]</h4>
+            <h4>[Quantité]</h4>
+            <h4>[Prix]</h4>
+        </div>
+        <div class="shipping-address">
+            <h4>Adresse de livraison : </h4>
+            <h4>Numéro de suivi : (mettre une colonne dans la table orders ?)</h4>
+        </div>
     </article>
 </section>
 @endforeach

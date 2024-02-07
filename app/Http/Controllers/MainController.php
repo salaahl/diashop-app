@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Catalog;
 use App\Models\Category;
 use App\Models\Product;
-use App\Mail\ConfirmationEmail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Exception;
+use App\Jobs\ConfirmationEmailJob;
 
 class MainController extends Controller
 {
@@ -147,9 +146,8 @@ class MainController extends Controller
 
     public function sendConfirmationEmail(Request $request)
     {
-        $userEmail = 'sokhona.salaha@gmail.com';
-
         $data = [
+            'user_email' => 'sokhona.salaha@gmail.com',
             'fullname' => 'Salaha Sokhona',
             'command_date' => '06/02/2024',
             'command_number' => 123456789,
@@ -165,6 +163,6 @@ class MainController extends Controller
             'total_ammount' => 10000 / 100,
         ];
 
-        Mail::to($userEmail)->send(new ConfirmationEmail($data));
+        dispatch(new ConfirmationEmailJob($data));
     }
 }

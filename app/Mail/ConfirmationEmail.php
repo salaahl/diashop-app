@@ -29,7 +29,7 @@ class ConfirmationEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Confirmation Email',
+            subject: 'Votre commande DiaShop-b',
         );
     }
 
