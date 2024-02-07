@@ -17,7 +17,7 @@
 
 @section('main')
 <h1>Mes favoris</h1>
-@if($products)
+@if(isset($products))
 @foreach($products as $product)
 <x-product link="{{ route('product', [$product->catalog->gender, $product->category->name, $product->id]) }}" image="/images/{{ $product->img_thumbnail[0] }}" hover="/images/{{ $product->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
 @endforeach
