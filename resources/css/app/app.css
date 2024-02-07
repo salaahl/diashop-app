@@ -400,8 +400,8 @@ img {
     #navbar .dropdownNavbarCatalog {
         left: 0;
         right: 0;
-        margin-left: var(--container-padding-x);
-        margin-right: var(--container-padding-x);
+        margin-left: calc(var(--container-padding-x) * 2);
+        margin-right: auto;
     }
 
     li:has(> .dropdownNavbarLinkCatalog):hover .dropdownNavbarLinkCatalog {
@@ -450,15 +450,10 @@ img {
 }
 
 @media (min-width: 1536px) {
-    :root {
-        --container-padding-x: 0;
-        --container-padding-y: 0;
-    }
-
     #navbar .dropdownNavbarCatalog {
         left: 0;
         right: 0;
-        margin-left: calc((100vw - 1440px)/2);
+        margin-left: calc((100vw - 1440px) / 2);
         margin-right: auto;
     }
 }
