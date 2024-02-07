@@ -40,7 +40,7 @@
             }
             @endphp
             @if($count > 0)
-            <div>
+            <div class="max-md:my-4">
                 <div class="radio-toolbar">
                     @if(isset($product->quantity_per_size["os"]) && $product->quantity_per_size["os"] > 0)
                     <input type="radio" name="size" id="os" value="os">
@@ -116,7 +116,7 @@
                 </div>
             </div>
             @else
-            <div class="md:h-2/4 flex justify-center items-center">
+            <div class="md:h-2/4 max-md:my-4 flex justify-center items-center">
                 <h2 class="text-center">Ce produit est en rupture de stock.</h2>
             </div>
             @endif
