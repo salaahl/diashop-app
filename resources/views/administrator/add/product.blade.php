@@ -4,8 +4,6 @@
 @parent
 @endsection
 
-@section('title', 'Ajouter/mettre à jour un article')
-
 @section('links')
 @parent
 @endsection
