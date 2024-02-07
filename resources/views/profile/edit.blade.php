@@ -4,8 +4,6 @@
 @parent
 @endsection
 
-@section('title', 'Ajouter un catalogue')
-
 @section('links')
 @parent
 <style>
