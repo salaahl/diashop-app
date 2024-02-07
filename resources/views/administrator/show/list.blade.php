@@ -4,8 +4,6 @@
 @parent
 @endsection
 
-@section('title', 'Liste')
-
 @section('links')
 @parent
 @endsection
