@@ -19,7 +19,7 @@ return new class extends Migration
             $table->json('products');
             $table->json('billing_address');
             $table->json('shipping_address');
-            $table->json('ammount');
+            $table->json('amount');
             $table->integer('user_id')->nullable();
             $table->timestamps();
         });

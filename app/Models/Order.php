@@ -20,7 +20,7 @@ class Order extends Model
         'products' => 'array',
         'billing_address' => 'array',
         'shipping_address' => 'array',
-        'ammount' => 'array'
+        'amount' => 'array'
     ];
 
     public function user()

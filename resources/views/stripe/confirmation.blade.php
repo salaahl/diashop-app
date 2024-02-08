@@ -73,7 +73,6 @@
             </tbody>
         </table>
     </div>
-    @php(session()->forget("basket"))
     @endif
 
     <div class="w-full flex flex-wrap md:justify-around mt-8 bg-gray-100 p-2">
@@ -115,7 +114,7 @@
     <h3 class="mt-8 mb-2 uppercase">Total</h3>
     <ul>
         <li><strong>Frais de livraison :</strong> <span id="shipping-cost"></span></li>
-        <li><strong>Total à payer :</strong> <span id="ammount-total"></span></li>
+        <li><strong>Total à payer :</strong> <span id="amount-total"></span></li>
     </ul>
 
     <p class="mt-8">Vous pourrez suivre l'évolution de votre commande en temps réel grâce au numéro de suivi qui vous sera envoyé dès l'expédition de votre colis. Si vous avez des questions, veuillez envoyer un email à <a href="mailto:diashop-b@gmail.com">diashop-b@gmail.com</a>.</p>

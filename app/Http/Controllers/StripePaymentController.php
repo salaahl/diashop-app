@@ -124,8 +124,8 @@ class StripePaymentController extends Controller
 
             if ($session->status == "complete" && session()->get("basket")) {
                 // Je retire la quantité commandée
-                foreach (session()->get("basket") as $products) {
-                    foreach ($products as $item) {
+                foreach (session()->get("basket") as $items) {
+                    foreach ($items as $item) {
                         $product = Product::where("id", $item['id'])->first();
                         $product_quantity = $product->quantity_per_size;
                         $product_quantity[$item['size']] -= $item['quantity'];
@@ -145,8 +145,8 @@ class StripePaymentController extends Controller
                 $order->email = $session->customer_details->email;
 
                 $products = [];
-                foreach (session()->get("basket") as $products) {
-                    foreach ($products as $item) {
+                foreach (session()->get("basket") as $items) {
+                    foreach ($items as $item) {
                         $products[$item["id"]] = [
                             $item["size"] => [
                                 "name" => $item["name"],
@@ -181,11 +181,13 @@ class StripePaymentController extends Controller
 
                 if ($session->customer_details->phone) $order->phone = $session->customer_details->phone;
                 if (Auth::user()) $order->user_id = Auth::user()->id;
-                $order->ammount = [
+                $order->amount = [
                     "shipping_cost" => $session->shipping_cost->amount_total,
                     "amount_total" => $session->amount_total
                 ];
                 $order->save();
+
+                session()->forget("basket");
             }
 
             return response()->json([

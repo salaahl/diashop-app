@@ -87,7 +87,7 @@ async function initialize() {
         document.getElementById("shipping-cost").textContent =
             shipping_cost.amount_total / 100 + "€";
 
-        document.getElementById("ammount-total").textContent =
+        document.getElementById("amount-total").textContent =
             amount_total / 100 + "€";
     }
 }
