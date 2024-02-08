@@ -11,11 +11,8 @@
 <style>
     main {
         max-width: 100%;
-        padding: 0;
-    }
-
-    footer section {
-        margin-top: 0 !important;
+        padding-left: 0;
+        padding-right: 0;
     }
 </style>
 @endsection
