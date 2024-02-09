@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Jobs\TrackingNumberEmailJob;
 
 class OrderController extends Controller
 {
@@ -34,9 +35,27 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Order $order)
+    public function show(Request $request)
     {
-        //
+        $orders = null;
+
+        switch ($request->filter) {
+            case "created_at_asc":
+                $orders = Order::orderBy('created_at', 'ASC')->paginate(12);
+                break;
+            case "created_at_desc":
+                $orders = Order::orderBy('created_at', 'DESC')->paginate(12);
+                break;
+            case "unprocessed_orders":
+                $orders = Order::where("shipped", 0)->orderBy('created_at', 'ASC')->paginate(12);
+                break;
+            default:
+                $orders = Order::orderBy('created_at', 'ASC')->paginate(12);
+        }
+
+        return view('administrator/show/orders', [
+            "orders" => $orders
+        ]);
     }
 
     /**
@@ -52,7 +71,19 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $request->validate([
+            "order_id" => ['required', 'integer'],
+            "tracking_number" => ['required', 'string']
+        ]);
+
+        // Envoi du numéro de suivi :
+        $order = Order::where("id", $request->order_id)->first();
+        $order->shipped = 1;
+        $order->save();
+
+        dispatch(new TrackingNumberEmailJob([$order, $request->tracking_number]));
+
+        return redirect()->route('administrator.orders');
     }
 
     /**
