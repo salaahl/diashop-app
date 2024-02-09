@@ -69,7 +69,7 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request)
     {
         $request->validate([
             "order_id" => ['required', 'integer'],
@@ -83,7 +83,7 @@ class OrderController extends Controller
 
         dispatch(new TrackingNumberEmailJob([$order, $request->tracking_number]));
 
-        return redirect()->route('administrator.orders');
+        return redirect()->route('administrator.show.orders');
     }
 
     /**

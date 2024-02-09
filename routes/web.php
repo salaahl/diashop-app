@@ -79,7 +79,7 @@ Route::middleware(['auth', 'is.admin'])->group(function () {
 
         Route::get('/show/orders/', [OrderController::class, 'show'])->name('administrator.show.orders');
         Route::post('/show/orders/', [OrderController::class, 'show'])->name('administrator.show.orders.post');
-        Route::post('/update/order/{order_id}', [OrderController::class, 'update'])->name('administrator.update.order');
+        Route::post('/update/order/', [OrderController::class, 'update'])->name('administrator.update.order');
     });
 });
 

@@ -39,7 +39,7 @@ class TrackingNumberEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.tracking_number',
+            view: 'emails.tracking-number',
             with: $this->data
         );
     }
