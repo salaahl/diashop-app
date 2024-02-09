@@ -39,7 +39,7 @@ class ConfirmationEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.confirmation-email',
+            view: 'emails.confirmation',
             with: $this->data
         );
     }
