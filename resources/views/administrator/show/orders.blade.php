@@ -91,6 +91,8 @@
 <aside class="w-full my-4">
     {{ $orders->links() }}
 </aside>
+@else
+<h2>Qu'est-ce qui est jaune et qui attend ?</h2>
 @endif
 @endsection
 
