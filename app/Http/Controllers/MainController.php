@@ -18,7 +18,7 @@ class MainController extends Controller
 
         switch ($request->filter) {
             case "new":
-                $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'ASC')->paginate(12);
+                $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'DESC')->paginate(12);
                 break;
             case "price-lowest":
                 $products = Product::where("catalog_id", $catalog_id)->orderBy('price', 'ASC')->paginate(12);
@@ -27,7 +27,7 @@ class MainController extends Controller
                 $products = Product::where("catalog_id", $catalog_id)->orderBy('price', 'DESC')->paginate(12);
                 break;
             default:
-                $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'ASC')->paginate(4);
+                $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'DESC')->paginate(12);
         }
 
         return view('products/list', [
@@ -48,7 +48,7 @@ class MainController extends Controller
                     Category::where("catalog_id", $catalog_id)
                         ->where("name", $category)
                         ->first()->id
-                )->orderBy('created_at', 'ASC')->paginate(12);
+                )->orderBy('created_at', 'DESC')->paginate(12);
                 break;
             case "price-lowest":
                 $products = Product::where(
@@ -72,7 +72,7 @@ class MainController extends Controller
                     Category::where("catalog_id", $catalog_id)
                         ->where("name", $category)
                         ->first()->id
-                )->orderBy('created_at', 'ASC')->paginate(12);
+                )->orderBy('created_at', 'DESC')->paginate(12);
         }
 
         return view('products/list', [
