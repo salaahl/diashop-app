@@ -24,6 +24,6 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-        EnvironmentPlugin(['STRIPE_KEY']),
+        EnvironmentPlugin(['APP_DEBUG', 'STRIPE_KEY']),
     ],
 });
