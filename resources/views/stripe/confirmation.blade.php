@@ -8,7 +8,6 @@
 
 @section('links')
 @parent
-@vite('resources/css/confirmation.css')
 <script src="https://js.stripe.com/v3/"></script>
 @endsection
 
