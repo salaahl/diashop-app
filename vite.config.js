@@ -24,6 +24,6 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-        EnvironmentPlugin("all", { prefix: "" }),
+        EnvironmentPlugin(['STRIPE_KEY']),
     ],
 });
