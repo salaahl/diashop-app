@@ -98,7 +98,7 @@ class CatalogController extends Controller
         $catalog->gender = strtolower($request->gender);
         $catalog->save();
 
-        return redirect()->route('administrator.dashboard');
+        return back()->withInput("Opération effectuée avec succès !");
     }
 
     /**
@@ -108,6 +108,6 @@ class CatalogController extends Controller
     {
         $catalog = Catalog::where("id", $catalog_id)->delete();
 
-        return redirect()->route('administrator.dashboard');
+        return back()->withInput("Opération effectuée avec succès !");
     }
 }
