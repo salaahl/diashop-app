@@ -132,7 +132,7 @@ class CategoryController extends Controller
         $category->catalog_id = $request->catalog_id;
         $category->save();
 
-        return redirect()->route('administrator.dashboard');
+        return back()->withInput("Opération effectuée avec succès !");
     }
 
     /**
@@ -142,6 +142,6 @@ class CategoryController extends Controller
     {
         $category = Category::where("id", $category_id)->delete();
 
-        return redirect()->route('administrator.dashboard');
+        return back()->withInput("Opération effectuée avec succès !");
     }
 }
