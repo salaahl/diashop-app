@@ -81,23 +81,16 @@ class CategoryController extends Controller
                 $categories = Category::orderBy('name', 'ASC')->paginate(12);
         }
 
-        return view('administrator/show/list', [
-            "categories" => $categories
-        ]);
-    }
-
-    public function getCategories(Request $request)
-    {
-        try {
+        $method = $request->method();
+ 
+        if ($request->isMethod('post')) {
             return response()->json([
-                'categories' => Category::where("catalog_id", $request->catalog_id)->get(),
+                "categories" => $categories
             ]);
-            http_response_code(200);
-        } catch (Exception $e) {
-            return response()->json([
-                'error' => $e->getMessage(),
+        } else {
+            return view('administrator/show/list', [
+                "categories" => $categories
             ]);
-            http_response_code(500);
         }
     }
 
