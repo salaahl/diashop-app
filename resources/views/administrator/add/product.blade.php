@@ -208,7 +208,7 @@
             catalog_id: this.value,
         };
 
-        const request = new Request('/administrator/get-categories', {
+        const request = new Request({{ route('administrator.show.categories.post') }}, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
