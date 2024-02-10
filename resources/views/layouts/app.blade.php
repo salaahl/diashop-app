@@ -35,7 +35,7 @@
         <header id="navbar-container" class="bg-white/50">
             @section('header')
             @include('layouts.navigation')
-            @include('components.search_product')
+            @include('components.search-product')
             @show
         </header>
 
