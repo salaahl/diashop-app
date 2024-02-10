@@ -88,5 +88,5 @@ document.querySelector("#default-search").addEventListener("input", (e) => {
         } else {
             $("#search-results").innerHTML = "";
         }
-    }, 600);
+    }, 1000);
 });
