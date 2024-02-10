@@ -32,7 +32,7 @@
     <div class="main-container min-h-screen" style="opacity: 0;">
 
         <!-- Page Heading -->
-        <header id="navbar-container" class="bg-white/50">
+        <header id="navbar-container" class="h-[10vh] bg-white/50">
             @section('header')
             @include('layouts.navigation')
             @include('components.search-product')
@@ -40,7 +40,7 @@
         </header>
 
         <!-- Page Content -->
-        <main>
+        <main class="min-h-[90vh]">
             @yield('main')
         </main>
 
@@ -55,7 +55,7 @@
 
     <!-- Page Scripts -->
     @section('scripts')
-    @vite(['resources/js/app.js', 'resources/js/search_product.js'])
+    @vite(['resources/js/app.js', 'resources/js/search-product.js'])
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     @show
 </body>
