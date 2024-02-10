@@ -1,3 +1,20 @@
+#navbar-container {
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    background-color: rgb(255, 255, 255, 0.8);
+    transition: all 0.25s;
+}
+
+#navbar-container #navbar {
+    height: 100%;
+}
+
+#navbar-dropdown li:hover * {
+    color: black;
+    font-weight: 500;
+}
+
 a:has(> #basket-counter) {
     display: flex;
     justify-content: center;
@@ -19,6 +36,42 @@ a:has(> #basket-counter) {
 }
 
 @media (max-width: 1023px) {
+    #navbar-container {
+        position: fixed;
+    }
+
+    #navbar-dropdown {
+        display: block;
+        overflow: hidden;
+    }
+
+    #navbar-dropdown-btn[aria-expanded="false"] svg:first-of-type,
+    #navbar-dropdown-btn[aria-expanded="true"] svg:last-of-type {
+        display: block;
+    }
+
+    #navbar-dropdown-btn[aria-expanded="true"] svg:first-of-type {
+        display: none;
+    }
+
+    #navbar:has(#navbar-dropdown-btn[aria-expanded="false"]) #navbar-dropdown {
+        height: 0;
+        max-height: 0;
+        transition: all 0.25s;
+    }
+
+    #navbar-container:has(#navbar-dropdown-btn[aria-expanded="true"]) {
+        background-color: white;
+    }
+
+    #navbar:has(#navbar-dropdown-btn[aria-expanded="true"]) #navbar-dropdown {
+        height: 100vh;
+        max-height: 1024px;
+        margin-bottom: 0.5rem;
+        background-color: white;
+        transition: all 0.5s;
+    }
+    
     #dropdownDashboardBtn[aria-expanded="false"] svg,
     .dropdownNavbarLinkCatalogBtn[aria-expanded="false"] svg {
         transform: rotateZ(0deg);
@@ -31,6 +84,49 @@ a:has(> #basket-counter) {
 }
 
 @media (min-width: 1024px) {
+    #navbar-container {
+        position: sticky;
+    }
+
+    #navbar {
+        display: flex;
+        align-items: center;
+    }
+
+    #dropdownDashboard,
+    .dropdownNavbarCatalog {
+        position: absolute;
+        height: 0;
+        width: fit-content;
+        max-width: 1440px;
+        padding-left: var(--container-padding-x);
+        padding-right: var(--container-padding-x);
+        inset: 10vh auto auto auto;
+        transform: unset;
+        overflow: hidden;
+        margin: 0 auto;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+        transition: all 0.25s ease-in-out;
+    }
+
+    #navbar .dropdownNavbarCatalog {
+        left: 0;
+        right: 0;
+        margin-left: calc(var(--container-padding-x) * 2);
+        margin-right: auto;
+    }
+
+    li:has(> .dropdownNavbarLinkCatalog):hover .dropdownNavbarLinkCatalog {
+        color: black;
+        font-weight: 500;
+    }
+
+    li:has(> #dropdownDashboard):hover #dropdownDashboard,
+    li:has(> .dropdownNavbarCatalog):hover .dropdownNavbarCatalog {
+        height: 6vh;
+    }
+    
     li:has(> #dropdownDashboardLink) > a > svg,
     li:has(> .dropdownNavbarLinkCatalog) > a > svg {
         transform: rotateZ(0deg);
@@ -40,5 +136,14 @@ a:has(> #basket-counter) {
     li:has(> #dropdownDashboardLink):hover > a > svg,
     li:has(> .dropdownNavbarCatalog):hover > a > svg {
         transform: rotateZ(180deg);
+    }
+}
+
+@media (min-width: 1536px) {
+    #navbar .dropdownNavbarCatalog {
+        left: 0;
+        right: 0;
+        margin-left: calc((100vw - 1440px) / 2);
+        margin-right: auto;
     }
 }
