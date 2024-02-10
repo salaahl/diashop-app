@@ -576,11 +576,6 @@
                                                                         informations de suivi ne soient pas immédiatement visibles.
                                                                     </p>
                                                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
-                                                                        Si vous avez besoin
-                                                                        d'une assistance supplémentaire concernant votre commande, n'hésitez pas à nous
-                                                                        contacter à l'adresse suivante : <a href="mailto:diashop@gmail.com">diashop@gmail.com</a>
-                                                                    </p>
-                                                                    <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
                                                                         <br>
                                                                     </p>
                                                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
