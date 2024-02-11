@@ -449,7 +449,7 @@
                                                             <tr>
                                                                 <td align="left" style="padding:0;Margin:0">
                                                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:36px;color:#020202;font-size:24px">
-                                                                        DIASHOP</p>
+                                                                        DIASHOP-B</p>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -469,7 +469,8 @@
                                                             <tr>
                                                                 <td align="right" class="es-m-txt-l" style="padding:0;Margin:0;padding-top:5px">
                                                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
-                                                                        {{ $data[0]->command_number }}</p>
+                                                                        {{ $data[0]->command_number }}
+                                                                    </p>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -557,7 +558,7 @@
                             <td align="center" style="padding:0;Margin:0">
                                 <table bgcolor="#fffdf7" class="es-content-body" align="center" cellpadding="0" cellspacing="0" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFDF7;width:600px">
                                     <tr>
-                                        <td align="left" style="Margin:0;padding-top:20px;padding-left:20px;padding-right:20px;padding-bottom:30px">
+                                        <td align="left" style="Margin:0;padding-top:40px;padding-left:20px;padding-right:20px;padding-bottom:40px">
                                             <table cellpadding="0" cellspacing="0" width="100%" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                 <tr>
                                                     <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
@@ -579,7 +580,7 @@
                                                                         <br>
                                                                     </p>
                                                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
-                                                                        Merci d'avoir choisi Diashop !</p>
+                                                                        Merci d'avoir choisi DiaShop-b !</p>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -592,103 +593,41 @@
                             </td>
                         </tr>
                     </table>
-                    <table cellpadding="0" cellspacing="0" class="es-content" align="center" role="none"
-                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
+                    <table cellpadding="0" cellspacing="0" class="es-content" align="center" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
                         <tr>
-                          <td align="center" style="padding:0;Margin:0">
-                            <table bgcolor="#3A0BC7" style="color:white;" class="es-footer-body" width="600" cellspacing="0"
-                              cellpadding="0" align="center">
-                              <tbody>
-                                <tr>
-                                  <td align="left"
-                                    style="Margin:0;padding-top:20px;padding-left:20px;padding-right:20px;padding-bottom:30px"
-                                    class="esd-structure es-p40t es-p40b es-p20r es-p20l">
-                                    <table class="es-left" cellspacing="0" cellpadding="0" align="left">
-                                      <tbody>
+                            <td align="center" style="padding:0;Margin:0">
+                                <table bgcolor="#3A0BC7" style="color:white;" class="es-footer-body" width="600" cellspacing="0" cellpadding="0" align="center">
+                                    <tbody>
                                         <tr>
-                                          <td class="es-m-p20b esd-container-frame" width="270" align="left">
-                                            <table width="100%" cellspacing="0" cellpadding="0">
-                                              <tbody>
-                                                <tr>
-                                                  <td align="left" class="esd-block-text">
-                                                    <p style="margin: 0; font-size: 24px;">DIASHOP</p>
-                                                  </td>
-                                                </tr>
-                                              </tbody>
-                                            </table>
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                    <table class="es-right" cellspacing="0" cellpadding="0" align="right">
-                                      <tbody>
-                                        <tr>
-                                          <td class="esd-container-frame" width="270" align="left">
-                                            <table width="100%" cellspacing="0" cellpadding="0">
-                                              <tbody>
-                                                <tr>
-                                                  <td align="right" class="esd-block-social es-m-txt-c" style="font-size:0">
-                                                    <table cellpadding="0" cellspacing="0" class="es-table-not-adapt es-social">
-                                                      <tbody>
+                                            <td class="esd-structure" align="left">
+                                                <table cellpadding="0" cellspacing="0" width="100%">
+                                                    <tbody>
                                                         <tr>
-                                                          <td align="center" valign="top" class="es-p20r">
-                                                            <a target="_blank" href="https://viewstripo.email">
-                                                              <img
-                                                                src="https://ecdlgny.stripocdn.email/content/assets/img/social-icons/logo-white/facebook-logo-white.png"
-                                                                alt="Fb" title="Facebook" width="32">
-                                                            </a>
-                                                          </td>
-                                                          <td align="center" valign="top">
-                                                            <a target="_blank" href="https://viewstripo.email">
-                                                              <img
-                                                                src="https://ecdlgny.stripocdn.email/content/assets/img/social-icons/logo-white/instagram-logo-white.png"
-                                                                alt="Ig" title="Instagram" width="32">
-                                                            </a>
-                                                          </td>
+                                                            <td width="600" class="esd-container-frame" align="center" valign="top">
+                                                                <table cellpadding="0" cellspacing="0" width="100%">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td align="center" class="esd-block-text es-p15" style="padding:20px">
+                                                                                <p>Pour toute question et/ou réclamation, veuillez nous contacter à l'adresse
+                                                                                    suivante :</p>
+                                                                                <p>
+                                                                                    <a href="mailto:diashop-b@gmail.com" style="color:white;" target="_new">diashop-b@gmail.com</a>
+                                                                                </p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
                                                         </tr>
-                                                      </tbody>
-                                                    </table>
-                                                  </td>
-                                                </tr>
-                                              </tbody>
-                                            </table>
-                                          </td>
+                                                    </tbody>
+                                                </table>
+                                            </td>
                                         </tr>
-                                      </tbody>
-                                    </table>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="esd-structure" align="left">
-                                    <table cellpadding="0" cellspacing="0" width="100%">
-                                      <tbody>
-                                        <tr>
-                                          <td width="600" class="esd-container-frame" align="center" valign="top">
-                                            <table cellpadding="0" cellspacing="0" width="100%">
-                                              <tbody>
-                                                <tr>
-                                                  <td align="center" class="esd-block-text es-p15">
-                                                    <p>Pour toute question et/ou réclamation, veuillez nous contacter à l'adresse
-                                                      suivante :</p>
-                                                    <p>
-                                                        <a href="mailto:diashop@gmail.com" style="color:white;"
-                                                        target="_new">diashop@gmail.com</a>
-                                                    </p>
-                                                  </td>
-                                                </tr>
-                                              </tbody>
-                                            </table>
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </td>
+                                    </tbody>
+                                </table>
+                            </td>
                         </tr>
-                      </table>
+                    </table>
                 </td>
             </tr>
         </table>

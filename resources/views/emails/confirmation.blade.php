@@ -449,7 +449,7 @@
                               <tr>
                                 <td align="left" style="padding:0;Margin:0">
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:36px;color:#020202;font-size:24px">
-                                    DIASHOP</p>
+                                    DIASHOP-B</p>
                                 </td>
                               </tr>
                             </table>
@@ -469,7 +469,7 @@
                               <tr>
                                 <td align="right" class="es-m-txt-l" style="padding:0;Margin:0;padding-top:5px">
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
-                                    &nbsp;{{ $data['command_date'] }}</p>
+                                    &nbsp;{{ $order->created_at->toDateString() }}</p>
                                 </td>
                               </tr>
                             </table>
@@ -523,14 +523,13 @@
                               <tr>
                                 <td align="left" class="es-m-p40r" style="padding:0;Margin:0;padding-top:25px;padding-bottom:40px">
                                   <h3 style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#020202">
-                                    CHER(E) {{ $data['fullname'] }},</h3>
+                                    CHER(E) {{ $order->fullname }},</h3>
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
                                     <br>
                                   </p>
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    Merci d'avoir choisi DiaShop-b ! Nous sommes ravis de confirmer la réception de votre commande.
+                                  </p>
                                 </td>
                               </tr>
                             </table>
@@ -575,22 +574,22 @@
                                   <strong></strong>
                                   <ul>
                                     <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      <strong>Numéro de facture :</strong> {{ $data['command_number'] }}
+                                      <strong>Numéro de facture :</strong> {{ $order->command_number }}
                                     </li>
                                     <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      <strong>Date de la commande :</strong> {{ $data['command_date'] }}
+                                      <strong>Date de la commande :</strong> {{ $order->created_at->toDateString() }}
                                     </li>
+                                    @foreach($order->products as $products)
+                                    @foreach($products as $product)
                                     <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      <b>{{ $data['product1'] }}</b>
+                                      <b>{{ ucfirst($product['name']) }}</b>
+                                      <br>- Taille : {{ strtoupper($product['size']) }}
+                                      <br>- Quantité : {{ $product['quantity'] }}
                                     </li>
+                                    @endforeach
+                                    @endforeach
                                     <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      <b>Article 2</b><b></b><br>
-                                    </li>
-                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      <b>Article 3</b>
-                                    </li>
-                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      <strong>Total :</strong> {{ $data['total_ammount'] }}€
+                                      <strong>Total :</strong> {{ $order->amount['amount_total'] / 100 }}€ (dont {{ $order->amount['shipping_cost'] / 100 }}€ de frais de livraison)
                                     </li>
                                   </ul>
                                 </td>
@@ -639,16 +638,21 @@
                                 <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px">
                                   <ul>
                                     <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      {{ $data['fullname'] }}
+                                      {{ $order->shipping_address['line1'] }}
+                                    </li>
+                                    @if($order->shipping_address['line2'])
+                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
+                                      {{ $order->shipping_address['line2'] }}
+                                    </li>
+                                    @endif
+                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
+                                      {{ $order->shipping_address['postal_code'] }}
                                     </li>
                                     <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      {{ $data['address']['line1'] }}
+                                      {{ $order->shipping_address['city'] }}
                                     </li>
                                     <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      {{ $data['address']['postal_code'] }}
-                                    </li>
-                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      {{ $data['address']['city'] }}
+                                      {{ $order->shipping_address['country'] }}
                                     </li>
                                   </ul>
                                 </td>
@@ -669,13 +673,22 @@
                                 <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px">
                                   <ul>
                                     <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      John Doe</li>
+                                      {{ $order->billing_address['line1'] }}
+                                    </li>
+                                    @if($order->billing_address['line2'])
                                     <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      115, rue de Bagnolet</li>
+                                      {{ $order->billing_address['line2'] }}
+                                    </li>
+                                    @endif
                                     <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      75020</li>
+                                      {{ $order->billing_address['postal_code'] }}
+                                    </li>
                                     <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      Paris</li>
+                                      {{ $order->billing_address['city'] }}
+                                    </li>
+                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
+                                      {{ $order->billing_address['country'] }}
+                                    </li>
                                   </ul>
                                 </td>
                               </tr>
@@ -699,35 +712,6 @@
                                       </td>
                                     </tr>
                                   </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td align="left" style="padding:20px;Margin:0">
-                      <table cellpadding="0" cellspacing="0" width="100%" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                        <tr>
-                          <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
-                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr>
-                                <td align="left" style="padding:0;Margin:0;padding-bottom:20px">
-                                  <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;font-size:24px;font-style:normal;font-weight:normal;color:#020202">
-                                    METHODE DE PAYEMENT</h2>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px">
-                                  <ul>
-                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
-                                        <b>CB/Paypal/Google Pay/Apple Pay</b>
-                                      </p>
-                                    </li>
-                                  </ul>
                                 </td>
                               </tr>
                             </table>
@@ -767,20 +751,25 @@
                               <tr>
                                 <td align="left" style="padding:0;Margin:0;padding-bottom:20px">
                                   <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;font-size:24px;font-style:normal;font-weight:normal;color:#020202">
-                                    LIVRAISON ESTIMEE : <b>{{ $data['shipping_date'] }}</b></h2>
+                                    LIVRAISON ESTIMEE :
+                                    @if($order->amount['shipping_cost'] == 1000)
+                                    entre le <b>{{ date("d/m", strtotime("+2 day")) }}</b> et le <b>{{ date("d/m", strtotime("+4 day")) }}</b>
+                                    @else
+                                    entre le <b>{{ date("d/m", strtotime("+5 day")) }}</b> et le <b>{{ date("d/m", strtotime("+7 day")) }}</b>
+                                    @endif
+                                  </h2>
                                 </td>
                               </tr>
                               <tr>
                                 <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px">
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    En fonction du mode d'expédition que vous avez choisi, il est possible que les informations de suivi ne soient pas immédiatement visibles.
+                                  </p>
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
                                     <br>
                                   </p>
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
-                                    Merci d'avoir choisi Diashop !</p>
+                                    Merci d'avoir choisi DiaShop-b !</p>
                                 </td>
                               </tr>
                             </table>
@@ -793,72 +782,11 @@
               </td>
             </tr>
           </table>
-          <table cellpadding="0" cellspacing="0" class="es-content" align="center" role="none"
-            style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
+          <table cellpadding="0" cellspacing="0" class="es-content" align="center" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
             <tr>
               <td align="center" style="padding:0;Margin:0">
-                <table bgcolor="#3A0BC7" style="color:white;" class="es-footer-body" width="600" cellspacing="0"
-                  cellpadding="0" align="center">
+                <table bgcolor="#3A0BC7" style="color:white;" class="es-footer-body" width="600" cellspacing="0" cellpadding="0" align="center">
                   <tbody>
-                    <tr>
-                      <td align="left"
-                        style="Margin:0;padding-top:20px;padding-left:20px;padding-right:20px;padding-bottom:30px"
-                        class="esd-structure es-p40t es-p40b es-p20r es-p20l">
-                        <table class="es-left" cellspacing="0" cellpadding="0" align="left">
-                          <tbody>
-                            <tr>
-                              <td class="es-m-p20b esd-container-frame" width="270" align="left">
-                                <table width="100%" cellspacing="0" cellpadding="0">
-                                  <tbody>
-                                    <tr>
-                                      <td align="left" class="esd-block-text">
-                                        <p style="margin: 0; font-size: 24px;">DIASHOP</p>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <table class="es-right" cellspacing="0" cellpadding="0" align="right">
-                          <tbody>
-                            <tr>
-                              <td class="esd-container-frame" width="270" align="left">
-                                <table width="100%" cellspacing="0" cellpadding="0">
-                                  <tbody>
-                                    <tr>
-                                      <td align="right" class="esd-block-social es-m-txt-c" style="font-size:0">
-                                        <table cellpadding="0" cellspacing="0" class="es-table-not-adapt es-social">
-                                          <tbody>
-                                            <tr>
-                                              <td align="center" valign="top" class="es-p20r">
-                                                <a target="_blank" href="https://viewstripo.email">
-                                                  <img
-                                                    src="https://ecdlgny.stripocdn.email/content/assets/img/social-icons/logo-white/facebook-logo-white.png"
-                                                    alt="Fb" title="Facebook" width="32">
-                                                </a>
-                                              </td>
-                                              <td align="center" valign="top">
-                                                <a target="_blank" href="https://viewstripo.email">
-                                                  <img
-                                                    src="https://ecdlgny.stripocdn.email/content/assets/img/social-icons/logo-white/instagram-logo-white.png"
-                                                    alt="Ig" title="Instagram" width="32">
-                                                </a>
-                                              </td>
-                                            </tr>
-                                          </tbody>
-                                        </table>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </td>
-                    </tr>
                     <tr>
                       <td class="esd-structure" align="left">
                         <table cellpadding="0" cellspacing="0" width="100%">
@@ -868,12 +796,11 @@
                                 <table cellpadding="0" cellspacing="0" width="100%">
                                   <tbody>
                                     <tr>
-                                      <td align="center" class="esd-block-text es-p15">
+                                      <td align="center" class="esd-block-text es-p15" style="padding:20px">
                                         <p>Pour toute question et/ou réclamation, veuillez nous contacter à l'adresse
                                           suivante :</p>
                                         <p>
-                                            <a href="mailto:diashop@gmail.com" style="color:white;"
-                                            target="_new">diashop@gmail.com</a>
+                                          <a href="mailto:diashop-b@gmail.com" style="color:white;" target="_new">diashop-b@gmail.com</a>
                                         </p>
                                       </td>
                                     </tr>

@@ -8,19 +8,20 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Order;
 
 class ConfirmationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
+    public Order $order;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($data)
+    public function __construct(Order $order)
     {
-        $this->data = $data;
+        $this->order = $order;
     }
 
     /**
@@ -29,7 +30,7 @@ class ConfirmationEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Votre commande DiaShop-b',
+            subject: 'Votre commande',
         );
     }
 
@@ -40,7 +41,7 @@ class ConfirmationEmail extends Mailable
     {
         return new Content(
             view: 'emails.confirmation',
-            with: $this->data
+            with: [$this->order]
         );
     }
 

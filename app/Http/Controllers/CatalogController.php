@@ -98,7 +98,7 @@ class CatalogController extends Controller
         $catalog->gender = strtolower($request->gender);
         $catalog->save();
 
-        return back()->withInput("Opération effectuée avec succès !");
+        return Redirect::back()->withErrors(['msg' => 'Opération effectuée avec succès !']);
     }
 
     /**
@@ -108,6 +108,6 @@ class CatalogController extends Controller
     {
         $catalog = Catalog::where("id", $catalog_id)->delete();
 
-        return back()->withInput("Opération effectuée avec succès !");
+        return Redirect::back()->withErrors(['msg' => 'Opération effectuée avec succès !']);
     }
 }

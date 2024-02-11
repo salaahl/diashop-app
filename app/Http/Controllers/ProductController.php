@@ -205,7 +205,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return back()->withInput("Opération effectuée avec succès !");
+        return Redirect::back()->withErrors(['msg' => 'Opération effectuée avec succès !']);
     }
 
     /**
@@ -215,6 +215,6 @@ class ProductController extends Controller
     {
         $product = Product::where("id", $product_id)->delete();
 
-        return back()->withInput("Opération effectuée avec succès !");
+        return Redirect::back()->withErrors(['msg' => 'Opération effectuée avec succès !']);
     }
 }

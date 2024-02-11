@@ -12,6 +12,10 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour femmes.
 $h1 = "homme";
 $h2 = "Découvrez notre collection masculine : élégance, sophistication et confiance !";
 $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
+} elseif($query[3] == "search") {
+$h1 = "Résultats";
+$h2 = "";
+$meta_description = "";
 }
 @endphp
 
@@ -38,7 +42,7 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
     <h1>{{ $h1 }}</h1>
     <h2>{{ $h2 }}</h2>
 </div>
-@if($categories)
+@if(isset($categories))
 <div id="categories" class="flex w-full my-8 overflow-x-auto">
     @foreach($categories as $category)
     <article @if(basename(url()->current()) == $category->name)
@@ -58,7 +62,6 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
     </article>
     @endforeach
 </div>
-@endif
 <nav id="filters" class="w-full flex justify-between items-center p-2 my-4 bg-gray-100 rounded-t-lg">
     <h4>Trier par :</h4>
     <select id="filter_select" class="block py-2.5 px-0 text-sm text-gray-500 bg-transparent border-0 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
@@ -67,6 +70,7 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
         <option value="price-highest" @if(request()->get('filter') == 'price-highest') selected @endif>Prix : descendant</option>
     </select>
 </nav>
+@endif
 @foreach($products as $product)
 <x-product link="{{ route('product', [$product->catalog->gender, $product->category->name, $product->id]) }}" image="/images/{{ $product->img_thumbnail[0] }}" hover="/images/{{ $product->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
 @endforeach

@@ -82,10 +82,10 @@ class CategoryController extends Controller
         }
 
         $method = $request->method();
- 
+
         if ($request->isMethod('post')) {
             return response()->json([
-                "categories" => $categories
+                "categories" => Category::orderBy('name', 'ASC')->get()
             ]);
         } else {
             return view('administrator/show/list', [
@@ -125,7 +125,7 @@ class CategoryController extends Controller
         $category->catalog_id = $request->catalog_id;
         $category->save();
 
-        return back()->withInput("Opération effectuée avec succès !");
+        return Redirect::back()->withErrors(['msg' => 'Opération effectuée avec succès !']);
     }
 
     /**
@@ -135,6 +135,6 @@ class CategoryController extends Controller
     {
         $category = Category::where("id", $category_id)->delete();
 
-        return back()->withInput("Opération effectuée avec succès !");
+        return Redirect::back()->withErrors(['msg' => 'Opération effectuée avec succès !']);
     }
 }

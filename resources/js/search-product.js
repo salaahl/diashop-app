@@ -1,3 +1,7 @@
+let $ = (id) => {
+    return document.querySelector(id);
+};
+
 document.querySelector("#search-btn").addEventListener("click", (e) => {
     document.querySelector("#search-container").classList.add("show");
     document.querySelector("#search-container").classList.remove("hide");
@@ -15,17 +19,13 @@ document.querySelector("#default-search").addEventListener("input", (e) => {
 
     clearTimeout(timer);
 
-    let $ = (id) => {
-        return document.querySelector(id);
-    };
-
     timer = setTimeout(function () {
         if ($("#default-search").value.length > 0) {
             $("#search-results").innerHTML = "";
 
             let data = {
                 input: $("#default-search").value,
-                catalog_id: $("#search-container input[type='radio']:checked")
+                catalog_id: $("#search-container [name='catalog_id']:checked")
                     .value,
             };
 
@@ -45,16 +45,12 @@ document.querySelector("#default-search").addEventListener("input", (e) => {
                 .then((data) => {
                     if (data.results != "") {
                         data.results.forEach((product) => {
-                            let gender =
-                                data.catalog.gender == "femme"
-                                    ? "woman"
-                                    : "men";
-
                             $("#search-results").innerHTML +=
                                 '<article class="product">' +
                                 '<a href="/' +
                                 "catalog/" +
-                                gender + "/" +
+                                product["gender"] +
+                                "/" +
                                 product["category"] +
                                 "/" +
                                 product["id"] +
@@ -89,4 +85,11 @@ document.querySelector("#default-search").addEventListener("input", (e) => {
             $("#search-results").innerHTML = "";
         }
     }, 1000);
+});
+
+document.querySelector("#default-search-btn").addEventListener("click", () => {
+    let catalog_id = $("#search-container [name='catalog_id']:checked").value;
+    let input = $("#default-search").value;
+
+    window.location = "/search/" + catalog_id + "/" + input;
 });

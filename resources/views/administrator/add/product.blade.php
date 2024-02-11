@@ -208,7 +208,7 @@
             catalog_id: this.value,
         };
 
-        const request = new Request({{ route('administrator.show.categories.post') }}, {
+        const request = new Request("{{ route('administrator.show.categories.post') }}", {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -222,7 +222,6 @@
         fetch(request)
             .then((response) => response.json())
             .then((data) => {
-                console.log(data.categories)
                 const select = document.querySelector('#category_id');
                 let options;
 

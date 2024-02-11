@@ -13,7 +13,7 @@ class TrackingNumberEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
+    public array $data;
 
     /**
      * Create a new message instance.
@@ -29,7 +29,7 @@ class TrackingNumberEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Votre colis DiaShop-b est en chemin',
+            subject: 'Votre colis est en chemin',
         );
     }
 

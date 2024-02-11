@@ -10,19 +10,20 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ConfirmationEmail;
+use App\Models\Order;
 
 class ConfirmationEmailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $data;
+    protected Order $order;
 
     /**
      * Create a new job instance.
      */
-    public function __construct($data)
+    public function __construct(Order $order)
     {
-        $this->data = $data;
+        $this->order = $order;
     }
 
     /**
@@ -30,8 +31,8 @@ class ConfirmationEmailJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $email = new ConfirmationEmail($this->data);
+        $email = new ConfirmationEmail($this->order);
 
-        Mail::to($this->data['user_email'])->send($email);
+        Mail::to($this->order->email)->send($email);
     }
 }

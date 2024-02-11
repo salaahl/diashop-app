@@ -82,7 +82,7 @@ Route::middleware(['auth', 'is.admin'])->group(function () {
     });
 });
 
-Route::get('search/{query?}', [MainController::class, 'search'])->name('search.product');
+Route::get('search/{gender}/{input}', [MainController::class, 'search'])->name('search.product');
 Route::post('search/', [MainController::class, 'searchAsync'])->name('search.product.async');
 
 Route::get('catalog/{gender}/', [MainController::class, 'catalog'])->name('catalog');
@@ -109,7 +109,6 @@ Route::get('confirmation/{slug}',  function () {
 })->name('confirmation.show');
 Route::post('status/', [StripePaymentController::class, 'status'])->name('status.post');
 Route::post('webhooks/', [StripePaymentController::class, 'webhooks'])->name('webhooks');
-Route::get('send-email/', [MainController::class, 'sendConfirmationEmail'])->name('confirmation-email');
 
 Route::get('contact-us/', [MainController::class, 'contactUs'])->name('contact-us');
 Route::get('about-me/', function () {

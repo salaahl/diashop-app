@@ -6,6 +6,7 @@ use Exception;
 use App\Models\Product;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use App\Jobs\ConfirmationEmailJob;
 
 class StripePaymentController extends Controller
 {
@@ -160,22 +161,22 @@ class StripePaymentController extends Controller
                 $order->products = $products;
 
                 $billing_address = [
-                    $session->customer_details->name,
-                    $session->customer_details->address['line1'],
-                    $session->customer_details->address['line2'],
-                    $session->customer_details->address['postal_code'],
-                    $session->customer_details->address['city'],
-                    $session->customer_details->address['country']
+                    "fullname" => $session->customer_details->name,
+                    "line1" => $session->customer_details->address['line1'],
+                    "line2" => $session->customer_details->address['line2'],
+                    "postal_code" => $session->customer_details->address['postal_code'],
+                    "city" => $session->customer_details->address['city'],
+                    "country" => $session->customer_details->address['country']
                 ];
                 $order->billing_address = $billing_address;
 
                 $shipping_address = [
-                    $session->shipping_details->name,
-                    $session->shipping_details->address['line1'],
-                    $session->shipping_details->address['line2'],
-                    $session->shipping_details->address['postal_code'],
-                    $session->shipping_details->address['city'],
-                    $session->shipping_details->address['country']
+                    "fullname" => $session->shipping_details->name,
+                    "line1" => $session->shipping_details->address['line1'],
+                    "line2" => $session->shipping_details->address['line2'],
+                    "postal_code" => $session->shipping_details->address['postal_code'],
+                    "city" => $session->shipping_details->address['city'],
+                    "country" => $session->shipping_details->address['country']
                 ];
                 $order->shipping_address = $shipping_address;
 
@@ -186,6 +187,8 @@ class StripePaymentController extends Controller
                     "amount_total" => $session->amount_total
                 ];
                 $order->save();
+
+                dispatch(new ConfirmationEmailJob($order));
 
                 session()->forget("basket");
             }
