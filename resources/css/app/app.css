@@ -272,12 +272,6 @@ img {
         --container-padding-x: 10px;
         --container-padding-y: 10vh;
     }
-
-    #search-container .product {
-        width: 49%;
-        margin-left: 0.5%;
-        margin-right: 0.5%;
-    }
 }
 
 @media (min-width: 768px) {
@@ -311,6 +305,9 @@ img {
     }
 
     #search-container .product {
+        width: 49%;
+        margin-left: 0.5%;
+        margin-right: 0.5%;
         margin-bottom: 10%;
     }
 }
