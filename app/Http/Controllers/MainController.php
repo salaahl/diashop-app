@@ -92,11 +92,12 @@ class MainController extends Controller
         ]);
     }
 
-    public function search($catalog_id, $input)
+    public function search($catalog, $input)
     {
+        $catalog = Catalog::where("gender", $catalog)->first();
         $products = Product::where([
             ["name", "like", "%" . $input . "%"],
-            ["catalog_id", $catalog_id],
+            ["catalog_id", $catalog->id],
         ])->paginate(12);
 
         return view('products/list', [
@@ -108,7 +109,7 @@ class MainController extends Controller
     {
         try {
             $results = [];
-            $catalog = Catalog::where("id", $request->catalog_id)->first();
+            $catalog = Catalog::where("gender", $request->catalog)->first();
             $products = Product::where([
                 ["name", "like", "%" . $request->input . "%"],
                 ["catalog_id", $catalog->id],

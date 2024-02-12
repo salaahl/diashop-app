@@ -6,8 +6,11 @@
     transition: all 0.25s;
 }
 
-#navbar-container #navbar {
+#navbar {
     height: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #navbar-dropdown li:hover * {
@@ -43,6 +46,12 @@ a:has(> #basket-counter) {
     #navbar-dropdown {
         display: block;
         overflow: hidden;
+        padding-left: var(--container-padding-x);
+        padding-right: var(--container-padding-x);
+    }
+
+    #navbar-dropdown-btn {
+        margin-right: var(--container-padding-x);
     }
 
     #navbar-dropdown-btn[aria-expanded="false"] svg:first-of-type,
@@ -65,13 +74,13 @@ a:has(> #basket-counter) {
     }
 
     #navbar:has(#navbar-dropdown-btn[aria-expanded="true"]) #navbar-dropdown {
-        height: 100vh;
+        height: 90vh;
         max-height: 1024px;
         margin-bottom: 0.5rem;
         background-color: white;
         transition: all 0.5s;
     }
-    
+
     #dropdownDashboardBtn[aria-expanded="false"] svg,
     .dropdownNavbarLinkCatalogBtn[aria-expanded="false"] svg {
         transform: rotateZ(0deg);
@@ -86,6 +95,7 @@ a:has(> #basket-counter) {
 @media (min-width: 1024px) {
     #navbar-container {
         position: sticky;
+        padding: 0 var(--container-padding-x);
     }
 
     #navbar {
@@ -113,8 +123,15 @@ a:has(> #basket-counter) {
     #navbar .dropdownNavbarCatalog {
         left: 0;
         right: 0;
-        margin-left: calc(var(--container-padding-x) * 2);
+        margin-left: var(--container-padding-x);
         margin-right: auto;
+    }
+
+    #navbar #dropdownDashboard {
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: var(--container-padding-x);
     }
 
     li:has(> .dropdownNavbarLinkCatalog):hover .dropdownNavbarLinkCatalog {
@@ -126,7 +143,7 @@ a:has(> #basket-counter) {
     li:has(> .dropdownNavbarCatalog):hover .dropdownNavbarCatalog {
         height: 6vh;
     }
-    
+
     li:has(> #dropdownDashboardLink) > a > svg,
     li:has(> .dropdownNavbarLinkCatalog) > a > svg {
         transform: rotateZ(0deg);
@@ -139,11 +156,14 @@ a:has(> #basket-counter) {
     }
 }
 
-@media (min-width: 1536px) {
+@media (min-width: 1460px) {
     #navbar .dropdownNavbarCatalog {
-        left: 0;
-        right: 0;
-        margin-left: calc((100vw - 1440px) / 2);
+        margin-left: calc((100% - 1440px) / 2);
         margin-right: auto;
+    }
+
+    #navbar #dropdownDashboard {
+        margin-left: auto;
+        margin-right: calc((100% - 1440px) / 2);
     }
 }

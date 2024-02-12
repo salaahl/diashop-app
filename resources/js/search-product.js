@@ -25,8 +25,7 @@ document.querySelector("#default-search").addEventListener("input", (e) => {
 
             let data = {
                 input: $("#default-search").value,
-                catalog_id: $("#search-container [name='catalog_id']:checked")
-                    .value,
+                catalog: $("#search-container [name='catalog']:checked").value,
             };
 
             const request = new Request("/search", {
@@ -88,8 +87,8 @@ document.querySelector("#default-search").addEventListener("input", (e) => {
 });
 
 document.querySelector("#default-search-btn").addEventListener("click", () => {
-    let catalog_id = $("#search-container [name='catalog_id']:checked").value;
+    let catalog = $("#search-container [name='catalog']:checked").value;
     let input = $("#default-search").value;
 
-    window.location = "/search/" + catalog_id + "/" + input;
+    window.location = "/search/" + catalog + "/" + input;
 });

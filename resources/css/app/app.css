@@ -44,7 +44,6 @@ h4 {
     font-weight: 200;
 }
 
-#navbar-container,
 #search-container {
     padding: 0 var(--container-padding-x);
 }
@@ -74,16 +73,12 @@ h4 {
     margin-right: auto;
 }
 
-#navbar > div,
 main {
     max-width: 1440px;
-    padding-left: var(--container-padding-x);
-    padding-right: var(--container-padding-x);
-}
-
-main {
     padding-top: var(--container-padding-y);
     margin: auto;
+    padding-left: var(--container-padding-x);
+    padding-right: var(--container-padding-x);
 }
 
 img {
@@ -274,7 +269,7 @@ img {
         --h2-font-size: large;
         --h3-font-size: medium;
         --h4-font-size: initial;
-        --container-padding-x: 2%;
+        --container-padding-x: 10px;
         --container-padding-y: 10vh;
     }
 
@@ -297,11 +292,14 @@ img {
 @media (min-width: 768px) and (max-width: 1279px) {
     :root {
         --container-padding-x: 10px;
-        --container-padding-y: 0;
     }
 }
 
 @media (max-width: 1023px) {
+    :root {
+        --container-padding-x: 10px;
+        --container-padding-y: 10vh;
+    }
     #search-container.show {
         height: 100vh;
         position: absolute;
@@ -318,10 +316,6 @@ img {
 }
 
 @media (min-width: 1024px) {
-    #search-container {
-        padding-bottom: 1%;
-    }
-
     #search-container.show {
         height: 80vh;
         box-shadow: 0px 20vh 20px 20px rgb(0, 0, 0, 0.5);
@@ -350,6 +344,13 @@ img {
     #navbar-container,
     #search-container {
         padding: 0 var(--container-padding-x);
+    }
+}
+
+@media (min-width: 1460px) {
+    :root {
+        --container-padding-x: 0;
+        --container-padding-y: 0;
     }
 }
 
