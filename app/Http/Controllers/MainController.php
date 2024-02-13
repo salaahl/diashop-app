@@ -12,6 +12,7 @@ class MainController extends Controller
 {
     public function catalog($gender, Request $request)
     {
+        dd(session()->get("basket"));
         $catalog_id = Catalog::where("gender", $gender)->first()->id;
         $categories = Category::where("catalog_id", $catalog_id)->get();
 
