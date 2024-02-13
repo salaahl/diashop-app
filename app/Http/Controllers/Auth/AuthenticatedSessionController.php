@@ -15,8 +15,10 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
-    public function create(): View
+    public function create(Request $request): View
     {
+        $request->session()->put('redirect_to', url()->previous());
+
         return view('auth.login');
     }
 
@@ -32,9 +34,11 @@ class AuthenticatedSessionController extends Controller
         if (session()->get(auth()->id() . '_basket')) {
             $basket = session()->get(auth()->id() . '_basket');
             session()->put("basket", $basket);
+
+            session()->forget(auth()->id() . '_basket');
         }
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect($request->session()->get('redirect_to'));
     }
 
     /**
