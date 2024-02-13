@@ -13,7 +13,7 @@ window.addEventListener("load", () => {
                 "translate 2s";
             $("#product-images-container li:nth-of-type(2)").style.animation =
                 "translate 2s";
-        }, 2000);
+        }, 1000);
     }
 });
 
