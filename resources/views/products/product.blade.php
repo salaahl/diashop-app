@@ -137,4 +137,5 @@
 
 @section('scripts')
 @parent
+@vite('resources/js/product.js')
 @endsection
