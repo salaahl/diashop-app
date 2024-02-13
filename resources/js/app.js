@@ -6,19 +6,18 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-/*
-// When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar
-var prevScrollpos = window.scrollY;
-window.onscroll = function() {
-    var currentScrollPos = window.scrollY;
-    if (prevScrollpos > currentScrollPos) {
-        document.querySelector("header").style.top = "0%";
-    } else {
-        document.querySelector("header").style.top = "-10%";
-    }
-    prevScrollpos = currentScrollPos;
+if (window.innerWidth > 1023) {
+    var prevScrollpos = window.scrollY;
+    window.onscroll = function () {
+        var currentScrollPos = window.scrollY;
+        if (prevScrollpos > currentScrollPos) {
+            document.querySelector("header").style.top = "0%";
+        } else {
+            document.querySelector("header").style.top = "-10%";
+        }
+        prevScrollpos = currentScrollPos;
+    };
 }
-*/
 
 // Loader des pages
 window.addEventListener("load", () => {

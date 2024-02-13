@@ -1,3 +1,7 @@
+let $ = (id) => {
+    return document.querySelector(id);
+};
+
 initialize();
 
 async function initialize() {
@@ -38,9 +42,7 @@ async function initialize() {
 
         if (shipping_cost == 1000) {
             const shipping_express = today.setDate(today.getDate() + 2);
-            let shipping_div = document.querySelector(
-                "#shipping-express .shipping-date"
-            );
+            let shipping_div = $("#shipping-express .shipping-date");
             shipping_div.closest("ul").classList.remove("hidden");
 
             shipping_div.textContent =
@@ -50,9 +52,7 @@ async function initialize() {
                 today.toLocaleDateString();
         } else {
             const shipping_stantard = today.setDate(today.getDate() + 5);
-            let shipping_div = document.querySelector(
-                "#shipping-standard .shipping-date"
-            );
+            let shipping_div = $("#shipping-standard .shipping-date");
             shipping_div.closest("ul").classList.remove("hidden");
 
             shipping_div.textContent =
@@ -62,26 +62,19 @@ async function initialize() {
                 today.toLocaleDateString();
         }
 
-        document.querySelector("#billing-line1").textContent =
-            customer_details.address["line1"];
-        document.querySelector("#billing-line2").textContent =
-            customer_details.address["line2"];
-        document.querySelector("#billing-postal_code").textContent =
+        $("#billing-line1").textContent = customer_details.address["line1"];
+        $("#billing-line2").textContent = customer_details.address["line2"];
+        $("#billing-postal_code").textContent =
             customer_details.address["postal_code"];
-        document.querySelector("#billing-city").textContent =
-            customer_details.address["city"];
-        document.querySelector("#billing-country").textContent =
-            customer_details.address["country"];
+        $("#billing-city").textContent = customer_details.address["city"];
+        $("#billing-country").textContent = customer_details.address["country"];
 
-        document.querySelector("#shipping-line1").textContent =
-            shipping_details.address["line1"];
-        document.querySelector("#shipping-line2").textContent =
-            shipping_details.address["line2"];
-        document.querySelector("#shipping-postal_code").textContent =
+        $("#shipping-line1").textContent = shipping_details.address["line1"];
+        $("#shipping-line2").textContent = shipping_details.address["line2"];
+        $("#shipping-postal_code").textContent =
             shipping_details.address["postal_code"];
-        document.querySelector("#shipping-city").textContent =
-            shipping_details.address["city"];
-        document.querySelector("#shipping-country").textContent =
+        $("#shipping-city").textContent = shipping_details.address["city"];
+        $("#shipping-country").textContent =
             shipping_details.address["country"];
 
         document.getElementById("shipping-cost").textContent =

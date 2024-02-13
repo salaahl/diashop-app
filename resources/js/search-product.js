@@ -2,19 +2,19 @@ let $ = (id) => {
     return document.querySelector(id);
 };
 
-document.querySelector("#search-btn").addEventListener("click", (e) => {
-    document.querySelector("#search-container").classList.add("show");
-    document.querySelector("#search-container").classList.remove("hide");
+$("#search-btn").addEventListener("click", (e) => {
+    $("#search-container").classList.add("show");
+    $("#search-container").classList.remove("hide");
 });
 
-document.querySelector("#close-search-btn").addEventListener("click", (e) => {
-    document.querySelector("#search-container").classList.add("hide");
-    document.querySelector("#search-container").classList.remove("show");
+$("#close-search-btn").addEventListener("click", (e) => {
+    $("#search-container").classList.add("hide");
+    $("#search-container").classList.remove("show");
 });
 
 let timer;
 
-document.querySelector("#default-search").addEventListener("input", (e) => {
+$("#default-search").addEventListener("input", (e) => {
     e.preventDefault();
 
     clearTimeout(timer);
@@ -86,7 +86,7 @@ document.querySelector("#default-search").addEventListener("input", (e) => {
     }, 1000);
 });
 
-document.querySelector("#default-search-btn").addEventListener("click", () => {
+$("#default-search-btn").addEventListener("click", () => {
     let catalog = $("#search-container [name='catalog']:checked").value;
     let input = $("#default-search").value;
 
