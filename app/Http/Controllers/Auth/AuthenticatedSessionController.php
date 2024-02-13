@@ -29,6 +29,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        if (session()->get(auth()->id() . '_basket')) {
+            $basket = session()->get(auth()->id() . '_basket');
+            session()->put("basket", $basket);
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -37,14 +42,20 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        if (session()->get("basket")) {
+            $basket = session()->get("basket");
+            $auth_id = auth()->id();
+        }
+
         Auth::guard('web')->logout();
 
-        /*
-         * Me permet de conserver le contenu du panier
         $request->session()->invalidate();
-        */
 
         $request->session()->regenerateToken();
+
+        if (isset($basket, $auth_id)) {
+            session()->put($auth_id . '_basket', $basket);
+        }
 
         return redirect('/');
     }
