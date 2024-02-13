@@ -26,8 +26,8 @@
 <ul>
     @foreach($orders as $order)
     <article class="command mb-16">
-        <h2 class="mb-8 uppercase">Numéro de commande : {{ $order->command_number }}</h2>
-        <div class="max-w-screen-lg relative mx-auto mb-4 overflow-x-auto shadow-md sm:rounded-lg">
+        <h2 class="mb-6 uppercase">Numéro de commande : {{ $order->command_number }}</h2>
+        <div class="relative mx-auto mb-6 overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-center text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
@@ -73,15 +73,14 @@
             </table>
         </div>
         @if($order->shipped == true)
-        <h2 class="mb-8 uppercase">Commande traitée !</h2>
+        <h2 class="uppercase">Commande traitée !</h2>
         @else
-        <h2 class="mb-8 uppercase">Commande non traitée</h2>
-        <form method="POST" action="{{ route('administrator.update.order') }}">
+        <form class="flex flex-nowrap" method="POST" action="{{ route('administrator.update.order') }}">
             @csrf
             <input name="order_id" type="hidden" value="{{ $order->id }}" />
-            <input type="text" name="tracking_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Numéro de suivi" required>
-            <button type="submit" class="w-full px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center bg-gray-900 text-white rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-primary-800">
-                Valider
+            <input type="text" name="tracking_number" class="h-min w-3/4 mr-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Numéro de suivi" required>
+            <button type="submit" class="w-1/4 px-5 py-2.5 text-sm font-medium text-center bg-gray-900 text-white rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-primary-800">
+                Envoyer
             </button>
         </form>
         @endif

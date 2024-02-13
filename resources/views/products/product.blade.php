@@ -116,8 +116,8 @@
                 </div>
             </div>
             @else
-            <div class="md:h-2/4 max-md:my-4 flex justify-center items-center">
-                <h2 class="text-center">Ce produit est en rupture de stock.</h2>
+            <div class="md:h-2/4 max-md:my-12 flex justify-center items-center">
+                <h2>Ce produit est en rupture de stock.</h2>
             </div>
             @endif
         </div>
@@ -126,7 +126,7 @@
 <!-- S'il y en a mininum 2 dans la catégorie :
 L'idée serait ensuite de mettre des produits ici avec une recherche 'like' -->
 @if($product->category->products->take(2))
-<section id="other-products-container" class="flex flex-wrap mt-10 xl:mt-20 xl:mb-10 px-6 pb-6 bg-stone-200">
+<section id="other-products-container" class="flex flex-wrap xl:mt-20 xl:mb-10 px-6 pb-6 bg-stone-200">
     <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
     @foreach($product->category->products->take(3) as $product)
     @if($product->id != basename(url()->current()))
@@ -145,7 +145,7 @@ L'idée serait ensuite de mettre des produits ici avec une recherche 'like' -->
             setTimeout(function() {
                 document.querySelector("#product-images-container li:first-of-type").style.animation = "translate 2s";
                 document.querySelector("#product-images-container li:nth-of-type(2)").style.animation = "translate 2s";
-            }, 4000);
+            }, 2000);
         }
     });
 
