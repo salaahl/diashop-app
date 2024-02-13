@@ -25,7 +25,6 @@ document.querySelectorAll(".radio_label").forEach((radio) => {
             size: this.previousElementSibling.value.toLowerCase(),
             product_id: url.split("/").pop(),
         };
-        console.log(url.split("/").pop());
 
         const request = new Request("/get-quantity", {
             method: "POST",
