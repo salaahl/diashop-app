@@ -75,7 +75,7 @@
 
     #catalogs-container .catalog:first-of-type .img-placeholder {
         background-position: top -20px left -440px;
-    background-size: 105vw;
+        background-size: 105vw;
     }
 
     #catalogs-container .catalog:last-of-type .img-placeholder {
