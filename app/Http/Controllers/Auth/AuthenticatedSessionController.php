@@ -39,7 +39,10 @@ class AuthenticatedSessionController extends Controller
     {
         Auth::guard('web')->logout();
 
+        /*
+         * Me permet de conserver le contenu du panier
         $request->session()->invalidate();
+        */
 
         $request->session()->regenerateToken();
 

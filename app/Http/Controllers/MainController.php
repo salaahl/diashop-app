@@ -7,7 +7,6 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Exception;
-use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {

@@ -39,9 +39,12 @@ class BasketSessionRepository implements BasketInterfaceRepository
     public function update($product_id, $size, $quantity)
     {
         $basket = session()->get("basket");
+        $product = Product::where("id", $product_id)->first();
 
-        $basket[$product_id][$size]['quantity'] = $quantity; // On ajoute ou on met à jour le produit au panier
-        session()->put("basket", $basket); // On enregistre le panier
+        if ($product->quantity_per_size[$size] >= $quantity) {
+            $basket[$product_id][$size]['quantity'] = $quantity; // On ajoute ou on met à jour le produit au panier
+            session()->put("basket", $basket); // On enregistre le panier
+        }
     }
 
     # Retirer un produit du panier
