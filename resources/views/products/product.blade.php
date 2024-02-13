@@ -116,7 +116,7 @@
                 </div>
             </div>
             @else
-            <div class="md:h-2/4 max-md:my-12 flex justify-center items-center">
+            <div class="md:h-2/4 max-md:mt-12 max-md:mb-16 flex justify-center items-center">
                 <h2>Ce produit est en rupture de stock.</h2>
             </div>
             @endif
