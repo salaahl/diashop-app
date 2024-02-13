@@ -20,7 +20,7 @@
     <section id="product-images-container" class="w-full md:w-2/4">
         <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
             @foreach($product->img_fullsize as $image)
-            <li class="h-[70vh] min-w-[100vw] md:min-w-[auto] md:h-[90vh] snap-start">
+            <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start">
                 <img src="/images/{{ $image }}" class="h-full w-full object-cover object-center" />
             </li>
             @endforeach
