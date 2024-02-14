@@ -44,6 +44,20 @@ h4 {
     font-weight: 200;
 }
 
+#main-container {
+    opacity: none;
+}
+
+#loader-container {
+    opacity: 1;
+}
+
+#loader-container .hide {
+    opacity: 0;
+    transition: opacity 0.8s, display 0s;
+    transition-delay: 0s, 0.8s;
+}
+
 #search-container {
     background-color: white;
     padding: 0 var(--container-padding-x);
