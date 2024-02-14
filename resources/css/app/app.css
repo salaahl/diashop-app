@@ -49,7 +49,7 @@ h4 {
     transition: opacity 0.8s;
 }
 
-#main-container .show {
+#main-container.show {
     opacity: 1;
 }
 
@@ -207,7 +207,7 @@ img {
     transition-delay: 0s, 0.8s;
 }
 
-#loader-container .hide {
+#loader-container.hide {
     display: none; 
     opacity: 0;
 }
