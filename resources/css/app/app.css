@@ -208,7 +208,6 @@ img {
 }
 
 #loader-container.hide {
-    display: none; 
     opacity: 0;
 }
 
