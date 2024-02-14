@@ -32,7 +32,6 @@
     font-weight: 400;
     color: white;
     background-color: rgb(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
 }
 
 @media (max-width: 767px) {
