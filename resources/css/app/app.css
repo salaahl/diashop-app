@@ -290,7 +290,7 @@ img {
         --container-padding-y: 10vh;
     }
     #search-container.show {
-        height: 100vh;
+        height: 100dvh;
         position: absolute;
         top: 0;
     }
