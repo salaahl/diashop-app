@@ -46,7 +46,7 @@ h4 {
 
 #main-container {
     opacity: 0;
-    transition: opacity 0.8s;
+    transition: opacity 1s;
 }
 
 #main-container.show {
@@ -203,12 +203,13 @@ img {
     opacity: 1;
     z-index: 999;
     background-color: white;
-    transition: opacity 0.8s, display 0s;
-    transition-delay: 0s, 2s;
+    transition: opacity 1s, display 0s;
+    transition-delay: 0s, 4s;
 }
 
 #loader-container.hide {
     opacity: 0;
+    display: none;
 }
 
 .spinner {
