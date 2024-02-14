@@ -32,6 +32,9 @@ resetHeight();
 
 // Loader des pages
 window.addEventListener("load", () => {
-    document.querySelector("#loader-container").style.display = "none";
-    document.querySelector(".main-container").style.opacity = "1";
+    document.querySelector("#loader-container").style.cssText = `
+      display: none; 
+      opacity: 0;
+    `;
+    document.querySelector("#main-container").style.opacity = "1";
 });
