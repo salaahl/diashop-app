@@ -46,11 +46,11 @@ h4 {
 
 #main-container {
     opacity: 0;
-    transition: opacity 1s;
 }
 
 #main-container.show {
     opacity: 1;
+    transition: opacity 1s;
 }
 
 #search-container {
@@ -210,6 +210,8 @@ img {
 #loader-container.hide {
     opacity: 0;
     display: none;
+    transition: opacity 1s, display 0s;
+    transition-delay: 0s, 4s;
 }
 
 .spinner {
