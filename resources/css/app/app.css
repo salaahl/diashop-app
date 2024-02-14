@@ -204,7 +204,7 @@ img {
     z-index: 999;
     background-color: white;
     transition: opacity 0.8s, display 0s;
-    transition-delay: 0s, 0.8s;
+    transition-delay: 0s, 2s;
 }
 
 #loader-container.hide {
