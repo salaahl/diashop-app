@@ -26,8 +26,6 @@ a:has(> #basket-counter) {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 15px;
-    width: 15px;
     margin-left: 5px;
     font-size: x-small;
     font-weight: 900;
@@ -83,6 +81,11 @@ a:has(> #basket-counter) {
     #dropdownDashboardBtn[aria-expanded="true"] svg,
     .dropdownNavbarLinkCatalogBtn[aria-expanded="true"] svg {
         transform: rotateZ(180deg);
+    }
+
+    #basket-counter {
+        height: 20px;
+        width: 20px;
     }
 }
 
@@ -147,6 +150,11 @@ a:has(> #basket-counter) {
     li:has(> #dropdownDashboardLink):hover > a > svg,
     li:has(> .dropdownNavbarCatalog):hover > a > svg {
         transform: rotateZ(180deg);
+    }
+
+    #basket-counter {
+        height: 15px;
+        width: 15px;
     }
 }
 
