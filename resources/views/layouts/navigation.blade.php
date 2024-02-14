@@ -105,7 +105,6 @@
                             }
                             @endphp
                             <span id="basket-counter">{{ $count }}</span>
-                            @endif
                         </a>
                     </li>
                     @guest
