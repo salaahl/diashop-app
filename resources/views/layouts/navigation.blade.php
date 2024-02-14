@@ -96,16 +96,15 @@
                     <li class="h-full w-full lg:flex lg:items-center lg:flex lg:align-center">
                         <a href="{{ route('basket.show') }}" class="flex justify-between items-center p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0  lg:p-0">
                             <span class="text-sm uppercase whitespace-nowrap lg:m-0">Panier</span>
+                            @if(session()->has('basket'))
                             @php
-                            if(session()->get('basket')) {
-                                $number = 0;
-                                
-                                foreach(session()->get('basket') as $item) {
-                                    $number = $number + count($item);
-                                }
+                            $count = 0;
+                            foreach(session()->get('basket') as $item) {
+                                $count += count($item);
                             }
                             @endphp
-                            <span id="basket-counter">{{ $number }}</span>
+                            <span id="basket-counter">{{ $count }}</span>
+                            @endif
                         </a>
                     </li>
                     @guest
