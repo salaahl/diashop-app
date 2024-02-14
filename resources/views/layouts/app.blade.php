@@ -32,7 +32,7 @@
     <div class="main-container min-h-screen" style="opacity: 0;">
 
         <!-- Page Heading -->
-        <header id="navbar-container" class="h-[10vh] bg-white/80 lg:bg-white">
+        <header id="navbar-container" class="h-[10vh] bg-white">
             @section('header')
             @include('layouts.navigation')
             @include('components.search-product')
