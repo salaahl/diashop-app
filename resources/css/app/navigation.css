@@ -47,6 +47,7 @@ a:has(> #basket-counter) {
         overflow: hidden;
         padding-left: var(--container-padding-x);
         padding-right: var(--container-padding-x);
+        background-color: white;
     }
 
     #navbar-dropdown-btn {
@@ -68,15 +69,10 @@ a:has(> #basket-counter) {
         transition: all 0.25s;
     }
 
-    #navbar-container:has(#navbar-dropdown-btn[aria-expanded="true"]) {
-        background-color: white;
-    }
-
     #navbar:has(#navbar-dropdown-btn[aria-expanded="true"]) #navbar-dropdown {
         height: 90vh;
         max-height: 1024px;
         margin-bottom: 0.5rem;
-        background-color: white;
         transition: all 0.5s;
     }
 
