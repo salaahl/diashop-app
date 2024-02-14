@@ -29,7 +29,7 @@
         <div class="spinner"></div>
     </div>
 
-    <div class="main-container min-h-screen" style="opacity: 0;">
+    <div id="main-container" class="min-h-screen">
 
         <!-- Page Heading -->
         <header id="navbar-container" class="h-[10vh] bg-white">
