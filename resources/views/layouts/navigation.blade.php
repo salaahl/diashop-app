@@ -26,14 +26,14 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </a>
-                        <button data-collapse-toggle="dropdownNavbar{{ ucfirst($catalog->gender) }}" type="button" class="dropdownNavbarLinkCatalogBtn lg:hidden flex items-center justify-between w-full p-2 text-sm uppercase text-gray-900 rounded-t-lg hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
+                        <button data-collapse-toggle="dropdownNavbar{{ ucfirst($catalog->gender) }}" type="button" class="dropdownNavbarLinkCatalogBtn lg:hidden flex items-center justify-between w-full mb-2 p-2 text-sm uppercase text-gray-900 rounded-lg hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
                             <span>{{ ucfirst($catalog->gender) }}</span>
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </button>
                         <!-- Dropdown catalog menu -->
-                        <div id="dropdownNavbar{{ ucfirst($catalog->gender) }}" class="dropdownNavbarCatalog hidden z-10 lg:flex align-center w-full max-lg:rounded-b-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
+                        <div id="dropdownNavbar{{ ucfirst($catalog->gender) }}" class="dropdownNavbarCatalog hidden z-10 lg:flex align-center w-full max-lg:mb-2 max-lg:rounded-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
                             <ul class="lg:flex max-w-screen-xl lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                                 <li class="lg:hidden self-center">
                                     <a href="{{ route('catalog', $catalog->gender) }}" class="block my-2 lg:mr-4 px-4 py-2 rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">Tout</a>
@@ -65,15 +65,15 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </a>
-                        <button id="dropdownDashboardBtn" data-collapse-toggle="dropdownDashboard" type="button" class="lg:hidden flex items-center justify-between w-full p-2 text-gray-900 rounded-t-lg hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
+                        <button id="dropdownDashboardBtn" data-collapse-toggle="dropdownDashboard" type="button" class="lg:hidden flex items-center justify-between w-full mb-2 p-2 text-gray-900 rounded-lg hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
                             <span class="text-sm uppercase">Mon profil</span>
                             <svg class="w-2.5 h-2.5 lg:ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </button>
                         <!-- Dropdown menu -->
-                        <div id="dropdownDashboard" class="hidden z-10 lg:flex align-center w-full max-lg:rounded-b-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
-                            <ul class="lg:flex max-w-screen-xl lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                        <div id="dropdownDashboard" class="hidden z-10 lg:flex align-center w-full max-lg:mb-2 max-lg:rounded-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
+                            <ul class="lg:flex max-w-screen-xl max-lg:mb-2 lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                                 <li class="self-center">
                                     <a href="{{ route('favorites.show') }}" class="block my-2 lg:mr-4 px-4 py-2 whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">
                                         Mes favoris
@@ -94,13 +94,13 @@
                     </li>
                     @endauth
                     <li class="h-full w-full lg:flex lg:items-center lg:flex lg:align-center">
-                        <a href="{{ route('basket.show') }}" class="flex justify-between items-center p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0  lg:p-0">
+                        <a href="{{ route('basket.show') }}" class="flex justify-between items-center max-lg:mb-2 p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0  lg:p-0">
                             <span class="text-sm uppercase whitespace-nowrap lg:m-0">Panier</span>
                             @if(session()->has('basket'))
                             @php
                             $count = 0;
                             foreach(session()->get('basket') as $item) {
-                                $count += count($item);
+                            $count += count($item);
                             }
                             @endphp
                             <span id="basket-counter">{{ $count }}</span>
@@ -109,7 +109,7 @@
                     </li>
                     @guest
                     <li class="h-full w-full lg:flex lg:items-center lg:flex lg:align-center">
-                        <a href="{{ route('login') }}" class="flex justify-between items-center p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0  lg:p-0">
+                        <a href="{{ route('login') }}" class="flex justify-between items-center max-lg:mb-2 p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0  lg:p-0">
                             <span class="text-sm uppercase whitespace-nowrap lg:m-0">Se connecter</span>
                         </a>
                     </li>

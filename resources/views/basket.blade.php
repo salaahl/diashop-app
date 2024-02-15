@@ -56,10 +56,10 @@
                     <td class="column-two pl-2 py-4 font-semibold text-gray-900">
                         <h4 class="text-center">{{ ucfirst($product['name']) }}</h4>
                     </td>
-                    <td class="column-two py-4 font-semibold text-gray-900">
-                        <h4 class="size uppercase">{{ $product['size'] }}</h4>
+                    <td class="column-three py-4 font-semibold text-gray-900">
+                        <h4 class="size uppercase">@if($product['size'] == "os") taille unique @else {{ $product['size'] }} @endif</h4>
                     </td>
-                    <td class="column-three  py-4">
+                    <td class="column-four py-4">
                         <div class="flex justify-center items-center">
                             <button class="quantity-button quantity-down inline-flex items-center justify-center p-1 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button">
                                 <span class="sr-only">Baisser la quantité</span>
@@ -78,11 +78,11 @@
                             </button>
                         </div>
                     </td>
-                    <td class="column-four py-4 font-semibold text-gray-900">
+                    <td class="column-five py-4 font-semibold text-gray-900">
                         <h4 class="price">{{ $product['price'] }}</h4>
                         @php($total += $product['price'] * $product['quantity'])
                     </td>
-                    <td class="column-five py-4">
+                    <td class="column-six py-4">
                         <div class="flex justify-center align-center">
                             <button type="button" class="remove-button focus:outline-none text-red bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm min-[425px]:px-5 p-2.5 text-white">X</button>
                         </div>

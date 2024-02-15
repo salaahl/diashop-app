@@ -36,7 +36,7 @@ div:has(> table) {
     }
 
     #summary-container .column-one,
-    #summary-container .column-four {
+    #summary-container .column-five {
         display: none;
     }
 }
