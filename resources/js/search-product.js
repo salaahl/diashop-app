@@ -21,7 +21,9 @@ $("#default-search").addEventListener("input", (e) => {
 
     timer = setTimeout(function () {
         if ($("#default-search").value.length > 0) {
+            let hourglass = document.getElementById('lds-hourglass');
             $("#search-results").innerHTML = "";
+            hourglass.style.display = 'flex';
 
             let data = {
                 input: $("#default-search").value,
@@ -42,6 +44,7 @@ $("#default-search").addEventListener("input", (e) => {
             fetch(request)
                 .then((response) => response.json())
                 .then((data) => {
+                    hourglass.style.display = 'none';
                     if (data.results != "") {
                         data.results.forEach((product) => {
                             $("#search-results").innerHTML +=
