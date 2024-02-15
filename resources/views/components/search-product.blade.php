@@ -22,6 +22,7 @@
         </div>
     </div>
     <div id="search-results" class="h-full w-full flex flex-wrap mt-10 overflow-auto lg:overflow-hidden"></div>
+    <div id="lds-hourglass"></div>
     <div id="search-footer" class="h-[10%] w-full flex justify-center items-center">
         <button id="close-search-btn" class="button-stylised-1 w-full mb-2">
             <span>Fermer</span>
