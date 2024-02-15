@@ -284,7 +284,7 @@ img {
 
 #lds-hourglass.show {
     display: flex;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(2px);
 }
 
 /* Search response loader */
