@@ -277,6 +277,16 @@ img {
     overflow: hidden;
 }
 
+#lds-hourglass {
+    backdrop-filter: blur(0px);
+    transition: backdrop-filter 0.5s;
+}
+
+#lds-hourglass.show {
+    display: flex;
+    backdrop-filter: blur(5px);
+}
+
 /* Search response loader */
 #lds-hourglass:after {
   content: ' ';
