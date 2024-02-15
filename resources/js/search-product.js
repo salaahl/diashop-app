@@ -21,9 +21,8 @@ $("#default-search").addEventListener("input", (e) => {
 
     timer = setTimeout(function () {
         if ($("#default-search").value.length > 0) {
-            let hourglass = document.getElementById('lds-hourglass');
             $("#search-results").innerHTML = "";
-            hourglass.style.display = 'flex';
+            document.getElementById('lds-hourglass').classList.add("show");
 
             let data = {
                 input: $("#default-search").value,
@@ -44,7 +43,6 @@ $("#default-search").addEventListener("input", (e) => {
             fetch(request)
                 .then((response) => response.json())
                 .then((data) => {
-                    hourglass.style.display = 'none';
                     if (data.results != "") {
                         data.results.forEach((product) => {
                             $("#search-results").innerHTML +=
@@ -79,6 +77,8 @@ $("#default-search").addEventListener("input", (e) => {
                     } else {
                         $("#search-results").innerHTML = "Aucun résultat";
                     }
+                    
+                    document.getElementById('lds-hourglass').classList.remove("show");
                 })
                 .catch((error) => {
                     console.log(error.message);
