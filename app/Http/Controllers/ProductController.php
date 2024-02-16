@@ -46,8 +46,6 @@ class ProductController extends Controller
             "price" => ['required', 'numeric'],
             "description" => ['required', 'string', 'min:2', 'max:400'],
             "color" => ['required', 'string', 'min:2', 'max:60'],
-            "thumbnail_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
-            "thumbnail_two" => ['required', 'file', 'mimes:jpg,jpeg,png'],
             "picture_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
             "picture_two" => ['required', 'file', 'mimes:jpg,jpeg,png'],
             "picture_three" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
@@ -72,7 +70,6 @@ class ProductController extends Controller
             $product->price = $request->price;
             $product->description = strtolower($request->description);
             $product->color = strtolower($request->color);
-            $product->img_thumbnail = [$request->thumbnail_one->getClientOriginalName(), $request->thumbnail_two->getClientOriginalName()];
 
             $images = [$request->picture_one->getClientOriginalName(), $request->picture_two->getClientOriginalName()];
             if ($request->picture_three) $images[] = $request->picture_three->getClientOriginalName();
@@ -167,8 +164,6 @@ class ProductController extends Controller
             "price" => ['required', 'numeric'],
             "description" => ['required', 'string', 'min:2', 'max:400'],
             "color" => ['required', 'string', 'min:2', 'max:60'],
-            "thumbnail_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
-            "thumbnail_two" => ['required', 'file', 'mimes:jpg,jpeg,png'],
             "picture_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
             "picture_two" => ['required', 'file', 'mimes:jpg,jpeg,png'],
             "picture_three" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
@@ -188,7 +183,6 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->description = strtolower($request->description);
         $product->color = strtolower($request->color);
-        $product->img_thumbnail = [$request->thumbnail_one->getClientOriginalName(), $request->thumbnail_two->getClientOriginalName()];
 
         $images = [$request->picture_one->getClientOriginalName(), $request->picture_two->getClientOriginalName()];
         if ($request->picture_three) $images[] = $request->picture_three->getClientOriginalName();

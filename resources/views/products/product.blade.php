@@ -128,7 +128,7 @@
     <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
     @foreach($product->category->products->take(3) as $product)
     @if($product->id != basename(url()->current()))
-    <x-product link="{{ route('product', [$product->catalog->gender, $product->category->name, $product->id]) }}" image="/images/{{ $product->img_thumbnail[0] }}" hover="/images/{{ $product->img_thumbnail[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
+    <x-product link="{{ route('product', [$product->catalog->gender, $product->category->name, $product->id]) }}" image="/images/{{ $product->img_fullsize[0] }}" hover="/images/{{ $product->img_fullsize[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
     @endif
     @endforeach
 </section>

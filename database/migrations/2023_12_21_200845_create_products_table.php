@@ -18,9 +18,8 @@ return new class extends Migration
             $table->text('description');
             $table->string('color');
             $table->json('quantity_per_size');
-            $table->json('img_thumbnail');
             $table->json('img_fullsize');
-                $table->foreignId('catalog_id')
+            $table->foreignId('catalog_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');

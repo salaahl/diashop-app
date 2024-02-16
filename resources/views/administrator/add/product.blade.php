@@ -84,11 +84,7 @@
                     @endif
                 </div>
                 <div class="col-span-2 md:col-span-1">
-                    <h3 class="mb-4 font-semibold text-gray-900 text-sm">IMAGES <span class="text-sm text-gray-500">(ajouter au moins les deux miniatures et les images 1 et 2. Formats acceptés : SVG, PNG ou JPG).</span></h3>
-                    <label class="block mb-2 text-sm font-medium text-gray-900" for="thumbnail_one">Miniature 1</label>
-                    <input aria-describedby="thumbnail_one_input_help" id="thumbnail_one" type="file" name="thumbnail_one" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
-                    <label class="block mb-2 text-sm font-medium text-gray-900" for="thumbnail_two">Miniature 2</label>
-                    <input aria-describedby="thumbnail_two_input_help" id="thumbnail_two" type="file" name="thumbnail_two" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
+                    <h3 class="mb-4 font-semibold text-gray-900 text-sm">IMAGES <span class="text-sm text-gray-500">(ajouter au moins deux images. Formats acceptés : SVG, PNG ou JPG).</span></h3>
                     <label class="block mb-2 text-sm font-medium text-gray-900" for="picture_one">Image 1</label>
                     <input aria-describedby="picture_one_input_help" id="picture_one" type="file" name="picture_one" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
                     <label class="block mb-2 text-sm font-medium text-gray-900" for="picture_two">Image 2</label>
