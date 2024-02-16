@@ -287,12 +287,12 @@ img {
 
 #lds-hourglass {
     backdrop-filter: blur(0px);
-    transition: backdrop-filter 0.5s;
+    transition: backdrop-filter 0.8s;
 }
 
 #lds-hourglass.show {
     display: flex;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(4px);
 }
 
 /* Search response loader */
