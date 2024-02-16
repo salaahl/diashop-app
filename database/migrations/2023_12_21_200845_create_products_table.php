@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->float('price');
             $table->text('description');
-            $table->string('color');
             $table->json('quantity_per_size');
             $table->json('img_fullsize');
             $table->foreignId('catalog_id')
