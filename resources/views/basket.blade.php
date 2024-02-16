@@ -57,7 +57,7 @@
                         <h4 class="text-center">{{ ucfirst($product['name']) }}</h4>
                     </td>
                     <td class="column-three py-4 font-semibold text-gray-900">
-                        <h4 class="size uppercase">@if($product['size'] == "os") taille unique @else {{ $product['size'] }} @endif</h4>
+                        <h4 class="size">@if($product['size'] == "os") Unique @else {{ $product['size'] }} @endif</h4>
                     </td>
                     <td class="column-four py-4">
                         <div class="flex justify-center items-center">
@@ -130,7 +130,7 @@
 @else
 <div id="basket-empty" class="h-[90vh] w-full flex flex-col justify-center items-center">
     <h1 class="mb-0">Vous n'avez pas de produits dans votre panier</h1>
-    <a href="{{ route('home') }}" class="m-5 py-3 px-6 bg-gray-800 text-white rounded-full">Retourner sur la page d'accueil</a>
+    <a href="{{ route('home') }}" class="m-5 py-3 px-6 bg-gray-800 text-center text-white rounded-full">Retourner sur la page d'accueil</a>
 </div>
 @endif
 @endsection
