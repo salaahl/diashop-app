@@ -36,8 +36,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::get('profile/', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::post('profile/update', [ProfileController::class, 'update'])->name('profile.update');
-    Route::post('profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::patch('profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('favorites/', [FavoriteController::class, 'show'])->name('favorites.show');
     Route::put('favorites/add', [FavoriteController::class, 'store'])->name('favorites.store');
