@@ -19,7 +19,7 @@
 <div class="flex flex-wrap justify-between md:flex-nowrap flex-col md:flex-row">
     <section id="product-images-container" class="w-full md:w-2/4">
         <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
-            @foreach($product->img_fullsize as $image)
+            @foreach($product->img as $image)
             <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start">
                 <img src="/images/{{ $image }}" class="h-full w-full object-cover object-center" />
             </li>
@@ -128,7 +128,7 @@
     <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
     @foreach($product->category->products->take(3) as $product)
     @if($product->id != basename(url()->current()))
-    <x-product link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image="/images/{{ $product->img_fullsize[0] }}" hover="/images/{{ $product->img_fullsize[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
+    <x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="/images/{{ $product->img[0] }}" image2="/images/{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
     @endif
     @endforeach
 </section>
