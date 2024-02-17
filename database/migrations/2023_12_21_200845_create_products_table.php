@@ -17,7 +17,7 @@ return new class extends Migration
             $table->float('price');
             $table->text('description');
             $table->json('quantity_per_size');
-            $table->json('img_fullsize');
+            $table->json('img');
             $table->foreignId('catalog_id')
                 ->constrained()
                 ->onUpdate('cascade')
