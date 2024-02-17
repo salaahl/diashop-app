@@ -40,12 +40,12 @@
             <label for="catalog_id" class="sr-only uppercase">Choisissez une catégorie</label>
             <select id="catalog_id" name="catalog_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
                 @if(isset($category))
-                <option value="{{ $category->catalog->id }}" selected>{{ $category->catalog->gender }}</option>
+                <option value="{{ $category->catalog->id }}" selected>{{ $category->catalog->name }}</option>
                 @else
                 <option disabled selected>Choisissez un catalogue</option>
                 @endif
                 @foreach($catalogs as $catalog)
-                <option value="{{ $catalog->id }}">{{ $catalog->gender }}</option>
+                <option value="{{ $catalog->id }}">{{ $catalog->name }}</option>
                 @endforeach
             </select>
         </div>

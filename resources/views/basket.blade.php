@@ -49,7 +49,7 @@
                 @foreach($products as $product)
                 <tr class="bg-white border-b hover:bg-gray-50">
                     <td class="column-one pt-4 pb-4 pl-4">
-                        <a href="{{ route('product', [$product['gender'], $product['category'], $product['id']]) }}">
+                        <a href="{{ route('product', [$product['catalog'], $product['category'], $product['id']]) }}">
                             <img src="/images/{{ $product['thumbnail'] }}" class="w-16 md:w-32 max-w-full max-h-full" alt="{{ $product['name'] }}">
                         </a>
                     </td>

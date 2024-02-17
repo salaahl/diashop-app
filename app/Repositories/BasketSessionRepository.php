@@ -26,8 +26,8 @@ class BasketSessionRepository implements BasketInterfaceRepository
             'price' => $product->price,
             'size' => $size,
             'quantity' => $quantity,
-            'thumbnail' => $product->img_thumbnail[0],
-            'gender' => $product->catalog->gender,
+            'thumbnail' => $product->img_fullsize[0],
+            'catalog' => $product->catalog->name,
             'category' => $product->category->name
         ];
 

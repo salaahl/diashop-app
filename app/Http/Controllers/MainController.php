@@ -10,9 +10,9 @@ use Exception;
 
 class MainController extends Controller
 {
-    public function catalog($gender, Request $request)
+    public function catalog($catalog, Request $request)
     {
-        $catalog_id = Catalog::where("gender", $gender)->first()->id;
+        $catalog_id = Catalog::where("name", $catalog)->first()->id;
         $categories = Category::where("catalog_id", $catalog_id)->get();
 
         switch ($request->filter) {
@@ -35,9 +35,9 @@ class MainController extends Controller
         ]);
     }
 
-    public function category($gender, $category, Request $request)
+    public function category($catalog, $category, Request $request)
     {
-        $catalog_id = Catalog::where("gender", $gender)->first()->id;
+        $catalog_id = Catalog::where("name", $catalog)->first()->id;
         $categories = Category::where("catalog_id", $catalog_id)->get();
 
         switch ($request->filter) {
@@ -83,7 +83,7 @@ class MainController extends Controller
     /**
      * Display the specified resource.
      */
-    public function product($gender, $category, $product_id)
+    public function product($catalog, $category, $product_id)
     {
         $product = Product::where('id', $product_id)->first();
 
@@ -94,7 +94,7 @@ class MainController extends Controller
 
     public function search($catalog, $input)
     {
-        $catalog = Catalog::where("gender", $catalog)->first();
+        $catalog = Catalog::where("name", $catalog)->first();
         $products = Product::where([
             ["name", "like", "%" . $input . "%"],
             ["catalog_id", $catalog->id],
@@ -109,7 +109,7 @@ class MainController extends Controller
     {
         try {
             $results = [];
-            $catalog = Catalog::where("gender", $request->catalog)->first();
+            $catalog = Catalog::where("name", $request->catalog)->first();
             $products = Product::where([
                 ["name", "like", "%" . $request->input . "%"],
                 ["catalog_id", $catalog->id],

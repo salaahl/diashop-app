@@ -34,7 +34,7 @@
     @foreach($catalogs as $catalog)
     <li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-md bg-gray-200">
         <div class="w-screen lg:w-auto flex justify-between">
-            <h4>{{ ucfirst($catalog->gender) }}</h4>
+            <h4>{{ ucfirst($catalog->name) }}</h4>
         </div>
         <div class="w-screen lg:w-auto flex justify-between">
             <a href="../edit/catalog/{{ $catalog->id }}" class="button-stylised-1 lg:min-w-[10vw] lg:mr-[40px]">Modifier</a>
@@ -50,7 +50,7 @@
     <li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-md bg-gray-200">
         <div class="w-screen lg:w-auto flex justify-between">
             <h4 class="mr-1">{{ ucfirst($category->name) }} -</h4>
-            <h4>{{ ucfirst($category->catalog->gender) }}</h4>
+            <h4>{{ ucfirst($category->catalog->name) }}</h4>
         </div>
         <div class="w-screen lg:w-auto flex justify-between">
             <a href="../edit/category/{{ $category->id }}" class="button-stylised-1 min-w-[45vw] lg:min-w-[10vw] lg:mr-[40px]">Modifier</a>
@@ -66,7 +66,7 @@
     <li class="flex flex-wrap justify-between items-center mb-2 p-2 rounded-md bg-gray-200">
         <div class="w-screen lg:w-auto flex justify-between">
             <h4 class="mr-1">{{ ucfirst($product->name) }} -</h4>
-            <h4 class="mr-1">{{ ucfirst($product->catalog->gender) }} -</h4>
+            <h4 class="mr-1">{{ ucfirst($product->catalog->name) }} -</h4>
             <h4>{{ ucfirst($product->category->name) }}</h4>
         </div>
         <div class="w-screen lg:w-auto flex justify-between">

@@ -21,7 +21,7 @@
 </div>
 @if(isset($products))
 @foreach($products as $product)
-<x-product link="{{ route('product', [$product->catalog->gender, $product->category->name, $product->id]) }}" image="/images/{{ $product->img_fullsize[0] }}" hover="/images/{{ $product->img_fullsize[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
+<x-product link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image="/images/{{ $product->img_fullsize[0] }}" hover="/images/{{ $product->img_fullsize[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
 @endforeach
 <aside class="w-full">
     {{ $products->links() }}

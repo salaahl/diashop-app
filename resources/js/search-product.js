@@ -49,7 +49,7 @@ $("#default-search").addEventListener("input", (e) => {
                                 '<article class="product">' +
                                 '<a href="/' +
                                 "catalog/" +
-                                product["gender"] +
+                                product["catalog"] +
                                 "/" +
                                 product["category"] +
                                 "/" +

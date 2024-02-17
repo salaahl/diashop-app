@@ -45,7 +45,6 @@ class ProductController extends Controller
             "category_id" => ['required', 'integer'],
             "price" => ['required', 'numeric'],
             "description" => ['required', 'string', 'min:2', 'max:400'],
-            "color" => ['required', 'string', 'min:2', 'max:60'],
             "picture_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
             "picture_two" => ['required', 'file', 'mimes:jpg,jpeg,png'],
             "picture_three" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
@@ -69,7 +68,6 @@ class ProductController extends Controller
             $product->name = strtolower($request->name);
             $product->price = $request->price;
             $product->description = strtolower($request->description);
-            $product->color = strtolower($request->color);
 
             $images = [$request->picture_one->getClientOriginalName(), $request->picture_two->getClientOriginalName()];
             if ($request->picture_three) $images[] = $request->picture_three->getClientOriginalName();
@@ -163,7 +161,6 @@ class ProductController extends Controller
             "category_id" => ['required', 'integer'],
             "price" => ['required', 'numeric'],
             "description" => ['required', 'string', 'min:2', 'max:400'],
-            "color" => ['required', 'string', 'min:2', 'max:60'],
             "picture_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
             "picture_two" => ['required', 'file', 'mimes:jpg,jpeg,png'],
             "picture_three" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
@@ -182,7 +179,6 @@ class ProductController extends Controller
         $product->name = strtolower($request->name);
         $product->price = $request->price;
         $product->description = strtolower($request->description);
-        $product->color = strtolower($request->color);
 
         $images = [$request->picture_one->getClientOriginalName(), $request->picture_two->getClientOriginalName()];
         if ($request->picture_three) $images[] = $request->picture_three->getClientOriginalName();

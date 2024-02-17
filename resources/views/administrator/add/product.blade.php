@@ -23,12 +23,12 @@
                     <label for="catalog_id" class="sr-only uppercase">Selectionnez un catalogue</label>
                     <select id="catalog_id" name="catalog_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
                         @if(isset($product))
-                        <option value="{{ $product->catalog->id }}" selected>{{ $product->catalog->gender }}</option>
+                        <option value="{{ $product->catalog->id }}" selected>{{ $product->catalog->name }}</option>
                         @else
                         <option disabled selected>Selectionnez un catalogue</option>
                         @endif
                         @foreach($catalogs as $catalog)
-                        <option value="{{ $catalog->id }}">{{ $catalog->gender }}</option>
+                        <option value="{{ $catalog->id }}">{{ $catalog->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -51,28 +51,6 @@
                     <div>
                         <label for="price" class="block mb-2 text-sm font-medium text-gray-900 uppercase">Prix</label>
                         <input type="float" name="price" id="price" @if(isset($product)) value="{{ $product->price }}" @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Renseigner le prix sans mettre le signe € (ex : 9.99)" required>
-                    </div>
-                    <div>
-                        <label for="color" class="sr-only uppercase">Couleur</label>
-                        <select id="color" name="color" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
-                            @if(isset($product))
-                            <option value="{{ $product->color }}">{{ $product->color }}</option>
-                            @else
-                            <option disabled selected>Selectionner une couleur</option>
-                            @endif
-                            <option value="blanc">blanc</option>
-                            <option value="noir">noir</option>
-                            <option value="bleu">bleu</option>
-                            <option value="rouge">rouge</option>
-                            <option value="jaune">jaune</option>
-                            <option value="vert">vert</option>
-                            <option value="orange">orange</option>
-                            <option value="beige">beige</option>
-                            <option value="marron">marron</option>
-                            <option value="rose">rose</option>
-                            <option value="gris">gris</option>
-                            <option value="violet">violet</option>
-                        </select>
                     </div>
                 </div>
                 <div class="col-span-2 md:col-span-1">

@@ -30,12 +30,12 @@ class CatalogController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "gender" => ['required', 'string', 'min:2', 'max:60'],
+            "name" => ['required', 'string', 'min:2', 'max:60'],
         ]);
 
-        if (!Catalog::where("gender", $request->gender)->first()) {
+        if (!Catalog::where("name", $request->name)->first()) {
             $catalog = new Catalog();
-            $catalog->gender = strtolower($request->gender);
+            $catalog->name = strtolower($request->name);
             $catalog->save();
         } else {
             return Redirect::back()->withErrors(['msg' => 'Erreur. Ce catalogue existe déjà.']);
@@ -91,11 +91,11 @@ class CatalogController extends Controller
     public function update($catalog_id, Request $request)
     {
         $request->validate([
-            "gender" => ['required', 'string', 'min:2', 'max:60'],
+            "name" => ['required', 'string', 'min:2', 'max:60'],
         ]);
 
         $catalog = Catalog::where("id", $catalog_id)->first();
-        $catalog->gender = strtolower($request->gender);
+        $catalog->name = strtolower($request->name);
         $catalog->save();
 
         return Redirect::back()->withErrors(['msg' => 'Opération effectuée avec succès !']);
