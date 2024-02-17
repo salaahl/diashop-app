@@ -195,7 +195,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return Redirect::back()->withErrors(['msg' => 'Opération effectuée avec succès !']);
+        return redirect()->route('administrator.dashboard');
     }
 
     /**
@@ -205,6 +205,6 @@ class ProductController extends Controller
     {
         $product = Product::where("id", $product_id)->delete();
 
-        return Redirect::back()->withErrors(['msg' => 'Opération effectuée avec succès !']);
+        return redirect()->route('administrator.dashboard');
     }
 }
