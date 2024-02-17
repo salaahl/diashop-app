@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Catalog;
-use App\Models\Order;
 
 class Product extends Model
 {
@@ -19,8 +18,7 @@ class Product extends Model
      */
     protected $casts = [
         'quantity_per_size' => 'array',
-        'img_thumbnail' => 'array',
-        'img_fullsize' => 'array',
+        'img' => 'array',
     ];
 
     public function catalog()
@@ -31,10 +29,5 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-
-    public function orders()
-    {
-        return $this->belongsToMany(Order::class);
     }
 }
