@@ -120,9 +120,9 @@ class MainController extends Controller
                     "id" => $product->id,
                     "name" => $product->name,
                     "category" => $product->category->name,
-                    "img_fullsize" => [
-                        0 => $product->img_fullsize[0],
-                        1 => $product->img_fullsize[1]
+                    "img" => [
+                        0 => $product->img[0],
+                        1 => $product->img[1]
                     ],
                     "price" => $product->price,
                 ];
