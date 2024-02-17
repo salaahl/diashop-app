@@ -63,14 +63,14 @@
                 </div>
                 <div class="col-span-2 md:col-span-1">
                     <h3 class="mb-4 font-semibold text-gray-900 text-sm">IMAGES <span class="text-sm text-gray-500">(ajouter au moins deux images. Formats acceptés : SVG, PNG ou JPG).</span></h3>
-                    <label class="block mb-2 text-sm font-medium text-gray-900" for="picture_one">Image 1</label>
-                    <input aria-describedby="picture_one_input_help" id="picture_one" type="file" name="picture_one" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
-                    <label class="block mb-2 text-sm font-medium text-gray-900" for="picture_two">Image 2</label>
-                    <input aria-describedby="picture_two_input_help" id="picture_two" type="file" name="picture_two" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
-                    <label class="block mb-2 text-sm font-medium text-gray-900" for="picture_three">Image 3</label>
-                    <input aria-describedby="picture_three_input_help" id="picture_three" type="file" name="picture_three" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
-                    <label class="block mb-2 text-sm font-medium text-gray-900" for="picture_four">Image 4</label>
-                    <input aria-describedby="picture_four_input_help" id="picture_four" type="file" name="picture_four" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
+                    <label class="block mb-2 text-sm font-medium text-gray-900" for="img_one">Image 1</label>
+                    <input aria-describedby="img_one_input_help" id="img_one" type="file" name="img_one" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
+                    <label class="block mb-2 text-sm font-medium text-gray-900" for="img_two">Image 2</label>
+                    <input aria-describedby="img_two_input_help" id="img_two" type="file" name="img_two" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
+                    <label class="block mb-2 text-sm font-medium text-gray-900" for="img_three">Image 3</label>
+                    <input aria-describedby="img_three_input_help" id="img_three" type="file" name="img_three" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
+                    <label class="block mb-2 text-sm font-medium text-gray-900" for="img_four">Image 4</label>
+                    <input aria-describedby="img_four_input_help" id="img_four" type="file" name="img_four" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
                 </div>
                 <div class="col-span-2 md:col-span-1">
                     <h3 class="font-semibold text-gray-900 text-sm uppercase">Tailles</h3>
