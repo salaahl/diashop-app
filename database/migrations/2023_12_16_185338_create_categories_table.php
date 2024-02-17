@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('img_thumbnail');
+            $table->string('img');
             $table->foreignId('catalog_id')
                 ->constrained()
                 ->onUpdate('cascade')
