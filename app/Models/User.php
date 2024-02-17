@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Address;
 use App\Models\Order;
 use App\Models\Favorite;
 
@@ -47,17 +46,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function addresses()
-    {
-        return $this->hasMany(Address::class);
-    }
-
     public function orders()
     {
         return $this->hasMany(Order::class);
     }
 
-    // Permet de récupérer les produits mis en favori par l'utilisateur
     public function favorites()
     {
         return $this->hasMany(Favorite::class);
