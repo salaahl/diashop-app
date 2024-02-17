@@ -18,12 +18,12 @@
 
 #catalogs-container .catalog:first-of-type .img-placeholder {
     background-position: center;
-    background-image: url("/public/images/woman_catalog-placeholder.jpg");
+    background-image: url("/public/images/woman-catalog.jpg");
 }
 
 #catalogs-container .catalog:last-of-type .img-placeholder {
     background-position: center right;
-    background-image: url("/public/images/man_catalog-placeholder.jpg");
+    background-image: url("/public/images/men-catalog.jpg");
 }
 
 #catalogs-container .catalog h3 {
