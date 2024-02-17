@@ -24,7 +24,7 @@ class StripePaymentController extends Controller
                             'price_data' => [
                                 'product_data' => [
                                     'name' => $item['name'],
-                                    'images' => [$APP_URL . 'images/' . $item['thumbnail']],
+                                    'images' => [$APP_URL . 'images/' . $item['img']],
                                 ],
                                 'unit_amount' => $item['price'] * 100,
                                 'currency' => 'eur',
