@@ -4,7 +4,7 @@
 <head>
     @section('meta')
     <meta charset="utf-8">
-    <meta name="author" lang="fr" content="Salaha Sokhona pour DiaShop">
+    <meta name="author" lang="fr" content="Salaha Sokhona pour DiaShop-b">
     <meta name="keywords" content="prêt-à-porter, mode, vêtements, tendance, style, habillement">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
