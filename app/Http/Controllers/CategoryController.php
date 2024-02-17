@@ -85,7 +85,7 @@ class CategoryController extends Controller
 
         if ($request->isMethod('post')) {
             return response()->json([
-                "categories" => Category::where("name", $request->category)->orderBy('name', 'ASC')->get()
+                "categories" => Category::where("catalog_id", $request->catalog_id)->orderBy('name', 'ASC')->get()
             ]);
         } else {
             return view('administrator/show/list', [
