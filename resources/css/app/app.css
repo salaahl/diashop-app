@@ -292,6 +292,7 @@ img {
 
 #lds-hourglass.show {
     display: flex;
+    width: 1460px; /* prévient l'effet de bord sur le container */
     backdrop-filter: blur(4px);
 }
 
