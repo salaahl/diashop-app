@@ -78,7 +78,7 @@ class OrderController extends Controller
 
         // Envoi du numéro de suivi :
         $order = Order::where("id", $request->order_id)->first();
-        $order->shipped = 1;
+        $order->tracking_number = $request->tracking_number;
         $order->save();
 
         dispatch(new TrackingNumberEmailJob([$order, $request->tracking_number]));
