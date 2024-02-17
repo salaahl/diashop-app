@@ -9,21 +9,21 @@ use Illuminate\View\Component;
 class Product extends Component
 {
     public string $link;
-    public string $image;
-    public string $hover;
+    public string $image1;
+    public string $image2;
     public string $title;
     public string $price;
 
     public function __construct(
         $link,
-        $image,
-        $hover,
+        $image1,
+        $image2,
         $title,
         $price
     ) {
         $this->link = $link;
-        $this->image = $image;
-        $this->hover = $hover;
+        $this->image = $image1;
+        $this->hover = $image2;
         $this->title = $title;
         $this->price = $price;
     }
