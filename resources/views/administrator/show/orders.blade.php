@@ -72,8 +72,9 @@
                 </tbody>
             </table>
         </div>
-        @if($order->shipped == true)
+        @if($order->tracking_number)
         <h2 class="uppercase">Commande traitée !</h2>
+        <h4 class="text-sm">({{ $order->tracking_number }})</h4>
         @else
         <form class="flex flex-nowrap" method="POST" action="{{ route('administrator.update.order') }}">
             @csrf
