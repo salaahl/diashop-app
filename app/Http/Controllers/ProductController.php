@@ -45,10 +45,10 @@ class ProductController extends Controller
             "category_id" => ['required', 'integer'],
             "price" => ['required', 'numeric'],
             "description" => ['required', 'string', 'min:2', 'max:400'],
-            "picture_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
-            "picture_two" => ['required', 'file', 'mimes:jpg,jpeg,png'],
-            "picture_three" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
-            "picture_four" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
+            "img_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "img_two" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "img_three" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
+            "img_four" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
             "quantity_os" => ['nullable', 'integer'],
             "quantity_s" => ['nullable', 'integer'],
             "quantity_m" => ['nullable', 'integer'],
@@ -69,10 +69,10 @@ class ProductController extends Controller
             $product->price = $request->price;
             $product->description = strtolower($request->description);
 
-            $images = [$request->picture_one->getClientOriginalName(), $request->picture_two->getClientOriginalName()];
-            if ($request->picture_three) $images[] = $request->picture_three->getClientOriginalName();
-            if ($request->picture_four) $images[] = $request->picture_four->getClientOriginalName();
-            $product->img_fullsize = $images;
+            $images = [$request->img_one->getClientOriginalName(), $request->img_two->getClientOriginalName()];
+            if ($request->img_three) $images[] = $request->img_three->getClientOriginalName();
+            if ($request->img_four) $images[] = $request->img_four->getClientOriginalName();
+            $product->img = $images;
 
             $quantity_per_size = [];
             if ($request->quantity_os) $quantity_per_size["os"] = $request->quantity_os;
@@ -161,10 +161,10 @@ class ProductController extends Controller
             "category_id" => ['required', 'integer'],
             "price" => ['required', 'numeric'],
             "description" => ['required', 'string', 'min:2', 'max:400'],
-            "picture_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
-            "picture_two" => ['required', 'file', 'mimes:jpg,jpeg,png'],
-            "picture_three" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
-            "picture_four" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
+            "img_one" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "img_two" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "img_three" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
+            "img_four" => ['nullable', 'file', 'mimes:jpg,jpeg,png'],
             "quantity_s" => ['nullable', 'integer'],
             "quantity_m" => ['nullable', 'integer'],
             "quantity_l" => ['nullable', 'integer'],
@@ -180,10 +180,10 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->description = strtolower($request->description);
 
-        $images = [$request->picture_one->getClientOriginalName(), $request->picture_two->getClientOriginalName()];
-        if ($request->picture_three) $images[] = $request->picture_three->getClientOriginalName();
-        if ($request->picture_four) $images[] = $request->picture_four->getClientOriginalName();
-        $product->img_fullsize = $images;
+        $images = [$request->img_one->getClientOriginalName(), $request->img_two->getClientOriginalName()];
+        if ($request->img_three) $images[] = $request->img_three->getClientOriginalName();
+        if ($request->img_four) $images[] = $request->img_four->getClientOriginalName();
+        $product->img = $images;
 
         $quantity_per_size = [];
         if ($request->quantity_s) $quantity_per_size["s"] = $request->quantity_s;
