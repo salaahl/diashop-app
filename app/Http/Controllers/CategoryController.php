@@ -37,16 +37,16 @@ class CategoryController extends Controller
     {
         $request->validate([
             "catalog_id" => ['required', 'integer'],
-            "category" => ['required', 'string', 'min:2', 'max:60'],
+            "name" => ['required', 'string', 'min:2', 'max:60'],
             "img" => ['required', 'file', 'mimes:jpg,jpeg,png'],
         ]);
 
         if (!Category::where([
-            ["name", $request->category],
+            ["name", $request->name],
             ["catalog_id", $request->catalog_id],
         ])->first()) {
             $category = new Category();
-            $category->name = strtolower($request->category);
+            $category->name = strtolower($request->name);
             $category->img = $request->img->getClientOriginalName();
             $category->catalog_id = $request->catalog_id;
             $category->save();
@@ -115,12 +115,12 @@ class CategoryController extends Controller
     {
         $request->validate([
             "catalog_id" => ['required', 'integer'],
-            "category" => ['required', 'string', 'min:2', 'max:60'],
+            "name" => ['required', 'string', 'min:2', 'max:60'],
             "img" => ['required', 'file', 'mimes:jpg,jpeg,png'],
         ]);
 
         $category = Category::where("id", $category_id)->first();
-        $category->name = strtolower($request->category);
+        $category->name = strtolower($request->name);
         $category->img = $request->img->getClientOriginalName();
         $category->catalog_id = $request->catalog_id;
         $category->save();
