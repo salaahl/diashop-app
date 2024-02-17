@@ -21,7 +21,7 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($category_id = null)
+    public function create()
     {
         $catalogs = Catalog::all();
 
@@ -38,7 +38,7 @@ class CategoryController extends Controller
         $request->validate([
             "catalog_id" => ['required', 'integer'],
             "category" => ['required', 'string', 'min:2', 'max:60'],
-            "img_thumbnail" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "img" => ['required', 'file', 'mimes:jpg,jpeg,png'],
         ]);
 
         if (!Category::where([
@@ -47,7 +47,7 @@ class CategoryController extends Controller
         ])->first()) {
             $category = new Category();
             $category->name = strtolower($request->category);
-            $category->img_thumbnail = $request->img_thumbnail->getClientOriginalName();
+            $category->img = $request->img->getClientOriginalName();
             $category->catalog_id = $request->catalog_id;
             $category->save();
         } else {
@@ -116,12 +116,12 @@ class CategoryController extends Controller
         $request->validate([
             "catalog_id" => ['required', 'integer'],
             "category" => ['required', 'string', 'min:2', 'max:60'],
-            "img_thumbnail" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "img" => ['required', 'file', 'mimes:jpg,jpeg,png'],
         ]);
 
         $category = Category::where("id", $category_id)->first();
         $category->name = strtolower($request->category);
-        $category->img_thumbnail = $request->img_thumbnail->getClientOriginalName();
+        $category->img = $request->img->getClientOriginalName();
         $category->catalog_id = $request->catalog_id;
         $category->save();
 
