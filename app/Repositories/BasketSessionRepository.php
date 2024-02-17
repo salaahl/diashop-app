@@ -26,7 +26,7 @@ class BasketSessionRepository implements BasketInterfaceRepository
             'price' => $product->price,
             'size' => $size,
             'quantity' => $quantity,
-            'thumbnail' => $product->img_fullsize[0],
+            'img' => $product->img[0],
             'catalog' => $product->catalog->name,
             'category' => $product->category->name
         ];
@@ -54,7 +54,7 @@ class BasketSessionRepository implements BasketInterfaceRepository
         unset($basket[$product_id][$size]); // On supprime le produit du tableau $basket
         if (empty($basket[$product_id])) unset($basket[$product_id]); // On supprime également la clé du produit si elle ne contient plus rien
         session()->put("basket", $basket); // On enregistre le panier
-        // Si le panier est désormais vide alors supprimer
+        // Si le panier est - désormais - vide alors supprimer
         if (empty(session()->get("basket"))) {
             $this->destroy();
         }
