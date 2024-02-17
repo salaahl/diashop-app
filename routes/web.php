@@ -82,14 +82,14 @@ Route::middleware(['auth', 'is.admin'])->group(function () {
     });
 });
 
-Route::get('search/{gender}/{input}', [MainController::class, 'search'])->name('search.product');
+Route::get('search/{catalog}/{input}', [MainController::class, 'search'])->name('search.product');
 Route::post('search/', [MainController::class, 'searchAsync'])->name('search.product.async');
 
-Route::get('catalog/{gender}/', [MainController::class, 'catalog'])->name('catalog');
-Route::post('catalog/{gender}/', [MainController::class, 'catalog'])->name('catalog.post');
-Route::get('catalog/{gender}/{category}', [MainController::class, 'category'])->name('category');
-Route::post('catalog/{gender}/{category}', [MainController::class, 'category'])->name('category.post');
-Route::get('catalog/{gender}/{category}/{product_id}', [MainController::class, 'product'])->name('product');
+Route::get('catalog/{catalog}/', [MainController::class, 'catalog'])->name('catalog');
+Route::post('catalog/{catalog}/', [MainController::class, 'catalog'])->name('catalog.post');
+Route::get('catalog/{catalog}/{category}', [MainController::class, 'category'])->name('category');
+Route::post('catalog/{catalog}/{category}', [MainController::class, 'category'])->name('category.post');
+Route::get('catalog/{catalog}/{category}/{product_id}', [MainController::class, 'product'])->name('product');
 
 Route::post('get-quantity/', [ProductController::class, 'getQuantity'])->name('product.get-quantity');
 
