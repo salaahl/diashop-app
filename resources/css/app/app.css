@@ -247,7 +247,6 @@ img {
 
 .spinner::after {
     background: var(--second);
-
     animation: bounce 1s 0.5s ease-in-out alternate infinite;
 }
 
@@ -286,13 +285,13 @@ img {
 }
 
 #lds-hourglass {
+    width: 1460px; /* prévient l'effet de bord sur le container */
     backdrop-filter: blur(0px);
     transition: backdrop-filter 0.8s;
 }
 
 #lds-hourglass.show {
     display: flex;
-    width: 1460px; /* prévient l'effet de bord sur le container */
     backdrop-filter: blur(4px);
 }
 
