@@ -21,7 +21,7 @@ return new class extends Migration
             $table->json('shipping_address');
             $table->json('amount');
             $table->integer('user_id')->nullable();
-            $table->boolean('shipped')->default(0);
+            $table->string('track_number')->nullable();
             $table->timestamps();
         });
     }
