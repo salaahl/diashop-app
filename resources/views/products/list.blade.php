@@ -53,7 +53,7 @@ $meta_description = "";
         >
         <a href="{{ '/catalog/' . $category->catalog->name . '/' . $category->name }}">
             <div class="thumbnail">
-                <img src='{{ asset("/images/$category->img_thumbnail") }}' />
+                <img src='{{ asset("/images/$category->img") }}' />
             </div>
             <div class="details">
                 <h4 class="title text-center">{{ ucfirst($category->name) }}</h4>
@@ -72,7 +72,7 @@ $meta_description = "";
 </nav>
 @endif
 @foreach($products as $product)
-<x-product link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image="/images/{{ $product->img_fullsize[0] }}" hover="/images/{{ $product->img_fullsize[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
+<x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="/images/{{ $product->img[0] }}" image2="/images/{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
 @endforeach
 <aside class="w-full mt-[-1rem] mb-4">
     {{ $products->links() }}
