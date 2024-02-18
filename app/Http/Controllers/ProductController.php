@@ -4,16 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Catalog;
-use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\File;
 use Exception;
 use Illuminate\Support\Facades\Redirect;
+use App\Repositories\ProductInterfaceRepository;
+use App\Repositories\ProductSessionRepository;
 
 class ProductController extends Controller
 {
+    protected ProductSessionRepository $productRepository; // L'instance ProductSessionRepository
+
+    public function __construct(ProductInterfaceRepository $productRepository)
+    {
+        $this->productRepository = $productRepository;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -62,28 +67,7 @@ class ProductController extends Controller
             ["category_id", $request->category_id],
             ["catalog_id", $request->catalog_id],
         ])->first()) {
-            $product = new Product();
-            $product->catalog_id = $request->catalog_id;
-            $product->category_id = $request->category_id;
-            $product->name = strtolower($request->name);
-            $product->price = $request->price;
-            $product->description = strtolower($request->description);
-
-            $images = [$request->img_one->getClientOriginalName(), $request->img_two->getClientOriginalName()];
-            if ($request->img_three) $images[] = $request->img_three->getClientOriginalName();
-            if ($request->img_four) $images[] = $request->img_four->getClientOriginalName();
-            $product->img = $images;
-
-            $quantity_per_size = [];
-            if ($request->quantity_os) $quantity_per_size["os"] = $request->quantity_os;
-            if ($request->quantity_s) $quantity_per_size["s"] = $request->quantity_s;
-            if ($request->quantity_m) $quantity_per_size["m"] = $request->quantity_m;
-            if ($request->quantity_l) $quantity_per_size["l"] = $request->quantity_l;
-            if ($request->quantity_xl) $quantity_per_size["xl"] = $request->quantity_xl;
-            if ($request->quantity_xxl) $quantity_per_size["xxl"] = $request->quantity_xxl;
-            $product->quantity_per_size = $quantity_per_size;
-
-            $product->save();
+            $this->productRepository->store($request);
         } else {
             return Redirect::back()->withErrors(['msg' => 'Erreur. Ce produit existe déjà.']);
         }
@@ -172,28 +156,7 @@ class ProductController extends Controller
             "quantity_xxl" => ['nullable', 'integer'],
         ]);
 
-        $product = Product::where("id", $product_id)->first();
-
-        $product->catalog_id = $request->catalog_id;
-        $product->category_id = $request->category_id;
-        $product->name = strtolower($request->name);
-        $product->price = $request->price;
-        $product->description = strtolower($request->description);
-
-        $images = [$request->img_one->getClientOriginalName(), $request->img_two->getClientOriginalName()];
-        if ($request->img_three) $images[] = $request->img_three->getClientOriginalName();
-        if ($request->img_four) $images[] = $request->img_four->getClientOriginalName();
-        $product->img = $images;
-
-        $quantity_per_size = [];
-        if ($request->quantity_s) $quantity_per_size["s"] = $request->quantity_s;
-        if ($request->quantity_m) $quantity_per_size["m"] = $request->quantity_m;
-        if ($request->quantity_l) $quantity_per_size["l"] = $request->quantity_l;
-        if ($request->quantity_xl) $quantity_per_size["xl"] = $request->quantity_xl;
-        if ($request->quantity_xxl) $quantity_per_size["xxl"] = $request->quantity_xxl;
-        $product->quantity_per_size = $quantity_per_size;
-
-        $product->save();
+        $this->productRepository->update($product_id, $request);
 
         return redirect()->route('administrator.dashboard');
     }
@@ -203,7 +166,7 @@ class ProductController extends Controller
      */
     public function destroy($product_id)
     {
-        $product = Product::where("id", $product_id)->delete();
+        Product::where("id", $product_id)->delete();
 
         return redirect()->route('administrator.dashboard');
     }

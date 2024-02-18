@@ -11,16 +11,22 @@ main {
     width: 100%;
 }
 
-.category {
-    filter: grayscale(1);
+.category .thumbnail img {
+    filter: blur(1px) grayscale(1);
+    transition: all 0.8s;
+}
+
+.category .thumbnail:hover img {
+    filter: blur(0) grayscale(0);
 }
 
 .product {
     margin-bottom: 2rem;
 }
 
-.category.selected {
-    filter: grayscale(0);
+.category.selected .thumbnail img {
+    transform: scale(1);
+    filter: blur(0) grayscale(0);
 }
 
 @media (max-width: 767px) {
@@ -56,11 +62,11 @@ main {
     }
 
     .category .thumbnail img {
-        transition: 0.5s all;
+        transform: scale(1.2);
     }
 
     .category .thumbnail:hover img {
-        transform: scale(1.02);
+        transform: scale(1);
     }
 
     .product {

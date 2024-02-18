@@ -3,6 +3,13 @@ let $ = (id) => {
 };
 
 //
+document.querySelectorAll("#product-images-container img").forEach((image) => {
+    image.addEventListener("click", function () {
+        document.querySelector("#modal-image").src = image.src;
+    });
+});
+
+// Effet de translate en mode mobile pour notifier à l'utilisateur qu'il peut swipe
 window.addEventListener("load", () => {
     if (
         window.innerWidth < 767 &&

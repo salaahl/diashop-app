@@ -285,7 +285,7 @@ img {
 }
 
 #lds-hourglass {
-    max-width: 1480px!important; /* prévient l'effet de bord sur le container et lisse l'effet de flou */
+    max-width: 1480px !important; /* prévient l'effet de bord sur le container et lisse l'effet de flou */
     backdrop-filter: blur(0px);
     transition: backdrop-filter 1.5s;
 }

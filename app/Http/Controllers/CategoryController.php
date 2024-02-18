@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Catalog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Exception;
 
 class CategoryController extends Controller
 {
