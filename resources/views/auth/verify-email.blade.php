@@ -6,6 +6,13 @@
 
 @section('links')
 @parent
+<style>
+    main {
+        max-width: unset;
+        padding-left: 0;
+        padding-right: 0;
+    }
+</style>
 @endsection
 
 @section('header')
@@ -15,7 +22,7 @@
 @section('main')
 <x-guest-layout>
     <div class="mb-4 text-sm text-gray-600">
-        {{ __('Merci de vous être inscrit ! Avant de commencer, pourriez-vous vérifier votre adresse électronique en cliquant sur le lien que nous venons de vous envoyer ? Si vous n'avez pas reçu l\'e-mail, nous vous en enverrons un autre avec plaisir.') }}
+        {{ __('Plus qu\'une étape ! Avant de commencer, nous vous invitons à vérifier votre adresse électronique en cliquant sur le lien que nous venons de vous envoyer') }}
     </div>
 
     @if (session('status') == 'verification-link-sent')

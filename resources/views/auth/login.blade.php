@@ -10,7 +10,7 @@
 @parent
 <style>
     main {
-        max-width: 100%;
+        max-width: unset;
         padding-left: 0;
         padding-right: 0;
     }

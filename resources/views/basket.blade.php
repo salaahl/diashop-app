@@ -57,7 +57,7 @@
                         <h4 class="text-center">{{ ucfirst($product['name']) }}</h4>
                     </td>
                     <td class="column-three py-4 font-semibold text-gray-900">
-                        <h4 class="size">@if($product['size'] == "os") Unique @else {{ $product['size'] }} @endif</h4>
+                        <h4 class="size uppercase">@if($product['size'] == "os") Unique @else {{ $product['size'] }} @endif</h4>
                     </td>
                     <td class="column-four py-4">
                         <div class="flex justify-center items-center">

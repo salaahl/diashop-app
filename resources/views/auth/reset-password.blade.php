@@ -6,6 +6,13 @@
 
 @section('links')
 @parent
+<style>
+    main {
+        max-width: unset;
+        padding-left: 0;
+        padding-right: 0;
+    }
+</style>
 @endsection
 
 @section('header')
