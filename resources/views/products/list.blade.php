@@ -53,7 +53,7 @@ $meta_description = "";
         >
         <a href="{{ '/catalog/' . $category->catalog->name . '/' . $category->name }}">
             <div class="thumbnail">
-                <img src='{{ asset("/images/$category->img") }}' />
+                <img src='{{ asset("/images/$category->img") }}' alt="{{ $category->name }}" />
             </div>
             <div class="details">
                 <h4 class="title text-center">{{ ucfirst($category->name) }}</h4>

@@ -21,13 +21,7 @@
         <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
             @foreach($product->img as $image)
             <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start">
-                <img 
-                    src="/images/{{ $image }}"
-                    data-modal-target="default-modal" 
-                    data-modal-toggle="default-modal" 
-                    class="h-full w-full object-cover object-center cursor-zoom-in"
-                    onclick="document.querySelector('#modal-image').src = this.src;" 
-                />
+                <img src="/images/{{ $image }}" alt="{{ $product->name }}" data-modal-target="default-modal" data-modal-toggle="default-modal" class="h-full w-full object-cover object-center cursor-zoom-in" onclick="document.querySelector('#modal-image').src = this.src;" />
             </li>
             @endforeach
         </ul>
@@ -143,7 +137,7 @@
     <div class="relative max-h-full">
         <div class="relative shadow-2xl overflow-hidden">
             <div>
-                <img src="/" id="modal-image" class="h-auto w-screen md:h-screen md:w-auto" alt="...">
+                <img src="/" id="modal-image" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="...">
             </div>
         </div>
     </div>
