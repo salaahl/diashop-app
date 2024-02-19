@@ -56,7 +56,7 @@ $meta_description = "";
                 <img src='{{ asset("/images/$category->img") }}' />
             </div>
             <div class="details">
-                <h4 class="title font-normal text-center">{{ ucfirst($category->name) }}</h4>
+                <h4 class="title text-center">{{ ucfirst($category->name) }}</h4>
             </div>
         </a>
     </article>
