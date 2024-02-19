@@ -25,7 +25,7 @@
                     src="/images/{{ $image }}"
                     data-modal-target="default-modal" 
                     data-modal-toggle="default-modal" 
-                    class="h-full w-full object-cover object-center"
+                    class="h-full w-full object-cover object-center cursor-zoom-in"
                     onclick="document.querySelector('#modal-image').src = this.src;" 
                 />
             </li>
