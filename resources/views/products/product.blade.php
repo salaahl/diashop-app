@@ -21,9 +21,13 @@
         <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
             @foreach($product->img as $image)
             <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start">
-                <button data-modal-target="default-modal" data-modal-toggle="default-modal" type="button">
-                    <img src="/images/{{ $image }}" class="h-full w-full object-cover object-center" />
-                </button>
+                <img 
+                    src="/images/{{ $image }}"
+                    data-modal-target="default-modal" 
+                    data-modal-toggle="default-modal" 
+                    class="h-full w-full object-cover object-center"
+                    onclick="document.querySelector('#modal-image').src = this.src;" 
+                />
             </li>
             @endforeach
         </ul>
