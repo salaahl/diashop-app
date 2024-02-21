@@ -129,7 +129,6 @@ class MainController extends Controller
             }
 
             return response()->json([
-                'catalog' => $catalog,
                 'results' => $results
             ]);
             http_response_code(200);

@@ -128,7 +128,7 @@
     </div>
 </div>
 @else
-<div id="basket-empty" class="h-[90vh] w-full flex flex-col justify-center items-center">
+<div id="basket-empty" class="h-[100vh] w-full absolute top-0 left-0 flex flex-col justify-center items-center px-4">
     <h1 class="mb-0">Vous n'avez pas de produits dans votre panier</h1>
     <a href="{{ route('home') }}" class="m-5 py-3 px-6 bg-gray-800 text-center text-white rounded-full">Retourner sur la page d'accueil</a>
 </div>

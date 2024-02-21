@@ -22,7 +22,7 @@ $("#default-search").addEventListener("input", (e) => {
     timer = setTimeout(function () {
         if ($("#default-search").value.length > 0) {
             $("#search-results").innerHTML = "";
-            document.getElementById('lds-hourglass').classList.add("show");
+            document.getElementById("lds-hourglass").classList.add("show");
 
             let data = {
                 input: $("#default-search").value,
@@ -49,7 +49,8 @@ $("#default-search").addEventListener("input", (e) => {
                                 '<article class="product">' +
                                 '<a href="/' +
                                 "catalog/" +
-                                product["catalog"] +
+                                $("#search-container [name='catalog']:checked")
+                                    .value +
                                 "/" +
                                 product["category"] +
                                 "/" +
@@ -75,10 +76,12 @@ $("#default-search").addEventListener("input", (e) => {
                                 "</article>";
                         });
                     } else {
-                        $("#search-results").innerHTML = "Aucun résultat";
+                        $("#search-results").innerHTML = "AUCUN RESULTAT";
                     }
-                    
-                    document.getElementById('lds-hourglass').classList.remove("show");
+
+                    document
+                        .getElementById("lds-hourglass")
+                        .classList.remove("show");
                 })
                 .catch((error) => {
                     console.log(error.message);

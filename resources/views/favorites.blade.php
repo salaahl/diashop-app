@@ -16,10 +16,10 @@
 @endsection
 
 @section('main')
+@if(isset($products))
 <div id="headers">
     <h1>Mes favoris</h1>
 </div>
-@if(isset($products))
 @foreach($products as $product)
 <x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="/images/{{ $product->img[0] }}" image2="/images/{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
 @endforeach
@@ -27,8 +27,9 @@
     {{ $products->links() }}
 </aside>
 @else
-<div class="min-h-[90vh] w-[100vw] absolute top-[10vh] left-0 right-0 flex flex-col justify-center items-center px-4">
-    <h2 class="w-3/4 lg:w-2/4 mb-4 p-4 uppercase rounded-full bg-gray-200">Vous n'avez pas de produits dans vos favoris</h2>
+<div id="favorites-empty" class="h-[100vh] w-full absolute top-0 left-0 flex flex-col justify-center items-center px-4">
+    <h1 class="mb-0">Vous n'avez pas de produits dans vos favoris</h1>
+    <a href="{{ route('home') }}" class="m-5 py-3 px-6 bg-gray-800 text-center text-white rounded-full">Retourner sur la page d'accueil</a>
 </div>
 @endif
 @endsection

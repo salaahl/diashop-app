@@ -65,7 +65,11 @@ class FavoriteController extends Controller
             $products_id[] = $favorite->product_id;
         }
 
-        $products = Product::whereIn("id", $products_id)->orderBy('created_at', 'ASC')->paginate(12);
+        $products = null;
+
+        if (Product::whereIn("id", $products_id)->orderBy('created_at', 'ASC')->first()) {
+            $products = Product::whereIn("id", $products_id)->orderBy('created_at', 'ASC')->paginate(12);
+        }
 
         return view('favorites', [
             "products" => $products,
