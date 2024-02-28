@@ -1,8 +1,8 @@
 #navbar-container {
     width: 100%;
     top: 0;
-    background-color: rgb(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
+    background-color: rgb(255, 255, 255, 0);
+    backdrop-filter: blur(2px);
     z-index: 999;
 }
 
@@ -112,7 +112,7 @@ a:has(> #basket-counter) {
         transition: top 0.25s, background-color 0.5s, backdrop-filter 0.5s;
     }
 
-    #navbar-container:has(li:hover),
+    #navbar-container:hover,
     #navbar-container:has(#search-container.show) {
         background-color: rgb(255, 255, 255, 1);
         backdrop-filter: blur(0px);
