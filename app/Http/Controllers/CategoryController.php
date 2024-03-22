@@ -37,7 +37,7 @@ class CategoryController extends Controller
         $request->validate([
             "catalog_id" => ['required', 'integer'],
             "name" => ['required', 'string', 'min:2', 'max:60'],
-            "img" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "img" => ['required', 'string'],
         ]);
 
         if (!Category::where([
@@ -115,7 +115,7 @@ class CategoryController extends Controller
         $request->validate([
             "catalog_id" => ['required', 'integer'],
             "name" => ['required', 'string', 'min:2', 'max:60'],
-            "img" => ['required', 'file', 'mimes:jpg,jpeg,png'],
+            "img" => ['required', 'string'],
         ]);
 
         $category = Category::where("id", $category_id)->first();
