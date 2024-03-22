@@ -46,7 +46,7 @@ class CategoryController extends Controller
         ])->first()) {
             $category = new Category();
             $category->name = strtolower($request->name);
-            $category->img = $request->img->getClientOriginalName();
+            $category->img = $request->img;
             $category->catalog_id = $request->catalog_id;
             $category->save();
         } else {
@@ -120,7 +120,7 @@ class CategoryController extends Controller
 
         $category = Category::where("id", $category_id)->first();
         $category->name = strtolower($request->name);
-        $category->img = $request->img->getClientOriginalName();
+        $category->img = $request->img;
         $category->catalog_id = $request->catalog_id;
         $category->save();
 
