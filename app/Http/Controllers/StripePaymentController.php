@@ -47,6 +47,7 @@ class StripePaymentController extends Controller
                     'ui_mode' => 'embedded',
                     'line_items' => $items,
                     'mode' => 'payment',
+                    'allow_promotion_codes' => true,
                     'billing_address_collection' => 'required',
                     'shipping_address_collection' => ['allowed_countries' => ['FR']],
                     'shipping_options' => [
