@@ -25,9 +25,9 @@ class ProductSessionRepository implements ProductInterfaceRepository
         $product->price = $request->price;
         $product->description = strtolower($request->description);
 
-        $images = [$request->img_one->getClientOriginalName(), $request->img_two->getClientOriginalName()];
-        if ($request->img_three) $images[] = $request->img_three->getClientOriginalName();
-        if ($request->img_four) $images[] = $request->img_four->getClientOriginalName();
+        $images = [$request->img_one, $request->img_two];
+        if ($request->img_three) $images[] = $request->img_three;
+        if ($request->img_four) $images[] = $request->img_four;
         $product->img = $images;
 
         $quantity_per_size = [];
@@ -67,9 +67,9 @@ class ProductSessionRepository implements ProductInterfaceRepository
         $product->price = $request->price;
         $product->description = strtolower($request->description);
 
-        $images = [$request->img_one->getClientOriginalName(), $request->img_two->getClientOriginalName()];
-        if ($request->img_three) $images[] = $request->img_three->getClientOriginalName();
-        if ($request->img_four) $images[] = $request->img_four->getClientOriginalName();
+        $images = [$request->img_one, $request->img_two];
+        if ($request->img_three) $images[] = $request->img_three;
+        if ($request->img_four) $images[] = $request->img_four;
         $product->img = $images;
 
         $quantity_per_size = [];
