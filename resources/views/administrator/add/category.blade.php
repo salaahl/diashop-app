@@ -55,7 +55,7 @@
         </div>
         <div>
             <label class="block mb-2 text-sm font-medium text-gray-900" for="img">Image (formats acceptés : SVG, PNG ou JPG).</label>
-            <input aria-describedby="img_input_help" id="img" type="file" name="img" accept="image/png, image/jpg, image/jpeg, image/gif" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
+            <input aria-describedby="img_input_help" id="img" type="text" name="img" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
         </div>
         <button type="submit" class="w-full px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center bg-gray-900 text-white rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-primary-800">
             Ajouter
