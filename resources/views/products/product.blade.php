@@ -16,7 +16,6 @@
 @endsection
 
 @section('main')
-<x-banner-top />
 <div class="flex flex-wrap justify-between md:flex-nowrap flex-col md:flex-row">
     <section id="product-images-container" class="w-full md:w-2/4">
         <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
