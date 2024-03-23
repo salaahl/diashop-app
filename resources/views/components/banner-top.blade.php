@@ -1,4 +1,4 @@
-<div id="sticky-banner" tabindex="-1" class="flex justify-between w-full p-4 border-b border-gray-200 bg-gray-50">
+<div id="banner-top" tabindex="-1" class="flex justify-between w-full p-4 border-b border-gray-200 bg-gray-50">
   <div class="flex items-center mx-auto">
     <p class="flex items-center text-sm font-normal text-gray-500">
       <span class="inline-flex p-1 me-3 bg-gray-200 rounded-full w-6 h-6 items-center justify-center flex-shrink-0">
