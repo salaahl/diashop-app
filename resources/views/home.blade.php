@@ -15,7 +15,6 @@
 @endsection
 
 @section('main')
-<x-banner-top />
 <section id="catalogs-container" class="md:min-h-[89vh]">
     <article class="catalog">
         <a href="{{ route('catalog', 'femme') }}">
