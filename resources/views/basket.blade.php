@@ -17,6 +17,7 @@
 
 @section('main')
 @if (session()->has("basket"))
+<x-banner-top />
 <h1 class="md:hidden">Panier</h1>
 <div class="flex max-md:flex-wrap justify-between">
     <div id="summary-container" class="w-full relative md:mr-8 md:mb-4 lg:mr-20 overflow-x-auto shadow-md sm:rounded-lg">
