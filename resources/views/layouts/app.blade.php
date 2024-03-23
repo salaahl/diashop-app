@@ -30,6 +30,9 @@
     </div>
 
     <div id="main-container" class="min-h-screen">
+        <aside>
+            <x-banner-top />
+        </aside>
 
         <!-- Page Heading -->
         <header id="navbar-container" class="h-[10vh]">
