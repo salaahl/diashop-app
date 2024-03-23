@@ -38,7 +38,6 @@ $meta_description = "";
 @endsection
 
 @section('main')
-<x-banner-top />
 <div id="headers">
     <h1>{{ $h1 }}</h1>
     <h2>{{ $h2 }}</h2>
