@@ -16,7 +16,7 @@
 @endsection
 
 @section('main')
-<section id="deliveries-and-returns" class="min-h-[90vh] flex flex-col justify-between text-justify">
+<section id="deliveries-and-returns" class="min-h-[90vh] lg:min-h-[92vh] flex flex-col justify-between text-justify">
     <h1 class="min-h-[15vh] flex justify-center items-center my-10 text-white bg-gray-800">Livraisons et retours</h1>
     <article class="mb-3">
         <h3>Livraison express avec DiaShop-b</h3>
