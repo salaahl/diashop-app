@@ -95,6 +95,7 @@ h4 {
 }
 
 .banner-slide-second span {
+    position: fixed;
     animation-delay: var(--banner-duration);
 }
 
