@@ -30,7 +30,14 @@
         <div id="product-detail" class="md:h-screen md:mt-[-10vh] max-md:pt-4 md:py-[10vh] sticky top-0">
             <div>
                 <h2 id="title">{{ ucfirst($product->name) }}</h2>
+                @if($product->promotion)
+                <div class="flex">
+                    <h2 id="price" class="w-min">{{ round($product->price - ($product->price / 100 * $product->promotion), 2) }}€</h2>
+                    <h2 class="w-min ml-4 line-through">{{ $product->price }}€</h2>
+                </div>
+                @else
                 <h2 id="price">{{ $product->price }}€</h2>
+                @endif
                 <div id="description">{{ ucfirst($product->description) }}</div>
             </div>
             @php

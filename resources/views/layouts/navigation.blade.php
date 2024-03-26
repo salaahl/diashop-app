@@ -1,10 +1,10 @@
 <nav id="navbar">
     <div class="h-full w-full flex flex-wrap items-center justify-end lg:justify-between mx-auto xl:p-0">
-        <a href="/" class="h-[10vh] flex flex-col justify-center items-center absolute top-0 left-2/4 right-2/4">
-            <span class="self-center uppercase font-semibold whitespace-nowrap">Diashop-b</span>
+        <a href="/" id="logo" class="h-[10vh] lg:h-[8vh] flex flex-col justify-center items-center absolute top-0 left-2/4 right-2/4">
+            <span class="self-center uppercase font-semibold whitespace-nowrap">DiaShop-B</span>
             <span class="self-center m-0 text-sm uppercase whitespace-nowrap">Paris</span>
         </a>
-        <div class="h-[10vh] flex items-center">
+        <div class="h-[10vh] lg:h-[8vh] flex items-center">
             <button id="navbar-dropdown-btn" data-collapse-toggle="navbar-dropdown" type="button" class="relative inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-dropdown" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -75,7 +75,7 @@
                         <div id="dropdownDashboard" class="hidden z-10 lg:flex align-center w-full max-lg:mb-2 max-lg:rounded-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
                             <ul class="lg:flex max-w-screen-xl max-lg:mb-2 lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                                 <li class="self-center">
-                                    <a href="{{ route('favorites.show') }}" class="block my-2 lg:mr-4 px-4 py-2 whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">
+                                    <a href="{{ route('favorites') }}" class="block my-2 lg:mr-4 px-4 py-2 whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition-all">
                                         Mes favoris
                                     </a>
                                 </li>
@@ -94,7 +94,7 @@
                     </li>
                     @endauth
                     <li class="h-full w-full lg:flex lg:items-center lg:flex lg:align-center">
-                        <a href="{{ route('basket.show') }}" class="flex justify-between items-center max-lg:mb-2 p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0  lg:p-0">
+                        <a href="{{ route('basket') }}" class="flex justify-between items-center max-lg:mb-2 p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0  lg:p-0">
                             <span class="text-sm uppercase whitespace-nowrap lg:m-0">Panier</span>
                             @if(session()->has('basket'))
                             @php

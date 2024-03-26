@@ -23,6 +23,7 @@ class ProductSessionRepository implements ProductInterfaceRepository
         $product->category_id = $request->category_id;
         $product->name = strtolower($request->name);
         $product->price = $request->price;
+        if ($request->promotion) $product->promotion = $request->promotion;
         $product->description = strtolower($request->description);
 
         $images = [$request->img_one, $request->img_two];
@@ -65,6 +66,7 @@ class ProductSessionRepository implements ProductInterfaceRepository
         $product->category_id = $request->category_id;
         $product->name = strtolower($request->name);
         $product->price = $request->price;
+        if ($request->promotion) $product->promotion = $request->promotion;
         $product->description = strtolower($request->description);
 
         $images = [$request->img_one, $request->img_two];

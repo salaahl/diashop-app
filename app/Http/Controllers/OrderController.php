@@ -50,7 +50,7 @@ class OrderController extends Controller
                 $orders = Order::where("shipped", 0)->orderBy('created_at', 'ASC')->paginate(12);
                 break;
             default:
-                $orders = Order::orderBy('created_at', 'ASC')->paginate(12);
+                $orders = Order::orderBy('created_at', 'DESC')->paginate(12);
         }
 
         return view('administrator/show/orders', [
@@ -73,15 +73,15 @@ class OrderController extends Controller
     {
         $request->validate([
             "order_id" => ['required', 'integer'],
-            "tracking_number" => ['required', 'string']
+            "track_number" => ['required', 'string']
         ]);
 
         // Envoi du numéro de suivi :
         $order = Order::where("id", $request->order_id)->first();
-        $order->tracking_number = $request->tracking_number;
+        $order->track_number = $request->track_number;
         $order->save();
 
-        dispatch(new TrackingNumberEmailJob([$order, $request->tracking_number]));
+        dispatch(new TrackingNumberEmailJob([$order, $request->track_number]));
 
         return redirect()->route('administrator.show.orders');
     }

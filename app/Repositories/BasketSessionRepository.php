@@ -18,12 +18,15 @@ class BasketSessionRepository implements BasketInterfaceRepository
     {
         $basket = session()->get("basket");
         $product = Product::where("id", $product_id)->first();
+        $product->promotion ?
+            $price = round($product->price - ($product->price / 100 * $product->promotion), 2)
+            : $price = $product->price;
 
         // Les informations du produit à ajouter
         $product_details = [
             'id' => $product->id,
             'name' => $product->name,
-            'price' => $product->price,
+            'price' => $price,
             'size' => $size,
             'quantity' => $quantity,
             'img' => $product->img[0],

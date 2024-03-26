@@ -117,7 +117,8 @@
             </div>
         </form>
         <div class="w-full mt-8 max-md:mb-2">
-            <h4 class="mb-4 text-sm text-center text-gray-500">Options de payement disponiles : Visa, Mastercard, CB & Paypal</h4>
+            <h4 class="mb-2 text-sm text-center text-gray-500">Options de payement disponiles : Visa, Mastercard, CB & Paypal</h4>
+            <h4 class="mb-4 text-sm text-center text-gray-500">Un code promo ? Entrez-le dans l'écran suivant</h4>
             <a href="{{ route('checkout.show') }}" class="button-stylised-1">
                 <span>Payer</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="hidden h-[15px] ml-2">

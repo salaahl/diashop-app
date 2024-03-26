@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/404', function () {
     abort(404);
-});
+})->name('404');
 
 Route::get('/', function () {
     return view('home');
@@ -39,7 +39,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('favorites/', [FavoriteController::class, 'show'])->name('favorites.show');
+    Route::get('favorites/', [FavoriteController::class, 'show'])->name('favorites');
     Route::put('favorites/add', [FavoriteController::class, 'store'])->name('favorites.store');
     Route::delete('favorites/remove', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
 
@@ -93,7 +93,7 @@ Route::get('catalog/{catalog}/{category}/{product_id}', [MainController::class, 
 
 Route::post('get-quantity/', [ProductController::class, 'getQuantity'])->name('product.get-quantity');
 
-Route::get('basket/', [BasketController::class, 'show'])->name('basket.show');
+Route::get('basket/', [BasketController::class, 'show'])->name('basket');
 Route::put('basket/store', [BasketController::class, 'store'])->name('basket.store');
 Route::patch('basket/update', [BasketController::class, 'update'])->name('basket.update');
 Route::delete('basket/remove', [BasketController::class, 'remove'])->name('basket.remove');

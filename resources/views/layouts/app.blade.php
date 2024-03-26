@@ -16,7 +16,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Truculenta:opsz,wght@12..72,100..900&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     @vite(['resources/css/app/app.css', 'resources/css/app/navigation.css'])
     @show
 
@@ -30,12 +30,12 @@
     </div>
 
     <div id="main-container" class="min-h-screen">
-        <aside>
+        @if(Route::is('home') || Route::is('catalog') || Route::is('product') || Route::is('basket'))
             <x-banner-top />
-        </aside>
+        @endif
 
         <!-- Page Heading -->
-        <header id="navbar-container" class="h-[10vh]">
+        <header id="navbar-container" class="h-[10vh] lg:h-[8vh]">
             @section('header')
             @include('layouts.navigation')
             @include('components.search-product')
@@ -43,7 +43,7 @@
         </header>
 
         <!-- Page Content -->
-        <main class="min-h-[90vh]">
+        <main class="min-h-[90vh] lg:min-h-[88vh]">
             @yield('main')
         </main>
 

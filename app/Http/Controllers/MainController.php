@@ -85,7 +85,15 @@ class MainController extends Controller
      */
     public function product($catalog, $category, $product_id)
     {
-        $product = Product::where('id', $product_id)->first();
+        try {
+            $product = Product::where([
+                ['catalog_id', Catalog::where('name', $catalog)->first()->id],
+                ['category_id', Category::where('name', $category)->first()->id],
+                ['id', $product_id]
+            ])->first();
+        } catch (Exception $e) {
+            return redirect()->route('404');
+        }
 
         return view('products/product', [
             "product" => $product

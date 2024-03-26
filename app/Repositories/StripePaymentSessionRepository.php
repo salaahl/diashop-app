@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Jobs\ConfirmationEmailJob;
+use App\Jobs\NewCommandEmailJob;
 
 class StripePaymentSessionRepository implements StripePaymentInterfaceRepository
 {
@@ -76,6 +77,7 @@ class StripePaymentSessionRepository implements StripePaymentInterfaceRepository
         $order->save();
 
         dispatch(new ConfirmationEmailJob($order));
+        dispatch(new NewCommandEmailJob($order));
 
         session()->forget("basket");
     }

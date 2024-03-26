@@ -72,7 +72,11 @@ $meta_description = "";
 </nav>
 @endif
 @foreach($products as $product)
+@if($product->promotion)
+<x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product->img[0] }}" image2="{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ round($product->price - ($product->price / 100 * $product->promotion), 2) }}" />
+@else
 <x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product->img[0] }}" image2="{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
+@endif
 @endforeach
 <aside class="w-full mt-[-1rem] mb-4">
     {{ $products->links() }}

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->float('price');
+            $table->integer('promotion')->nullable();
             $table->text('description');
             $table->json('quantity_per_size');
             $table->json('img');
