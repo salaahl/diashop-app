@@ -15,7 +15,7 @@
 @endsection
 
 @section('main')
-<section id="catalogs-container" class="md:min-h-[89vh]">
+<section id="catalogs-container" class="md:min-h-[87vh]">
     <article class="catalog">
         <a href="{{ route('catalog', 'femme') }}">
             <div class="img-placeholder">
