@@ -57,10 +57,10 @@ $("#default-search").addEventListener("input", (e) => {
                                 product["id"] +
                                 '">' +
                                 '<div class="thumbnail">' +
-                                '<img src="/images/' +
+                                '<img src="' +
                                 product["img"][0] +
                                 '" />' +
-                                '<img src="/images/' +
+                                '<img src="' +
                                 product["img"][1] +
                                 '" />' +
                                 "</div>" +
