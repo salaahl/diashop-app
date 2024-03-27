@@ -38,10 +38,6 @@
     main {
         margin-top: -10vh;
     }
-
-    #logo span {
-        filter: invert(1);
-    }
     
     main,
     #catalogs-container {
