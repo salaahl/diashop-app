@@ -140,7 +140,7 @@ a:has(> #basket-counter) {
         max-width: 1440px;
         padding-left: var(--container-padding-x);
         padding-right: var(--container-padding-x);
-        inset: 8vh auto auto auto;
+        inset: 80px auto auto auto;
         transform: unset;
         overflow: hidden;
         margin: 0 auto;
@@ -171,7 +171,7 @@ a:has(> #basket-counter) {
 
     li:has(> #dropdownDashboard):hover #dropdownDashboard,
     li:has(> .dropdownNavbarCatalog):hover .dropdownNavbarCatalog {
-        height: 5vh;
+        height: 50px;
     }
 
     li:has(> #dropdownDashboardLink) > a > svg,
