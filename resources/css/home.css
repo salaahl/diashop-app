@@ -42,7 +42,6 @@
     }
 
     #catalogs-container .catalog {
-        height: 45vh;
         width: 100%;
         aspect-ratio: 1;
     }
