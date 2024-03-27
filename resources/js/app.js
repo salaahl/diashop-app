@@ -12,9 +12,9 @@ if (window.innerWidth > 1023) {
     window.onscroll = function () {
         var currentScrollPos = window.scrollY;
         if (prevScrollpos > currentScrollPos) {
-            document.querySelector("header").style.top = "0%";
+            document.querySelector("header").style.top = "0";
         } else {
-            document.querySelector("header").style.top = "-10%";
+            document.querySelector("header").style.top = "-80px";
         }
         prevScrollpos = currentScrollPos;
     };
