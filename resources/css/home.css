@@ -35,6 +35,14 @@
 }
 
 @media (max-width: 767px) {
+    main {
+        margin-top: 50px;
+    }
+
+    #logo {
+        filter: invert(1);
+    }
+    
     main,
     #catalogs-container {
         padding-left: 0;
