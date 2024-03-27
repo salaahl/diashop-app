@@ -35,7 +35,7 @@
         @endif
 
         <!-- Page Heading -->
-        <header id="navbar-container" class="h-[10vh] lg:h-[8vh]">
+        <header id="navbar-container" class="h-[10vh] lg:h-[50px]">
             @section('header')
             @include('layouts.navigation')
             @include('components.search-product')
