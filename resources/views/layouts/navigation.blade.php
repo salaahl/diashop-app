@@ -1,10 +1,10 @@
 <nav id="navbar">
     <div class="h-full w-full flex flex-wrap items-center justify-end lg:justify-between mx-auto xl:p-0">
-        <a href="/" id="logo" class="h-[10vh] lg:h-[8vh] flex flex-col justify-center items-center absolute top-0 left-2/4 right-2/4">
+        <a href="/" id="logo" class="h-[10vh] lg:h-[50px] flex flex-col justify-center items-center absolute top-0 left-2/4 right-2/4">
             <span class="self-center uppercase font-semibold whitespace-nowrap">DiaShop-B</span>
             <span class="self-center m-0 text-sm uppercase whitespace-nowrap">Paris</span>
         </a>
-        <div class="h-[10vh] lg:h-[8vh] flex items-center">
+        <div class="h-[10vh] lg:h-[50px] flex items-center">
             <button id="navbar-dropdown-btn" data-collapse-toggle="navbar-dropdown" type="button" class="relative inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-dropdown" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
