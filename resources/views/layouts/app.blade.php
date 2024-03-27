@@ -29,13 +29,13 @@
         <div class="spinner"></div>
     </div>
 
-    <div id="main-container" class="min-h-screen">
+    <div id="main-container">
         @if(Route::is('home') || Route::is('catalog') || Route::is('product') || Route::is('basket'))
             <x-banner-top />
         @endif
 
         <!-- Page Heading -->
-        <header id="navbar-container" class="h-[10vh] lg:h-[80px]">
+        <header id="navbar-container" class="h-[80px]">
             @section('header')
             @include('layouts.navigation')
             @include('components.search-product')
@@ -43,7 +43,7 @@
         </header>
 
         <!-- Page Content -->
-        <main class="min-h-[90vh] lg:min-h-[88vh]">
+        <main>
             @yield('main')
         </main>
 

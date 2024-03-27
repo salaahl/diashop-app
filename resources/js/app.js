@@ -6,7 +6,8 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-// Retracte la barre de navigation en mode desktop
+/*
+Retracte la barre de navigation en mode desktop
 if (window.innerWidth > 1023) {
     var prevScrollpos = window.scrollY;
     window.onscroll = function () {
@@ -19,6 +20,7 @@ if (window.innerWidth > 1023) {
         prevScrollpos = currentScrollPos;
     };
 }
+*/
 
 // Redimentionne dynamiquement la hauteur de la fenêtre. Permet de corriger le souci de viewheight en mode mobile
 function resetHeight() {

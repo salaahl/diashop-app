@@ -28,7 +28,7 @@ a {
 
 h1 {
     width: 100%;
-    margin: 5rem 0;
+    margin: 50px 0;
     text-transform: uppercase;
     text-align: center;
     font-size: var(--h1-font-size);
@@ -79,8 +79,11 @@ h4 {
 
 .banner-slide span {
     display: inline-block;
+    height: 30px;
     align-content: center;
     padding-left: 100vw;
+    font-size: small;
+    font-weight: 100;
     animation-name: banner-slide;
     animation-duration: var(--banner-duration-double);
     animation-timing-function: linear;

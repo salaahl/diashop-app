@@ -17,7 +17,7 @@
 
 @section('main')
 <div class="flex flex-wrap justify-between md:flex-nowrap flex-col md:flex-row">
-    <section id="product-images-container" class="w-full md:w-2/4">
+    <section id="product-images-container" class="w-full md:w-2/4 mt-[-80px]">
         <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
             @foreach($product->img as $image)
             <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start">
@@ -29,7 +29,7 @@
     <section id="product-details-container" class="w-full md:w-2/4 md:pl-6">
         <div id="product-detail" class="md:h-screen md:mt-[-10vh] max-md:pt-4 md:py-[10vh] sticky top-0">
             <div>
-                <h2 id="title">{{ ucfirst($product->name) }}</h2>
+                <h2 id="title" class="uppercase font-normal">{{ ucfirst($product->name) }}</h2>
                 @if($product->promotion)
                 <div class="flex">
                     <h2 id="price" class="w-min">{{ round($product->price - ($product->price / 100 * $product->promotion), 2) }}€</h2>

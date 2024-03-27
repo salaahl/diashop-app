@@ -1,8 +1,14 @@
 #navbar-container {
+    position: sticky;
+    top: 0;
     width: 100%;
     background-color: rgb(255, 255, 255, 0);
     backdrop-filter: blur(2px);
     z-index: 999;
+    animation-name: mask-on;
+    animation-fill-mode: forwards;
+    animation-delay: 0.25s;
+    transition: top 0.25s, background-color 0.5s, backdrop-filter 0.5s;
 }
 
 #navbar {
@@ -41,15 +47,6 @@ a:has(> #basket-counter) {
 }
 
 @media (max-width: 1023px) {
-    #navbar-container {
-        position: sticky;
-        top: 0;
-        animation-name: mask-on;
-        animation-fill-mode: forwards;
-        animation-delay: 0.25s;
-        transition: top 0.25s, background-color 0.5s, backdrop-filter 0.5s;
-    }
-
     #navbar-container:has(#navbar-dropdown-btn[aria-expanded="true"]) {
         background-color: rgb(255, 255, 255, 1);
         backdrop-filter: blur(0px);
@@ -64,6 +61,10 @@ a:has(> #basket-counter) {
         padding-left: var(--container-padding-x);
         padding-right: var(--container-padding-x);
         background-color: white;
+    }
+
+    #navbar-dropdown > div::-webkit-scrollbar {
+        display: none;
     }
 
     #navbar-dropdown-btn {
@@ -86,7 +87,7 @@ a:has(> #basket-counter) {
     }
 
     #navbar:has(#navbar-dropdown-btn[aria-expanded="true"]) #navbar-dropdown {
-        height: 90vh;
+        height: calc(100dvh - 110px);
         max-height: 1024px;
         margin-bottom: 0.5rem;
         transition: all 0.5s;
@@ -110,12 +111,7 @@ a:has(> #basket-counter) {
 
 @media (min-width: 1024px) {
     #navbar-container {
-        position: sticky;
         padding: 0 var(--container-padding-x);
-        animation-name: mask-on;
-        animation-fill-mode: forwards;
-        animation-delay: 0.25s;
-        transition: top 0.25s, background-color 0.5s, backdrop-filter 0.5s;
     }
 
     #navbar-container:hover,

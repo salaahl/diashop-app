@@ -31,7 +31,7 @@ main {
 
 @media (max-width: 767px) {
     #headers {
-        margin: 5rem auto;
+        margin: 50px auto;
     }
 
     .category {
