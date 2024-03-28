@@ -15,7 +15,7 @@
 @endsection
 
 @section('main')
-<section id="catalogs-container" class="md:aspect-[2/1]">
+<section id="catalogs-container" class="md:aspect-[2/1] md:mb-4">
     <article class="catalog">
         <a href="{{ route('catalog', 'femme') }}">
             <div class="img-placeholder">

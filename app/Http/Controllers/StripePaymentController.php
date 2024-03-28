@@ -23,9 +23,11 @@ class StripePaymentController extends Controller
 
             if (session()->get("basket")) {
                 $items = [];
+                $total = 0;
 
                 foreach (session()->get("basket") as $basket) {
                     foreach ($basket as $item) {
+
                         $items[] = [
                             'price_data' => [
                                 'product_data' => [
@@ -38,7 +40,78 @@ class StripePaymentController extends Controller
                             'quantity' => $item['quantity'],
                         ];
                     };
+
+                    $total += $item['price'] * 100;
                 };
+
+                $shipping_options = [];
+
+                if ($total > 4999) {
+                    $shipping_options[] =
+                        [
+                            'shipping_rate_data' => [
+                                'type' => 'fixed_amount',
+                                'fixed_amount' => [
+                                    'amount' => 0,
+                                    'currency' => 'eur',
+                                ],
+                                'display_name' => 'Livraison standard GRATUITE',
+                                'delivery_estimate' => [
+                                    'minimum' => [
+                                        'unit' => 'business_day',
+                                        'value' => 5,
+                                    ],
+                                    'maximum' => [
+                                        'unit' => 'business_day',
+                                        'value' => 7,
+                                    ],
+                                ],
+                            ]
+
+                        ];
+                } else {
+                    $shipping_options[] = [
+                        'shipping_rate_data' => [
+                            'type' => 'fixed_amount',
+                            'fixed_amount' => [
+                                'amount' => 499,
+                                'currency' => 'eur',
+                            ],
+                            'display_name' => 'Livraison standard',
+                            'delivery_estimate' => [
+                                'minimum' => [
+                                    'unit' => 'business_day',
+                                    'value' => 5,
+                                ],
+                                'maximum' => [
+                                    'unit' => 'business_day',
+                                    'value' => 7,
+                                ],
+                            ],
+                        ],
+                    ];
+                }
+
+                $shipping_options[] = [
+                    'shipping_rate_data' => [
+                        'type' => 'fixed_amount',
+                        'fixed_amount' => [
+                            'amount' => 1000,
+                            'currency' => 'eur',
+                        ],
+                        'display_name' => 'Livraison express',
+                        'delivery_estimate' => [
+                            'minimum' => [
+                                'unit' => 'business_day',
+                                'value' => 2,
+                            ],
+                            'maximum' => [
+                                'unit' => 'business_day',
+                                'value' => 4,
+                            ],
+                        ],
+                    ],
+                ];
 
                 $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
                 header('Content-Type: application/json');
@@ -50,48 +123,7 @@ class StripePaymentController extends Controller
                     'allow_promotion_codes' => true,
                     'billing_address_collection' => 'required',
                     'shipping_address_collection' => ['allowed_countries' => ['FR']],
-                    'shipping_options' => [
-                        [
-                            'shipping_rate_data' => [
-                                'type' => 'fixed_amount',
-                                'fixed_amount' => [
-                                    'amount' => 499,
-                                    'currency' => 'eur',
-                                ],
-                                'display_name' => 'Livraison standard',
-                                'delivery_estimate' => [
-                                    'minimum' => [
-                                        'unit' => 'business_day',
-                                        'value' => 5,
-                                    ],
-                                    'maximum' => [
-                                        'unit' => 'business_day',
-                                        'value' => 7,
-                                    ],
-                                ],
-                            ],
-                        ],
-                        [
-                            'shipping_rate_data' => [
-                                'type' => 'fixed_amount',
-                                'fixed_amount' => [
-                                    'amount' => 1000,
-                                    'currency' => 'eur',
-                                ],
-                                'display_name' => 'Livraison express',
-                                'delivery_estimate' => [
-                                    'minimum' => [
-                                        'unit' => 'business_day',
-                                        'value' => 2,
-                                    ],
-                                    'maximum' => [
-                                        'unit' => 'business_day',
-                                        'value' => 4,
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
+                    'shipping_options' => $shipping_options,
                     'custom_text' => [
                         'shipping_address' => [
                             'message' => 'Comptez un délai de deux jours ouvrés pour la livraison express et de cinq jours ouvrés pour la livraison standard.',

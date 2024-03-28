@@ -6,5 +6,8 @@
     <p class="banner-slide banner-slide-second">
       <span class="h-full">Méthodes de paiement : CB, Paypal, Google Pay, Apple Pay</span>
     </p>
+    <p class="banner-slide banner-slide-third">
+      <span class="h-full">Livraison offerte à partir de 50 euros</span>
+    </p>
   </div>
 </div>
