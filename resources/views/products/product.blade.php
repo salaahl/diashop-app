@@ -27,7 +27,7 @@
         </ul>
     </section>
     <section id="product-details-container" class="w-full md:w-2/4 md:pl-6">
-        <div id="product-detail" class="md:h-screen md:mt-[-10vh] max-md:pt-4 md:py-[10vh] sticky top-0">
+        <div id="product-detail" class="md:h-screen md:mt-[-80px] max-md:pt-4 md:py-[110px] sticky top-0">
             <div>
                 <h2 id="title" class="uppercase font-normal">{{ ucfirst($product->name) }}</h2>
                 @if($product->promotion)

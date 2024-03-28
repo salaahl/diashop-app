@@ -10,6 +10,11 @@
 
 @section('header')
 @parent
+<style>
+    label:not(#search-container label) {
+        margin: 30px 0 10px 0;
+    }
+</style>
 @endsection
 
 @section('main')

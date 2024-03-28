@@ -11,11 +11,16 @@
 @section('header')
 @parent
 <style>
+    label:not(#search-container label) {
+        margin: 30px 0 10px 0;
+    }
+
     main {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 80vh;
+        height: calc(100vh - 80px);
+        margin-top: -80px;
         max-width: 768px !important;
     }
 
