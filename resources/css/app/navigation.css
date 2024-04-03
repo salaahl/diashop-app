@@ -110,8 +110,8 @@ a:has(> #basket-counter) {
 }
 
 @media (min-width: 1024px) {
-    #navbar-container {
-        padding: 0 var(--container-padding-x);
+    #navbar {
+        padding: 0 10px;
     }
 
     #navbar-container:hover,
