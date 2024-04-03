@@ -130,7 +130,7 @@
         </div>
     </section>
 </div>
-@if($product->category->products->where("name", "like", "%" . $product->name . "%")->count() > 0)
+@if($product->category->products->where("name", "like", "%" . $product->name . "%")->take(2))
 <section id="other-products-container" class="flex flex-wrap xl:mt-20 xl:mb-10 px-6 pb-6 bg-stone-200">
     <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
     @foreach($product->category->products->take(3) as $product)
