@@ -60,6 +60,7 @@ a:has(> #basket-counter) {
     #navbar-dropdown {
         display: block;
         position: absolute;
+        height: 0;
         top: 0;
         left: 0;
         overflow: hidden;
