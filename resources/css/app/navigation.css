@@ -52,6 +52,12 @@ a:has(> #basket-counter) {
         animation-fill-mode: forwards;
         animation-delay: 0s;
     }
+
+    #navbar-container:has(#navbar-dropdown-btn[aria-expanded="false"]) {
+        animation: mask-on;
+        animation-fill-mode: forwards;
+        animation-delay: 1s;
+    }
     
     #logo, #navbar-dropdown-btn {
         z-index: 2;
