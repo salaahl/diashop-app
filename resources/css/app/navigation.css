@@ -55,12 +55,23 @@ a:has(> #basket-counter) {
         animation-delay: 0s;
     }
 
+    #logo, #navbar-dropdown-btn {
+        z-index: 2;
+}
+
     #navbar-dropdown {
         display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
         overflow: hidden;
         padding-left: var(--container-padding-x);
         padding-right: var(--container-padding-x);
         background-color: white;
+    }
+
+    #navbar-dropdown:has(#navbar-dropdown-btn[aria-expanded="true"]) {
+        padding-top: 100px;
     }
 
     #navbar-dropdown > div::-webkit-scrollbar {
@@ -80,14 +91,14 @@ a:has(> #basket-counter) {
         display: none;
     }
 
-    #navbar:has(#navbar-dropdown-btn[aria-expanded="false"]) #navbar-dropdown {
+    #navbar:(#navbar-dropdown-btn[aria-expanded="false"]) #navbar-dropdown {
         height: 0;
         max-height: 0;
         transition: all 0.25s;
     }
 
     #navbar:has(#navbar-dropdown-btn[aria-expanded="true"]) #navbar-dropdown {
-        height: calc(100dvh - 110px);
+        height: 100dvh;
         max-height: 1024px;
         margin-bottom: 0.5rem;
         transition: all 0.5s;
