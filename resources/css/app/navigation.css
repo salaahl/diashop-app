@@ -70,10 +70,6 @@ a:has(> #basket-counter) {
         background-color: white;
     }
 
-    #navbar-dropdown:has(#navbar-dropdown-btn[aria-expanded="true"]) {
-        padding-top: 100px;
-    }
-
     #navbar-dropdown > div::-webkit-scrollbar {
         display: none;
     }
@@ -101,6 +97,7 @@ a:has(> #basket-counter) {
         height: 100dvh;
         max-height: 1024px;
         margin-bottom: 0.5rem;
+        padding-top: 100px;
         transition: all 0.5s;
     }
 
