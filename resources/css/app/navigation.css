@@ -47,21 +47,14 @@ a:has(> #basket-counter) {
 }
 
 @media (max-width: 1023px) {
-    #navbar-container:has(#navbar-dropdown-btn[aria-expanded="true"]) {
-        background-color: rgb(255, 255, 255, 1);
-        backdrop-filter: blur(0px);
-        animation: mask-off;
-        animation-fill-mode: forwards;
-        animation-delay: 0s;
-    }
-
     #logo, #navbar-dropdown-btn {
         z-index: 2;
-}
+    }
 
     #navbar-dropdown {
         display: block;
         position: absolute;
+        height: 0;
         top: 0;
         left: 0;
         overflow: hidden;
@@ -95,7 +88,6 @@ a:has(> #basket-counter) {
 
     #navbar:has(#navbar-dropdown-btn[aria-expanded="true"]) #navbar-dropdown {
         height: 100dvh;
-        max-height: 1024px;
         margin-bottom: 0.5rem;
         padding-top: 100px;
         transition: all 0.5s;
