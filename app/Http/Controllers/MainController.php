@@ -88,7 +88,10 @@ class MainController extends Controller
         try {
             $product = Product::where([
                 ['catalog_id', Catalog::where('name', $catalog)->first()->id],
-                ['category_id', Category::where('name', $category)->first()->id],
+                ['category_id', Category::where([
+                    ['name', $category],
+                    ['catalog_id', Catalog::where('name', $catalog)->first()->id]
+                ])->first()->id],
                 ['id', $product_id]
             ])->first();
         } catch (Exception $e) {

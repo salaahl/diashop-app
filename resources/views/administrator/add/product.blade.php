@@ -57,7 +57,7 @@
                         <label for="price" class="block mb-2 text-sm font-medium text-gray-900 uppercase">Prix</label>
                         <input type="float" name="price" id="price" @if(isset($product)) value="{{ $product->price }}" @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Renseigner le prix sans mettre le signe € (ex : 9.99)" required>
                         <label for="promotion" class="block mb-2 text-sm font-medium text-gray-900 uppercase">Appliquer une promotion à l'article</label>
-                        <input type="number" name="promotion" id="promotion" @if(isset($product)) value="{{ $product->promotion }}" @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Entrer le pourcentage de la promotion sans mettre le signe % (ex : 15)" required>
+                        <input type="number" name="promotion" id="promotion" @if(isset($product)) value="{{ $product->promotion }}" @endif class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Entrer le pourcentage de la promotion sans mettre le signe % (ex : 15)">
                     </div>
                 </div>
                 <div class="col-span-2 md:col-span-1">

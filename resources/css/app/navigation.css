@@ -52,15 +52,15 @@ a:has(> #basket-counter) {
         animation-fill-mode: forwards;
         animation-delay: 0s;
     }
-    
-    #logo, #navbar-dropdown-btn {
+
+    #logo,
+    #navbar-dropdown-btn {
         z-index: 2;
     }
 
     #navbar-dropdown {
         display: block;
         position: absolute;
-        height: 0;
         top: 0;
         left: 0;
         overflow: hidden;
@@ -86,9 +86,8 @@ a:has(> #basket-counter) {
         display: none;
     }
 
-    #navbar:(#navbar-dropdown-btn[aria-expanded="false"]) #navbar-dropdown {
+    #navbar:has(#navbar-dropdown-btn[aria-expanded="false"]) #navbar-dropdown {
         height: 0;
-        max-height: 0;
         padding-top: 0;
         transition: all 0.25s;
     }
