@@ -142,6 +142,7 @@
     <x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product->img[0] }}" image2="{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" />
     @endforeach
 </section>
+@endif
 <!-- Modal -->
 <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed top-0 right-0 left-0 z-[999] justify-center items-center h-[100dvh] w-full md:inset-0 max-h-full bg-black/50 backdrop-blur-[2px]">
     <div class="relative max-h-full">
@@ -152,7 +153,6 @@
         </div>
     </div>
 </div>
-@endif
 @endsection
 
 @section('scripts')
