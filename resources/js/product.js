@@ -17,6 +17,47 @@ window.addEventListener("load", () => {
     }
 });
 
+// Loupe pour les photos d'articles en mode PC
+if (window.innerWidth > 1023) {
+    let zoomer = (function () {
+        $("#img-box").addEventListener(
+            "mousemove",
+            function (e) {
+                let original = $("#img-box img"),
+                    magnified = $("#magnifier"),
+                    style = magnified.style,
+                    x = e.pageX - this.offsetLeft,
+                    y = e.pageY - this.offsetTop,
+                    imgWidth = original.offsetWidth,
+                    imgHeight = original.offsetHeight,
+                    xperc = (x / imgWidth) * 100,
+                    yperc = (y / imgHeight) * 100;
+
+                //lets user scroll past right edge of image
+                if (x > 0.01 * imgWidth) {
+                    xperc += 0.15 * xperc;
+                }
+
+                //lets user scroll past bottom edge of image
+                if (y >= 0.01 * imgHeight) {
+                    yperc += 0.15 * yperc;
+                }
+
+                style.backgroundImage = "url('" + original.src + "')";
+                style.backgroundSize =
+                    imgWidth * 3 + "px " + imgHeight * 3 + "px";
+                style.backgroundRepeat = "no-repeat";
+                style.backgroundPositionX = xperc - 9 + "%";
+                style.backgroundPositionY = yperc - 9 + "%";
+
+                style.left = x - 180 + "px";
+                style.top = y - 180 + "px";
+            },
+            false
+        );
+    })();
+}
+
 let url = window.location.href;
 
 document.querySelectorAll(".radio_label").forEach((radio) => {
