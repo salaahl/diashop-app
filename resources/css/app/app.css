@@ -416,8 +416,8 @@ img {
 @media (min-width: 1024px) {
     :root {
         --banner-duration: 10s;
-        --banner-duration-double: 20s;
-        --banner-speed: -200vw;
+        --banner-duration-double: 15s;
+        --banner-speed: -150vw;
     }
 
     #search-container.show {
