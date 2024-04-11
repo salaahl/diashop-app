@@ -79,6 +79,7 @@ h4 {
 
 .banner-slide span {
     display: inline-block;
+    position: fixed;
     height: 30px;
     align-content: center;
     margin-left: 100vw;
