@@ -1,4 +1,4 @@
-<section id="search-container" class="h-0 w-full flex flex-col justify-between absolute left-0 overflow-hidden">
+<section id="search-container" class="h-0 w-full flex flex-col justify-between absolute left-0 z-10 overflow-hidden">
     <div class="w-full">
         <div class="w-full flex justify-between mt-2">
             <div class="w-[48%] flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
