@@ -50,8 +50,8 @@ if (window.innerWidth > 1023) {
                 style.backgroundPositionX = xperc + "%";
                 style.backgroundPositionY = yperc + "%";
 
-                style.left = x - 180 + "px";
-                style.top = y - 180 + "px";
+                style.left = x + "px";
+                style.top = y + "px";
             },
             false
         );
