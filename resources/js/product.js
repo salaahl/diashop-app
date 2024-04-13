@@ -78,6 +78,13 @@ function magnify(imgID, zoom) {
   }
 }
 
+document.querySelectorAll(".product-img").forEach((img) => {
+    img.addEventListener("click", function () {
+        document.querySelector('#modal-image').src = this.src;
+        magnify("modal-image", 2);
+    });
+});
+
 let url = window.location.href;
 
 document.querySelectorAll(".radio_label").forEach((radio) => {
