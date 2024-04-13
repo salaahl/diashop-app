@@ -146,7 +146,7 @@
 <!-- Modal -->
 <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed top-0 right-0 left-0 z-[999] justify-center items-center h-[100dvh] w-full md:inset-0 max-h-full bg-black/50">
     <div id="img-box" class="relative max-h-full">
-        <div class="relative shadow-2xl overflow-hidden">
+        <div class="relative shadow-2xl">
             <div>
                 <img src="/" id="modal-image" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="...">
                 <div id="magnifier"></div>
