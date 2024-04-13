@@ -20,7 +20,6 @@ window.addEventListener("load", () => {
 function magnify(imgID, zoom) {
   let img, glass, w, h, bw;
   img = document.getElementById(imgID);
-    console.log(img.width)
 
   /* Create magnifier glass: */
   glass = document.createElement("DIV");
@@ -32,7 +31,7 @@ function magnify(imgID, zoom) {
   /* Set background properties for the magnifier glass: */
   glass.style.backgroundImage = "url('" + img.src + "')";
   glass.style.backgroundRepeat = "no-repeat";
-  glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+  glass.style.backgroundSize = (img.offsetWidth * zoom) + "px " + (img.offsetHeight * zoom) + "px";
   bw = 3;
   w = glass.offsetWidth / 2;
   h = glass.offsetHeight / 2;
@@ -53,9 +52,9 @@ function magnify(imgID, zoom) {
     x = pos.x;
     y = pos.y;
     /* Prevent the magnifier glass from being positioned outside the image: */
-    if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+    if (x > img.offsetWidth - (w / zoom)) {x = img.offsetWidth - (w / zoom);}
     if (x < w / zoom) {x = w / zoom;}
-    if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+    if (y > img.offsetHeight - (h / zoom)) {y = img.offsetHeight - (h / zoom);}
     if (y < h / zoom) {y = h / zoom;}
     /* Set the position of the magnifier glass: */
     glass.style.left = (x - w) + "px";
