@@ -47,8 +47,8 @@ if (window.innerWidth > 1023) {
                 style.backgroundSize =
                     imgWidth * 3 + "px " + imgHeight * 3 + "px";
                 style.backgroundRepeat = "no-repeat";
-                style.backgroundPositionX = xperc "%";
-                style.backgroundPositionY = yperc "%";
+                style.backgroundPositionX = xperc + "%";
+                style.backgroundPositionY = yperc + "%";
 
                 style.left = x - 180 + "px";
                 style.top = y - 180 + "px";
