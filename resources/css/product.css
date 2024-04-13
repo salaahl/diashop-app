@@ -17,6 +17,22 @@ h2 {
     margin-bottom: 5%;
 }
 
+/* CSS lié à la loupe en mode modal */
+#img-magnifier-container:hover .img-magnifier-glass,
+#img-magnifier-container:active .img-magnifier-glass {
+    opacity: 1;
+}
+
+.img-magnifier-glass {
+  position: absolute;
+  opacity: 0;
+  border: 3px solid white;
+  cursor: none;
+  width: 400px;
+  height: 500px;
+  transition: opacity 0.2s;
+}
+
 @media (max-width: 767px) {
     ::-webkit-scrollbar:horizontal {
         display: none;
@@ -72,25 +88,6 @@ h2 {
 
     #product-details-container {
         padding-left: 1.5rem;
-    }
-
-    /* CSS lié à la loupe en mode modal */
-    #img-box:hover #magnifier,
-    #img-box:active #magnifier {
-        opacity: 1;
-    }
-
-    #magnifier {
-        width: 400px;
-        height: 400px;
-        box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.3);
-        pointer-events: none;
-        position: absolute;
-        opacity: 0;
-        border: 4px solid whitesmoke;
-        z-index: 99;
-        display: block;
-        transition: opacity 0.2s;
     }
 }
 
