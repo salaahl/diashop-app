@@ -21,7 +21,7 @@
         <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
             @foreach($product->img as $image)
             <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start">
-                <img src="{{ $image }}" alt="{{ $product->name }}" data-modal-target="default-modal" data-modal-toggle="default-modal" class="h-full w-full object-cover object-center cursor-zoom-in" onclick="document.querySelector('#modal-image').src = this.src;" />
+                <img src="{{ $image }}" alt="{{ $product->name }}" data-modal-target="default-modal" data-modal-toggle="default-modal" class="h-full w-full object-cover object-center cursor-zoom-in" onclick="document.querySelector('#modal-image').src = this.src; magnify("modal-image", 2);" />
             </li>
             @endforeach
         </ul>
@@ -145,11 +145,10 @@
 @endif
 <!-- Modal -->
 <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed top-0 right-0 left-0 z-[999] justify-center items-center h-[100dvh] w-full md:inset-0 max-h-full bg-black/50">
-    <div id="img-box" class="relative max-h-full">
+    <div id="img-magnifier-container" class="relative max-h-full">
         <div class="relative shadow-2xl overflow-hidden">
             <div>
                 <img src="/" id="modal-image" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="...">
-                <div id="magnifier"></div>
             </div>
         </div>
     </div>
