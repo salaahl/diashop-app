@@ -18,8 +18,9 @@ window.addEventListener("load", () => {
 });
 
 function magnify(imgID, zoom) {
-  var img, glass, w, h, bw;
+  let img, glass, w, h, bw;
   img = document.getElementById(imgID);
+    console.log(img.width)
 
   /* Create magnifier glass: */
   glass = document.createElement("DIV");
@@ -44,7 +45,7 @@ function magnify(imgID, zoom) {
   glass.addEventListener("touchmove", moveMagnifier);
   img.addEventListener("touchmove", moveMagnifier);
   function moveMagnifier(e) {
-    var pos, x, y;
+    let pos, x, y;
     /* Prevent any other actions that may occur when moving over the image */
     e.preventDefault();
     /* Get the cursor's x and y positions: */
@@ -64,7 +65,7 @@ function magnify(imgID, zoom) {
   }
 
   function getCursorPos(e) {
-    var a, x = 0, y = 0;
+    let a, x = 0, y = 0;
     e = e || window.event;
     /* Get the x and y positions of the image: */
     a = img.getBoundingClientRect();
