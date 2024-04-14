@@ -110,15 +110,14 @@ Route::get('confirmation/{slug}',  function () {
 Route::post('status/', [StripePaymentController::class, 'status'])->name('status.post');
 Route::post('webhooks/', [StripePaymentController::class, 'webhooks'])->name('webhooks');
 
-Route::get('contact-us/', [MainController::class, 'contactUs'])->name('contact-us');
 Route::get('about-me/', function () {
     return view('about-me');
 })->name('about-me');
-Route::get('deliveries-and-returns/', function () {
-    return view('deliveries-and-returns');
+Route::get('legal-notice/', function () {
+    return view('legal-notice');
 })->name('deliveries-and-returns');
-Route::get('terms-and-conditions/', function () {
-    return view('terms-and-conditions');
+Route::get('terms-of-sales/', function () {
+    return view('terms-of-sales');
 });
 
 require __DIR__ . '/auth.php';
