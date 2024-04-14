@@ -9,6 +9,12 @@
 
 @section('links')
 @parent
+<style>
+    h3 {
+        margin-bottom: 0.5%;
+        margin-top: 4%;
+    }
+</style>
 @endsection
 
 @section('header')
