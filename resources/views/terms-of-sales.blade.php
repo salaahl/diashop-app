@@ -5,7 +5,7 @@
 <meta name="description" content="Découvrez la livraison express chez DiaShop-b. Recevez vos commandes en France métropolitaine en seulement cinq jours ouvrés. Profitez de conditions de retour simplifiées avec une période de 14 jours pour retourner les articles. Les retours sont faciles à initier via notre formulaire de contact. Happy shopping !">
 @endsection
 
-@section('title', 'Livraisons et retours - ')
+@section('title', 'CGV - ')
 
 @section('links')
 @parent
