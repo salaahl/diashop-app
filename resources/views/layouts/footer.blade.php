@@ -7,17 +7,12 @@
                 </a>
             </div>
             <div class="px-5 py-2">
-                <a href="{{ route ('deliveries-and-returns') }}" class="text-base leading-6 text-gray-500 hover:text-gray-900">
-                    Livraisons et retours
+                <a href="{{ route ('legal-notice') }}" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                    Mentions légales
                 </a>
             </div>
             <div class="px-5 py-2">
-                <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
-                    Nous contacter
-                </a>
-            </div>
-            <div class="px-5 py-2">
-                <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                <a href="{{ route ('terms-of-sales') }}" class="text-base leading-6 text-gray-500 hover:text-gray-900">
                     Conditions générales de vente
                 </a>
             </div>
