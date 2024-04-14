@@ -16,9 +16,7 @@
                     @endif
                 </div>
             </div>
-            @if(isset($message) && $message !== " ")
             <span class="message text-red-500">{{ $message }}</span>
-            @endif
         </div>
     </a>
 </article>
