@@ -45,7 +45,7 @@ if (window.innerWidth > 1023) {
 
                 style.backgroundImage = "url('" + original.src + "')";
                 style.backgroundSize =
-                    imgWidth * 3 + "px " + imgHeight * 3 + "px";
+                    imgWidth * 2 + "px " + imgHeight * 2 + "px";
                 style.backgroundRepeat = "no-repeat";
                 style.backgroundPositionX = xperc - 9 + "%";
                 style.backgroundPositionY = yperc - 9 + "%";
