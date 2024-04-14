@@ -33,38 +33,28 @@ if (window.innerWidth > 1023) {
                     xperc = (x / imgWidth) * 100,
                     yperc = (y / imgHeight) * 100;
 
-                //lets user scroll past right edge of image
-                if (x > 0.01 * imgWidth) {
-                    xperc += 0.15 * xperc;
-                }
-
-                //lets user scroll past bottom edge of image
-                if (y >= 0.01 * imgHeight) {
-                    yperc += 0.15 * yperc;
-                }
-
                 style.backgroundImage = "url('" + original.src + "')";
                 style.backgroundSize =
                     imgWidth * 2 + "px " + imgHeight * 2 + "px";
                 style.backgroundRepeat = "no-repeat";
-                style.backgroundPositionX = xperc - 9 + "%";
-                style.backgroundPositionY = yperc - 9 + "%";
+                style.backgroundPositionX = xperc + "%";
+                style.backgroundPositionY = yperc + "%";
 
                 // Empêche les débordements sur l'axe horizontal
-                if (xperc - 9 <= 0) {
-                    style.backgroundPositionX = "0";
+                if (xperc < 0) {
+                    style.backgroundPositionX = "0%";
                 }
 
-                if (xperc - 9 >= 100) {
+                if (xperc > 100) {
                     style.backgroundPositionX = "100%";
                 }
 
                 // Empêche les débordements sur l'axe vertical
-                if (yperc - 9 <= 0) {
-                    style.backgroundPositionY = "0";
+                if (yperc < 0) {
+                    style.backgroundPositionY = "0%";
                 }
 
-                if (yperc - 9 >= 100) {
+                if (yperc > 100) {
                     style.backgroundPositionY = "100%";
                 }
             },
