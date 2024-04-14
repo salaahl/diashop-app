@@ -2,7 +2,7 @@
 
 @section('meta')
 @parent
-<meta name="description" content="Découvrez la livraison express chez DiaShop-b. Recevez vos commandes en France métropolitaine en seulement cinq jours ouvrés. Profitez de conditions de retour simplifiées avec une période de 14 jours pour retourner les articles. Les retours sont faciles à initier via notre formulaire de contact. Happy shopping !">
+<meta name="description" content="Découvrez les conditions générales de vente de DiaShop-b. Informez-vous sur nos politiques de commande, de livraison et de retour pour une expérience d'achat en ligne fluide et satisfaisante. Prenez connaissance de nos engagements envers nos clients et de nos procédures pour un shopping en toute confiance.">
 @endsection
 
 @section('title', 'CGV - ')
@@ -16,7 +16,10 @@
 @endsection
 
 @section('main')
-<section id="deliveries-and-returns" class="min-h-[90vh] lg:min-h-[92vh] lg:absolute lg:top-[80px] flex flex-col justify-between text-justify">
+<section id="realisation"></section>
+<section id="personal-data"></section>
+<section id="cookies"></section>
+<section id="deliveries-and-returns">
     <h1 class="min-h-[15vh] flex justify-center items-center my-10 text-white bg-gray-800">Livraisons et retours</h1>
     <article class="mb-3">
         <h3>Livraison express avec DiaShop-b</h3>
@@ -37,6 +40,8 @@
     <article class="mb-3">
         <p>Chez DiaShop-b, notre engagement envers votre satisfaction s'étend au-delà de la livraison, englobant également le processus de retour. Nous comprenons l'importance de la transparence et de la simplicité dans vos transactions.</p>
     </article>
+</section>
+<section>
     <article class="mb-8">
         <p class="text-center">Merci de faire partie de la famille DiaShop-b. Happy shopping !</p>
     </article>
