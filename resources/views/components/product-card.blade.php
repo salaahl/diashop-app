@@ -8,7 +8,7 @@
             <div class="w-full flex justify-between">
                 <h4 class="title lg:max-w-[75%] items-center text-ellipsis overflow-hidden">{{ ucfirst($title) }}</h4>
                 <div class="flex">
-                    @if(isset($promotion) && $promotion !== " ")
+                    @if(isset($promotion))
                     <h4 class="price flex items-center max-lg:mt-1 text-sm font-normal line-through">{{ $price }}</h4>
                     <h4 class="price flex items-center ml-2 max-lg:mt-1 text-sm font-normal">{{ $promotion }}</h4>
                     @else
@@ -16,7 +16,9 @@
                     @endif
                 </div>
             </div>
+            @if(isset($message))
             <span class="message text-red-500">{{ $message }}</span>
+            @endif
         </div>
     </a>
 </article>
