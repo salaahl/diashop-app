@@ -78,8 +78,8 @@ $meta_description = "";
     image2="{{ $product->img[1] }}" 
     title="{{ $product->name }}" 
     price="{{ $product->price }}" 
-    promotion=" "
-    message=" "
+    promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" 
+    message="{{ 1 > 2 ? null : 'Cet article est en rupture de stock' }}"
 />
 @endforeach
 <aside class="w-full mt-[-1rem] mb-4">
