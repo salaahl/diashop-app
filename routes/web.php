@@ -115,9 +115,9 @@ Route::get('about-me/', function () {
 })->name('about-me');
 Route::get('legal-notice/', function () {
     return view('legal-notice');
-})->name('deliveries-and-returns');
+})->name('legal-notice');
 Route::get('terms-of-sales/', function () {
     return view('terms-of-sales');
-});
+})->name('terms-of-sales');
 
 require __DIR__ . '/auth.php';
