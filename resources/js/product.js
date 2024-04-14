@@ -26,8 +26,8 @@ if (window.innerWidth > 1023) {
                 let original = $("#img-box img"),
                     magnified = $("#magnifier"),
                     style = magnified.style,
-                    x = e.pageX - this.offsetLeft,
-                    y = e.pageY - this.offsetTop,
+                    x = e.screenX - this.offsetLeft,
+                    y = e.screenY - this.offsetTop,
                     imgWidth = original.offsetWidth,
                     imgHeight = original.offsetHeight,
                     xperc = (x / imgWidth) * 100,
@@ -50,15 +50,20 @@ if (window.innerWidth > 1023) {
                 style.backgroundPositionX = xperc - 9 + "%";
                 style.backgroundPositionY = yperc - 9 + "%";
 
-                style.left = x + "px";
-                style.top = y + "px";
+                // Empêche les débordements sur l'axe horizontal
+                if (xperc - 9 <= 0) {
+                    style.backgroundPositionX = "0";
+                }
 
-                //
                 if (xperc - 9 >= 100) {
                     style.backgroundPositionX = "100%";
                 }
 
-                //
+                // Empêche les débordements sur l'axe vertical
+                if (yperc - 9 <= 0) {
+                    style.backgroundPositionY = "0";
+                }
+
                 if (yperc - 9 >= 100) {
                     style.backgroundPositionY = "100%";
                 }
