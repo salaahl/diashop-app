@@ -18,29 +18,47 @@
 @section('main')
 <h1>Mentions Légales</h1>
 
-<h2>Éditeur du site</h2>
+<h3>1. Éditeur du site</h3>
 <p>Le site diashop-b.fr est édité par <a href="https://www.linkedin.com/in/salaha-sokhona/" class="font-bold">Salaha SOKHONA</a>, en qualité de créateur du site.</p>
 
-<h2>Gestionnaire du site</h2>
+<h3>2. Gestionnaire du site</h3>
 <p>La gestion du site, y compris la publication de contenu et la gestion des opérations, est assurée par Djeneba D.</p>
 
-<h2>Hébergeur du site</h2>
+<h3>3. Hébergeur du site</h3>
 <p>Le site est hébergé par Hostinger International Ltd.</p>
 <address>
     Siège social : 61 Lordou Vironos Street, 6023 Larnaca, Chypre.
 </address>
 
-<h2>Collecte de données personnelles</h2>
+<h3>4. Collecte de données personnelles</h3>
 <p>Nous collectons uniquement les données personnelles nécessaires au fonctionnement du site et à la gestion des commandes. Les données collectées comprennent les informations fournies par l'utilisateur lors de la création d'un compte (nom, prénom, adresse e-mail, adresse postale) ainsi que les informations nécessaires au traitement des commandes.</p>
 
-<h2>Cookies</h2>
+<h3>5. Cookies</h3>
 <p>Le site utilise des cookies essentiels au bon fonctionnement du site. Ces cookies ne collectent pas de données personnelles et sont utilisés uniquement dans le but d'améliorer l'expérience de navigation de l'utilisateur.</p>
 
-<h2>Droits d'auteur</h2>
-<p>Tous les contenus présents sur le site diashop-b.fr sont protégés par le droit d'auteur. Toute reproduction, même partielle, est strictement interdite sans l'autorisation préalable de Salaha SOKHONA.</p>
+<h3>6. Droits d'auteur</h3>
+<p>Tous les contenus présents sur le site diashop-b.fr sont protégés par le droit d'auteur. Toute reproduction, même partielle, est strictement interdite sans l'autorisation préalable de <a href="https://www.linkedin.com/in/salaha-sokhona/" class="font-bold">Salaha SOKHONA</a>.</p>
 
-<h2>Contact</h2>
-<p>Pour toute question ou réclamation concernant le site, vous pouvez contacter l'hébergeur Hostinger International Ltd via le moyen suivant : <a href="https://www.hostinger.fr/contact">Formulaire de contact Hostinger</a>, le créateur du site <a href="https://www.linkedin.com/in/salaha-sokhona/" class="font-bold">Salaha SOKHONA</a> ou la gestionnaire du site via l'adresse mail de contact diashopb-@gmail.com.</p>
+<h3>7. Limitation de responsabilité</h3>
+<p>DiaShop-b décline toute responsabilité pour :</p>
+<ul>
+    <li>toute interruption du site ;</li>
+    <li>tout problème technique ;</li>
+    <li>tout dommage résultant d’une intrusion frauduleuse ayant entraîné une modification des informations sur le site ;</li>
+    <li>et plus généralement de tout dommage direct ou indirect résultant de l'utilisation du site.</li>
+</ul>
+
+<h3>8. Droit applicable et juridiction compétente</h3>
+<p>Les présentes mentions légales sont régies par le droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+
+<h3>9. Modification des mentions légales</h3>
+<p>Les présentes mentions légales peuvent être modifiées à tout moment et sans préavis. Les utilisateurs sont invités à les consulter régulièrement.</p>
+
+<h3>10. Médiation et résolution des litiges</h3>
+<p>En cas de litige, les utilisateurs peuvent recourir à la médiation de la consommation. Pour cela, ils doivent d'abord contacter le Service Client. En cas d'insatisfaction, ils peuvent saisir la Commission européenne via la plateforme de règlement en ligne des litiges à l'adresse suivante : <a href="https://ec.europa.eu/odr">ec.europa.eu/odr</a>.</p>
+<p>Pour toute question relative à un litige, veuillez contacter le Service Client ou envoyer un e-mail à l'adresse : diashop-b@gmail.com.</p>
+
+<p>Merci de votre confiance et bonne navigation sur diashop-b.fr !</p>
 @endsection
 
 @section('scripts')
