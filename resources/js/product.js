@@ -49,6 +49,16 @@ if (window.innerWidth > 1023) {
                 style.backgroundRepeat = "no-repeat";
                 style.backgroundPositionX = xperc - 9 + "%";
                 style.backgroundPositionY = yperc - 9 + "%";
+
+                //
+                if (xperc - 9 >= 100) {
+                    style.backgroundPositionX = "100%";
+                }
+
+                //
+                if (yperc - 9 >= 100) {
+                    style.backgroundPositionY = "100%";
+                }
             },
             false
         );
