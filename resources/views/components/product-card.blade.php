@@ -17,7 +17,7 @@
                 </div>
             </div>
             @if(isset($message))
-            <span class="message text-red-500">{{ $message }}</span>
+            <span class="message text-sm font-thin text-red-500">{{ $message }}</span>
             @endif
         </div>
     </a>
