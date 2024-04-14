@@ -38,7 +38,7 @@ if (window.innerWidth > 1023) {
                     imgWidth * 2 + "px " + imgHeight * 2 + "px";
                 style.backgroundRepeat = "no-repeat";
                 style.backgroundPositionX = xperc + "%";
-                style.backgroundPositionY = yperc + "%";
+                style.backgroundPositionY = yperc - 14 + "%";
 
                 // Empêche les débordements sur l'axe horizontal
                 if (xperc < 0) {
