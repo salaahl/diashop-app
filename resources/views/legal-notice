@@ -1,0 +1,24 @@
+@extends('layouts.app')
+
+@section('meta')
+@parent
+<meta name="description" content="Consultez les mentions légales de DiaShop-b pour connaître les informations sur l'éditeur, l'hébergeur, la collecte de données personnelles, et plus encore. Assurez-vous d'être informé sur nos politiques pour une expérience de shopping en ligne transparente et sécurisée.">
+@endsection
+
+@section('title', 'Mentions légales - ')
+
+@section('links')
+@parent
+@endsection
+
+@section('header')
+@parent
+@endsection
+
+@section('main')
+
+@endsection
+
+@section('scripts')
+@parent
+@endsection
