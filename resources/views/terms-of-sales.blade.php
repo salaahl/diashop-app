@@ -16,43 +16,41 @@
 @endsection
 
 @section('main')
-<section id="realisation"></section>
-<section id="personal-data"></section>
-<section id="cookies"></section>
-<section id="deliveries-and-returns">
-    <h1 class="min-h-[15vh] flex justify-center items-center my-10 text-white bg-gray-800">Livraisons et retours</h1>
-    <article class="mb-3">
-        <h3>Livraison express avec DiaShop-b</h3>
-        <p>Bienvenue sur notre page dédiée à la livraison chez DiaShop-b, votre destination mode incontournable. Chez DiaShop-b, nous nous efforçons de rendre votre expérience d'achat aussi agréable que possible, de la commande à la réception de votre colis.</p>
-    </article>
-    <article class="mb-3">
-        <h3>Livraison rapide en France métropolitaine</h3>
-        <p>Nous expédions vos commandes avec soin dans les cinq jours ouvrés, garantissant ainsi une livraison rapide directement à votre porte. Nos partenariats avec La Poste et d'autres sociétés de livraison réputées assurent un acheminement sûr et fiable.</p>
-    </article>
-    <article class="mb-3">
-        <h3>Conditions de retour simplifiées</h3>
-        <p>Si un article ne répond pas à vos attentes, DiaShop-b offre la possibilité de retourner votre achat dans les 14 jours suivant la réception. Pour initier le processus de retour, veuillez nous contacter via le formulaire de contact sur notre site. Assurez-vous que l'article retourné est exempt de défauts pour garantir un remboursement complet.</p>
-    </article>
-    <article class="mb-3">
-        <h3>Frais de retour à la charge du client</h3>
-        <p>Veuillez noter que les frais de retour sont à la charge du client. Nous vous recommandons d'utiliser un service de suivi pour assurer le bon retour de votre colis. Une fois votre article retourné reçu et inspecté, nous procéderons au remboursement dans les plus brefs délais.</p>
-    </article>
-    <article class="mb-3">
-        <p>Chez DiaShop-b, notre engagement envers votre satisfaction s'étend au-delà de la livraison, englobant également le processus de retour. Nous comprenons l'importance de la transparence et de la simplicité dans vos transactions.</p>
-    </article>
-</section>
-<section>
-    <article class="mb-8">
-        <p class="text-center">Merci de faire partie de la famille DiaShop-b. Happy shopping !</p>
-    </article>
-</section>
+<h1>Conditions Générales de Vente</h1>
+
+<h2>1. Champ d'application</h2>
+<p>Ces conditions générales de vente s'appliquent à toutes les commandes passées sur le site diashop-b.fr.</p>
+
+<h2>2. Commandes</h2>
+<p>Les offres d'achat, y compris les offres promotionnelles, sont valables tant qu'elles sont affichées sur le Site. Les prix affichés incluent toutes les taxes applicables, mais n'incluent pas les frais de livraison.</p>
+
+<h2>3. Paiement</h2>
+<p>Les paiements sont traités via l'infrastructure financière Stripe, offrant une gamme de modes de paiement, y compris Klarna pour un paiement en 3 fois, cartes de crédit, PayPal, etc.</p>
+
+<h2>4. Livraison</h2>
+<p>Les livraisons sont effectuées en France métropolitaine et en Corse dans un délai moyen de 4 à 7 jours ouvrés, avec un maximum de 30 jours à compter de la réception de la commande.</p>
+
+<h2>5. Droit de rétractation</h2>
+<p>L'acheteur dispose d'un délai de rétractation de 14 jours pour retourner un article. L'article doit être retourné dans un état neuf. Pour initier le retour, l'acheteur doit contacter diashop-b@gmail.com.</p>
+<p>Les frais de retour sont à la charge du client.</p>
+
+<h2>6. Garanties</h2>
+<p>L'acheteur bénéficie de la garantie légale de conformité et de la garantie légale des vices cachés conformément aux dispositions du Code de la consommation.</p>
+
+<h2>7. Responsabilité</h2>
+<p>DiaShop-b décline toute responsabilité pour :</p>
+<ul>
+    <li>toute interruption du site ;</li>
+    <li>tout problème technique ;</li>
+    <li>tout dommage résultant d’une intrusion frauduleuse ayant entraîné une modification des informations sur le site ;</li>
+    <li>et plus généralement de tout dommage direct ou indirect résultant de l'utilisation du site.</li>
+</ul>
+
+<h2>8. Médiation de la consommation</h2>
+<p>L'acheteur peut recourir à la médiation de la consommation en cas de litige. Pour cela, il doit d'abord contacter le Service Client. En cas d'insatisfaction, il peut saisir la Commission européenne via la plateforme de règlement en ligne des litiges à l'adresse suivante : <a href="https://ec.europa.eu/odr">ec.europa.eu/odr</a>.</p>
+<p>Pour toute question relative à un éventuel litige, veuillez contacter le Service Client ou envoyer un e-mail à l'adresse : diashop-b@gmail.com.</p>
 @endsection
 
 @section('scripts')
 @parent
-<script>
-    window.addEventListener("load", () => {
-        document.querySelector("#about-me > div:last-of-type").classList.add("animateFadeSlideIn");
-    });
-</script>
 @endsection
