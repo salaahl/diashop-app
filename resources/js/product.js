@@ -50,6 +50,9 @@ if (window.innerWidth > 1023) {
                 style.backgroundPositionX = xperc - 9 + "%";
                 style.backgroundPositionY = yperc - 9 + "%";
 
+                style.left = x + "px";
+                style.top = y + "px";
+
                 //
                 if (xperc - 9 >= 100) {
                     style.backgroundPositionX = "100%";
