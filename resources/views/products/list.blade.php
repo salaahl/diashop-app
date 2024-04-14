@@ -72,6 +72,12 @@ $meta_description = "";
 </nav>
 @endif
 @foreach($products as $product)
+@php
+$product_stock = 0;
+@foreach($product->quantity_per_size as $quantity)
+$product_stock += $quantity;
+@endforeach
+@endphp
 <x-product-card 
     link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" 
     image1="{{ $product->img[0] }}" 
@@ -79,7 +85,7 @@ $meta_description = "";
     title="{{ $product->name }}" 
     price="{{ $product->price }}" 
     promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" 
-    message="{{ 1 > 2 ? null : 'Cet article est en rupture de stock' }}"
+    message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}"
 />
 @endforeach
 <aside class="w-full mt-[-1rem] mb-4">
