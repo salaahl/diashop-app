@@ -41,7 +41,7 @@ if (window.innerWidth > 1023) {
                 style.backgroundPositionY = yperc - 14 + "%";
 
                 // Empêche les débordements sur l'axe horizontal
-                if (xperc < 0) {
+                if (xperc < 0.000) {
                     style.backgroundPositionX = "0%";
                 }
 
@@ -50,7 +50,7 @@ if (window.innerWidth > 1023) {
                 }
 
                 // Empêche les débordements sur l'axe vertical
-                if (yperc < 0) {
+                if (yperc < 0.000) {
                     style.backgroundPositionY = "0%";
                 }
 
