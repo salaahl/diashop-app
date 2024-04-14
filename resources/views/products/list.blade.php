@@ -74,9 +74,9 @@ $meta_description = "";
 @foreach($products as $product)
 @php
 $product_stock = 0;
-@foreach($product->quantity_per_size as $size => $quantity)
-$product_stock += $quantity;
-@endforeach
+foreach($product->quantity_per_size as $size => $quantity) {
+    $product_stock += $quantity;
+}
 @endphp
 <x-product-card 
     link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" 
