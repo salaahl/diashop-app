@@ -81,16 +81,16 @@ h2 {
     }
 
     #magnifier {
-        width: 400px;
-        height: 400px;
-        box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        height: 100%;
         pointer-events: none;
         position: absolute;
+        top: 0;
+        left: 0;
         opacity: 0;
-        border: 4px solid whitesmoke;
         z-index: 99;
         display: block;
-        transition: opacity 0.2s;
+        transition: all 0.2s;
     }
 }
 

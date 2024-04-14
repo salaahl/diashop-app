@@ -49,9 +49,6 @@ if (window.innerWidth > 1023) {
                 style.backgroundRepeat = "no-repeat";
                 style.backgroundPositionX = xperc - 9 + "%";
                 style.backgroundPositionY = yperc - 9 + "%";
-
-                style.left = x - 180 + "px";
-                style.top = y - 180 + "px";
             },
             false
         );
