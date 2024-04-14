@@ -74,7 +74,7 @@ $meta_description = "";
 @foreach($products as $product)
 @php
 $product_stock = 0;
-@foreach($product->quantity_per_size as $quantity)
+@foreach($product->quantity_per_size as $size => $quantity)
 $product_stock += $quantity;
 @endforeach
 @endphp
