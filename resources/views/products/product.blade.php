@@ -136,7 +136,7 @@
 ["name", "like", "%" . explode(' ', $product->name)[0] . "%"],
 ])->count() > 0
 )
-<section id="other-products-container" class="flex flex-wrap xl:mt-20 xl:mb-10 px-6 pb-6 bg-stone-200">
+<section id="other-products-container" class="flex flex-wrap md:mt-20 md:mb-10 px-6 pb-6 bg-stone-200">
     <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
     @foreach($product->category->products->where('id', '!=', $product->id)->take(3) as $product)
     @php
