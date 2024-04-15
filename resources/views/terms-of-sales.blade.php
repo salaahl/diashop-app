@@ -10,8 +10,12 @@
 @section('links')
 <style>
     h3 {
-        margin-bottom: 0.5%!important;
-        margin-top: 4%!important;
+        margin-bottom: 0.5% !important;
+        margin-top: 4% !important;
+    }
+
+    main {
+        margin-bottom: 4% !important;
     }
 </style>
 @parent
@@ -47,9 +51,9 @@
 <h3>7. Responsabilité</h3>
 <p>DiaShop-b décline toute responsabilité pour :</p>
 <ul>
-    <li>toute interruption du site ;</li>
-    <li>tout problème technique ;</li>
-    <li>tout dommage résultant d’une intrusion frauduleuse ayant entraîné une modification des informations sur le site ;</li>
+    <li>- toute interruption du site</li>
+    <li>- tout problème technique</li>
+    <li>- tout dommage résultant d’une intrusion frauduleuse ayant entraîné une modification des informations sur le site;</li>
     <li>et plus généralement de tout dommage direct ou indirect résultant de l'utilisation du site.</li>
 </ul>
 

@@ -127,6 +127,12 @@ class MainController extends Controller
             ])->limit(5)->get();
 
             foreach ($products as $product) {
+
+                $product_stock = 0;
+                foreach ($product->quantity_per_size as $size => $quantity) {
+                    $product_stock += $quantity;
+                }
+
                 $results[] = [
                     "id" => $product->id,
                     "name" => $product->name,
@@ -136,6 +142,8 @@ class MainController extends Controller
                         1 => $product->img[1]
                     ],
                     "price" => $product->price,
+                    "promotion" => $product->promotion,
+                    "product_stock" => $product_stock
                 ];
             }
 

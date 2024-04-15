@@ -4,7 +4,11 @@ $h1 = null;
 $h2 = null;
 $meta_description = null;
 
-if($query[4] == "femme") {
+if($query[3] == "search") {
+$h1 = "Résultats de votre recherche";
+$h2 = "";
+$meta_description = "";
+} elseif($query[4] == "femme") {
 $h1 = "femme";
 $h2 = "Découvrez notre collection féminine : élégance, style et confiance !";
 $meta_description = "Découvrez notre collection de prêt-à-porter pour femmes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
@@ -12,10 +16,6 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour femmes.
 $h1 = "homme";
 $h2 = "Découvrez notre collection masculine : élégance, sophistication et confiance !";
 $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
-} elseif($query[3] == "search") {
-$h1 = "Résultats";
-$h2 = "";
-$meta_description = "";
 }
 @endphp
 
@@ -75,18 +75,10 @@ $meta_description = "";
 @php
 $product_stock = 0;
 foreach($product->quantity_per_size as $size => $quantity) {
-    $product_stock += $quantity;
+$product_stock += $quantity;
 }
 @endphp
-<x-product-card 
-    link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" 
-    image1="{{ $product->img[0] }}" 
-    image2="{{ $product->img[1] }}" 
-    title="{{ $product->name }}" 
-    price="{{ $product->price }}" 
-    promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" 
-    message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}"
-/>
+<x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product->img[0] }}" image2="{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
 @endforeach
 <aside class="w-full mt-[-1rem] mb-4">
     {{ $products->links() }}
