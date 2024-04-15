@@ -31,7 +31,7 @@ main {
 
 @media (max-width: 767px) {
     #headers {
-        margin: 50px auto;
+        margin: 50px auto 25px auto;
     }
 
     .category {
@@ -52,7 +52,7 @@ main {
 
 @media (min-width: 768px) {
     #headers {
-        margin: 5% auto;
+        margin: 50px auto 25px auto;
     }
 
     .category {
