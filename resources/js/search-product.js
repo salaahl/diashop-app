@@ -64,12 +64,14 @@ $("#default-search").addEventListener("input", (e) => {
                                 product["img"][1] +
                                 '" />' +
                                 "</div>" +
-                                '<div class="details">' +
-                                '<h4 class="title">' +
+                                '<div class="details lg:flex justify-between px-1 py-2 mt-1">' +
+                                '<div class="w-full flex flex-wrap items-baseline justify-between">' +
+                                '<h4 class="title lg:max-w-[75%] text-ellipsis overflow-hidden">' +
                                 product["name"] +
                                 "</h4>" +
-                                '<div class="price">' +
-                                product["price"] +
+                                '<div class="flex items-center">' +
+                                '<span class="message text-sm font-thin text-red-500">' + product["message"] + '</span>' +
+                                "</div>" +
                                 "</div>" +
                                 "</div>" +
                                 "</a>" +
