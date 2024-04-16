@@ -141,7 +141,7 @@ class MainController extends Controller
                         0 => $product->img[0],
                         1 => $product->img[1]
                     ],
-                    "product_stock" => $product_stock ? "" : "Ce produit est en rupture de stock"
+                    "message" => $product_stock ? "" : "Ce produit est en rupture de stock"
                 ];
             }
 
