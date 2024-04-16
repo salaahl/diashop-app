@@ -27,12 +27,23 @@ a {
 }
 
 h1 {
-    width: 100%;
-    margin: 50px 0 25px 0;
+    width: fit-content;
+    margin: 25px auto;
     text-transform: uppercase;
     text-align: center;
     font-size: var(--h1-font-size);
     font-weight: 400;
+    background-image: linear-gradient(gold, gold);
+    background-size: 100% 10px;
+    background-repeat: no-repeat;
+    background-position: 100% 0%;
+    transition: background-size 0.7s, background-position 0.5s ease-in-out;
+}
+
+h1:hover {
+    background-size: 100% 100%;
+    background-position: 0% 100%;
+    transition: background-position 0.7s, background-size 0.5s ease-in-out;
 }
 
 h2 {
@@ -63,9 +74,16 @@ h4 {
 }
 
 #banner-inner {
-    mask-image: 
-        linear-gradient(to left, rgb(255,255,255,0) 0%,rgb(255,255,255,1) 2%), 
-        linear-gradient(to right, rgb(255,255,255,0) 0%,rgb(255,255,255,1) 2%);
+    mask-image: linear-gradient(
+            to left,
+            rgb(255, 255, 255, 0) 0%,
+            rgb(255, 255, 255, 1) 2%
+        ),
+        linear-gradient(
+            to right,
+            rgb(255, 255, 255, 0) 0%,
+            rgb(255, 255, 255, 1) 2%
+        );
     mask-composite: intersect;
 }
 
