@@ -58,7 +58,7 @@ main {
     .category {
         width: 20%;
         min-width: 20%;
-        margin: 1%;
+        margin: 0.5%;
     }
 
     .category .thumbnail img {

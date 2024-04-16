@@ -30,8 +30,8 @@
     </div>
 
     <div id="main-container">
-        @if(Route::is('home') || Route::is('catalog') || Route::is('product') || Route::is('basket'))
-            <x-banner-top />
+        @if(Route::is('home') || Route::is('catalog') || Route::is('category') || Route::is('product') || Route::is('basket'))
+        <x-banner-top />
         @endif
 
         <!-- Page Heading -->
