@@ -20,46 +20,48 @@ window.addEventListener("load", () => {
 // Loupe pour les photos d'articles en mode PC
 if (window.innerWidth > 1023) {
     let zoomer = (function () {
-        $("#img-box").addEventListener(
-            "mousemove",
-            function (e) {
-                let original = $("#img-box img"),
-                    magnified = $("#magnifier"),
-                    style = magnified.style,
-                    x = e.screenX - this.offsetLeft,
-                    y = e.screenY - this.offsetTop,
-                    imgWidth = original.offsetWidth,
-                    imgHeight = original.offsetHeight,
-                    xperc = (x / imgWidth) * 100,
-                    yperc = (y / imgHeight) * 100;
+        document.querySelectorAll("#slides-container img").forEach((img) => {
+            img.addEventListener(
+                "mousemove",
+                function (e) {
+                    let original = img,
+                        magnified = img.nextElementSibling,
+                        style = magnified.style,
+                        x = e.clientX - $(".carousel-container").offsetLeft,
+                        y = e.clientY - $(".carousel-container").offsetTop,
+                        imgWidth = original.offsetWidth,
+                        imgHeight = original.offsetHeight,
+                        xperc = (x / imgWidth) * 100,
+                        yperc = (y / imgHeight) * 100;
 
-                style.backgroundImage = "url('" + original.src + "')";
-                style.backgroundSize =
-                    imgWidth * 2 + "px " + imgHeight * 2 + "px";
-                style.backgroundRepeat = "no-repeat";
-                style.backgroundPositionX = xperc + "%";
-                style.backgroundPositionY = yperc - 14 + "%";
+                    style.backgroundImage = "url('" + original.src + "')";
+                    style.backgroundSize =
+                        imgWidth * 2 + "px " + imgHeight * 2 + "px";
+                    style.backgroundRepeat = "no-repeat";
+                    style.backgroundPositionX = xperc + "%";
+                    style.backgroundPositionY = yperc + "%";
 
-                // Empêche les débordements sur l'axe horizontal
-                if (xperc < 0.000) {
-                    style.backgroundPositionX = "0%";
-                }
+                    // Empêche les débordements sur l'axe horizontal
+                    if (xperc < 0.0) {
+                        style.backgroundPositionX = "0%";
+                    }
 
-                if (xperc > 100) {
-                    style.backgroundPositionX = "100%";
-                }
+                    if (xperc > 100) {
+                        style.backgroundPositionX = "100%";
+                    }
 
-                // Empêche les débordements sur l'axe vertical
-                if (yperc < 0.000) {
-                    style.backgroundPositionY = "0%";
-                }
+                    // Empêche les débordements sur l'axe vertical
+                    if (yperc < 0.0) {
+                        style.backgroundPositionY = "0%";
+                    }
 
-                if (yperc > 100) {
-                    style.backgroundPositionY = "100%";
-                }
-            },
-            false
-        );
+                    if (yperc > 100) {
+                        style.backgroundPositionY = "100%";
+                    }
+                },
+                false
+            );
+        });
     })();
 }
 

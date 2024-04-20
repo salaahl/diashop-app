@@ -17,6 +17,79 @@ h2 {
     margin-bottom: 5%;
 }
 
+/* 
+Code du carousel
+*/
+
+/* Position the image container (needed to position the left and right arrows) */
+.carousel-container {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+#slides-container {
+    position: relative;
+    width: auto;
+}
+
+/* Hide the images by default */
+.carousel-slide {
+    position: relative;
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.slide-cursor {
+    cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.4);
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    z-index: 99;
+    transition: background-color 0.5s;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Add a transparency effect for thumnbail images */
+.slide-cursor {
+    filter: grayscale(1);
+    transition: all 0.5s;
+}
+
+.slide-active,
+.slide-cursor:hover {
+    filter: grayscale(0);
+}
+
 @media (max-width: 767px) {
     ::-webkit-scrollbar:horizontal {
         display: none;
@@ -53,6 +126,10 @@ h2 {
         width: 49%;
         margin-bottom: 2.5%;
     }
+
+    #img-preview {
+        display: none;
+    }
 }
 
 @media (min-width: 768px) {
@@ -61,7 +138,8 @@ h2 {
         margin-bottom: 2%;
     }
 
-    #product-images-container li:not(#product-images-container li:last-of-type) {
+    #product-images-container
+        li:not(#product-images-container li:last-of-type) {
         margin-bottom: 1%;
     }
 
@@ -78,13 +156,20 @@ h2 {
         padding-left: 1.5rem;
     }
 
-    /* CSS lié à la loupe en mode modal */
-    #img-box:hover #magnifier,
-    #img-box:active #magnifier {
+    /* 
+    Code lié au carousel 
+    */
+    .preview-column img {
+        height: 25vh;
+        width: auto;
+    }
+
+    #slides-container:hover .magnifier,
+    #slides-container:active .magnifier {
         opacity: 1;
     }
 
-    #magnifier {
+    .magnifier {
         width: 100%;
         height: 100%;
         pointer-events: none;

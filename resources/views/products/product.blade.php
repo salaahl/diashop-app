@@ -19,10 +19,12 @@
 <div class="flex flex-wrap justify-between md:flex-nowrap flex-col md:flex-row">
     <section id="product-images-container" class="w-full md:w-2/4 mt-[-80px]">
         <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
+            @php $i = 1 @endphp
             @foreach($product->img as $image)
             <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start">
-                <img src="{{ $image }}" alt="{{ $product->name }}" data-modal-target="default-modal" data-modal-toggle="default-modal" class="h-full w-full object-cover object-center cursor-zoom-in" onclick="document.querySelector('#modal-image').src = this.src;" />
+                <img src="{{ $image }}" alt="{{ $product->name }}" data-modal-target="default-modal" data-modal-toggle="default-modal" class="h-full w-full object-cover object-center cursor-zoom-in" onclick="currentSlide('{{ $i }}')" />
             </li>
+            @php $i = $i + 1 @endphp
             @endforeach
         </ul>
     </section>
@@ -140,23 +142,39 @@
     <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
     @foreach($product->category->products->where('id', '!=', $product->id)->take(3) as $product)
     @php
-$product_stock = 0;
-foreach($product->quantity_per_size as $size => $quantity) {
-$product_stock += $quantity;
-}
-@endphp
+    $product_stock = 0;
+    foreach($product->quantity_per_size as $size => $quantity) {
+    $product_stock += $quantity;
+    }
+    @endphp
     <x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product->img[0] }}" image2="{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
     @endforeach
 </section>
 @endif
 <!-- Modal -->
-<div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed top-0 right-0 left-0 z-[999] justify-center items-center h-[100dvh] w-full md:inset-0 max-h-full bg-black/50">
-    <div id="img-box" class="relative max-h-full">
-        <div class="relative shadow-2xl">
-            <div>
-                <img src="/" id="modal-image" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="...">
-                <div id="magnifier"></div>
+<div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed z-[999] justify-center items-center h-full w-full md:inset-0 bg-black/50">
+    <div class="carousel-container">
+        <div id="slides-container" class="relative max-h-full">
+            <div class="relative shadow-2xl">
+                @foreach($product->img as $image)
+                <div class="carousel-slide">
+                    <img src="{{ $image }}" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="{{ $product->name }}">
+                    <div class="magnifier"></div>
+                </div>
+                @endforeach
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
             </div>
+        </div>
+        <div id="img-preview">
+            @php $i = 1 @endphp
+            @foreach($product->img as $image)
+            <div class="preview-column">
+                <img id="slide-button-{{ $i }}" class="slide-cursor" src="{{ $image }}" onclick="currentSlide('{{ $i }}')" alt="{{ $product->name }}">
+            </div>
+            @php $i = $i + 1 @endphp
+            @endforeach
         </div>
     </div>
 </div>
@@ -165,4 +183,37 @@ $product_stock += $quantity;
 @section('scripts')
 @parent
 @vite('resources/js/product.js')
+<script>
+    // Carousel
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("carousel-slide");
+        let dots = document.getElementsByClassName("slide-cursor");
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" slide-active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " slide-active";
+    }
+</script>
 @endsection
