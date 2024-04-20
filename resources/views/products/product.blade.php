@@ -132,25 +132,6 @@
         </div>
     </section>
 </div>
-@if(\App\Models\Product::where([
-["catalog_id", \App\Models\Catalog::where('name', $product->catalog->name)->first()->id],
-["id", "!=", $product->id],
-["name", "like", "%" . explode(' ', $product->name)[0] . "%"],
-])->count() > 0
-)
-<section id="other-products-container" class="flex flex-wrap md:my-10 px-6 pb-6 bg-stone-200">
-    <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
-    @foreach($product->category->products->where('id', '!=', $product->id)->take(3) as $product)
-    @php
-    $product_stock = 0;
-    foreach($product->quantity_per_size as $size => $quantity) {
-    $product_stock += $quantity;
-    }
-    @endphp
-    <x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product->img[0] }}" image2="{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
-    @endforeach
-</section>
-@endif
 <!-- Modal -->
 <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed z-[999] justify-center items-center h-full w-full md:inset-0 bg-black/50">
     <div class="carousel-container">
@@ -178,6 +159,26 @@
         </div>
     </div>
 </div>
+<!-- Autres produits -->
+@if(\App\Models\Product::where([
+["catalog_id", \App\Models\Catalog::where('name', $product->catalog->name)->first()->id],
+["id", "!=", $product->id],
+["name", "like", "%" . explode(' ', $product->name)[0] . "%"],
+])->count() > 0
+)
+<section id="other-products-container" class="flex flex-wrap md:my-10 px-6 pb-6 bg-stone-200">
+    <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
+    @foreach($product->category->products->where('id', '!=', $product->id)->take(3) as $product)
+    @php
+    $product_stock = 0;
+    foreach($product->quantity_per_size as $size => $quantity) {
+    $product_stock += $quantity;
+    }
+    @endphp
+    <x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product->img[0] }}" image2="{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
+    @endforeach
+</section>
+@endif
 @endsection
 
 @section('scripts')
