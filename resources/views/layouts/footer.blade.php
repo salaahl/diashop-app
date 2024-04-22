@@ -7,13 +7,13 @@
                 </a>
             </div>
             <div class="px-5 py-2">
-                <a href="{{ route('legal-notice') }}" class="text-base leading-6 text-gray-500 hover:text-gray-900">
-                    Mentions légales
+                <a href="{{ route('terms-of-sales') }}" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                    Conditions générales de vente
                 </a>
             </div>
             <div class="px-5 py-2">
-                <a href="{{ route('terms-of-sales') }}" class="text-base leading-6 text-gray-500 hover:text-gray-900">
-                    Conditions générales de vente
+                <a href="{{ route('legal-notice') }}" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                    Mentions légales
                 </a>
             </div>
         </nav>
