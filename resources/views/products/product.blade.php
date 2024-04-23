@@ -190,7 +190,8 @@
     showSlides(slideIndex);
 
     function plusSlides(n) {
-        showSlides(slideIndex += n);
+        n > 0 ? slideIndex++ : slideIndex--;
+        showSlides(slideIndex);
     }
 
     function currentSlide(n) {
