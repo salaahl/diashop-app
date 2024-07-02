@@ -155,6 +155,10 @@ main {
     padding-right: var(--container-padding-x);
 }
 
+footer {
+    filter: brightness(0.99);
+}
+
 img {
     height: 100%;
     width: 100%;
