@@ -155,13 +155,6 @@ main {
     padding-right: var(--container-padding-x);
 }
 
-footer {
-    background-image: url("/public/images/footer-bg.svg");
-    background-position: top 35% left 0;
-    background-size: 500%;
-    background-repeat: no-repeat;
-}
-
 img {
     height: 100%;
     width: 100%;
@@ -403,8 +396,10 @@ img {
     }
 
     footer {
-        background-position: top 25% left 0;
+        background-image: url("/public/images/footer-bg.svg");
+        background-position: bottom 25% left 0;
         background-size: 100%;
+        background-repeat: no-repeat;
     }
 }
 
