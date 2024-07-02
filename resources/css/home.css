@@ -46,7 +46,7 @@
 
     #catalogs-container .catalog {
         width: 100%;
-        height: calc(50vh - 15px);
+        height: calc(100vh - 15px);
     }
 }
 
