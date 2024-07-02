@@ -18,7 +18,7 @@
 
 #catalogs-container .catalog:first-of-type .img-placeholder {
     background-position: center;
-    background-image: url("/public/images/woman-catalog.jpg");
+    background-image: url("/public/images/woman-catalog-bis.jpg");
 }
 
 #catalogs-container .catalog:last-of-type .img-placeholder {
@@ -31,7 +31,6 @@
     border-radius: 60px;
     font-weight: 400;
     color: white;
-    background-color: rgb(255, 255, 255, 0.1);
 }
 
 @media (max-width: 767px) {
@@ -62,7 +61,7 @@
     }
 
     #catalogs-container .catalog:hover {
-        width: 100%;
+        width: 70%;
     }
 
     #catalogs-container .catalog:first-of-type {
@@ -76,12 +75,12 @@
     }
 
     #catalogs-container .catalog:first-of-type .img-placeholder {
-        background-position: top -20px left -440px;
-        background-size: 105vw;
+        background-position: top -300px left;
+        background-size: 58vw;
     }
 
     #catalogs-container .catalog:last-of-type .img-placeholder {
         background-position: top 25px right;
-        background-size: 105vw;
+        background-size: 95vw;
     }
 }
