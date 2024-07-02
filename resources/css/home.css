@@ -59,14 +59,14 @@
 
     #catalogs-container .catalog {
         min-width: 100vw;
-        height: calc(100dvh - 15px);
+        height: calc(100vh - 15px);
         scroll-snap-align: start;
-        animation: 2s ease 0s 1 normal none running translate;
+        animation: 2s ease 2.5s 1 normal none running translate;
     }
 
     #catalogs-container .catalog h3 {
         filter: opacity(0.8);
-        margin-bottom: 25%;
+        margin-bottom: 30%;
     }
 
     @keyframes translate {
