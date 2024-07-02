@@ -35,4 +35,11 @@
 
 @section('scripts')
 @parent
+<script>
+    if (window.innerWidth > 768) {
+        document.querySelectorAll('#catalogs-container .catalog .img-placeholder').forEach((ele) => {
+            ele.style.backgroundSize = document.querySelector('#catalogs-container .catalog').offsetWidth + (document.querySelector('#catalogs-container .catalog').offsetWidth / 5) + 'px'
+        })
+    }
+</script>
 @endsection

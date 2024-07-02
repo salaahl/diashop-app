@@ -1,4 +1,5 @@
 #catalogs-container {
+    display: flex;
     width: 100%;
 }
 
@@ -12,56 +13,98 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
     background-size: cover;
 }
 
 #catalogs-container .catalog:first-of-type .img-placeholder {
-    background-position: center;
-    background-image: url("/public/images/woman-catalog-bis.jpg");
+    background-position: bottom left;
+    background-image: url("/public/images/woman-catalog-mobile.jpg");
 }
 
 #catalogs-container .catalog:last-of-type .img-placeholder {
-    background-position: center right;
-    background-image: url("/public/images/men-catalog.jpg");
+    background-position: top right;
+    background-image: url("/public/images/men-catalog-mobile.jpg");
 }
 
 #catalogs-container .catalog h3 {
-    padding: 1.5% 5%;
-    border-radius: 60px;
     font-weight: 400;
     color: white;
+    text-decoration: none;
+    background: linear-gradient(to top, white 0%, white 10%, transparent 0%)
+        no-repeat left bottom / 0 100%;
+    transition: background-size 0.5s;
+    transition: filter 0.25s linear, background 0.25s;
 }
 
 @media (max-width: 767px) {
+    ::-webkit-scrollbar:horizontal {
+        display: none;
+    }
+
     main {
         margin-top: -80px;
     }
-    
+
     main,
     #catalogs-container {
         padding-left: 0;
         padding-right: 0;
     }
 
+    #catalogs-container {
+        scroll-snap-type: x mandatory;
+        overflow: auto;
+    }
+
     #catalogs-container .catalog {
-        width: 100%;
-        height: calc(100vh - 15px);
+        min-width: 100vw;
+        height: calc(100dvh - 15px);
+        scroll-snap-align: start;
+        animation: 2s ease 0s 1 normal none running translate;
+    }
+
+    #catalogs-container .catalog h3 {
+        filter: opacity(0.8);
+        margin-bottom: 25%;
+    }
+
+    @keyframes translate {
+        0% {
+            transform: translateX(0);
+        }
+
+        60% {
+            transform: translateX(-20vw);
+        }
+
+        100% {
+            transform: translateX(0);
+        }
     }
 }
 
 @media (min-width: 768px) {
-    #catalogs-container {
-        display: flex;
-    }
-
     #catalogs-container .catalog {
-        height: auto;
         width: 50%;
     }
 
     #catalogs-container .catalog:hover {
         width: 70%;
+    }
+
+    #catalogs-container .catalog .img-placeholder {
+        align-items: center;
+    }
+
+    #catalogs-container .catalog h3 {
+        filter: opacity(0);
+    }
+
+    #catalogs-container .catalog:hover h3 {
+        filter: opacity(0.8);
+        background-size: 100% 100%;
+        transition-delay: 0.5s, 1s;
     }
 
     #catalogs-container .catalog:first-of-type {
@@ -75,12 +118,12 @@
     }
 
     #catalogs-container .catalog:first-of-type .img-placeholder {
-        background-position: top -300px left;
-        background-size: 58vw;
+        background-position: top -90px left;
+        background-image: url("/public/images/woman-catalog.jpg");
     }
 
     #catalogs-container .catalog:last-of-type .img-placeholder {
-        background-position: top 25px right;
-        background-size: 95vw;
+        background-position: top right;
+        background-image: url("/public/images/men-catalog.jpg");
     }
 }
