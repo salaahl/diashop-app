@@ -50,7 +50,7 @@
     </div>
 
     <!-- Page Footer -->
-    <footer class="max-md:bg-gray-50">
+    <footer>
         @section('footer')
         @include('layouts.footer')
         @show
