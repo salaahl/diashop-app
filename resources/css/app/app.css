@@ -156,7 +156,7 @@ main {
 }
 
 footer {
-    background-image: url("/public/images/separator.svg");
+    background-image: url("/public/images/footer-bg.svg");
     background-position: top 35% left 0;
     background-size: 500%;
     background-repeat: no-repeat;
