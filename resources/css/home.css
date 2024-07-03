@@ -104,7 +104,7 @@
     #catalogs-container .catalog:hover h3 {
         filter: opacity(0.8);
         background-size: 100% 100%;
-        transition-delay: 0.5s, 1s;
+        transition-delay: 0s, 0.25s;
     }
 
     #catalogs-container .catalog:first-of-type {
