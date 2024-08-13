@@ -63,16 +63,6 @@ h4 {
     font-weight: 200;
 }
 
-#main-container {
-    opacity: 0;
-    transition: opacity 0.5s;
-    transition-delay: 0.5s;
-}
-
-#main-container.show {
-    opacity: 1;
-}
-
 #banner-inner {
     mask-image: linear-gradient(
             to left,
@@ -274,51 +264,75 @@ img {
 
 /* Loader des pages */
 #loader-container {
-    height: 100%;
-    width: 100%;
     position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: visible;
-    opacity: 1;
-    z-index: 999;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
     background-color: white;
-    transition: opacity 1s, visibility 0.5s;
-    transition-delay: 0s, 1s;
+    z-index: 9999;
+    transition: width 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-#loader-container.hide {
-    visibility: hidden;
-    opacity: 0;
+#loader-container.show {
+    width: 100%;
 }
 
-.spinner {
-    --size: 30px;
-    --first: #e2e8f0;
-    --second: #1f2937;
-    width: 50px;
-    height: 50px;
-    position: relative;
-    animation: spin 2s linear infinite;
-}
-
-.spinner::before,
-.spinner::after {
-    content: "";
-    width: var(--size);
-    height: var(--size);
-    background: var(--first);
-    border-radius: 100%;
+.left-layer {
     position: absolute;
-    top: 10%;
-    transform: translateY(-50%);
-    animation: bounce 1s ease-in-out alternate infinite;
+    width: 100%;
+    height: 100%;
+    top: auto;
+    left: 100%;
+    bottom: auto;
+    right: auto;
+    background: #f1e0c5;
+    transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.spinner::after {
-    background: var(--second);
-    animation: bounce 1s 0.5s ease-in-out alternate infinite;
+.left-layer.show {
+    left: -100%;
+}
+
+.left-layer--2 {
+    background: #dce0d9;
+    transition-delay: 0.3s;
+}
+
+.left-layer--3 {
+    background: #fbf6ef;
+    transition-delay: 0.12s;
+}
+
+.left-layer--4 {
+    background: #ead7c3;
+    transition-delay: 0.08s;
+}
+
+.right-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: 100%;
+    background: #7f4a88;
+    transition: all 0.9s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.right-layer.show {
+    right: -100%;
+}
+
+.right-layer--2 {
+    background: #c79ecf;
+    transition-delay: 0.3s;
+}
+
+.right-layer--3 {
+    background: #fe9191;
+    transition-delay: 0.2s;
 }
 
 /* Paramètres globaux du container d'une carte "produit" */
@@ -492,19 +506,6 @@ img {
     }
     100% {
         transform: translate(var(--banner-speed), 0);
-    }
-}
-
-/* Animations du loader des pages */
-@keyframes bounce {
-    50% {
-        transform: translateX(-50%);
-    }
-}
-
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
     }
 }
 

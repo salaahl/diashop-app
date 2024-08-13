@@ -26,8 +26,14 @@
 <body class="font-sans antialiased">
 
     <!-- Page Loader -->
-    <div id="loader-container">
-        <div class="spinner"></div>
+    <div id="loader-container" class="show">
+        <div class="left-layer show"></div>
+        <div class="left-layer left-layer--2 show"></div>
+        <div class="left-layer left-layer--3 show"></div>
+        <div class="left-layer left-layer--4 show"></div>
+        <div class="right-layer show"></div>
+        <div class="right-layer right-layer--2 show"></div>
+        <div class="right-layer right-layer--3 show"></div>
     </div>
 
     <div id="main-container">

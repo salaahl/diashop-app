@@ -39,7 +39,7 @@
         </div>
         <p class="mt-8 text-base leading-6 text-center text-gray-400">Paiement sécurisé by <a href="https://stripe.com/fr" target="_blank" class="font-bold">STRIPE</a></p>
         <p class="mt-8 text-sm leading-6 text-center text-gray-400">
-            <a href="https://www.linkedin.com/in/salaha-sokhona/" target="_blank">© {{ date("Y") }} Salaha SOKHONA pour DiaShop-b, Inc. Tous droits réservés.</a>
+            <a href="https://www.linkedin.com/in/salaha-sokhona/" target="_blank">© {{ date("Y") }} Salaha Sokhona pour DiaShop-b, Inc. Tous droits réservés.</a>
         </p>
     </div>
 </section>

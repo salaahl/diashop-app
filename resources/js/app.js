@@ -34,6 +34,35 @@ resetHeight();
 
 // Loader des pages
 window.addEventListener("load", () => {
-    document.querySelector("#loader-container").classList.add("hide");
-    document.querySelector("#main-container").classList.add("show");
+    let layers = document.querySelectorAll(".right-layer");
+    for (const layer of layers) {
+        layer.classList.remove("show");
+    }
+    document.querySelector("#loader-container").classList.remove("show");
+});
+
+document.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function (event) {
+        const isExternal = link.hostname !== window.location.hostname;
+        const isNewTab = link.target === "_blank";
+        const isSpecialProtocol =
+            link.href.startsWith("mailto:") || link.href.startsWith("tel:");
+
+        if (isExternal || isNewTab || isSpecialProtocol) {
+            return; // Ne pas lancer l'animation
+        }
+
+        event.preventDefault();
+        var layers = document.querySelectorAll(".left-layer");
+        document.querySelector("#loader-container").classList.add("show");
+
+        for (const layer of layers) {
+            layer.classList.remove("show");
+        }
+
+        // Attendre la fin de l'animation avant de naviguer
+        setTimeout(function () {
+            window.location.href = link.href;
+        }, 1000); // 500ms ou la durée de ton animation
+    });
 });
