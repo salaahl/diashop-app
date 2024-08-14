@@ -7,8 +7,7 @@
 
 @section('links')
 @parent
-<!-- @vite('resources/css/home.css') -->
-<link href="{{ asset('resources/css/home.css') }}" rel="stylesheet" data-turbo-track="dynamic">
+@vite('resources/css/home.css')
 @endsection
 
 @section('header')
