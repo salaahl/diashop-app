@@ -30,7 +30,6 @@
         <div class="left-layer show"></div>
         <div class="left-layer left-layer--2 show"></div>
         <div class="left-layer left-layer--3 show"></div>
-        <div class="left-layer left-layer--4 show"></div>
         <div class="right-layer show"></div>
         <div class="right-layer right-layer--2 show"></div>
         <div class="right-layer right-layer--3 show"></div>

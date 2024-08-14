@@ -1,5 +1,5 @@
 <article class="product">
-    <a href="{{ $link }}">
+    <a href="{{ $link }}" data-turbo="false">
         <div class="thumbnail">
             <img src="{{ $image1 }}" alt="{{ $title }}" />
             <img src="{{ $image2 }}" alt="{{ $title }}" />

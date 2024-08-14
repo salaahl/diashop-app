@@ -304,11 +304,6 @@ img {
     transition-delay: 0.12s;
 }
 
-.left-layer--4 {
-    background: #ead7c3;
-    transition-delay: 0.08s;
-}
-
 .right-layer {
     position: absolute;
     width: 100%;
