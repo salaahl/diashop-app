@@ -85,11 +85,12 @@ document.addEventListener("turbo:before-visit", (event) => {
 
 // Loader des pages
 window.addEventListener("turbo:load", () => {
-    // Lorsque la page est vraiment chargée (car turbo:load est en fait un DOMContentLoader)
-    window.addEventListener("load", () => {
-        // Empêche que le CSS d'une page empiète sur les autres
+    // Empêche que le CSS d'une page empiète sur les autres
         const lastCSS = document.querySelector('link[rel="stylesheet"]:last-of-type');
         lastCSS.setAttribute('data-turbo-track', 'dynamic');
+
+    // Lorsque la page est vraiment chargée (car turbo:load est en fait un DOMContentLoader)
+    window.addEventListener("load", () => {
         // Effacer le loader
         let layers = document.querySelectorAll(".right-layer");
     
