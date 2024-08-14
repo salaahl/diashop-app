@@ -7,7 +7,9 @@
 
 @section('links')
 @parent
-@vite('resources/css/home.css')
+<div data-turbo-track="dynamic">
+    @vite('resources/css/home.css')
+</div>
 @endsection
 
 @section('header')
