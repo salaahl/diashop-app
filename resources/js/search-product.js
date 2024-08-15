@@ -22,7 +22,7 @@ $("#default-search").addEventListener("input", (e) => {
     timer = setTimeout(function () {
         if ($("#default-search").value.length > 0) {
             $("#search-results").innerHTML = "";
-            document.getElementById("lds-hourglass").classList.add("show");
+            document.getElementById("search-loader").classList.add("show");
 
             let data = {
                 input: $("#default-search").value,
@@ -70,7 +70,9 @@ $("#default-search").addEventListener("input", (e) => {
                                 product["name"] +
                                 "</h4>" +
                                 '<div class="flex items-center">' +
-                                '<span class="message text-sm font-thin text-red-500">' + product["message"] + '</span>' +
+                                '<span class="message text-sm font-thin text-red-500">' +
+                                product["message"] +
+                                "</span>" +
                                 "</div>" +
                                 "</div>" +
                                 "</div>" +
@@ -82,7 +84,7 @@ $("#default-search").addEventListener("input", (e) => {
                     }
 
                     document
-                        .getElementById("lds-hourglass")
+                        .getElementById("search-loader")
                         .classList.remove("show");
                 })
                 .catch((error) => {

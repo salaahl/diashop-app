@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --accent-color-1: #8ab3ac;
+    --accent-color-2: #b5aa99;
+    --accent-color-3: #4e4637;
+}
+
 * {
     font-weight: 400;
 }
@@ -33,7 +39,10 @@ h1 {
     text-align: center;
     font-size: var(--h1-font-size);
     font-weight: 400;
-    background-image: linear-gradient(gold, gold);
+    background-image: linear-gradient(
+        var(--accent-color-1),
+        var(--accent-color-1)
+    );
     background-size: 100% 10px;
     background-repeat: no-repeat;
     background-position: 100% 0%;
@@ -316,23 +325,108 @@ img {
 
 .left-layer--1,
 .right-layer--1 {
-    background: #b5aa99;
+    background: var(--accent-color-2);
 }
 
 .left-layer--2,
 .right-layer--2 {
-    background: #4e4637;
+    background: var(--accent-color-3);
     transition-delay: 0.3s;
 }
 
 .left-layer--3,
 .right-layer--3 {
-    background: #8ab3ac;
+    background: var(--accent-color-1);
     transition-delay: 0.12s;
 }
 
-#loader-container h2 {
-    font-family: "Truculenta", sans-serif;
+/* Animation utilisée dans le loader */
+.clothes-animation {
+    position: relative;
+    display: flex;
+    height: 100px;
+    width: fit-content;
+    gap: 10px;
+    mask-image: linear-gradient(
+            to top,
+            rgb(255, 255, 255, 0) 0%,
+            rgb(255, 255, 255, 1) 10px
+        ),
+        linear-gradient(
+            to bottom,
+            rgb(255, 255, 255, 0) 0%,
+            rgb(255, 255, 255, 1) 10px
+        ),
+        linear-gradient(
+            to left,
+            rgb(255, 255, 255, 0) 0%,
+            rgb(255, 255, 255, 1) 10px
+        ),
+        linear-gradient(
+            to right,
+            rgb(255, 255, 255, 0) 0%,
+            rgb(255, 255, 255, 1) 10px
+        );
+    mask-composite: intersect;
+    overflow: hidden;
+}
+
+.clothes-animation .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100px;
+}
+
+.clothes-animation .carousel {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    transform-origin: center;
+    animation-delay: 2s;
+}
+
+.clothes-animation .container:nth-child(3) {
+    justify-content: flex-start;
+    justify-items: flex-start;
+    animation: scroll-up 4s infinite ease-in-out;
+    animation-delay: 3s;
+}
+
+.clothes-animation .container:nth-child(2) {
+    justify-content: flex-end;
+    justify-items: flex-end;
+    animation: scroll-down 4s infinite ease-in-out;
+    animation-delay: 3s;
+}
+
+.clothes-animation .container:nth-child(1) {
+    justify-content: flex-end;
+    justify-items: flex-end;
+    animation: scroll-down 3s infinite ease-in-out;
+    animation-delay: 3s;
+}
+
+.clothes-animation:hover {
+    animation: none;
+}
+
+.clothes-animation .carousel > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    animation-delay: 5s;
+}
+
+.clothes-animation .carousel img {
+    height: 90%;
+    width: 90%;
+    margin: auto;
 }
 
 /* Paramètres globaux du container d'une carte "produit" */
@@ -369,29 +463,15 @@ img {
     overflow: hidden;
 }
 
-#lds-hourglass {
+#search-loader {
     max-width: 1480px !important; /* prévient l'effet de bord sur le container et lisse l'effet de flou */
     backdrop-filter: blur(0px);
     transition: backdrop-filter 1.5s;
 }
 
-#lds-hourglass.show {
+#search-loader.show {
     display: flex;
     backdrop-filter: blur(5px);
-}
-
-/* Search response loader */
-#lds-hourglass:after {
-    content: " ";
-    display: block;
-    border-radius: 50%;
-    width: 0;
-    height: 0;
-    margin: 8px;
-    box-sizing: border-box;
-    border: 32px solid #fff;
-    border-color: black transparent black transparent;
-    animation: lds-hourglass 1.2s infinite;
 }
 
 @media (max-width: 767px) {
@@ -510,29 +590,36 @@ img {
 }
 
 /* Animations du loader des pages */
-@keyframes bounce {
-    50% {
-        transform: translateX(-50%);
-    }
-}
-
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-/* Animation du loader d'une recherche d'article */
-@keyframes lds-hourglass {
+@keyframes scroll-up {
     0% {
-        transform: rotate(0);
-        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        transform: translateY(0);
+        filter: blur(0);
     }
-    50% {
-        transform: rotate(900deg);
-        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+    30% {
+        transform: translateY(-600%);
+        filter: blur(10px);
     }
-    100% {
-        transform: rotate(1800deg);
+
+    60% {
+        transform: translateY(0);
+        filter: blur(0px);
+    }
+}
+
+@keyframes scroll-down {
+    0% {
+        transform: translateY(0);
+        filter: blur(0);
+    }
+
+    30% {
+        transform: translateY(600%);
+        filter: blur(10px);
+    }
+
+    60% {
+        transform: translateY(0);
+        filter: blur(0px);
     }
 }
