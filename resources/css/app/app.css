@@ -63,16 +63,6 @@ h4 {
     font-weight: 200;
 }
 
-#main-container {
-    opacity: 0;
-    transition: opacity 0.5s;
-    transition-delay: 0.5s;
-}
-
-#main-container.show {
-    opacity: 1;
-}
-
 #banner-inner {
     mask-image: linear-gradient(
             to left,
@@ -274,51 +264,75 @@ img {
 
 /* Loader des pages */
 #loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
     height: 100%;
     width: 100%;
-    position: fixed;
+    background-color: white;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+#loader-container.close {
+    animation: loader-animate 0.7s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+}
+
+@keyframes loader-animate {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+.left-layer,
+.right-layer {
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    width: 100%;
+    height: 100%;
+    transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.left-layer,
+#loader-container.close .right-layer {
+    transform: translateX(-100%);
+}
+
+.right-layer,
+#loader-container:not(.close) .left-layer {
+    transform: translateX(100%);
+}
+
+.right-layer--1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    visibility: visible;
-    opacity: 1;
-    z-index: 999;
-    background-color: white;
-    transition: opacity 1s, visibility 0.5s;
-    transition-delay: 0s, 1s;
+    transform: translateX(0%);
 }
 
-#loader-container.hide {
-    visibility: hidden;
-    opacity: 0;
+.left-layer--1,
+.right-layer--1 {
+    background: #b5aa99;
 }
 
-.spinner {
-    --size: 30px;
-    --first: #e2e8f0;
-    --second: #1f2937;
-    width: 50px;
-    height: 50px;
-    position: relative;
-    animation: spin 2s linear infinite;
+.left-layer--2,
+.right-layer--2 {
+    background: #4e4637;
+    transition-delay: 0.3s;
 }
 
-.spinner::before,
-.spinner::after {
-    content: "";
-    width: var(--size);
-    height: var(--size);
-    background: var(--first);
-    border-radius: 100%;
-    position: absolute;
-    top: 10%;
-    transform: translateY(-50%);
-    animation: bounce 1s ease-in-out alternate infinite;
+.left-layer--3,
+.right-layer--3 {
+    background: #8ab3ac;
+    transition-delay: 0.12s;
 }
 
-.spinner::after {
-    background: var(--second);
-    animation: bounce 1s 0.5s ease-in-out alternate infinite;
+#loader-container h2 {
+    font-family: "Truculenta", sans-serif;
 }
 
 /* Paramètres globaux du container d'une carte "produit" */

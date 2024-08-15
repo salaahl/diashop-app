@@ -27,7 +27,14 @@
 
     <!-- Page Loader -->
     <div id="loader-container">
-        <div class="spinner"></div>
+        <div class="left-layer left-layer--1"></div>
+        <div class="left-layer left-layer--2"></div>
+        <div class="left-layer left-layer--3"></div>
+        <div class="right-layer right-layer--1">
+            <h2 class="w-fit text-4xl font-light text-white uppercase">Chargement</h2>
+        </div>
+        <div class="right-layer right-layer--2"></div>
+        <div class="right-layer right-layer--3"></div>
     </div>
 
     <div id="main-container">

@@ -34,6 +34,29 @@ resetHeight();
 
 // Loader des pages
 window.addEventListener("load", () => {
-    document.querySelector("#loader-container").classList.add("hide");
-    document.querySelector("#main-container").classList.add("show");
+    document.querySelector("#loader-container").classList.add("close");
+
+    // Mise en place d'un timer permettant la bonne tenue de l'animation
+    document.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            const isExternal = link.hostname !== window.location.hostname;
+            const isNewTab = link.target === "_blank";
+            const isSpecialProtocol =
+                link.href.startsWith("mailto:") || link.href.startsWith("tel:");
+
+            if (isExternal || isNewTab || isSpecialProtocol) {
+                return; // Ne pas lancer l'animation
+            }
+
+            event.preventDefault();
+
+            document
+                .querySelector("#loader-container")
+                .classList.remove("close");
+
+            setTimeout(function () {
+                window.location.href = link.href;
+            }, 500);
+        });
+    });
 });
