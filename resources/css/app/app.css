@@ -262,20 +262,27 @@ img {
     background-color: #a8bbbf;
 }
 
+.turbo-progress-bar {
+    visibility: hidden;
+}
+
 /* Loader des pages */
 #loader-container {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
-    width: 0%;
     background-color: white;
     z-index: 9999;
-    transition: width 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-#loader-container.show {
-    width: 100%;
+#loader-container.open {
+    animation: loader-animate 0.7s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+}
+
+#loader-container.close {
+    animation: loader-animate 0.7s cubic-bezier(0.645, 0.045, 0.355, 1) reverse
+        both;
 }
 
 .left-layer {
@@ -283,25 +290,14 @@ img {
     width: 100%;
     height: 100%;
     top: auto;
-    left: 100%;
+    left: -100%;
     bottom: auto;
     right: auto;
-    background: #f1e0c5;
     transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.left-layer.show {
-    left: -100%;
-}
-
-.left-layer--2 {
-    background: #dce0d9;
-    transition-delay: 0.3s;
-}
-
-.left-layer--3 {
-    background: #fbf6ef;
-    transition-delay: 0.12s;
+#loader-container.open .left-layer {
+    left: 100%;
 }
 
 .right-layer {
@@ -311,23 +307,29 @@ img {
     top: auto;
     left: auto;
     bottom: auto;
-    right: 100%;
-    background: #7f4a88;
-    transition: all 0.9s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.right-layer.show {
     right: -100%;
+    transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
+#loader-container.close .right-layer {
+    right: 100%;
+}
+
+.left-layer,
+.right-layer {
+    background: #f1e0c5;
+}
+
+.left-layer--2,
 .right-layer--2 {
-    background: #c79ecf;
+    background: #dce0d9;
     transition-delay: 0.3s;
 }
 
+.left-layer--3,
 .right-layer--3 {
-    background: #fe9191;
-    transition-delay: 0.2s;
+    background: #fbf6ef;
+    transition-delay: 0.12s;
 }
 
 /* Paramètres globaux du container d'une carte "produit" */
@@ -501,6 +503,15 @@ img {
     }
     100% {
         transform: translate(var(--banner-speed), 0);
+    }
+}
+
+@keyframes loader-animate {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
     }
 }
 

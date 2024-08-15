@@ -26,13 +26,13 @@
 <body class="font-sans antialiased">
 
     <!-- Page Loader -->
-    <div id="loader-container" class="show">
-        <div class="left-layer show"></div>
-        <div class="left-layer left-layer--2 show"></div>
-        <div class="left-layer left-layer--3 show"></div>
-        <div class="right-layer show"></div>
-        <div class="right-layer right-layer--2 show"></div>
-        <div class="right-layer right-layer--3 show"></div>
+    <div id="loader-container">
+        <div class="left-layer"></div>
+        <div class="left-layer left-layer--2"></div>
+        <div class="left-layer left-layer--3"></div>
+        <div class="right-layer"></div>
+        <div class="right-layer right-layer--2"></div>
+        <div class="right-layer right-layer--3"></div>
     </div>
 
     <div id="main-container">
