@@ -272,47 +272,34 @@ img {
     top: 0;
     left: 0;
     height: 100%;
+    width: 100%;
     background-color: white;
     z-index: 9999;
-}
-
-#loader-container.open {
-    animation: loader-animate 0.7s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+    overflow: hidden;
 }
 
 #loader-container.close {
-    animation: loader-animate 0.7s cubic-bezier(0.645, 0.045, 0.355, 1) reverse
-        both;
+    animation: loader-animate 0.7s cubic-bezier(0.645, 0.045, 0.355, 1) both;
 }
 
-.left-layer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: auto;
-    left: -100%;
-    bottom: auto;
-    right: auto;
-    transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-#loader-container.open .left-layer {
-    left: 100%;
-}
-
+.left-layer,
 .right-layer {
     position: absolute;
+    top: 0;
+    bottom: auto;
     width: 100%;
     height: 100%;
-    top: auto;
-    left: auto;
-    bottom: auto;
-    right: -100%;
     transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
+.left-layer,
 #loader-container.close .right-layer {
-    right: 100%;
+    transform: translateX(-100%);
+}
+
+.right-layer,
+#loader-container:not(.close) .left-layer {
+    transform: translateX(100%);
 }
 
 .left-layer,
@@ -508,10 +495,10 @@ img {
 
 @keyframes loader-animate {
     from {
-        width: 0%;
+        width: 100%;
     }
     to {
-        width: 100%;
+        width: 0%;
     }
 }
 
