@@ -147,9 +147,11 @@ h4 {
 }
 
 main {
+    min-height: 50vh;
+    width: 100%;
     max-width: 1440px;
-    padding-top: var(--container-padding-y);
     margin: auto;
+    padding-top: var(--container-padding-y);
     padding-left: var(--container-padding-x);
     padding-right: var(--container-padding-x);
 }
@@ -393,21 +395,21 @@ img {
     justify-content: flex-start;
     justify-items: flex-start;
     animation: scroll-up 4s infinite ease-in-out;
-    animation-delay: 3s;
+    animation-delay: 1s;
 }
 
 .clothes-animation .container:nth-child(2) {
     justify-content: flex-end;
     justify-items: flex-end;
     animation: scroll-down 4s infinite ease-in-out;
-    animation-delay: 3s;
+    animation-delay: 2s;
 }
 
 .clothes-animation .container:nth-child(1) {
     justify-content: flex-end;
     justify-items: flex-end;
     animation: scroll-down 3s infinite ease-in-out;
-    animation-delay: 3s;
+    animation-delay: 0.5s;
 }
 
 .clothes-animation:hover {
@@ -517,9 +519,10 @@ img {
     }
 
     #search-container.show {
-        height: 100dvh;
         position: absolute;
         top: 0;
+        height: 100dvh;
+        padding-bottom: 30px;
     }
 
     #search-container.hide {

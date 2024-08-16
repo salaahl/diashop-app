@@ -37,7 +37,7 @@
         <div class="right-layer right-layer--3"></div>
     </div>
 
-    <div id="main-container">
+    <div id="main-container" class="min-h-full flex flex-col justify-between">
         @if(Route::is('home') || Route::is('catalog') || Route::is('category') || Route::is('product') || Route::is('basket'))
         <x-banner-top />
         @endif
@@ -55,19 +55,18 @@
             @yield('main')
         </main>
 
+        <!-- Page Footer -->
+        <footer>
+            @section('footer')
+            @include('layouts.footer')
+            @show
+        </footer>
     </div>
-
-    <!-- Page Footer -->
-    <footer>
-        @section('footer')
-        @include('layouts.footer')
-        @show
-    </footer>
 
     <!-- Page Scripts -->
     @section('scripts')
     @vite(['resources/js/app.js', 'resources/js/search-product.js'])
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     @show
 </body>
 
