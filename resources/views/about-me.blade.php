@@ -24,6 +24,8 @@
         }
 
         #about-me>div:last-of-type img {
+            height: auto;
+            width: 33%;
             box-shadow: -20px -15px 10px hsl(0deg 0% 0% / 0.25);
         }
 
