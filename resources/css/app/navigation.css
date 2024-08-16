@@ -42,7 +42,7 @@ a:has(> #basket-counter) {
     font-size: x-small;
     font-weight: 900;
     color: white;
-    background-color: cadetblue;
+    background-color: var(--accent-color-1);
     border-radius: 99px;
 }
 

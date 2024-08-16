@@ -19,7 +19,7 @@
 <div class="min-h-screen w-full mt-[-80px] pt-[80px]">
     @if (session()->has("basket"))
     <h1 class="md:hidden">Panier</h1>
-    <div class="flex max-md:flex-wrap justify-between">
+    <div class="max-md:min-h-[50vh] flex max-md:flex-col max-md:flex-wrap justify-between">
         <div id="summary-container" class="w-full relative md:mb-[25px] md:mr-8 lg:mr-20 overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
