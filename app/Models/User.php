@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\Order;
 use App\Models\Favorite;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
