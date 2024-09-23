@@ -48,17 +48,18 @@
                     @php($total = 0)
                     @foreach(session('basket') as $products)
                     @foreach($products as $product)
+                    @php($size = $product['size'] == "os" ? "unique" : $product['size'])
                     <tr class="bg-white border-b hover:bg-gray-50">
                         <td class="column-one pt-4 pb-4 pl-4">
                             <a href="{{ route('product', [$product['catalog'], $product['category'], $product['id']]) }}">
-                                <img src="{{ $product['img'] }}" class="w-16 md:w-32 max-w-full max-h-full" alt="{{ $product['name'] }}">
+                                <img src="{{ Storage::url($product['img']) }}" class="w-16 md:w-32 max-w-full max-h-full" alt="{{ $product['name'] }}">
                             </a>
                         </td>
                         <td class="column-two pl-2 py-4 font-semibold text-gray-900">
                             <h4 class="text-center">{{ ucfirst($product['name']) }}</h4>
                         </td>
                         <td class="column-three py-4 font-semibold text-gray-900">
-                            <h4 class="size uppercase">@if($product['size'] == "os") Unique @else {{ $product['size'] }} @endif</h4>
+                            <h4 class="size uppercase">{{ $size }}</h4>
                         </td>
                         <td class="column-four py-4">
                             <div class="flex justify-center items-center">

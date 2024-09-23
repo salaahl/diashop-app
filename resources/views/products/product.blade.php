@@ -19,10 +19,13 @@
 <div class="flex flex-wrap justify-between md:flex-nowrap flex-col md:flex-row">
     <section id="product-images-container" class="w-full md:w-2/4 mt-[-80px]">
         <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
-            @php $i = 1 @endphp
-            @foreach($product->img as $image)
+            @php
+            $i = 1;
+            $product_images = json_decode($product->img, true);
+            @endphp
+            @foreach($product_images as $image)
             <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start">
-                <img src="{{ $image }}" alt="{{ $product->name }}" data-modal-target="default-modal" data-modal-toggle="default-modal" class="h-full w-full object-cover object-center cursor-zoom-in" onclick="currentSlide('{{ $i }}')" />
+                <img src="{{ Storage::url($image) }}" alt="{{ $product->name }}" data-modal-target="default-modal" data-modal-toggle="default-modal" class="h-full w-full object-cover object-center cursor-zoom-in" onclick="currentSlide('{{ $i }}')" />
             </li>
             @php $i = $i + 1 @endphp
             @endforeach
@@ -44,34 +47,35 @@
             </div>
             @php
             $count = 0;
-            foreach($product->quantity_per_size as $quantity) {
+            $product_quantity = json_decode($product->quantity_per_size, true);
+            foreach($product_quantity as $quantity) {
             $count += $quantity;
             }
             @endphp
             @if($count > 0)
             <div class="max-md:my-4">
                 <div class="radio-toolbar">
-                    @if(isset($product->quantity_per_size["os"]) && $product->quantity_per_size["os"] > 0)
+                    @if(isset($product_quantity["os"]) && $product_quantity["os"] > 0)
                     <input type="radio" name="size" id="os" value="os">
                     <label class="radio_label" for="os">Taille unique</label>
                     @endif
-                    @if(isset($product->quantity_per_size["s"]) && $product->quantity_per_size["s"] > 0)
+                    @if(isset($product_quantity["s"]) && $product_quantity["s"] > 0)
                     <input type="radio" name="size" id="s" value="s">
                     <label class="radio_label" for="s">S</label>
                     @endif
-                    @if(isset($product->quantity_per_size["m"]) && $product->quantity_per_size["m"] > 0)
+                    @if(isset($product_quantity["m"]) && $product_quantity["m"] > 0)
                     <input type="radio" name="size" id="m" value="m">
                     <label class="radio_label" for="m">M</label>
                     @endif
-                    @if(isset($product->quantity_per_size["l"]) && $product->quantity_per_size["l"] > 0)
+                    @if(isset($product_quantity["l"]) && $product_quantity["l"] > 0)
                     <input type="radio" name="size" id="l" value="l">
                     <label class="radio_label" for="l">L</label>
                     @endif
-                    @if(isset($product->quantity_per_size["xl"]) && $product->quantity_per_size["xl"] > 0)
+                    @if(isset($product_quantity["xl"]) && $product_quantity["xl"] > 0)
                     <input type="radio" name="size" id="xl" value="xl">
                     <label class="radio_label" for="xl">XL</label>
                     @endif
-                    @if(isset($product->quantity_per_size["xxl"]) && $product->quantity_per_size["xxl"] > 0)
+                    @if(isset($product_quantity["xxl"]) && $product_quantity["xxl"] > 0)
                     <input type="radio" name="size" id="xxl" value="xxl">
                     <label class="radio_label" for="xxl">XXL</label>
                     @endif
@@ -145,9 +149,9 @@
     <div class="carousel-container">
         <div id="slides-container" class="relative max-h-full">
             <div class="relative shadow-2xl">
-                @foreach($product->img as $image)
+                @foreach($product_images as $image)
                 <div class="carousel-slide">
-                    <img src="{{ $image }}" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="{{ $product->name }}">
+                    <img src="{{ Storage::url($image) }}" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="{{ $product->name }}">
                     <div class="magnifier"></div>
                 </div>
                 @endforeach
@@ -158,9 +162,9 @@
         </div>
         <div id="img-preview">
             @php $i = 1 @endphp
-            @foreach($product->img as $image)
+            @foreach($product_images as $image)
             <div class="preview-column">
-                <img id="slide-button-{{ $i }}" class="slide-cursor" src="{{ $image }}" onclick="currentSlide('{{ $i }}')" alt="{{ $product->name }}">
+                <img id="slide-button-{{ $i }}" class="slide-cursor" src="{{ Storage::url($image) }}" onclick="currentSlide('{{ $i }}')" alt="{{ $product->name }}">
             </div>
             @php $i = $i + 1 @endphp
             @endforeach
@@ -178,12 +182,14 @@
     <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
     @foreach($product->category->products->where('id', '!=', $product->id)->take(3) as $product)
     @php
+    $product_images = json_decode($product->img, true);
     $product_stock = 0;
-    foreach($product->quantity_per_size as $size => $quantity) {
+    $product_quantity = json_decode($product->quantity_per_size, true);
+    foreach($product_quantity as $size => $quantity) {
     $product_stock += $quantity;
     }
     @endphp
-    <x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product->img[0] }}" image2="{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
+    <x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ Storage::url($product_images[0]) }}" image2="{{ Storage::url($product_images[1]) }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
     @endforeach
 </section>
 @endif

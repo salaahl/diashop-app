@@ -21,9 +21,9 @@ class StripePaymentSessionRepository implements StripePaymentInterfaceRepository
         foreach (session()->get("basket") as $items) {
             foreach ($items as $item) {
                 $product = Product::where("id", $item['id'])->first();
-                $product_quantity = $product->quantity_per_size;
+                $product_quantity = json_decode($product->quantity_per_size, true);
                 $product_quantity[$item['size']] -= $item['quantity'];
-                $product->quantity_per_size = $product_quantity;
+                $product->quantity_per_size = json_encode($product_quantity);
                 $product->save();
             }
         }
@@ -76,7 +76,9 @@ class StripePaymentSessionRepository implements StripePaymentInterfaceRepository
         ];
         $order->save();
 
+        // Mail de confirmation à l'acheteur
         dispatch(new ConfirmationEmailJob($order));
+        // Notification à l'administrateur
         dispatch(new NewCommandEmailJob($order));
 
         session()->forget("basket");

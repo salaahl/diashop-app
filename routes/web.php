@@ -2,13 +2,10 @@
 
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CatalogController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\StripePaymentController;
-use App\Http\Controllers\OrderController;
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\Route;
 

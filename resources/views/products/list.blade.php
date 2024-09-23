@@ -53,7 +53,7 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
         >
         <a href="{{ '/catalog/' . $category->catalog->name . '/' . $category->name }}">
             <div class="thumbnail">
-                <img src='{{ asset("$category->img") }}' alt="{{ $category->name }}" />
+                <img src='{{ Storage::url($category->img) }}' alt="{{ $category->name }}" />
             </div>
             <div class="details">
                 <h4 class="title text-center">{{ ucfirst($category->name) }}</h4>
@@ -73,12 +73,13 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 @endif
 @foreach($products as $product)
 @php
+$product_images = json_decode($product->img, true);
 $product_stock = 0;
-foreach($product->quantity_per_size as $size => $quantity) {
+foreach(json_decode($product->quantity_per_size, true) as $size => $quantity) {
 $product_stock += $quantity;
 }
 @endphp
-<x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product->img[0] }}" image2="{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
+<x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ Storage::url($product_images[0]) }}" image2="{{ Storage::url($product_images[1]) }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
 @endforeach
 <aside class="w-full mt-[-1rem] mb-4">
     {{ $products->links() }}

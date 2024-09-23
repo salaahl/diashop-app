@@ -23,12 +23,14 @@
     </div>
     @foreach($products as $product)
     @php
+    $product_images = json_decode($product->img, true);
+    $quantity_per_size = json_decode($product->quantity_per_size, true);
     $product_stock = 0;
-    foreach($product->quantity_per_size as $size => $quantity) {
+    foreach($quantity_per_size as $size => $quantity) {
     $product_stock += $quantity;
     }
     @endphp
-    <x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product->img[0] }}" image2="{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
+    <x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ Storage::url($product_images[0]) }}" image2="{{ Storage::url($product_images[1]) }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
     @endforeach
     <aside class="w-full">
         {{ $products->links() }}

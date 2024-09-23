@@ -18,6 +18,7 @@ class BasketSessionRepository implements BasketInterfaceRepository
     {
         $basket = session()->get("basket");
         $product = Product::where("id", $product_id)->first();
+        $product_image = json_decode($product->img, true)[0];
         $product->promotion ?
             $price = round($product->price - ($product->price / 100 * $product->promotion), 2)
             : $price = $product->price;
@@ -29,7 +30,7 @@ class BasketSessionRepository implements BasketInterfaceRepository
             'price' => $price,
             'size' => $size,
             'quantity' => $quantity,
-            'img' => $product->img[0],
+            'img' => $product_image,
             'catalog' => $product->catalog->name,
             'category' => $product->category->name
         ];
@@ -44,7 +45,7 @@ class BasketSessionRepository implements BasketInterfaceRepository
         $basket = session()->get("basket");
         $product = Product::where("id", $product_id)->first();
 
-        if ($product->quantity_per_size[$size] >= $quantity) {
+        if (json_decode($product->quantity_per_size, true)[$size] >= $quantity) {
             $basket[$product_id][$size]['quantity'] = $quantity; // On ajoute ou on met à jour le produit au panier
             session()->put("basket", $basket); // On enregistre le panier
         }

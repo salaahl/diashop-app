@@ -32,6 +32,8 @@ function updateQuantity(quantityInput, delta) {
             quantity: newQuantity,
         };
 
+        data.size == "unique" ? (data.size = "os") : false;
+
         const request = new Request("/basket/update", {
             method: "PATCH",
             body: JSON.stringify(data),
@@ -62,6 +64,8 @@ function removeProduct(product) {
             .querySelector(".size")
             .innerHTML.toLowerCase(),
     };
+
+    data.size == "unique" ? (data.size = "os") : false;
 
     const request = new Request("/basket/remove", {
         method: "DELETE",
