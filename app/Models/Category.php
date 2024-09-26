@@ -12,6 +12,8 @@ class Category extends Model
 {
     use HasFactory, MediaAlly;
 
+    public $additional_attributes = ['name_w_catalog'];
+
     public function catalog()
     {
         return $this->belongsTo(Catalog::class);
@@ -20,5 +22,10 @@ class Category extends Model
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function getNameWCatalogAttribute()
+    {
+        return ($this->name . ' - ' . $this->catalog->name); 
     }
 }
