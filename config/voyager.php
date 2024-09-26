@@ -42,7 +42,7 @@ return [
     */
 
     'models' => [
-       // 'namespace' => 'App\\Models\\',
+        // 'namespace' => 'App\\Models\\',
     ],
 
     /*
@@ -143,9 +143,7 @@ return [
             ],
         ],
 
-        'widgets' => [
-
-        ],
+        'widgets' => [],
 
     ],
 
@@ -222,15 +220,17 @@ return [
     'compass_in_production' => false,
 
     'media' => [
+        'max_size' => 2560,
         // The allowed mimetypes to be uploaded through the media-manager.
         // 'allowed_mimetypes' => '*', //All types can be uploaded
         'allowed_mimetypes' => [
-          'image/jpeg',
-          'image/png',
-          'image/gif',
-          'image/bmp',
-          'video/mp4',
+            'image/jpeg',
+            'image/png',
+            'image/gif',
+            'image/bmp',
+            'video/mp4',
         ],
+        'quality' => 75,
         //Path for media-manager. Relative to the filesystem.
         'path'                => '/',
         'show_folders'        => true,
