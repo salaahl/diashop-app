@@ -8,6 +8,7 @@
     ],
     "license": "MIT",
     "require": {
+        "ext-exif": "*",
         "ext-gd": "*",
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
