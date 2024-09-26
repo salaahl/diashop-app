@@ -26,6 +26,6 @@ class Category extends Model
 
     public function getNameWCatalogAttribute()
     {
-        return ($this->name . ' - ' . $this->catalog->name); 
+        return ($this->name . ' - ' . $this->catalog->name);
     }
 }
