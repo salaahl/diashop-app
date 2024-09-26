@@ -24,8 +24,8 @@
             $product_images = json_decode($product->img, true);
             @endphp
             @foreach($product_images as $image)
-            <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start">
-                <img src="{{ Storage::url($image) }}" alt="{{ $product->name }}" data-modal-target="default-modal" data-modal-toggle="default-modal" class="h-full w-full object-cover object-center cursor-zoom-in" onclick="currentSlide('{{ $i }}')" />
+            <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start" data-modal-target="default-modal" data-modal-toggle="default-modal">
+                <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" alt="{{ $product->name }}" class="h-full w-full object-cover object-center cursor-zoom-in" onclick="currentSlide('{{ $i }}')"></x-cld-image>
             </li>
             @php $i = $i + 1 @endphp
             @endforeach
@@ -151,7 +151,7 @@
             <div class="relative shadow-2xl">
                 @foreach($product_images as $image)
                 <div class="carousel-slide">
-                    <img src="{{ Storage::url($image) }}" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="{{ $product->name }}">
+                    <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="{{ $product->name }}"></x-cld-image>
                     <div class="magnifier"></div>
                 </div>
                 @endforeach
@@ -163,8 +163,8 @@
         <div id="img-preview">
             @php $i = 1 @endphp
             @foreach($product_images as $image)
-            <div class="preview-column">
-                <img id="slide-button-{{ $i }}" class="slide-cursor" src="{{ Storage::url($image) }}" onclick="currentSlide('{{ $i }}')" alt="{{ $product->name }}">
+            <div class="preview-column" onclick="currentSlide('{{ $i }}')">
+                <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" id="slide-button-{{ $i }}" class="slide-cursor" alt="{{ $product->name }}"></x-cld-image>
             </div>
             @php $i = $i + 1 @endphp
             @endforeach
@@ -189,7 +189,7 @@
     $product_stock += $quantity;
     }
     @endphp
-    <x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ Storage::url($product_images[0]) }}" image2="{{ Storage::url($product_images[1]) }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
+    <x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product_images[0] }}" image2="{{ $product_images[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
     @endforeach
 </section>
 @endif

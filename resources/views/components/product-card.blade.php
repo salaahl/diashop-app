@@ -1,8 +1,8 @@
 <article class="product">
     <a href="{{ $link }}">
         <div class="thumbnail">
-            <img src="{{ $image1 }}" alt="{{ $title }}" />
-            <img src="{{ $image2 }}" alt="{{ $title }}" />
+            <x-cld-image public-id="{{ str_replace('\\', '/', $image1) }}" alt="{{ $title }}"></x-cld-image>
+            <x-cld-image public-id="{{ str_replace('\\', '/', $image2) }}" alt="{{ $title }}"></x-cld-image>
         </div>
         <div class="details lg:flex justify-between px-1 py-2 mt-1">
             <div class="w-full flex flex-wrap items-baseline justify-between">

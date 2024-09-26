@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use CloudinaryLabs\CloudinaryLaravel\MediaAlly;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Catalog;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, MediaAlly;
 
     /**
      * The attributes that should be cast.
@@ -25,7 +26,7 @@ class Product extends Model
     {
         return $this->belongsTo(Catalog::class);
     }
-    
+
     public function category()
     {
         return $this->belongsTo(Category::class);

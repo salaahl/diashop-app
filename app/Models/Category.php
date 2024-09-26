@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use CloudinaryLabs\CloudinaryLaravel\MediaAlly;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product;
 use App\Models\Catalog;
 
 class Category extends Model
 {
-    use HasFactory;
+    use HasFactory, MediaAlly;
 
     public function catalog()
     {

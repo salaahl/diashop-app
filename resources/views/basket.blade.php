@@ -52,7 +52,7 @@
                     <tr class="bg-white border-b hover:bg-gray-50">
                         <td class="column-one pt-4 pb-4 pl-4">
                             <a href="{{ route('product', [$product['catalog'], $product['category'], $product['id']]) }}">
-                                <img src="{{ Storage::url($product['img']) }}" class="w-16 md:w-32 max-w-full max-h-full" alt="{{ $product['name'] }}">
+                                <x-cld-image public-id="{{ str_replace('\\', '/', $product['img']) }}" class="w-16 md:w-32 max-w-full max-h-full" alt="{{ $product['name'] }}"></x-cld-image>
                             </a>
                         </td>
                         <td class="column-two pl-2 py-4 font-semibold text-gray-900">
