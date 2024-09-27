@@ -93,7 +93,7 @@ a.has-basket-counter {
     }
 
     #navbar-dropdown-btn[aria-expanded="true"] + #navbar-dropdown {
-        height: 100dvh;
+        height: 100vh;
         margin-bottom: 0.5rem;
         padding-top: 100px;
         transition: all 0.5s;
