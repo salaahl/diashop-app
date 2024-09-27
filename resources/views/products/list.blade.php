@@ -92,6 +92,6 @@ $product_stock += $quantity;
 @section('scripts')
 @parent
 @if(isset($categories))
-@vite('resources/js/filter_data.js')
+@vite('resources/js/products-list.js')
 @endif
 @endsection

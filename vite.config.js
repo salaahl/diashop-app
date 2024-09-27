@@ -20,7 +20,7 @@ export default defineConfig({
                 "resources/js/product.js",
                 "resources/js/basket.js",
                 "resources/js/bootstrap.js",
-                "resources/js/filter_data.js",
+                "resources/js/products-list.js",
             ],
             refresh: true,
         }),
