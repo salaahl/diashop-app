@@ -3,13 +3,13 @@ let $ = (id) => {
 };
 
 $("#search-btn").addEventListener("click", (e) => {
-    $("#search-container").classList.add("show");
-    $("#search-container").classList.remove("hide");
+    $("#navbar-container").classList.add("show-search-container");
+    $("#navbar-container").classList.remove("hide-search-container");
 });
 
 $("#close-search-btn").addEventListener("click", (e) => {
-    $("#search-container").classList.add("hide");
-    $("#search-container").classList.remove("show");
+    $("#navbar-container").classList.add("hide-search-container");
+    $("#navbar-container").classList.remove("show-search-container");
 });
 
 let timer;

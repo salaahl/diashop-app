@@ -121,7 +121,7 @@ a.has-basket-counter {
     }
 
     #navbar-container:hover,
-    #navbar-container:has(#search-container.show) {
+    #navbar-container.show-search-container {
         background-color: rgb(255, 255, 255, 1);
         backdrop-filter: blur(0px);
         animation: mask-off;

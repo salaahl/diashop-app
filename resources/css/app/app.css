@@ -128,13 +128,13 @@ h4 {
 }
 
 #navbar-container,
-#search-container.show {
+#navbar-container.show-search-container #search-container {
     transition: height 0.5s, box-shadow 0.5s;
     transition-delay: 0s, 0.5s;
     transition-property: height, box-shadow;
 }
 
-#search-container.hide {
+#navbar-container.hide-search-container #search-container {
     height: 0;
     transition: height 0.4s;
 }
@@ -518,14 +518,14 @@ img {
         --banner-speed: -400vw;
     }
 
-    #search-container.show {
+    #navbar-container.show-search-container #search-container {
         position: absolute;
         top: 0;
         height: 100dvh;
         padding-bottom: 30px;
     }
 
-    #search-container.hide {
+    #navbar-container.hide-search-container #search-container {
         top: 0;
     }
 
@@ -544,12 +544,12 @@ img {
         --banner-speed: -150vw;
     }
 
-    #search-container.show {
+    #navbar-container.show-search-container #search-container {
         height: 80vh;
         box-shadow: 0px 20vh 20px 20px rgb(0, 0, 0, 0.5);
     }
 
-    #search-container.hide {
+    #navbar-container.hide-search-container #search-container {
         box-shadow: unset;
     }
 
