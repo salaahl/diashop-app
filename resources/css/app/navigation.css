@@ -86,13 +86,13 @@ a.has-basket-counter {
         display: none;
     }
 
-    #navbar:has(#navbar-dropdown-btn[aria-expanded="false"]) #navbar-dropdown {
+    #navbar-dropdown-btn[aria-expanded="false"] + #navbar-dropdown {
         height: 0;
         padding-top: 0;
         transition: all 0.25s;
     }
 
-    #navbar:has(#navbar-dropdown-btn[aria-expanded="true"]) #navbar-dropdown {
+    #navbar-dropdown-btn[aria-expanded="true"] + #navbar-dropdown {
         height: 100dvh;
         margin-bottom: 0.5rem;
         padding-top: 100px;
