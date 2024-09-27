@@ -19,7 +19,7 @@
             <div class="h-full flex max-lg:flex-col lg:justify-between items-center overflow-auto">
                 <ul class="lg:h-full max-lg:w-full flex flex-col items-center font-medium p-4 lg:p-0 max-lg:rounded-lg border border-gray-100 max-lg:bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
                     @foreach(\App\Models\Catalog::all() as $catalog)
-                    <li class="h-full w-full lg:flex lg:justify-center lg:items-center">
+                    <li class="has-dropdown h-full w-full lg:flex lg:justify-center lg:items-center">
                         <a href="{{ route('catalog', $catalog->name) }}" class="dropdownNavbarLinkCatalog hidden lg:flex items-center justify-between w-full py-2 text-sm uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
                             <span>{{ ucfirst($catalog->name) }}</span>
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -58,7 +58,7 @@
                 </ul>
                 <ul class="lg:h-full max-lg:w-full flex flex-col lg:items-center font-medium p-4 lg:p-0 mt-4 max-lg:rounded-b-lg border border-gray-100 max-lg:bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
                     @auth
-                    <li class="lg:h-full w-full lg:flex lg:justify-center lg:items-center">
+                    <li class="has-dropdown lg:h-full w-full lg:flex lg:justify-center lg:items-center">
                         <a href="{{ route('dashboard') }}" id="dropdownDashboardLink" class="hidden lg:flex max-lg:justify-between items-center w-full p-2 whitespace-nowrap text-gray-900 text-sm uppercase rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
                             <span>Mon profil</span>
                             <svg class="w-2.5 h-2.5 lg:ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -94,7 +94,7 @@
                     </li>
                     @endauth
                     <li class="h-full w-full lg:flex lg:items-center lg:flex lg:align-center">
-                        <a href="{{ route('basket') }}" class="flex justify-between items-center max-lg:mb-2 p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0  lg:p-0">
+                        <a href="{{ route('basket') }}" class="has-basket-counter flex justify-between items-center max-lg:mb-2 p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0  lg:p-0">
                             <span class="text-sm uppercase whitespace-nowrap lg:m-0">Panier</span>
                             @if(session()->has('basket'))
                             @php
