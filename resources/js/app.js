@@ -63,11 +63,11 @@ window.addEventListener("load", () => {
 
 // Affichage du menu déroulant de la barre de navigation en mode mobile
 const button = document.getElementById('navbar-dropdown-btn');
-const dropdown = document.getElementById('navbar-dropdown');
+const navbar = document.getElementById('navbar-container');
 
 button.addEventListener('click', function() {
     // Basculer l'état aria-expanded
     const isExpanded = button.getAttribute('aria-expanded') === 'true';
     button.setAttribute('aria-expanded', !isExpanded); // Inverse l'état
-    dropdown.classList.toggle('show-navbar-dropdown', !isExpanded); // Affiche ou cache le contenu
+    navbar.classList.toggle('show-navbar-dropdown', !isExpanded); // Affiche ou cache le contenu
 });
