@@ -100,9 +100,7 @@ document.querySelectorAll(".radio_label").forEach((radio) => {
                         "</option>";
                 }
 
-                select.innerHTML =
-                    '<option value="" selected>Selectionner une quantité</option>' +
-                    options;
+                select.innerHTML = options;
             })
             .catch((error) => {
                 console.log(error.message);
