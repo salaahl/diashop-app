@@ -16,7 +16,7 @@ products.forEach((product) => {
         pointerEvents: "none",
         y: "25%",
         opacity: 0,
-        duration: 0.5,
+        duration: 0.35,
         scrollTrigger: {
             trigger: product,
             start: "0% 100%",
