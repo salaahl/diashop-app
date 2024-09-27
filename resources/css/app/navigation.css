@@ -47,7 +47,7 @@ a.has-basket-counter {
 }
 
 @media (max-width: 1023px) {
-    #navbar-container:has(#navbar-dropdown-btn[aria-expanded="true"]) {
+    #navbar-container.show-navbar-dropdown {
         animation: mask-off;
         animation-fill-mode: forwards;
         animation-delay: 0s;
