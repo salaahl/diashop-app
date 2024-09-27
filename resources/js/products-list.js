@@ -19,7 +19,7 @@ products.forEach((product) => {
         duration: 0.5,
         scrollTrigger: {
             trigger: product,
-            start: "50% 100%",
+            start: "25% 100%",
         },
     });
 });
