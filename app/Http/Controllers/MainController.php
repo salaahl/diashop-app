@@ -20,10 +20,32 @@ class MainController extends Controller
                 $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'DESC')->paginate(12);
                 break;
             case "price-lowest":
-                $products = Product::where("catalog_id", $catalog_id)->orderBy('price', 'ASC')->paginate(12);
+                $products = Product::where("category_id", 
+                    Category::where("catalog_id", $catalog_id)
+                        ->where("name", $category)
+                        ->first()->id
+                )
+                ->selectRaw('id, name, price, promotion, 
+                             CASE 
+                                WHEN promotion IS NOT NULL THEN price - (price * promotion / 100) 
+                                ELSE price 
+                             END as final_price')
+                ->orderBy('final_price', 'ASC')
+                ->paginate(12);
                 break;
             case "price-highest":
-                $products = Product::where("catalog_id", $catalog_id)->orderBy('price', 'DESC')->paginate(12);
+                $products = Product::where("category_id", 
+                    Category::where("catalog_id", $catalog_id)
+                        ->where("name", $category)
+                        ->first()->id
+                )
+                ->selectRaw('id, name, price, promotion, 
+                             CASE 
+                                WHEN promotion IS NOT NULL THEN price - (price * promotion / 100) 
+                                ELSE price 
+                             END as final_price')
+                ->orderBy('final_price', 'DESC')
+                ->paginate(12);
                 break;
             default:
                 $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'DESC')->paginate(12);
