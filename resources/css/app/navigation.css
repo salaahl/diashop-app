@@ -32,7 +32,7 @@
 .has-dropdown > a > svg,
 .has-dropdown > button > svg {
     transform: rotateZ(0deg);
-    transition: transform 0.25s;
+    transition: transform 0.25s linear;
 }
 
 a.has-basket-counter {
@@ -83,7 +83,7 @@ a.has-basket-counter {
         margin-right: var(--container-padding-x);
     }
 
-    #navbar-dropdown-btn[aria-expanded="false"] svg:first-of-type,
+    #navbar-dropdown-btn svg:first-of-type,
     #navbar-dropdown-btn[aria-expanded="true"] svg:last-of-type {
         display: block;
     }
@@ -92,10 +92,10 @@ a.has-basket-counter {
         display: none;
     }
 
-    #navbar-dropdown-btn[aria-expanded="false"] + #navbar-dropdown {
+    #navbar-dropdown {
         height: 0;
         padding-top: 0;
-        transition: all 0.25s;
+        transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
 
     #navbar-dropdown-btn[aria-expanded="true"] + #navbar-dropdown {
@@ -115,7 +115,7 @@ a.has-basket-counter {
         height: 0;
         max-height: fit-content;
         overflow: hidden;
-        transition: height 0.5s;
+        transition: height 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
 
     .dropdownNavbarLinkCatalogBtn[aria-expanded="true"]
@@ -163,7 +163,7 @@ a.has-basket-counter {
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-        transition: all 0.25s ease-in-out;
+        transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
 
     #navbar .dropdownNavbarCatalog {
