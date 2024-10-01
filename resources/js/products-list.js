@@ -10,16 +10,19 @@ gsap.config({
 gsap.defaults({ ease: "power1.out" });
 
 // Exemple d'animation GSAP
-const products = gsap.utils.toArray(".product");
+const products =
+    window.innerWidth < 768
+        ? gsap.utils.toArray(".product:nth-of-type(n+3)")
+        : gsap.utils.toArray(".product:nth-of-type(n+4)");
 products.forEach((product) => {
     gsap.from(product, {
         pointerEvents: "none",
-        y: "15%",
+        y: "25%",
         opacity: 0,
         duration: 0.35,
         scrollTrigger: {
             trigger: product,
-            start: "0% 85%",
+            start: "0% 75%",
         },
     });
 });
