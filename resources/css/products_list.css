@@ -14,8 +14,14 @@ main {
     width: 100%;
 }
 
+.catalog-name {
+    display: flex;
+    align-items: center;
+    transform: rotate(-90deg);
+}
+
 .category .thumbnail img {
-    filter: blur(1px) grayscale(0.5);
+    filter: blur(1px) grayscale(0.75);
     transition: all 0.8s;
 }
 
@@ -59,8 +65,8 @@ main {
     }
 
     .category {
-        width: 20%;
-        min-width: 20%;
+        width: 15%;
+        min-width: 15%;
         margin: 0.5%;
     }
 
