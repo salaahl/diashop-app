@@ -19,7 +19,7 @@ products.forEach((product) => {
         pointerEvents: "none",
         y: window.innerWidth < 768 ? "25%" : "50%",
         opacity: 0,
-        duration: 0.35,
+        duration: window.innerWidth < 768 ? 0.35 : 0.5,
         scrollTrigger: {
             trigger: product,
             start: window.innerWidth < 768 ? "0% 75%" : "0% 100%",
