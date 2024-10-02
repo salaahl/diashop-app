@@ -66,7 +66,7 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
     </article>
     @endforeach
 </div>
-<nav id="filters" class="w-full flex justify-between items-center p-2 mb-4 bg-gray-100 rounded-t-lg">
+<nav id="filters" class="w-full flex justify-between items-center p-2 mb-2 bg-gray-100 rounded-t-lg">
     <h4>Trier par :</h4>
     <select id="filter_select" class="block py-2.5 px-0 text-sm text-gray-500 bg-transparent border-0 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
         <option value="new" @if(request()->get('filter') == 'new' || !request()->get('filter')) selected @endif>Nouveautés</option>
@@ -85,7 +85,7 @@ $product_stock += $quantity;
 @endphp
 <x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product_images[0] }}" image2="{{ $product_images[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
 @endforeach
-<aside class="w-full mt-[-1rem] mb-4">
+<aside class="w-full mt-[-0.5rem] mb-4">
     {{ $products->links() }}
 </aside>
 @endsection
