@@ -20,7 +20,7 @@ class OrderObserver
      */
     public function updated(Order $order): void
     {
-        if ($order->isDirty('tracking_number')) {
+        if ($order->isDirty('track_number')) {
             dispatch(new TrackingNumberEmailJob($order, $order->tracking_number));
         }
     }

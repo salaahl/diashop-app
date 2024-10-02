@@ -30,7 +30,7 @@
         }
 
         .animateFadeSlideIn {
-            animation: fadeSlideIn 2s forwards;
+            animation: fadeSlideIn 1.5s ease forwards;
         }
     }
 

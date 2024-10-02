@@ -128,7 +128,7 @@ class StripePaymentController extends Controller
                             'message' => 'Comptez un délai de deux jours ouvrés pour la livraison express et de cinq jours ouvrés pour la livraison standard.',
                         ],
                     ],
-                    'return_url' => $APP_URL . 'confirmation/{CHECKOUT_SESSION_ID}',
+                    'return_url' => $APP_URL . '/confirmation/{CHECKOUT_SESSION_ID}',
                     'automatic_tax' => [
                         'enabled' => true,
                     ],
