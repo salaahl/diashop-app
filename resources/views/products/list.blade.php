@@ -1,20 +1,17 @@
 @php
 $query = explode("/", url()->current());
 $h1 = null;
-$h2 = null;
+$search_header = null;
 $meta_description = null;
 
 if($query[3] == "search") {
-$h1 = "Résultats de votre recherche";
-$h2 = "";
+$search_header = "Résultats de votre recherche";
 $meta_description = "";
 } elseif($query[4] == "femme") {
 $h1 = "femme";
-$h2 = "Découvrez notre collection féminine : élégance, style et confiance !";
 $meta_description = "Découvrez notre collection de prêt-à-porter pour femmes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
 } elseif($query[4] == "homme") {
 $h1 = "homme";
-$h2 = "Découvrez notre collection masculine : élégance, sophistication et confiance !";
 $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
 }
 @endphp
@@ -38,6 +35,11 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 @endsection
 
 @section('main')
+@if(isset($search_header))
+<div id="headers">
+    <h1>{{ $search_header }}</h1>
+</div>
+@endif
 @if(isset($categories))
 <div id="categories" class="flex w-full my-8 overflow-x-auto">
     <div class="catalog-name">
