@@ -17,12 +17,12 @@ const products =
 products.forEach((product) => {
     gsap.from(product, {
         pointerEvents: "none",
-        y: "50%",
+        y: window.innerWidth < 768 ? "25%" : "35%",
         opacity: 0,
         duration: 0.35,
         scrollTrigger: {
             trigger: product,
-            start: window.innerWidth < 768 ? "0% 75%" : "0% 50%",
+            start: window.innerWidth < 768 ? "0% 75%" : "0% 65%",
         },
     });
 });
