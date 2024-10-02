@@ -38,12 +38,11 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 @endsection
 
 @section('main')
-<div id="headers">
-    <h1>{{ $h1 }}</h1>
-    <h2>{{ $h2 }}</h2>
-</div>
 @if(isset($categories))
 <div id="categories" class="flex w-full my-8 overflow-x-auto">
+    <div class="catalog-name">
+        <h1>{{ $h1 }}</h1>
+    </div>
     @foreach($categories as $category)
     <article @if(basename(url()->current()) == $category->name)
         class="category selected"
