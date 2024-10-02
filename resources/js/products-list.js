@@ -18,7 +18,6 @@ products.forEach((product) => {
     gsap.from(product, {
         pointerEvents: "none",
         y: "25%",
-        opacity: 0,
         duration: 0.35,
         scrollTrigger: {
             trigger: product,
