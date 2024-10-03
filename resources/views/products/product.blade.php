@@ -20,14 +20,12 @@
     <section id="product-images-container" class="w-full md:w-2/4 mt-[-80px]">
         <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
             @php
-            $i = 1;
             $product_images = json_decode($product->img, true);
             @endphp
             @foreach($product_images as $image)
-            <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start" data-modal-target="default-modal" data-modal-toggle="default-modal">
-                <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" alt="{{ $product->name }}" class="h-full w-full object-cover object-center cursor-zoom-in" onclick="currentSlide('{{ $i }}')"></x-cld-image>
+            <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start" onclick="currentSlide('{{ $loop->iteration }}')" data-modal-target="default-modal" data-modal-toggle="default-modal">
+                <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" alt="{{ $product->name }}" class="h-full w-full object-cover object-center cursor-zoom-in"></x-cld-image>
             </li>
-            @php $i = $i + 1 @endphp
             @endforeach
         </ul>
     </section>
@@ -161,12 +159,10 @@
             </div>
         </div>
         <div id="img-preview">
-            @php $i = 1 @endphp
             @foreach($product_images as $image)
-            <div class="preview-column" onclick="currentSlide('{{ $i }}')">
-                <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" id="slide-button-{{ $i }}" class="slide-cursor" alt="{{ $product->name }}"></x-cld-image>
+            <div class="preview-column" onclick="currentSlide('{{ $loop->iteration }}')">
+                <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" id="slide-button-{{ $loop->iteration }}" class="slide-cursor" alt="{{ $product->name }}"></x-cld-image>
             </div>
-            @php $i = $i + 1 @endphp
             @endforeach
         </div>
     </div>
