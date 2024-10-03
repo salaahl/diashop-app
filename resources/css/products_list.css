@@ -29,6 +29,10 @@ main {
     filter: blur(0) grayscale(0);
 }
 
+#filters {
+    background-color: rgb(var(--accent-color-2), 0.15);
+}
+
 .product {
     margin-bottom: 2rem;
 }

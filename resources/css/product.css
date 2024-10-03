@@ -6,15 +6,11 @@ h2 {
     text-align: start;
 }
 
-#sticky-banner {
-    background-color: rgb(31 41 55);
-}
-
 #title {
     width: fit-content;
     background-image: linear-gradient(
-        rgb(var(--accent-color-2), 0.5),
-        rgb(var(--accent-color-2), 0.5)
+        rgb(var(--accent-color-3), 0.5),
+        rgb(var(--accent-color-3), 0.5)
     );
     background-size: 100% 10px;
     background-repeat: no-repeat;
