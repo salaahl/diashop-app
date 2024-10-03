@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-    --accent-color-1: #8ab3ac;
-    --accent-color-2: #b5aa99;
-    --accent-color-3: #4e4637;
+    --accent-color-1: 138, 179, 172;
+    --accent-color-2: 181, 170, 153;
+    --accent-color-3: 78, 70, 55;
 }
 
 * {
@@ -40,8 +40,8 @@ h1 {
     font-size: var(--h1-font-size);
     font-weight: 400;
     background-image: linear-gradient(
-        var(--accent-color-1),
-        var(--accent-color-1)
+        rgb(var(--accent-color-1)),
+        rgb(var(--accent-color-1))
     );
     background-size: 100% 10px;
     background-repeat: no-repeat;
@@ -72,7 +72,7 @@ h4 {
 }
 
 #sticky-banner {
-    background-color: var(--accent-color-2);
+    background-color: rgb(var(--accent-color-2), 0.5);
 }
 
 #banner-inner {
@@ -335,13 +335,13 @@ img {
 
 .left-layer--2,
 .right-layer--2 {
-    background: var(--accent-color-3);
+    background: rgb(var(--accent-color-3));
     transition-delay: 0.3s;
 }
 
 .left-layer--3,
 .right-layer--3 {
-    background: var(--accent-color-1);
+    background: rgb(var(--accent-color-1));
     transition-delay: 0.12s;
 }
 

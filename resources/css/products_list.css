@@ -21,7 +21,7 @@ main {
 }
 
 .category .thumbnail img {
-    filter: blur(1px) grayscale(0.75);
+    filter: blur(1px) grayscale(0.85);
     transition: all 0.8s;
 }
 
