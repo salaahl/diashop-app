@@ -20,7 +20,7 @@
     <h1>Mes commandes</h1>
     <section id="command-container">
         @foreach($orders as $order)
-        <article class="command mb-16">
+        <article class="command max-w-[768px] mb-16 mx-auto">
             <h2 class="mb-8 uppercase">Numéro de commande : {{ $order->command_number }}</h2>
             <div class="max-w-screen-lg relative mx-auto mb-4 overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-center text-gray-500">
@@ -64,6 +64,13 @@
                                 <h4 class="text-gray-500"><span class="uppercase">Total :</span> {{ $order->amount['amount_total'] / 100 }}€ (dont {{ $order->amount['shipping_cost'] / 100 }}€ de frais de port)</h4>
                             </td>
                         </tr>
+                        @if($order->track_number)
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td colspan="4" class="p-4">
+                                <h4 class="text-gray-500"><span class="uppercase">N° de suivi :</span> <a href="{{ $order->track_number }}" class="font-light" target="_blank">{{ $order->track_number }}</a></h4>
+                            </td>
+                        </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>
