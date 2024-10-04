@@ -20,7 +20,7 @@ async function initialize() {
     const session = await response.json();
 
     if (session.status == "open") {
-        window.replace("/checkout");
+        window.location.replace("/checkout");
     } else if (session.status == "complete") {
         const timeElapsed = Date.now();
         const today = new Date(timeElapsed);
@@ -82,5 +82,7 @@ async function initialize() {
 
         document.getElementById("amount-total").textContent =
             amount_total / 100 + "€";
+    } else {
+        window.location.replace("/basket");
     }
 }
