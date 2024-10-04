@@ -16,7 +16,7 @@
 @endsection
 
 @section('main')
-<div class="min-h-screen w-full mt-[-80px] pt-[80px]">
+<div class="min-h-screen w-full flex flex-wrap">
     @if(isset($products))
     <div id="headers">
         <h1>Mes favoris</h1>

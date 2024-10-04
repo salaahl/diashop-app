@@ -15,7 +15,6 @@
         margin-bottom: 0;
         margin-left: auto;
         margin-right: auto;
-        background-image: unset;
     }
 
     @media (min-width: 768px) {

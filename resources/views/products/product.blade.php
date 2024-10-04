@@ -41,7 +41,7 @@
                 @else
                 <h2 id="price">{{ $product->price }}€</h2>
                 @endif
-                <div id="description">{{ ucfirst($product->description) }}</div>
+                <div id="description">{!! ucfirst($product->description) !!}</div>
             </div>
             @php
             $count = 0;
