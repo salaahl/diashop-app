@@ -18,9 +18,9 @@
 <div class="min-h-screen w-full mt-[-80px] pt-[80px]">
     @if(isset($orders))
     <h1>Mes commandes</h1>
-    <section id="command-container">
+    <section id="command-container" class="mt-12">
         @foreach($orders as $order)
-        <article class="command max-w-[768px] mb-16 mx-auto">
+        <article class="command max-w-[1024px] mb-16 mx-auto">
             <h2 class="mb-8 uppercase">Numéro de commande : {{ $order->command_number }}</h2>
             <div class="max-w-screen-lg relative mx-auto mb-4 overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-center text-gray-500">

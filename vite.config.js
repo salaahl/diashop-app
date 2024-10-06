@@ -14,7 +14,6 @@ export default defineConfig({
                 "resources/css/home.css",
                 "resources/css/product.css",
                 "resources/js/stripe/checkout.js",
-                "resources/js/stripe/confirmation.js",
                 "resources/js/app.js",
                 "resources/js/search-product.js",
                 "resources/js/product.js",

@@ -567,7 +567,7 @@
                                                                 <td align="left" style="padding:0;Margin:0;padding-bottom:20px">
                                                                     <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;font-size:24px;font-style:normal;font-weight:normal;color:#020202">
                                                                         NUMÉRO DE SUIVI :</h2>
-                                                                    <a href="#" style="font-size:24px;">{{ $data[1] }}</a>
+                                                                    <a href="#" style="font-size:24px;">{{ $data[0]->track_number }}</a>
                                                                 </td>
                                                             </tr>
                                                             <tr>

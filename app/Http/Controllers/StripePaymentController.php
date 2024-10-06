@@ -149,6 +149,14 @@ class StripePaymentController extends Controller
         }
     }
 
+    public function confirmation($slug)
+    {
+        $order = Order::where('stripe_transaction_id', $slug)->first();
+
+        return view('stripe/confirmation', [
+            "order" => $order
+        ]);
+    }
 
     public function status()
     {
@@ -163,10 +171,7 @@ class StripePaymentController extends Controller
 
             if ($session->status == "complete" && session()->get("basket")) {
                 // Je génère la facture
-                do {
-                    $number = rand();
-                } while (Order::where("command_number", $number)->first());
-
+                $number = time();
                 $this->stripePaymentRepository->status($number, $session);
             }
 

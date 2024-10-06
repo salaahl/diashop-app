@@ -22,6 +22,7 @@ return new class extends Migration
             $table->json('amount');
             $table->integer('user_id')->nullable();
             $table->string('track_number')->nullable();
+            $table->string('stripe_transaction_id')->nullable();
             $table->timestamps();
         });
     }

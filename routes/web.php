@@ -69,9 +69,7 @@ Route::get('checkout/', function () {
     return view('stripe/checkout');
 })->name('checkout.show');
 Route::post('checkout/', [StripePaymentController::class, 'checkout'])->name('checkout.post');
-Route::get('confirmation/{slug}',  function () {
-    return view('stripe/confirmation');
-})->name('confirmation.show');
+Route::get('confirmation/{slug}', [StripePaymentController::class, 'confirmation'])->name('confirmation.show');
 Route::post('status/', [StripePaymentController::class, 'status'])->name('status.post');
 Route::post('webhooks/', [StripePaymentController::class, 'webhooks'])->name('webhooks');
 
