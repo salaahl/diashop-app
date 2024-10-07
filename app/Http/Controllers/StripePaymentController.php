@@ -149,49 +149,26 @@ class StripePaymentController extends Controller
         }
     }
 
-    public function confirmation($slug)
+    public function confirmation($stripe_session_id)
     {
-        $order = Order::where('stripe_transaction_id', $slug)->first();
+        $stripe = new \Stripe\StripeClient(env("STRIPE_SECRET"));
+        $session = $stripe->checkout->sessions->retrieve($stripe_session_id);
 
-        return view('stripe/confirmation', [
-            "order" => $order
-        ]);
-    }
+        if ($session->status == 'complete') {
+            $order = Order::where('stripe_transaction_id', $stripe_session_id)->first();
 
-    public function status()
-    {
-        try {
-            $stripe = new \Stripe\StripeClient(env("STRIPE_SECRET"));
-            header('Content-Type: application/json');
-
-            $jsonStr = file_get_contents('php://input');
-            $jsonObj = json_decode($jsonStr);
-
-            $session = $stripe->checkout->sessions->retrieve($jsonObj->session_id);
-
-            if ($session->status == "complete" && session()->get("basket")) {
-                // Je génère la facture
-                $number = time();
-                $this->stripePaymentRepository->status($number, $session);
+            if (!$order) {
+                $this->stripePaymentRepository->confirmation($stripe_session_id, $session);
+                $order = Order::where('stripe_transaction_id', $stripe_session_id)->first();
             }
 
-            return response()->json([
-                'command_number' => $number,
-                'status' => $session->status,
-                'customer_details' => $session->customer_details,
-                'shipping_details' => $session->shipping_details,
-                'amount_total' => $session->amount_total,
-                'shipping_cost' => $session->shipping_cost
+            return view('stripe/confirmation', [
+                "order" => $order
             ]);
-            http_response_code(200);
-        } catch (Exception $e) {
-            return response()->json([
-                'error' => $e->getMessage(),
-            ]);
-            http_response_code(500);
+        } else {
+            return redirect()->route('basket')->with('error', 'Une erreur est survenue, veuillez réessayer.');
         }
     }
-
 
     public function webhooks()
     {

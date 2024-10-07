@@ -6,7 +6,7 @@ interface StripePaymentInterfaceRepository
 {
     public function checkout();
 
-    public function status($number, $status);
+    public function confirmation($stripe_session_id, $session);
 
     public function webhooks();
 }

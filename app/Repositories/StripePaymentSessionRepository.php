@@ -15,7 +15,7 @@ class StripePaymentSessionRepository implements StripePaymentInterfaceRepository
         //
     }
 
-    public function status($number, $session)
+    public function confirmation($stripe_session_id, $session)
     {
         // Je retire la quantité commandée
         foreach (session()->get("basket") as $items) {
@@ -29,7 +29,7 @@ class StripePaymentSessionRepository implements StripePaymentInterfaceRepository
         }
 
         $order = new Order();
-        $order->command_number = $number;
+        $order->command_number = time();
         $order->fullname = $session->customer_details->name;
         $order->email = $session->customer_details->email;
 
@@ -74,6 +74,8 @@ class StripePaymentSessionRepository implements StripePaymentInterfaceRepository
             "shipping_cost" => $session->shipping_cost->amount_total,
             "amount_total" => $session->amount_total
         ];
+
+        $order->stripe_transaction_id = $stripe_session_id;
         $order->save();
 
         // Mail de confirmation à l'acheteur

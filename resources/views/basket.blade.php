@@ -17,8 +17,13 @@
 
 @section('main')
 <div class="min-h-screen w-full mt-[-80px] pt-[80px]">
+    @if(session('error'))
+    <script>
+        alert("{{ session('error') }}");
+    </script>
+    @endif
     @if (session()->has("basket"))
-    <h1 class="md:hidden">Panier</h1>
+    <h1 class="md:hidden">Votre panier</h1>
     <div class="max-md:min-h-[50vh] flex max-md:flex-col max-md:flex-wrap justify-between">
         <div id="summary-container" class="w-full relative md:mb-[25px] md:mr-8 lg:mr-20 overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-gray-500">

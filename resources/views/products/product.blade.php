@@ -184,6 +184,12 @@
     <div class="carousel-container">
         <div id="slides-container" class="relative max-h-full">
             <div class="relative shadow-2xl">
+                <button type="button" class="absolute top-1 right-1 md:top-2 md:right-2 z-[100] text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
                 @foreach($product_images as $image)
                 <div class="carousel-slide">
                     <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="{{ $product->name }}"></x-cld-image>

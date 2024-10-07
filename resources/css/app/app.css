@@ -38,6 +38,7 @@ h1 {
     margin: 25px auto;
     text-transform: uppercase;
     text-align: center;
+    text-wrap-style: balance;
     font-size: var(--h1-font-size);
     font-weight: 400;
     background-image: linear-gradient(

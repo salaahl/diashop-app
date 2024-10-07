@@ -70,7 +70,6 @@ Route::get('checkout/', function () {
 })->name('checkout.show');
 Route::post('checkout/', [StripePaymentController::class, 'checkout'])->name('checkout.post');
 Route::get('confirmation/{slug}', [StripePaymentController::class, 'confirmation'])->name('confirmation.show');
-Route::post('status/', [StripePaymentController::class, 'status'])->name('status.post');
 Route::post('webhooks/', [StripePaymentController::class, 'webhooks'])->name('webhooks');
 
 Route::get('about-me/', function () {
