@@ -182,7 +182,7 @@ img {
     word-wrap: break-word;
     color: white;
     background-color: rgb(var(--accent-color-4));
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 5px 0px 0px 5px;
     z-index: 1000;
     transition: transform 0.5s ease-in-out;
 }
