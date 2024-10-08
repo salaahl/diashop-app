@@ -52,6 +52,7 @@
 
         <!-- Page Content -->
         <main>
+            <div id="popup"></div>
             @yield('main')
         </main>
 

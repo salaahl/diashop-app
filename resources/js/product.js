@@ -2,6 +2,9 @@ let $ = (id) => {
     return document.querySelector(id);
 };
 
+const popUp = $("#popup");
+const popUpTimer = 3000;
+
 // Effet de translate en mode mobile pour notifier à l'utilisateur qu'il peut swipe
 window.addEventListener("load", () => {
     if (
@@ -139,15 +142,24 @@ if (document.getElementById("add-basket")) {
                 fetch(request)
                     .then((response) => response.json())
                     .then((data) => {
-                        alert("Article ajouté au panier !");
+                        popUp.innerHTML = "Article ajouté au panier !";
+                        popUp.classList.add("show");
+
+                        setTimeout(function () {
+                            popUp.classList.remove("show");
+                        }, popUpTimer);
                     })
                     .catch((error) => {
                         console.log(error.message);
                     });
             } else {
-                alert(
-                    "Veuillez d'abord sélectionner une taille et une quantité."
-                );
+                popUp.innerHTML =
+                    "Veuillez d'abord sélectionner une taille et une quantité.";
+                popUp.classList.add("show");
+
+                setTimeout(function () {
+                    popUp.classList.remove("show");
+                }, popUpTimer);
             }
         });
 }
@@ -175,7 +187,13 @@ if (document.getElementById("add-favorite")) {
             fetch(request)
                 .then((response) => response.json())
                 .then((data) => {
-                    alert("Article ajouté aux favoris !");
+                    popUp.innerHTML = "Article ajouté aux favoris !";
+                    popUp.classList.add("show");
+
+                    setTimeout(function () {
+                        popUp.classList.remove("show");
+                    }, popUpTimer);
+
                     document
                         .getElementById("remove-favorite")
                         .classList.remove("hidden");
@@ -212,7 +230,13 @@ if (document.getElementById("remove-favorite")) {
             fetch(request)
                 .then((response) => response.json())
                 .then((data) => {
-                    alert("Article retiré des favoris !");
+                    popUp.innerHTML = "Article retiré des favoris !";
+                    popUp.classList.add("show");
+
+                    setTimeout(function () {
+                        popUp.classList.remove("show");
+                    }, popUpTimer);
+
                     document
                         .getElementById("remove-favorite")
                         .classList.add("hidden");

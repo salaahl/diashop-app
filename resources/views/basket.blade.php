@@ -19,7 +19,13 @@
 <div class="min-h-screen w-full mt-[-80px] pt-[80px]">
     @if(session('error'))
     <script>
-        alert("{{ session('error') }}");
+        const popUp = document.getElementById("popUp");
+        popUp.innerHTML = "{{ session('error') }}";
+        popUp.classList.add("show");
+
+        setTimeout(function() {
+            popUp.classList.remove("show");
+        }, 5000);
     </script>
     @endif
     @if (session()->has("basket"))

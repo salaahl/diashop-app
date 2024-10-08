@@ -49,7 +49,12 @@ function updateQuantity(quantityInput, delta) {
             .then((response) => response.json())
             .then((data) => {
                 if (data.error) {
-                    alert(data.error);
+                    popUp.innerHTML = data.error;
+                    popUp.classList.add("show");
+
+                    setTimeout(function () {
+                        popUp.classList.remove("show");
+                    }, popUpTimer);
                 } else {
                     location.reload();
                 }
