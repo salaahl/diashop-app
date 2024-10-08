@@ -1,18 +1,12 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Services;
 
+use Exception;
 use App\Models\Product;
 
-class BasketSessionRepository implements BasketInterfaceRepository
+class BasketService
 {
-
-    # Afficher le panier
-    public function show()
-    {
-        return view("basket"); // resources\views\basket\show.blade.php
-    }
-
     # Ajouter/Mettre à jour un produit du panier
     public function store($product_id, $size, $quantity)
     {
@@ -45,10 +39,12 @@ class BasketSessionRepository implements BasketInterfaceRepository
         $basket = session()->get("basket");
         $product = Product::where("id", $product_id)->first();
 
-        if (json_decode($product->quantity_per_size, true)[$size] >= $quantity) {
-            $basket[$product_id][$size]['quantity'] = $quantity; // On ajoute ou on met à jour le produit au panier
-            session()->put("basket", $basket); // On enregistre le panier
+        if (json_decode($product->quantity_per_size, true)[$size] < $quantity) {
+            throw new Exception("Stock insuffisant.");
         }
+
+        $basket[$product_id][$size]['quantity'] = $quantity; // On ajoute ou on met à jour le produit au panier
+        session()->put("basket", $basket); // On enregistre le panier
     }
 
     # Retirer un produit du panier

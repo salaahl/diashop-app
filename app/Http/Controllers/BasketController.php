@@ -4,44 +4,46 @@ namespace App\Http\Controllers;
 
 use Exception;
 use Illuminate\Http\Request;
-use App\Repositories\BasketInterfaceRepository;
-use App\Repositories\BasketSessionRepository;
+use App\Services\BasketService;
 
 class BasketController extends Controller
 {
-    protected BasketSessionRepository $basketRepository; // L'instance BasketSessionRepository
+    protected BasketService $basketService; // L'instance BasketService
 
-    public function __construct(BasketInterfaceRepository $basketRepository)
+    public function __construct(BasketService $basketService)
     {
-        $this->basketRepository = $basketRepository;
+        $this->basketService = $basketService;
     }
 
     # Affichage du panier
     public function show()
     {
-        return view("basket"); // resources\views\basket\show.blade.php
+        return view("basket");
     }
 
     # Ajout d'un produit au panier
     public function store(Request $request)
     {
-        try {
-            $request->validate([
-                "size" => ["required"],
-                "quantity" => ["required", "numeric", "min:1"],
-                "product_id" => ["required", "numeric"],
-            ]);
+        // Validation du panier
+        $request->validate([
+            "size" => ["required"],
+            "quantity" => ["required", "numeric", "min:1"],
+            "product_id" => ["required", "numeric"],
+        ]);
 
+        // On ajoute le produit au panier
+        try {
             // Ajout/Mise à jour du produit au panier avec sa quantité
-            $this->basketRepository->store($request->product_id, $request->size, $request->quantity);
+            $this->basketService->store($request->product_id, $request->size, $request->quantity);
+
+            return response()->json([
+                'http_response_code' => http_response_code(200),
+            ]);
         } catch (Exception $e) {
             return response()->json([
-                'http_response_code' => http_response_code(500),
                 'error' => $e->getMessage(),
             ]);
         }
-
-        return http_response_code(200);
     }
 
     // Mise à jour d'un produit du panier
@@ -49,15 +51,16 @@ class BasketController extends Controller
     {
         try {
             // Suppression du produit du panier par son identifiant
-            $this->basketRepository->update($request->product_id, $request->size, $request->quantity);
+            $this->basketService->update($request->product_id, $request->size, $request->quantity);
+
+            return response()->json([
+                'http_response_code' => http_response_code(200),
+            ]);
         } catch (Exception $e) {
             return response()->json([
-                'http_response_code' => http_response_code(500),
                 'error' => $e->getMessage(),
             ]);
         }
-
-        return http_response_code(200);
     }
 
     // Suppression d'un produit du panier
@@ -65,7 +68,7 @@ class BasketController extends Controller
     {
         try {
             // Suppression du produit du panier par son identifiant
-            $this->basketRepository->remove($request->product_id, $request->size);
+            $this->basketService->remove($request->product_id, $request->size);
         } catch (Exception $e) {
             return response()->json([
                 'http_response_code' => http_response_code(500),
@@ -80,7 +83,7 @@ class BasketController extends Controller
     public function destroy()
     {
         // Suppression des informations du panier en session
-        $this->basketRepository->destroy();
+        $this->basketService->destroy();
 
         // Redirection vers le panier
         return back()->withMessage("Panier vidé");

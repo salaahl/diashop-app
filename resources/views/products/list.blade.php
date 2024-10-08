@@ -35,6 +35,11 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 @endsection
 
 @section('main')
+@if(session('error'))
+<script>
+    alert("{{ session('error') }}");
+</script>
+@endif
 @if(isset($search_header))
 <div id="headers">
     <h1>{{ $search_header }}</h1>

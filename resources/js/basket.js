@@ -48,10 +48,14 @@ function updateQuantity(quantityInput, delta) {
         fetch(request)
             .then((response) => response.json())
             .then((data) => {
-                location.reload();
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    location.reload();
+                }
             })
             .catch((error) => {
-                console.log(error.message);
+                alert(error);
             });
     }
 }
