@@ -149,7 +149,7 @@
     @else
     <div id="basket-empty" class="h-[100vh] w-full flex flex-col justify-center items-center mt-[-110px] px-4">
         <h1 class="mb-0">Vous n'avez pas de produits dans votre panier</h1>
-        <a href="{{ route('home') }}" class="m-5 py-3 px-6 bg-gray-800 text-center text-white rounded-full">Retourner sur la page d'accueil</a>
+        <a href="{{ route('home') }}" class="button-stylised-1 m-5 py-3 px-6" style="border-radius: 999px;">Retourner sur la page d'accueil</a>
     </div>
     @endif
 </div>

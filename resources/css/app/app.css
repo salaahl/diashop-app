@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Montserrat";
+    src: url("../../fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Truculenta";
+    src: url("../../fonts/Truculenta-VariableFont_opsz,wdth,wght.ttf")
+        format("truetype");
+}
+
 :root {
     --accent-color-1: 138, 179, 172;
     --accent-color-2: 181, 170, 153;
@@ -203,7 +214,7 @@ img {
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
-    font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
+    font-family: "Helvetica Neue", Arial, sans-serif;
     min-height: 44px;
     outline: none;
     overflow: hidden;
@@ -214,7 +225,7 @@ img {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    transition: 0.25s background-color;
+    transition: 0.25s background-color linear;
 }
 
 .button-stylised-1 > span {

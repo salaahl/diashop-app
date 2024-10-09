@@ -24,11 +24,6 @@
     font-size: x-large;
 }
 
-#navbar-dropdown li:hover * {
-    color: black;
-    font-weight: 500;
-}
-
 .has-dropdown > a > svg,
 .has-dropdown > button > svg {
     transform: rotateZ(0deg);
@@ -146,6 +141,22 @@ a.has-basket-counter {
     #navbar {
         display: flex;
         align-items: center;
+    }
+
+    .nav-btn {
+        border-radius: 0;
+        background: linear-gradient(
+                to top,
+                rgb(var(--accent-color-1)),
+                rgb(var(--accent-color-1)) 3px,
+                transparent 3px
+            )
+            no-repeat left bottom / 0 100%;
+        transition: background-size 0.25s;
+    }
+
+    .nav-btn:hover {
+        background-size: 100% 100%;
     }
 
     #dropdownDashboard,

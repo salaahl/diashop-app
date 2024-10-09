@@ -181,7 +181,7 @@
     </section>
 </div>
 <!-- Modal -->
-<div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed z-[999] justify-center items-center h-full w-full md:inset-0 bg-black/50">
+<div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed z-[999] justify-center items-center h-full w-full md:inset-0 backdrop-blur-lg">
     <div class="carousel-container">
         <div id="slides-container" class="relative max-h-full">
             <div class="relative shadow-2xl">
