@@ -2,6 +2,7 @@
 
 @section('meta')
 @parent
+<meta name="description" content="{{ ucfirst($product->description) }}">
 @endsection
 
 @section('title', $product->name . ' - ')
@@ -197,8 +198,8 @@
                 </div>
                 @endforeach
 
-                <a class="prev" onclick="plusSlides(-1)">❮</a>
-                <a class="next" onclick="plusSlides(1)">❯</a>
+                <button class="prev" onclick="plusSlides(-1)">❮</button>
+                <button class="next" onclick="plusSlides(1)">❯</button>
             </div>
         </div>
         <div id="img-preview">
