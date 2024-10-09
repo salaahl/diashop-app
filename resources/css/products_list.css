@@ -20,13 +20,6 @@ main {
     transform: rotate(-90deg);
 }
 
-.catalog-name > h1 {
-    background-image: linear-gradient(
-        rgb(var(--accent-color-4)),
-        rgb(var(--accent-color-4))
-    );
-}
-
 .category .thumbnail img {
     filter: blur(1px) grayscale(0.85);
     transition: all 0.8s;

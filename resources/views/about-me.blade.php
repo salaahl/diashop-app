@@ -11,10 +11,10 @@
 @parent
 <style>
     h1 {
-        margin-top: 0;
-        margin-bottom: 0;
-        margin-left: auto;
-        margin-right: auto;
+        background-image: linear-gradient(
+            rgb(var(--accent-color-2)),
+            rgb(var(--accent-color-2))
+        );
     }
 
     @media (min-width: 768px) {
@@ -55,7 +55,9 @@
 <section id="about-me" class="min-h-screen">
     <div class="h-[10vh] md:h-[40vh] w-full hidden md:flex justify-center items-center overflow-hidden bg-gray-800"></div>
     <div class="min-h-[40vh] w-full max-w-screen-xl mx-auto px-2 xl:px-0 md:mt-[-10vh] flex flex-col justify-center">
-        <h1 class="md:h-[10vh] w-min md:w-auto flex justify-center items-center mt-[25px] md:mt-0 text-4xl md:text-white font-light">A propos de nous</h1>
+        <div class="md:h-[10vh] w-min md:w-auto flex justify-center items-center mx-auto">
+            <h1 class="text-4xl md:text-white font-light">A propos de nous</h1>
+        </div>
         <img src="{{ asset('images/placeholder.png')}}" class="h-auto w-full md:h-[50vh] max-md:my-10 mx-auto aspect-square border-[35px] border-black rounded-full object-cover">
         <p class="md:mt-10 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
             magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
