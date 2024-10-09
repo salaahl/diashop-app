@@ -3,7 +3,7 @@ let $ = (id) => {
 };
 
 const popUp = $("#popup");
-const popUpTimer = 3000;
+const popUpTimer = 5000;
 
 // Effet de translate en mode mobile pour notifier à l'utilisateur qu'il peut swipe
 window.addEventListener("load", () => {
