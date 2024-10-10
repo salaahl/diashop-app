@@ -3,6 +3,10 @@ h1 {
     margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;
+    background-image: linear-gradient(
+        rgb(var(--accent-color-4), 0.8),
+        rgb(var(--accent-color-4), 0.8)
+    );
 }
 
 main {
@@ -12,6 +16,10 @@ main {
 
 #headers {
     width: 100%;
+}
+
+#categories {
+    border-top: 5px dotted rgb(var(--accent-color-1));
 }
 
 .catalog-name {
