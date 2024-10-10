@@ -6,6 +6,14 @@ $meta_description = null;
 
 if($query[3] == "search") {
 $search_header = "Résultats de votre recherche";
+@endphp
+<style>
+    main #headers {
+        margin-top: 75px;
+        margin-bottom: 75px;
+    }
+</style>
+@php
 $meta_description = "";
 } elseif($query[4] == "femme") {
 $h1 = "femme";

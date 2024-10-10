@@ -101,11 +101,11 @@ a.has-basket-counter {
     }
 
     #dropdownDashboardBtn[aria-expanded="true"] svg,
-    .dropdownNavbarLinkCatalogBtn[aria-expanded="true"] svg {
+    .dropdownNavbarBtn[aria-expanded="true"] svg {
         transform: rotateZ(180deg);
     }
 
-    .dropdownNavbarCatalog {
+    .dropdownNavbar {
         display: block;
         height: 0;
         max-height: fit-content;
@@ -113,8 +113,7 @@ a.has-basket-counter {
         transition: height 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
 
-    .dropdownNavbarLinkCatalogBtn[aria-expanded="true"]
-        + .dropdownNavbarCatalog {
+    .dropdownNavbarBtn[aria-expanded="true"] + .dropdownNavbar {
         height: 1024px;
     }
 
@@ -160,7 +159,7 @@ a.has-basket-counter {
     }
 
     #dropdownDashboard,
-    .dropdownNavbarCatalog {
+    .dropdownNavbar {
         position: absolute;
         height: 0;
         width: fit-content;
@@ -177,7 +176,7 @@ a.has-basket-counter {
         transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
 
-    #navbar .dropdownNavbarCatalog {
+    #navbar .dropdownNavbar {
         left: 0;
         right: 0;
         margin-left: var(--container-padding-x);
@@ -197,7 +196,7 @@ a.has-basket-counter {
     }
 
     .has-dropdown:hover #dropdownDashboard,
-    .has-dropdown:hover .dropdownNavbarCatalog {
+    .has-dropdown:hover .dropdownNavbar {
         height: 50px;
     }
 
@@ -212,7 +211,7 @@ a.has-basket-counter {
 }
 
 @media (min-width: 1460px) {
-    #navbar .dropdownNavbarCatalog {
+    #navbar .dropdownNavbar {
         margin-left: calc((100% - 1440px) / 2);
         margin-right: auto;
     }

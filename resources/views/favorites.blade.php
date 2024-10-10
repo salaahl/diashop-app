@@ -9,6 +9,12 @@
 @section('links')
 @parent
 @vite('resources/css/products_list.css')
+<style>
+    main #headers {
+        margin-top: 75px;
+        margin-bottom: 75px;
+    }
+</style>
 @endsection
 
 @section('header')
