@@ -8,8 +8,8 @@ export default defineConfig({
             input: [
                 "resources/css/app/app.css",
                 "resources/css/app/navigation.css",
+                "resources/css/app/basket.css",
                 "resources/css/404.css",
-                "resources/css/basket.css",
                 "resources/css/products_list.css",
                 "resources/css/home.css",
                 "resources/css/product.css",
