@@ -59,9 +59,7 @@ Route::get('catalog/{catalog}/{category}/{product_id}', [MainController::class, 
 
 Route::post('get-quantity/', [ProductController::class, 'getQuantity'])->name('product.get-quantity');
 
-Route::get('basket/', [BasketController::class, 'show'])->name('basket');
 Route::put('basket/store', [BasketController::class, 'store'])->name('basket.store');
-Route::patch('basket/update', [BasketController::class, 'update'])->name('basket.update');
 Route::delete('basket/remove', [BasketController::class, 'remove'])->name('basket.remove');
 Route::get('basket/delete', [BasketController::class, 'delete'])->name('basket.delete');
 

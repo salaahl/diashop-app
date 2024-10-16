@@ -12,6 +12,12 @@ class BasketService
     {
         $basket = session()->get("basket");
         $product = Product::where("id", $product_id)->first();
+
+        // Je verifie que le stock est suffisant
+        if (json_decode($product->quantity_per_size, true)[$size] < $quantity) {
+            throw new Exception("Stock insuffisant.");
+        }
+
         $product_image = json_decode($product->img, true)[0];
         $product->promotion ?
             $price = round($product->price - ($product->price / 100 * $product->promotion), 2)
@@ -30,20 +36,6 @@ class BasketService
         ];
 
         $basket[$product_id][$size] = $product_details; // On ajoute ou on met à jour le produit au panier
-        session()->put("basket", $basket); // On enregistre le panier
-    }
-
-    # Mettre à jour un produit du panier
-    public function update($product_id, $size, $quantity)
-    {
-        $basket = session()->get("basket");
-        $product = Product::where("id", $product_id)->first();
-
-        if (json_decode($product->quantity_per_size, true)[$size] < $quantity) {
-            throw new Exception("Stock insuffisant.");
-        }
-
-        $basket[$product_id][$size]['quantity'] = $quantity; // On ajoute ou on met à jour le produit au panier
         session()->put("basket", $basket); // On enregistre le panier
     }
 

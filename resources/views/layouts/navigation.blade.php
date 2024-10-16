@@ -92,7 +92,12 @@
                     </li>
                     @endauth
                     <li class="h-full w-full lg:flex lg:items-center lg:align-center">
-                        <a href="{{ route('basket') }}" class="nav-btn has-basket-counter flex justify-between items-center max-lg:mb-2 p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0  lg:p-0">
+                        <button
+                            data-modal-target="basket-modal"
+                            data-modal-toggle="basket-modal"
+                            id="basket-btn"
+                            class="nav-btn has-basket-counter flex justify-between items-center max-lg:mb-2 p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0 lg:p-0"
+                            type="button">
                             <span class="text-sm uppercase whitespace-nowrap lg:m-0">Panier</span>
                             @if(session()->has('basket'))
                             @php
@@ -103,7 +108,7 @@
                             @endphp
                             <span id="basket-counter">{{ $count }}</span>
                             @endif
-                        </a>
+                        </button>
                     </li>
                     @guest
                     <li class="h-full w-full lg:flex lg:items-center lg:align-center">

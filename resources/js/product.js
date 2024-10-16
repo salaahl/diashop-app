@@ -112,59 +112,6 @@ document.querySelectorAll(".radio_label").forEach((radio) => {
 });
 
 //
-if (document.getElementById("add-basket")) {
-    document
-        .getElementById("add-basket")
-        .addEventListener("click", function () {
-            if (
-                $('#product-details-container input[type="radio"]:checked') &&
-                $("#quantity").value
-            ) {
-                let data = {
-                    size: $(
-                        '#product-details-container input[type="radio"]:checked'
-                    ).value,
-                    quantity: parseInt($("#quantity").value),
-                    product_id: url.split("/").pop(),
-                };
-
-                const request = new Request("/basket/store", {
-                    method: "PUT",
-                    body: JSON.stringify(data),
-                    headers: {
-                        "X-CSRF-TOKEN": document
-                            .querySelector('[name="csrf-token"]')
-                            .getAttribute("content"),
-                        "Content-Type": "application/json",
-                    },
-                });
-
-                fetch(request)
-                    .then((response) => response.json())
-                    .then((data) => {
-                        popUp.innerHTML = "Article ajouté au panier !";
-                        popUp.classList.add("show");
-
-                        setTimeout(function () {
-                            popUp.classList.remove("show");
-                        }, popUpTimer);
-                    })
-                    .catch((error) => {
-                        console.log(error.message);
-                    });
-            } else {
-                popUp.innerHTML =
-                    "Veuillez d'abord sélectionner une taille et une quantité.";
-                popUp.classList.add("show");
-
-                setTimeout(function () {
-                    popUp.classList.remove("show");
-                }, popUpTimer);
-            }
-        });
-}
-
-//
 if (document.getElementById("add-favorite")) {
     document
         .getElementById("add-favorite")

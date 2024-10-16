@@ -14,7 +14,7 @@
     <title>@yield('title')DiaShop-b</title>
 
     @section('links')
-    @vite(['resources/css/app/app.css', 'resources/css/app/navigation.css'])
+    @vite(['resources/css/app/app.css', 'resources/css/app/navigation.css', 'resources/css/app/basket.css'])
     @show
 
 </head>
@@ -27,7 +27,7 @@
         <div class="left-layer left-layer--2"></div>
         <div class="left-layer left-layer--3"></div>
         <div class="right-layer right-layer--1">
-            <x-clothes-animation />
+            @include('components.clothes-animation')
         </div>
         <div class="right-layer right-layer--2"></div>
         <div class="right-layer right-layer--3"></div>
@@ -35,7 +35,7 @@
 
     <div id="main-container" class="min-h-full flex flex-col justify-between">
         @if(Route::is('home') || Route::is('catalog') || Route::is('category') || Route::is('product') || Route::is('basket'))
-        <x-banner-top />
+        @include('components.banner-top')
         @endif
 
         <!-- Page Heading -->
@@ -45,6 +45,10 @@
             @include('components.search-product')
             @show
         </header>
+
+        <aside>
+            @include('components.basket')
+        </aside>
 
         <!-- Page Content -->
         <main>
@@ -62,7 +66,7 @@
 
     <!-- Page Scripts -->
     @section('scripts')
-    @vite(['resources/js/app.js', 'resources/js/search-product.js'])
+    @vite(['resources/js/app.js', 'resources/js/search-product.js', 'resources/js/basket.js'])
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     @show
 </body>

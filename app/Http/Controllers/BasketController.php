@@ -15,12 +15,6 @@ class BasketController extends Controller
         $this->basketService = $basketService;
     }
 
-    # Affichage du panier
-    public function show()
-    {
-        return view("basket");
-    }
-
     # Ajout d'un produit au panier
     public function store(Request $request)
     {
@@ -37,24 +31,7 @@ class BasketController extends Controller
             $this->basketService->store($request->product_id, $request->size, $request->quantity);
 
             return response()->json([
-                'http_response_code' => http_response_code(200),
-            ]);
-        } catch (Exception $e) {
-            return response()->json([
-                'error' => $e->getMessage(),
-            ]);
-        }
-    }
-
-    // Mise à jour d'un produit du panier
-    public function update(Request $request)
-    {
-        try {
-            // Suppression du produit du panier par son identifiant
-            $this->basketService->update($request->product_id, $request->size, $request->quantity);
-
-            return response()->json([
-                'http_response_code' => http_response_code(200),
+                'basket' => session()->get("basket"),
             ]);
         } catch (Exception $e) {
             return response()->json([

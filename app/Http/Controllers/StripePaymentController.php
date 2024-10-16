@@ -38,7 +38,7 @@ class StripePaymentController extends Controller
         try {
             $order = $this->stripePaymentService->registerOrder($stripe_session_id);
         } catch (Exception $e) {
-            return redirect()->route('basket')->with('error', $e->getMessage());
+            return redirect()->route('home')->with('error', $e->getMessage());
         }
 
         return view('stripe/confirmation', [
