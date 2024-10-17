@@ -48,7 +48,8 @@ a.has-basket-counter {
 }
 
 @media (max-width: 1023px) {
-    #navbar-container.show-navbar-dropdown {
+    #navbar-container.show-navbar-dropdown,
+    #navbar-container.show-search-container {
         animation: mask-off;
         animation-fill-mode: forwards;
         animation-delay: 0s;
