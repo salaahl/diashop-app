@@ -1,5 +1,5 @@
 <nav id="navbar">
-    <div class="h-full w-full flex flex-wrap items-center lg:justify-between mx-auto xl:p-0">
+    <div class="h-full w-full flex flex-wrap items-center justify-between mx-auto xl:p-0">
         <a href="/" id="logo" class="h-full flex flex-col justify-center items-center absolute top-0 left-2/4 right-2/4">
             <span class="self-center uppercase font-semibold whitespace-nowrap">DiaShop-B</span>
             <span class="self-center m-0 text-sm uppercase whitespace-nowrap">Paris</span>
