@@ -56,7 +56,6 @@ a.has-basket-counter {
     }
 
     #logo,
-    .has-mobile-nav-btn,
     #navbar-dropdown-btn {
         z-index: 2;
     }
