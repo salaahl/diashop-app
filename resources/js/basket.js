@@ -37,15 +37,13 @@ function removeProduct(product) {
         .then((response) => response.json())
         .then((data) => {
             let table = product.closest("table");
+            let newTotal =
+                parseFloat($("#basket-footer .total").innerHTML) -
+                (parseFloat(product.closest('tr').querySelector(".quantity").innerHTML) *
+                parseFloat(product.closest('tr').querySelector(".price").innerHTML));
 
+            $("#basket-footer .total").innerHTML = newTotal.toFixed(2);
             product.closest("tr").remove();
-
-            popUp.innerHTML = "Produit supprimé avec succès.";
-            popUp.classList.add("show");
-
-            setTimeout(function () {
-                popUp.classList.remove("show");
-            }, popUpTimer);
 
             // Si le panier est vide
             if (table.querySelectorAll("tr").length == 1) {
@@ -56,6 +54,13 @@ function removeProduct(product) {
                 </div>`;
                 $("#basket-footer").innerHTML = "";
             }
+
+            popUp.innerHTML = "Produit supprimé avec succès.";
+            popUp.classList.add("show");
+
+            setTimeout(function () {
+                popUp.classList.remove("show");
+            }, popUpTimer);
         })
         .catch((error) => {
             console.log(error.message);

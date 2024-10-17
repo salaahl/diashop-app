@@ -142,7 +142,8 @@ if (document.getElementById("add-basket")) {
                     .then((response) => response.json())
                     .then((data) => {
                         // Récupération des produits
-                        var products = ""; // Initialise correctement products comme une chaîne vide
+                        let products = "";
+                        let total = 0;
 
                         Object.values(data).forEach((basket) => {
                             Object.values(basket).forEach((sizes) => {
@@ -204,6 +205,8 @@ if (document.getElementById("add-basket")) {
                                         '" />' +
                                         "</td>" +
                                         "</tr>";
+
+                                    total += product.price * product.quantity;
                                 });
                             });
                         });
@@ -225,6 +228,58 @@ if (document.getElementById("add-basket")) {
                             products +
                             "</tbody>" +
                             "</table>";
+
+                        // Mise à jour du prix total et des frais de livraison
+                        let basketFooter = "";
+
+                        if (total > 49) {
+                            basketFooter = `
+                                <div class="w-full">
+                                    <h4 class="text-sm text-center text-gray-500 line-through">+ 4.99€ de frais de livraison</h4>
+                                    <h4 class="mb-2 text-sm text-center text-gray-500">Frais de livraison offerts !</h4>
+                                    <h4 class="text-sm text-center text-gray-500">
+                                        Options de payement disponiles : Visa, Mastercard, CB & Paypal
+                                    </h4>
+                                    <h4 class="mb-4 text-sm text-center text-gray-500">
+                                        Un code promo ? Entrez-le dans l'écran suivant
+                                    </h4>
+                                    <a href="/checkout" class="button-stylised-1">
+                                        <span>Payer</span>
+                                        <span class="ml-1">${total.toFixed(
+                                            2
+                                        )}€</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="hidden h-[15px] ml-2">
+                                        <path fill="#000000" d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                                `;
+                        } else {
+                            total += 4.99;
+                            basketFooter = `
+                                <div class="w-full">
+                                    <h4 class="mb-2 text-sm text-center text-gray-500">+ 4.99€ de frais de livraison</h4>
+                                    <h4 class="text-sm text-center text-gray-500">
+                                        Options de payement disponiles : Visa, Mastercard, CB & Paypal
+                                    </h4>
+                                    <h4 class="mb-4 text-sm text-center text-gray-500">
+                                        Un code promo ? Entrez-le dans l'écran suivant
+                                    </h4>
+                                    <a href="/checkout" class="button-stylised-1">
+                                        <span>Payer</span>
+                                        <span class="total ml-1">${total.toFixed(
+                                            2
+                                        )}</span>
+                                        <span>€</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="hidden h-[15px] ml-2">
+                                        <path fill="#000000" d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                                `;
+                        }
+
+                        $("#basket-footer").innerHTML = basketFooter;
 
                         // Ouverture du panier
                         $("#basket-btn").click();

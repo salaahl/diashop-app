@@ -1,5 +1,5 @@
 @php
-$delivery_costs = 4.99;
+$delivery_costs = 0;
 $total = 0;
 @endphp
 
@@ -145,6 +145,7 @@ $total = 0;
           <h4 class="text-sm text-center text-gray-500 line-through">+ 4.99€ de frais de livraison</h4>
           <h4 class="mb-2 text-sm text-center text-gray-500">Frais de livraison offerts !</h4>
           @else
+          @php($delivery_costs = 4.99)
           <h4 class="mb-2 text-sm text-center text-gray-500">+ {{ $delivery_costs }}€ de frais de livraison</h4>
           @endif
           <h4 class="text-sm text-center text-gray-500">
@@ -157,7 +158,8 @@ $total = 0;
             href="{{ route('checkout.show') }}"
             class="button-stylised-1">
             <span>Payer</span>
-            <span class="ml-1">{{ $total + $delivery_costs }}€</span>
+            <span class="total ml-1">{{ $total + $delivery_costs }}</span>
+            <span>€</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 576 512"
