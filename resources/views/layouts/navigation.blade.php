@@ -6,30 +6,30 @@
         </a>
         <div class="has-mobile-nav-btn">
             <button
-                class="search-btn nav-btn relative inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 lg:hidden"
-                type="button">
-                    <svg class="w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="none">
-                        <path fill="#000000" d="M372.63-306.33q-117.45 0-198.21-80.87-80.75-80.87-80.75-196.67 0-115.8 80.87-196.46Q255.41-861 371.2-861q115.8 0 196.47 80.81 80.66 80.81 80.66 196.62 0 46.24-12.5 83.9-12.5 37.67-35.83 70l229.33 228.34q15 15.7 15 37.99 0 22.3-15.33 38.01Q812.84-110 791.04-110q-21.81 0-37.71-15.67L526.47-353.33q-30.14 21.61-69.11 34.3-38.97 12.7-84.73 12.7Zm-1.47-106q72.85 0 122.01-49.2 49.16-49.19 49.16-121.73 0-72.53-49.2-122.13Q443.93-755 371.22-755q-73.28 0-122.41 49.61-49.14 49.6-49.14 122.13 0 72.54 49.04 121.73 49.04 49.2 122.45 49.2Z"/>
-                    </svg>
-            </button>
-            <button
                 data-modal-target="basket-modal"
                 data-modal-toggle="basket-modal"
-                class="basket-btn nav-btn has-basket-counter relative inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 lg:hidden"
+                class="basket-btn nav-btn has-basket-counter relative inline-flex items-center p-2 w-8 h-8 justify-center text-sm text-gray-500 lg:hidden"
                 type="button">
-                <svg class="w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="none">
-                    <path fill="#000000" d="M236.67-50.67q-43.83 0-74.92-31.08-31.08-31.09-31.08-74.92V-630q0-44.1 31.08-75.38 31.09-31.29 74.92-31.29h70.66v-6.66q2.34-69.67 52.3-118.17Q409.6-910 479.98-910t120.7 48.5Q651-813 653.33-743.33v6.66h70q44.1 0 75.39 31.29Q830-674.1 830-630v473.33q0 43.83-31.28 74.92-31.29 31.08-75.39 31.08H236.67Zm0-106h486.66V-630h-70v66.67q0 22.1-15.83 37.71Q621.67-510 599.88-510q-21.5 0-37.02-15.62-15.53-15.61-15.53-37.71V-630h-134v66.67q0 22.1-15.83 37.71Q381.67-510 359.88-510q-21.5 0-37.02-15.62-15.53-15.61-15.53-37.71V-630h-70.66v473.33Zm177.66-580h132v-6.66Q544-768 525.18-785.67q-18.81-17.66-45.33-17.66T435-785.67q-18.33 17.67-20.67 42.34v6.66Zm-177.66 580V-630v473.33Z"/>
+                <svg class="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="none">
+                    <path fill="currentColor" d="M236.67-50.67q-43.83 0-74.92-31.08-31.08-31.09-31.08-74.92V-630q0-44.1 31.08-75.38 31.09-31.29 74.92-31.29h70.66v-6.66q2.34-69.67 52.3-118.17Q409.6-910 479.98-910t120.7 48.5Q651-813 653.33-743.33v6.66h70q44.1 0 75.39 31.29Q830-674.1 830-630v473.33q0 43.83-31.28 74.92-31.29 31.08-75.39 31.08H236.67Zm0-106h486.66V-630h-70v66.67q0 22.1-15.83 37.71Q621.67-510 599.88-510q-21.5 0-37.02-15.62-15.53-15.61-15.53-37.71V-630h-134v66.67q0 22.1-15.83 37.71Q381.67-510 359.88-510q-21.5 0-37.02-15.62-15.53-15.61-15.53-37.71V-630h-70.66v473.33Zm177.66-580h132v-6.66Q544-768 525.18-785.67q-18.81-17.66-45.33-17.66T435-785.67q-18.33 17.67-20.67 42.34v6.66Zm-177.66 580V-630v473.33Z"/>
                 </svg>
+            </button>
+            <button
+                class="search-btn nav-btn relative inline-flex items-center p-2 w-8 h-8 justify-center text-sm text-gray-500 lg:hidden"
+                type="button">
+                    <svg class="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="none">
+                        <path fill="currentColor" d="M372.63-306.33q-117.45 0-198.21-80.87-80.75-80.87-80.75-196.67 0-115.8 80.87-196.46Q255.41-861 371.2-861q115.8 0 196.47 80.81 80.66 80.81 80.66 196.62 0 46.24-12.5 83.9-12.5 37.67-35.83 70l229.33 228.34q15 15.7 15 37.99 0 22.3-15.33 38.01Q812.84-110 791.04-110q-21.81 0-37.71-15.67L526.47-353.33q-30.14 21.61-69.11 34.3-38.97 12.7-84.73 12.7Zm-1.47-106q72.85 0 122.01-49.2 49.16-49.19 49.16-121.73 0-72.53-49.2-122.13Q443.93-755 371.22-755q-73.28 0-122.41 49.61-49.14 49.6-49.14 122.13 0 72.54 49.04 121.73 49.04 49.2 122.45 49.2Z"/>
+                    </svg>
             </button>
         </div>
         <div class="has-mobile-nav-btn">
-            <button id="navbar-dropdown-btn" data-collapse-toggle="navbar-dropdown" type="button" class="relative inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-dropdown" aria-expanded="false">
+            <button id="navbar-dropdown-btn" data-collapse-toggle="navbar-dropdown" type="button" class="relative inline-flex items-center p-2 w-8 h-8 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-dropdown" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
-                <svg class="w-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <svg class="w-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
                 </svg>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="hidden h-[15px]">
-                    <path fill="#000000" d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" />
+                    <path fill="currentColor" d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" />
                 </svg>
             </button>
         </div>
