@@ -10,8 +10,18 @@
 @parent
 <script src="https://js.stripe.com/v3/"></script>
 <style>
+    #navbar button {
+        display: none;
+    }
+
     main {
         padding: 0;
+    }
+
+    @media (min-width: 768px) {
+        #navbar-dropdown {
+            display: none;
+        }
     }
 </style>
 @endsection

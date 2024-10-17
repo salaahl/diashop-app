@@ -4,23 +4,32 @@
             <span class="self-center uppercase font-semibold whitespace-nowrap">DiaShop-B</span>
             <span class="self-center m-0 text-sm uppercase whitespace-nowrap">Paris</span>
         </a>
-        <div class="has-mobile-nav-btn">
+        <div class="has-mobile-nav-btn flex lg:hidden">
             <button
-                class="search-btn nav-btn relative inline-flex items-center mr-4 w-6 h-6 justify-center text-sm text-gray-500 lg:hidden"
+                class="search-btn nav-btn relative inline-flex items-center mr-4 w-6 h-6 justify-center text-sm text-gray-500"
                 type="button">
-                    <svg class="w-[21px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
-                        <path fill="rgb(0, 0, 0, 0.6)" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
-                    </svg>
+                <svg class="w-[21px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+                    <path fill="rgb(0, 0, 0, 0.6)" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                </svg>
             </button>
             <button
                 data-modal-target="basket-modal"
                 data-modal-toggle="basket-modal"
-                class="basket-btn nav-btn has-basket-counter relative inline-flex items-center w-6 h-6 justify-center text-sm text-gray-500 lg:hidden"
+                class="basket-btn nav-btn has-basket-counter relative inline-flex items-center w-6 h-6 justify-center text-sm text-gray-500"
                 type="button">
                 <svg class="w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="none">
-                    <path fill="rgb(0, 0, 0, 0.6)" d="M236.67-50.67q-43.83 0-74.92-31.08-31.08-31.09-31.08-74.92V-630q0-44.1 31.08-75.38 31.09-31.29 74.92-31.29h70.66v-6.66q2.34-69.67 52.3-118.17Q409.6-910 479.98-910t120.7 48.5Q651-813 653.33-743.33v6.66h70q44.1 0 75.39 31.29Q830-674.1 830-630v473.33q0 43.83-31.28 74.92-31.29 31.08-75.39 31.08H236.67Zm0-106h486.66V-630h-70v66.67q0 22.1-15.83 37.71Q621.67-510 599.88-510q-21.5 0-37.02-15.62-15.53-15.61-15.53-37.71V-630h-134v66.67q0 22.1-15.83 37.71Q381.67-510 359.88-510q-21.5 0-37.02-15.62-15.53-15.61-15.53-37.71V-630h-70.66v473.33Zm177.66-580h132v-6.66Q544-768 525.18-785.67q-18.81-17.66-45.33-17.66T435-785.67q-18.33 17.67-20.67 42.34v6.66Zm-177.66 580V-630v473.33Z"/>
+                    <path fill="rgb(0, 0, 0, 0.6)" d="M236.67-50.67q-43.83 0-74.92-31.08-31.08-31.09-31.08-74.92V-630q0-44.1 31.08-75.38 31.09-31.29 74.92-31.29h70.66v-6.66q2.34-69.67 52.3-118.17Q409.6-910 479.98-910t120.7 48.5Q651-813 653.33-743.33v6.66h70q44.1 0 75.39 31.29Q830-674.1 830-630v473.33q0 43.83-31.28 74.92-31.29 31.08-75.39 31.08H236.67Zm0-106h486.66V-630h-70v66.67q0 22.1-15.83 37.71Q621.67-510 599.88-510q-21.5 0-37.02-15.62-15.53-15.61-15.53-37.71V-630h-134v66.67q0 22.1-15.83 37.71Q381.67-510 359.88-510q-21.5 0-37.02-15.62-15.53-15.61-15.53-37.71V-630h-70.66v473.33Zm177.66-580h132v-6.66Q544-768 525.18-785.67q-18.81-17.66-45.33-17.66T435-785.67q-18.33 17.67-20.67 42.34v6.66Zm-177.66 580V-630v473.33Z" />
                 </svg>
             </button>
+            @php
+            $count = 0;
+            if(session()->has('basket')) {
+            foreach(session()->get('basket') as $item) {
+            $count += count($item);
+            }
+            }
+            @endphp
+            <span class="basket-counter">{{ $count }}</span>
         </div>
         <button id="navbar-dropdown-btn" data-collapse-toggle="navbar-dropdown" type="button" class="relative inline-flex items-center w-6 h-6 justify-center text-sm text-gray-500 rounded-lg lg:hidden" aria-controls="navbar-dropdown" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
@@ -28,7 +37,7 @@
                 <path stroke="rgb(0, 0, 0, 0.6)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
             </svg>
             <svg class="hidden w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
-                <path rgb(0, 0, 0, 0.6)" d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z"/>
+                <path rgb(0, 0, 0, 0.6)" d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z" />
             </svg>
         </button>
         <div class="h-full w-full" id="navbar-dropdown">
@@ -116,16 +125,16 @@
                             class="basket-btn nav-btn has-basket-counter flex justify-between items-center max-lg:mb-2 p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0 lg:p-0"
                             type="button">
                             <span class="text-sm uppercase whitespace-nowrap lg:m-0">Panier</span>
-                            @if(session()->has('basket'))
-                            @php
-                            $count = 0;
-                            foreach(session()->get('basket') as $item) {
-                            $count += count($item);
-                            }
-                            @endphp
-                            <span id="basket-counter">{{ $count }}</span>
-                            @endif
                         </button>
+                        @php
+                        $count = 0;
+                        if(session()->has('basket')) {
+                        foreach(session()->get('basket') as $item) {
+                        $count += count($item);
+                        }
+                        }
+                        @endphp
+                        <span class="basket-counter">{{ $count }}</span>
                     </li>
                     @guest
                     <li class="h-full w-full lg:flex lg:items-center lg:align-center">

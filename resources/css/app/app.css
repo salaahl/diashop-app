@@ -431,21 +431,21 @@ img {
 .clothes-animation .container:nth-child(3) {
     justify-content: flex-start;
     justify-items: flex-start;
-    animation: scroll-up 4s infinite ease-in-out;
+    animation: scroll-up 4s 3 ease-in-out;
     animation-delay: 1s;
 }
 
 .clothes-animation .container:nth-child(2) {
     justify-content: flex-end;
     justify-items: flex-end;
-    animation: scroll-down 4s infinite ease-in-out;
+    animation: scroll-down 4s 3 ease-in-out;
     animation-delay: 2s;
 }
 
 .clothes-animation .container:nth-child(1) {
     justify-content: flex-end;
     justify-items: flex-end;
-    animation: scroll-down 3s infinite ease-in-out;
+    animation: scroll-down 3s 4 ease-in-out;
     animation-delay: 0.5s;
 }
 

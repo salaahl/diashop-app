@@ -1,3 +1,5 @@
+import { removeProduct } from "./basket";
+
 let $ = (id) => {
     return document.querySelector(id);
 };
@@ -143,6 +145,7 @@ if (document.getElementById("add-basket")) {
                     .then((data) => {
                         // Récupération des produits
                         let products = "";
+                        let count = 0;
                         let total = 0;
 
                         Object.values(data).forEach((basket) => {
@@ -177,7 +180,7 @@ if (document.getElementById("add-basket")) {
                                         "</td>" +
                                         '<td class="column-four py-4">' +
                                         '<div class="flex justify-center items-center">' +
-                                        '<h4 class="quantity-input">' +
+                                        '<h4 class="quantity">' +
                                         product.quantity +
                                         "</h4>" +
                                         "</div>" +
@@ -206,6 +209,7 @@ if (document.getElementById("add-basket")) {
                                         "</td>" +
                                         "</tr>";
 
+                                    count++;
                                     total += product.price * product.quantity;
                                 });
                             });
@@ -281,8 +285,24 @@ if (document.getElementById("add-basket")) {
 
                         $("#basket-footer").innerHTML = basketFooter;
 
+                        // Actualisation du compteur
+                        document
+                            .querySelectorAll(".basket-counter")
+                            .forEach((counter) => {
+                                counter.innerHTML = count;
+                            });
+
+                        // Actualisation des listeners
+                        document
+                            .querySelectorAll(".remove-button")
+                            .forEach((button) => {
+                                button.addEventListener("click", function () {
+                                    removeProduct(this.closest("tr"));
+                                });
+                            });
+
                         // Ouverture du panier
-                        $("#basket-btn").click();
+                        $(".basket-btn").click();
                     })
                     .catch((error) => {
                         console.log(error.message);

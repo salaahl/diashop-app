@@ -35,11 +35,10 @@ a.has-basket-counter {
     align-items: center;
 }
 
-#basket-counter {
+.basket-counter {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 5px;
     font-size: x-small;
     font-weight: 900;
     color: white;
@@ -130,7 +129,7 @@ a.has-basket-counter {
         height: 1024px;
     }
 
-    #basket-counter {
+    .basket-counter {
         height: 20px;
         width: 20px;
     }
@@ -217,7 +216,7 @@ a.has-basket-counter {
         transform: rotateZ(180deg);
     }
 
-    #basket-counter {
+    .basket-counter {
         height: 15px;
         width: 15px;
     }

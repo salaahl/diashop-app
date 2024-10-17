@@ -7,20 +7,19 @@ const popUpTimer = 5000;
 // Supprimer un produit
 document.querySelectorAll(".remove-button").forEach((button) => {
     button.addEventListener("click", function () {
-        removeProduct(this.parentElement.parentElement);
+        removeProduct(this.closest("tr"));
     });
 });
 
-function removeProduct(product) {
+export function removeProduct(product) {
     let data = {
         product_id: product.querySelector("input").value,
-        size: product
-            .closest("tr")
-            .querySelector(".size")
-            .innerHTML.toLowerCase(),
+        size: product.querySelector(".size").innerHTML.toLowerCase(),
     };
 
-    data.size == "unique" ? (data.size = "os") : false;
+    if (data.size === "unique") {
+        data.size = "os";
+    }
 
     const request = new Request("/basket/remove", {
         method: "DELETE",
@@ -39,11 +38,16 @@ function removeProduct(product) {
             let table = product.closest("table");
             let newTotal =
                 parseFloat($("#basket-footer .total").innerHTML) -
-                (parseFloat(product.closest('tr').querySelector(".quantity").innerHTML) *
-                parseFloat(product.closest('tr').querySelector(".price").innerHTML));
+                parseFloat(product.querySelector(".quantity").innerHTML) *
+                    parseFloat(product.querySelector(".price").innerHTML);
 
             $("#basket-footer .total").innerHTML = newTotal.toFixed(2);
-            product.closest("tr").remove();
+            product.remove();
+
+            // Actualisation du compteur
+            document.querySelectorAll(".basket-counter").forEach((counter) => {
+                counter.innerHTML = table.querySelectorAll("tr").length - 1;
+            });
 
             // Si le panier est vide
             if (table.querySelectorAll("tr").length == 1) {
@@ -58,7 +62,7 @@ function removeProduct(product) {
             popUp.innerHTML = "Produit supprimé avec succès.";
             popUp.classList.add("show");
 
-            setTimeout(function () {
+            setTimeout(() => {
                 popUp.classList.remove("show");
             }, popUpTimer);
         })
