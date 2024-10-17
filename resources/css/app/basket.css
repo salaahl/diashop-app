@@ -52,10 +52,6 @@
     border-radius: 999px;
 }
 
-#basket-body {
-    background-color: rgb(181, 170, 153, 0.15);
-}
-
 #basket-body table {
     text-align: center;
     text-align-last: center;

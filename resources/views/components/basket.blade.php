@@ -129,8 +129,8 @@ $total = 0;
             </tbody>
           </table>
           @else
-          <div id="basket-empty" class="h-full w-full flex justify-center items-center">
-            <h3 class="mb-0">Vous n'avez pas de produits dans votre panier</h3>
+          <div id="basket-empty" class="h-full w-full">
+            <h3 class="absolute top-1/2 left-0 right-0 px-1 text-center text-balance">Vous n'avez pas de produits dans votre panier</h3>
           </div>
           @endif
         </div>
