@@ -137,6 +137,7 @@ $total = 0;
       </div>
       <!-- Modal footer -->
       <div
+        id="basket-footer"
         class="flex items-center h-[25%] md:h-[20%] p-4 md:p-5 space-x-3 rtl:space-x-reverse rounded-b">
         @if($total > 0)
         <div class="w-full">
