@@ -8,8 +8,8 @@
             <button
                 class="search-btn nav-btn relative inline-flex items-center ml-2 p-2 w-10 h-10 justify-center text-sm text-gray-500 lg:hidden"
                 type="button">
-                    <svg class="w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="none">
-                        <path fill="currentColor" d="M372.63-306.33q-117.45 0-198.21-80.87-80.75-80.87-80.75-196.67 0-115.8 80.87-196.46Q255.41-861 371.2-861q115.8 0 196.47 80.81 80.66 80.81 80.66 196.62 0 46.24-12.5 83.9-12.5 37.67-35.83 70l229.33 228.34q15 15.7 15 37.99 0 22.3-15.33 38.01Q812.84-110 791.04-110q-21.81 0-37.71-15.67L526.47-353.33q-30.14 21.61-69.11 34.3-38.97 12.7-84.73 12.7Zm-1.47-106q72.85 0 122.01-49.2 49.16-49.19 49.16-121.73 0-72.53-49.2-122.13Q443.93-755 371.22-755q-73.28 0-122.41 49.61-49.14 49.6-49.14 122.13 0 72.54 49.04 121.73 49.04 49.2 122.45 49.2Z"/>
+                    <svg class="w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
                     </svg>
             </button>
             <button
@@ -36,13 +36,13 @@
                 <ul class="lg:h-full max-lg:w-full flex flex-col items-center font-medium p-4 lg:p-0 max-lg:rounded-lg border border-gray-100 max-lg:bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
                     @foreach(\App\Models\Catalog::all() as $catalog)
                     <li class="has-dropdown h-full w-full lg:flex lg:justify-center lg:items-center">
-                        <a href="{{ route('catalog', $catalog->name) }}" class="dropdownNavbarLinkCatalog hidden lg:flex items-center justify-between w-full py-2 text-sm uppercase text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
+                        <a href="{{ route('catalog', $catalog->name) }}" class="dropdownNavbarLinkCatalog hidden lg:flex items-center justify-between w-full py-2 text-sm uppercase text-gray-900 rounded hover:bg-gray-200 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
                             <span>{{ ucfirst($catalog->name) }}</span>
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </a>
-                        <button data-collapse-toggle="dropdownNavbar{{ ucfirst($catalog->name) }}" type="button" class="dropdownNavbarBtn lg:hidden flex items-center justify-between w-full mb-2 p-2 text-sm uppercase text-gray-900 rounded-lg hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
+                        <button data-collapse-toggle="dropdownNavbar{{ ucfirst($catalog->name) }}" type="button" class="dropdownNavbarBtn lg:hidden flex items-center justify-between w-full mb-2 p-2 text-sm uppercase text-gray-900 rounded-lg hover:bg-gray-200 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
                             <span>{{ ucfirst($catalog->name) }}</span>
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
@@ -75,13 +75,13 @@
                 <ul class="lg:h-full max-lg:w-full flex flex-col lg:items-center font-medium p-4 lg:p-0 mt-4 max-lg:rounded-lg border border-gray-100 max-lg:bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
                     @auth
                     <li class="has-dropdown lg:h-full w-full lg:flex lg:justify-center lg:items-center">
-                        <a href="{{ route('dashboard') }}" id="dropdownDashboardLink" class="hidden lg:flex max-lg:justify-between items-center w-full p-2 whitespace-nowrap text-gray-900 text-sm uppercase rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
+                        <a href="{{ route('dashboard') }}" id="dropdownDashboardLink" class="hidden lg:flex max-lg:justify-between items-center w-full p-2 whitespace-nowrap text-gray-900 text-sm uppercase rounded hover:bg-gray-200 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
                             <span>Mon profil</span>
                             <svg class="w-2.5 h-2.5 lg:ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </a>
-                        <button id="dropdownDashboardBtn" data-collapse-toggle="dropdownDashboard" type="button" class="dropdownNavbarBtn lg:hidden flex items-center justify-between w-full mb-2 p-2 text-sm uppercase text-gray-900 rounded-lg hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
+                        <button id="dropdownDashboardBtn" data-collapse-toggle="dropdownDashboard" type="button" class="dropdownNavbarBtn lg:hidden flex items-center justify-between w-full mb-2 p-2 text-sm uppercase text-gray-900 rounded-lg hover:bg-gray-200 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
                             <span class="text-sm uppercase">Mon profil</span>
                             <svg class="w-2.5 h-2.5 lg:ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
@@ -129,7 +129,7 @@
                     </li>
                     @guest
                     <li class="h-full w-full lg:flex lg:items-center lg:align-center">
-                        <a href="{{ route('login') }}" class="nav-btn flex justify-between items-center max-lg:mb-2 p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0  lg:p-0">
+                        <a href="{{ route('login') }}" class="nav-btn flex justify-between items-center p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0 lg:p-0">
                             <span class="text-sm uppercase whitespace-nowrap lg:m-0">Se connecter</span>
                         </a>
                     </li>
@@ -138,7 +138,7 @@
                     <li class="h-full w-full lg:flex lg:items-center lg:align-center">
                         <form method="POST" action="/logout">
                             @csrf
-                            <a href="#" class="nav-btn flex justify-between align-center p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0  lg:p-0" onclick="event.preventDefault(); this.closest('form').submit();">
+                            <a href="#" class="nav-btn flex justify-between align-center p-2 text-gray-900 rounded hover:bg-gray-200 lg:hover:bg-transparent lg:border-0 lg:p-0" onclick="event.preventDefault(); this.closest('form').submit();">
                                 <span class="text-sm uppercase whitespace-nowrap lg:m-0">Se déconnecter</span>
                             </a>
                         </form>
