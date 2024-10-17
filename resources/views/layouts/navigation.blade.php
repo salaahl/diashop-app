@@ -9,13 +9,13 @@
             data-modal-toggle="basket-modal"
             class="basket-btn nav-btn has-basket-counter relative inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 lg:hidden"
             type="button">
-            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="none">
+            <svg class="w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="none">
                 <path fill="#000000" d="M236.67-50.67q-43.83 0-74.92-31.08-31.08-31.09-31.08-74.92V-630q0-44.1 31.08-75.38 31.09-31.29 74.92-31.29h70.66v-6.66q2.34-69.67 52.3-118.17Q409.6-910 479.98-910t120.7 48.5Q651-813 653.33-743.33v6.66h70q44.1 0 75.39 31.29Q830-674.1 830-630v473.33q0 43.83-31.28 74.92-31.29 31.08-75.39 31.08H236.67Zm0-106h486.66V-630h-70v66.67q0 22.1-15.83 37.71Q621.67-510 599.88-510q-21.5 0-37.02-15.62-15.53-15.61-15.53-37.71V-630h-134v66.67q0 22.1-15.83 37.71Q381.67-510 359.88-510q-21.5 0-37.02-15.62-15.53-15.61-15.53-37.71V-630h-70.66v473.33Zm177.66-580h132v-6.66Q544-768 525.18-785.67q-18.81-17.66-45.33-17.66T435-785.67q-18.33 17.67-20.67 42.34v6.66Zm-177.66 580V-630v473.33Z"/>
             </svg>
         </button>
         <button id="navbar-dropdown-btn" data-collapse-toggle="navbar-dropdown" type="button" class="relative inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-dropdown" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
-            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <svg class="w-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
             </svg>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="hidden h-[15px]">
