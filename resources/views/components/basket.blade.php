@@ -7,7 +7,7 @@ $total = 0;
   id="basket-modal"
   data-modal-placement="top-right"
   tabindex="-1"
-  class="fixed top-0 left-0 right-0 z-[999] hidden h-full w-full p-4 md:p-0 overflow-x-hidden overflow-y-auto md:inset-0 max-h-full">
+  class="fixed top-0 left-0 right-0 z-[999] hidden h-full w-full overflow-x-hidden overflow-y-auto md:inset-0 max-h-full">
   <div class="relative h-full w-full max-w-2xl max-h-full">
     <!-- Modal content -->
     <div class="relative h-full bg-white">

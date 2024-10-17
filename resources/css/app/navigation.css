@@ -77,14 +77,14 @@ a.has-basket-counter {
     .has-mobile-nav-btn > button,
     #navbar-dropdown-btn {
         left: 0;
-        right: 0; 
-    } 
-    
+        right: 0;
+    }
+
     .has-mobile-nav-btn:first-of-type {
         margin-left: var(--container-padding-x);
         margin-right: auto;
-    } 
-    
+    }
+
     #navbar-dropdown-btn {
         margin-left: auto;
         margin-right: var(--container-padding-x);
