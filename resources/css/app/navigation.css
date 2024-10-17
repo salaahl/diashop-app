@@ -56,7 +56,8 @@ a.has-basket-counter {
     }
 
     #logo,
-    .has-mobile-nav-btn {
+    .has-mobile-nav-btn,
+    #navbar-dropdown-btn {
         z-index: 2;
     }
 
@@ -75,7 +76,8 @@ a.has-basket-counter {
         display: none;
     }
 
-    .has-mobile-nav-btn button {
+    .has-mobile-nav-btn > button,
+    #navbar-dropdown-btn {
         left: 0;
         right: 0; 
     } 
@@ -85,7 +87,7 @@ a.has-basket-counter {
         margin-right: auto;
     } 
     
-    .has-mobile-nav-btn:last-of-type {
+    #navbar-dropdown-btn {
         margin-left: auto;
         margin-right: var(--container-padding-x);
     }
