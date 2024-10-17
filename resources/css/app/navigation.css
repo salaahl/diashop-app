@@ -55,7 +55,7 @@ a.has-basket-counter {
     }
 
     #logo,
-    #navbar-dropdown-btn {
+    #navbar > div > button {
         z-index: 2;
     }
 
@@ -74,8 +74,18 @@ a.has-basket-counter {
         display: none;
     }
 
-    #navbar-dropdown-btn {
-        margin-left: var(--container-padding-x);
+    #navbar > div > button { 
+        left: 0; right: 0; 
+    } 
+    
+    #navbar > div > button:nth-of-type(1) {
+        margin-left: auto; 
+        margin-right: var(--container-padding-x); 
+    } 
+    
+    #navbar > div > button:nth-of-type(2) {
+        margin-left: var(--container-padding-x); 
+        margin-right: auto; 
     }
 
     #navbar-dropdown-btn svg:first-of-type,
