@@ -75,7 +75,7 @@ a.has-basket-counter {
     }
 
     #navbar-dropdown-btn {
-        margin-right: var(--container-padding-x);
+        margin-left: var(--container-padding-x);
     }
 
     #navbar-dropdown-btn svg:first-of-type,
