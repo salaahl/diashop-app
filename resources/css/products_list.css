@@ -19,7 +19,7 @@ main {
 }
 
 #categories {
-    border-top: 5px dashed rgb(var(--accent-color-1));
+    border-top: 5px dashed rgb(var(--accent-color-4), 0.8);
 }
 
 .catalog-name {
@@ -77,7 +77,7 @@ main {
     }
 
     #categories {
-        border-top: 5px dotted rgb(var(--accent-color-1));
+        border-top: 5px dotted rgb(var(--accent-color-4), 0.8);
     }
 
     .category {
