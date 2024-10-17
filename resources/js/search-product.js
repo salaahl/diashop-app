@@ -2,9 +2,11 @@ let $ = (id) => {
     return document.querySelector(id);
 };
 
-$("#search-btn").addEventListener("click", (e) => {
-    $("#navbar-container").classList.add("show-search-container");
-    $("#navbar-container").classList.remove("hide-search-container");
+document.querySelectorAll(".search-btn").forEach((button) => {
+    $(button).addEventListener("click", (e) => {
+        $("#navbar-container").classList.add("show-search-container");
+        $("#navbar-container").classList.remove("hide-search-container");
+    });
 });
 
 $("#close-search-btn").addEventListener("click", (e) => {
