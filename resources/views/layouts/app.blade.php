@@ -85,6 +85,9 @@
         // Ajouter un onglet
         updateTabCount(1);
 
+        console.log({{ session()->get('last_activity') }});
+        console.log(updateTabCount);
+
         // Retirer un onglet lors de la fermeture
         window.addEventListener("beforeunload", function () {
             updateTabCount(-1);
