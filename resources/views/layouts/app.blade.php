@@ -97,7 +97,7 @@
             const count = parseInt(localStorage.getItem('tabCount'));
             
             // Si aucun onglet n'est ouvert et que le panier existe
-            if (count <= 0 && {{ session()->has("basket") }}) {
+            if (count <= 0 && {{ isset(session()->has("basket")) }}) {
                 // Supprimer le panier immédiatement
                 const request = new Request("/basket/delete", {
                     method: "DELETE",
@@ -127,7 +127,7 @@
         /*
         * Cas de figure 2 : l'onglet est laissé ouvert
         */
-        if({{ session()->has("basket") }}) {
+        if({{ isset(session()->has("basket")) }}) {
             console.log({{ session()->get('last_activity') }});
             /*
             setTimeout(() => {
