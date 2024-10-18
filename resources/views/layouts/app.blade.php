@@ -85,7 +85,6 @@
         // Ajouter un onglet
         updateTabCount(1);
 
-        console.log({{ session()->get('last_activity') }});
         console.log(updateTabCount);
 
         // Retirer un onglet lors de la fermeture
@@ -129,6 +128,8 @@
         * Cas de figure 2 : l'onglet est laissé ouvert
         */
         if({{ session()->has("basket") }}) {
+            console.log({{ session()->get('last_activity') }});
+            /*
             setTimeout(() => {
                 // Je supprime le panier et je recrédite la quantité dans la BDD
                 const request = new Request("/basket/delete", {
@@ -163,6 +164,7 @@
                     console.log(error.message);
                 });
             }, session('basket')->remaining_time);
+            */
         }
     </script>
     @show
