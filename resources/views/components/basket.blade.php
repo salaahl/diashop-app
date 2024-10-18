@@ -91,7 +91,7 @@ $total = 0;
                     @php
                     $imagePath = str_replace('\\', '/', $product['img'])
                     @endphp
-                    <x-cld-image public-id="{{ $imagePath }}" class="w-16 md:w-24 max-w-full max-h-full" alt="{{ $product['name'] }}"></x-cld-image>
+                    <x-cld-image public-id="{{ $imagePath }}" class="w-16 md:w-24 max-w-full max-h-full aspect-square" alt="{{ $product['name'] }}"></x-cld-image>
                   </a>
                 </td>
                 <td class="column-two pl-2 py-4 font-semibold text-gray-900">
