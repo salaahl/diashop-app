@@ -82,6 +82,7 @@
     
     <!-- Gestion du panier -->
     <script>
+        const hasBasket = {{ session()->has("basket") ? true : false }};
         /*
         * Cas de figure 1 : tous les onglets sont fermés :
         */
@@ -106,7 +107,7 @@
             const count = parseInt(localStorage.getItem('tabCount'));
             
             // Si aucun onglet n'est ouvert et que le panier existe
-            if (count <= 0 && {{ session()->has("basket") ? session("basket") : false }}) {
+            if (count <= 0 && hasBasket) {
                 // Supprimer le panier immédiatement
                 const request = new Request("/basket/destroy", {
                     method: "DELETE",
@@ -136,7 +137,7 @@
         /*
         * Cas de figure 2 : l'onglet est laissé ouvert
         */
-        if({{ session()->has("basket") ? session("basket") : false }}) {
+        if(hasBasket) {
             document.querySelector('#basket_timeout').innerHTML = localStorage.getItem('basket_timeout') / 60000;
 
             setInterval(() => {

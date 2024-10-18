@@ -55,6 +55,9 @@ class BasketService
     # Vider le panier
     public function destroy()
     {
+        // Compléter avec un foreach qui recréditera les quantités dans la BDD
+        $basket = session()->get("basket");
+
         session()->forget("basket"); // On supprime le panier en session
     }
 }
