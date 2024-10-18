@@ -42,7 +42,7 @@ export function removeProduct(product) {
                     parseFloat(product.querySelector(".quantity").innerHTML) *
                         parseFloat(product.querySelector(".price").innerHTML);
 
-                $("#basket-footer .total").innerHTML = newTotal.toFixed(2);
+                $("#basket-footer .total").innerHTML = newTotal;
                 product.remove();
 
                 // Actualisation du compteur
@@ -57,9 +57,9 @@ export function removeProduct(product) {
                 if (table.querySelectorAll("tr").length == 1) {
                     table.remove();
                     $("#summary-container").innerHTML = `
-                <div id="basket-empty" class="h-full w-full flex justify-center items-center">
-                    <h3 class="mb-0">Vous n'avez pas de produits dans votre panier</h3>
-                </div>`;
+                        <div id="basket-empty" class="h-full w-full flex justify-center items-center">
+                            <h3 class="mb-0">Vous n'avez pas de produits dans votre panier</h3>
+                        </div>`;
                     $("#basket-footer").innerHTML = "";
                 }
 
