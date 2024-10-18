@@ -144,7 +144,7 @@
 
                 // Me donne le temps restant en minutes
                 document.querySelector('#basket-timeout').innerHTML = localStorage.getItem('basket_timeout') / 60000;
-            }, localStorage.getItem('basket_timeout') / 60); // Se lance toutes les minutes
+            }, 60000); // Se lance toutes les minutes
 
             setTimeout(() => {
                 // Je supprime le panier et je recrédite la quantité dans la BDD
@@ -172,8 +172,6 @@
                             document.querySelectorAll(".basket-counter").forEach((counter) => {
                                 counter.innerHTML = 0;
                             });
-
-                            // Ajouter une ligne qui effacera le décompte également
                         }
                     })
                     .catch((error) => {
