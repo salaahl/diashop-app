@@ -176,7 +176,7 @@ if (document.getElementById("add-basket")) {
                                         "</a>" +
                                         "</td>" +
                                         '<td class="column-two pl-2 py-4 font-semibold text-gray-900">' +
-                                        '<h4 class="text-center capitalize">' +
+                                        '<h4 class="w-min md:w-full text-center capitalize">' +
                                         product.name +
                                         "</h4>" +
                                         "</td>" +
@@ -232,7 +232,7 @@ if (document.getElementById("add-basket")) {
                             '<table class="w-full text-sm text-gray-500">' +
                             '<thead class="text-xs text-gray-700 uppercase bg-gray-50">' +
                             "<tr>" +
-                            '<th class="column-one min-w-[60px] lg:min-w-[100px] py-3"><span class="sr-only">Image</span></th>' +
+                            '<th class="column-one min-w-[60px] lg:min-w-[100px] py-3">Image</th>' +
                             '<th class="column-two min-w-[60px] lg:min-w-[100px] py-3">Article</th>' +
                             '<th class="column-three min-w-[60px] lg:min-w-[100px] py-3">Taille</th>' +
                             '<th class="column-four min-w-[60px] lg:min-w-[100px] py-3">Quantité</th>' +

@@ -39,7 +39,8 @@ a.has-basket-counter {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: x-small;
+    font-family: "Truculenta", sans-serif;
+    font-size: xx-small;
     font-weight: 900;
     color: white;
     background-color: rgb(var(--accent-color-1));
