@@ -127,7 +127,7 @@
         /*
         * Cas de figure 2 : l'onglet est laissé ouvert
         */
-        if({{ isset(session()->has("basket")) }}) {
+        if({{ session()->has("basket") !== null }}) {
             console.log({{ session()->get('last_activity') }});
             /*
             setTimeout(() => {
