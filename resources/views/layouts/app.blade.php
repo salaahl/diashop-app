@@ -134,16 +134,16 @@
          * Cas de figure 2 : l'onglet est laissé ouvert
          */
         if (hasBasket) {
-            document.querySelector('#basket-timeout').innerHTML = localStorage.getItem('basket_timeout') / 60000;
+            document.querySelector('#basket-timeout').innerHTML = parseInt(localStorage.getItem('basket_timeout')) / 60000;
 
             setInterval(() => {
                 // J'enlève 1 minute
                 localStorage.setItem(
-                    'basket_timeout', localStorage.getItem('basket_timeout') - 60000
+                    'basket_timeout', parseInt(localStorage.getItem('basket_timeout')) - 60000
                 );
 
                 // Me donne le temps restant en minutes
-                document.querySelector('#basket-timeout').innerHTML = localStorage.getItem('basket_timeout') / 60000;
+                document.querySelector('#basket-timeout').innerHTML = parseInt(localStorage.getItem('basket_timeout')) / 60000;
             }, 60000); // Se lance toutes les minutes
 
             setTimeout(() => {
@@ -177,7 +177,7 @@
                     .catch((error) => {
                         console.log(error.message);
                     });
-            }, localStorage.getItem('basket_timeout'));
+            }, parseInt(localStorage.getItem('basket_timeout')));
         }
     </script>
     @show
