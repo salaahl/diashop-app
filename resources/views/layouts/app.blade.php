@@ -137,6 +137,18 @@
         * Cas de figure 2 : l'onglet est laissé ouvert
         */
         if({{ session()->has("basket") }} !== null) {
+            document.querySelector('#basket_timeout').innerHTML = localStorage.getItem('basket_timeout') / 60000;
+
+            setInterval(() => {
+                // J'enlève 1 minute
+                localStorage.setItem(
+                    'basket_timeout', localStorage.getItem('basket_timeout') - 60000
+                );
+
+                // Me donne le temps restant en minutes
+                document.querySelector('#basket_timeout').innerHTML = localStorage.getItem('basket_timeout') / 60000;
+            }, localStorage.getItem('basket_timeout') / 60); // Se lance toutes les minutes
+
             setTimeout(() => {
                 // Je supprime le panier et je recrédite la quantité dans la BDD
                 const request = new Request("/basket/delete", {
@@ -156,8 +168,7 @@
                         alert('Panier supprimé.');
 
                         // Suppression du tableau côté client
-                        document.querySelector('#basket-body .table').remove();
-                        document.querySelector('#basket-body #summary-container').innerHTML = `
+                        document.querySelector('#summary-container').innerHTML = `
                             <div id="basket-empty" class="h-full w-full">
                                 <h3 class="absolute top-1/2 left-0 right-0 px-1 text-center text-balance">Vous n'avez pas de produits dans votre panier</h3>
                             </div>`;
