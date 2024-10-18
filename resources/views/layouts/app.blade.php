@@ -21,6 +21,17 @@
 
 <body class="font-sans antialiased">
 
+    <noscript>
+        <style>
+            body {
+                display: none;
+            }
+        </style>
+        <div>
+            <p>Votre navigateur ne supporte pas JavaScript ou il est désactivé. Veuillez activer JavaScript pour accéder à ce site.</p>
+        </div>
+    </noscript>
+
     <!-- Page Loader -->
     <div id="loader-container">
         <div class="left-layer left-layer--1"></div>
@@ -85,8 +96,6 @@
         // Ajouter un onglet
         updateTabCount(1);
 
-        console.log(parseInt(localStorage.getItem('tabCount')));
-
         // Retirer un onglet lors de la fermeture
         window.addEventListener("beforeunload", function () {
             updateTabCount(-1);
@@ -99,7 +108,6 @@
             // Si aucun onglet n'est ouvert et que le panier existe
             if (count <= 0 && {{ session()->has("basket") }} !== null) {
                 // Supprimer le panier immédiatement
-                /*
                 const request = new Request("/basket/delete", {
                     method: "DELETE",
                     headers: {
@@ -118,7 +126,6 @@
                     .catch((error) => {
                         console.log(error.message);
                     });
-                    */
             }
         };
 
@@ -130,43 +137,42 @@
         * Cas de figure 2 : l'onglet est laissé ouvert
         */
         if({{ session()->has("basket") }} !== null) {
-            console.log({{ session()->get('last_activity') }});
-            /*
             setTimeout(() => {
                 // Je supprime le panier et je recrédite la quantité dans la BDD
                 const request = new Request("/basket/delete", {
-                method: "DELETE",
-                // body: JSON.stringify(data),
-                headers: {
-                    "X-CSRF-TOKEN": document
-                        .querySelector('[name="csrf-token"]')
-                        .getAttribute("content"),
-                    "Content-Type": "application/json",
-                },
-            });
-
-            fetch(request)
-                .then((response) => response.json())
-                .then((data) => {
-                    alert('Panier supprimé.');
-
-                    // Suppression du tableau côté client
-                    document.querySelector('#basket-body .table').remove();
-                    document.querySelector('#basket-body #summary-container').innerHTML = `
-                        <div id="basket-empty" class="h-full w-full">
-                            <h3 class="absolute top-1/2 left-0 right-0 px-1 text-center text-balance">Vous n'avez pas de produits dans votre panier</h3>
-                        </div>`;
-                    
-                    // Actualisation du compteur
-                    document.querySelectorAll(".basket-counter").forEach((counter) => {
-                        counter.innerHTML = 0;
-                    });
-                })
-                .catch((error) => {
-                    console.log(error.message);
+                    method: "DELETE",
+                    // body: JSON.stringify(data),
+                    headers: {
+                        "X-CSRF-TOKEN": document
+                            .querySelector('[name="csrf-token"]')
+                            .getAttribute("content"),
+                        "Content-Type": "application/json",
+                    },
                 });
-            }, session('basket')->remaining_time);
-            */
+
+                fetch(request)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        alert('Panier supprimé.');
+
+                        // Suppression du tableau côté client
+                        document.querySelector('#basket-body .table').remove();
+                        document.querySelector('#basket-body #summary-container').innerHTML = `
+                            <div id="basket-empty" class="h-full w-full">
+                                <h3 class="absolute top-1/2 left-0 right-0 px-1 text-center text-balance">Vous n'avez pas de produits dans votre panier</h3>
+                            </div>`;
+                        
+                        // Actualisation du compteur
+                        document.querySelectorAll(".basket-counter").forEach((counter) => {
+                            counter.innerHTML = 0;
+                        });
+
+                        // Ajouter une ligne qui effacera le décompte également
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
+            }, localStorage.getItem('basket_timeout'));
         }
     </script>
     @show

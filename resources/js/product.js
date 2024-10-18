@@ -285,6 +285,12 @@ if (document.getElementById("add-basket")) {
 
                         $("#basket-footer").innerHTML = basketFooter;
 
+                        // Actualisation du timeout
+                        // Ajouter deux autres méthodes : 
+                        // - une qui remettra le setTimeout du panier à zéro dans JS
+                        // - une qui remettra le décompte à 60 min dans l'affichage
+                        localStorage.setItem('basket_timeout', 3600000);
+
                         // Actualisation du compteur
                         document
                             .querySelectorAll(".basket-counter")
