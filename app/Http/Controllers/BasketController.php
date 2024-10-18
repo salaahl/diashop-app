@@ -46,23 +46,25 @@ class BasketController extends Controller
         try {
             // Suppression du produit du panier par son identifiant
             $this->basketService->remove($request->product_id, $request->size);
+
+            return http_response_code(200);
         } catch (Exception $e) {
             return response()->json([
-                'http_response_code' => http_response_code(500),
                 'error' => $e->getMessage(),
             ]);
         }
-
-        return http_response_code(200);
     }
 
     // Vider la panier
     public function destroy()
     {
-        // Suppression des informations du panier en session
-        $this->basketService->destroy();
-
-        // Redirection vers le panier
-        return back()->withMessage("Panier vidé");
+        try {
+            // Suppression des informations du panier en session
+            $this->basketService->destroy();
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ]);
+        }
     }
 }

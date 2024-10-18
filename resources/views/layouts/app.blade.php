@@ -106,9 +106,9 @@
             const count = parseInt(localStorage.getItem('tabCount'));
             
             // Si aucun onglet n'est ouvert et que le panier existe
-            if (count <= 0 && {{ session()->has("basket") }} !== null) {
+            if (count <= 0 && {{ session()->has("basket") ? session("basket") : false }}) {
                 // Supprimer le panier immédiatement
-                const request = new Request("/basket/delete", {
+                const request = new Request("/basket/destroy", {
                     method: "DELETE",
                     headers: {
                         "X-CSRF-TOKEN": document
@@ -136,7 +136,7 @@
         /*
         * Cas de figure 2 : l'onglet est laissé ouvert
         */
-        if({{ session()->has("basket") }} !== null) {
+        if({{ session()->has("basket") ? session("basket") : false }}) {
             document.querySelector('#basket_timeout').innerHTML = localStorage.getItem('basket_timeout') / 60000;
 
             setInterval(() => {
@@ -151,7 +151,7 @@
 
             setTimeout(() => {
                 // Je supprime le panier et je recrédite la quantité dans la BDD
-                const request = new Request("/basket/delete", {
+                const request = new Request("/basket/destroy", {
                     method: "DELETE",
                     // body: JSON.stringify(data),
                     headers: {
