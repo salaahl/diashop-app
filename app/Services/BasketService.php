@@ -13,15 +13,17 @@ class BasketService
         $basket = session()->get("basket");
         $product = Product::where("id", $product_id)->first();
 
-        // Je vérifie que le panier ne depasse pas les 30 produits
-        $total = 0;
+        if ($basket) {
+            // Je vérifie que le panier ne depasse pas les 30 produits
+            $total = 0;
 
-        foreach ($basket as $key => $items_per_size) {
-            $total += count($items_per_size);
-        }
+            foreach ($basket as $key => $items_per_size) {
+                $total += count($items_per_size);
+            }
 
-        if ($total > 30) {
-            throw new Exception("Impossible de commander plus de 30 produits.");
+            if ($total > 30) {
+                throw new Exception("Impossible de commander plus de 30 produits.");
+            }
         }
 
         // Je verifie que le stock est suffisant
