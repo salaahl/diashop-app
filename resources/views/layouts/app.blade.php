@@ -168,6 +168,8 @@
                                     <h3 class="absolute top-1/2 left-0 right-0 px-1 text-center text-balance">Vous n'avez pas de produits dans votre panier</h3>
                                 </div>`;
 
+                            document.querySelector("#basket-footer").innerHTML = "";
+
                             // Actualisation du compteur
                             document.querySelectorAll(".basket-counter").forEach((counter) => {
                                 counter.innerHTML = 0;
