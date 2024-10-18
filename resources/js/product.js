@@ -170,7 +170,7 @@ if (document.getElementById("add-basket")) {
                                         "/" +
                                         product.id +
                                         '">' +
-                                        '<img class="w-16 md:w-24 max-w-full max-h-full" src="https://res.cloudinary.com/dq8yfrr3w/image/upload/v1/' +
+                                        '<img class="h-auto w-16 md:w-24" src="https://res.cloudinary.com/dq8yfrr3w/image/upload/v1/' +
                                         product.img +
                                         '">' +
                                         "</a>" +
