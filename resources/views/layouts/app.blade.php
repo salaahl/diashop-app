@@ -82,7 +82,7 @@
     
     <!-- Gestion du panier -->
     <script>
-        const hasBasket = {{ session()->has("basket") ? true : false }};
+        const hasBasket = "{{ session()->has("basket") ? true : false }}";
         /*
         * Cas de figure 1 : tous les onglets sont fermés :
         */
