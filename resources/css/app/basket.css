@@ -52,6 +52,10 @@
     border-radius: 999px;
 }
 
+#basket-timeout {
+    color: rgb(var(--accent-color-1));
+}
+
 #basket-body table {
     text-align: center;
     text-align-last: center;

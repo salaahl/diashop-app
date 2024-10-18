@@ -45,9 +45,7 @@ class BasketController extends Controller
     {
         try {
             // Suppression du produit du panier par son identifiant
-            $this->basketService->remove($request->product_id, $request->size);
-
-            return http_response_code(200);
+            $this->basketService->remove($request->product_id, $request->size, $request->quantity);
         } catch (Exception $e) {
             return response()->json([
                 'error' => $e->getMessage(),

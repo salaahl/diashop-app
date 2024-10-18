@@ -49,7 +49,6 @@ class ProductController extends Controller
                 'quantity' => $quantity[$request->size]
             ]);
         } catch (Exception $e) {
-            http_response_code(500);
             return response()->json([
                 'error' => $e->getMessage(),
             ]);

@@ -61,7 +61,7 @@ Route::post('get-quantity/', [ProductController::class, 'getQuantity'])->name('p
 
 Route::put('basket/store', [BasketController::class, 'store'])->name('basket.store');
 Route::delete('basket/remove', [BasketController::class, 'remove'])->name('basket.remove');
-Route::get('basket/destroy', [BasketController::class, 'destroy'])->name('basket.destroy');
+Route::delete('basket/destroy', [BasketController::class, 'destroy'])->name('basket.destroy');
 
 Route::get('checkout/', function () {
     return view('stripe/checkout');

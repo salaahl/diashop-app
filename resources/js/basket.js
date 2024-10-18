@@ -15,6 +15,7 @@ export function removeProduct(product) {
     let data = {
         product_id: product.querySelector("input").value,
         size: product.querySelector(".size").innerHTML.toLowerCase(),
+        quantity: product.querySelector(".quantity").innerHTML,
     };
 
     if (data.size === "unique") {
@@ -33,40 +34,50 @@ export function removeProduct(product) {
     });
 
     fetch(request)
-        .then((response) => response.json())
-        .then((data) => {
-            let table = product.closest("table");
-            let newTotal =
-                parseFloat($("#basket-footer .total").innerHTML) -
-                parseFloat(product.querySelector(".quantity").innerHTML) *
-                    parseFloat(product.querySelector(".price").innerHTML);
+        .then((response) => {
+            if (response.ok) {
+                let table = product.closest("table");
+                let newTotal =
+                    parseFloat($("#basket-footer .total").innerHTML) -
+                    parseFloat(product.querySelector(".quantity").innerHTML) *
+                        parseFloat(product.querySelector(".price").innerHTML);
 
-            $("#basket-footer .total").innerHTML = newTotal.toFixed(2);
-            product.remove();
+                $("#basket-footer .total").innerHTML = newTotal.toFixed(2);
+                product.remove();
 
-            // Actualisation du compteur
-            document.querySelectorAll(".basket-counter").forEach((counter) => {
-                counter.innerHTML = table.querySelectorAll("tr").length - 1;
-            });
+                // Actualisation du compteur
+                document
+                    .querySelectorAll(".basket-counter")
+                    .forEach((counter) => {
+                        counter.innerHTML =
+                            table.querySelectorAll("tr").length - 1;
+                    });
 
-            // Si le panier est vide
-            if (table.querySelectorAll("tr").length == 1) {
-                table.remove();
-                $("#summary-container").innerHTML = `
+                // Si le panier est vide
+                if (table.querySelectorAll("tr").length == 1) {
+                    table.remove();
+                    $("#summary-container").innerHTML = `
                 <div id="basket-empty" class="h-full w-full flex justify-center items-center">
                     <h3 class="mb-0">Vous n'avez pas de produits dans votre panier</h3>
                 </div>`;
-                $("#basket-footer").innerHTML = "";
+                    $("#basket-footer").innerHTML = "";
+                }
+
+                popUp.innerHTML = "Produit supprimé avec succès.";
+                popUp.classList.add("show");
+
+                setTimeout(() => {
+                    popUp.classList.remove("show");
+                }, popUpTimer);
             }
-
-            popUp.innerHTML = "Produit supprimé avec succès.";
-            popUp.classList.add("show");
-
-            setTimeout(() => {
-                popUp.classList.remove("show");
-            }, popUpTimer);
         })
         .catch((error) => {
-            console.log(error.message);
+            popUp.innerHTML =
+                "Une erreur est survenue. Veuillez recharger la page et reessayer.";
+            popUp.classList.add("show");
+
+            setTimeout(function () {
+                popUp.classList.remove("show");
+            }, popUpTimer);
         });
 }

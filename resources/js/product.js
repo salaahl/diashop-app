@@ -107,7 +107,13 @@ document.querySelectorAll(".radio_label").forEach((radio) => {
                 select.innerHTML = options;
             })
             .catch((error) => {
-                console.log(error.message);
+                popUp.innerHTML =
+                    "Une erreur est survenue. Veuillez recharger la page et reessayer.";
+                popUp.classList.add("show");
+
+                setTimeout(function () {
+                    popUp.classList.remove("show");
+                }, popUpTimer);
             });
     });
 });
@@ -147,6 +153,9 @@ if (document.getElementById("add-basket")) {
                         let products = "";
                         let count = 0;
                         let total = 0;
+
+                        // Réinitialisation du timeout
+                        localStorage.setItem("basket_timeout", 3600000);
 
                         Object.values(data).forEach((basket) => {
                             Object.values(basket).forEach((sizes) => {
@@ -217,6 +226,9 @@ if (document.getElementById("add-basket")) {
 
                         // Création/mise à jour du tableau
                         $("#summary-container").innerHTML =
+                            '<p class="mb-8 text-sm text-center">Vos articles sont réservés pendant encore <span id="basket-timeout" class="font-bold">' +
+                            localStorage.getItem("basket_timeout") / 60000 +
+                            "</span> minutes !</p>" +
                             '<table class="w-full text-sm text-gray-500">' +
                             '<thead class="text-xs text-gray-700 uppercase bg-gray-50">' +
                             "<tr>" +
@@ -285,12 +297,6 @@ if (document.getElementById("add-basket")) {
 
                         $("#basket-footer").innerHTML = basketFooter;
 
-                        // Actualisation du timeout
-                        // Ajouter deux autres méthodes : 
-                        // - une qui remettra le setTimeout du panier à zéro dans JS
-                        // - une qui remettra le décompte à 60 min dans l'affichage
-                        localStorage.setItem('basket_timeout', 3600000);
-
                         // Actualisation du compteur
                         document
                             .querySelectorAll(".basket-counter")
@@ -311,7 +317,12 @@ if (document.getElementById("add-basket")) {
                         $(".basket-btn").click();
                     })
                     .catch((error) => {
-                        console.log(error.message);
+                        popUp.innerHTML = error;
+                        popUp.classList.add("show");
+
+                        setTimeout(function () {
+                            popUp.classList.remove("show");
+                        }, popUpTimer);
                     });
             } else {
                 popUp.innerHTML =
@@ -363,7 +374,13 @@ if (document.getElementById("add-favorite")) {
                         .classList.add("hidden");
                 })
                 .catch((error) => {
-                    console.log(error.message);
+                    popUp.innerHTML =
+                        "Une erreur est survenue. Veuillez recharger la page et reessayer.";
+                    popUp.classList.add("show");
+
+                    setTimeout(function () {
+                        popUp.classList.remove("show");
+                    }, popUpTimer);
                 });
         });
 }
@@ -406,7 +423,13 @@ if (document.getElementById("remove-favorite")) {
                         .classList.remove("hidden");
                 })
                 .catch((error) => {
-                    console.log(error.message);
+                    popUp.innerHTML =
+                        "Une erreur est survenue. Veuillez recharger la page et reessayer.";
+                    popUp.classList.add("show");
+
+                    setTimeout(function () {
+                        popUp.classList.remove("show");
+                    }, popUpTimer);
                 });
         });
 }

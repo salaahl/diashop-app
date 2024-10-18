@@ -19,9 +19,6 @@ class StripePaymentController extends Controller
         try {
             $clientSecret = $this->stripePaymentService->createSession();
 
-            header('Content-Type: application/json');
-            http_response_code(200);
-
             return response()->json([
                 'clientSecret' => $clientSecret,
             ]);
