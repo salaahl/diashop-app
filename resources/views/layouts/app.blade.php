@@ -85,7 +85,7 @@
         // Ajouter un onglet
         updateTabCount(1);
 
-        console.log(updateTabCount);
+        console.log(parseInt(localStorage.getItem('tabCount')));
 
         // Retirer un onglet lors de la fermeture
         window.addEventListener("beforeunload", function () {
@@ -99,6 +99,7 @@
             // Si aucun onglet n'est ouvert et que le panier existe
             if (count <= 0 && {{ session()->has("basket") }} !== null) {
                 // Supprimer le panier immédiatement
+                /*
                 const request = new Request("/basket/delete", {
                     method: "DELETE",
                     headers: {
@@ -117,6 +118,7 @@
                     .catch((error) => {
                         console.log(error.message);
                     });
+                    */
             }
         };
 
