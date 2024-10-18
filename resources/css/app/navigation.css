@@ -219,6 +219,7 @@ a.has-basket-counter {
     .basket-counter {
         height: 15px;
         width: 15px;
+        margin-bottom: 15px;
     }
 }
 
