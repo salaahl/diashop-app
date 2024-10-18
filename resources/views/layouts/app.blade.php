@@ -68,6 +68,100 @@
     @section('scripts')
     @vite(['resources/js/app.js', 'resources/js/search-product.js', 'resources/js/basket.js'])
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    
+    <!-- Gestion du panier -->
+    <script>
+        /*
+        * Cas de figure 1 : tous les onglets sont fermés :
+        */
+
+        // Fonction pour mettre à jour le compteur d'onglets
+        const updateTabCount = (increment) => {
+            const currentCount = parseInt(localStorage.getItem('tabCount')) || 0;
+            const newCount = currentCount + increment;
+            localStorage.setItem('tabCount', newCount);
+        };
+
+        // Ajouter un onglet
+        updateTabCount(1);
+
+        // Retirer un onglet lors de la fermeture
+        window.addEventListener("beforeunload", function () {
+            updateTabCount(-1);
+        });
+
+        // Fonction pour supprimer le panier si tous les onglets sont fermés
+        const checkAndDeleteBasket = () => {
+            const count = parseInt(localStorage.getItem('tabCount'));
+            
+            // Si aucun onglet n'est ouvert et que le panier existe
+            if (count <= 0 && {{ session()->has("basket") }}) {
+                // Supprimer le panier immédiatement
+                const request = new Request("/basket/delete", {
+                    method: "DELETE",
+                    headers: {
+                        "X-CSRF-TOKEN": document
+                            .querySelector('[name="csrf-token"]')
+                            .getAttribute("content"),
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                fetch(request)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        // Peut-être supprimer le dernier .then ?
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
+            }
+        };
+
+        // Vérifie l'état lors du chargement de la page
+        window.addEventListener("load", checkAndDeleteBasket);
+
+
+        /*
+        * Cas de figure 2 : l'onglet est laissé ouvert
+        */
+        if({{ session()->has("basket") }}) {
+            setTimeout(() => {
+                // Je supprime le panier et je recrédite la quantité dans la BDD
+                const request = new Request("/basket/delete", {
+                method: "DELETE",
+                // body: JSON.stringify(data),
+                headers: {
+                    "X-CSRF-TOKEN": document
+                        .querySelector('[name="csrf-token"]')
+                        .getAttribute("content"),
+                    "Content-Type": "application/json",
+                },
+            });
+
+            fetch(request)
+                .then((response) => response.json())
+                .then((data) => {
+                    alert('Panier supprimé.');
+
+                    // Suppression du tableau côté client
+                    document.querySelector('#basket-body .table').remove();
+                    document.querySelector('#basket-body #summary-container').innerHTML = `
+                        <div id="basket-empty" class="h-full w-full">
+                            <h3 class="absolute top-1/2 left-0 right-0 px-1 text-center text-balance">Vous n'avez pas de produits dans votre panier</h3>
+                        </div>`;
+                    
+                    // Actualisation du compteur
+                    document.querySelectorAll(".basket-counter").forEach((counter) => {
+                        counter.innerHTML = 0;
+                    });
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+            }, session('basket')->remaining_time);
+        }
+    </script>
     @show
 </body>
 
