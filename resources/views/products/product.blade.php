@@ -56,27 +56,27 @@
                 <div class="radio-toolbar">
                     @if(isset($product_quantity["os"]) && $product_quantity["os"] > 0)
                     <input type="radio" name="size" id="os" value="os">
-                    <label class="radio_label" for="os">Taille unique</label>
+                    <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="os">Taille unique</label>
                     @endif
                     @if(isset($product_quantity["s"]) && $product_quantity["s"] > 0)
                     <input type="radio" name="size" id="s" value="s">
-                    <label class="radio_label" for="s">S</label>
+                    <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="s">S</label>
                     @endif
                     @if(isset($product_quantity["m"]) && $product_quantity["m"] > 0)
                     <input type="radio" name="size" id="m" value="m">
-                    <label class="radio_label" for="m">M</label>
+                    <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="m">M</label>
                     @endif
                     @if(isset($product_quantity["l"]) && $product_quantity["l"] > 0)
                     <input type="radio" name="size" id="l" value="l">
-                    <label class="radio_label" for="l">L</label>
+                    <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="l">L</label>
                     @endif
                     @if(isset($product_quantity["xl"]) && $product_quantity["xl"] > 0)
                     <input type="radio" name="size" id="xl" value="xl">
-                    <label class="radio_label" for="xl">XL</label>
+                    <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="xl">XL</label>
                     @endif
                     @if(isset($product_quantity["xxl"]) && $product_quantity["xxl"] > 0)
                     <input type="radio" name="size" id="xxl" value="xxl">
-                    <label class="radio_label" for="xxl">XXL</label>
+                    <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="xxl">XXL</label>
                     @endif
                 </div>
                 <div>

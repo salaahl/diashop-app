@@ -41,7 +41,7 @@ $total = 0;
       <!-- Modal body -->
       <div
         id="basket-body"
-        class="h-[65%] md:h-[70%] p-4 md:p-5 space-y-4 overflow-auto">
+        class="h-[65%] p-4 md:p-5 space-y-4 overflow-auto">
         <div
           id="summary-container"
           class="h-full w-full overflow-x-auto">
@@ -139,7 +139,7 @@ $total = 0;
       <!-- Modal footer -->
       <div
         id="basket-footer"
-        class="flex items-center h-[25%] md:h-[20%] p-4 md:p-5 space-x-3 rtl:space-x-reverse rounded-b">
+        class="flex items-center h-[25%] p-4 md:p-5 space-x-3 rtl:space-x-reverse rounded-b">
         @if($total > 0)
         <div class="w-full">
           @if($total > 49)
@@ -159,8 +159,7 @@ $total = 0;
             href="{{ route('checkout.show') }}"
             class="button-stylised-1">
             <span>Payer</span>
-            <span class="total ml-1">{{ $total + $delivery_costs }}</span>
-            <span>€</span>
+            <span class="total ml-2 p-[4px] text-black bg-white rounded-lg">{{ $total + $delivery_costs }}€</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 576 512"

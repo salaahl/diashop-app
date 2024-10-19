@@ -126,7 +126,7 @@ Code du carousel
 
     #buttons > button {
         width: 100%;
-        margin: 2.5% 0;
+        margin: 0 0 2.5% 0;
     }
 
     #product-details-container {

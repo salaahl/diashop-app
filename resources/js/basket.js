@@ -13,7 +13,7 @@ document.querySelectorAll(".remove-button").forEach((button) => {
 
 export function removeProduct(product) {
     let data = {
-        product_id: product.querySelector("input").value,
+        product_id: product.querySelector("input[name='product_id']").value,
         size: product.querySelector(".size").innerHTML.toLowerCase(),
         quantity: product.querySelector(".quantity").innerHTML,
     };
@@ -42,7 +42,7 @@ export function removeProduct(product) {
                     parseFloat(product.querySelector(".quantity").innerHTML) *
                         parseFloat(product.querySelector(".price").innerHTML);
 
-                $("#basket-footer .total").innerHTML = newTotal;
+                $("#basket-footer .total").innerHTML = newTotal + "€";
                 product.remove();
 
                 // Actualisation du compteur
