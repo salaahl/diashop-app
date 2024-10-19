@@ -197,7 +197,7 @@ if (document.getElementById("add-basket")) {
                                         "</td>" +
                                         '<td class="column-five py-4 font-semibold text-gray-900">' +
                                         '<h4 class="price">' +
-                                        product.price +
+                                        product.price * product.quantity +
                                         "</h4>" +
                                         "</td>" +
                                         '<td class="column-six py-4">' +

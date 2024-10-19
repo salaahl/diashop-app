@@ -106,7 +106,7 @@ $total = 0;
                   </div>
                 </td>
                 <td class="column-five py-4 font-semibold text-gray-900">
-                  <h4 class="price">{{ $product['price'] }}</h4>
+                  <h4 class="price">{{ $product['price'] * $product['quantity'] }}</h4>
                   @php($total += $product['price'] * $product['quantity'])
                 </td>
                 <td class="column-six py-4">

@@ -10,7 +10,7 @@
 @parent
 <script src="https://js.stripe.com/v3/"></script>
 <style>
-    #navbar button {
+    #navbar button, .basket-counter {
         display: none;
     }
 
