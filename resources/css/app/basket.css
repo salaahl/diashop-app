@@ -62,7 +62,7 @@
 }
 
 #basket-body table .column-three,
-#basket-body table .column-five {
+#basket-body table .column-four {
     display: none;
 }
 
@@ -84,7 +84,7 @@
 
 @media (min-width: 768px) {
     #basket-body table .column-one,
-    #basket-body table .column-five {
+    #basket-body table .column-four {
         display: table-cell;
     }
 }
