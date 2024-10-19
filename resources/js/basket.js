@@ -42,7 +42,8 @@ export function removeProduct(product) {
                     parseFloat(product.querySelector(".quantity").innerHTML) *
                         parseFloat(product.querySelector(".price").innerHTML);
 
-                $("#basket-footer .total").innerHTML = newTotal + "€";
+                $("#basket-footer .total").innerHTML =
+                    newTotal.toFixed(2) + "€";
                 product.remove();
 
                 // Actualisation du compteur

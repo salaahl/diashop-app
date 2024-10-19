@@ -159,7 +159,7 @@ $total = 0;
             href="{{ route('checkout.show') }}"
             class="button-stylised-1">
             <span>Payer</span>
-            <span class="total ml-2 p-[4px] text-black bg-white rounded-lg">{{ $total + $delivery_costs }}€</span>
+            <span class="total ml-2 p-[4px] text-black bg-white rounded-lg">{{ number_format($total + $delivery_costs, 2) }}€</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 576 512"
