@@ -29,6 +29,7 @@ body {
     height: 100%;
     width: 100%;
     font-family: "Montserrat", sans-serif;
+    text-wrap-style: pretty;
     overflow-x: hidden;
 }
 
