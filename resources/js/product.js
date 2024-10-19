@@ -156,6 +156,7 @@ if (document.getElementById("add-basket")) {
 
                         // Réinitialisation du timeout
                         localStorage.setItem("basket_timeout", 3600000);
+                        localStorage.setItem("basket_start_time", Date.now());
 
                         Object.values(data).forEach((basket) => {
                             Object.values(basket).forEach((sizes) => {
