@@ -52,32 +52,32 @@ $total = 0;
               <tr>
                 <th
                   scope="col"
-                  class="column-one min-w-[60px] lg:min-w-[100px] py-3">
+                  class="column-one min-w-[50px] lg:min-w-[100px] py-3">
                   Image
                 </th>
                 <th
                   scope="col"
-                  class="column-two min-w-[60px] lg:min-w-[100px] py-3">
+                  class="column-two min-w-[50px] lg:min-w-[100px] py-3">
                   Article
                 </th>
                 <th
                   scope="col"
-                  class="column-three min-w-[60px] lg:min-w-[100px] py-3">
+                  class="column-three min-w-[50px] lg:min-w-[100px] py-3">
                   Taille
                 </th>
                 <th
                   scope="col"
-                  class="column-four min-w-[60px] lg:min-w-[100px] py-3">
+                  class="column-four min-w-[50px] lg:min-w-[100px] py-3">
                   Quantité
                 </th>
                 <th
                   scope="col"
-                  class="column-five min-w-[60px] lg:min-w-[100px] py-3">
+                  class="column-five min-w-[50px] lg:min-w-[100px] py-3">
                   Prix
                 </th>
                 <th
                   scope="col"
-                  class="column-six min-w-[60px] lg:min-w-[100px] py-3 pr-1">
+                  class="column-six min-w-[50px] lg:min-w-[100px] py-3 pr-1">
                   Supprimer
                 </th>
               </tr>
