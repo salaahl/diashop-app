@@ -12,7 +12,7 @@
                     @if(empty($promotion))
                     <h4 class="price flex items-center max-lg:mt-1 text-sm font-normal">{{ $price }}€</h4>
                     @else
-                    <h4 class="price flex items-center max-lg:mt-1 text-sm font-normal line-through">{{ $price }}</h4>
+                    <h4 class="price flex items-center max-lg:mt-1 text-sm font-normal line-through">{{ $price }}€</h4>
                     <h4 class="price flex items-center ml-2 max-lg:mt-1 text-sm font-normal">{{ $promotion }}€</h4>
                     @endif
                     @else
