@@ -20,7 +20,7 @@ main {
 }
 
 #categories {
-    border-top: 5px dashed rgb(var(--accent-color-4));
+    border-top: 0.25rem dashed rgb(var(--accent-color-4));
 }
 
 .catalog-name {
