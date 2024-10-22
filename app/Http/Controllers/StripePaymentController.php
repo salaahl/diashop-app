@@ -35,7 +35,10 @@ class StripePaymentController extends Controller
         try {
             $order = $this->stripePaymentService->registerOrder($stripe_session_id);
         } catch (Exception $e) {
-            return redirect()->route('home')->with('error', $e->getMessage());
+            return redirect()->route('home')->with(
+                'error',
+                'Erreur lors de la validation de la commande. Veuillez prendre contact avec l\'administrateur du site.'
+            );
         }
 
         return view('stripe/confirmation', [
