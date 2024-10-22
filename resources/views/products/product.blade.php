@@ -130,7 +130,7 @@
                     @endif
                     @endauth
                 </div>
-                <div id="delivery-and-return-details">
+                <div id="delivery-and-return-details" class="mb-10">
                     <h4 class="text-sm text-gray-500">Livraison express dans les deux jours ouvrés | standard sous cinq jours ouvrés</h4>
                     <h4 class="text-sm text-gray-500">Retour possible sous 14 jours à compter de la date de livraison</h4>
                 </div>

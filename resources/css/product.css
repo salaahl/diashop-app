@@ -116,11 +116,6 @@ Code du carousel
         flex-direction: column;
     }
 
-    #buttons > button {
-        width: 100%;
-        margin: 0 0 2.5% 0;
-    }
-
     #product-details-container {
         padding-left: var(--container-padding-x);
         padding-right: var(--container-padding-x);
