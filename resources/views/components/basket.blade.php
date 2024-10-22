@@ -7,7 +7,7 @@ $total = 0;
   id="basket-modal"
   data-modal-placement="top-right"
   tabindex="-1"
-  class="fixed top-0 left-0 right-0 z-[999] hidden h-full w-full overflow-x-hidden overflow-y-auto md:inset-0 max-h-full">
+  class="fixed top-0 left-0 right-0 z-[250] hidden h-full w-full overflow-x-hidden overflow-y-auto md:inset-0 max-h-full">
   <div class="relative h-full w-full max-w-2xl max-h-full">
     <!-- Modal content -->
     <div class="relative h-full bg-white">
@@ -24,7 +24,6 @@ $total = 0;
           data-modal-hide="basket-modal">
           <svg
             class="w-3 h-3"
-            aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 14 14">
@@ -158,7 +157,7 @@ $total = 0;
           <a
             href="{{ route('checkout.show') }}"
             class="button-stylised-1">
-            <span>Payer</span>
+            <span>Payer -</span>
             <span class="total ml-[5px]">{{ number_format($total + $delivery_costs, 2) }}€</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"

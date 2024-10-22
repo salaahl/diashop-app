@@ -4,7 +4,7 @@
     width: 100%;
     background-color: rgb(255, 255, 255, 0);
     backdrop-filter: blur(2px);
-    z-index: 999;
+    z-index: 100;
     animation-name: mask-on;
     animation-fill-mode: forwards;
     animation-delay: 0.25s;

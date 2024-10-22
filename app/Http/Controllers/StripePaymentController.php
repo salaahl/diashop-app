@@ -24,7 +24,7 @@ class StripePaymentController extends Controller
             ]);
         } catch (Exception $e) {
             return response()->json([
-                'redirect_url' => route('basket'),
+                'redirect_url' => route('home'),
                 'error' => $e->getMessage(),
             ]);
         }

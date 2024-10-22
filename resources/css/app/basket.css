@@ -1,3 +1,8 @@
+/* Div ajoutée par flowbite lors de l'affichage du panier */
+.bg-gray-900\/50.dark\:bg-gray-900\/80.fixed.inset-0.z-40 {
+    z-index: 149;
+}
+
 #basket-modal {
     display: flex;
     transform: translateX(100%);
@@ -28,6 +33,7 @@
             1 86.4%,
             1 100%
         );
+    z-index: 150;
 }
 
 #basket-modal[aria-modal="true"] {

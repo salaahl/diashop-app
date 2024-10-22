@@ -196,7 +196,7 @@ img {
     color: white;
     background-color: rgb(var(--accent-color-4));
     border-radius: 5px 0px 0px 5px;
-    z-index: 1000;
+    z-index: 300;
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -310,7 +310,7 @@ img {
     height: 100%;
     width: 100%;
     background-color: white;
-    z-index: 9999;
+    z-index: 400;
     overflow: hidden;
 }
 
@@ -375,7 +375,7 @@ img {
 .clothes-animation {
     position: relative;
     display: flex;
-    height: 100px;
+    height: 80px;
     width: fit-content;
     gap: 10px;
     mask-image: linear-gradient(
@@ -408,14 +408,14 @@ img {
     flex-direction: column;
     align-items: center;
     height: 100%;
-    width: 100px;
+    width: 80px;
 }
 
 .clothes-animation .carousel {
     position: absolute;
     display: flex;
     flex-direction: column;
-    width: 100px;
+    width: 80px;
     transform-origin: center;
     animation-delay: 2s;
 }
@@ -449,8 +449,8 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     animation-delay: 5s;
 }
 
@@ -522,6 +522,20 @@ img {
         --h2-font-size: x-large;
         --h3-font-size: large;
         --h4-font-size: medium;
+    }
+
+    .clothes-animation {
+        height: 100px;
+    }
+
+    .clothes-animation .container,
+    .clothes-animation .carousel {
+        width: 100px;
+    }
+
+    .clothes-animation .carousel > div {
+        height: 100px;
+        width: 100px;
     }
 
     footer {
