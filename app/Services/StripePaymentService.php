@@ -17,6 +17,7 @@ class StripePaymentService
             throw new Exception("Votre panier est vide");
 
         $items = [];
+        $total = 0;
 
         foreach (session()->get("basket") as $basket) {
             foreach ($basket as $item) {
@@ -33,7 +34,7 @@ class StripePaymentService
                 ];
             };
 
-            $total = $item['price'] * 100;
+            $total += $item['price'] * 100;
         };
 
         $shipping_options = [];
