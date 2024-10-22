@@ -7,7 +7,6 @@ h1 {
         rgb(var(--accent-color-4), 0.8),
         rgb(var(--accent-color-4), 0.8)
     );
-    background-size: 100% 40%;
 }
 
 main {
