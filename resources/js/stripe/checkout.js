@@ -23,6 +23,6 @@ async function initialize() {
         checkout.mount("#checkout");
     } catch (e) {
         alert("Erreur lors du chargement de votre panier. Veuillez réessayer.");
-        window.location.href = "/basket";
+        window.location.href = "/";
     }
 }

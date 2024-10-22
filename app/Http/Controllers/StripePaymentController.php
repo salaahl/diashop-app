@@ -42,9 +42,4 @@ class StripePaymentController extends Controller
             "order" => $order
         ]);
     }
-
-    public function webhooks()
-    {
-        //
-    }
 }
