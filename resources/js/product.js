@@ -283,8 +283,8 @@ if (document.getElementById("add-basket")) {
                                         Un code promo ? Entrez-le dans l'écran suivant
                                     </h4>
                                     <a href="/checkout" class="button-stylised-1">
-                                        <span>Payer</span>
-                                        <span class="total ml-2 p-[4px] text-black bg-white rounded-lg">
+                                        <span>Payer -</span>
+                                        <span class="total ml-[5px]">
                                             ${total.toFixed(2)}€
                                         </span>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="hidden h-[15px] ml-2">
