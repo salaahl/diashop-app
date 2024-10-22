@@ -43,17 +43,6 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 @endsection
 
 @section('main')
-@if(session('error'))
-<script>
-    const popUp = document.getElementById("popUp");
-    popUp.innerHTML = "{{ session('error') }}";
-    popUp.classList.add("show");
-
-    setTimeout(function() {
-        popUp.classList.remove("show");
-    }, 5000);
-</script>
-@endif
 @if(isset($search_header))
 <div id="headers">
     <h1>{{ $search_header }}</h1>

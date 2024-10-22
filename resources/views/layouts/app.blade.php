@@ -64,6 +64,17 @@
         <!-- Page Content -->
         <main>
             <div id="popup"></div>
+            @if(session('error'))
+            <script>
+                const popUp = document.getElementById("popup");
+                popUp.innerHTML = "{{ session('error') }}";
+                popUp.classList.add("show");
+
+                setTimeout(function() {
+                    popUp.classList.remove("show");
+                }, 5000);
+            </script>
+            @endif
             @yield('main')
         </main>
 
