@@ -83,7 +83,9 @@ $("#default-search").addEventListener("input", (e) => {
                                 "</a>" +
                                 "</article>";
                         });
+                        $("#default-search-btn").classList.add("show");
                     } else {
+                        $("#default-search-btn").classList.remove("show");
                         $("#search-results").innerHTML = "AUCUN RESULTAT";
                     }
 
@@ -104,15 +106,5 @@ $("#default-search-btn").addEventListener("click", () => {
     let catalog = $("#search-container [name='catalog']:checked").value;
     let input = $("#default-search").value;
 
-    if(input) {
-        window.location = "/search/" + catalog + "/" + input;
-    } else {
-        popUp.innerHTML =
-            "Le champ est vide";
-        popUp.classList.add("show");
-
-        setTimeout(function () {
-            popUp.classList.remove("show");
-        }, popUpTimer);
-    }
+    window.location = "/search/" + catalog + "/" + input;
 });
