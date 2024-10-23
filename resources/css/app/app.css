@@ -164,6 +164,16 @@ h4 {
     margin-right: auto;
 }
 
+#default-search-btn {
+    pointer-events: none;
+    background-color: lightgray;
+}
+
+#default-search-btn.show {
+    pointer-events: auto;
+    background-color: rgb(26, 86, 219);
+}
+
 main {
     min-height: calc(100vh - 110px);
     width: 100%;
