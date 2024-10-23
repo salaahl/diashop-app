@@ -24,6 +24,10 @@
     font-weight: 400;
 }
 
+form {
+    margin-block-end: 0;
+}
+
 html,
 body {
     height: 100%;
