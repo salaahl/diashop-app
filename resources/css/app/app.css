@@ -479,15 +479,16 @@ img {
     margin-bottom: 0;
 }
 
-.product .new-badge {
+.product .new {
     position: absolute;
     top: 0;
     left: 0;
     max-width: 50%;
     padding: 1px 2px;
-    font-size: x-small;
+    font-size: smaller;
     color: black;
     background-color: rgb(255, 255, 255, 0.5);
+    z-index: 1;
     overflow: hidden;
 }
 

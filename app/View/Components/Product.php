@@ -15,6 +15,7 @@ class Product extends Component
     public string $price;
     public string $promotion;
     public string $message;
+    public string $created_at;
 
     public function __construct(
         $link,
@@ -23,7 +24,8 @@ class Product extends Component
         $title,
         $price,
         $promotion,
-        $message
+        $message,
+        $created_at
     ) {
         $this->link = $link;
         $this->image1 = $image1;
@@ -32,6 +34,7 @@ class Product extends Component
         $this->price = $price;
         $this->promotion = $promotion;
         $this->message = $message;
+        $this->created_at = $created_at;
     }
 
     /**

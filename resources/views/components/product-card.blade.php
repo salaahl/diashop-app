@@ -1,4 +1,7 @@
 <article class="product">
+    @if(strtotime('-1 month', time()) > $created_at)
+    <span class="new">Nouveauté</span>
+    @endif
     <a href="{{ $link }}">
         <div class="thumbnail">
             <x-cld-image public-id="{{ str_replace('\\', '/', $image1) }}" alt="{{ $title }}"></x-cld-image>
