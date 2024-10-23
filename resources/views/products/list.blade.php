@@ -91,7 +91,7 @@ foreach(json_decode($product->quantity_per_size, true) as $size => $quantity) {
 $product_stock += $quantity;
 }
 @endphp
-<x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product_images[0] }}" image2="{{ $product_images[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" created_at="{{ $product->created_at->timestamp }}" />
+<x-product-card created_at="{{ $product->created_at->timestamp }}" link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product_images[0] }}" image2="{{ $product_images[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
 @endforeach
 <aside class="w-full mt-[-0.5rem] mb-4">
     {{ $products->links() }}
