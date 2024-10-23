@@ -1,5 +1,5 @@
 <article class="product">
-    @if(strtotime('-1 month', time()) > $price)
+    @if(strtotime('-1 month', time()) > $created_at)
     <span class="new">Nouveauté</span>
     @endif
     <a href="{{ $link }}">

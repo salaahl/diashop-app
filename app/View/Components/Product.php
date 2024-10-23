@@ -42,6 +42,6 @@ class Product extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.product');
+        return view('components.product-card');
     }
 }
