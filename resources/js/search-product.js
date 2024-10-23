@@ -97,6 +97,7 @@ $("#default-search").addEventListener("input", (e) => {
                     console.log(error.message);
                 });
         } else {
+            $("#default-search-btn").classList.remove("show");
             $("#search-results").innerHTML = "";
         }
     }, 1000);
