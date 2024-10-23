@@ -1,6 +1,8 @@
 let $ = (id) => {
     return document.querySelector(id);
 };
+const popUp = $("#popup");
+const popUpTimer = 5000;
 
 document.querySelectorAll(".search-btn").forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -102,5 +104,15 @@ $("#default-search-btn").addEventListener("click", () => {
     let catalog = $("#search-container [name='catalog']:checked").value;
     let input = $("#default-search").value;
 
-    window.location = "/search/" + catalog + "/" + input;
+    if(input) {
+        window.location = "/search/" + catalog + "/" + input;
+    } else {
+        popUp.innerHTML =
+            "Le champ est vide";
+        popUp.classList.add("show");
+
+        setTimeout(function () {
+            popUp.classList.remove("show");
+        }, popUpTimer);
+    }
 });
