@@ -8,7 +8,7 @@ use Illuminate\View\Component;
 
 class Product extends Component
 {
-    public string $created_at;
+    public string $created;
     public string $link;
     public string $image1;
     public string $image2;
@@ -18,7 +18,7 @@ class Product extends Component
     public string $message;
 
     public function __construct(
-        $created_at,
+        $created,
         $link,
         $image1,
         $image2,
@@ -27,7 +27,7 @@ class Product extends Component
         $promotion,
         $message
     ) {
-        $this->created_at = $created_at;
+        $this->created = $created;
         $this->link = $link;
         $this->image1 = $image1;
         $this->image2 = $image2;
