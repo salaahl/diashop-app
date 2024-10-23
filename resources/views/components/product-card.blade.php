@@ -1,4 +1,4 @@
-<article class="product">
+<article class="product relative">
     @if(strtotime('-1 month', time()) > $created)
     <span class="new">Nouveauté</span>
     @endif

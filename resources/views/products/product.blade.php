@@ -33,10 +33,10 @@
     <section id="product-details-container" class="w-full md:w-2/4 md:pl-6">
         <div id="product-detail" class="md:min-h-screen md:mt-[-80px] max-md:pt-4 md:py-[110px] sticky top-0">
             <div>
-                <div class="flex justify-between">
+                <div class="flex justify-between xl:justify-start">
                     <h1 id="title" class="uppercase font-normal">{{ ucfirst($product->name) }}</h1>
                     @if(strtotime('-1 month', time()) > $product->created_at->timestamp)
-                    <span class="new">Nouveauté</span>
+                    <span class="new ml-10">Nouveauté</span>
                     @endif
                 </div>
                 @if($product->promotion)
@@ -234,7 +234,7 @@
     $product_stock += $quantity;
     }
     @endphp
-    <x-product-card created_at="{{ $product->created_at->timestamp }}" link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product_images[0] }}" image2="{{ $product_images[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
+    <x-product-card created="{{ $product->created_at->timestamp }}" link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product_images[0] }}" image2="{{ $product_images[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
     @endforeach
 </section>
 @endif
