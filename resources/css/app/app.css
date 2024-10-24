@@ -259,8 +259,8 @@ img {
     display: block;
 }
 
-.button-stylised-1:hover:not(.button-stylised-1-custom),
-.button-stylised-1:focus:not(.button-stylised-1-custom) {
+.button-stylised-1:hover,
+.button-stylised-1:focus {
     background-color: #f3f4f6;
     color: black;
 }
@@ -357,7 +357,7 @@ img {
 }
 
 .right-layer,
-#loader-container:not(.close) .left-layer {
+#loader-container .left-layer {
     transform: translateX(100%);
 }
 
@@ -640,7 +640,7 @@ img {
         width: 19%;
     }
 
-    #search-container .product:not(.product:last-of-type) {
+    #search-container .product + .product {
         margin: 0 1% 0 0;
     }
 }

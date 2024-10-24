@@ -150,8 +150,7 @@ Code du carousel
         margin-bottom: 2%;
     }
 
-    #product-images-container
-        li:not(#product-images-container li:last-of-type) {
+    #product-images-container li + li {
         margin-bottom: 1%;
     }
 
