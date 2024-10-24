@@ -316,6 +316,10 @@ img {
     background-color: #a8bbbf;
 }
 
+.turbo-progress-bar {
+    visibility: hidden;
+}
+
 /* Loader des pages */
 #loader-container {
     position: fixed;

@@ -91,6 +91,7 @@
 @media (min-width: 768px) {
     #catalogs-container .catalog {
         width: 50%;
+        will-change: transform;
     }
 
     #catalogs-container .catalog:hover {

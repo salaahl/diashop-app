@@ -1,10 +1,13 @@
 import "./bootstrap";
-
 import Alpine from "alpinejs";
+import * as Turbo from "@hotwired/turbo";
 
 window.Alpine = Alpine;
 
 Alpine.start();
+Turbo.start();
+
+const animationDelay = 700; // Temps de l'animation du loader
 
 /*
 Retracte la barre de navigation en mode desktop
@@ -27,8 +30,10 @@ function resetHeight() {
     // reset the body height to that of the inner browser
     document.body.style.height = window.innerHeight + "px";
 }
+
 // reset the height whenever the window's resized
 window.addEventListener("resize", resetHeight);
+
 // called to initially set the height.
 resetHeight();
 

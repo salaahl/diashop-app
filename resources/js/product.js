@@ -8,7 +8,7 @@ const popUpTimer = 5000;
 let url = window.location.href;
 
 // Effet de translate en mode mobile pour notifier à l'utilisateur qu'il peut swipe
-window.addEventListener("load", () => {
+window.addEventListener("turbo:load", () => {
     if (
         window.innerWidth < 767 &&
         $("#product-images-container li:nth-of-type(2)")

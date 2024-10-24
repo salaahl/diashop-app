@@ -54,6 +54,7 @@
             @section('header')
             @include('layouts.navigation')
             @include('components.search-product')
+            @include('components.basket')
             @show
         </header>
 
