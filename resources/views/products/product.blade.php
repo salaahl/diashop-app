@@ -33,10 +33,12 @@
     <section id="product-details-container" class="w-full md:w-2/4 md:pl-6">
         <div id="product-detail" class="md:min-h-screen md:mt-[-80px] max-md:pt-4 md:py-[110px] sticky top-0">
             <div>
-                <div class="flex justify-between xl:justify-start">
+                <div class="flex items-center">
                     <h1 id="title" class="uppercase font-normal">{{ ucfirst($product->name) }}</h1>
                     @if(strtotime('-1 month', time()) > $product->created_at->timestamp)
-                    <span class="new ml-10">Nouveauté</span>
+                    <div class="new-badge">
+                        <span>New</span>
+                    </div>
                     @endif
                 </div>
                 @if($product->promotion)

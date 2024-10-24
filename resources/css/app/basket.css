@@ -53,6 +53,11 @@
     transition: background-size 0.5s, background-position 0.3s ease-in-out;
 }
 
+#basket-title:hover {
+    background-size: 100% 100%;
+    background-position: 0 0;
+}
+
 #close-basket-modal {
     background-color: rgb(var(--accent-color-2));
     border-radius: 999px;

@@ -1,6 +1,8 @@
 <article class="product relative">
     @if(strtotime('-1 month', time()) > $created)
-    <span class="new">Nouveauté</span>
+    <div class="new-badge">
+        <span>New</span>
+    </div>
     @endif
     <a href="{{ $link }}">
         <div class="thumbnail">

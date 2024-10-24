@@ -69,7 +69,7 @@ h1 {
 
 h1:hover {
     background-size: 100% 100%;
-    background-position: 0% 100%;
+    background-position: 0 0;
 }
 
 h2 {
@@ -241,7 +241,7 @@ img {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    transition: 0.25s background-color linear;
+    transition: 0.15s background-color linear;
 }
 
 .button-stylised-1,
@@ -474,22 +474,34 @@ img {
     margin: auto;
 }
 
+.new-badge {
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Truculenta", sans-serif;
+    font-size: small;
+    font-weight: bold;
+    mask-image: url("/public/images/new_badge.png");
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    color: white;
+    background-color: rgb(var(--accent-color-4));
+}
+
 /* Paramètres globaux du container d'une carte "produit" */
 #search-container .product {
     margin-bottom: 0;
 }
 
-.product .new {
+.product .new-badge {
     position: absolute;
     top: 0;
     left: 0;
-    max-width: 50%;
-    padding: 1% 2%;
-    font-size: small;
-    color: black;
-    background-color: rgb(255, 255, 255, 0.5);
+    margin: 2.5%;
     z-index: 1;
-    overflow: hidden;
 }
 
 .thumbnail {
