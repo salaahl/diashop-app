@@ -19,6 +19,7 @@
     "dependencies": {
         "@hotwired/turbo": "^8.0.5",
         "flowbite": "^2.2.1",
+        "gsap": "^3.12.5",
         "normalize.css": "^8.0.1"
     }
 }

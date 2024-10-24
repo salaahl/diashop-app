@@ -3,6 +3,10 @@ h1 {
     margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;
+    background-image: linear-gradient(
+        rgb(var(--accent-color-4), 0.8),
+        rgb(var(--accent-color-4), 0.8)
+    );
 }
 
 main {
@@ -14,13 +18,27 @@ main {
     width: 100%;
 }
 
+#categories {
+    border-top: 2.5px dashed rgb(var(--accent-color-4));
+}
+
+.catalog-name {
+    display: flex;
+    align-items: center;
+    transform: rotate(-90deg);
+}
+
 .category .thumbnail img {
-    filter: blur(1px) grayscale(1);
+    filter: blur(1px) grayscale(0.85);
     transition: all 0.8s;
 }
 
 .category .thumbnail:hover img {
     filter: blur(0) grayscale(0);
+}
+
+#filters {
+    background-color: rgb(var(--accent-color-2), 0.15);
 }
 
 .product {
@@ -58,9 +76,12 @@ main {
         margin: 50px auto 25px auto;
     }
 
+    #categories {
+        border-top: 5px dotted rgb(var(--accent-color-2), 0.5);
+    }
+
     .category {
-        width: 20%;
-        min-width: 20%;
+        width: 15%;
         margin: 0.5%;
     }
 

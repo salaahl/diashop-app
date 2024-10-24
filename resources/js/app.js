@@ -38,16 +38,10 @@ window.addEventListener("resize", resetHeight);
 resetHeight();
 
 // Loader des pages
-window.addEventListener("turbo:load", () => {
-    // Empêche que le CSS d'une page empiète sur les autres
-    const lastCSS = document.querySelector(
-        'link[rel="stylesheet"]:last-of-type'
-    );
-    lastCSS.setAttribute("data-turbo-track", "dynamic");
-
+window.addEventListener("load", () => {
     document.querySelector("#loader-container").classList.add("close");
 
-    // Gestions des liens hors Turbo
+    // Mise en place d'un timer permettant la bonne tenue de l'animation
     document.querySelectorAll("a").forEach(function (link) {
         link.addEventListener("click", function (event) {
             const isExternal = link.hostname !== window.location.hostname;
@@ -66,15 +60,19 @@ window.addEventListener("turbo:load", () => {
                 .classList.remove("close");
 
             setTimeout(function () {
-                // Vérifiez si le lien a l'attribut data-turbo="false"
-                if (link.getAttribute("data-turbo") !== "false") {
-                    // Utilise Turbo.visit pour naviguer
-                    Turbo.visit(link.href);
-                } else {
-                    // Sinon, effectue une navigation standard
-                    window.location.href = link.href;
-                }
-            }, animationDelay);
+                window.location.href = link.href;
+            }, 500);
         });
     });
+});
+
+// Affichage du menu déroulant de la barre de navigation en mode mobile
+const button = document.getElementById('navbar-dropdown-btn');
+const navbar = document.getElementById('navbar-container');
+
+button.addEventListener('click', function() {
+    // Basculer l'état aria-expanded
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', !isExpanded); // Inverse l'état
+    navbar.classList.toggle('show-navbar-dropdown', !isExpanded); // Affiche ou cache le contenu
 });

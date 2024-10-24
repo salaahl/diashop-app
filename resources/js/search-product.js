@@ -1,15 +1,19 @@
 let $ = (id) => {
     return document.querySelector(id);
 };
+const popUp = $("#popup");
+const popUpTimer = 5000;
 
-$("#search-btn").addEventListener("click", (e) => {
-    $("#search-container").classList.add("show");
-    $("#search-container").classList.remove("hide");
+document.querySelectorAll(".search-btn").forEach((button) => {
+    button.addEventListener("click", (e) => {
+        $("#navbar-container").classList.add("show-search-container");
+        $("#navbar-container").classList.remove("hide-search-container");
+    });
 });
 
 $("#close-search-btn").addEventListener("click", (e) => {
-    $("#search-container").classList.add("hide");
-    $("#search-container").classList.remove("show");
+    $("#navbar-container").classList.add("hide-search-container");
+    $("#navbar-container").classList.remove("show-search-container");
 });
 
 let timer;
@@ -22,7 +26,7 @@ $("#default-search").addEventListener("input", (e) => {
     timer = setTimeout(function () {
         if ($("#default-search").value.length > 0) {
             $("#search-results").innerHTML = "";
-            document.getElementById("lds-hourglass").classList.add("show");
+            document.getElementById("search-loader").classList.add("show");
 
             let data = {
                 input: $("#default-search").value,
@@ -57,10 +61,10 @@ $("#default-search").addEventListener("input", (e) => {
                                 product["id"] +
                                 '">' +
                                 '<div class="thumbnail">' +
-                                '<img src="' +
+                                '<img src="https://res.cloudinary.com/dq8yfrr3w/image/upload/v1/' +
                                 product["img"][0] +
                                 '" />' +
-                                '<img src="' +
+                                '<img src="https://res.cloudinary.com/dq8yfrr3w/image/upload/v1/' +
                                 product["img"][1] +
                                 '" />' +
                                 "</div>" +
@@ -70,25 +74,30 @@ $("#default-search").addEventListener("input", (e) => {
                                 product["name"] +
                                 "</h4>" +
                                 '<div class="flex items-center">' +
-                                '<span class="message text-sm font-thin text-red-500">' + product["message"] + '</span>' +
+                                '<span class="message text-sm font-thin text-red-500">' +
+                                product["message"] +
+                                "</span>" +
                                 "</div>" +
                                 "</div>" +
                                 "</div>" +
                                 "</a>" +
                                 "</article>";
                         });
+                        $("#default-search-btn").classList.add("show");
                     } else {
+                        $("#default-search-btn").classList.remove("show");
                         $("#search-results").innerHTML = "AUCUN RESULTAT";
                     }
 
                     document
-                        .getElementById("lds-hourglass")
+                        .getElementById("search-loader")
                         .classList.remove("show");
                 })
                 .catch((error) => {
                     console.log(error.message);
                 });
         } else {
+            $("#default-search-btn").classList.remove("show");
             $("#search-results").innerHTML = "";
         }
     }, 1000);

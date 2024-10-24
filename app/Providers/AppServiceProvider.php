@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use \Illuminate\Support\Facades\URL;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Notifications\Messages\MailMessage;
+use App\Models\Order;
+use App\Observers\OrderObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,5 +35,7 @@ class AppServiceProvider extends ServiceProvider
                 ->action('Vérifier mon email', $url)
                 ->line('Si vous n\'avez pas créé de compte, aucune autre action n\'est requise.');
         });
+
+        Order::observe(OrderObserver::class);
     }
 }

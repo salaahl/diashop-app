@@ -32,6 +32,6 @@ class TrackingNumberEmailJob implements ShouldQueue
     {
         $email = new TrackingNumberEmail($this->data);
 
-        Mail::to($this->data[0]->email)->send($email);
+        Mail::to($this->data->email)->send($email);
     }
 }
