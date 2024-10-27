@@ -4,7 +4,7 @@ initialize();
 
 async function initialize() {
     try {
-        const clientSecret = document.getElementById('#clientSecret').value;
+        const clientSecret = document.getElementById('clientSecret').value;
         const checkout = await stripe.initEmbeddedCheckout({
             clientSecret,
         });
