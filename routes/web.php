@@ -63,10 +63,7 @@ Route::put('basket/store', [BasketController::class, 'store'])->name('basket.sto
 Route::delete('basket/remove', [BasketController::class, 'remove'])->name('basket.remove');
 Route::delete('basket/destroy', [BasketController::class, 'destroy'])->name('basket.destroy');
 
-Route::get('checkout/', function () {
-    return view('stripe/checkout');
-})->name('checkout.show');
-Route::post('checkout/', [StripePaymentController::class, 'checkout'])->name('checkout.post');
+Route::get('checkout/', [StripePaymentController::class, 'checkout'])->name('checkout');
 Route::get('confirmation/{slug}', [StripePaymentController::class, 'confirmation'])->name('confirmation.show');
 
 Route::get('about-me/', function () {

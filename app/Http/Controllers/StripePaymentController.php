@@ -19,11 +19,14 @@ class StripePaymentController extends Controller
         try {
             $clientSecret = $this->stripePaymentService->createSession();
 
-            return response()->json([
+            return view('stripe/checkout', [
                 'clientSecret' => $clientSecret,
             ]);
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage() ?: 'Une erreur est survenue. Veuillez réessayer.']);
+            return redirect()->route('home')->with(
+                'error', 
+                $e->getMessage() ?: 'Une erreur est survenue. Veuillez réessayer.'
+            );
         }
     }
 

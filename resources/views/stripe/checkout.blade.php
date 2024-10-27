@@ -28,6 +28,7 @@
 
 @section('main')
 <div id="checkout" class="min-h-[85vh] pt-[50px]"></div>
+<input type="hidden" id="clientSecret" name="clientSecret" value="{{ $clientSecret }}" />
 @endsection
 
 @section('scripts')
