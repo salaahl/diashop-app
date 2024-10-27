@@ -23,10 +23,7 @@ class StripePaymentController extends Controller
                 'clientSecret' => $clientSecret,
             ]);
         } catch (Exception $e) {
-            return response()->json([
-                'redirect_url' => route('home'),
-                'error' => $e->getMessage(),
-            ]);
+            return response()->json(['error' => $e->getMessage() ?: 'Une erreur est survenue. Veuillez réessayer.']);
         }
     }
 
@@ -37,7 +34,8 @@ class StripePaymentController extends Controller
         } catch (Exception $e) {
             return redirect()->route('home')->with(
                 'error',
-                'Erreur lors de la validation de la commande. Veuillez prendre contact avec l\'administrateur du site.'
+                $e->getMessage() ?:
+                    'Erreur lors de la validation de la commande. Veuillez prendre contact avec l\'administrateur du site.'
             );
         }
 

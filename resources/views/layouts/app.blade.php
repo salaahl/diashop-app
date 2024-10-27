@@ -89,7 +89,7 @@
     <!-- Page Scripts -->
     @section('scripts')
     @vite(['resources/js/app.js', 'resources/js/search-product.js', 'resources/js/basket.js'])
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 
     <!-- Gestion du panier -->
     <script>
