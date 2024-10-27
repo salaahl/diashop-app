@@ -155,7 +155,7 @@ $total = 0;
             Un code promo ? Entrez-le dans l'écran suivant
           </h4>
           <a
-            href="{{ route('checkout.show') }}"
+            href="{{ route('checkout') }}"
             class="button-stylised-1">
             <span>Payer -</span>
             <span class="total ml-[5px]">{{ number_format($total + $delivery_costs, 2) }}€</span>
