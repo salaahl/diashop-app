@@ -68,7 +68,7 @@ class StripePaymentService
                 'shipping_rate_data' => [
                     'type' => 'fixed_amount',
                     'fixed_amount' => [
-                        'amount' => 499,
+                        'amount' => env('STANDARD_DELIVERY_CHARGES'),
                         'currency' => 'eur',
                     ],
                     'display_name' => 'Livraison standard',

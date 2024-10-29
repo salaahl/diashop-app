@@ -142,10 +142,10 @@ $total = 0;
         @if($total > 0)
         <div class="w-full">
           @if($total > 49)
-          <h4 class="text-sm text-center text-gray-500 line-through">+ 4.99€ de frais de livraison</h4>
+          <h4 class="text-sm text-center text-gray-500 line-through">+ {{ env('STANDARD_DELIVERY_CHARGES', 0) / 100 }}€ de frais de livraison</h4>
           <h4 class="mb-2 text-sm text-center text-gray-500">Frais de livraison offerts !</h4>
           @else
-          @php($delivery_costs = 4.99)
+          @php($delivery_costs = env('STANDARD_DELIVERY_CHARGES', 0) / 100)
           <h4 class="mb-2 text-sm text-center text-gray-500">+ {{ $delivery_costs }}€ de frais de livraison</h4>
           @endif
           <h4 class="text-sm text-center text-gray-500">

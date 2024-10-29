@@ -252,7 +252,7 @@ if (document.getElementById("add-basket")) {
                         if (total > 49) {
                             basketFooter = `
                                 <div class="w-full">
-                                    <h4 class="text-sm text-center text-gray-500 line-through">+ 4.99€ de frais de livraison</h4>
+                                    <h4 class="text-sm text-center text-gray-500 line-through">+ ${process.env.STANDARD_DELIVERY_CHARGES / 100}€ de frais de livraison</h4>
                                     <h4 class="mb-2 text-sm text-center text-gray-500">Frais de livraison offerts !</h4>
                                     <h4 class="text-sm text-center text-gray-500">
                                         Options de payement disponiles : Visa, Mastercard, CB & Paypal
@@ -272,10 +272,10 @@ if (document.getElementById("add-basket")) {
                                 </div>
                                 `;
                         } else {
-                            total += 4.99;
+                            total += process.env.STANDARD_DELIVERY_CHARGES / 100;
                             basketFooter = `
                                 <div class="w-full">
-                                    <h4 class="mb-2 text-sm text-center text-gray-500">+ 4.99€ de frais de livraison</h4>
+                                    <h4 class="mb-2 text-sm text-center text-gray-500">+ ${process.env.STANDARD_DELIVERY_CHARGES / 100}€ de frais de livraison</h4>
                                     <h4 class="text-sm text-center text-gray-500">
                                         Options de payement disponiles : Visa, Mastercard, CB & Paypal
                                     </h4>
