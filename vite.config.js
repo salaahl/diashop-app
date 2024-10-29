@@ -23,6 +23,10 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-        EnvironmentPlugin(["APP_DEBUG", "STRIPE_KEY"]),
+        EnvironmentPlugin([
+            "APP_DEBUG",
+            "STRIPE_KEY",
+            "STANDARD_DELIVERY_CHARGES",
+        ]),
     ],
 });
