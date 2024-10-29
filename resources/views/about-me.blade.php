@@ -10,7 +10,7 @@
 @section('links')
 @parent
 <style>
-    h1 {
+    h1, .highlight {
         background-image: linear-gradient(
             rgb(var(--accent-color-2)),
             rgb(var(--accent-color-2))
@@ -18,10 +18,6 @@
     }
 
     .highlight {
-        background-image: linear-gradient(
-            rgb(var(--accent-color-1)),
-            rgb(var(--accent-color-1))
-        );
         background-size: 100% 15px;
         background-repeat: no-repeat;
         background-position: 0 100%;
@@ -70,8 +66,8 @@
         </div>
         <img src="{{ asset('images/woman-catalog.jpg')}}" class="h-auto w-full md:h-[50vh] max-md:my-10 mx-auto aspect-square border-[35px] border-black rounded-full object-cover">
         <p class="md:mt-10 text-center">Bienvenue chez DiaShop-b !</p>
-        <p class="md:mt-10 text-justify">Je suis Dianaba, <span class="highlight">Parisienne passionnée de mode et exploratrice dans l’âme.</span> À travers mes voyages, je <span class="highlight">sélectionne en personne des pièces uniques et de qualité</span> qui apportent une touche d'authenticité à chaque garde-robe.</p>
-        <p class="md:mt-10 text-justify"><span class="highlight">Notre collection de prêt-à-porter pour hommes et femmes</span> reflète les dernières tendances mondiales, avec des vêtements soigneusement choisis pour <span class="highlight">allier style, confort et caractère.</span> Chaque article incarne mon engagement pour une mode élégante et inspirée, <span class="highlight">importée spécialement pour vous ici à Paris.</span></p>
+        <p class="md:mt-10 text-justify">Je suis Dianaba, Parisienne passionnée de mode et exploratrice dans l’âme. À travers mes voyages, je sélectionne en personne des pièces uniques et de qualité qui apportent une touche d'authenticité à chaque garde-robe.</p>
+        <p class="md:mt-10 text-justify">Notre collection de prêt-à-porter pour hommes et femmes reflète les dernières tendances mondiales, avec des vêtements soigneusement choisis pour allier style, confort et caractère. Chaque article incarne mon engagement pour une mode élégante et inspirée, importée spécialement pour vous ici à Paris.</p>
         <p class="md:mt-10 text-center">Plongez dans cet univers où <span class="highlight">chaque pièce raconte une histoire et sublime votre style.</span></p>
     </div>
 </section>
