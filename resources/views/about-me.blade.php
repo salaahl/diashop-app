@@ -10,15 +10,14 @@
 @section('links')
 @parent
 <style>
-    h1, .highlight {
-        background-image: linear-gradient(
-            rgb(var(--accent-color-2)),
-            rgb(var(--accent-color-2))
-        );
+    h1,
+    .highlight {
+        background-image: linear-gradient(rgb(var(--accent-color-2)),
+                rgb(var(--accent-color-2)));
     }
 
     .highlight {
-        background-size: 100% 15px;
+        background-size: 100% 5px;
         background-repeat: no-repeat;
         background-position: 0 100%;
     }
@@ -31,7 +30,6 @@
         #about-me>div:last-of-type img {
             height: 40vh;
             width: auto;
-            box-shadow: -20px -15px 10px hsl(0deg 0% 0% / 0.25);
         }
 
         .animateFadeSlideIn {
@@ -64,11 +62,11 @@
         <div class="md:h-[10vh] w-min md:w-auto flex justify-center items-center mx-auto">
             <h1 class="text-4xl md:text-white font-light">À propos de nous</h1>
         </div>
-        <img src="{{ asset('images/woman-catalog.jpg')}}" class="h-auto w-full md:h-[50vh] max-md:my-10 mx-auto aspect-square border-[35px] border-black rounded-full object-cover">
-        <p class="md:mt-10 text-center">Bienvenue chez DiaShop-b !</p>
-        <p class="md:mt-10 text-justify">Je suis Dianaba, Parisienne passionnée de mode et exploratrice dans l’âme. À travers mes voyages, je sélectionne en personne des pièces uniques et de qualité qui apportent une touche d'authenticité à chaque garde-robe.</p>
-        <p class="md:mt-10 text-justify">Notre collection de prêt-à-porter pour hommes et femmes reflète les dernières tendances mondiales, avec des vêtements soigneusement choisis pour allier style, confort et caractère. Chaque article incarne mon engagement pour une mode élégante et inspirée, importée spécialement pour vous ici à Paris.</p>
-        <p class="md:mt-10 text-center">Plongez dans cet univers où <span class="highlight">chaque pièce raconte une histoire et sublime votre style.</span></p>
+        <img src="{{ asset('images/woman-catalog.jpg')}}" class="h-auto w-3/4 md:h-[50vh] max-md:my-10 mx-auto aspect-square border-[25px] border-gray-200 md:border-white rounded-full object-cover">
+        <p class="md:mt-4 text-center font-[600]">Bienvenue chez DiaShop-b !</p>
+        <p class="mt-8 text-justify">Je suis Dianaba, Parisienne passionnée de mode et exploratrice dans l’âme. À travers mes voyages, je sélectionne en personne des pièces uniques et de qualité qui apportent une touche d'authenticité à chaque garde-robe.</p>
+        <p class="mt-8 text-justify">Notre collection de prêt-à-porter pour hommes et femmes reflète les dernières tendances mondiales, avec des vêtements soigneusement choisis pour allier style, confort et caractère. Chaque article incarne mon engagement pour une mode élégante et inspirée, importée spécialement pour vous ici à Paris.</p>
+        <p class="mt-8 text-center">Plongez dans cet univers où <span class="highlight">chaque pièce raconte une histoire et sublime votre style.</span></p>
     </div>
 </section>
 @endsection
