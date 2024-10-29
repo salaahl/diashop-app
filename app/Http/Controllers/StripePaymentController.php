@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Services\StripePaymentService;
+use Illuminate\Http\Request;
 
 class StripePaymentController extends Controller
 {
@@ -14,19 +15,16 @@ class StripePaymentController extends Controller
         $this->stripePaymentService = $stripePaymentService;
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
         try {
-            $clientSecret = $this->stripePaymentService->createSession();
+            $clientSecret = $this->stripePaymentService->createSession($request->delivery_method);
 
-            return view('stripe/checkout', [
+            return response()->json([
                 'clientSecret' => $clientSecret,
             ]);
         } catch (Exception $e) {
-            return redirect()->route('home')->with(
-                'error', 
-                $e->getMessage() ?: 'Une erreur est survenue. Veuillez réessayer.'
-            );
+            return response()->json(['error' => $e->getMessage() ?? 'Une erreur est survenue. Veuillez réessayer.']);
         }
     }
 
@@ -37,7 +35,7 @@ class StripePaymentController extends Controller
         } catch (Exception $e) {
             return redirect()->route('home')->with(
                 'error',
-                $e->getMessage() ?:
+                $e->getMessage() ??
                     'Erreur lors de la validation de la commande. Veuillez prendre contact avec l\'administrateur du site.'
             );
         }

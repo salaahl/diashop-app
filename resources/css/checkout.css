@@ -1,0 +1,140 @@
+#navbar button,
+.basket-counter {
+    display: none;
+}
+
+#details-table,
+#address-element,
+#shipping-options,
+#payment-element,
+#submit {
+    margin-bottom: 24px;
+}
+
+.radio-toolbar {
+    max-width: unset;
+    margin: 0;
+}
+
+.separator {
+    border-color: rgb(var(--accent-color-1));
+}
+
+/* Mondial relay widget */
+#mr-widget {
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+#mr-widget.show {
+    height: 600px;
+    max-height: fit-content;
+    transition: all 0.5s ease;
+}
+
+.MR-Widget.fr-FR {
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    transition: all 1s ease;
+}
+
+#mr-widget .MR-Widget .MRW-Line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+#mr-widget .MR-Widget input {
+    width: 100% !important;
+    background: unset;
+}
+
+#mr-widget .MR-Widget input + input {
+    margin-right: 2%;
+}
+
+#mr-widget .MR-Widget button {
+    padding: 1%;
+}
+
+#mr-widget .MR-Widget button:first-of-type {
+    margin-right: 1%;
+}
+
+#mr-widget .MR-Widget .MRW-Title {
+    padding: 1%;
+    background: rgb(249, 250, 251);
+}
+
+#mr-widget .MR-Widget .MRW-Search {
+    background: unset;
+}
+
+#mr-widget .progressBar {
+    width: 50px;
+    margin: auto;
+}
+
+#mr-widget .MR-Widget .MRW-Results > div {
+    max-height: 100%;
+}
+
+#mr-widget .MR-Widget .MRW-Results > div:first-of-type {
+    max-width: 65%;
+}
+
+#mr-widget .MR-Widget .MRW-Results > div:last-of-type {
+    max-width: 35%;
+}
+
+#Img_Pays {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    #navbar-dropdown {
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    #details-table,
+    .separator {
+        top: calc(80px + 1rem);
+    }
+}
+
+@-webkit-keyframes loading {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loading {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeInAnimation {
+    to {
+        opacity: 1;
+    }
+}

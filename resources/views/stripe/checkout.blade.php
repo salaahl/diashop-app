@@ -8,30 +8,41 @@
 
 @section('links')
 @parent
-<script src="https://js.stripe.com/v3/"></script>
-<style>
-    #navbar button, .basket-counter {
-        display: none;
-    }
-
-    main {
-        padding: 0;
-    }
-
-    @media (min-width: 768px) {
-        #navbar-dropdown {
-            display: none;
-        }
-    }
-</style>
+@vite('resources/css/checkout.css')
 @endsection
 
 @section('main')
-<div id="checkout" class="min-h-[85vh] pt-[50px]"></div>
-<input type="hidden" id="clientSecret" name="clientSecret" value="{{ $clientSecret }}" />
+<h1>Paiement</h1>
+<!-- Delivery options -->
+<div id="delivery-choice" class="absolute top-0 left-0 h-full w-full flex flex-col justify-center items-center gap-4">
+    <button class="carrier button-stylised-1 w-full max-w-lg">Livraison à domicile</button>
+    <input type="hidden" name="delivery" value="standard">
+    <button class="carrier button-stylised-1 w-full max-w-lg">Livraison en point relai</button>
+    <input type="hidden" name="delivery" value="mondial-relay">
+    <!-- Mondial relay widget -->
+    <div id="mr-widget" class="max-w-lg"></div>
+    <div id="mr-response" class="max-w-lg"></div>
+</div>
+<!-- Stripe checkout -->
+<div id="checkout" class="mt-16"></div>
 @endsection
 
 @section('scripts')
 @parent
+<script src="https://js.stripe.com/v3/"></script>
+<!-- Mondial relay scripts -->
+<script
+    type="text/javascript"
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script
+    type="text/javascript"
+    src="//unpkg.com/leaflet/dist/leaflet.js"></script>
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="//unpkg.com/leaflet/dist/leaflet.css" />
+<script
+    type="text/javascript"
+    src="https://widget.mondialrelay.com/parcelshop-picker/jquery.plugin.mondialrelay.parcelshoppicker.min.js"></script>
 @vite('resources/js/stripe/checkout.js')
 @endsection
