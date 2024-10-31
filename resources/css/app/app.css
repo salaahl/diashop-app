@@ -389,89 +389,74 @@ img {
 .clothes-animation {
     position: relative;
     display: flex;
-    height: 80px;
+    height: 150px;
     width: fit-content;
-    gap: 10px;
     mask-image: linear-gradient(
             to top,
             rgb(255, 255, 255, 0) 0%,
-            rgb(255, 255, 255, 1) 10px
+            rgb(255, 255, 255, 1) 25px
         ),
         linear-gradient(
             to bottom,
             rgb(255, 255, 255, 0) 0%,
-            rgb(255, 255, 255, 1) 10px
+            rgb(255, 255, 255, 1) 25px
         ),
         linear-gradient(
             to left,
             rgb(255, 255, 255, 0) 0%,
-            rgb(255, 255, 255, 1) 10px
+            rgb(255, 255, 255, 1) 25px
         ),
         linear-gradient(
             to right,
             rgb(255, 255, 255, 0) 0%,
-            rgb(255, 255, 255, 1) 10px
+            rgb(255, 255, 255, 1) 25px
         );
     mask-composite: intersect;
     overflow: hidden;
 }
 
 .clothes-animation .container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: 80px;
-}
-
-.clothes-animation .carousel {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    width: 80px;
-    transform-origin: center;
-    animation-delay: 2s;
-}
-
-.clothes-animation .container:nth-child(3) {
-    justify-content: flex-start;
-    justify-items: flex-start;
-    animation: scroll-up 4s 3 ease-in-out;
+    width: 150px;
+    animation: scroll-clothes-y 10s infinite
+        linear(
+            0 0%,
+            0 1.8%,
+            0.01 3.6%,
+            0.03 6.35%,
+            0.07 9.1%,
+            0.13 11.4%,
+            0.19 13.4%,
+            0.27 15%,
+            0.34 16.1%,
+            0.54 18.35%,
+            0.66 20.6%,
+            0.72 22.4%,
+            0.77 24.6%,
+            0.81 27.3%,
+            0.85 30.4%,
+            0.88 35.1%,
+            0.92 40.6%,
+            0.94 47.2%,
+            0.96 55%,
+            0.98 64%,
+            0.99 74.4%,
+            1 86.4%,
+            1 100%
+        );
     animation-delay: 1s;
-}
-
-.clothes-animation .container:nth-child(2) {
-    justify-content: flex-end;
-    justify-items: flex-end;
-    animation: scroll-down 4s 3 ease-in-out;
-    animation-delay: 2s;
-}
-
-.clothes-animation .container:nth-child(1) {
-    justify-content: flex-end;
-    justify-items: flex-end;
-    animation: scroll-down 3s 4 ease-in-out;
-    animation-delay: 0.5s;
-}
-
-.clothes-animation:hover {
-    animation: none;
 }
 
 .clothes-animation .carousel > div {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80px;
-    width: 80px;
-    animation-delay: 5s;
+    height: 150px;
+    width: 150px;
 }
 
 .clothes-animation .carousel img {
-    height: 90%;
-    width: 90%;
-    margin: auto;
+    height: 100px;
+    width: 100px;
 }
 
 .new-badge {
@@ -563,18 +548,39 @@ img {
         --h4-font-size: medium;
     }
 
-    .clothes-animation {
-        height: 100px;
+    .clothes-animation .container {
+        animation: scroll-clothes-x 10s infinite
+            linear(
+                0 0%,
+                0 1.8%,
+                0.01 3.6%,
+                0.03 6.35%,
+                0.07 9.1%,
+                0.13 11.4%,
+                0.19 13.4%,
+                0.27 15%,
+                0.34 16.1%,
+                0.54 18.35%,
+                0.66 20.6%,
+                0.72 22.4%,
+                0.77 24.6%,
+                0.81 27.3%,
+                0.85 30.4%,
+                0.88 35.1%,
+                0.92 40.6%,
+                0.94 47.2%,
+                0.96 55%,
+                0.98 64%,
+                0.99 74.4%,
+                1 86.4%,
+                1 100%
+            );
+        animation-delay: 1s;
     }
 
-    .clothes-animation .container,
     .clothes-animation .carousel {
-        width: 100px;
-    }
-
-    .clothes-animation .carousel > div {
-        height: 100px;
-        width: 100px;
+        display: flex;
+        width: max-content;
     }
 
     footer {
@@ -675,36 +681,90 @@ img {
 }
 
 /* Animations du loader des pages */
-@keyframes scroll-up {
+@keyframes scroll-clothes-x {
     0% {
-        transform: translateY(0);
+        transform: translateX(0); /* image 1 */
         filter: blur(0);
     }
 
-    30% {
-        transform: translateY(-600%);
-        filter: blur(10px);
+    8.33% {
+        filter: blur(4px);
     }
 
-    60% {
-        transform: translateY(0);
-        filter: blur(0px);
+    25% {
+        transform: translateX(-1500px); /* image 2 */
+        filter: blur(0);
+    }
+
+    33.33% {
+        transform: translateX(-1500px); /* image 2 */
+        filter: blur(0);
+    }
+
+    41.67% {
+        filter: blur(4px);
+    }
+
+    58.33% {
+        transform: translateX(-3000px); /* image 3 */
+        filter: blur(0);
+    }
+
+    66.67% {
+        transform: translateX(-3000px); /* image 3 */
+        filter: blur(0);
+    }
+
+    75% {
+        filter: blur(8px); /* plus de distance donc effet plus prononcé */
+    }
+
+    91.67% {
+        transform: translateX(0); /* image 1 */
+        filter: blur(0);
     }
 }
 
-@keyframes scroll-down {
+@keyframes scroll-clothes-y {
     0% {
-        transform: translateY(0);
+        transform: translateY(0); /* image 1 */
         filter: blur(0);
     }
 
-    30% {
-        transform: translateY(600%);
-        filter: blur(10px);
+    8.33% {
+        filter: blur(4px);
     }
 
-    60% {
-        transform: translateY(0);
-        filter: blur(0px);
+    25% {
+        transform: translateY(-1500px); /* image 2 */
+        filter: blur(0);
+    }
+
+    33.33% {
+        transform: translateY(-1500px); /* image 2 */
+        filter: blur(0);
+    }
+
+    41.67% {
+        filter: blur(4px);
+    }
+
+    58.33% {
+        transform: translateY(-3000px); /* image 3 */
+        filter: blur(0);
+    }
+
+    66.67% {
+        transform: translateY(-3000px); /* image 3 */
+        filter: blur(0);
+    }
+
+    75% {
+        filter: blur(8px); /* plus de distance donc effet plus prononcé */
+    }
+
+    91.67% {
+        transform: translateY(0); /* image 1 */
+        filter: blur(0);
     }
 }
