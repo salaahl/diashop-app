@@ -1,3 +1,7 @@
+main {
+    min-height: unset;
+}
+
 #catalogs-container {
     display: flex;
     width: 100%;

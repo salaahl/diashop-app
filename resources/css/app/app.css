@@ -444,8 +444,8 @@ img {
         1 86.4%,
         1 100%
     );
-    animation-iteration-count: 3;
-    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
 }
 
 .clothes-animation .carousel > div {
