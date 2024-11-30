@@ -611,7 +611,7 @@
                                                                                 <p>Pour toute question et/ou réclamation, veuillez nous contacter à l'adresse
                                                                                     suivante :</p>
                                                                                 <p>
-                                                                                    <a href="mailto:diashop-b@gmail.com" style="color:white;" target="_new">diashop-b@gmail.com</a>
+                                                                                    <a href="mailto:{{ env('MAIL_FROM_ADDRESS') }}" style="color:white;" target="_new">{{ env('MAIL_FROM_ADDRESS') }}</a>
                                                                                 </p>
                                                                             </td>
                                                                         </tr>

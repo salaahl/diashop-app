@@ -130,7 +130,7 @@
 </div>
 
 <div class="max-w-[1024px] mt-16 mx-auto">
-    <p>Vous pourrez suivre l'évolution de votre commande en temps réel grâce au numéro de suivi qui vous sera envoyé dès l'expédition de votre colis. Si vous avez des questions, veuillez envoyer un email à <a href="mailto:diashop-b@gmail.com">diashop-b@gmail.com</a>.</p>
+    <p>Vous pourrez suivre l'évolution de votre commande en temps réel grâce au numéro de suivi qui vous sera envoyé dès l'expédition de votre colis. Si vous avez des questions, veuillez envoyer un email à <a href="mailto:{{ env('MAIL_FROM_ADDRESS') }}">{{ env('MAIL_FROM_ADDRESS') }}</a>.</p>
     <p class="mt-4">Nous tenons à vous remercier sincèrement pour votre confiance. Chez DiaShop-b, chaque commande est spéciale, et nous sommes impatients de vous voir rayonner dans nos pièces tendance.</p>
     <p class="last-p w-fit mt-12 mb-8 mx-auto text-center">Bien à vous, <br>L'équipe DiaShop-b</p>
 </div>

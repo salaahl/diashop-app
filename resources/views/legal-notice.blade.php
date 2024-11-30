@@ -29,10 +29,10 @@
 <h1>Mentions Légales</h1>
 
 <h3>1. Éditeur du site</h3>
-<p>Le site diashop-b.fr est édité par <a href="https://www.linkedin.com/in/salaha-sokhona/" target="_blank" class="underline">Salaha Sokhona</a>, en qualité de créateur du site.</p>
+<p>Le site {{ env('APP_URL') }} est édité par <a href="https://www.linkedin.com/in/salaha-sokhona/" target="_blank" class="underline">Salaha Sokhona</a>, en qualité de créateur du site.</p>
 
 <h3>2. Gestionnaire du site</h3>
-<p>La gestion du site, y compris la publication de contenu et la gestion des opérations, est assurée par Djeneba Dia</p>
+<p>La gestion du site, y compris la publication de contenu et la gestion des opérations, est assurée par Dianaba Dia</p>
 
 <h3>3. Hébergeur du site</h3>
 <p>Le site est hébergé par Hostinger International Ltd.</p>
@@ -47,7 +47,7 @@
 <p>Le site utilise des cookies essentiels au bon fonctionnement du site. Ces cookies ne collectent pas de données personnelles et sont utilisés uniquement dans le but d'améliorer l'expérience de navigation de l'utilisateur.</p>
 
 <h3>6. Droits d'auteur</h3>
-<p>Tous les contenus présents sur le site diashop-b.fr sont protégés par le droit d'auteur. Toute reproduction, même partielle, est strictement interdite sans l'autorisation préalable de <a href="https://www.linkedin.com/in/salaha-sokhona/" target="_blank" class="underline">Salaha Sokhona</a>.</p>
+<p>Tous les contenus présents sur le site {{ env('APP_URL') }} sont protégés par le droit d'auteur. Toute reproduction, même partielle, est strictement interdite sans l'autorisation préalable de <a href="https://www.linkedin.com/in/salaha-sokhona/" target="_blank" class="underline">Salaha Sokhona</a>.</p>
 
 <h3>7. Limitation de responsabilité</h3>
 <p>DiaShop-b décline toute responsabilité pour :</p>
@@ -66,9 +66,9 @@
 
 <h3>10. Médiation et résolution des litiges</h3>
 <p>En cas de litige, les utilisateurs peuvent recourir à la médiation de la consommation. Pour cela, ils doivent d'abord contacter le Service Client. En cas d'insatisfaction, ils peuvent saisir la Commission européenne via la plateforme de règlement en ligne des litiges à l'adresse suivante : <a href="https://ec.europa.eu/odr" target="_blank">ec.europa.eu/odr</a>.</p>
-<p>Pour toute question relative à un litige, veuillez nous contacter à l'adresse suivante : diashop-b@gmail.com.</p>
+<p>Pour toute question relative à un litige, veuillez nous contacter à l'adresse suivante : {{ env('MAIL_FROM_ADDRESS') }}.</p>
 
-<p class="mt-[4%]">Merci de votre confiance et bonne navigation sur diashop-b.fr !</p>
+<p class="mt-[4%]">Merci de votre confiance et bonne navigation sur {{ env('APP_URL') }} !</p>
 @endsection
 
 @section('scripts')
