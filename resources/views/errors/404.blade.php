@@ -15,49 +15,6 @@
 
 @section('main')
 <svg version="1.1" id="error-404-img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 344.7 276.7" style="enable-background:new 0 0 344.7 276.7;" xml:space="preserve">
-    <style type="text/css">
-        .st0 {
-            fill: #4C423B;
-        }
-
-        .st1 {
-            opacity: 0.2;
-        }
-
-        .st2 {
-            fill: #4C423B;
-        }
-
-        .st3 {
-            fill: rgba(132, 121, 114, .4);
-        }
-
-        .st4 {
-            fill: #424242;
-        }
-
-        .st5 {
-            fill: #E0E0E0;
-        }
-
-        .st6 {
-            fill: #BDBDBD;
-        }
-
-        .st7 {
-            opacity: 0.64;
-            fill: #212121;
-        }
-
-        .st8 {
-            fill: #F5F5F5;
-        }
-
-        .st9 {
-            opacity: 0.8;
-            fill: #4C423B;
-        }
-    </style>
     <g id="decorations">
         <polygon class="st0" points="245,52.8 241.7,49.5 238.5,52.6 235.4,49.5 232.1,52.8 235.2,55.9 232.1,59.1 235.4,62.4 238.5,59.2
 		241.7,62.4 245,59.1 241.8,55.9 	" />

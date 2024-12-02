@@ -2,6 +2,7 @@
 
 @section('meta')
 @parent
+<meta name="description" content="{{ ucfirst($product->description) }}">
 @endsection
 
 @section('title', $product->name . ' - ')
@@ -19,19 +20,25 @@
 <div class="flex flex-wrap justify-between md:flex-nowrap flex-col md:flex-row">
     <section id="product-images-container" class="w-full md:w-2/4 mt-[-80px]">
         <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
-            @php $i = 1 @endphp
-            @foreach($product->img as $image)
-            <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start">
-                <img src="{{ $image }}" alt="{{ $product->name }}" data-modal-target="default-modal" data-modal-toggle="default-modal" class="h-full w-full object-cover object-center cursor-zoom-in" onclick="currentSlide('{{ $i }}')" />
+            @php
+            $product_images = json_decode($product->img, true);
+            @endphp
+            @foreach($product_images as $image)
+            <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start" onclick="currentSlide('{{ $loop->iteration }}')" data-modal-target="default-modal" data-modal-toggle="default-modal">
+                <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" alt="{{ $product->name }}" class="h-full w-full object-cover object-center cursor-zoom-in"></x-cld-image>
             </li>
-            @php $i = $i + 1 @endphp
             @endforeach
         </ul>
     </section>
     <section id="product-details-container" class="w-full md:w-2/4 md:pl-6">
         <div id="product-detail" class="md:min-h-screen md:mt-[-80px] max-md:pt-4 md:py-[110px] sticky top-0">
             <div>
-                <h2 id="title" class="uppercase font-normal">{{ ucfirst($product->name) }}</h2>
+                <div class="flex justify-between xl:justify-start">
+                    <h1 id="title" class="uppercase font-normal">{{ ucfirst($product->name) }}</h1>
+                    @if(strtotime('-1 month', time()) > $product->created_at->timestamp)
+                    <span class="new ml-10">Nouveauté</span>
+                    @endif
+                </div>
                 @if($product->promotion)
                 <div class="flex">
                     <h2 id="price" class="w-min">{{ round($product->price - ($product->price / 100 * $product->promotion), 2) }}€</h2>
@@ -40,40 +47,41 @@
                 @else
                 <h2 id="price">{{ $product->price }}€</h2>
                 @endif
-                <div id="description">{{ ucfirst($product->description) }}</div>
+                <div id="description">{!! ucfirst($product->description) !!}</div>
             </div>
             @php
             $count = 0;
-            foreach($product->quantity_per_size as $quantity) {
+            $product_quantity = json_decode($product->quantity_per_size, true);
+            foreach($product_quantity as $quantity) {
             $count += $quantity;
             }
             @endphp
             @if($count > 0)
             <div class="max-md:my-4">
                 <div class="radio-toolbar">
-                    @if(isset($product->quantity_per_size["os"]) && $product->quantity_per_size["os"] > 0)
+                    @if(isset($product_quantity["os"]) && $product_quantity["os"] > 0)
                     <input type="radio" name="size" id="os" value="os">
-                    <label class="radio_label" for="os">Taille unique</label>
+                    <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="os">Taille unique</label>
                     @endif
-                    @if(isset($product->quantity_per_size["s"]) && $product->quantity_per_size["s"] > 0)
+                    @if(isset($product_quantity["s"]) && $product_quantity["s"] > 0)
                     <input type="radio" name="size" id="s" value="s">
-                    <label class="radio_label" for="s">S</label>
+                    <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="s">S</label>
                     @endif
-                    @if(isset($product->quantity_per_size["m"]) && $product->quantity_per_size["m"] > 0)
+                    @if(isset($product_quantity["m"]) && $product_quantity["m"] > 0)
                     <input type="radio" name="size" id="m" value="m">
-                    <label class="radio_label" for="m">M</label>
+                    <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="m">M</label>
                     @endif
-                    @if(isset($product->quantity_per_size["l"]) && $product->quantity_per_size["l"] > 0)
+                    @if(isset($product_quantity["l"]) && $product_quantity["l"] > 0)
                     <input type="radio" name="size" id="l" value="l">
-                    <label class="radio_label" for="l">L</label>
+                    <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="l">L</label>
                     @endif
-                    @if(isset($product->quantity_per_size["xl"]) && $product->quantity_per_size["xl"] > 0)
+                    @if(isset($product_quantity["xl"]) && $product_quantity["xl"] > 0)
                     <input type="radio" name="size" id="xl" value="xl">
-                    <label class="radio_label" for="xl">XL</label>
+                    <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="xl">XL</label>
                     @endif
-                    @if(isset($product->quantity_per_size["xxl"]) && $product->quantity_per_size["xxl"] > 0)
+                    @if(isset($product_quantity["xxl"]) && $product_quantity["xxl"] > 0)
                     <input type="radio" name="size" id="xxl" value="xxl">
-                    <label class="radio_label" for="xxl">XXL</label>
+                    <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="xxl">XXL</label>
                     @endif
                 </div>
                 <div>
@@ -127,42 +135,83 @@
                     @endif
                     @endauth
                 </div>
-                <div id="delivery-and-return-details">
+                <div id="delivery-and-return-details" class="mb-10">
                     <h4 class="text-sm text-gray-500">Livraison express dans les deux jours ouvrés | standard sous cinq jours ouvrés</h4>
                     <h4 class="text-sm text-gray-500">Retour possible sous 14 jours à compter de la date de livraison</h4>
                 </div>
             </div>
             @else
-            <div class="md:h-2/4 max-md:mt-12 max-md:mb-16 flex justify-center items-center">
+            <div class="md:h-2/4 max-md:mt-12 max-md:mb-16">
                 <h2>Ce produit est en rupture de stock.</h2>
+                @guest
+                <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom w-full min-w-[250px] flex justify-center items-center mt-8 mb-0 mx-0 opacity-50 pointer-events-none whitespace-nowrap" role="button">
+                    <span>Ajouter aux favoris</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hidden h-[15px] ml-2">
+                        <path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+                    </svg>
+                </button>
+                @endguest
+                @auth
+                @if(\App\Models\Favorite::where([["user_id", Auth::user()->id], ["product_id", $product->id]])->first())
+                <button id="remove-favorite" class="button-stylised-1 button-stylised-1-custom w-full min-w-[250px] flex justify-center items-center mt-8 mb-0 mx-0 whitespace-nowrap" role="button">
+                    <span>Retirer des favoris</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hidden h-[15px] ml-2">
+                        <path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+                    </svg>
+                </button>
+                <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom hidden w-full min-w-[250px] flex justify-center items-center mt-8 mb-0 mx-0 whitespace-nowrap" role="button">
+                    <span>Ajouter aux favoris</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hidden h-[15px] ml-2">
+                        <path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+                    </svg>
+                </button>
+                @else
+                <button id="remove-favorite" class="button-stylised-1 button-stylised-1-custom hidden w-full min-w-[250px] flex justify-center items-center mt-8 mb-0 mx-0 whitespace-nowrap" role="button">
+                    <span>Retirer des favoris</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hidden h-[15px] ml-2">
+                        <path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+                    </svg>
+                </button>
+                <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom w-full min-w-[250px] flex justify-center items-center mt-8 mb-0 mx-0 whitespace-nowrap" role="button">
+                    <span>Ajouter aux favoris</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hidden h-[15px] ml-2">
+                        <path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+                    </svg>
+                </button>
+                @endif
+                @endauth
             </div>
             @endif
         </div>
     </section>
 </div>
 <!-- Modal -->
-<div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed z-[999] justify-center items-center h-full w-full md:inset-0 bg-black/50">
+<div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed z-[250] justify-center items-center h-full w-full md:inset-0 backdrop-blur-lg">
     <div class="carousel-container">
         <div id="slides-container" class="relative max-h-full">
             <div class="relative shadow-2xl">
-                @foreach($product->img as $image)
+                <button type="button" class="absolute top-1 right-1 md:top-2 md:right-2 z-[5] text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                @foreach($product_images as $image)
                 <div class="carousel-slide">
-                    <img src="{{ $image }}" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="{{ $product->name }}">
+                    <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="{{ $product->name }}"></x-cld-image>
                     <div class="magnifier"></div>
                 </div>
                 @endforeach
 
-                <a class="prev" onclick="plusSlides(-1)">❮</a>
-                <a class="next" onclick="plusSlides(1)">❯</a>
+                <button class="prev" onclick="plusSlides(-1)">❮</button>
+                <button class="next" onclick="plusSlides(1)">❯</button>
             </div>
         </div>
         <div id="img-preview">
-            @php $i = 1 @endphp
-            @foreach($product->img as $image)
-            <div class="preview-column">
-                <img id="slide-button-{{ $i }}" class="slide-cursor" src="{{ $image }}" onclick="currentSlide('{{ $i }}')" alt="{{ $product->name }}">
+            @foreach($product_images as $image)
+            <div class="preview-column" onclick="currentSlide('{{ $loop->iteration }}')">
+                <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" id="slide-button-{{ $loop->iteration }}" class="slide-cursor" alt="{{ $product->name }}"></x-cld-image>
             </div>
-            @php $i = $i + 1 @endphp
             @endforeach
         </div>
     </div>
@@ -178,12 +227,14 @@
     <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
     @foreach($product->category->products->where('id', '!=', $product->id)->take(3) as $product)
     @php
+    $product_images = json_decode($product->img, true);
     $product_stock = 0;
-    foreach($product->quantity_per_size as $size => $quantity) {
+    $product_quantity = json_decode($product->quantity_per_size, true);
+    foreach($product_quantity as $size => $quantity) {
     $product_stock += $quantity;
     }
     @endphp
-    <x-product-card link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product->img[0] }}" image2="{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
+    <x-product-card created="{{ $product->created_at->timestamp }}" link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product_images[0] }}" image2="{{ $product_images[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
     @endforeach
 </section>
 @endif

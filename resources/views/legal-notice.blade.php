@@ -29,10 +29,10 @@
 <h1>Mentions Légales</h1>
 
 <h3>1. Éditeur du site</h3>
-<p>Le site diashop-b.fr est édité par <a href="https://www.linkedin.com/in/salaha-sokhona/" target="_blank" class="underline">Salaha SOKHONA</a>, en qualité de créateur du site.</p>
+<p>Le site diashop-b.fr est édité par <a href="https://www.linkedin.com/in/salaha-sokhona/" target="_blank" class="underline">Salaha Sokhona</a>, en qualité de créateur du site.</p>
 
 <h3>2. Gestionnaire du site</h3>
-<p>La gestion du site, y compris la publication de contenu et la gestion des opérations, est assurée par Djeneba D.</p>
+<p>La gestion du site, y compris la publication de contenu et la gestion des opérations, est assurée par Djeneba Dia</p>
 
 <h3>3. Hébergeur du site</h3>
 <p>Le site est hébergé par Hostinger International Ltd.</p>
@@ -47,7 +47,7 @@
 <p>Le site utilise des cookies essentiels au bon fonctionnement du site. Ces cookies ne collectent pas de données personnelles et sont utilisés uniquement dans le but d'améliorer l'expérience de navigation de l'utilisateur.</p>
 
 <h3>6. Droits d'auteur</h3>
-<p>Tous les contenus présents sur le site diashop-b.fr sont protégés par le droit d'auteur. Toute reproduction, même partielle, est strictement interdite sans l'autorisation préalable de <a href="https://www.linkedin.com/in/salaha-sokhona/" target="_blank" class="underline">Salaha SOKHONA</a>.</p>
+<p>Tous les contenus présents sur le site diashop-b.fr sont protégés par le droit d'auteur. Toute reproduction, même partielle, est strictement interdite sans l'autorisation préalable de <a href="https://www.linkedin.com/in/salaha-sokhona/" target="_blank" class="underline">Salaha Sokhona</a>.</p>
 
 <h3>7. Limitation de responsabilité</h3>
 <p>DiaShop-b décline toute responsabilité pour :</p>

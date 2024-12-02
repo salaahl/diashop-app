@@ -8,6 +8,7 @@ use Illuminate\View\Component;
 
 class Product extends Component
 {
+    public string $created;
     public string $link;
     public string $image1;
     public string $image2;
@@ -17,6 +18,7 @@ class Product extends Component
     public string $message;
 
     public function __construct(
+        $created,
         $link,
         $image1,
         $image2,
@@ -25,6 +27,7 @@ class Product extends Component
         $promotion,
         $message
     ) {
+        $this->created = $created;
         $this->link = $link;
         $this->image1 = $image1;
         $this->image2 = $image2;
@@ -39,6 +42,6 @@ class Product extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.product');
+        return view('components.product-card');
     }
 }
