@@ -45,7 +45,7 @@ $total = 0;
           id="summary-container"
           class="h-full w-full overflow-x-auto">
           @if(session()->has("basket"))
-          <p class="mb-8 text-sm text-center">Vos articles sont réservés pendant encore <span id="basket-timeout" class="font-bold"></span> minutes !</p>
+          <p class="mb-8 text-sm text-center">Les articles vous sont réservés pendant encore <span id="basket-timeout" class="font-bold"></span> minutes !</p>
           <table class="w-full text-sm text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
               <tr>

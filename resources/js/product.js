@@ -227,7 +227,7 @@ if (document.getElementById("add-basket")) {
 
                         // Création/mise à jour du tableau
                         $("#summary-container").innerHTML =
-                            '<p class="mb-8 text-sm text-center">Vos articles sont réservés pendant encore <span id="basket-timeout" class="font-bold">' +
+                            '<p class="mb-8 text-sm text-center">Les articles vous sont réservés pendant encore <span id="basket-timeout" class="font-bold">' +
                             localStorage.getItem("basket_timeout") / 60000 +
                             "</span> minutes !</p>" +
                             '<table class="w-full text-sm text-gray-500">' +
