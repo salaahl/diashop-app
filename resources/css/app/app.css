@@ -56,7 +56,8 @@ h1 {
     text-align: center;
     text-wrap-style: balance;
     font-size: var(--h1-font-size);
-    font-weight: 400;
+    font-weight: 900;
+    color: rgb(var(--accent-color-4));
     background-image: linear-gradient(
         rgb(var(--accent-color-1)),
         rgb(var(--accent-color-1))

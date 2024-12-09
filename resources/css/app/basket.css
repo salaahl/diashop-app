@@ -43,6 +43,9 @@
 #basket-title {
     width: -moz-fit-content;
     width: fit-content;
+    font-size: var(--h2-font-size);
+    font-weight: 900;
+    color: rgb(var(--accent-color-4));
     background-image: linear-gradient(
         rgb(var(--accent-color-1)),
         rgb(var(--accent-color-1))

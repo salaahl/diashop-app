@@ -3,6 +3,8 @@ h1 {
     margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;
+    font-size: xxx-large;
+    color: rgb(var(--accent-color-1), 0.8);
     background-image: linear-gradient(
         rgb(var(--accent-color-4), 0.8),
         rgb(var(--accent-color-4), 0.8)

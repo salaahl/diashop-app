@@ -34,7 +34,7 @@
         <div id="product-detail" class="md:min-h-screen md:mt-[-80px] max-md:pt-4 md:py-[110px] sticky top-0">
             <div>
                 <div class="flex items-center">
-                    <h1 id="title" class="uppercase font-normal">{{ ucfirst($product->name) }}</h1>
+                    <h1 id="title" class="uppercase">{{ ucfirst($product->name) }}</h1>
                     @if(strtotime('-1 month', time()) > $product->created_at->timestamp)
                     <div class="new-badge">
                         <span>New</span>
@@ -43,11 +43,11 @@
                 </div>
                 @if($product->promotion)
                 <div class="flex">
-                    <h2 id="price" class="w-min">{{ round($product->price - ($product->price / 100 * $product->promotion), 2) }}€</h2>
-                    <h2 class="w-min ml-4 line-through">{{ $product->price }}€</h2>
+                    <h2 id="price" class="w-min font-normal">{{ round($product->price - ($product->price / 100 * $product->promotion), 2) }}€</h2>
+                    <h2 class="w-min ml-4 font-normal line-through">{{ $product->price }}€</h2>
                 </div>
                 @else
-                <h2 id="price">{{ $product->price }}€</h2>
+                <h2 id="price" class="font-normal">{{ $product->price }}€</h2>
                 @endif
                 <div id="description">{!! ucfirst($product->description) !!}</div>
             </div>

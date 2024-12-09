@@ -16,6 +16,10 @@
                 rgb(var(--accent-color-2)));
     }
 
+    h1 {
+        margin: 25px auto auto auto;
+    }
+
     .highlight {
         background-size: 100% 5px;
         background-repeat: no-repeat;
@@ -23,6 +27,10 @@
     }
 
     @media (min-width: 768px) {
+        h1 {
+            margin: 25px auto;
+        }
+
         #about-me>div:last-of-type {
             opacity: 0;
         }
@@ -60,7 +68,7 @@
     <div class="h-[10vh] md:h-[40vh] w-full hidden md:flex justify-center items-center overflow-hidden bg-gray-800"></div>
     <div class="min-h-[40vh] w-full max-w-screen-xl mx-auto px-2 xl:px-0 md:mt-[-10vh] flex flex-col justify-center">
         <div class="md:h-[10vh] w-min md:w-auto flex justify-center items-center mx-auto">
-            <h1 class="text-4xl md:text-white font-light">À propos de nous</h1>
+            <h1 class="md:text-white">À propos de nous</h1>
         </div>
         <img src="{{ asset('images/woman-catalog.jpg')}}" class="h-auto w-3/4 md:h-[50vh] max-md:my-10 mx-auto aspect-square border-[25px] border-gray-200 md:border-white rounded-full object-cover">
         <p class="md:mt-4 text-center font-[600]">Bienvenue chez DiaShop-b !</p>

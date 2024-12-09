@@ -4,7 +4,6 @@ button.hidden {
 
 h1 {
     margin: 0;
-    font-size: var(--h2-font-size);
     background-image: linear-gradient(
         rgb(var(--accent-color-3), 0.5),
         rgb(var(--accent-color-3), 0.5)

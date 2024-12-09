@@ -24,6 +24,28 @@
     font-size: x-large;
 }
 
+#logo span {
+    position: relative;
+}
+
+#logo span:last-of-type::before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 1px);
+    left: -100%;
+    width: 75%;
+    border: 1px solid rgb(var(--accent-color-4));
+}
+
+#logo span:last-of-type::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 1px);
+    right: -100%;
+    width: 75%;
+    border: 1px solid rgb(var(--accent-color-4));
+}
+
 .has-dropdown > a > svg,
 .has-dropdown > button > svg {
     transform: rotateZ(0deg);
