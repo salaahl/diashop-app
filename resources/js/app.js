@@ -34,9 +34,9 @@ resetHeight();
 
 // Loader des pages
 window.addEventListener("load", () => {
+    // Gère l'affichage du loader
     document.querySelector("#loader-container").classList.add("close");
 
-    // Mise en place d'un timer permettant la bonne tenue de l'animation
     document.querySelectorAll("a").forEach(function (link) {
         link.addEventListener("click", function (event) {
             const isExternal = link.hostname !== window.location.hostname;
@@ -59,15 +59,42 @@ window.addEventListener("load", () => {
             }, 500);
         });
     });
+
+    // Gestiiion des menus déroulants de la barre de navigation en mode mobile
+    const dropdownButtons = document.querySelectorAll(".dropdownNavbarBtn");
+
+    dropdownButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+            // Fermer les autres menus déroulants
+            dropdownButtons.forEach((button) => {
+                if (
+                    button !== this &&
+                    button.getAttribute("aria-expanded") === "true"
+                ) {
+                    button.setAttribute("aria-expanded", "false");
+                }
+            });
+        });
+    });
+
+    // Fermer les menus lorsqu'on clique en dehors
+    document.addEventListener("click", function (event) {
+        const isClickInside = event.target.closest(".has-dropdown");
+        if (!isClickInside) {
+            document.querySelectorAll(".dropdownNavbar").forEach((dropdown) => {
+                dropdown.classList.add("hidden");
+            });
+        }
+    });
 });
 
 // Affichage du menu déroulant de la barre de navigation en mode mobile
-const button = document.getElementById('navbar-dropdown-btn');
-const navbar = document.getElementById('navbar-container');
+const button = document.getElementById("navbar-dropdown-btn");
+const navbar = document.getElementById("navbar-container");
 
-button.addEventListener('click', function() {
+button.addEventListener("click", function () {
     // Basculer l'état aria-expanded
-    const isExpanded = button.getAttribute('aria-expanded') === 'true';
-    button.setAttribute('aria-expanded', !isExpanded); // Inverse l'état
-    navbar.classList.toggle('show-navbar-dropdown', !isExpanded); // Affiche ou cache le contenu
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", !isExpanded); // Inverse l'état
+    navbar.classList.toggle("show-navbar-dropdown", !isExpanded); // Affiche ou cache le contenu
 });
