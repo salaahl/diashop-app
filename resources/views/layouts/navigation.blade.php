@@ -81,7 +81,7 @@
                         </button>
                     </li>
                 </ul>
-                <ul class="lg:h-full max-lg:w-full flex flex-col lg:items-center font-medium p-4 lg:p-0 mt-4 max-lg:rounded-lg lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
+                <ul class="lg:h-full max-lg:w-full flex flex-col lg:items-center font-medium p-4 lg:p-0 mt-[-2rem] max-lg:rounded-lg lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
                     @auth
                     <li class="has-dropdown lg:h-full w-full lg:flex lg:justify-center lg:items-center">
                         <a href="{{ route('dashboard') }}" id="dropdownDashboardLink" class="hidden lg:flex max-lg:justify-between items-center w-full p-2 whitespace-nowrap text-gray-900 text-sm uppercase rounded hover:bg-gray-200 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
