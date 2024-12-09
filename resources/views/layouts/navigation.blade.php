@@ -41,19 +41,19 @@
             </svg>
         </button>
         <div class="h-full w-full" id="navbar-dropdown">
-            <div class="h-full flex max-lg:flex-col lg:justify-between items-center overflow-auto">
-                <ul class="lg:h-full max-lg:w-full flex flex-col items-center font-medium p-4 lg:p-0 max-lg:rounded-lg border border-gray-100 max-lg:bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
+            <div class="h-full flex max-lg:flex-col lg:justify-between justify-center items-center overflow-auto">
+                <ul class="lg:h-full max-lg:w-full flex flex-col items-center max-lg:mt-[-100px] p-4 lg:p-0 max-lg:rounded-lg lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
                     @foreach(\App\Models\Catalog::all() as $catalog)
                     <li class="has-dropdown h-full w-full lg:flex lg:justify-center lg:items-center">
                         <a href="{{ route('catalog', $catalog->name) }}" class="dropdownNavbarLinkCatalog hidden lg:flex items-center justify-between w-full py-2 text-sm uppercase text-gray-900 rounded hover:bg-gray-200 lg:hover:bg-transparent lg:border-0  lg:p-0 lg:w-auto">
                             <span>{{ ucfirst($catalog->name) }}</span>
-                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" fill="none">
+                            <svg class="hidden lg:block w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" fill="none">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </a>
-                        <button data-collapse-toggle="dropdownNavbar{{ ucfirst($catalog->name) }}" type="button" class="dropdownNavbarBtn lg:hidden flex items-center justify-between w-full mb-2 p-2 text-sm uppercase text-gray-900 rounded-lg hover:bg-gray-200 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
-                            <span>{{ ucfirst($catalog->name) }}</span>
-                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" fill="none">
+                        <button data-collapse-toggle="dropdownNavbar{{ ucfirst($catalog->name) }}" type="button" class="dropdownNavbarBtn lg:hidden flex items-center justify-center w-full mb-2 p-2 text-sm uppercase text-gray-900 rounded-lg hover:bg-gray-200 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
+                            <span class="text-2xl font-bold">{{ ucfirst($catalog->name) }}</span>
+                            <svg class="hidden lg:block w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" fill="none">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </button>
@@ -61,12 +61,12 @@
                         <div id="dropdownNavbar{{ ucfirst($catalog->name) }}" class="dropdownNavbar hidden z-10 lg:flex align-center w-full max-lg:mb-2 max-lg:rounded-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
                             <ul class="lg:flex max-w-screen-xl lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                                 <li class="lg:hidden self-center">
-                                    <a href="{{ route('catalog', $catalog->name) }}" class="block my-2 lg:mr-4 px-4 py-2 rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">Tout</a>
+                                    <a href="{{ route('catalog', $catalog->name) }}" class="block my-2 lg:mr-4 px-4 py-2 font-bold text-lg w-fit mx-auto rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">Tout</a>
                                 </li>
                                 @if(\App\Models\Category::where("catalog_id", $catalog->id)->first())
                                 @foreach(\App\Models\Category::where("catalog_id", $catalog->id)->get() as $category)
                                 <li class="self-center">
-                                    <a href="{{ route('category', [$category->catalog->name, $category->name]) }}" class="block my-2 lg:mr-4 px-4 py-2 rounded-[5px] lg:rounded-full hover:bg-gray-200 whitespace-nowrap transition duration-500">
+                                    <a href="{{ route('category', [$category->catalog->name, $category->name]) }}" class="block my-2 lg:mr-4 px-4 py-2 max-lg:font-bold max-lg:text-lg w-fit mx-auto rounded-[5px] lg:rounded-full hover:bg-gray-200 whitespace-nowrap transition duration-500">
                                         {{ ucfirst($category->name) }}</a>
                                 </li>
                                 @endforeach
@@ -81,7 +81,7 @@
                         </button>
                     </li>
                 </ul>
-                <ul class="lg:h-full max-lg:w-full flex flex-col lg:items-center font-medium p-4 lg:p-0 mt-4 max-lg:rounded-lg border border-gray-100 max-lg:bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
+                <ul class="lg:h-full max-lg:w-full flex flex-col lg:items-center font-medium p-4 lg:p-0 mt-4 max-lg:rounded-lg lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
                     @auth
                     <li class="has-dropdown lg:h-full w-full lg:flex lg:justify-center lg:items-center">
                         <a href="{{ route('dashboard') }}" id="dropdownDashboardLink" class="hidden lg:flex max-lg:justify-between items-center w-full p-2 whitespace-nowrap text-gray-900 text-sm uppercase rounded hover:bg-gray-200 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
@@ -90,27 +90,24 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </a>
-                        <button id="dropdownDashboardBtn" data-collapse-toggle="dropdownDashboard" type="button" class="dropdownNavbarBtn lg:hidden flex items-center justify-between w-full mb-2 p-2 text-sm uppercase text-gray-900 rounded-lg hover:bg-gray-200 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
-                            <span class="text-sm uppercase">Mon profil</span>
-                            <svg class="w-2.5 h-2.5 lg:ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" fill="none">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
+                        <button id="dropdownDashboardBtn" data-collapse-toggle="dropdownDashboard" type="button" class="dropdownNavbarBtn lg:hidden flex items-center justify-center w-full mb-2 p-2 text-sm uppercase text-gray-900 rounded-lg hover:bg-gray-200 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
+                            <span class="text-2xl font-bold lg:text-normal lg:font-normal uppercase">Mon profil</span>
                         </button>
                         <!-- Dropdown menu -->
                         <div id="dropdownDashboard" class="dropdownNavbar hidden z-10 lg:flex align-center w-full max-lg:mb-2 max-lg:rounded-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
                             <ul class="lg:flex max-w-screen-xl max-lg:mb-2 lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                                 <li class="self-center">
-                                    <a href="{{ route('favorites') }}" class="block my-2 lg:mr-4 px-4 py-2 whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">
+                                    <a href="{{ route('favorites') }}" class="block my-2 lg:mr-4 px-4 py-2 max-lg:font-bold max-lg:text-lg w-fit mx-auto whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">
                                         Mes favoris
                                     </a>
                                 </li>
                                 <li class="self-center">
-                                    <a href="{{ route('orders') }}" class="block my-2 lg:mr-4 px-4 py-2 whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">
+                                    <a href="{{ route('orders') }}" class="block my-2 lg:mr-4 px-4 py-2 max-lg:font-bold max-lg:text-lg w-fit mx-auto whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">
                                         Mes commandes
                                     </a>
                                 </li>
                                 <li class="self-center">
-                                    <a href="{{ route('profile.edit') }}" class="block my-2 lg:mr-4 px-4 py-2 whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">
+                                    <a href="{{ route('profile.edit') }}" class="block my-2 lg:mr-4 px-4 py-2 max-lg:font-bold max-lg:text-lg w-fit mx-auto whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">
                                         Modifier mes informations
                                     </a>
                                 </li>
@@ -138,8 +135,8 @@
                     </li>
                     @guest
                     <li class="h-full w-full lg:flex lg:items-center lg:align-center">
-                        <a href="{{ route('login') }}" class="nav-btn flex justify-between items-center p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0 lg:p-0">
-                            <span class="text-sm uppercase whitespace-nowrap lg:m-0">Se connecter</span>
+                        <a href="{{ route('login') }}" class="nav-btn flex justify-center items-center p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0 lg:p-0">
+                            <span class="text-2xl lg:text-sm font-bold lg:font-normal uppercase whitespace-nowrap lg:m-0">Se connecter</span>
                         </a>
                     </li>
                     @endguest
@@ -147,8 +144,8 @@
                     <li class="h-full w-full lg:flex lg:items-center lg:align-center">
                         <form method="POST" action="/logout">
                             @csrf
-                            <a href="#" class="nav-btn flex justify-between align-center p-2 text-gray-900 rounded hover:bg-gray-200 lg:hover:bg-transparent lg:border-0 lg:p-0" onclick="event.preventDefault(); this.closest('form').submit();">
-                                <span class="text-sm uppercase whitespace-nowrap lg:m-0">Se déconnecter</span>
+                            <a href="#" class="nav-btn flex justify-center align-center p-2 text-gray-900 rounded hover:bg-gray-200 lg:hover:bg-transparent lg:border-0 lg:p-0" onclick="event.preventDefault(); this.closest('form').submit();">
+                                <span class="text-2xl lg:text-sm font-bold lg:font-normal uppercase whitespace-nowrap lg:m-0">Se déconnecter</span>
                             </a>
                         </form>
                     </li>
