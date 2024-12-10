@@ -9,6 +9,10 @@
 
 @section('links')
 <style>
+    h1 {
+        width: min-content!important;
+    }
+
     h3 {
         margin-bottom: 0.5% !important;
         margin-top: 4% !important;
@@ -16,6 +20,12 @@
 
     main {
         margin-bottom: 4% !important;
+    }
+
+    @media (min-width: 768px) {
+        h1 {
+            width: fit-content!important;
+        }
     }
 </style>
 @parent

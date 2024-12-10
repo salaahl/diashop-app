@@ -40,6 +40,12 @@
             width: auto;
         }
 
+        @supports (height: 1dvh) {
+            #about-me>div:last-of-type img {
+                height: 40dvh;
+            }
+        }
+
         .animateFadeSlideIn {
             animation: fadeSlideIn 1.5s ease forwards;
         }

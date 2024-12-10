@@ -72,6 +72,12 @@ main {
         animation: 2s ease 2.5s 1 normal none running translate;
     }
 
+    @supports (height: 1dvh) {
+        #catalogs-container .catalog {
+            height: calc(100dvh - 15px);
+        }
+    }
+
     #catalogs-container .catalog h3 {
         filter: opacity(0.8);
         margin-bottom: 30%;
@@ -93,6 +99,13 @@ main {
 }
 
 @media (min-width: 768px) {
+    main {
+        max-width: unset;
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     #catalogs-container .catalog {
         width: 50%;
     }

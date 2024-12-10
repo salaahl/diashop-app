@@ -62,7 +62,7 @@ h1 {
         rgb(var(--accent-color-1)),
         rgb(var(--accent-color-1))
     );
-    background-size: 100% 15px;
+    background-size: 100% 20px;
     background-repeat: no-repeat;
     background-position: 0 100%;
     transition: background-size 0.5s, background-position 0.3s ease-in-out;
@@ -187,6 +187,12 @@ main {
     padding-top: var(--container-padding-y);
     padding-left: var(--container-padding-x);
     padding-right: var(--container-padding-x);
+}
+
+@supports (height: 1dvh) {
+    main {
+        min-height: calc(100dvh - 110px);
+    }
 }
 
 footer {
@@ -589,6 +595,12 @@ img {
         padding-bottom: 30px;
     }
 
+    @supports (height: 1dvh) {
+        #navbar-container.show-search-container #search-container {
+            height: 100dvh;
+        }
+    }
+
     #navbar-container.hide-search-container #search-container {
         top: 0;
     }
@@ -611,6 +623,12 @@ img {
     #navbar-container.show-search-container #search-container {
         height: 80vh;
         box-shadow: 0px 20vh 20px 20px rgb(0, 0, 0, 0.5);
+    }
+
+    @supports (height: 1dvh) {
+        #navbar-container.show-search-container #search-container {
+            height: 80dvh;
+        }
     }
 
     #navbar-container.hide-search-container #search-container {

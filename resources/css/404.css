@@ -6,6 +6,12 @@ main {
     align-items: center;
 }
 
+@supports (height: 1dvh) {
+    main {
+        height: 100dvh;
+    }
+}
+
 footer {
     display: none;
 }
