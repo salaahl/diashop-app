@@ -149,7 +149,7 @@ Code du carousel
         margin-bottom: 2%;
     }
 
-    #product-images-container li + li {
+    #product-images-container > ul > li {
         margin-bottom: 1%;
     }
 
