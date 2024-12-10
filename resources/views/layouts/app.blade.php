@@ -61,6 +61,11 @@
             @include('components.basket')
         </aside>
 
+        <!-- Doodle Background -->
+        <div class="bg-doodle">
+            <css-doodle use="var(--rule)"></css-doodle>
+        </div>
+
         <!-- Page Content -->
         <main>
             <div id="popup"></div>
@@ -90,6 +95,7 @@
     @section('scripts')
     @vite(['resources/js/app.js', 'resources/js/search-product.js', 'resources/js/basket.js'])
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="https://esm.sh/css-doodle/css-doodle.min.js?raw"></script>
 
     <!-- Gestion du panier -->
     <script>

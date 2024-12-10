@@ -77,10 +77,6 @@ main {
         margin: 50px auto 25px auto;
     }
 
-    #categories {
-        border-top: 5px dotted rgb(var(--accent-color-2), 0.5);
-    }
-
     .category {
         width: 15%;
         margin: 0.5%;
