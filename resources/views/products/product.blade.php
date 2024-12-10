@@ -33,6 +33,25 @@
     <section id="product-details-container" class="w-full md:w-2/4 md:pl-6">
         <div id="product-detail" class="md:min-h-screen md:mt-[-80px] max-md:pt-4 md:py-[110px] sticky top-0">
             <div>
+                <nav class="breadcrumb">
+                    <ul class="flex items-center">
+                        <li>
+                            <a href="{{ route('catalog', $product->catalog->name) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ ucfirst($product->catalog->name) }}</a>
+                        </li>
+                        <li>
+                            <span class="mx-1 text-sm text-gray-700"> / </span>
+                        </li>
+                        <li>
+                            <a href="{{ route('category', [$product->catalog->name, $product->category->name]) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ strtolower($product->category->name) }}</a>
+                        </li>
+                        <li>
+                            <span class="mx-1 text-sm text-gray-700"> / </span>
+                        </li>
+                        <li aria-current="page">
+                            <span class="text-sm text-gray-500">{{ strtolower($product->name) }}</span>
+                        </li>
+                    </ul>
+                </nav>
                 <div class="flex items-center">
                     <h1 id="title" class="uppercase">{{ ucfirst($product->name) }}</h1>
                     @if(strtotime('-1 month', time()) > $product->created_at->timestamp)
