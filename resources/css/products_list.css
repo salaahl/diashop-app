@@ -25,6 +25,11 @@ main {
     transform: rotate(-90deg);
 }
 
+.category .thumbnail {
+    aspect-ratio: 1 / 1;
+    border-radius: 999px;
+}
+
 .category .thumbnail img {
     filter: blur(1px) grayscale(0.85);
     transition: all 0.8s;
@@ -53,9 +58,9 @@ main {
     }
 
     .category {
-        width: 28%;
-        min-width: 28%;
-        margin: 0 1%;
+        height: fit-content;
+        min-width: 40%;
+        margin: auto 4%;
     }
 
     .product {
@@ -78,8 +83,9 @@ main {
     }
 
     .category {
-        width: 15%;
-        margin: 0.5%;
+        width: 20%;
+        min-width: 20%;
+        margin: 1%;
     }
 
     .category .thumbnail img {

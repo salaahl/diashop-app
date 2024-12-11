@@ -9,7 +9,14 @@ gsap.config({
 });
 gsap.defaults({ ease: "power1.out" });
 
-// Exemple d'animation GSAP
+gsap.from(".category", {
+    x: -50,
+    opacity: 0,
+    duration: 0.4,
+    delay: 0.8,
+    stagger: 0.2,
+});
+
 const products =
     window.innerWidth < 768
         ? gsap.utils.toArray(".product:nth-of-type(n+3)")

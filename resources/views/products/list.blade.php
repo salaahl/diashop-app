@@ -49,7 +49,7 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 </div>
 @endif
 @if(isset($categories))
-<div id="categories" class="flex w-full pt-8 mb-8 overflow-x-auto">
+<div id="categories" class="flex w-full p-4 md:p-8 pb-2 md:pb-4 mb-8 rounded-lg bg-gray-50 overflow-x-auto">
     <div class="catalog-name">
         <h1>{{ $h1 }}</h1>
     </div>
@@ -61,14 +61,14 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
         @endif
         >
         <a href="{{ '/catalog/' . $category->catalog->name . '/' . $category->name }}">
-            <div class="thumbnail">
+            <div class="thumbnail rounded-full overflow-hidden">
                 @php
                 $imagePath = str_replace('\\', '/', $category->img)
                 @endphp
                 <x-cld-image public-id="{{ $imagePath }}" alt="{{ $category->name }}"></x-cld-image>
             </div>
-            <div class="details">
-                <h4 class="title text-center">{{ ucfirst($category->name) }}</h4>
+            <div class="details mt-4">
+                <h4 class="title font-normal text-center">{{ ucfirst($category->name) }}</h4>
             </div>
         </a>
     </article>
