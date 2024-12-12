@@ -18,6 +18,17 @@ class MainController extends Controller
         $this->mainService = $mainService;
     }
 
+    public function home()
+    {
+        $catalogs = Catalog::all();
+        $new_products = Product::orderBy('created_at', 'desc')->take(6)->get();
+
+        return view('home', [
+            "catalogs" => $catalogs,
+            "new_products" => $new_products
+        ]);
+    }
+
     public function catalog($catalog, Request $request)
     {
         try {

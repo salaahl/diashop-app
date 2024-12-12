@@ -24,9 +24,7 @@ Route::get('/404', function () {
     abort(404);
 })->name('404');
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [MainController::class, 'home'])->name('home');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

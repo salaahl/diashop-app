@@ -64,12 +64,9 @@ main {
     }
 
     .product {
+        width: 49%;
         margin-left: 0.5%;
         margin-right: 0.5%;
-    }
-
-    .product {
-        width: 49%;
     }
 }
 

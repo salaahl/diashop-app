@@ -41,6 +41,50 @@ main {
     transition: filter 0.25s linear, background 0.25s;
 }
 
+.title-container > h2 {
+    width: fit-content;
+    text-transform: uppercase;
+    text-align: center;
+    text-wrap-style: balance;
+    font-size: var(--h1-font-size);
+    font-weight: 900;
+    color: rgb(var(--accent-color-4));
+    background-image: linear-gradient(
+        rgb(var(--accent-color-1)),
+        rgb(var(--accent-color-1))
+    );
+    background-size: 100% 35%;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.5s, background-position 0.3s ease-in-out;
+}
+
+#new-products-container .title-container {
+    display: flex;
+    align-items: center;
+    transform: rotate(-90deg);
+}
+
+#product-of-the-week-container .title-container > h2 {
+    background-image: linear-gradient(
+        rgb(var(--accent-color-2)),
+        rgb(var(--accent-color-2))
+    );
+}
+
+#about-us-container .title-container > h2 {
+    font-size: xx-large;
+    background-image: linear-gradient(
+        rgb(var(--accent-color-3)),
+        rgb(var(--accent-color-3))
+    );
+}
+
+.product {
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}
+
 @media (max-width: 767px) {
     ::-webkit-scrollbar:horizontal {
         display: none;
@@ -83,18 +127,9 @@ main {
         margin-bottom: 30%;
     }
 
-    @keyframes translate {
-        0% {
-            transform: translateX(0);
-        }
-
-        60% {
-            transform: translateX(-20vw);
-        }
-
-        100% {
-            transform: translateX(0);
-        }
+    .product {
+        width: 49%;
+        min-width: 49%;
     }
 }
 
@@ -145,5 +180,28 @@ main {
     #catalogs-container .catalog:last-of-type .img-placeholder {
         background-position: top right;
         background-image: url("/public/images/men-catalog.jpg");
+    }
+
+    #about-us-container .title-container > h2 {
+        font-size: xxx-large;
+    }
+
+    .product {
+        width: 20%;
+        min-width: 20%;
+    }
+}
+
+@keyframes translate {
+    0% {
+        transform: translateX(0);
+    }
+
+    60% {
+        transform: translateX(-20vw);
+    }
+
+    100% {
+        transform: translateX(0);
     }
 }
