@@ -65,6 +65,13 @@ main {
     transform: rotate(-90deg);
 }
 
+#new-products-container .title-container > h2:first-of-type {
+    background-image: linear-gradient(
+        rgb(var(--accent-color-3)),
+        rgb(var(--accent-color-3))
+    );
+}
+
 #product-of-the-week-container > .title-container > h2:first-of-type {
     margin-left: 0;
     font-size: xxx-large;
@@ -73,16 +80,16 @@ main {
 
 #product-of-the-week-container #product-detail .title-container > h2:last-of-type {
     background-image: linear-gradient(
-        rgb(var(--accent-color-2)),
-        rgb(var(--accent-color-2))
+        rgb(var(--accent-color-1)),
+        rgb(var(--accent-color-1))
     );
 }
 
 #about-us-container .title-container > h2 {
     font-size: xx-large;
     background-image: linear-gradient(
-        rgb(var(--accent-color-3)),
-        rgb(var(--accent-color-3))
+        rgb(var(--accent-color-2)),
+        rgb(var(--accent-color-2))
     );
 }
 
@@ -130,7 +137,7 @@ main {
 
     #catalogs-container .catalog h3 {
         filter: opacity(0.8);
-        margin-bottom: 30%;
+        margin-bottom: 50%;
     }
 
     .product {

@@ -1,5 +1,5 @@
 <article class="product relative">
-    @if(strtotime('-1 month', time()) > $created)
+    @if(strtotime('-1 month', time()) > strtotime($created))
     <div class="new-badge">
         <span>New</span>
     </div>

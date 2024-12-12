@@ -21,7 +21,7 @@ class MainController extends Controller
     public function home()
     {
         $catalogs = Catalog::all();
-        $new_products = Product::orderBy('created_at', 'desc')->take(6)->get();
+        $new_products = Product::orderBy('created_at', 'desc')->take(3)->get();
 
         return view('home', [
             "catalogs" => $catalogs,
