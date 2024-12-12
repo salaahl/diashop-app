@@ -65,7 +65,13 @@ main {
     transform: rotate(-90deg);
 }
 
-#product-of-the-week-container .title-container > h2 {
+#product-of-the-week-container > .title-container > h2:first-of-type {
+    margin-left: 0;
+    font-size: xxx-large;
+    background-image: unset;
+}
+
+#product-of-the-week-container #product-detail .title-container > h2:last-of-type {
     background-image: linear-gradient(
         rgb(var(--accent-color-2)),
         rgb(var(--accent-color-2))
