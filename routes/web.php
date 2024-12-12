@@ -66,9 +66,9 @@ Route::delete('basket/destroy', [BasketController::class, 'destroy'])->name('bas
 Route::get('checkout/', [StripePaymentController::class, 'checkout'])->name('checkout');
 Route::get('confirmation/{slug}', [StripePaymentController::class, 'confirmation'])->name('confirmation.show');
 
-Route::get('about-me/', function () {
-    return view('about-me');
-})->name('about-me');
+Route::get('about-us/', function () {
+    return view('about-us');
+})->name('about-us');
 Route::get('legal-notice/', function () {
     return view('legal-notice');
 })->name('legal-notice');

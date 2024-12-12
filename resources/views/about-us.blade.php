@@ -31,17 +31,17 @@
             margin: 25px auto;
         }
 
-        #about-me>div:last-of-type {
+        #about-us>div:last-of-type {
             opacity: 0;
         }
 
-        #about-me>div:last-of-type img {
+        #about-us>div:last-of-type img {
             height: 40vh;
             width: auto;
         }
 
         @supports (height: 1dvh) {
-            #about-me>div:last-of-type img {
+            #about-us>div:last-of-type img {
                 height: 40dvh;
             }
         }
@@ -70,7 +70,7 @@
 @endsection
 
 @section('main')
-<section id="about-me" class="min-h-screen">
+<section id="about-us" class="min-h-screen">
     <div class="h-[10vh] md:h-[40vh] w-full hidden md:flex justify-center items-center overflow-hidden bg-gray-800"></div>
     <div class="min-h-[40vh] w-full max-w-screen-xl mx-auto px-2 xl:px-0 md:mt-[-10vh] flex flex-col justify-center">
         <div class="md:h-[10vh] w-min md:w-auto flex justify-center items-center mx-auto">
@@ -89,7 +89,7 @@
 @parent
 <script>
     window.addEventListener("load", () => {
-        document.querySelector("#about-me > div:last-of-type").classList.add("animateFadeSlideIn");
+        document.querySelector("#about-us > div:last-of-type").classList.add("animateFadeSlideIn");
     });
 </script>
 @endsection
