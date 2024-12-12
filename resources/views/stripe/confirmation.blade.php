@@ -25,7 +25,7 @@
 
 @section('main')
 <h1>Confirmation de commande</h1>
-<p class="mt-12 text-center">Merci d'avoir choisi DiaShop-b {{ $order->fullname }} ! Nous sommes ravis de confirmer la réception de votre commande.</p>
+<p class="mt-12 text-center">Merci d'avoir choisi {{ env("APP_NAME") }} {{ $order->fullname }} ! Nous sommes ravis de confirmer la réception de votre commande.</p>
 
 <section class="command-header w-fit mt-16 mx-auto">
     <h3 class="mt-8 uppercase">Récapitulatif de votre commande</h3>
@@ -131,8 +131,8 @@
 
 <div class="max-w-[1024px] mt-16 mx-auto">
     <p>Vous pourrez suivre l'évolution de votre commande en temps réel grâce au numéro de suivi qui vous sera envoyé dès l'expédition de votre colis. Si vous avez des questions, veuillez envoyer un email à <a href="mailto:{{ env('MAIL_FROM_ADDRESS') }}">{{ env('MAIL_FROM_ADDRESS') }}</a>.</p>
-    <p class="mt-4">Nous tenons à vous remercier sincèrement pour votre confiance. Chez DiaShop-b, chaque commande est spéciale, et nous sommes impatients de vous voir rayonner dans nos pièces tendance.</p>
-    <p class="last-p w-fit mt-12 mb-8 mx-auto text-center">Bien à vous, <br>L'équipe DiaShop-b</p>
+    <p class="mt-4">Nous tenons à vous remercier sincèrement pour votre confiance. Chez {{ env("APP_NAME") }}, chaque commande est spéciale, et nous sommes impatients de vous voir rayonner dans nos pièces tendance.</p>
+    <p class="last-p w-fit mt-12 mb-8 mx-auto text-center">Bien à vous, <br>L'équipe {{ env("APP_NAME") }}</p>
 </div>
 @endsection
 

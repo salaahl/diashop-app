@@ -17,7 +17,7 @@
     <br>
     Cordialement,
     <br>
-    DiaShopB
+    {{ env("APP_NAME") }}
   </p>
 </body>
 

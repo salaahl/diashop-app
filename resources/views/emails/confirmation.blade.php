@@ -449,7 +449,7 @@
                               <tr>
                                 <td align="left" style="padding:0;Margin:0">
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:36px;color:#020202;font-size:24px">
-                                    DIASHOP-B</p>
+                                    {{ env("APP_NAME") }}</p>
                                 </td>
                               </tr>
                             </table>
@@ -528,7 +528,7 @@
                                     <br>
                                   </p>
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
-                                    Merci d'avoir choisi DiaShop-b ! Nous sommes ravis de confirmer la réception de votre commande.
+                                    Merci d'avoir choisi {{ env("APP_NAME") }} ! Nous sommes ravis de confirmer la réception de votre commande.
                                   </p>
                                 </td>
                               </tr>
@@ -769,7 +769,7 @@
                                     <br>
                                   </p>
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
-                                    Merci d'avoir choisi DiaShop-b !</p>
+                                    Merci d'avoir choisi {{ env("APP_NAME") }} !</p>
                                 </td>
                               </tr>
                             </table>

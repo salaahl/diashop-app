@@ -2,7 +2,7 @@
 
 @section('meta')
 @parent
-<meta name="description" content="Consultez les mentions légales de DiaShop-b pour connaître les informations sur l'éditeur, l'hébergeur, la collecte de données personnelles, et plus encore. Assurez-vous d'être informé sur nos politiques pour une expérience de shopping en ligne transparente et sécurisée.">
+<meta name="description" content="Consultez les mentions légales de {{ env("APP_NAME") }} pour connaître les informations sur l'éditeur, l'hébergeur, la collecte de données personnelles, et plus encore. Assurez-vous d'être informé sur nos politiques pour une expérience de shopping en ligne transparente et sécurisée.">
 @endsection
 
 @section('title', 'Mentions légales - ')
@@ -50,7 +50,7 @@
 <p>Tous les contenus présents sur le site {{ env('APP_URL') }} sont protégés par le droit d'auteur. Toute reproduction, même partielle, est strictement interdite sans l'autorisation préalable de <a href="https://www.linkedin.com/in/salaha-sokhona/" target="_blank" class="underline">Salaha Sokhona</a>.</p>
 
 <h3>7. Limitation de responsabilité</h3>
-<p>DiaShop-b décline toute responsabilité pour :</p>
+<p>{{ env("APP_NAME") }} décline toute responsabilité pour :</p>
 <ul>
     <li>toute interruption du site ;</li>
     <li>tout problème technique ;</li>

@@ -5,13 +5,13 @@
     @section('meta')
     <meta charset="utf-8">
     <meta name="google-site-verification" content="u6Q3jftadcv6uAc_nla0Nk38Je3fXVXpUpVeyMSwXQk" />
-    <meta name="author" lang="fr" content="Salaha Sokhona pour DiaShop-b">
+    <meta name="author" lang="fr" content="Salaha Sokhona pour {{ env('APP_NAME') }}">
     <meta name="keywords" content="prêt-à-porter, mode, vêtements, tendance, style, habillement">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @show
 
-    <title>@yield('title')DiaShop-b</title>
+    <title>@yield('title'){{ env("APP_NAME") }}</title>
 
     @section('links')
     @vite(['resources/css/app/app.css', 'resources/css/app/navigation.css', 'resources/css/app/basket.css'])

@@ -17,8 +17,8 @@
 @section('main')
 <section id="catalogs-container" class="relative md:aspect-[2/1] md:mb-4">
     <div class="hidden md:block absolute bottom-8 left-8">
-        <h1 class="mx-0 mb-2 text-5xl lg:text-6xl text-white">DiaShop-b</h1>
-        <p class="text-white bg-[rgb(var(--accent-color-4))]">Les dernières tendances de la mode pour hommes et femmes</p>
+        <h1 class="mx-0 mb-2 text-5xl lg:text-6xl text-white">{{ env("APP_NAME") }}</h1>
+        <p class="text-white">Les dernières tendances de la mode pour hommes et femmes</p>
     </div>
     <article class="catalog">
         <a href="{{ route('catalog', 'femme') }}">
@@ -64,7 +64,7 @@
                 <h2 class="mx-auto">À propos de nous</h2>
             </div>
             <p class="mb-8 md:mb-16 text-justify">À travers mes voyages, je selectionne en personne des pièces uniques et de qualité qui apportent une touche d'authenticité à chaque garde-robe...</p>
-            <a class="button-stylised-1 w-full mb-4">En savoir plus</a>
+            <a href="{{ route('about-us') }}" class="button-stylised-1 w-full mb-4">En savoir plus</a>
         </div>
     </div>
 </section>

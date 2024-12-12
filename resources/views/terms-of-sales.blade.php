@@ -2,7 +2,7 @@
 
 @section('meta')
 @parent
-<meta name="description" content="Découvrez les conditions générales de vente de DiaShop-b. Informez-vous sur nos politiques de commande, de livraison et de retour pour une expérience d'achat en ligne fluide et satisfaisante. Prenez connaissance de nos engagements envers nos clients et de nos procédures pour un shopping en toute confiance.">
+<meta name="description" content="Découvrez les conditions générales de vente de {{ env("APP_NAME") }}. Informez-vous sur nos politiques de commande, de livraison et de retour pour une expérience d'achat en ligne fluide et satisfaisante. Prenez connaissance de nos engagements envers nos clients et de nos procédures pour un shopping en toute confiance.">
 @endsection
 
 @section('title', 'CGV - ')
@@ -59,7 +59,7 @@
 <p>L'acheteur bénéficie de la garantie légale de conformité et de la garantie légale des vices cachés conformément aux dispositions du Code de la consommation.</p>
 
 <h3>7. Responsabilité</h3>
-<p>DiaShop-b décline toute responsabilité pour :</p>
+<p>{{ env("APP_NAME") }} décline toute responsabilité pour :</p>
 <ul>
     <li>- toute interruption du site</li>
     <li>- tout problème technique</li>
