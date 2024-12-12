@@ -129,15 +129,9 @@ main {
         animation: 2s ease 2.5s 1 normal none running translate;
     }
 
-    @supports (height: 1dvh) {
-        #catalogs-container .catalog {
-            height: calc(100dvh - 15px);
-        }
-    }
-
     #catalogs-container .catalog h3 {
         filter: opacity(0.8);
-        margin-bottom: 50%;
+        margin-bottom: 30%;
     }
 
     .product {
