@@ -17,8 +17,8 @@
 @section('main')
 <section id="catalogs-container" class="relative md:aspect-[2/1] md:mb-4">
     <div class="hidden md:block absolute bottom-8 left-8">
-        <h1 class="mx-0 mb-2 text-5xl lg:text-6xl text-white">{{ env("APP_NAME") }}</h1>
-        <p class="text-white">Les dernières tendances de la mode pour hommes et femmes</p>
+        <h1 class="mx-0 mb-2 font-['Truculenta'] text-5xl lg:text-6xl text-white bg-cover">{{ env("APP_NAME") }}</h1>
+        <p class="text-white font-normal">Les dernières tendances de la mode pour hommes et femmes</p>
     </div>
     <article class="catalog">
         <a href="{{ route('catalog', 'femme') }}">
@@ -35,7 +35,7 @@
         </a>
     </article>
 </section>
-<section id="new-products-container" class="max-w-[1380px] flex flex-nowrap md:mt-32 mx-auto py-4 px-[10px] bg-gray-100 md:rounded-lg overflow-auto">
+<section id="new-products-container" class="md:w-[95%] max-w-[1380px] flex flex-nowrap md:mt-32 mx-auto py-4 px-[10px] bg-gray-100 md:rounded-lg overflow-auto">
     <div class="title-container ml-[-5%] mr-[-5%] xl:ml-[-10px] xl:mr-0">
         <h2>Nouveautés</h2>
     </div>
@@ -54,7 +54,7 @@
         <a href="{{ route('catalog', 'homme') }}" class="button-stylised-1 w-3/4 mx-auto">Nouveautés pour lui</a>
     </article>
 </section>
-<section id="about-us-container" class="max-w-[1440px] flex flex-wrap md:mt-32 mx-auto p-8 bg-[#fcdedc] md:rounded-xl overflow-auto">
+<section id="about-us-container" class="w-full max-w-[1440px] flex flex-wrap md:mt-32 mx-auto p-8 bg-[#fcdedc] md:rounded-xl overflow-auto">
     <div class="flex flex-col md:flex-row-reverse items-center justify-center">
         <div class="w-[90%] md:w-2/4 md:ml-12">
             <img src="{{ asset('images/woman-catalog.jpg')}}" class="h-auto w-auto max-md:my-10 mx-auto md:rounded-lg border-[25px] border-white object-cover">
@@ -68,7 +68,7 @@
         </div>
     </div>
 </section>
-<section id="product-of-the-week-container" class="max-w-[1280px] mx-auto mt-[10px] md:mt-32 px-[10px]">
+<section id="product-of-the-week-container" class="md:w-[90%] max-w-[1280px] mx-auto mt-[10px] md:mt-32 px-[10px]">
     <div class=" title-container w-full mb-8">
         <h2 class="mt-8 mb-8 mx-auto">À la une</h2>
     </div>

@@ -1,5 +1,8 @@
 main {
     min-height: unset;
+    max-width: 1540px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #catalogs-container {
@@ -78,7 +81,10 @@ main {
     background-image: unset;
 }
 
-#product-of-the-week-container #product-detail .title-container > h2:last-of-type {
+#product-of-the-week-container
+    #product-detail
+    .title-container
+    > h2:last-of-type {
     background-image: linear-gradient(
         rgb(var(--accent-color-1)),
         rgb(var(--accent-color-1))
@@ -141,12 +147,6 @@ main {
 }
 
 @media (min-width: 768px) {
-    main {
-        max-width: 1540px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
     #catalogs-container .catalog {
         width: 50%;
     }

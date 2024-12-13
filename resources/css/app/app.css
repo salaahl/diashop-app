@@ -182,7 +182,7 @@ h4 {
 main {
     min-height: calc(100vh - 110px);
     width: 100%;
-    max-width: 1440px;
+    max-width: calc(1440px + 2 * var(--container-padding-x));
     margin: auto;
     padding-top: var(--container-padding-y);
     padding-left: var(--container-padding-x);
@@ -656,13 +656,6 @@ img {
     #navbar-container,
     #search-container {
         padding: 0 var(--container-padding-x);
-    }
-}
-
-@media (min-width: 1460px) {
-    :root {
-        --container-padding-x: 0;
-        --container-padding-y: 0;
     }
 }
 

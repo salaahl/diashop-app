@@ -24,7 +24,7 @@ if (window.innerWidth > 768) {
 
 document.querySelectorAll("main > section:nth-of-type(n+2)").forEach((ele) => {
     gsap.from(ele, {
-        y: "25%",
+        y: "15%",
         opacity: 0,
         duration: 0.4,
         scrollTrigger: {
