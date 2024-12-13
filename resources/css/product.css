@@ -121,7 +121,7 @@ Code du carousel
     }
 
     #product-images-container li {
-        animation: 1.4s var(--transition-emphasized) 0.7s 1 normal none running translate;
+        animation: 1.4s var(--transition-emphasized) 1.4s 1 normal none running translate;
     }
 
     #product-details-container {
