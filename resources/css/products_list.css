@@ -25,6 +25,15 @@ main {
     transform: rotate(-90deg);
 }
 
+#categories {
+    scroll-snap-type: x proximity;
+    scroll-behavior: smooth;
+}
+
+.category {
+    scroll-snap-align: center;
+}
+
 .category .thumbnail {
     aspect-ratio: 1 / 1;
     border-radius: 999px;

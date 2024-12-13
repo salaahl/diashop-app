@@ -120,6 +120,10 @@ Code du carousel
         flex-direction: column;
     }
 
+    #product-images-container li {
+        animation: 1.4s var(--transition-emphasized) 0.7s 1 normal none running translate;
+    }
+
     #product-details-container {
         padding-left: var(--container-padding-x);
         padding-right: var(--container-padding-x);

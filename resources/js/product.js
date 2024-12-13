@@ -7,21 +7,6 @@ const popUp = $("#popup");
 const popUpTimer = 5000;
 let url = window.location.href;
 
-// Effet de translate en mode mobile pour notifier à l'utilisateur qu'il peut swipe
-window.addEventListener("load", () => {
-    if (
-        window.innerWidth < 767 &&
-        $("#product-images-container li:nth-of-type(2)")
-    ) {
-        setTimeout(function () {
-            $("#product-images-container li:first-of-type").style.animation =
-                "translate 2s";
-            $("#product-images-container li:nth-of-type(2)").style.animation =
-                "translate 2s";
-        }, 1000);
-    }
-});
-
 // Loupe pour les photos d'articles en mode PC
 if (window.innerWidth > 1023) {
     let zoomer = (function () {
@@ -252,7 +237,10 @@ if (document.getElementById("add-basket")) {
                         if (total > 49) {
                             basketFooter = `
                                 <div class="w-full">
-                                    <h4 class="text-sm text-center text-gray-500 line-through">+ ${process.env.STANDARD_DELIVERY_CHARGES / 100}€ de frais de livraison</h4>
+                                    <h4 class="text-sm text-center text-gray-500 line-through">+ ${
+                                        process.env.STANDARD_DELIVERY_CHARGES /
+                                        100
+                                    }€ de frais de livraison</h4>
                                     <h4 class="mb-2 text-sm text-center text-gray-500">Frais de livraison offerts !</h4>
                                     <h4 class="text-sm text-center text-gray-500">
                                         Options de payement disponiles : Visa, Mastercard, CB & Paypal
@@ -272,10 +260,14 @@ if (document.getElementById("add-basket")) {
                                 </div>
                                 `;
                         } else {
-                            total += process.env.STANDARD_DELIVERY_CHARGES / 100;
+                            total +=
+                                process.env.STANDARD_DELIVERY_CHARGES / 100;
                             basketFooter = `
                                 <div class="w-full">
-                                    <h4 class="mb-2 text-sm text-center text-gray-500">+ ${process.env.STANDARD_DELIVERY_CHARGES / 100}€ de frais de livraison</h4>
+                                    <h4 class="mb-2 text-sm text-center text-gray-500">+ ${
+                                        process.env.STANDARD_DELIVERY_CHARGES /
+                                        100
+                                    }€ de frais de livraison</h4>
                                     <h4 class="text-sm text-center text-gray-500">
                                         Options de payement disponiles : Visa, Mastercard, CB & Paypal
                                     </h4>
