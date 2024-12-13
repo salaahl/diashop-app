@@ -108,7 +108,7 @@
 }
 
 #garanties-container > div:nth-of-type(2)::before {
-    content: "\f09d";
+    content: "\f4da";
 }
 
 #garanties-container > div:nth-of-type(3)::before {
@@ -116,7 +116,7 @@
 }
 
 #garanties-container > div:last-of-type::before {
-    content: "\f4da";
+    content: "\f09d";
 }
 
 @media (max-width: 767px) {
