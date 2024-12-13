@@ -29,7 +29,7 @@ document.querySelectorAll("main > section:nth-of-type(n+2)").forEach((ele) => {
         duration: 0.4,
         scrollTrigger: {
             trigger: ele,
-            start: "0% 75%",
+            start: window.innerWidth < 768 ? "0 85%" : "0 75%",
         },
     });
 });
