@@ -35,7 +35,7 @@
         </a>
     </article>
 </section>
-<section id="new-products-container" class="md:w-[95%] max-w-[1380px] flex flex-nowrap md:mt-32 mx-auto py-4 px-[10px] bg-gray-100 md:rounded-lg overflow-auto">
+<section id="new-products-container" class="flex flex-nowrap md:mt-16 mx-auto py-4 px-[10px] bg-gray-100 md:rounded-lg overflow-auto">
     <div class="title-container ml-[-5%] mr-[-5%] xl:ml-[-10px] xl:mr-0">
         <h2>Nouveautés</h2>
     </div>
@@ -54,7 +54,7 @@
         <a href="{{ route('catalog', 'homme') }}" class="button-stylised-1 w-3/4 mx-auto">Nouveautés pour lui</a>
     </article>
 </section>
-<section id="about-us-container" class="w-full max-w-[1440px] flex flex-wrap md:mt-32 mx-auto p-8 bg-[#fcdedc] md:rounded-xl overflow-auto">
+<section id="about-us-container" class="w-full max-w-[1440px] flex flex-wrap md:mt-16 mx-auto p-8 bg-[#fcdedc] md:rounded-xl overflow-auto">
     <div class="flex flex-col md:flex-row-reverse items-center justify-center">
         <div class="w-[90%] md:w-2/4 md:ml-12">
             <img src="{{ asset('images/woman-catalog.jpg')}}" class="h-auto w-auto max-md:my-10 mx-auto md:rounded-lg border-[25px] border-white object-cover">
@@ -68,7 +68,7 @@
         </div>
     </div>
 </section>
-<section id="product-of-the-week-container" class="md:w-[90%] max-w-[1280px] mx-auto mt-[10px] md:mt-32 px-[10px]">
+<section id="product-of-the-week-container" class="md:w-[90%] max-w-[1280px] mx-auto mt-[10px] md:mt-16 px-[10px]">
     <div class=" title-container w-full mb-8">
         <h2 class="mt-8 mb-8 mx-auto">À la une</h2>
     </div>
@@ -80,7 +80,7 @@
                 $product_image = json_decode($product->img, true);
                 @endphp
                 <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start">
-                    <x-cld-image public-id="{{ str_replace('\\', '/', $product_image[0]) }}" alt="{{ $product->name }}" class="h-full w-full object-cover object-center cursor-zoom-in"></x-cld-image>
+                    <x-cld-image public-id="{{ str_replace('\\', '/', $product_image[0]) }}" alt="{{ $product->name }}" class="h-full w-full object-cover object-center"></x-cld-image>
                 </li>
             </ul>
         </div>
@@ -144,11 +144,11 @@
         </div>
     </div>
 </section>
-<section id="garanties-container" class="md:h-[100px] w-full max-w-[1440px] flex flex-col md:flex-row flex-nowrap items-center justify-between mb-8 md:mt-32 mx-auto p-4 bg-[rgb(var(--accent-color-1))] md:bg-gray-100 md:rounded-lg">
-    <div class="w-full md:w-1/4 flex items-center justify-center px-2 pt-8 pb-4 md:py-4 text-sm md:border-r-4 md:border-gray-300">Livraison gratuite à partir de {{ env('FREE_SHIPPING') / 100 }}€</div>
-    <div class="w-full md:w-1/4 flex items-center justify-center px-2 py-4 text-sm md:border-r-4 md:border-gray-300">Satisfait ou remboursé</div>
-    <div class="w-full md:w-1/4 flex items-center justify-center px-2 py-4 text-sm md:border-r-4 md:border-gray-300">Paiement sécurisé avec Stripe</div>
-    <div class="w-full md:w-1/4 flex items-center justify-center px-2 pt-4 pb-8 md:py-4 text-sm">3x sans frais</div>
+<section id="garanties-container" class="md:h-[100px] w-full max-w-[1440px] flex flex-col md:flex-row flex-nowrap items-center justify-between md:mb-8 md:mt-24 mx-auto p-4 bg-[rgb(var(--accent-color-1))] md:bg-gray-100 md:rounded-lg">
+    <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Livraison gratuite à partir de {{ env('FREE_SHIPPING') / 100 }}€</div>
+    <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Satisfait ou remboursé</div>
+    <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Paiement sécurisé avec Stripe</div>
+    <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent rounded-xl md:rounded-none">3x sans frais</div>
 </section>
 @endsection
 
