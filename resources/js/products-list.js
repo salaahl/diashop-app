@@ -32,7 +32,7 @@ document.getElementById("filter_select").addEventListener("change", () => {
     myform.submit();
 });
 
-gsap.from(".category", {
+gsap.from([".catalog-name",".category"], {
     x: -50,
     opacity: 0,
     duration: 0.4,

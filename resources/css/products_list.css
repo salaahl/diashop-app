@@ -23,7 +23,7 @@ main {
     display: flex;
     align-items: center;
     transform: rotate(-90deg);
-    scroll-snap-align: start;
+    scroll-snap-align: center;
 }
 
 #categories {
@@ -32,7 +32,7 @@ main {
 }
 
 .category {
-    scroll-snap-align: start;
+    scroll-snap-align: center;
 }
 
 .category .thumbnail {
