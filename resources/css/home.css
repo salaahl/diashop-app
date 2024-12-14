@@ -153,8 +153,7 @@
         min-width: 100vw;
         height: calc(100vh - 15px);
         scroll-snap-align: start;
-        animation: 1.4s ease 1.4s 1 normal none running
-            translate;
+        animation: 1.4s ease 1.4s 1 normal none running translate;
     }
 
     #catalogs-container .catalog h3 {
@@ -229,7 +228,9 @@
     }
 
     #product-of-the-week-container #product-images-container {
-        box-shadow: rgba(17, 12, 46, 0.1) -20px 25px 0 0;
+        box-shadow: rgba(255, 255, 255, 0.0333) 0px 1px 1px 0px inset,
+            rgba(50, 50, 93, 0.0833) 0px 50px 100px -20px,
+            rgba(0, 0, 0, 0.1) 0px 30px 60px -30px;
     }
 
     #garanties-container {
