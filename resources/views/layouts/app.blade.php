@@ -15,7 +15,7 @@
 
     @section('links')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    @vite(['resources/css/app/app.css', 'resources/css/app/navigation.css', 'resources/css/app/basket.css'])
+    @vite(['resources/css/app/app.css', 'resources/css/app/navigation.css', 'resources/css/app/modals.css'])
     @show
 
 </head>
@@ -54,11 +54,11 @@
         <header id="navbar-container" class="h-[80px]">
             @section('header')
             @include('layouts.navigation')
-            @include('components.search-product')
             @show
         </header>
 
         <aside>
+            @include('components.search')
             @include('components.basket')
         </aside>
 
@@ -94,7 +94,7 @@
 
     <!-- Page Scripts -->
     @section('scripts')
-    @vite(['resources/js/app.js', 'resources/js/search-product.js', 'resources/js/basket.js'])
+    @vite(['resources/js/app.js', 'resources/js/search.js', 'resources/js/basket.js'])
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     <script src="https://esm.sh/css-doodle/css-doodle.min.js?raw"></script>
 

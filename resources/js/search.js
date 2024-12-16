@@ -4,18 +4,6 @@ let $ = (id) => {
 const popUp = $("#popup");
 const popUpTimer = 5000;
 
-document.querySelectorAll(".search-btn").forEach((button) => {
-    button.addEventListener("click", (e) => {
-        $("#navbar-container").classList.add("show-search-container");
-        $("#navbar-container").classList.remove("hide-search-container");
-    });
-});
-
-$("#close-search-btn").addEventListener("click", (e) => {
-    $("#navbar-container").classList.add("hide-search-container");
-    $("#navbar-container").classList.remove("show-search-container");
-});
-
 let timer;
 
 $("#default-search").addEventListener("input", (e) => {
@@ -30,7 +18,7 @@ $("#default-search").addEventListener("input", (e) => {
 
             let data = {
                 input: $("#default-search").value,
-                catalog: $("#search-container [name='catalog']:checked").value,
+                catalog: $("#search-modal [name='catalog']:checked").value,
             };
 
             const request = new Request("/search", {
@@ -53,7 +41,7 @@ $("#default-search").addEventListener("input", (e) => {
                                 '<article class="product">' +
                                 '<a href="/' +
                                 "catalog/" +
-                                $("#search-container [name='catalog']:checked")
+                                $("#search-modal [name='catalog']:checked")
                                     .value +
                                 "/" +
                                 product["category"] +
@@ -83,9 +71,9 @@ $("#default-search").addEventListener("input", (e) => {
                                 "</a>" +
                                 "</article>";
                         });
-                        $("#default-search-btn").classList.add("show");
+                        $("#more-results").classList.add("show");
                     } else {
-                        $("#default-search-btn").classList.remove("show");
+                        $("#more-results").classList.remove("show");
                         $("#search-results").innerHTML = "AUCUN RESULTAT";
                     }
 
@@ -97,14 +85,14 @@ $("#default-search").addEventListener("input", (e) => {
                     console.log(error.message);
                 });
         } else {
-            $("#default-search-btn").classList.remove("show");
+            $("#more-results").classList.remove("show");
             $("#search-results").innerHTML = "";
         }
     }, 1000);
 });
 
-$("#default-search-btn").addEventListener("click", () => {
-    let catalog = $("#search-container [name='catalog']:checked").value;
+$("#more-results").addEventListener("click", () => {
+    let catalog = $("#search-modal [name='catalog']:checked").value;
     let input = $("#default-search").value;
 
     window.location = "/search/" + catalog + "/" + input;

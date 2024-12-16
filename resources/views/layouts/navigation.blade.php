@@ -6,7 +6,9 @@
         </a>
         <div class="has-mobile-nav-btn flex lg:hidden">
             <button
-                class="search-btn nav-btn relative inline-flex items-center mr-4 w-6 h-6 justify-center text-sm text-gray-500"
+                data-modal-target="search-modal"
+                data-modal-toggle="search-modal"
+                class="search-btn nav-btn has-search-counter relative inline-flex items-center w-6 h-6 mr-4 justify-center text-sm text-gray-500"
                 type="button">
                 <svg class="w-[21px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
                     <path fill="rgb(0, 0, 0, 0.6)" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
@@ -76,7 +78,11 @@
                     </li>
                     @endforeach
                     <li class="h-full w-full hidden lg:flex lg:items-center lg:align-center">
-                        <button class="search-btn nav-btn w-full flex justify-between items-center p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0 lg:p-0">
+                        <button
+                            data-modal-target="search-modal"
+                            data-modal-toggle="search-modal"
+                            class="basket-btn nav-btn has-basket-counter flex justify-between items-center max-lg:mb-2 p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0 lg:p-0"
+                            type="button">
                             <span class="text-sm uppercase whitespace-nowrap lg:m-0">Rechercher</span>
                         </button>
                     </li>

@@ -97,7 +97,7 @@
     );
 }
 
-.product {
+#new-products-container .product {
     margin-left: 0.5%;
     margin-right: 0.5%;
     scroll-snap-align: center;
@@ -161,7 +161,7 @@
         margin-bottom: 30%;
     }
 
-    .product {
+    #new-products-container .product {
         width: 49%;
         min-width: 49%;
     }
@@ -218,7 +218,7 @@
         box-shadow: rgb(243 244 246) 0px 0px 75px 0px;
     }
 
-    .product {
+    #new-products-container .product {
         width: 20%;
         min-width: 20%;
     }
