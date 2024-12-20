@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Catalog;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory
@@ -11,23 +13,22 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word(),
-            'price' => $this->faker->randomFloat(2, 10, 1000), // Prix entre 10 et 1000
-            'promotion' => $this->faker->optional()->numberBetween(0, 50), // Pourcentage de promotion
-            'description' => $this->faker->paragraph(),
+            'name' => $this->faker.commerce.productDescription(),
+            'price' => $this->faker->randomFloat(2, 10, 200), // Prix entre 10 et 200
+            'promotion' => $this->faker->optional()->numberBetween(5, 50), // Entre 5% et 50% de réduction
+            'description' => $this->faker->productDescription(),
             'quantity_per_size' => json_encode([
                 'S' => $this->faker->numberBetween(0, 100),
                 'M' => $this->faker->numberBetween(0, 100),
                 'L' => $this->faker->numberBetween(0, 100),
                 'XL' => $this->faker->numberBetween(0, 100),
-                'XXL' => $this->faker->numberBetween(0, 100),
             ]),
             'img' => json_encode([
-                $this->faker->imageUrl(),
-                $this->faker->imageUrl(),
+                $this->faker->imageUrl(640, 480, 'fashion', true, 'Product'),
+                $this->faker->imageUrl(640, 480, 'fashion', true, 'Product'),
             ]),
-            'catalog_id' => \App\Models\Catalog::factory(), // Associe un catalogue
-            'category_id' => \App\Models\Category::factory(), // Associe une catégorie
+            'catalog_id' => Catalog::factory(),
+            'category_id' => Category::factory(),
         ];
     }
 }

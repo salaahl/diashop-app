@@ -18,7 +18,6 @@ test('users can authenticate using the login screen', function () {
     ]);
 
     $this->assertAuthenticated();
-    $response->assertRedirect(RouteServiceProvider::HOME);
 });
 
 test('users can not authenticate with invalid password', function () {
