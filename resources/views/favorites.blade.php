@@ -9,12 +9,6 @@
 @section('links')
 @parent
 @vite('resources/css/products_list.css')
-<style>
-    main #headers {
-        margin-top: 75px;
-        margin-bottom: 75px;
-    }
-</style>
 @endsection
 
 @section('header')
@@ -24,8 +18,8 @@
 @section('main')
 <div class="min-h-screen w-full flex flex-wrap">
     @if(isset($products))
-    <div id="headers">
-        <h1>Mes favoris</h1>
+    <div class="w-full mt-8 mb-16 md:mt-10 md:mb-20">
+        <h1 class="w-fit m-auto">Mes favoris</h1>
     </div>
     @foreach($products as $product)
     @php

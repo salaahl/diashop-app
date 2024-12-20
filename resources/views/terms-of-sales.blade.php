@@ -10,7 +10,7 @@
 @section('links')
 <style>
     h1 {
-        width: min-content!important;
+        width: min-content !important;
     }
 
     h3 {
@@ -19,12 +19,12 @@
     }
 
     main {
-        margin-bottom: 4% !important;
+        padding-bottom: 4% !important;
     }
 
     @media (min-width: 768px) {
         h1 {
-            width: fit-content!important;
+            width: fit-content !important;
         }
     }
 </style>
@@ -37,7 +37,7 @@
 
 @section('main')
 
-<h1>Conditions Générales de Vente</h1>
+<h1 class="mt-8 mb-16 md:mt-10 md:mb-20">Conditions Générales de Vente</h1>
 
 <h3>1. Champ d'application</h3>
 <p>Ces conditions générales de vente s'appliquent à toutes les commandes passées sur le site {{ env('APP_URL') }}.</p>
@@ -68,7 +68,7 @@
 </ul>
 
 <h3>8. Médiation de la consommation</h3>
-<p>L'acheteur peut recourir à la médiation de la consommation en cas de litige. Pour cela, il doit d'abord contacter le Service Client. En cas d'insatisfaction, il peut saisir la Commission européenne via la plateforme de règlement en ligne des litiges à l'adresse suivante : <a href="https://ec.europa.eu/odr">ec.europa.eu/odr</a>.</p>
+<p>L'acheteur peut recourir à la médiation de la consommation en cas de litige. Pour cela, il doit d'abord contacter le Service Client. En cas d'insatisfaction, il peut saisir la Commission européenne via la plateforme de règlement en ligne des litiges à l'adresse suivante : <a href=" https://ec.europa.eu/odr">ec.europa.eu/odr</a>.</p>
 <p>Pour toute question relative à un éventuel litige, veuillez contacter le Service Client ou envoyer un e-mail à l'adresse : {{ env('MAIL_FROM_ADDRESS') }}.</p>
 
 <p>Merci de votre confiance et bonne navigation sur {{ env('APP_URL') }} !</p>

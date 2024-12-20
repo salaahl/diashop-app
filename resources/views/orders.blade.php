@@ -17,7 +17,7 @@
 @section('main')
 <div class="min-h-screen w-full mt-[-80px] pt-[80px]">
     @if(isset($orders))
-    <h1>Mes commandes</h1>
+    <h1 class="mt-8 mb-16 md:mt-10 md:mb-20">Mes commandes</h1>
     <section id="command-container" class="mt-12">
         @foreach($orders as $order)
         <article class="command max-w-[1024px] mb-16 mx-auto">

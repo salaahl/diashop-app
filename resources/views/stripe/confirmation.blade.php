@@ -24,7 +24,7 @@
 @endsection
 
 @section('main')
-<h1>Confirmation de commande</h1>
+<h1 class="mt-8 mb-16 md:mt-10 md:mb-20">Confirmation de commande</h1>
 <p class="mt-12 text-center">Merci d'avoir choisi {{ env("APP_NAME") }} {{ $order->fullname }} ! Nous sommes ravis de confirmer la réception de votre commande.</p>
 
 <section class="command-header w-fit mt-16 mx-auto">

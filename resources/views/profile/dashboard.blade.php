@@ -15,12 +15,14 @@
 @endsection
 
 @section('main')
-<div class="min-h-screen w-full flex flex-col justify-center mt-[-80px]">
-    <h1>Mon profil</h1>
-    <div class="flex flex-col justify-center items-center mb-[50px] px-4">
-        <h2 class="w-3/4 lg:w-2/4 mb-4 p-4 uppercase rounded-full bg-gray-200"><a href="{{ route('orders') }}">Mes commandes</a></h2>
-        <h2 class="w-3/4 lg:w-2/4 mb-4 p-4 uppercase rounded-full bg-gray-200"><a href="{{ route('favorites') }}">Mes favoris</a></h2>
-        <h2 class="w-3/4 lg:w-2/4 mb-4 p-4 uppercase rounded-full bg-gray-200"><a href="{{ route('profile.edit') }}">Modifier mes informations</a></h2>
+<div class="absolute left-0 w-full mt-8 mb-16 md:mt-10 md:mb-20">
+    <h1 class="w-fit mx-auto text-[xx-large] md:text-[xxx-large]">Mon profil</h1>
+</div>
+<div class="h-screen w-full flex flex-col justify-center mt-[-40px]">
+    <div class="flex flex-col justify-center items-center">
+        <h2 class="w-3/4 lg:w-2/4 max-w-lg mb-4 p-4 uppercase hover:text-white rounded-full bg-gray-200 hover:bg-[rgb(var(--accent-color-4))] transition-all duration-300"><a href="{{ route('orders') }}" class="block w-full">Mes commandes</a></h2>
+        <h2 class="w-3/4 lg:w-2/4 max-w-lg mb-4 p-4 uppercase hover:text-white rounded-full bg-gray-200 hover:bg-[rgb(var(--accent-color-4))] transition-all duration-300"><a href="{{ route('favorites') }}" class="block w-full">Mes favoris</a></h2>
+        <h2 class="w-3/4 lg:w-2/4 max-w-lg mb-4 p-4 uppercase hover:text-white rounded-full bg-gray-200 hover:bg-[rgb(var(--accent-color-4))] transition-all duration-300"><a href="{{ route('profile.edit') }}" class="block w-full">Modifier mes informations</a></h2>
     </div>
 </div>
 @endsection

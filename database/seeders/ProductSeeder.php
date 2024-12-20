@@ -33,5 +33,19 @@ class ProductSeeder extends Seeder
         Product::factory()->create(['name' => 'Article 16', 'price' => 19.99, 'catalog_id' => 2, 'category_id' => 4]);
         Product::factory()->create(['name' => 'Article 17', 'price' => 24, 'catalog_id' => 2, 'category_id' => 5]);
         Product::factory()->create(['name' => 'Article 18', 'price' => 39.99, 'catalog_id' => 2, 'category_id' => 6]);
+
+        Product::factory()->create(['name' => 'Article 19', 'price' => 9.99, 'catalog_id' => 1, 'category_id' => 1]);
+        Product::factory()->create(['name' => 'Article 20', 'price' => 10, 'catalog_id' => 1, 'category_id' => 2]);
+        Product::factory()->create(['name' => 'Article 21', 'price' => 29.95, 'catalog_id' => 1, 'category_id' => 3]);
+        Product::factory()->create(['name' => 'Article 22', 'price' => 19.99, 'catalog_id' => 2, 'category_id' => 4]);
+        Product::factory()->create(['name' => 'Article 23', 'price' => 24, 'catalog_id' => 2, 'category_id' => 5]);
+        Product::factory()->create(['name' => 'Article 24', 'price' => 39.99, 'catalog_id' => 2, 'category_id' => 6]);
+
+        Product::factory()->create(['name' => 'Article 25', 'price' => 9.99, 'catalog_id' => 1, 'category_id' => 1]);
+        Product::factory()->create(['name' => 'Article 26', 'price' => 10, 'catalog_id' => 1, 'category_id' => 2]);
+        Product::factory()->create(['name' => 'Article 27', 'price' => 29.95, 'catalog_id' => 1, 'category_id' => 3]);
+        Product::factory()->create(['name' => 'Article 28', 'price' => 19.99, 'catalog_id' => 2, 'category_id' => 4]);
+        Product::factory()->create(['name' => 'Article 29', 'price' => 24, 'catalog_id' => 2, 'category_id' => 5]);
+        Product::factory()->create(['name' => 'Article 30', 'price' => 39.99, 'catalog_id' => 2, 'category_id' => 6]);
     }
 }
