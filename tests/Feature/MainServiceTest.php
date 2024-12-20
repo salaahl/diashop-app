@@ -11,34 +11,76 @@ test('retourne une liste d\'articles triés selon le filtre "price-lowest"', fun
     $category = Category::factory()->create([
         'catalog_id' => $catalog->id
     ]);
-    $products = Product::factory()->count(5)->create([
+    $productA = Product::factory()->create([
+            'name' => 'Article 1',
+            'price' => 9.99,
             'catalog_id' => $catalog->id,
             'category_id' => $category->id,
     ]);
+    $productB = Product::factory()->create([
+        'name' => 'Article 2',
+        'price' => 10,
+        'catalog_id' => $catalog->id,
+        'category_id' => $category->id,
+    ]);
+    $productC = Product::factory()->create([
+        'name' => 'Article 3',
+        'price' => 29.95,
+        'catalog_id' => $catalog->id,
+        'category_id' => $category->id,
+    ]);
 
-    $response = $this->get('/catalog/femme');
+    $response = $this->get('/catalog/' . $catalog->name . '?filter=price-highest');
     $response->assertOk();
 
-    $products = app(MainService::class)->getProductsByFilter(2, 'price-lowest');
+    $products = app(MainService::class)->getProductsByFilter($catalog->id, 'price-lowest');
 
     // Le "assertJsonFragment" permet de s'assurer que le produit renseigné fait bien parti de la réponse
-    $products->assertJsonFragment(['name' => 'Product C', 'price' => 29.99, catalog => 'Femme']);
-    $products->assertJsonFragment(['name' => 'Product A', 'price' => 9.99, catalog => 'Femme']);
-    $products->assertJsonFragment(['name' => 'Product B', 'price' => 19.99, catalog => 'Femme']);
+    $products->assertJsonFragment(['name' => 'Article 2']);
+    $products->assertJsonFragment(['name' => 'Article 1']);
+    $products->assertJsonFragment(['name' => 'Article 3']);
 
-    // Vérifie que les produits sont triés par price ASC
-    expect($products->data->first()->name)->toBe('Product A');
+    // Vérifie que le premier article est bien le moins cher de tous
+    expect($products->data->first()->name)->toBe('Article 1');
 });
 
-test('retourne une liste d\'articles sélectionnés selon la catégorie "t-shirts" et triés selon le filtre "price-highest"', function () {
-    $response = app(MainService::class)->getProductsByFilter(2, 't-shirts', 'price-highest');
+test('retourne une liste d\'articles sélectionnés selon une catégorie et triés selon le filtre "price-highest"', function () {
+    // Créations d'articles au préalable
+    $catalog = Catalog::factory()->create();
+    $category = Category::factory()->create([
+        'catalog_id' => $catalog->id
+    ]);
+    $productA = Product::factory()->create([
+            'name' => 'Article 1',
+            'price' => 9.99,
+            'catalog_id' => $catalog->id,
+            'category_id' => $category->id,
+    ]);
+    $productB = Product::factory()->create([
+        'name' => 'Article 2',
+        'price' => 10,
+        'catalog_id' => $catalog->id,
+        'category_id' => $category->id,
+    ]);
+    $productC = Product::factory()->create([
+        'name' => 'Article 3',
+        'price' => 29.95,
+        'catalog_id' => $catalog->id,
+        'category_id' => $category->id,
+    ]);
 
-    $response->assertStatus(200);
-    $response->assertJsonFragment(['name' => 'Product D', 'price' => 39.99, catalog => 'Homme']);
-    $response->assertJsonFragment(['name' => 'Product F', 'price' => 59.99, catalog => 'Homme']);
-    $response->assertJsonFragment(['name' => 'Product E', 'price' => 49.99, catalog => 'Homme']);
+    $response = $this->get('/catalog/' . $catalog->name . '/' . $category->name . '?filter=price-highest');
+    $response->assertOk();
 
-    expect($response->data->first()->name)->toBe('Product F');
+    $products = app(MainService::class)->getProductsByFilter($catalog->id, $category->name, 'price-highest');
+
+    // Le "assertJsonFragment" permet de s'assurer que le produit renseigné fait bien parti de la réponse
+    $products->assertJsonFragment(['name' => 'Article 2']);
+    $products->assertJsonFragment(['name' => 'Article 1']);
+    $products->assertJsonFragment(['name' => 'Article 3']);
+
+    // Vérifie que le premier article est bien le moins cher de tous
+    expect($products->data->first()->name)->toBe('Article 3');
 });
 
 test('retourne une liste d\'articles dont le nom correspond au moins pour partie à la saisie', function () {

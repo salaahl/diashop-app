@@ -18,7 +18,7 @@ class CategoryFactory extends Factory
         $catalog = Catalog::factory()->create(); // Crée le catalogue
 
         return [
-            'name' => $this->faker->words(1, true),
+            'name' => $this->faker->word(),
             'img' => $this->faker->imageUrl(640, 480, 'fashion', true, 'Product'),
             'catalog_id' => $catalog->id, // Utilisation de l'ID du catalogue
         ];
