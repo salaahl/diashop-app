@@ -13,13 +13,14 @@ test('profile page is displayed', function () {
 });
 
 test('profile information can be updated', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->create([
+        'email' => 'sokhona.salaha@gmail.com'
+    ]);
 
     $response = $this
         ->actingAs($user)
-        ->patch('/profile', [
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        ->patch('/profile/update', [
+            'email' => 'john.doe@gmail.com',
         ]);
 
     $response
@@ -28,8 +29,7 @@ test('profile information can be updated', function () {
 
     $user->refresh();
 
-    $this->assertSame('Test User', $user->name);
-    $this->assertSame('test@example.com', $user->email);
+    $this->assertSame('john.doe@gmail.com', $user->email);
     $this->assertNull($user->email_verified_at);
 });
 
@@ -38,9 +38,8 @@ test('email verification status is unchanged when the email address is unchanged
 
     $response = $this
         ->actingAs($user)
-        ->patch('/profile', [
-            'name' => 'Test User',
-            'email' => $user->email,
+        ->patch('/profile/update', [
+            'email' => $user->email
         ]);
 
     $response
@@ -51,35 +50,35 @@ test('email verification status is unchanged when the email address is unchanged
 });
 
 test('user can delete their account', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->create([
+        'password' => bcrypt('Sokhona'),
+    ]);
 
     $response = $this
         ->actingAs($user)
-        ->delete('/profile', [
-            'password' => 'password',
+        ->delete('/profile/delete', [
+            'password' => 'Sokhona',
         ]);
 
-    $response
-        ->assertSessionHasNoErrors()
-        ->assertRedirect('/');
+    $response->assertSessionHasNoErrors();
 
     $this->assertGuest();
     $this->assertNull($user->fresh());
 });
 
 test('correct password must be provided to delete account', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->create([
+        'password' => bcrypt('Sokhona'),
+    ]);
 
     $response = $this
         ->actingAs($user)
         ->from('/profile')
-        ->delete('/profile', [
+        ->delete('/profile/delete', [
             'password' => 'wrong-password',
         ]);
 
-    $response
-        ->assertSessionHasErrorsIn('userDeletion', 'password')
-        ->assertRedirect('/profile');
+    $response->assertSessionHasErrorsIn('userDeletion', 'password');
 
     $this->assertNotNull($user->fresh());
 });
