@@ -1,37 +1,15 @@
-@php
-$query = explode("/", url()->current());
-$h1 = null;
-$search_header = null;
-$meta_description = null;
-
-if($query[3] == "search") {
-$search_header = "Résultats de votre recherche";
-@endphp
-<style>
-    main #headers {
-        margin-top: 75px;
-        margin-bottom: 75px;
-    }
-</style>
-@php
-$meta_description = "";
-} elseif($query[4] == "femme") {
-$h1 = "femme";
-$meta_description = "Découvrez notre collection de prêt-à-porter pour femmes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
-} elseif($query[4] == "homme") {
-$h1 = "homme";
-$meta_description = "Découvrez notre collection de prêt-à-porter pour hommes. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.";
-}
-@endphp
-
 @extends('layouts.app')
 
 @section('meta')
 @parent
-<meta name="description" content="{{ $meta_description }}">
+<meta name="description" content="Découvrez notre collection de prêt-à-porter. Trouvez des vêtements tendance, élégants et de haute qualité pour compléter votre style.">
 @endsection
 
-@section('title', 'Catalogue ' . $h1 . ' - ')
+@if(isset($categories))
+@section('title', 'Catalogue ' . $products->first()->catalog->name . ' - ')
+@else
+@section('title', 'Résultats de votre recherche - ')
+@endif
 
 @section('links')
 @parent
@@ -43,15 +21,10 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
 @endsection
 
 @section('main')
-@if(isset($search_header))
-<div id="headers">
-    <h1>{{ $search_header }}</h1>
-</div>
-@endif
 @if(isset($categories))
 <div id="categories" class="flex w-full p-4 md:p-8 pb-2 md:pb-4 mb-8 rounded-lg bg-gray-50 overflow-x-auto">
     <div class="catalog-name">
-        <h1>{{ $h1 }}</h1>
+        <h1>{{ $products->first()->catalog->name }}</h1>
     </div>
     @foreach($categories as $category)
     <article @if(basename(url()->current()) == $category->name)
@@ -82,6 +55,10 @@ $meta_description = "Découvrez notre collection de prêt-à-porter pour hommes.
         <option value="price-highest" @if(request()->get('filter') == 'price-highest') selected @endif>Prix : descendant</option>
     </select>
 </nav>
+@else
+<div class="w-full my-16">
+    <h1 class="w-fit m-auto">Résultats de votre recherche</h1>
+</div>
 @endif
 @foreach($products as $product)
 @php
@@ -100,7 +77,5 @@ $product_stock += $quantity;
 
 @section('scripts')
 @parent
-@if(isset($categories))
 @vite('resources/js/products-list.js')
-@endif
 @endsection

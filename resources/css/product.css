@@ -176,6 +176,7 @@ Code du carousel
     .preview-column img {
         height: 25vh;
         width: auto;
+        aspect-ratio: 3/4;
     }
 
     @supports (height: 1dvh) {

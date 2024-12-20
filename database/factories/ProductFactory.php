@@ -35,10 +35,11 @@ class ProductFactory extends Factory
             'promotion' => $this->faker->optional()->numberBetween(5, 50), // Entre 5% et 50% de réduction
             'description' => $this->faker->paragraph(),
             'quantity_per_size' => json_encode([
-                'S' => $this->faker->numberBetween(0, 100),
-                'M' => $this->faker->numberBetween(0, 100),
-                'L' => $this->faker->numberBetween(0, 100),
-                'XL' => $this->faker->numberBetween(0, 100),
+                's' => $this->faker->numberBetween(0, 10),
+                'm' => $this->faker->numberBetween(0, 10),
+                'l' => $this->faker->numberBetween(0, 10),
+                'xl' => $this->faker->numberBetween(0, 10),
+                'xxl' => $this->faker->numberBetween(0, 10),
             ]),
             'img' => json_encode([
                 $this->faker->randomElement($images),

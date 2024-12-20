@@ -22,14 +22,20 @@ if (window.innerWidth > 768) {
         });
 }
 
-document.querySelectorAll("main > section:nth-of-type(n+2)").forEach((ele) => {
-    gsap.from(ele, {
-        y: "15%",
-        opacity: 0,
-        duration: 0.4,
-        scrollTrigger: {
-            trigger: ele,
-            start: window.innerWidth < 768 ? "0 85%" : "0 75%",
-        },
+document
+    .querySelectorAll(
+        window.innerWidth < 768
+            ? "main > section:nth-of-type(n+2)"
+            : "main > section:nth-of-type(n+3)"
+    )
+    .forEach((ele) => {
+        gsap.from(ele, {
+            y: window.innerWidth < 768 ? "15%" : "250",
+            opacity: window.innerWidth < 768 ? 0 : 1,
+            duration: 0.4,
+            scrollTrigger: {
+                trigger: ele,
+                start: window.innerWidth < 768 ? "0 85%" : "0 100%",
+            },
+        });
     });
-});

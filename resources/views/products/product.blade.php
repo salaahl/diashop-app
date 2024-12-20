@@ -54,7 +54,7 @@
                 </nav>
                 <div class="flex items-center">
                     <h1 id="title" class="uppercase">{{ ucfirst($product->name) }}</h1>
-                    @if(strtotime('-1 month', time()) > $product->created_at->timestamp)
+                    @if(strtotime('-1 month', time()) > strtotime($product->created_at->timestamp))
                     <div class="new-badge">
                         <span>New</span>
                     </div>
