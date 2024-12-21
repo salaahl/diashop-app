@@ -26,7 +26,7 @@
 @endsection
 
 @section('main')
-<h1 class="mt-8 mb-16 md:mt-10 md:mb-20">Mentions Légales</h1>
+<h1 class="mt-8 md:mt-10 mb-20">Mentions Légales</h1>
 
 <h3>1. Éditeur du site</h3>
 <p>Le site {{ env('APP_URL') }} est édité par <a href="https://www.linkedin.com/in/salaha-sokhona/" target="_blank" class="underline">Salaha Sokhona</a>, en qualité de créateur du site.</p>

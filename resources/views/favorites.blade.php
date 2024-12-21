@@ -18,7 +18,7 @@
 @section('main')
 <div class="min-h-screen w-full flex flex-wrap">
     @if(isset($products))
-    <div class="w-full mt-8 mb-16 md:mt-10 md:mb-20">
+    <div class="w-full mt-8 md:mt-10 mb-20">
         <h1 class="w-fit m-auto">Mes favoris</h1>
     </div>
     @foreach($products as $product)

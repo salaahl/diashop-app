@@ -101,63 +101,67 @@
                         </button>
                         <!-- Dropdown menu -->
                         <div id="dropdownDashboard" class="dropdownNavbar hidden z-10 lg:flex align-center w-full max-lg:mb-2 max-lg:rounded-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
-                            <ul class="lg:flex max-w-screen-xl max-lg:mb-2 lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
-                                <li class="self-center">
-                                    <a href="{{ route('favorites') }}" class="block my-2 lg:mr-4 px-4 py-2 max-lg:font-bold max-lg:text-lg w-fit mx-auto whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">
-                                        Mes favoris
+                            <ul class="lg:flex items-center max-w-screen-xl lg:p-4 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                                <li class="lg:hidden self-center">
+                                    <a href="{{ route('dashboard') }}" class="block my-2 lg:mr-4 px-4 py-2 max-lg:font-bold max-lg:text-lg w-fit mx-auto whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">
+                                        Tableau de bord
                                     </a>
                                 </li>
-                                <li class="self-center">
-                                    <a href="{{ route('orders') }}" class="block my-2 lg:mr-4 px-4 py-2 max-lg:font-bold max-lg:text-lg w-fit mx-auto whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">
-                                        Mes commandes
-                                    </a>
-                                </li>
-                                <li class="self-center">
-                                    <a href="{{ route('profile.edit') }}" class="block my-2 lg:mr-4 px-4 py-2 max-lg:font-bold max-lg:text-lg w-fit mx-auto whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">
-                                        Modifier mes informations
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                                <a href="{{ route('favorites') }}" class="block my-2 lg:mr-4 px-4 py-2 max-lg:font-bold max-lg:text-lg w-fit mx-auto whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">
+                                    Mes favoris
+                                </a>
                     </li>
-                    @endauth
-                    <li class="h-full w-full hidden lg:flex lg:items-center lg:align-center">
-                        <button
-                            data-modal-target="basket-modal"
-                            data-modal-toggle="basket-modal"
-                            class="basket-btn nav-btn has-basket-counter flex justify-between items-center max-lg:mb-2 p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0 lg:p-0"
-                            type="button">
-                            <span class="text-sm uppercase whitespace-nowrap lg:m-0">Panier</span>
-                        </button>
-                        @php
-                        $count = 0;
-                        if(session()->has('basket')) {
-                        foreach(session()->get('basket') as $item) {
-                        $count += count($item);
-                        }
-                        }
-                        @endphp
-                        <span class="basket-counter">{{ $count }}</span>
-                    </li>
-                    @guest
-                    <li class="h-full w-full lg:flex lg:items-center lg:align-center">
-                        <a href="{{ route('login') }}" class="nav-btn flex justify-center items-center p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0 lg:p-0">
-                            <span class="text-2xl lg:text-sm font-bold lg:font-normal uppercase whitespace-nowrap lg:m-0">Se connecter</span>
+                    <li class="self-center">
+                        <a href="{{ route('orders') }}" class="block my-2 lg:mr-4 px-4 py-2 max-lg:font-bold max-lg:text-lg w-fit mx-auto whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">
+                            Mes commandes
                         </a>
                     </li>
-                    @endguest
-                    @auth
-                    <li class="h-full w-full lg:flex lg:items-center lg:align-center">
-                        <form method="POST" action="/logout">
-                            @csrf
-                            <a href="#" class="nav-btn flex justify-center align-center p-2 text-gray-900 rounded hover:bg-gray-200 lg:hover:bg-transparent lg:border-0 lg:p-0" onclick="event.preventDefault(); this.closest('form').submit();">
-                                <span class="text-2xl lg:text-sm font-bold lg:font-normal uppercase whitespace-nowrap lg:m-0">Se déconnecter</span>
-                            </a>
-                        </form>
+                    <li class="self-center">
+                        <a href="{{ route('profile.edit') }}" class="block my-2 lg:mr-4 px-4 py-2 max-lg:font-bold max-lg:text-lg w-fit mx-auto whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">
+                            Modifier mes informations
+                        </a>
                     </li>
-                    @endauth
                 </ul>
             </div>
+            </li>
+            @endauth
+            <li class="h-full w-full hidden lg:flex lg:items-center lg:align-center">
+                <button
+                    data-modal-target="basket-modal"
+                    data-modal-toggle="basket-modal"
+                    class="basket-btn nav-btn has-basket-counter flex justify-between items-center max-lg:mb-2 p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0 lg:p-0"
+                    type="button">
+                    <span class="text-sm uppercase whitespace-nowrap lg:m-0">Panier</span>
+                </button>
+                @php
+                $count = 0;
+                if(session()->has('basket')) {
+                foreach(session()->get('basket') as $item) {
+                $count += count($item);
+                }
+                }
+                @endphp
+                <span class="basket-counter">{{ $count }}</span>
+            </li>
+            @guest
+            <li class="h-full w-full lg:flex lg:items-center lg:align-center">
+                <a href="{{ route('login') }}" class="nav-btn flex justify-center items-center p-2 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:border-0 lg:p-0">
+                    <span class="text-2xl lg:text-sm font-bold lg:font-normal uppercase whitespace-nowrap lg:m-0">Se connecter</span>
+                </a>
+            </li>
+            @endguest
+            @auth
+            <li class="h-full w-full lg:flex lg:items-center lg:align-center">
+                <form method="POST" action="/logout">
+                    @csrf
+                    <a href="#" class="nav-btn flex justify-center align-center p-2 text-gray-900 rounded hover:bg-gray-200 lg:hover:bg-transparent lg:border-0 lg:p-0" onclick="event.preventDefault(); this.closest('form').submit();">
+                        <span class="text-2xl lg:text-sm font-bold lg:font-normal uppercase whitespace-nowrap lg:m-0">Se déconnecter</span>
+                    </a>
+                </form>
+            </li>
+            @endauth
+            </ul>
         </div>
+    </div>
     </div>
 </nav>

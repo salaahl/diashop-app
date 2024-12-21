@@ -56,7 +56,7 @@
     </select>
 </nav>
 @else
-<div class="w-full my-16">
+<div class="w-full mt-8 md:mt-10 mb-20">
     <h1 class="w-fit m-auto">Résultats de votre recherche</h1>
 </div>
 @endif

@@ -46,6 +46,11 @@
     border: 1px solid rgb(var(--accent-color-4));
 }
 
+.has-dropdown li a {
+    text-wrap: auto;
+    text-align: center;
+}
+
 .has-dropdown > a > svg,
 .has-dropdown > button > svg {
     transform: rotateZ(0deg);
