@@ -52,8 +52,8 @@
                         </li>
                     </ul>
                 </nav>
-                <div class="flex items-center">
-                    <h1 id="title" class="uppercase">{{ ucfirst($product->name) }}</h1>
+                <div class="title-container flex items-center">
+                    <h1 id="title">{{ ucfirst($product->name) }}</h1>
                     @if(strtotime('-1 month', time()) > strtotime($product->created_at->timestamp))
                     <div class="new-badge">
                         <span>New</span>
@@ -245,7 +245,9 @@
 ])->count() > 0
 )
 <section id="other-products-container" class="flex flex-wrap md:my-10 px-6 pb-6 bg-stone-200">
-    <h3 class="w-full font-normal my-8 uppercase">Plus d'articles</h3>
+    <div class="title-container w-full my-8">
+        <h2 class="w-fit uppercase">Plus d'articles</h2>
+    </div>
     @foreach($product->category->products->where('id', '!=', $product->id)->take(3) as $product)
     @php
     $product_images = json_decode($product->img, true);

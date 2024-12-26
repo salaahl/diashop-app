@@ -73,7 +73,7 @@
 <section id="about-us" class="min-h-screen">
     <div class="h-[10vh] md:h-[40vh] w-full hidden md:flex justify-center items-center overflow-hidden bg-gray-800"></div>
     <div class="min-h-[40vh] w-full max-w-screen-xl mx-auto px-2 xl:px-0 md:mt-[-10vh] flex flex-col justify-center">
-        <div class="md:h-[10vh] w-min md:w-auto flex justify-center items-center mx-auto">
+        <div class="title-container md:h-[10vh] w-min md:w-auto flex justify-center items-center mx-auto">
             <h1 class="md:text-white">À propos de nous</h1>
         </div>
         <img src="{{ asset('images/woman-catalog.jpg')}}" class="h-auto w-3/4 md:h-[50vh] max-md:my-10 mx-auto aspect-square border-[25px] border-gray-200 md:border-white rounded-full object-cover">

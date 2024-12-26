@@ -16,7 +16,7 @@
 
 @section('main')
 <section id="catalogs-container" class="relative md:aspect-[2/1] md:mb-4">
-    <div class="hidden md:block absolute bottom-8 left-8">
+    <div class="title-container hidden md:block absolute bottom-8 left-8">
         <h1 class="mx-0 mb-2 font-['Truculenta'] text-5xl lg:text-6xl text-white bg-cover">{{ env("APP_NAME") }}</h1>
         <p class="text-white font-normal">Les dernières tendances de la mode pour hommes et femmes</p>
     </div>

@@ -23,7 +23,7 @@
 @section('main')
 @if(isset($categories))
 <div id="categories" class="flex w-full p-4 md:p-8 pb-2 md:pb-4 mb-8 rounded-lg bg-gray-50 overflow-x-auto">
-    <div class="catalog-name">
+    <div class="title-container catalog-name">
         <h1>{{ $products->first()->catalog->name }}</h1>
     </div>
     @foreach($categories as $category)
@@ -56,7 +56,7 @@
     </select>
 </nav>
 @else
-<div class="w-full mt-8 md:mt-10 mb-20">
+<div class="title-container w-full mt-8 md:mt-10 mb-20">
     <h1 class="w-fit m-auto">Résultats de votre recherche</h1>
 </div>
 @endif

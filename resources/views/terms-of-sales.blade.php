@@ -36,8 +36,9 @@
 @endsection
 
 @section('main')
-
-<h1 class="mt-8 md:mt-10 mb-20">Conditions Générales de Vente</h1>
+<div class="title-container">
+    <h1 class="mt-8 md:mt-10 mb-20">Conditions Générales de Vente</h1>
+</div>
 
 <h3>1. Champ d'application</h3>
 <p>Ces conditions générales de vente s'appliquent à toutes les commandes passées sur le site {{ env('APP_URL') }}.</p>

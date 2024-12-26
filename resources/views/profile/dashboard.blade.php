@@ -15,7 +15,7 @@
 @endsection
 
 @section('main')
-<div class="absolute left-0 w-full mt-8 md:mt-10 mb-20">
+<div class="title-container absolute left-0 w-full mt-8 md:mt-10 mb-20">
     <h1 class="w-fit mx-auto text-[xx-large] md:text-[xxx-large]">Mon profil</h1>
 </div>
 <div class="h-screen w-full flex flex-col justify-center mt-[-40px]">
