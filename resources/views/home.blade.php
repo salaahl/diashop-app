@@ -144,6 +144,37 @@
         </div>
     </div>
 </section>
+<section id="testimonials-container" class="min-w-full md:flex flex-nowrap items-center md:mb-8 md:mt-24 mx-auto p-4 overflow-auto">
+    <div class="title-container w-fit">
+        <h2 class="mb-8 md:mb-0 md:ml-4 md:text-nowrap">Ils nous font confiance</h2>
+    </div>
+    <div id="testimonials" class="md:flex flex-nowrap items-center">
+        <div class="testimonial w-full md:min-w-[380px] flex flex-col items-start md:mx-8 my-8 md:my-0 px-6 md:px-8 py-4 md:py-6 rounded-3xl">
+            <div class="stars mb-2 text-xl">★★★★★</div>
+            <h4 class="title mb-4 font-[500]">Super expérience !</h4>
+            <p class="mb-4 text-gray-800">
+                Parfait ! Produits de qualité, livraison rapide, et service client top. Je recommande !
+            </p>
+            <span class="author">Clara</span>
+        </div>
+        <div class="testimonial w-full md:min-w-[380px] flex flex-col items-start md:mx-8 my-8 md:my-0 px-6 md:px-8 py-4 md:py-6 rounded-3xl">
+            <div class="stars mb-2 text-xl">★★★★★</div>
+            <h4 class="title mb-4 font-[500]">Parfait</h4>
+            <p class="mb-4 text-gray-800">
+                Super site ! Commande facile, bons prix, et tout reçu en parfait état. Rien à redire !
+            </p>
+            <span class="author">Thomas</span>
+        </div>
+        <div class="testimonial w-full md:min-w-[380px] flex flex-col items-start md:mx-8 my-8 md:my-0 px-6 md:px-8 py-4 md:py-6 rounded-3xl">
+            <div class="stars mb-2 text-xl">★★★★★</div>
+            <h4 class="title mb-4 font-[500]">Ravie de ma commande</h4>
+            <p class="mb-4 text-gray-800">
+                Excellente expérience ! Navigation fluide, produits conformes, et suivi impeccable. Merci !
+            </p>
+            <span class="author">Sophie</span>
+        </div>
+    </div>
+</section>
 <section id="garanties-container" class="md:h-[100px] w-full max-w-[1440px] flex flex-col md:flex-row flex-nowrap items-center justify-between md:mb-8 md:mt-24 mx-auto p-4 bg-[rgb(var(--accent-color-1))] md:bg-gray-100 md:rounded-lg">
     <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Livraison gratuite à partir de {{ env('FREE_SHIPPING') / 100 }}€</div>
     <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Satisfait ou remboursé</div>

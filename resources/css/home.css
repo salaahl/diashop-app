@@ -103,6 +103,35 @@
     scroll-snap-align: center;
 }
 
+#testimonials-container {
+    mask-image: linear-gradient(
+            to left,
+            rgb(255, 255, 255, 0) 0%,
+            rgb(255, 255, 255, 1) 2%
+        ),
+        linear-gradient(
+            to right,
+            rgb(255, 255, 255, 0) 0%,
+            rgb(255, 255, 255, 1) 2%
+        );
+    mask-composite: intersect;
+}
+
+#testimonials-container .title-container > h2:first-of-type {
+    background-image: linear-gradient(
+        rgb(var(--accent-color-4)),
+        rgb(var(--accent-color-4))
+    );
+}
+
+.testimonial {
+    background: linear-gradient(
+        131.65deg,
+        rgba(243, 244, 246, 1) 0%,
+        rgba(243, 244, 246, 0) 100%
+    );
+}
+
 #garanties-container > div::before {
     font-family: "Font Awesome 5 Free";
     font-size: 1rem;
