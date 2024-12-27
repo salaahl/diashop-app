@@ -85,12 +85,9 @@ Code du carousel
     position: absolute;
     top: 50%;
     width: auto;
-    padding: 16px;
+    padding: 24px 8px;
     margin-top: -50px;
-    color: black;
     background-color: rgba(255, 255, 255, 0.4);
-    font-weight: bold;
-    font-size: 20px;
     border-radius: 0 3px 3px 0;
     user-select: none;
     -webkit-user-select: none;
