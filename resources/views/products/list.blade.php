@@ -22,30 +22,44 @@
 
 @section('main')
 @if(isset($categories))
-<div id="categories" class="flex w-full p-4 md:p-8 pb-2 md:pb-4 mb-8 rounded-lg bg-gray-50 overflow-x-auto">
+<div id="categories" class="relative flex w-full p-4 md:p-8 pb-2 md:pb-4 mb-8 rounded-lg bg-gray-50 overflow-x-auto">
     <div class="title-container catalog-name">
         <h1>{{ $products->first()->catalog->name }}</h1>
     </div>
-    @foreach($categories as $category)
-    <article @if(basename(url()->current()) == $category->name)
-        class="category selected"
-        @else
-        class="category"
-        @endif
-        >
-        <a href="{{ '/catalog/' . $category->catalog->name . '/' . $category->name }}">
-            <div class="thumbnail rounded-full overflow-hidden">
-                @php
-                $imagePath = str_replace('\\', '/', $category->img)
-                @endphp
-                <x-cld-image public-id="{{ $imagePath }}" alt="{{ $category->name }}"></x-cld-image>
-            </div>
-            <div class="details mt-4">
-                <h4 class="title font-normal text-center">{{ ucfirst($category->name) }}</h4>
-            </div>
-        </a>
-    </article>
-    @endforeach
+    <div class="scroll-controls hidden absolute w-[calc(100%-4rem)] h-[calc(100%-2rem)] md:flex items-center justify-between">
+        <button class="scroll-button scroll-left hide p-6 bg-white/50 backdrop-blur rounded-full z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-6 h-6">
+                <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+            </svg>
+        </button>
+        <button class="scroll-button scroll-right p-6 bg-white/50 backdrop-blur rounded-full z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-6 h-6">
+                <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+            </svg>
+        </button>
+    </div>
+    <div class="categories-container flex snap-x snap-mandatory scroll-smooth overflow-auto">
+        @foreach($categories as $category)
+        <article @if(basename(url()->current()) == $category->name)
+            class="category snap-start selected"
+            @else
+            class="category snap-start"
+            @endif
+            >
+            <a href="{{ '/catalog/' . $category->catalog->name . '/' . $category->name }}">
+                <div class="thumbnail rounded-full overflow-hidden">
+                    @php
+                    $imagePath = str_replace('\\', '/', $category->img)
+                    @endphp
+                    <x-cld-image public-id="{{ $imagePath }}" alt="{{ $category->name }}"></x-cld-image>
+                </div>
+                <div class="details mt-4">
+                    <h4 class="title font-normal text-center">{{ ucfirst($category->name) }}</h4>
+                </div>
+            </a>
+        </article>
+        @endforeach
+    </div>
 </div>
 <nav id="filters" class="w-full flex justify-between items-center p-2 mb-2 bg-gray-100 rounded-t-lg">
     <h4>Trier par :</h4>

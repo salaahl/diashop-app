@@ -103,21 +103,11 @@
     scroll-snap-align: center;
 }
 
-#testimonials-container {
-    mask-image: linear-gradient(
-            to left,
-            rgb(255, 255, 255, 0) 0%,
-            rgb(255, 255, 255, 1) 2%
-        ),
-        linear-gradient(
-            to right,
-            rgb(255, 255, 255, 0) 0%,
-            rgb(255, 255, 255, 1) 2%
-        );
-    mask-composite: intersect;
+#testimonials::-webkit-scrollbar {
+    display: none;
 }
 
-#testimonials-container .title-container > h2:first-of-type {
+#testimonials-container > .title-container > h2:first-of-type {
     background-image: linear-gradient(
         rgb(var(--accent-color-4)),
         rgb(var(--accent-color-4))
@@ -260,6 +250,20 @@
         box-shadow: rgba(255, 255, 255, 0.0333) 0px 1px 1px 0px inset,
             rgba(50, 50, 93, 0.0833) 0px 50px 100px -20px,
             rgba(0, 0, 0, 0.1) 0px 30px 60px -30px;
+    }
+
+    #testimonials {
+        mask-image: linear-gradient(
+                to left,
+                rgb(255, 255, 255, 0) 0,
+                rgb(255, 255, 255, 1) 25px
+            ),
+            linear-gradient(
+                to right,
+                rgb(255, 255, 255, 0) 0,
+                rgb(255, 255, 255, 1) 25px
+            );
+        mask-composite: intersect;
     }
 
     #garanties-container {

@@ -8,6 +8,7 @@ gsap.defaults({
     ease: "power1.out",
 });
 
+// Redimensionnement des images de catalogue
 if (window.innerWidth > 768) {
     document
         .querySelectorAll("#catalogs-container .catalog .img-placeholder")
@@ -22,6 +23,7 @@ if (window.innerWidth > 768) {
         });
 }
 
+// Animation des différentes sections
 document
     .querySelectorAll(
         window.innerWidth < 768
@@ -39,3 +41,45 @@ document
             },
         });
     });
+
+// Boutons de défilement des catégories
+if (window.innerWidth > 768) {
+    const scrollableDiv =
+        document.querySelector(".scroll-controls").parentElement;
+    const scrollLeftButton = document.querySelector(
+        ".scroll-controls > .scroll-left"
+    );
+    const scrollRightButton = document.querySelector(
+        ".scroll-controls > .scroll-right"
+    );
+
+    const updateButtons = () => {
+        console.log(scrollableDiv.scrollLeft);
+        if (scrollableDiv.scrollLeft < 20) {
+            scrollLeftButton.classList.add("hide");
+        } else {
+            scrollLeftButton.classList.remove("hide");
+        }
+
+        if (
+            scrollableDiv.scrollLeft + scrollableDiv.clientWidth >=
+            scrollableDiv.scrollWidth
+        ) {
+            scrollRightButton.classList.add("hide");
+        } else {
+            scrollRightButton.classList.remove("hide");
+        }
+    };
+
+    scrollLeftButton.addEventListener("click", () => {
+        scrollableDiv.scrollBy({ left: -100, behavior: "smooth" });
+    });
+
+    scrollRightButton.addEventListener("click", () => {
+        scrollableDiv.scrollBy({ left: 100, behavior: "smooth" });
+    });
+
+    scrollableDiv.addEventListener("scroll", updateButtons);
+
+    updateButtons();
+}

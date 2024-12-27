@@ -144,12 +144,24 @@
         </div>
     </div>
 </section>
-<section id="testimonials-container" class="min-w-full md:flex flex-nowrap items-center md:mb-8 md:mt-24 mx-auto p-4 overflow-auto">
+<section id="testimonials-container" class="w-full md:flex flex-nowrap items-center md:mb-8 md:mt-24 mx-auto p-4">
     <div class="title-container w-fit">
         <h2 class="mb-8 md:mb-0 md:ml-4 md:text-nowrap">Ils nous font confiance</h2>
     </div>
-    <div id="testimonials" class="md:flex flex-nowrap items-center">
-        <div class="testimonial w-full md:min-w-[380px] flex flex-col items-start md:mx-8 my-8 md:my-0 px-6 md:px-8 py-4 md:py-6 rounded-3xl">
+    <div id="testimonials" class="relative md:flex flex-nowrap items-center md:ml-16 snap-x snap-mandatory scroll-smooth overflow-auto">
+        <div class="scroll-controls hidden absolute h-full w-full md:flex items-center justify-between px-8">
+            <button class="scroll-button scroll-left hide fixed p-6 bg-white/75 backdrop-blur rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-6 h-6">
+                    <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+                </svg>
+            </button>
+            <button class="scroll-button scroll-right fixed right-0 p-6 bg-white/75 backdrop-blur rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-6 h-6">
+                    <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                </svg>
+            </button>
+        </div>
+        <div class="testimonial w-full md:min-w-[380px] flex flex-col items-start md:ml-16 md:mr-8 my-8 md:my-0 px-6 md:px-8 py-4 md:py-6 snap-center rounded-3xl">
             <div class="stars mb-2 text-xl">★★★★★</div>
             <h4 class="title mb-4 font-[500]">Super expérience !</h4>
             <p class="mb-4 text-gray-800">
@@ -157,7 +169,7 @@
             </p>
             <span class="author">Clara</span>
         </div>
-        <div class="testimonial w-full md:min-w-[380px] flex flex-col items-start md:mx-8 my-8 md:my-0 px-6 md:px-8 py-4 md:py-6 rounded-3xl">
+        <div class="testimonial w-full md:min-w-[380px] flex flex-col items-start md:mx-8 my-8 md:my-0 px-6 md:px-8 py-4 md:py-6 snap-center rounded-3xl">
             <div class="stars mb-2 text-xl">★★★★★</div>
             <h4 class="title mb-4 font-[500]">Parfait</h4>
             <p class="mb-4 text-gray-800">
@@ -165,7 +177,7 @@
             </p>
             <span class="author">Thomas</span>
         </div>
-        <div class="testimonial w-full md:min-w-[380px] flex flex-col items-start md:mx-8 my-8 md:my-0 px-6 md:px-8 py-4 md:py-6 rounded-3xl">
+        <div class="testimonial w-full md:min-w-[380px] flex flex-col items-start md:mx-8 my-8 md:my-0 px-6 md:px-8 py-4 md:py-6 snap-center rounded-3xl">
             <div class="stars mb-2 text-xl">★★★★★</div>
             <h4 class="title mb-4 font-[500]">Ravie de ma commande</h4>
             <p class="mb-4 text-gray-800">

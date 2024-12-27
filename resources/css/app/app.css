@@ -474,6 +474,16 @@ img {
     width: 100px;
 }
 
+/* Paramètres globaux des boutons de scroll */
+.scroll-button {
+    opacity: 1;
+    transition: opacity 0.35s;
+}
+
+.scroll-button.hide {
+    opacity: 0;
+}
+
 .new-badge {
     height: 35px;
     width: 35px;

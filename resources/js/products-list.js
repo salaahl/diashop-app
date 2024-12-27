@@ -17,10 +17,53 @@ gsap.from(".category", {
     stagger: 0.2,
 });
 
+// Boutons de défilement des catégories
+if (window.innerWidth > 768) {
+    const scrollableDiv =
+        document.querySelector(".scroll-controls").nextElementSibling;
+    const scrollLeftButton = document.querySelector(
+        ".scroll-controls > .scroll-left"
+    );
+    const scrollRightButton = document.querySelector(
+        ".scroll-controls > .scroll-right"
+    );
+
+    const updateButtons = () => {
+        console.log(scrollableDiv.scrollLeft);
+        if (scrollableDiv.scrollLeft < 20) {
+            scrollLeftButton.classList.add("hide");
+        } else {
+            scrollLeftButton.classList.remove("hide");
+        }
+
+        if (
+            scrollableDiv.scrollLeft + scrollableDiv.clientWidth >=
+            scrollableDiv.scrollWidth
+        ) {
+            scrollRightButton.classList.add("hide");
+        } else {
+            scrollRightButton.classList.remove("hide");
+        }
+    };
+
+    scrollLeftButton.addEventListener("click", () => {
+        scrollableDiv.scrollBy({ left: -100, behavior: "smooth" });
+    });
+
+    scrollRightButton.addEventListener("click", () => {
+        scrollableDiv.scrollBy({ left: 100, behavior: "smooth" });
+    });
+
+    scrollableDiv.addEventListener("scroll", updateButtons);
+
+    updateButtons();
+}
+
 const products =
     window.innerWidth < 768
         ? gsap.utils.toArray(".product:nth-of-type(n+3)")
         : gsap.utils.toArray(".product:nth-of-type(n+4)");
+
 products.forEach((product) => {
     gsap.from(product, {
         pointerEvents: "none",
@@ -35,6 +78,7 @@ products.forEach((product) => {
 });
 
 // Filtres
+// Je m'assure que le code ne s'exécute pas sur la page de recherche (qui utilise le même fichier JS)
 if (
     window.location.pathname
         .split("/")

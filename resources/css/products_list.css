@@ -31,8 +31,26 @@ main {
     scroll-behavior: smooth;
 }
 
+#categories > .categories-container {
+    mask-image: linear-gradient(
+            to left,
+            rgb(255, 255, 255, 0) 0,
+            rgb(249, 250, 251, 1) 25px
+        ),
+        linear-gradient(
+            to right,
+            rgb(255, 255, 255, 0) 0,
+            rgb(249, 250, 251, 1) 25px
+        );
+    mask-composite: intersect;
+}
+
+#categories > .categories-container::-webkit-scrollbar {
+    display: none;
+}
+
 .category {
-    scroll-snap-align: start;
+    scroll-snap-align: center;
 }
 
 .category .thumbnail {
