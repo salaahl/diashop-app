@@ -507,26 +507,19 @@ img {
 }
 
 .thumbnail {
+    display: flex;
     aspect-ratio: 3/4;
     overflow: hidden;
 }
 
 .product .thumbnail img {
-    transition: opacity 0.5s ease-out;
-}
-
-.product .thumbnail:hover img:last-child {
-    opacity: 1;
-    height: 100%;
-    width: 100%;
+    aspect-ratio: 3/4;
+    transition: transform 0.5s var(--transition-emphasized);
 }
 
 .product .thumbnail:hover img:first-child,
-.product .thumbnail img:last-child {
-    opacity: 0;
-    height: 0;
-    width: 0;
-    overflow: hidden;
+.product .thumbnail:hover img:last-child {
+    transform: translateX(-100%);
 }
 
 .short-description {
