@@ -114,6 +114,8 @@ main {
 
     .product {
         width: 33%;
+        margin-left: unset;
+        margin-right: unset;
     }
 
     .product:nth-of-type(3n + 2) {
