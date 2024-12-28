@@ -253,6 +253,8 @@
     }
 
     #testimonials {
+        scroll-padding-left: 25px;
+        scroll-padding-right: 25px;
         mask-image: linear-gradient(
                 to left,
                 rgb(255, 255, 255, 0) 0,

@@ -148,7 +148,7 @@
     <div class="title-container w-fit">
         <h2 class="mb-8 md:mb-0 md:ml-4 md:text-nowrap">Ils nous font confiance</h2>
     </div>
-    <div id="testimonials" class="relative md:flex flex-nowrap items-center md:ml-16 snap-x snap-mandatory scroll-smooth overflow-auto">
+    <div id="testimonials" class="relative md:flex flex-nowrap items-center md:ml-12 snap-x snap-mandatory scroll-smooth overflow-auto">
         <div class="scroll-controls hidden absolute h-full w-full md:flex items-center justify-between px-8">
             <button class="scroll-button scroll-left hide fixed p-6 bg-white/75 backdrop-blur rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-6 h-6">
