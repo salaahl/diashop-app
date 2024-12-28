@@ -9,7 +9,7 @@ gsap.defaults({
 });
 
 // Redimensionnement des images de catalogue
-if (window.innerWidth > 768) {
+if (window.innerWidth > 767) {
     document
         .querySelectorAll("#catalogs-container .catalog .img-placeholder")
         .forEach((ele) => {
@@ -43,7 +43,7 @@ document
     });
 
 // Boutons de défilement des catégories
-if (window.innerWidth > 768) {
+if (window.innerWidth > 767) {
     const scrollableDiv =
         document.querySelector(".scroll-controls").parentElement;
     const scrollLeftButton = document.querySelector(

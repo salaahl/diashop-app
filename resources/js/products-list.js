@@ -18,7 +18,7 @@ gsap.from(".category", {
 });
 
 // Boutons de défilement des catégories
-if (window.innerWidth > 768) {
+if (window.innerWidth > 767) {
     const scrollableDiv =
         document.querySelector(".scroll-controls").nextElementSibling;
     const scrollLeftButton = document.querySelector(
@@ -67,6 +67,7 @@ products.forEach((product) => {
     gsap.from(product, {
         pointerEvents: "none",
         y: "25%",
+        opacity: 0,
         duration: window.innerWidth < 768 ? 0.35 : 0.5,
         scrollTrigger: {
             trigger: product,

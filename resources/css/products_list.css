@@ -23,7 +23,7 @@ main {
 .catalog-name {
     display: flex;
     align-items: center;
-    transform: rotate(-90deg);
+    transform: rotate(-90deg) translateY(-1rem);
     scroll-snap-align: start;
 }
 
@@ -33,6 +33,8 @@ main {
 }
 
 #categories > .categories-container {
+    scroll-padding-left: 25px;
+    scroll-padding-right: 25px;
     mask-image: linear-gradient(
             to left,
             rgb(255, 255, 255, 0) 0,
