@@ -38,7 +38,7 @@
             </svg>
         </button>
     </div>
-    <div class="categories-container flex snap-x snap-mandatory scroll-smooth overflow-auto">
+    <div class="categories-container w-full flex snap-x snap-mandatory scroll-smooth overflow-auto">
         @foreach($categories as $category)
         <article @if(basename(url()->current()) == $category->name)
             class="category snap-start selected"

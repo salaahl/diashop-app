@@ -29,7 +29,6 @@ if (window.innerWidth > 768) {
     );
 
     const updateButtons = () => {
-        console.log(scrollableDiv.scrollLeft);
         if (scrollableDiv.scrollLeft < 20) {
             scrollLeftButton.classList.add("hide");
         } else {

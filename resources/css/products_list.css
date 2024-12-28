@@ -101,6 +101,7 @@ main {
     .category {
         width: 14rem;
         min-width: 14rem;
+        margin: auto 1%;
     }
 
     .category .thumbnail img {
