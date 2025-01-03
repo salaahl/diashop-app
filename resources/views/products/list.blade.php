@@ -61,13 +61,15 @@
         @endforeach
     </div>
 </div>
-<nav id="filters" class="w-full flex justify-between items-center p-2 mb-2 bg-gray-100 rounded-t-lg">
-    <h4>Trier par :</h4>
-    <select id="filter_select" class="block py-2.5 px-0 text-sm text-gray-500 bg-transparent border-0 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-        <option value="new" @if(request()->get('filter') == 'new' || !request()->get('filter')) selected @endif>Nouveautés</option>
-        <option value="price-lowest" @if(request()->get('filter') == 'price-lowest') selected @endif>Prix : ascendant</option>
-        <option value="price-highest" @if(request()->get('filter') == 'price-highest') selected @endif>Prix : descendant</option>
-    </select>
+<nav id="filters" class="w-full flex justify-end items-center p-2 mt-12 mb-4">
+    <div id="sort-by" class="flex flex-wrap">
+        <input type="radio" name="filter_select" id="filter_new" value="new" @if(request()->get('filter') == 'new' || !request()->get('filter')) checked @endif>
+        <label class="mt-4 sm:mt-0 mr-4 sm:mr-0 sm:ml-4 px-6 py-2 text-sm font-semibold text-white rounded-full" for="filter_new">Nouveautés</label>
+        <input type="radio" name="filter_select" id="filter_price_lowest" value="price-lowest" @if(request()->get('filter') == 'price-lowest') checked @endif>
+        <label class="mt-4 sm:mt-0 mr-4 sm:mr-0 sm:ml-4 px-6 py-2 text-sm font-semibold text-white rounded-full" for="filter_price_lowest">Prix : ascendant</label>
+        <input type="radio" name="filter_select" id="filter_price_highest" value="price-highest" @if(request()->get('filter') == 'price-highest') checked @endif>
+        <label class="mt-4 sm:mt-0 mr-4 sm:mr-0 sm:ml-4 px-6 py-2 text-sm font-semibold text-white rounded-full" for="filter_price_highest">Prix : descendant</label>
+    </div>
 </nav>
 @else
 <div class="title-container w-full mt-8 md:mt-10 mb-20">

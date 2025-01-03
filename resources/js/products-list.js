@@ -83,25 +83,29 @@ if (
         .split("/")
         .filter((segment) => segment !== "")[0] !== "search"
 ) {
-    document.getElementById("filter_select").addEventListener("change", () => {
-        let myform = document.createElement("form");
-        myform.action = "";
-        myform.method = "post";
+    document
+        .querySelectorAll("#sort-by > input[name='filter_select']")
+        .forEach((filter) => {
+            filter.addEventListener("change", () => {
+                let myform = document.createElement("form");
+                myform.action = "";
+                myform.method = "post";
 
-        let filter = document.createElement("input");
-        filter.value = document.getElementById("filter_select").value;
-        filter.name = "filter";
+                let input = document.createElement("input");
+                input.value = filter.value;
+                input.name = "filter";
 
-        let token = document.createElement("input");
-        token.value = document
-            .querySelector('[name="csrf-token"]')
-            .getAttribute("content");
-        token.name = "_token";
+                let token = document.createElement("input");
+                token.value = document
+                    .querySelector('[name="csrf-token"]')
+                    .getAttribute("content");
+                token.name = "_token";
 
-        myform.appendChild(filter);
-        myform.appendChild(token);
+                myform.appendChild(input);
+                myform.appendChild(token);
 
-        document.body.appendChild(myform);
-        myform.submit();
-    });
+                document.body.appendChild(myform);
+                myform.submit();
+            });
+        });
 }

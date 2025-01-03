@@ -72,8 +72,18 @@ main {
     filter: blur(0) grayscale(0);
 }
 
-#filters {
-    background-color: rgb(var(--accent-color-2), 0.15);
+#sort-by > input[type="radio"] {
+    display: none;
+}
+
+#sort-by > label {
+    color: rgb(var(--accent-color-4), 0.75);
+    background-color: rgb(243, 244, 246);
+    transition: 0.15s background-color linear;
+}
+
+#sort-by > label:hover, #sort-by > input[type="radio"]:checked + label {
+    background-color: rgb(var(--accent-color-2), 0.25);
 }
 
 .product {
