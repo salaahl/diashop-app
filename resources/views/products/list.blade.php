@@ -61,7 +61,7 @@
         @endforeach
     </div>
 </div>
-<nav id="filters" class="w-full flex justify-end items-center p-2 mt-12 mb-4">
+<nav id="filters" class="w-full flex justify-end items-center p-2 md:mt-12 mb-4">
     <div id="sort-by" class="flex flex-wrap">
         <input type="radio" name="filter_select" id="filter_new" value="new" @if(request()->get('filter') == 'new' || !request()->get('filter')) checked @endif>
         <label class="mt-4 sm:mt-0 mr-4 sm:mr-0 sm:ml-4 px-6 py-2 text-sm font-semibold text-white rounded-full" for="filter_new">Nouveautés</label>
