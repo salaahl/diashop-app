@@ -22,7 +22,7 @@
 
 @section('main')
 @if(isset($categories))
-<div id="categories" class="relative flex w-full p-4 md:p-8 pb-2 md:pb-4 mb-8 rounded-lg bg-gray-50 overflow-x-auto">
+<div id="categories" class="relative flex w-full p-4 md:p-8 pb-2 md:pb-4 md:mb-8 rounded-lg bg-gray-50 overflow-x-auto">
     <div class="title-container catalog-name">
         <h1>{{ $products->first()->catalog->name }}</h1>
     </div>
