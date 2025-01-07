@@ -297,7 +297,8 @@ img {
     max-width: 320px;
 }
 
-.radio-toolbar input {
+.radio-toolbar input[name="radio"],
+.radio-toolbar input[name="checkbox"] {
     display: none;
 }
 
@@ -306,7 +307,8 @@ img {
     padding: 4px 11px;
 }
 
-.radio-toolbar input:checked + label {
+.radio-toolbar input[name="radio"]:checked + label,
+.radio-toolbar input[name="checkbox"]:checked + label {
     background-color: black;
     color: white;
 }
