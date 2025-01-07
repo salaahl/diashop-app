@@ -61,18 +61,18 @@
         @endforeach
     </div>
 </div>
-<nav id="filters" class="w-full flex flex-wrap justify-between items-center p-2 md:mt-12 mb-4">
+<nav id="filters" class="w-full flex flex-wrap justify-between items-center py-2 md:mt-12 mb-4">
     <div id="sizes" class="w-full lg:w-auto flex flex-wrap">
         <input type="checkbox" name="sizes" id="size-s" value="s" checked>
-        <label class="mt-4 lg:mt-0 mr-4 sm:mr-0 sm:ml-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-s">S</label>
+        <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-s">S</label>
         <input type="checkbox" name="sizes" id="size-m" value="m" checked>
-        <label class="mt-4 lg:mt-0 mr-4 sm:mr-0 sm:ml-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-m">M</label>
+        <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-m">M</label>
         <input type="checkbox" name="sizes" id="size-l" value="l" checked>
-        <label class="mt-4 lg:mt-0 mr-4 sm:mr-0 sm:ml-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-l">L</label>
+        <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-l">L</label>
         <input type="checkbox" name="sizes" id="size-xl" value="xl" checked>
-        <label class="mt-4 lg:mt-0 mr-4 sm:mr-0 sm:ml-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-xl">XL</label>
+        <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-xl">XL</label>
         <input type="checkbox" name="sizes" id="size-xxl" value="xxl" checked>
-        <label class="mt-4 lg:mt-0 mr-4 sm:mr-0 sm:ml-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-xxl">XXL</label>
+        <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-xxl">XXL</label>
     </div>
     <div id="sort-by" class="w-full lg:w-auto flex flex-wrap">
         <input type="radio" name="filter_select" id="filter_new" value="new" @if(request()->get('filter') == 'new' || !request()->get('filter')) checked @endif>
