@@ -72,16 +72,19 @@ main {
     filter: blur(0) grayscale(0);
 }
 
+#sizes > input[type="checkbox"],
 #sort-by > input[type="radio"] {
     display: none;
 }
 
+#sizes > label,
 #sort-by > label {
     color: rgb(var(--accent-color-4), 0.75);
     background-color: rgb(243, 244, 246);
     transition: 0.15s background-color linear;
 }
 
+#sizes > label:hover, #sizes > input[type="checkbox"]:checked + label,
 #sort-by > label:hover, #sort-by > input[type="radio"]:checked + label {
     background-color: rgb(var(--accent-color-2), 0.25);
 }
