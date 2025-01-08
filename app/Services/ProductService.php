@@ -22,7 +22,7 @@ class ProductService
     }
 
 
-    public function getProductsByFilter($catalog_id, $sizes, $sort_by)
+    public function getProductsByCatalog($catalog_id, $sizes, $sort_by)
     {
         switch ($sort_by) {
             case "new":
@@ -43,7 +43,7 @@ class ProductService
         return $products;
     }
 
-    public function getProductsByCategoryAndFilter($catalog_id, $category, $sizes, $sort_by)
+    public function getProductsByCategory($catalog_id, $category, $sizes, $sort_by)
     {
         switch ($sort_by) {
             case "new":
@@ -77,6 +77,39 @@ class ProductService
                         ->where("name", $category)
                         ->first()->id
                 )->orderBy('created_at', 'DESC');
+        }
+
+        $products = $this->filterProductsBySize($products, $sizes);
+
+        return $products;
+    }
+
+    public function getProductsByQuery($catalog_id, $input, $sizes, $sort_by)
+    {
+        switch ($sort_by) {
+            case "new":
+                $products = Product::where([
+                    ["name", "like", "%" . $input . "%"],
+                    ["catalog_id", $catalog->id],
+                ])->orderBy('created_at', 'DESC');
+                break;
+            case "price-lowest":
+                $products = Product::where([
+                    ["name", "like", "%" . $input . "%"],
+                    ["catalog_id", $catalog->id],
+                ])->orderBy('price', 'ASC');
+                break;
+            case "price-highest":
+                $products = Product::where([
+                    ["name", "like", "%" . $input . "%"],
+                    ["catalog_id", $catalog->id],
+                ])->orderBy('price', 'DESC');
+                break;
+            default:
+            $products = Product::where([
+                ["name", "like", "%" . $input . "%"],
+                ["catalog_id", $catalog->id],
+            ])->orderBy('created_at', 'DESC');
         }
 
         $products = $this->filterProductsBySize($products, $sizes);

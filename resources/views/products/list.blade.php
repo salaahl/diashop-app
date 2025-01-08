@@ -61,6 +61,11 @@
         @endforeach
     </div>
 </div>
+@else
+<div class="title-container w-full mt-8 md:mt-10 mb-20">
+    <h1 class="w-fit m-auto">Résultats de votre recherche</h1>
+</div>
+@endif
 <nav id="filters" class="w-full py-2 md:mt-12 mb-4">
     @php
     $sizes = request()->get('sizes');
@@ -94,11 +99,6 @@
         </div>
     </form>
 </nav>
-@else
-<div class="title-container w-full mt-8 md:mt-10 mb-20">
-    <h1 class="w-fit m-auto">Résultats de votre recherche</h1>
-</div>
-@endif
 @foreach($products as $product)
 @php
 $product_images = json_decode($product->img, true);

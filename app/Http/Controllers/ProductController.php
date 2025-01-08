@@ -34,7 +34,7 @@ class ProductController extends Controller
         try {
             $catalog_id = Catalog::where("name", $catalog)->first()->id;
             $categories = Category::where("catalog_id", $catalog_id)->get();
-            $products = $this->productService->getProductsByFilter(
+            $products = $this->productService->getProductsByCatalog(
                 $catalog_id,
                 $request->sizes,
                 $request->sort_by,
@@ -57,7 +57,7 @@ class ProductController extends Controller
         try {
             $catalog_id = Catalog::where("name", $catalog)->first()->id;
             $categories = Category::where("catalog_id", $catalog_id)->get();
-            $products = $this->productService->getProductsByCategoryAndFilter(
+            $products = $this->productService->getProductsByCategory(
                 $catalog_id,
                 $category,
                 $request->sizes,
@@ -114,13 +114,15 @@ class ProductController extends Controller
         }
     }
 
-    public function search($catalog, $input)
+    public function search(Request $request, $catalog, $input)
     {
         $catalog = Catalog::where("name", $catalog)->first();
-        $products = Product::where([
-            ["name", "like", "%" . $input . "%"],
-            ["catalog_id", $catalog->id],
-        ])->paginate(12);
+        $products = $this->productService->getProductsByQuery(
+            $catalog->id,
+            $input,
+            $request->sizes,
+            $request->sort_by,
+        );
 
         return view('products/list', [
             "products" => $products
