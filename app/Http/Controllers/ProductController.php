@@ -81,16 +81,16 @@ class ProductController extends Controller
      */
     public function product($catalog, $category, $product_id)
     {
-        try {
-            $product = Product::where([
-                ['catalog_id', Catalog::where('name', $catalog)->first()->id],
-                ['category_id', Category::where([
-                    ['name', $category],
-                    ['catalog_id', Catalog::where('name', $catalog)->first()->id]
-                ])->first()->id],
-                ['id', $product_id]
-            ])->first();
-        } catch (Exception $e) {
+        $product = Product::where([
+            ['catalog_id', Catalog::where('name', $catalog)->first()->id],
+            ['category_id', Category::where([
+                ['name', $category],
+                ['catalog_id', Catalog::where('name', $catalog)->first()->id]
+            ])->first()->id],
+            ['id', $product_id]
+        ])->first();
+        
+        if(!$product) {
             return redirect()->route('404');
         }
 

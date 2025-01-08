@@ -40,10 +40,10 @@ class ProductService
 
         $products = $this->filterProductsBySize($products, $sizes);
 
-        if(!products) {
+        if(!$products) {
             throw new Exception("Aucun résultat");
         }
-        
+
         return $products;
     }
 
@@ -85,7 +85,7 @@ class ProductService
 
         $products = $this->filterProductsBySize($products, $sizes);
 
-        if(!products) {
+        if(!$products) {
             throw new Exception("Aucun résultat");
         }
 
@@ -122,7 +122,7 @@ class ProductService
 
         $products = $this->filterProductsBySize($products, $sizes);
 
-        if(!products) {
+        if(!$products) {
             throw new Exception("Aucun résultat");
         }
 
