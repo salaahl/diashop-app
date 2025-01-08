@@ -38,7 +38,7 @@ class CategorySeeder extends Seeder
         ]);
         Category::factory()->create([
             'name' => 'sacs',
-            'img' => 'products/October2024/mzWf6jsjirAfjuw8yJ7k.jfif',
+            'img' => 'categories/November2024/a0ebPzP86ivwpHTd3svS',
             'catalog_id' => 2,
         ]);
         Category::factory()->create([
