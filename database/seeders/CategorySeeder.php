@@ -16,28 +16,34 @@ class CategorySeeder extends Seeder
         // Catalogues pour femmes
         Category::factory()->create([
             'name' => 'foulards',
+            'img' => 'categories/September2024/K5bLcIdu3B14COAwk92U',
             'catalog_id' => 1,
         ]);
         Category::factory()->create([
             'name' => 'vestes',
+            'img' => 'categories/November2024/Msc6c1mikMxK8qVFInUP',
             'catalog_id' => 1,
         ]);
         Category::factory()->create([
             'name' => 't-shirts',
+            'img' => 'products/October2024/D3OjJm8Iy7COil92CaH1',
             'catalog_id' => 1,
         ]);
 
         // Catalogues pour hommes
         Category::factory()->create([
             'name' => 'vestes',
+            'img' => 'products/jpeg-optimizer_313C203A6328C800_E01',
             'catalog_id' => 2,
         ]);
         Category::factory()->create([
             'name' => 'sacs',
+            'img' => 'products/October2024/mzWf6jsjirAfjuw8yJ7k.jfif',
             'catalog_id' => 2,
         ]);
         Category::factory()->create([
             'name' => 'chemises',
+            'img' => 'products/October2024/QL62JbF9JrAabwemnTjL',
             'catalog_id' => 2,
         ]);
     }
