@@ -267,6 +267,11 @@
 
 @section('scripts')
 @parent
+<script>
+    window.Laravel = {
+        productStockUrl: "{{ route('product.get-stock', [$product->catalog->name, $product->category->name, $product->id]) }}"
+    };
+</script>
 @vite('resources/js/product.js')
 <script>
     // Carousel

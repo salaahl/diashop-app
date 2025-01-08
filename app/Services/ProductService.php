@@ -6,7 +6,7 @@ use App\Models\Catalog;
 use App\Models\Category;
 use App\Models\Product;
 
-class MainService
+class ProductService
 {
     public function filterProductsBySize($products, $sizes)
     {

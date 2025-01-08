@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FavoriteController;
@@ -24,7 +23,7 @@ Route::get('/404', function () {
     abort(404);
 })->name('404');
 
-Route::get('/', [MainController::class, 'home'])->name('home');
+Route::get('/', [ProductController::class, 'home'])->name('home');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
@@ -46,16 +45,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('orders/', [ProfileController::class, 'orders'])->name('orders');
 });
 
-Route::get('search/{catalog}/{input}', [MainController::class, 'search'])->name('search.product');
-Route::post('search/', [MainController::class, 'searchAsync'])->name('search.product.async');
+Route::get('search/{catalog}/{input}', [ProductController::class, 'search'])->name('search.product');
+Route::post('search/', [ProductController::class, 'searchAsync'])->name('search.product.async');
 
-Route::get('catalog/{catalog}/', [MainController::class, 'catalog'])->name('catalog');
-Route::post('catalog/{catalog}/', [MainController::class, 'catalog'])->name('catalog.post');
-Route::get('catalog/{catalog}/{category}', [MainController::class, 'category'])->name('category');
-Route::post('catalog/{catalog}/{category}', [MainController::class, 'category'])->name('category.post');
-Route::get('catalog/{catalog}/{category}/{product_id}', [MainController::class, 'product'])->name('product');
-
-Route::post('get-quantity/', [ProductController::class, 'getQuantity'])->name('product.get-quantity');
+Route::get('catalog/{catalog}/', [ProductController::class, 'catalog'])->name('catalog');
+Route::post('catalog/{catalog}/', [ProductController::class, 'catalog'])->name('catalog.post');
+Route::get('catalog/{catalog}/{category}', [ProductController::class, 'category'])->name('category');
+Route::post('catalog/{catalog}/{category}', [ProductController::class, 'category'])->name('category.post');
+Route::get('catalog/{catalog}/{category}/{product_id}', [ProductController::class, 'product'])->name('product');
+Route::get('catalog/{catalog}/{category}/{product_id}/get-stock', [ProductController::class, 'productStock'])->name('product.get-stock');
 
 Route::put('basket/store', [BasketController::class, 'store'])->name('basket.store');
 Route::delete('basket/remove', [BasketController::class, 'remove'])->name('basket.remove');

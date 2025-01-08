@@ -63,7 +63,7 @@ document.querySelectorAll(".radio_label").forEach((radio) => {
             product_id: url.split("/").pop(),
         };
 
-        const request = new Request("/get-quantity", {
+        const request = new Request(window.Laravel.productStockUrl, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {

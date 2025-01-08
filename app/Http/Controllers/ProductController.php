@@ -2,48 +2,107 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catalog;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Exception;
+use App\Services\MainService;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    protected ProductService $productService; // L'instance ProductService
+
+    public function __construct(ProductService $productService)
     {
-        //
+        $this->productService = $productService;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function home()
     {
-        //
+        $catalogs = Catalog::all();
+        $new_products = Product::orderBy('created_at', 'desc')->take(3)->get();
+
+        return view('home', [
+            "catalogs" => $catalogs,
+            "new_products" => $new_products
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function catalog($catalog, Request $request)
     {
-        //
+        try {
+            $catalog_id = Catalog::where("name", $catalog)->first()->id;
+            $categories = Category::where("catalog_id", $catalog_id)->get();
+            $products = $this->productService->getProductsByFilter(
+                $catalog_id,
+                $request->sizes,
+                $request->sort_by,
+            );
+
+            return view('products/list', [
+                "categories" => $categories,
+                "products" => $products
+            ]);
+        } catch (Exception $e) {
+            return redirect()->route('catalog', $catalog)->with(
+                'error',
+                $e->getMessage()
+            );
+        }
+    }
+
+    public function category($catalog, $category, Request $request)
+    {
+        try {
+            $catalog_id = Catalog::where("name", $catalog)->first()->id;
+            $categories = Category::where("catalog_id", $catalog_id)->get();
+            $products = $this->productService->getProductsByCategoryAndFilter(
+                $catalog_id,
+                $category,
+                $request->sizes,
+                $request->sort_by,
+            );
+
+            return view('products/list', [
+                "categories" => $categories,
+                "products" => $products
+            ]);
+        } catch (Exception $e) {
+            return redirect()->route('catalog', $catalog)->with(
+                'error',
+                'Erreur lors du chargement. Veuillez réessayer.'
+            );
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Request $request)
-    {
-        //
-    }
-
-    public function getQuantity(Request $request)
+    public function product($catalog, $category, $product_id)
     {
         try {
-            $quantity = Product::where('id', $request->product_id)->first()->quantity_per_size;
+            $product = Product::where([
+                ['catalog_id', Catalog::where('name', $catalog)->first()->id],
+                ['category_id', Category::where([
+                    ['name', $category],
+                    ['catalog_id', Catalog::where('name', $catalog)->first()->id]
+                ])->first()->id],
+                ['id', $product_id]
+            ])->first();
+        } catch (Exception $e) {
+            return redirect()->route('404');
+        }
+
+        return view('products/product', [
+            "product" => $product
+        ]);
+    }
+
+    public function productStock(Request $request)
+    {
+        try {
+            $quantity = Product::find($request->product_id)->quantity_per_size;
 
             return response()->json([
                 'quantity' => $quantity[$request->size]
@@ -55,27 +114,31 @@ class ProductController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit()
+    public function search($catalog, $input)
     {
-        //
+        $catalog = Catalog::where("name", $catalog)->first();
+        $products = Product::where([
+            ["name", "like", "%" . $input . "%"],
+            ["catalog_id", $catalog->id],
+        ])->paginate(12);
+
+        return view('products/list', [
+            "products" => $products
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update()
+    public function searchAsync(Request $request)
     {
-        //
-    }
+        try {
+            $products = $this->productService->searchProductsAsync($request->catalog, $request->input);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy()
-    {
-        //
+            return response()->json([
+                'results' => $products
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ]);
+        }
     }
 }
