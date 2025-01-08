@@ -8,35 +8,51 @@ use App\Models\Product;
 
 class MainService
 {
-    public function getProductsByFilter($catalog_id, $filter)
+    public function filterProductsBySize($products, $sizes)
     {
-        switch ($filter) {
+        if ($sizes && count($sizes) < 5) {
+            $products = $products->where(function ($query) use ($sizes) {
+                foreach ($sizes as $size) {
+                    $query->orwhereRaw("JSON_UNQUOTE(JSON_EXTRACT(quantity_per_size, '$.\"$size\"')) > 0");
+                }
+            });
+        }
+
+        return $products->paginate(12);
+    }
+
+
+    public function getProductsByFilter($catalog_id, $sizes, $sort_by)
+    {
+        switch ($sort_by) {
             case "new":
-                $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'DESC')->paginate(12);
+                $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'DESC');
                 break;
             case "price-lowest":
-                $products = Product::where("catalog_id", $catalog_id)->orderBy('price', 'ASC')->paginate(12);
+                $products = Product::where("catalog_id", $catalog_id)->orderBy('price', 'ASC');
                 break;
             case "price-highest":
-                $products = Product::where("catalog_id", $catalog_id)->orderBy('price', 'DESC')->paginate(12);
+                $products = Product::where("catalog_id", $catalog_id)->orderBy('price', 'DESC');
                 break;
             default:
-                $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'DESC')->paginate(12);
+                $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'DESC');
         }
+
+        $products = $this->filterProductsBySize($products, $sizes);
 
         return $products;
     }
 
-    public function getProductsByCategoryAndFilter($catalog_id, $category, $filter)
+    public function getProductsByCategoryAndFilter($catalog_id, $category, $sizes, $sort_by)
     {
-        switch ($filter) {
+        switch ($sort_by) {
             case "new":
                 $products = Product::where(
                     "category_id",
                     Category::where("catalog_id", $catalog_id)
                         ->where("name", $category)
                         ->first()->id
-                )->orderBy('created_at', 'DESC')->paginate(12);
+                )->orderBy('created_at', 'DESC');
                 break;
             case "price-lowest":
                 $products = Product::where(
@@ -44,7 +60,7 @@ class MainService
                     Category::where("catalog_id", $catalog_id)
                         ->where("name", $category)
                         ->first()->id
-                )->orderBy('price', 'ASC')->paginate(12);
+                )->orderBy('price', 'ASC');
                 break;
             case "price-highest":
                 $products = Product::where(
@@ -52,7 +68,7 @@ class MainService
                     Category::where("catalog_id", $catalog_id)
                         ->where("name", $category)
                         ->first()->id
-                )->orderBy('price', 'DESC')->paginate(12);
+                )->orderBy('price', 'DESC');
                 break;
             default:
                 $products = Product::where(
@@ -60,8 +76,10 @@ class MainService
                     Category::where("catalog_id", $catalog_id)
                         ->where("name", $category)
                         ->first()->id
-                )->orderBy('created_at', 'DESC')->paginate(12);
+                )->orderBy('created_at', 'DESC');
         }
+
+        $products = $this->filterProductsBySize($products, $sizes);
 
         return $products;
     }
@@ -78,7 +96,7 @@ class MainService
         foreach ($products as $product) {
             $product_images = json_decode($product->img, true);
             $product_stock = 0;
-            $quantity_per_size = json_decode($product->quantity_per_size, true);
+            $quantity_per_size = $product->quantity_per_size;
             foreach ($quantity_per_size as $size => $quantity) {
                 $product_stock += $quantity;
             }

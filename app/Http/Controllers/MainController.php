@@ -36,7 +36,8 @@ class MainController extends Controller
             $categories = Category::where("catalog_id", $catalog_id)->get();
             $products = $this->mainService->getProductsByFilter(
                 $catalog_id,
-                $request->filter
+                $request->sizes,
+                $request->sort_by,
             );
 
             return view('products/list', [
@@ -46,7 +47,7 @@ class MainController extends Controller
         } catch (Exception $e) {
             return redirect()->route('catalog', $catalog)->with(
                 'error',
-                'Erreur lors du chargement. Veuillez réessayer.'
+                $e->getMessage()
             );
         }
     }
@@ -59,7 +60,8 @@ class MainController extends Controller
             $products = $this->mainService->getProductsByCategoryAndFilter(
                 $catalog_id,
                 $category,
-                $request->filter
+                $request->sizes,
+                $request->sort_by,
             );
 
             return view('products/list', [

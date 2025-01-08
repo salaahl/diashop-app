@@ -149,7 +149,7 @@ class StripePaymentService
         foreach (session()->get("basket") as $items) {
             foreach ($items as $item) {
                 $product = Product::where("id", $item['id'])->first();
-                $product_quantity = json_decode($product->quantity_per_size, true);
+                $product_quantity = $product->quantity_per_size;
                 $product_quantity[$item['size']] -= $item['quantity'];
                 $product->quantity_per_size = json_encode($product_quantity);
                 $product->save();

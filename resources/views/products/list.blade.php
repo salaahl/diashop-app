@@ -61,27 +61,38 @@
         @endforeach
     </div>
 </div>
-<nav id="filters" class="w-full flex flex-wrap justify-between items-center py-2 md:mt-12 mb-4">
-    <div id="sizes" class="w-full lg:w-auto flex flex-wrap">
-        <input type="checkbox" name="sizes" id="size-s" value="s" checked>
-        <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-s">S</label>
-        <input type="checkbox" name="sizes" id="size-m" value="m" checked>
-        <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-m">M</label>
-        <input type="checkbox" name="sizes" id="size-l" value="l" checked>
-        <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-l">L</label>
-        <input type="checkbox" name="sizes" id="size-xl" value="xl" checked>
-        <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-xl">XL</label>
-        <input type="checkbox" name="sizes" id="size-xxl" value="xxl" checked>
-        <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-xxl">XXL</label>
-    </div>
-    <div id="sort-by" class="w-full lg:w-auto flex flex-wrap">
-        <input type="radio" name="filter_select" id="filter_new" value="new" @if(request()->get('filter') == 'new' || !request()->get('filter')) checked @endif>
-        <label class="mt-4 lg:mt-0 mr-4 sm:mr-0 sm:ml-4 px-6 py-2 text-sm font-semibold text-white rounded-full" for="filter_new">Nouveautés</label>
-        <input type="radio" name="filter_select" id="filter_price_lowest" value="price-lowest" @if(request()->get('filter') == 'price-lowest') checked @endif>
-        <label class="mt-4 lg:mt-0 mr-4 sm:mr-0 sm:ml-4 px-6 py-2 text-sm font-semibold text-white rounded-full" for="filter_price_lowest">Prix : ascendant</label>
-        <input type="radio" name="filter_select" id="filter_price_highest" value="price-highest" @if(request()->get('filter') == 'price-highest') checked @endif>
-        <label class="mt-4 lg:mt-0 mr-4 sm:mr-0 sm:ml-4 px-6 py-2 text-sm font-semibold text-white rounded-full" for="filter_price_highest">Prix : descendant</label>
-    </div>
+<nav id="filters" class="w-full py-2 md:mt-12 mb-4">
+    @php
+    $sizes = request()->get('sizes');
+    $filter = request()->get('sort_by');
+
+    if(!$sizes) {
+    $sizes = ['s', 'm', 'l', 'xl', 'xxl'];
+    }
+    @endphp
+    <form id="filters-form" class="flex flex-wrap justify-between items-center" action="" method="POST">
+        @csrf
+        <div id="sizes" class="w-full lg:w-auto flex flex-wrap">
+            <input type="checkbox" name="sizes[]" id="size-s" value="s" @if(in_array('s', $sizes)) checked @endif>
+            <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-s">S</label>
+            <input type="checkbox" name="sizes[]" id="size-m" value="m" @if(in_array('m', $sizes)) checked @endif>
+            <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-m">M</label>
+            <input type="checkbox" name="sizes[]" id="size-l" value="l" @if(in_array('l', $sizes)) checked @endif>
+            <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-l">L</label>
+            <input type="checkbox" name="sizes[]" id="size-xl" value="xl" @if(in_array('xl', $sizes)) checked @endif>
+            <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-xl">XL</label>
+            <input type="checkbox" name="sizes[]" id="size-xxl" value="xxl" @if(in_array('xxl', $sizes)) checked @endif>
+            <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-xxl">XXL</label>
+        </div>
+        <div id="sort-by" class="w-full lg:w-auto flex flex-wrap">
+            <input type="radio" name="sort_by" id="filter_new" value="new" @if($filter=='new' || $filter=='' ) checked @endif>
+            <label class="mt-4 lg:mt-0 mr-4 lg:mr-0 lg:ml-4 px-6 py-2 text-sm font-semibold text-white rounded-full" for="filter_new">Nouveautés</label>
+            <input type="radio" name="sort_by" id="filter_price_lowest" value="price-lowest" @if($filter=='price-lowest' ) checked @endif>
+            <label class="mt-4 lg:mt-0 mr-4 lg:mr-0 lg:ml-4 px-6 py-2 text-sm font-semibold text-white rounded-full" for="filter_price_lowest">Prix : ascendant</label>
+            <input type="radio" name="sort_by" id="filter_price_highest" value="price-highest" @if($filter=='price-highest' ) checked @endif>
+            <label class="mt-4 lg:mt-0 mr-4 lg:mr-0 lg:ml-4 px-6 py-2 text-sm font-semibold text-white rounded-full" for="filter_price_highest">Prix : descendant</label>
+        </div>
+    </form>
 </nav>
 @else
 <div class="title-container w-full mt-8 md:mt-10 mb-20">
@@ -92,7 +103,7 @@
 @php
 $product_images = json_decode($product->img, true);
 $product_stock = 0;
-foreach(json_decode($product->quantity_per_size, true) as $size => $quantity) {
+foreach($product->quantity_per_size as $size => $quantity) {
 $product_stock += $quantity;
 }
 @endphp

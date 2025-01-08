@@ -77,35 +77,6 @@ products.forEach((product) => {
 });
 
 // Filtres
-// Je m'assure que le code ne s'exécute pas sur la page de recherche (qui utilise le même fichier JS)
-if (
-    window.location.pathname
-        .split("/")
-        .filter((segment) => segment !== "")[0] !== "search"
-) {
-    document
-        .querySelectorAll("#sort-by > input[name='filter_select']")
-        .forEach((filter) => {
-            filter.addEventListener("change", () => {
-                let myform = document.createElement("form");
-                myform.action = "";
-                myform.method = "post";
-
-                let input = document.createElement("input");
-                input.value = filter.value;
-                input.name = "filter";
-
-                let token = document.createElement("input");
-                token.value = document
-                    .querySelector('[name="csrf-token"]')
-                    .getAttribute("content");
-                token.name = "_token";
-
-                myform.appendChild(input);
-                myform.appendChild(token);
-
-                document.body.appendChild(myform);
-                myform.submit();
-            });
-        });
-}
+document.querySelector("#filters-form").addEventListener("change", function () {
+    this.submit();
+});

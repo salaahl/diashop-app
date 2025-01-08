@@ -43,7 +43,7 @@
     @php
     $product_images = json_decode($product->img, true);
     $product_stock = 0;
-    foreach(json_decode($product->quantity_per_size, true) as $size => $quantity) {
+    foreach($product->quantity_per_size as $size => $quantity) {
     $product_stock += $quantity;
     }
     @endphp
@@ -128,8 +128,7 @@
                 </div>
                 @php
                 $count = 0;
-                $product_quantity = json_decode($product->quantity_per_size, true);
-                foreach($product_quantity as $quantity) {
+                foreach($product->quantity_per_size as $size => $quantity) {
                 $count += $quantity;
                 }
                 @endphp

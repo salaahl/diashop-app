@@ -72,35 +72,34 @@
             </div>
             @php
             $count = 0;
-            $product_quantity = json_decode($product->quantity_per_size, true);
-            foreach($product_quantity as $quantity) {
+            foreach($product->quantity_per_size as $quantity) {
             $count += $quantity;
             }
             @endphp
             @if($count > 0)
             <div class="max-md:my-4">
                 <div class="radio-toolbar">
-                    @if(isset($product_quantity["os"]) && $product_quantity["os"] > 0)
+                    @if(isset($product->quantity_per_size["os"]) && $product->quantity_per_size["os"] > 0)
                     <input type="radio" name="size" id="os" value="os">
                     <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="os">Taille unique</label>
                     @endif
-                    @if(isset($product_quantity["s"]) && $product_quantity["s"] > 0)
+                    @if(isset($product->quantity_per_size["s"]) && $product->quantity_per_size["s"] > 0)
                     <input type="radio" name="size" id="s" value="s">
                     <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="s">S</label>
                     @endif
-                    @if(isset($product_quantity["m"]) && $product_quantity["m"] > 0)
+                    @if(isset($product->quantity_per_size["m"]) && $product->quantity_per_size["m"] > 0)
                     <input type="radio" name="size" id="m" value="m">
                     <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="m">M</label>
                     @endif
-                    @if(isset($product_quantity["l"]) && $product_quantity["l"] > 0)
+                    @if(isset($product->quantity_per_size["l"]) && $product->quantity_per_size["l"] > 0)
                     <input type="radio" name="size" id="l" value="l">
                     <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="l">L</label>
                     @endif
-                    @if(isset($product_quantity["xl"]) && $product_quantity["xl"] > 0)
+                    @if(isset($product->quantity_per_size["xl"]) && $product->quantity_per_size["xl"] > 0)
                     <input type="radio" name="size" id="xl" value="xl">
                     <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="xl">XL</label>
                     @endif
-                    @if(isset($product_quantity["xxl"]) && $product_quantity["xxl"] > 0)
+                    @if(isset($product->quantity_per_size["xxl"]) && $product->quantity_per_size["xxl"] > 0)
                     <input type="radio" name="size" id="xxl" value="xxl">
                     <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="xxl">XXL</label>
                     @endif
@@ -260,8 +259,7 @@
     @php
     $product_images = json_decode($product->img, true);
     $product_stock = 0;
-    $product_quantity = json_decode($product->quantity_per_size, true);
-    foreach($product_quantity as $size => $quantity) {
+    foreach($product->quantity_per_size as $size => $quantity) {
     $product_stock += $quantity;
     }
     @endphp

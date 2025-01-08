@@ -84,8 +84,10 @@ main {
     transition: 0.15s background-color linear;
 }
 
-#sizes > label:hover, #sizes > input[type="checkbox"]:checked + label,
-#sort-by > label:hover, #sort-by > input[type="radio"]:checked + label {
+#sizes > label:hover,
+#sizes > input[type="checkbox"]:checked + label,
+#sort-by > label:hover,
+#sort-by > input[type="radio"]:checked + label {
     background-color: rgb(var(--accent-color-2), 0.25);
 }
 

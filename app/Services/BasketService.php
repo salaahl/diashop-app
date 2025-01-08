@@ -27,7 +27,7 @@ class BasketService
         }
 
         // Je verifie que le stock est suffisant
-        if (json_decode($product->quantity_per_size, true)[$size] < $quantity) {
+        if ($product->quantity_per_size[$size] < $quantity) {
             throw new Exception("Stock insuffisant. Veuillez actualiser la page.");
         }
 
@@ -49,7 +49,7 @@ class BasketService
         ];
 
         // Je retire la quantité au produit dans la BDD
-        $quantity_per_size = json_decode($product->quantity_per_size, true);
+        $quantity_per_size = $product->quantity_per_size;
         $quantity_per_size[$size] -= $quantity;
         $product->quantity_per_size = json_encode($quantity_per_size);
         $product->save();
@@ -74,7 +74,7 @@ class BasketService
 
         // Je reattribue les quantités aux produits
         $product = Product::where('id', $product_id)->first();
-        $quantity_per_size = json_decode($product->quantity_per_size, true);
+        $quantity_per_size = $product->quantity_per_size;
         $quantity_per_size[$size] += $quantity;
         $product->quantity_per_size = json_encode($quantity_per_size);
         $product->save();
@@ -90,7 +90,7 @@ class BasketService
         foreach ($basket as $items) {
             foreach ($items as $item) {
                 $product = Product::where('id', $item['id'])->first();
-                $quantity_per_size = json_decode($product->quantity_per_size, true);
+                $quantity_per_size = $product->quantity_per_size;
                 $quantity_per_size[$item['size']] += $item['quantity'];
                 $product->quantity_per_size = json_encode($quantity_per_size);
                 $product->save();

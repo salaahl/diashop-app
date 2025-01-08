@@ -43,7 +43,7 @@ class ProductController extends Controller
     public function getQuantity(Request $request)
     {
         try {
-            $quantity = json_decode(Product::where('id', $request->product_id)->first()->quantity_per_size, true);
+            $quantity = Product::where('id', $request->product_id)->first()->quantity_per_size;
 
             return response()->json([
                 'quantity' => $quantity[$request->size]
