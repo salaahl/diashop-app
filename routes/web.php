@@ -53,7 +53,7 @@ Route::post('catalog/{catalog}/', [ProductController::class, 'catalog'])->name('
 Route::get('catalog/{catalog}/{category}', [ProductController::class, 'category'])->name('category');
 Route::post('catalog/{catalog}/{category}', [ProductController::class, 'category'])->name('category.post');
 Route::get('catalog/{catalog}/{category}/{product_id}', [ProductController::class, 'product'])->name('product');
-Route::get('catalog/{catalog}/{category}/{product_id}/get-stock', [ProductController::class, 'productStock'])->name('product.get-stock');
+Route::post('/get-stock', [ProductController::class, 'productStock'])->name('product.get-stock');
 
 Route::put('basket/store', [BasketController::class, 'store'])->name('basket.store');
 Route::delete('basket/remove', [BasketController::class, 'remove'])->name('basket.remove');

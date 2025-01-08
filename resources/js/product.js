@@ -56,14 +56,14 @@ if (window.innerWidth > 1023) {
 }
 
 // Chargement des options de taille
-document.querySelectorAll(".radio_label").forEach((radio) => {
-    radio.addEventListener("click", function () {
+document.querySelectorAll(".radio_label").forEach((size) => {
+    size.addEventListener("click", function () {
         let data = {
             size: this.previousElementSibling.value.toLowerCase(),
             product_id: url.split("/").pop(),
         };
 
-        const request = new Request(window.Laravel.productStockUrl, {
+        const request = new Request("/get-stock", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
