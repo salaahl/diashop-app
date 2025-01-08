@@ -36,7 +36,7 @@ class ProductController extends Controller
             $categories = Category::where("catalog_id", $catalog_id)->get();
             $products = $this->productService->getProductsByCatalog(
                 $catalog_id,
-                $request->sizes,
+                $request->size,
                 $request->sort_by,
             );
         } catch (Exception $e) {
@@ -60,7 +60,7 @@ class ProductController extends Controller
             $products = $this->productService->getProductsByCategory(
                 $catalog_id,
                 $category,
-                $request->sizes,
+                $request->size,
                 $request->sort_by,
             );
         } catch (Exception $e) {
@@ -121,7 +121,7 @@ class ProductController extends Controller
             $products = $this->productService->getProductsByQuery(
                 $catalog->id,
                 $input,
-                $request->sizes,
+                $request->size,
                 $request->sort_by,
             );
         } catch (Exception $e) {

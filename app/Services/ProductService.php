@@ -8,21 +8,17 @@ use App\Models\Product;
 
 class ProductService
 {
-    public function filterProductsBySize($products, $sizes)
+    public function filterProductsBySize($products, $size)
     {
-        if ($sizes && count($sizes) < 5) {
-            $products = $products->where(function ($query) use ($sizes) {
-                foreach ($sizes as $size) {
-                    $query->orwhereRaw("JSON_UNQUOTE(JSON_EXTRACT(quantity_per_size, '$.\"$size\"')) > 0");
-                }
-            });
+        if ($size) {
+            $products = $products->whereRaw("JSON_UNQUOTE(JSON_EXTRACT(quantity_per_size, '$.\"$size\"')) > 0");
         }
 
         return $products->paginate(12);
     }
 
 
-    public function getProductsByCatalog($catalog_id, $sizes, $sort_by)
+    public function getProductsByCatalog($catalog_id, $size, $sort_by)
     {
         switch ($sort_by) {
             case "new":
@@ -38,7 +34,7 @@ class ProductService
                 $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'DESC');
         }
 
-        $products = $this->filterProductsBySize($products, $sizes);
+        $products = $this->filterProductsBySize($products, $size);
 
         if(!$products) {
             throw new Exception("Aucun résultat");
@@ -47,7 +43,7 @@ class ProductService
         return $products;
     }
 
-    public function getProductsByCategory($catalog_id, $category, $sizes, $sort_by)
+    public function getProductsByCategory($catalog_id, $category, $size, $sort_by)
     {
         switch ($sort_by) {
             case "new":
@@ -83,7 +79,7 @@ class ProductService
                 )->orderBy('created_at', 'DESC');
         }
 
-        $products = $this->filterProductsBySize($products, $sizes);
+        $products = $this->filterProductsBySize($products, $size);
 
         if(!$products) {
             throw new Exception("Aucun résultat");
@@ -92,7 +88,7 @@ class ProductService
         return $products;
     }
 
-    public function getProductsByQuery($catalog_id, $input, $sizes, $sort_by)
+    public function getProductsByQuery($catalog_id, $input, $size, $sort_by)
     {
         switch ($sort_by) {
             case "new":
@@ -120,7 +116,7 @@ class ProductService
             ])->orderBy('created_at', 'DESC');
         }
 
-        $products = $this->filterProductsBySize($products, $sizes);
+        $products = $this->filterProductsBySize($products, $size);
 
         if(!$products) {
             throw new Exception("Aucun résultat");
