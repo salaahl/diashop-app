@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Exception;
-use App\Services\MainService;
+use App\Services\ProductService;
 
 class ProductController extends Controller
 {
