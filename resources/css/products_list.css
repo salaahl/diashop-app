@@ -72,7 +72,7 @@ main {
     filter: blur(0) grayscale(0);
 }
 
-#sizes > input[type="checkbox"],
+#sizes > input[type="radio"],
 #sort-by > input[type="radio"] {
     display: none;
 }
@@ -85,7 +85,7 @@ main {
 }
 
 #sizes > label:hover,
-#sizes > input[type="checkbox"]:checked + label,
+#sizes > input[type="radio"]:checked + label,
 #sort-by > label:hover,
 #sort-by > input[type="radio"]:checked + label {
     background-color: rgb(var(--accent-color-2), 0.25);
