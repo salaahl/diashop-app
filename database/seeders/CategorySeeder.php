@@ -26,7 +26,7 @@ class CategorySeeder extends Seeder
         ]);
         Category::factory()->create([
             'name' => 't-shirts',
-            'img' => 'products/October2024/D3OjJm8Iy7COil92CaH1',
+            'img' => 'categories/October2024/p0yxt5vnSiUi7nuQ0f7H',
             'catalog_id' => 1,
         ]);
 
