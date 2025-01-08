@@ -13,39 +13,52 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        Product::factory()->create(['name' => 'Article 1', 'price' => 7.99, 'catalog_id' => 1, 'category_id' => 1]);
-        Product::factory()->create(['name' => 'Article 2', 'price' => 10, 'catalog_id' => 1, 'category_id' => 2]);
-        Product::factory()->create(['name' => 'Article 3', 'price' => 29.95, 'catalog_id' => 1, 'category_id' => 3]);
-        Product::factory()->create(['name' => 'Article 4', 'price' => 19.99, 'catalog_id' => 2, 'category_id' => 4]);
-        Product::factory()->create(['name' => 'Article 5', 'price' => 24.99, 'catalog_id' => 2, 'category_id' => 5]);
-        Product::factory()->create(['name' => 'Article 6', 'price' => 39.99, 'catalog_id' => 2, 'category_id' => 6]);
+        Product::factory()->create([
+            'name' => 'Foulard rouge', 
+            'price' => 9.99, 'img' => json_encode([
+                $this->faker->randomElement('products/September2024/qfK98NuJQ5udV92PI8bx'),
+                $this->faker->randomElement('products/November2024/HqAHYdQKKkSLGeHUM6w4'),
+            ]),
+            'catalog_id' => 1,
+            'category_id' => 1
+        ]);
+        Product::factory()->create([
+            'name' => 'Foulard jaune', 
+            'price' => 9.99, 'img' => json_encode([
+                $this->faker->randomElement('products/September2024/vUkdRLFVbV9oidQmZJ3l'),
+                $this->faker->randomElement('products/November2024/HqAHYdQKKkSLGeHUM6w4'),
+            ]),
+            'catalog_id' => 1,
+            'category_id' => 1
+        ]);
+        Product::factory()->create([
+            'name' => 'Foulard vert', 
+            'price' => 9.99, 'img' => json_encode([
+                $this->faker->randomElement('products/September2024/1DLX0C0l7anRcvGUnCjI'),
+                $this->faker->randomElement('products/November2024/HqAHYdQKKkSLGeHUM6w4'),
+            ]),
+            'catalog_id' => 1,
+            'category_id' => 1
+        ]);
+        Product::factory()->create([
+            'name' => 'Foulard vert', 
+            'price' => 9.99, 'img' => json_encode([
+                $this->faker->randomElement('products/September2024/BBl1FPRh4TLLreO0S2XX'),
+                $this->faker->randomElement('products/November2024/HqAHYdQKKkSLGeHUM6w4'),
+            ]),
+            'catalog_id' => 1,
+            'category_id' => 1
+        ]);
 
-        Product::factory()->create(['name' => 'Article 7', 'price' => 9.98, 'catalog_id' => 1, 'category_id' => 1]);
-        Product::factory()->create(['name' => 'Article 8', 'price' => 79, 'catalog_id' => 1, 'category_id' => 2]);
-        Product::factory()->create(['name' => 'Article 9', 'price' => 29.99, 'catalog_id' => 1, 'category_id' => 3]);
-        Product::factory()->create(['name' => 'Article 10', 'price' => 19.99, 'catalog_id' => 2, 'category_id' => 4]);
-        Product::factory()->create(['name' => 'Article 11', 'price' => 24.99, 'catalog_id' => 2, 'category_id' => 5]);
-        Product::factory()->create(['name' => 'Article 12', 'price' => 39.99, 'catalog_id' => 2, 'category_id' => 6]);
-
-        Product::factory()->create(['name' => 'Article 13', 'price' => 9.99, 'catalog_id' => 1, 'category_id' => 1]);
-        Product::factory()->create(['name' => 'Article 14', 'price' => 10, 'catalog_id' => 1, 'category_id' => 2]);
-        Product::factory()->create(['name' => 'Article 15', 'price' => 29.95, 'catalog_id' => 1, 'category_id' => 3]);
-        Product::factory()->create(['name' => 'Article 16', 'price' => 19.99, 'catalog_id' => 2, 'category_id' => 4]);
-        Product::factory()->create(['name' => 'Article 17', 'price' => 24, 'catalog_id' => 2, 'category_id' => 5]);
-        Product::factory()->create(['name' => 'Article 18', 'price' => 39.99, 'catalog_id' => 2, 'category_id' => 6]);
-
-        Product::factory()->create(['name' => 'Article 19', 'price' => 9.99, 'catalog_id' => 1, 'category_id' => 1]);
-        Product::factory()->create(['name' => 'Article 20', 'price' => 10, 'catalog_id' => 1, 'category_id' => 2]);
-        Product::factory()->create(['name' => 'Article 21', 'price' => 29.95, 'catalog_id' => 1, 'category_id' => 3]);
-        Product::factory()->create(['name' => 'Article 22', 'price' => 19.99, 'catalog_id' => 2, 'category_id' => 4]);
-        Product::factory()->create(['name' => 'Article 23', 'price' => 24, 'catalog_id' => 2, 'category_id' => 5]);
-        Product::factory()->create(['name' => 'Article 24', 'price' => 39.99, 'catalog_id' => 2, 'category_id' => 6]);
-
-        Product::factory()->create(['name' => 'Article 25', 'price' => 9.99, 'catalog_id' => 1, 'category_id' => 1]);
-        Product::factory()->create(['name' => 'Article 26', 'price' => 10, 'catalog_id' => 1, 'category_id' => 2]);
-        Product::factory()->create(['name' => 'Article 27', 'price' => 29.95, 'catalog_id' => 1, 'category_id' => 3]);
-        Product::factory()->create(['name' => 'Article 28', 'price' => 19.99, 'catalog_id' => 2, 'category_id' => 4]);
-        Product::factory()->create(['name' => 'Article 29', 'price' => 24, 'catalog_id' => 2, 'category_id' => 5]);
-        Product::factory()->create(['name' => 'Article 30', 'price' => 39.99, 'catalog_id' => 2, 'category_id' => 6]);
+        // Produits pour hommes
+        Product::factory()->create([
+            'name' => 'Blazer gris', 
+            'price' => 9.99, 'img' => json_encode([
+                $this->faker->randomElement('products/October2024/KwDPj1t0u7PPYOptboFO'),
+                $this->faker->randomElement('products/October2024/b4YZuyqmM5TdvloHz2ZC'),
+            ]),
+            'catalog_id' => 2,
+            'category_id' => 2
+        ]);
     }
 }
