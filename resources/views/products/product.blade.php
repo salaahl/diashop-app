@@ -79,10 +79,6 @@
             @if($count > 0)
             <div class="max-md:my-4">
                 <div class="radio-toolbar">
-                    @if(isset($product->quantity_per_size["os"]) && $product->quantity_per_size["os"] > 0)
-                    <input type="radio" name="size" id="os" value="os">
-                    <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="os">Taille unique</label>
-                    @endif
                     @if(isset($product->quantity_per_size["s"]) && $product->quantity_per_size["s"] > 0)
                     <input type="radio" name="size" id="s" value="s">
                     <label class="radio_label button-stylised-1 button-stylised-1-custom mr-4" for="s">S</label>

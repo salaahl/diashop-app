@@ -75,7 +75,7 @@ class ProductSeeder extends Seeder
             'category_id' => 2
         ]);
         Product::factory()->create([
-            'name' => 'T-shirt beige "we should all be feminists"', 
+            'name' => 'T-shirt beige à slogan', 
             'price' => 119, 
             'img' => json_encode([
                 'products/October2024/D3OjJm8Iy7COil92CaH1',
