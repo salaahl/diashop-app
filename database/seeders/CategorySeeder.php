@@ -15,27 +15,13 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::factory()->create([
-            'name' => 't-shirt',
+            'name' => 'foulards',
             'catalog_id' => 1,
         ]);
+
+        // Catalogues pour hommes
         Category::factory()->create([
-            'name' => 'pantalon',
-            'catalog_id' => 1,
-        ]);
-        Category::factory()->create([
-            'name' => 'chaussure',
-            'catalog_id' => 1,
-        ]);
-        Category::factory()->create([
-            'name' => 'chemise',
-            'catalog_id' => 2,
-        ]);
-        Category::factory()->create([
-            'name' => 'pantalon',
-            'catalog_id' => 2,
-        ]);
-        Category::factory()->create([
-            'name' => 'chaussure',
+            'name' => 'vestes',
             'catalog_id' => 2,
         ]);
     }
