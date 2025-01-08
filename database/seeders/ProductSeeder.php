@@ -56,7 +56,14 @@ class ProductSeeder extends Seeder
         ]);
         Product::factory()->create([
             'name' => 'Blazer rouge', 
-            'price' => 199, 
+            'price' => 199,
+            'quantity_per_size' => [
+                's' => 10,
+                'm' => 0,
+                'l' => 5,
+                'xl' => 7,
+                'xxl' => 0,
+            ],
             'img' => json_encode([
                 'products/September2024/KkVTLnV6m5p9uORKtPZm',
                 'products/September2024/15HQJ1CzG28au2WARJfu',
@@ -89,6 +96,13 @@ class ProductSeeder extends Seeder
         Product::factory()->create([
             'name' => 'Blazer gris', 
             'price' => 229, 
+            'quantity_per_size' => [
+                's' => 0,
+                'm' => 2,
+                'l' => 8,
+                'xl' => 5,
+                'xxl' => 1,
+            ],
             'img' => json_encode([
                 'products/jpeg-optimizer_313C203A6328C800_E01',
                 'products/October2024/KwDPj1t0u7PPYOptboFO',
