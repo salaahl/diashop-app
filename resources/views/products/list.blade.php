@@ -24,7 +24,7 @@
 @if(isset($categories))
 <div id="categories" class="relative flex w-full p-4 md:p-8 pb-2 md:pb-4 md:mb-8 rounded-lg bg-gray-50 overflow-x-auto">
     <div class="title-container catalog-name">
-        <h1>{{ $products->first()->catalog->name }}</h1>
+        <h1><span>{{ $products->first()->catalog->name }}</span></h1>
     </div>
     <div class="scroll-controls hidden absolute w-[calc(100%-4rem)] h-[calc(100%-2rem)] md:flex items-center justify-between">
         <button class="scroll-button scroll-left hide p-6 bg-white/50 backdrop-blur rounded-full z-10">
@@ -48,10 +48,7 @@
             >
             <a href="{{ '/catalog/' . $category->catalog->name . '/' . $category->name }}">
                 <div class="thumbnail rounded-full overflow-hidden">
-                    @php
-                    $imagePath = str_replace('\\', '/', $category->img)
-                    @endphp
-                    <x-cld-image public-id="{{ $imagePath }}" alt="{{ $category->name }}"></x-cld-image>
+                    <x-cld-image public-id="{{ $category->img }}" alt="{{ $category->name }}"></x-cld-image>
                 </div>
                 <div class="details mt-4">
                     <h4 class="title font-normal text-center">{{ ucfirst($category->name) }}</h4>
@@ -62,8 +59,8 @@
     </div>
 </div>
 @else
-<div class="title-container w-full mt-8 md:mt-10 mb-20">
-    <h1 class="w-fit m-auto">Résultats de votre recherche</h1>
+<div class="title-container w-full my-8 md:mt-24 md:mb-32">
+    <h1 class="w-fit m-auto search-title"><span>Résultats de votre recherche</span></h1>
 </div>
 @endif
 <nav id="filters" class="w-full py-2 md:mt-12 mb-4">
@@ -97,13 +94,12 @@
 </nav>
 @foreach($products as $product)
 @php
-$product_images = json_decode($product->img, true);
 $product_stock = 0;
 foreach($product->quantity_per_size as $size => $quantity) {
 $product_stock += $quantity;
 }
 @endphp
-<x-product-card created="{{ $product->created_at->timestamp }}" link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product_images[0] }}" image2="{{ $product_images[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
+<x-product-card created="{{ $product->created_at->timestamp }}" link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product->img[0] }}" image2="{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
 @endforeach
 <aside class="w-full mt-[-0.5rem] mb-4">
     {{ $products->links() }}

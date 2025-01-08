@@ -2,7 +2,7 @@
 
 @section('meta')
 @parent
-<meta name="description" content="Découvrez qui nous sommes chez {{ env("APP_NAME") }}. Plongez dans notre histoire, notre passion pour la mode et notre engagement envers nos clients." />
+<meta name="description" content="Découvrez qui nous sommes chez {{ env('APP_NAME') }}. Plongez dans notre histoire, notre passion pour la mode et notre engagement envers nos clients." />
 @endsection
 
 @section('title', 'A propos de nous - ')
@@ -10,7 +10,7 @@
 @section('links')
 @parent
 <style>
-    h1,
+    h1 > span,
     .highlight {
         background-image: linear-gradient(rgb(var(--accent-color-2)),
                 rgb(var(--accent-color-2)));
@@ -74,7 +74,7 @@
     <div class="h-[10vh] md:h-[40vh] w-full hidden md:flex justify-center items-center overflow-hidden bg-gray-800"></div>
     <div class="min-h-[40vh] w-full max-w-screen-xl mx-auto px-2 xl:px-0 md:mt-[-10vh] flex flex-col justify-center">
         <div class="title-container md:h-[10vh] w-min md:w-auto flex justify-center items-center mx-auto">
-            <h1 class="md:text-white">À propos de nous</h1>
+            <h1 class="my-8 md:mt-24 md:mb-32 md:text-white"><span>À propos de nous</span></h1>
         </div>
         <img src="{{ asset('images/woman-catalog.jpg')}}" class="h-auto w-3/4 md:h-[50vh] max-md:my-10 mx-auto aspect-square border-[25px] border-gray-200 md:border-white rounded-full object-cover">
         <p class="md:mt-4 text-center font-[600]">Bienvenue chez {{ env("APP_NAME") }} !</p>

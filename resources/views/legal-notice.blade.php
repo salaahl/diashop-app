@@ -2,7 +2,7 @@
 
 @section('meta')
 @parent
-<meta name="description" content="Consultez les mentions légales de {{ env("APP_NAME") }} pour connaître les informations sur l'éditeur, l'hébergeur, la collecte de données personnelles, et plus encore. Assurez-vous d'être informé sur nos politiques pour une expérience de shopping en ligne transparente et sécurisée.">
+<meta name="description" content="Consultez les mentions légales de {{ env('APP_NAME') }} pour connaître les informations sur l'éditeur, l'hébergeur, la collecte de données personnelles, et plus encore. Assurez-vous d'être informé sur nos politiques pour une expérience de shopping en ligne transparente et sécurisée.">
 @endsection
 
 @section('title', 'Mentions légales - ')
@@ -27,7 +27,7 @@
 
 @section('main')
 <div class="title-container">
-    <h1 class="mt-8 md:mt-10 mb-20">Mentions Légales</h1>
+    <h1 class="my-8 md:mt-24 md:mb-32"><span>Mentions Légales</span></h1>
 </div>
 
 <h3>1. Éditeur du site</h3>

@@ -14,10 +14,6 @@
         padding-left: 0;
         padding-right: 0;
     }
-
-    footer section {
-        margin-top: 0 !important;
-    }
 </style>
 @endsection
 

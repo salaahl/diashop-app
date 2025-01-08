@@ -89,8 +89,8 @@ class ProductController extends Controller
             ])->first()->id],
             ['id', $product_id]
         ])->first();
-        
-        if(!$product) {
+
+        if (!$product) {
             return redirect()->route('404');
         }
 

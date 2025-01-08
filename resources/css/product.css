@@ -4,6 +4,9 @@ button.hidden {
 
 h1 {
     margin: 0;
+}
+
+h1 > span {
     background-image: linear-gradient(
         rgb(var(--accent-color-3), 0.5),
         rgb(var(--accent-color-3), 0.5)
@@ -32,6 +35,9 @@ h2 {
 
 #other-products-container > .title-container > h2 {
     font-size: var(--h2-font-size);
+}
+
+#other-products-container > .title-container > h2 > span {
     font-weight: 900;
     background-image: linear-gradient(
         rgb(var(--accent-color-4)),
@@ -40,12 +46,6 @@ h2 {
     background-size: 100% 35%;
     background-repeat: no-repeat;
     background-position: 0 100%;
-    transition: background-size 0.5s, background-position 0.3s ease-in-out;
-}
-
-#other-products-container > .title-container > h2:hover {
-    background-size: 100% 100%;
-    background-position: 0 0;
 }
 
 #default-modal {

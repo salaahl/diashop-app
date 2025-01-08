@@ -41,10 +41,10 @@ class ProductFactory extends Factory
                 'xl' => $this->faker->numberBetween(0, 10),
                 'xxl' => $this->faker->numberBetween(0, 10),
             ],
-            'img' => json_encode([
+            'img' => [
                 $this->faker->randomElement($images),
                 $this->faker->randomElement($images),
-            ]),
+            ],
             'catalog_id' => Catalog::factory(),
             'category_id' => Category::factory(),
         ];

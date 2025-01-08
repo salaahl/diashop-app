@@ -20,10 +20,7 @@
 <div class="flex flex-wrap justify-between md:flex-nowrap flex-col md:flex-row">
     <section id="product-images-container" class="w-full md:w-2/4 mt-[-80px]">
         <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
-            @php
-            $product_images = json_decode($product->img, true);
-            @endphp
-            @foreach($product_images as $image)
+            @foreach($product->img as $image)
             <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start" onclick="currentSlide('{{ $loop->iteration }}')" data-modal-target="default-modal" data-modal-toggle="default-modal">
                 <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" alt="{{ $product->name }}" class="h-full w-full object-cover object-center cursor-zoom-in"></x-cld-image>
             </li>
@@ -53,7 +50,7 @@
                     </ul>
                 </nav>
                 <div class="title-container flex items-center">
-                    <h1 id="title">{{ ucfirst($product->name) }}</h1>
+                    <h1 id="title"><span>{{ ucfirst($product->name) }}</span></h1>
                     @if(strtotime('-1 month', time()) > strtotime($product->created_at->timestamp))
                     <div class="new-badge">
                         <span>New</span>
@@ -212,7 +209,7 @@
                     </svg>
                     <span class="sr-only">Close modal</span>
                 </button>
-                @foreach($product_images as $image)
+                @foreach($product->img as $image)
                 <div class="carousel-slide">
                     <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="{{ $product->name }}"></x-cld-image>
                     <div class="magnifier"></div>
@@ -232,7 +229,7 @@
             </div>
         </div>
         <div id="img-preview">
-            @foreach($product_images as $image)
+            @foreach($product->img as $image)
             <div class="preview-column" onclick="currentSlide('{{ $loop->iteration }}')">
                 <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" id="slide-button-{{ $loop->iteration }}" class="slide-cursor" alt="{{ $product->name }}"></x-cld-image>
             </div>
@@ -249,17 +246,16 @@
 )
 <section id="other-products-container" class="flex flex-wrap md:my-10 px-6 pb-6 bg-stone-200">
     <div class="title-container w-full my-8">
-        <h2 class="w-fit uppercase">Plus d'articles</h2>
+        <h2 class="w-fit uppercase"><span>Plus d'articles</span></h2>
     </div>
     @foreach($product->category->products->where('id', '!=', $product->id)->take(3) as $product)
     @php
-    $product_images = json_decode($product->img, true);
     $product_stock = 0;
     foreach($product->quantity_per_size as $size => $quantity) {
     $product_stock += $quantity;
     }
     @endphp
-    <x-product-card created="{{ $product->created_at->timestamp }}" link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product_images[0] }}" image2="{{ $product_images[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
+    <x-product-card created="{{ $product->created_at->timestamp }}" link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product->img[0] }}" image2="{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
     @endforeach
 </section>
 @endif

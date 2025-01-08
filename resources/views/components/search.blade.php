@@ -10,7 +10,7 @@
             <div
                 class="flex items-center justify-between h-[10%] p-4 md:p-5 rounded-t">
                 <h2 id="search-title" class="text-left uppercase font-normal">
-                    Recherche
+                    <span>Recherche</span>
                 </h2>
                 <button
                     type="button"
@@ -35,12 +35,12 @@
             <!-- Modal body -->
             <div
                 id="search-body"
-                class="h-[80%] p-4 md:p-5 space-y-4 overflow-auto">
+                class="h-[80%] p-4 md:p-5 overflow-auto">
 
-                <div class="w-full">
-                    <div class="w-full flex justify-between mt-6 lg:mt-2">
+                <form id="search-form" action="/search" method="POST" class="w-full">
+                    <div class="w-full flex justify-between">
                         <div class="w-[48%] flex items-center ps-4 border border-gray-200 rounded">
-                            <input checked id="bordered-radio-1" type="radio" value="femme" name="catalog" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                            <input id="bordered-radio-1" type="radio" value="femme" name="catalog" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2" checked>
                             <label for="bordered-radio-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900">Catalogue Femme</label>
                         </div>
                         <div class="w-[48%] flex items-center ps-4 border border-gray-200 rounded">
@@ -57,8 +57,9 @@
                         </div>
                         <input type="search" id="default-search" class="block w-full mt-6 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Rechercher un article" required>
                     </div>
-                </div>
-                <div id="search-results" class="w-full flex flex-wrap lg:mt-12 max-lg:mt-10 overflow-auto"></div>
+                    <button type="submit" class="hidden" disabled>Envoyer</button>
+                </form>
+                <div id="search-results" class="w-full flex flex-wrap mt-12 overflow-auto"></div>
                 <div id="search-loader" class="hidden h-full w-full absolute top-0 left-0 right-0 justify-center items-center">
                     <x-clothes-animation />
                 </div>

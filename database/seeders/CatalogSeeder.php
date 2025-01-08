@@ -13,7 +13,7 @@ class CatalogSeeder extends Seeder
      */
     public function run(): void
     {
-        Catalog::factory()->create(['name' => 'Femme']);
-        Catalog::factory()->create(['name' => 'Homme']);
+        Catalog::factory()->create(['name' => 'femme']);
+        Catalog::factory()->create(['name' => 'homme']);
     }
 }

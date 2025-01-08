@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Catalog;
 use App\Models\Category;
 use App\Models\Product;
+use Exception;
 
 class ProductService
 {
@@ -36,7 +37,7 @@ class ProductService
 
         $products = $this->filterProductsBySize($products, $size);
 
-        if(!$products) {
+        if (!$products) {
             throw new Exception("Aucun résultat");
         }
 
@@ -81,7 +82,7 @@ class ProductService
 
         $products = $this->filterProductsBySize($products, $size);
 
-        if(!$products) {
+        if (!$products) {
             throw new Exception("Aucun résultat");
         }
 
@@ -94,31 +95,31 @@ class ProductService
             case "new":
                 $products = Product::where([
                     ["name", "like", "%" . $input . "%"],
-                    ["catalog_id", $catalog->id],
+                    ["catalog_id", $catalog_id],
                 ])->orderBy('created_at', 'DESC');
                 break;
             case "price-lowest":
                 $products = Product::where([
                     ["name", "like", "%" . $input . "%"],
-                    ["catalog_id", $catalog->id],
+                    ["catalog_id", $catalog_id],
                 ])->orderBy('price', 'ASC');
                 break;
             case "price-highest":
                 $products = Product::where([
                     ["name", "like", "%" . $input . "%"],
-                    ["catalog_id", $catalog->id],
+                    ["catalog_id", $catalog_id],
                 ])->orderBy('price', 'DESC');
                 break;
             default:
-            $products = Product::where([
-                ["name", "like", "%" . $input . "%"],
-                ["catalog_id", $catalog->id],
-            ])->orderBy('created_at', 'DESC');
+                $products = Product::where([
+                    ["name", "like", "%" . $input . "%"],
+                    ["catalog_id", $catalog_id],
+                ])->orderBy('created_at', 'DESC');
         }
 
         $products = $this->filterProductsBySize($products, $size);
 
-        if(!$products) {
+        if (!$products) {
             throw new Exception("Aucun résultat");
         }
 
@@ -135,7 +136,7 @@ class ProductService
         ])->limit(5)->get();
 
         foreach ($products as $product) {
-            $product_images = json_decode($product->img, true);
+            $product_images = $product->img;
             $product_stock = 0;
             $quantity_per_size = $product->quantity_per_size;
             foreach ($quantity_per_size as $size => $quantity) {
@@ -154,7 +155,7 @@ class ProductService
             ];
         }
 
-        if(results.length === 0) {
+        if (count($results) === 0) {
             throw new Exception("Aucun résultat");
         }
 

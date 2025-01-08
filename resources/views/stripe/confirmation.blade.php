@@ -25,9 +25,9 @@
 
 @section('main')
 <div class="title-container ">
-    <h1 class="mt-8 md:mt-10 mb-20">Confirmation de commande</h1>
+    <h1 class="mt-8 md:mt-24"><span>Confirmation de commande</span></h1>
 </div>
-<p class=" mt-12 text-center">Merci d'avoir choisi {{ env("APP_NAME") }} {{ $order->fullname }} ! Nous sommes ravis de confirmer la réception de votre commande.</p>
+<p class="mt-8 text-center">Merci d'avoir choisi {{ env("APP_NAME") }} {{ $order->fullname }} ! Nous sommes ravis de confirmer la réception de votre commande.</p>
 
 <section class="command-header w-fit mt-16 mx-auto">
     <h3 class="mt-8 uppercase">Récapitulatif de votre commande</h3>
@@ -58,13 +58,10 @@
         </thead>
         <tbody>
             @foreach($order->products as $key => $product)
-            @php
-            $product_image = json_decode(\App\Models\Product::where("id", $key)->first()->img, true)[0];
-            @endphp
             @foreach($product as $size)
             <tr class="bg-white border-b hover:bg-gray-50">
                 <td class="max-md:hidden pt-4 pb-4 pl-4">
-                    <x-cld-image public-id="{{ str_replace('\\', '/', $product_image) }}" class="w-16 md:w-32 max-w-full max-h-full" alt="{{ $size['name'] }}"></x-cld-image>
+                    <x-cld-image public-id="{{ \App\Models\Product::where('id', $key)->first()->img[0] }}" class="w-16 md:w-32 max-w-full max-h-full" alt="{{ $size['name'] }}"></x-cld-image>
                 </td>
                 <td class="py-4 font-semibold text-gray-900">
                     <h4 class="text-center">{{ ucfirst($size['name']) }}</h4>
@@ -131,10 +128,10 @@
     </div>
 </div>
 
-<div class="max-w-[1024px] mt-16 mx-auto">
+<div class="max-w-[1024px] mt-8 mx-auto">
     <p>Vous pourrez suivre l'évolution de votre commande en temps réel grâce au numéro de suivi qui vous sera envoyé dès l'expédition de votre colis. Si vous avez des questions, veuillez envoyer un email à <a href="mailto:{{ env('MAIL_FROM_ADDRESS') }}">{{ env('MAIL_FROM_ADDRESS') }}</a>.</p>
     <p class="mt-4">Nous tenons à vous remercier sincèrement pour votre confiance. Chez {{ env("APP_NAME") }}, chaque commande est spéciale, et nous sommes impatients de vous voir rayonner dans nos pièces tendance.</p>
-    <p class="last-p w-fit mt-12 mb-8 mx-auto text-center">Bien à vous, <br>L'équipe {{ env("APP_NAME") }}</p>
+    <p class="last-p w-fit my-8 mx-auto text-center">Bien à vous, <br>L'équipe {{ env("APP_NAME") }}</p>
 </div>
 @endsection
 

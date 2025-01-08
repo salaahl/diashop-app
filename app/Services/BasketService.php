@@ -31,7 +31,7 @@ class BasketService
             throw new Exception("Stock insuffisant. Veuillez actualiser la page.");
         }
 
-        $product_image = json_decode($product->img, true)[0];
+        $product_image = $product->img[0];
         $product->promotion ?
             $price = round($product->price - ($product->price / 100 * $product->promotion), 2)
             : $price = $product->price;
@@ -51,7 +51,7 @@ class BasketService
         // Je retire la quantité au produit dans la BDD
         $quantity_per_size = $product->quantity_per_size;
         $quantity_per_size[$size] -= $quantity;
-        $product->quantity_per_size = json_encode($quantity_per_size);
+        $product->quantity_per_size = $quantity_per_size;
         $product->save();
 
         $basket[$product_id][$size] = $product_details; // On ajoute ou on met à jour le produit au panier
@@ -76,7 +76,7 @@ class BasketService
         $product = Product::where('id', $product_id)->first();
         $quantity_per_size = $product->quantity_per_size;
         $quantity_per_size[$size] += $quantity;
-        $product->quantity_per_size = json_encode($quantity_per_size);
+        $product->quantity_per_size = $quantity_per_size;
         $product->save();
     }
 
@@ -92,7 +92,7 @@ class BasketService
                 $product = Product::where('id', $item['id'])->first();
                 $quantity_per_size = $product->quantity_per_size;
                 $quantity_per_size[$item['size']] += $item['quantity'];
-                $product->quantity_per_size = json_encode($quantity_per_size);
+                $product->quantity_per_size = $quantity_per_size;
                 $product->save();
             }
         }

@@ -15,7 +15,7 @@ $total = 0;
       <div
         class="flex items-center justify-between h-[10%] p-4 md:p-5 rounded-t">
         <h2 id="basket-title" class="text-left uppercase font-normal">
-          Votre panier
+          <span>Votre panier</span>
         </h2>
         <button
           type="button"
@@ -40,7 +40,7 @@ $total = 0;
       <!-- Modal body -->
       <div
         id="basket-body"
-        class="h-[65%] p-4 md:p-5 space-y-4 overflow-auto">
+        class="h-[65%] p-4 md:p-5 overflow-auto">
         <div
           id="summary-container"
           class="h-full w-full overflow-x-auto">

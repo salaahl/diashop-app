@@ -81,8 +81,11 @@ h1 {
     text-align: center;
     text-wrap-style: balance;
     font-size: var(--h1-font-size);
-    font-weight: 900;
     color: rgb(var(--accent-color-4));
+}
+
+h1 > span {
+    font-weight: 900;
     background-image: linear-gradient(
         rgb(var(--accent-color-1)),
         rgb(var(--accent-color-1))
@@ -90,12 +93,6 @@ h1 {
     background-size: 100% 35%;
     background-repeat: no-repeat;
     background-position: 0 100%;
-    transition: background-size 0.5s, background-position 0.3s ease-in-out;
-}
-
-h1:hover {
-    background-size: 100% 100%;
-    background-position: 0 0;
 }
 
 h2 {

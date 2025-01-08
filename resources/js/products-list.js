@@ -9,53 +9,55 @@ gsap.config({
 });
 gsap.defaults({ ease: "power1.out" });
 
-gsap.from(".category", {
-    x: -50,
-    opacity: 0,
-    duration: 0.4,
-    delay: 0.8,
-    stagger: 0.2,
-});
-
-// Boutons de défilement des catégories
-if (window.innerWidth > 767) {
-    const scrollableDiv =
-        document.querySelector(".scroll-controls").nextElementSibling;
-    const scrollLeftButton = document.querySelector(
-        ".scroll-controls > .scroll-left"
-    );
-    const scrollRightButton = document.querySelector(
-        ".scroll-controls > .scroll-right"
-    );
-
-    const updateButtons = () => {
-        if (scrollableDiv.scrollLeft < 20) {
-            scrollLeftButton.classList.add("hide");
-        } else {
-            scrollLeftButton.classList.remove("hide");
-        }
-
-        if (
-            scrollableDiv.scrollLeft + scrollableDiv.clientWidth >=
-            scrollableDiv.scrollWidth
-        ) {
-            scrollRightButton.classList.add("hide");
-        } else {
-            scrollRightButton.classList.remove("hide");
-        }
-    };
-
-    scrollLeftButton.addEventListener("click", () => {
-        scrollableDiv.scrollBy({ left: -100, behavior: "smooth" });
+if (document.querySelector("#categories")) {
+    gsap.from(".category", {
+        x: -50,
+        opacity: 0,
+        duration: 0.4,
+        delay: 0.8,
+        stagger: 0.2,
     });
 
-    scrollRightButton.addEventListener("click", () => {
-        scrollableDiv.scrollBy({ left: 100, behavior: "smooth" });
-    });
+    // Boutons de défilement des catégories
+    if (window.innerWidth > 767) {
+        const scrollableDiv =
+            document.querySelector(".scroll-controls").nextElementSibling;
+        const scrollLeftButton = document.querySelector(
+            ".scroll-controls > .scroll-left"
+        );
+        const scrollRightButton = document.querySelector(
+            ".scroll-controls > .scroll-right"
+        );
 
-    scrollableDiv.addEventListener("scroll", updateButtons);
+        const updateButtons = () => {
+            if (scrollableDiv.scrollLeft < 20) {
+                scrollLeftButton.classList.add("hide");
+            } else {
+                scrollLeftButton.classList.remove("hide");
+            }
 
-    updateButtons();
+            if (
+                scrollableDiv.scrollLeft + scrollableDiv.clientWidth >=
+                scrollableDiv.scrollWidth
+            ) {
+                scrollRightButton.classList.add("hide");
+            } else {
+                scrollRightButton.classList.remove("hide");
+            }
+        };
+
+        scrollLeftButton.addEventListener("click", () => {
+            scrollableDiv.scrollBy({ left: -100, behavior: "smooth" });
+        });
+
+        scrollRightButton.addEventListener("click", () => {
+            scrollableDiv.scrollBy({ left: 100, behavior: "smooth" });
+        });
+
+        scrollableDiv.addEventListener("scroll", updateButtons);
+
+        updateButtons();
+    }
 }
 
 const products =

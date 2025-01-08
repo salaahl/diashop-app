@@ -6,13 +6,13 @@ const popUpTimer = 5000;
 
 let timer;
 
-$("#default-search").addEventListener("input", (e) => {
+document.getElementById("search-form").addEventListener("change", function (e) {
     e.preventDefault();
-
+    
     clearTimeout(timer);
 
     timer = setTimeout(function () {
-        if ($("#default-search").value.length > 0) {
+        if ($("#default-search").value) {
             $("#search-results").innerHTML = "";
             document.getElementById("search-loader").classList.add("show");
 
@@ -35,7 +35,7 @@ $("#default-search").addEventListener("input", (e) => {
             fetch(request)
                 .then((response) => response.json())
                 .then((data) => {
-                    if (data.results != "") {
+                    if (data.results && data.results.length > 0) {
                         data.results.forEach((product) => {
                             $("#search-results").innerHTML +=
                                 '<article class="product">' +
@@ -74,7 +74,8 @@ $("#default-search").addEventListener("input", (e) => {
                         $("#more-results").classList.add("show");
                     } else {
                         $("#more-results").classList.remove("show");
-                        $("#search-results").innerHTML = "AUCUN RESULTAT";
+                        $("#search-results").innerHTML =
+                            "<span class='mt-16 mx-auto'>AUCUN RESULTAT</span>";
                     }
 
                     document
