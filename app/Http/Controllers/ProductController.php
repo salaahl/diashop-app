@@ -39,17 +39,17 @@ class ProductController extends Controller
                 $request->sizes,
                 $request->sort_by,
             );
-
-            return view('products/list', [
-                "categories" => $categories,
-                "products" => $products
-            ]);
         } catch (Exception $e) {
             return redirect()->route('catalog', $catalog)->with(
                 'error',
                 $e->getMessage()
             );
         }
+
+        return view('products/list', [
+            "categories" => $categories,
+            "products" => $products
+        ]);
     }
 
     public function category($catalog, $category, Request $request)
@@ -63,17 +63,17 @@ class ProductController extends Controller
                 $request->sizes,
                 $request->sort_by,
             );
-
-            return view('products/list', [
-                "categories" => $categories,
-                "products" => $products
-            ]);
         } catch (Exception $e) {
             return redirect()->route('catalog', $catalog)->with(
                 'error',
-                'Erreur lors du chargement. Veuillez réessayer.'
+                $e->getMessage()
             );
         }
+
+        return view('products/list', [
+            "categories" => $categories,
+            "products" => $products
+        ]);
     }
 
     /**
@@ -103,26 +103,33 @@ class ProductController extends Controller
     {
         try {
             $quantity = Product::find($request->product_id)->quantity_per_size;
-
-            return response()->json([
-                'quantity' => $quantity[$request->size]
-            ]);
         } catch (Exception $e) {
             return response()->json([
                 'error' => $e->getMessage(),
             ]);
         }
+
+        return response()->json([
+            'quantity' => $quantity[$request->size]
+        ]);
     }
 
     public function search(Request $request, $catalog, $input)
     {
-        $catalog = Catalog::where("name", $catalog)->first();
-        $products = $this->productService->getProductsByQuery(
-            $catalog->id,
-            $input,
-            $request->sizes,
-            $request->sort_by,
-        );
+        try {
+            $catalog = Catalog::where("name", $catalog)->first();
+            $products = $this->productService->getProductsByQuery(
+                $catalog->id,
+                $input,
+                $request->sizes,
+                $request->sort_by,
+            );
+        } catch (Exception $e) {
+            return redirect()->route('catalog', $catalog->id)->with(
+                'error',
+                'Erreur lors du chargement. Veuillez réessayer.'
+            );
+        }
 
         return view('products/list', [
             "products" => $products
@@ -133,14 +140,14 @@ class ProductController extends Controller
     {
         try {
             $products = $this->productService->searchProductsAsync($request->catalog, $request->input);
-
-            return response()->json([
-                'results' => $products
-            ]);
         } catch (Exception $e) {
             return response()->json([
                 'error' => $e->getMessage(),
             ]);
         }
+
+        return response()->json([
+            'results' => $products
+        ]);
     }
 }

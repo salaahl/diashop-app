@@ -40,6 +40,10 @@ class ProductService
 
         $products = $this->filterProductsBySize($products, $sizes);
 
+        if(!products) {
+            throw new Exception("Aucun résultat");
+        }
+        
         return $products;
     }
 
@@ -81,6 +85,10 @@ class ProductService
 
         $products = $this->filterProductsBySize($products, $sizes);
 
+        if(!products) {
+            throw new Exception("Aucun résultat");
+        }
+
         return $products;
     }
 
@@ -114,6 +122,10 @@ class ProductService
 
         $products = $this->filterProductsBySize($products, $sizes);
 
+        if(!products) {
+            throw new Exception("Aucun résultat");
+        }
+
         return $products;
     }
 
@@ -144,6 +156,10 @@ class ProductService
                 ],
                 "message" => $product_stock ? "" : "Ce produit est en rupture de stock"
             ];
+        }
+
+        if(results.length === 0) {
+            throw new Exception("Aucun résultat");
         }
 
         return $results;
