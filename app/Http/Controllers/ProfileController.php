@@ -65,7 +65,7 @@ class ProfileController extends Controller
     public function orders()
     {
         $user = Auth::user();
-        $orders = Order::where("user_id", 1)->orderBy('created_at', 'ASC')->paginate(12);
+        $orders = Order::where("user_id", $user->id)->orderBy('created_at', 'ASC')->paginate(12);
 
         return view('orders', [
             "orders" => $orders,

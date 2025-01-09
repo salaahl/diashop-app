@@ -13,7 +13,8 @@ h1 > span {
     );
 }
 
-h1.search-title {
+h1.search-title, 
+h1.favorites-title {
     font-size: var(--h1-font-size);
 }
 

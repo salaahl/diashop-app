@@ -16,7 +16,7 @@
 
 @section('main')
 <div class="min-h-screen w-full mt-[-80px] pt-[80px]">
-    @if(isset($orders))
+    @if(!$orders->isEmpty())
     <div class="title-container">
         <h1 class="my-8 md:mt-24 md:mb-32"><span>Mes commandes</span></h1>
     </div>
@@ -80,10 +80,8 @@
         @endforeach
     </section>
     @else
-    <div id="orders-empty" class="h-[100vh] w-full top-0 left-0 flex flex-col justify-center items-center mt-[-80px] px-4">
-        <div class="title-container">
-            <h1 class="mb-0"><span>Vous n'avez pas de commandes</span></h1>
-        </div>
+    <div class="title-container h-[100vh] w-full top-0 left-0 flex flex-col justify-center items-center mt-[-80px] px-4">
+        <h1 class="mb-0"><span>Vous n'avez pas (encore) de commandes</span></h1>
         <a href="{{ route('home') }}" class="m-5 py-3 px-6 bg-gray-800 text-center text-white rounded-full">Retourner sur la page d'accueil</a>
     </div>
     @endif
