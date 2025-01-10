@@ -33,7 +33,7 @@
                 <nav class="breadcrumb">
                     <ul class="flex items-center">
                         <li>
-                            <a href="{{ route('catalog', $product->catalog->name) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ ucfirst($product->catalog->name) }}</a>
+                            <a href="{{ route('catalog', $product->catalog->name) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ $product->catalog->name }}</a>
                         </li>
                         <li>
                             <span class="mx-1 text-sm text-gray-700"> / </span>

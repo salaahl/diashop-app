@@ -302,6 +302,7 @@ img {
 .radio-toolbar label {
     height: auto;
     padding: 4px 11px;
+    cursor: pointer;
 }
 
 .radio-toolbar input[type="checkbox"]:checked + label,

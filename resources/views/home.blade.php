@@ -96,7 +96,7 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
                     <nav class="breadcrumb mt-2 lg:mt-0">
                         <ul class="flex items-center">
                             <li>
-                                <a href="{{ route('catalog', $product->catalog->name) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ ucfirst($product->catalog->name) }}</a>
+                                <a href="{{ route('catalog', $product->catalog->name) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ $product->catalog->name }}</a>
                             </li>
                             <li>
                                 <span class="mx-1 text-sm text-gray-700"> / </span>
@@ -192,7 +192,7 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
         </div>
     </div>
 </section>
-<section id="garanties-container" class="md:h-[100px] w-full max-w-[1440px] flex flex-col md:flex-row flex-nowrap items-center justify-between md:mb-8 md:mt-24 mx-auto p-4 bg-[rgb(var(--accent-color-1))] md:bg-gray-100 md:rounded-lg">
+<section id="garanties-container" class="md:h-[100px] w-full flex flex-col md:flex-row flex-nowrap items-center justify-between md:mt-24 p-4 bg-[rgb(var(--accent-color-1))] md:bg-white md:filter brightness[0.99]">
     <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Livraison gratuite à partir de {{ env('FREE_SHIPPING') / 100 }}€</div>
     <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Satisfait ou remboursé</div>
     <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Paiement sécurisé avec Stripe</div>
