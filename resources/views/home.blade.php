@@ -158,7 +158,7 @@ $product = $catalogs->random(1)->first()->products->random(1)->first();
                 </svg>
             </button>
         </div>
-        <div class="testimonial w-full lg:min-w-[380px] flex flex-col items-start lg:ml-16 lg:mr-8 my-8 lg:my-0 px-6 lg:px-8 py-4 lg:py-6 snap-center rounded-3xl">
+        <div class="testimonial w-full lg:min-w-[380px] flex flex-col items-start lg:ml-16 lg:mr-8 mb-8 lg:mb-0 px-6 lg:px-8 py-4 lg:py-6 snap-center rounded-3xl">
             <div class="stars mb-2 text-xl">★★★★★</div>
             <h4 class="title mb-4 font-[500]">Super expérience !</h4>
             <p class="mb-4 text-gray-800">
@@ -166,7 +166,7 @@ $product = $catalogs->random(1)->first()->products->random(1)->first();
             </p>
             <span class="author">Clara</span>
         </div>
-        <div class="testimonial w-full lg:min-w-[380px] flex flex-col items-start lg:mx-8 my-8 lg:my-0 px-6 lg:px-8 py-4 lg:py-6 snap-center rounded-3xl">
+        <div class="testimonial w-full lg:min-w-[380px] flex flex-col items-start lg:mx-8 mb-8 lg:mb-0 px-6 lg:px-8 py-4 lg:py-6 snap-center rounded-3xl">
             <div class="stars mb-2 text-xl">★★★★★</div>
             <h4 class="title mb-4 font-[500]">Parfait</h4>
             <p class="mb-4 text-gray-800">
@@ -174,7 +174,7 @@ $product = $catalogs->random(1)->first()->products->random(1)->first();
             </p>
             <span class="author">Thomas</span>
         </div>
-        <div class="testimonial w-full lg:min-w-[380px] flex flex-col items-start lg:mx-8 my-8 lg:my-0 px-6 lg:px-8 py-4 lg:py-6 snap-center rounded-3xl">
+        <div class="testimonial w-full lg:min-w-[380px] flex flex-col items-start lg:mx-8 mb-8 lg:mb-0 px-6 lg:px-8 py-4 lg:py-6 snap-center rounded-3xl">
             <div class="stars mb-2 text-xl">★★★★★</div>
             <h4 class="title mb-4 font-[500]">Ravie de ma commande</h4>
             <p class="mb-4 text-gray-800">
@@ -189,11 +189,6 @@ $product = $catalogs->random(1)->first()->products->random(1)->first();
     <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Satisfait ou remboursé</div>
     <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Paiement sécurisé avec Stripe</div>
     <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent rounded-xl md:rounded-none">3x sans frais</div>
-</section>
-<section id="end-container" class="hidden w-full lg:flex flex-nowrap items-center my-8 lg:my-20 mx-auto p-4">
-    <div class="title-container w-full">
-        <h2 class="min-h-[60px] lg:min-h-[80px] flex items-center justify-center mx-auto text-6xl font-bold"></h2>
-    </div>
 </section>
 @endsection
 

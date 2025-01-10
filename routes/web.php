@@ -46,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('search/{catalog}/{input}', [ProductController::class, 'search'])->name('search.product');
+Route::post('search/{catalog}/{input}', [ProductController::class, 'search'])->name('search.product.post');
 Route::post('search/', [ProductController::class, 'searchAsync'])->name('search.product.async');
 
 Route::get('catalog/{catalog}/', [ProductController::class, 'catalog'])->name('catalog');
