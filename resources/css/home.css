@@ -294,6 +294,17 @@ h1 > span {
     }
 
     #garanties-container {
+        mask-image: linear-gradient(
+                to left,
+                rgb(255, 255, 255, 0) 0%,
+                rgb(255, 255, 255, 1) 20px
+            ),
+            linear-gradient(
+                to right,
+                rgb(255, 255, 255, 0) 0%,
+                rgb(255, 255, 255, 1) 20px
+            );
+        mask-composite: intersect;
         box-shadow: rgb(243 244 246) 0px 24px 50px 0px;
     }
 }

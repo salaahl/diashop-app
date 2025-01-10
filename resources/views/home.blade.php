@@ -46,7 +46,15 @@
     $product_stock += $quantity;
     }
     @endphp
-    <x-product-card created="{{ $product->created_at->timestamp }}" link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product->img[0] }}" image2="{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
+    <x-product-card
+        :created="$product->created_at->timestamp"
+        :link="route('product', [$product->catalog->name, $product->category->name, $product->id])"
+        :image1="$product->img[0]"
+        :image2="$product->img[1]"
+        :title="$product->name"
+        :initialPrice="round($product->price, 2)"
+        :finalPrice="round($product->final_price, 2)"
+        :message="!$product_stock ? 'Cet article est en rupture de stock' : ''" />
     @endforeach
     <article class="more-products product flex flex-col items-center justify-center">
         <a href="{{ route('catalog', 'femme') }}" class="button-stylised-1 w-3/4 mx-auto mb-4">Nouveautés pour elle</a>
@@ -68,7 +76,7 @@
     </div>
 </section>
 @php
-$product = $catalogs->random(1)->first()->products->random(1)->first();
+$product = $catalogs->random()->products->random()->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->first();
 @endphp
 <section id="product-of-the-week-container" class="md:w-[90%] max-w-[1280px] mx-auto mt-[10px] md:mt-16 px-[10px]">
     <div class=" title-container w-full mb-8">
@@ -83,7 +91,7 @@ $product = $catalogs->random(1)->first()->products->random(1)->first();
             </ul>
         </div>
         <div id="product-details-container" class="w-full lg:w-2/4 lg:pl-6">
-            <div id="product-detail" class="h-full flex flex-col">
+            <div id="product-detail" class="h-full flex flex-col pt-4 lg:pt-0">
                 <div>
                     <nav class="breadcrumb mt-2 lg:mt-0">
                         <ul class="flex items-center">
@@ -106,7 +114,7 @@ $product = $catalogs->random(1)->first()->products->random(1)->first();
                     </nav>
                     <div class="flex items-center">
                         <div class="title-container">
-                            <h2 class="my-2 lg:my-4 uppercase"><span>{{ ucfirst($product->name) }}</span></h2>
+                            <h2><span>{{ ucfirst($product->name) }}</span></h2>
                         </div>
                         @if(strtotime('-1 month', time()) > $product->created_at->timestamp)
                         <div class="new-badge">
@@ -116,11 +124,11 @@ $product = $catalogs->random(1)->first()->products->random(1)->first();
                     </div>
                     @if($product->promotion)
                     <div class="flex mb-6 lg:mb-12">
-                        <h2 id="price" class="w-min font-normal">{{ round($product->price - ($product->price / 100 * $product->promotion), 2) }}€</h2>
-                        <h2 class="w-min ml-4 font-normal line-through">{{ $product->price }}€</h2>
+                        <h2 id="price" class="w-min font-normal">{{ round($product->final_price, 2) }}€</h2>
+                        <h2 class="w-min ml-4 font-normal line-through">{{ round($product->price, 2) }}€</h2>
                     </div>
                     @else
-                    <h2 id="price" class="w-min mb-6 lg:mb-12 font-normal">{{ $product->price }}€</h2>
+                    <h2 id="price" class="w-min mb-6 lg:mb-12 font-normal">{{ round($product->price, 2) }}€</h2>
                     @endif
                     <div id="description" class="mb-8 lg:mb-24">{!! ucfirst($product->description) !!}</div>
                 </div>
@@ -158,7 +166,7 @@ $product = $catalogs->random(1)->first()->products->random(1)->first();
                 </svg>
             </button>
         </div>
-        <div class="testimonial w-full lg:min-w-[380px] flex flex-col items-start lg:ml-16 lg:mr-8 my-8 lg:my-0 px-6 lg:px-8 py-4 lg:py-6 snap-center rounded-3xl">
+        <div class="testimonial w-full lg:min-w-[380px] flex flex-col items-start lg:ml-16 lg:mr-8 mb-8 lg:mb-0 px-6 lg:px-8 py-4 lg:py-6 snap-center rounded-3xl">
             <div class="stars mb-2 text-xl">★★★★★</div>
             <h4 class="title mb-4 font-[500]">Super expérience !</h4>
             <p class="mb-4 text-gray-800">
@@ -166,7 +174,7 @@ $product = $catalogs->random(1)->first()->products->random(1)->first();
             </p>
             <span class="author">Clara</span>
         </div>
-        <div class="testimonial w-full lg:min-w-[380px] flex flex-col items-start lg:mx-8 my-8 lg:my-0 px-6 lg:px-8 py-4 lg:py-6 snap-center rounded-3xl">
+        <div class="testimonial w-full lg:min-w-[380px] flex flex-col items-start lg:mx-8 mb-8 lg:mb-0 px-6 lg:px-8 py-4 lg:py-6 snap-center rounded-3xl">
             <div class="stars mb-2 text-xl">★★★★★</div>
             <h4 class="title mb-4 font-[500]">Parfait</h4>
             <p class="mb-4 text-gray-800">
@@ -174,7 +182,7 @@ $product = $catalogs->random(1)->first()->products->random(1)->first();
             </p>
             <span class="author">Thomas</span>
         </div>
-        <div class="testimonial w-full lg:min-w-[380px] flex flex-col items-start lg:mx-8 my-8 lg:my-0 px-6 lg:px-8 py-4 lg:py-6 snap-center rounded-3xl">
+        <div class="testimonial w-full lg:min-w-[380px] flex flex-col items-start lg:mx-8 mb-8 lg:mb-0 px-6 lg:px-8 py-4 lg:py-6 snap-center rounded-3xl">
             <div class="stars mb-2 text-xl">★★★★★</div>
             <h4 class="title mb-4 font-[500]">Ravie de ma commande</h4>
             <p class="mb-4 text-gray-800">
@@ -189,11 +197,6 @@ $product = $catalogs->random(1)->first()->products->random(1)->first();
     <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Satisfait ou remboursé</div>
     <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Paiement sécurisé avec Stripe</div>
     <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent rounded-xl md:rounded-none">3x sans frais</div>
-</section>
-<section id="end-container" class="hidden w-full lg:flex flex-nowrap items-center my-8 lg:my-20 mx-auto p-4">
-    <div class="title-container w-full">
-        <h2 class="min-h-[60px] lg:min-h-[80px] flex items-center justify-center mx-auto text-6xl font-bold"></h2>
-    </div>
 </section>
 @endsection
 

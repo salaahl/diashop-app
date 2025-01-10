@@ -6,18 +6,16 @@ const popUpTimer = 5000;
 
 let timer;
 
-document.getElementById("search-form").addEventListener("change", function (e) {
-    e.preventDefault();
-    
+const searchProducts = () => {
     clearTimeout(timer);
 
     timer = setTimeout(function () {
-        if ($("#default-search").value) {
+        if ($("#search-input").value.length > 2) {
             $("#search-results").innerHTML = "";
             document.getElementById("search-loader").classList.add("show");
 
             let data = {
-                input: $("#default-search").value,
+                input: $("#search-input").value,
                 catalog: $("#search-modal [name='catalog']:checked").value,
             };
 
@@ -89,12 +87,30 @@ document.getElementById("search-form").addEventListener("change", function (e) {
             $("#more-results").classList.remove("show");
             $("#search-results").innerHTML = "";
         }
-    }, 1000);
+    }, 500);
+};
+
+// Désactive la fonction submit du formulaire
+document.getElementById("search-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+});
+
+// EventListener sur les inputs pour lancer la recherche dynamiquement
+document
+    .querySelectorAll("#search-modal [name='catalog']")
+    .forEach((catalog) => {
+        catalog.addEventListener("change", function () {
+            searchProducts();
+        });
+    });
+
+document.getElementById("search-input").addEventListener("input", function () {
+    searchProducts();
 });
 
 $("#more-results").addEventListener("click", () => {
     let catalog = $("#search-modal [name='catalog']:checked").value;
-    let input = $("#default-search").value;
+    let input = $("#search-input").value;
 
     window.location = "/search/" + catalog + "/" + input;
 });

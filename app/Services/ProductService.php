@@ -23,16 +23,16 @@ class ProductService
     {
         switch ($sort_by) {
             case "new":
-                $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'DESC');
+                $products = Product::where("catalog_id", $catalog_id)->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->orderBy('created_at', 'DESC');
                 break;
             case "price-lowest":
-                $products = Product::where("catalog_id", $catalog_id)->orderBy('price', 'ASC');
+                $products = Product::where("catalog_id", $catalog_id)->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->orderBy('final_price', 'ASC');
                 break;
             case "price-highest":
-                $products = Product::where("catalog_id", $catalog_id)->orderBy('price', 'DESC');
+                $products = Product::where("catalog_id", $catalog_id)->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->orderBy('final_price', 'DESC');
                 break;
             default:
-                $products = Product::where("catalog_id", $catalog_id)->orderBy('created_at', 'DESC');
+                $products = Product::where("catalog_id", $catalog_id)->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->orderBy('created_at', 'DESC');
         }
 
         $products = $this->filterProductsBySize($products, $size);
@@ -53,7 +53,9 @@ class ProductService
                     Category::where("catalog_id", $catalog_id)
                         ->where("name", $category)
                         ->first()->id
-                )->orderBy('created_at', 'DESC');
+                )
+                    ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+                ->orderBy('created_at', 'DESC');
                 break;
             case "price-lowest":
                 $products = Product::where(
@@ -61,7 +63,9 @@ class ProductService
                     Category::where("catalog_id", $catalog_id)
                         ->where("name", $category)
                         ->first()->id
-                )->orderBy('price', 'ASC');
+                )
+                ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+                ->orderBy('final_price', 'ASC');
                 break;
             case "price-highest":
                 $products = Product::where(
@@ -69,7 +73,9 @@ class ProductService
                     Category::where("catalog_id", $catalog_id)
                         ->where("name", $category)
                         ->first()->id
-                )->orderBy('price', 'DESC');
+                )
+                ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+                ->orderBy('final_price', 'DESC');
                 break;
             default:
                 $products = Product::where(
@@ -77,7 +83,9 @@ class ProductService
                     Category::where("catalog_id", $catalog_id)
                         ->where("name", $category)
                         ->first()->id
-                )->orderBy('created_at', 'DESC');
+                )
+                ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+                ->orderBy('created_at', 'DESC');
         }
 
         $products = $this->filterProductsBySize($products, $size);
@@ -96,25 +104,33 @@ class ProductService
                 $products = Product::where([
                     ["name", "like", "%" . $input . "%"],
                     ["catalog_id", $catalog_id],
-                ])->orderBy('created_at', 'DESC');
+                ])
+                ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+                ->orderBy('created_at', 'DESC');
                 break;
             case "price-lowest":
                 $products = Product::where([
                     ["name", "like", "%" . $input . "%"],
                     ["catalog_id", $catalog_id],
-                ])->orderBy('price', 'ASC');
+                ])
+                ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+                ->orderBy('final_price', 'ASC');
                 break;
             case "price-highest":
                 $products = Product::where([
                     ["name", "like", "%" . $input . "%"],
                     ["catalog_id", $catalog_id],
-                ])->orderBy('price', 'DESC');
+                ])
+                ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+                ->orderBy('final_price', 'DESC');
                 break;
             default:
                 $products = Product::where([
                     ["name", "like", "%" . $input . "%"],
                     ["catalog_id", $catalog_id],
-                ])->orderBy('created_at', 'DESC');
+                ])
+                ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+                ->orderBy('created_at', 'DESC');
         }
 
         $products = $this->filterProductsBySize($products, $size);
