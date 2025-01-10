@@ -46,7 +46,15 @@
     $product_stock += $quantity;
     }
     @endphp
-    <x-product-card created="{{ $product->created_at->timestamp }}" link="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" image1="{{ $product->img[0] }}" image2="{{ $product->img[1] }}" title="{{ $product->name }}" price="{{ $product->price }}" promotion="{{ $product->promotion ? round($product->price - ($product->price / 100 * $product->promotion), 2) : null }}" message="{{ $product_stock ? null : 'Cet article est en rupture de stock' }}" />
+    <x-product-card
+        :created="$product->created_at->timestamp"
+        :link="route('product', [$product->catalog->name, $product->category->name, $product->id])"
+        :image1="$product->img[0]"
+        :image2="$product->img[1]"
+        :title="$product->name"
+        :initial_price="round($product->price, 2)"
+        :final_price="round($product->final_price, 2)"
+        :message="!$product_stock ? 'Cet article est en rupture de stock' : ''" />
     @endforeach
     <article class="more-products product flex flex-col items-center justify-center">
         <a href="{{ route('catalog', 'femme') }}" class="button-stylised-1 w-3/4 mx-auto mb-4">Nouveautés pour elle</a>
@@ -116,11 +124,11 @@ $product = $catalogs->random(1)->first()->products->random(1)->first();
                     </div>
                     @if($product->promotion)
                     <div class="flex mb-6 lg:mb-12">
-                        <h2 id="price" class="w-min font-normal">{{ round($product->price - ($product->price / 100 * $product->promotion), 2) }}€</h2>
-                        <h2 class="w-min ml-4 font-normal line-through">{{ $product->price }}€</h2>
+                        <h2 id="price" class="w-min font-normal">{{ round($product->final_price, 2) }}€</h2>
+                        <h2 class="w-min ml-4 font-normal line-through">{{ round($product->price, 2) }}€</h2>
                     </div>
                     @else
-                    <h2 id="price" class="w-min mb-6 lg:mb-12 font-normal">{{ $product->price }}€</h2>
+                    <h2 id="price" class="w-min mb-6 lg:mb-12 font-normal">{{ round($product->price, 2) }}€</h2>
                     @endif
                     <div id="description" class="mb-8 lg:mb-24">{!! ucfirst($product->description) !!}</div>
                 </div>

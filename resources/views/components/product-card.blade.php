@@ -14,11 +14,11 @@
                 <h4 class="title lg:max-w-[75%] mr-[20px] text-ellipsis overflow-hidden">{{ ucfirst($title) }}</h4>
                 <div class="flex items-center">
                     @if(empty($message))
-                    @if(empty($promotion))
-                    <h4 class="price flex items-center max-lg:mt-1 text-sm font-normal">{{ $price }}€</h4>
+                    @if($initial_price === $final_price)
+                    <h4 class="price flex items-center max-lg:mt-1 text-sm font-normal">{{ $final_price }}€</h4>
                     @else
-                    <h4 class="price flex items-center max-lg:mt-1 text-sm font-normal line-through">{{ $price }}€</h4>
-                    <h4 class="price flex items-center ml-2 max-lg:mt-1 text-sm font-normal">{{ $promotion }}€</h4>
+                    <h4 class="price flex items-center max-lg:mt-1 text-sm font-normal line-through">{{ $initial_price }}€</h4>
+                    <h4 class="price flex items-center ml-2 max-lg:mt-1 text-sm font-normal">{{ $final_price }}€</h4>
                     @endif
                     @else
                     <span class="message text-sm font-thin text-red-500">{{ $message }}</span>
