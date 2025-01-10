@@ -192,7 +192,7 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
         </div>
     </div>
 </section>
-<section id="garanties-container" class="md:h-[100px] w-full flex flex-col md:flex-row flex-nowrap items-center justify-between md:mt-24 p-4 bg-[rgb(var(--accent-color-1))] md:bg-white md:filter brightness[0.99]">
+<section id="garanties-container" class="md:h-[100px] w-full flex flex-col md:flex-row flex-nowrap items-center justify-between md:mt-24 p-4 bg-[rgb(var(--accent-color-1))] md:bg-white md:filter brightness-[0.99]">
     <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Livraison gratuite à partir de {{ env('FREE_SHIPPING') / 100 }}€</div>
     <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Satisfait ou remboursé</div>
     <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Paiement sécurisé avec Stripe</div>
