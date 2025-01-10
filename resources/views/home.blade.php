@@ -52,8 +52,8 @@
         :image1="$product->img[0]"
         :image2="$product->img[1]"
         :title="$product->name"
-        :initial_price="round($product->price, 2)"
-        :final_price="round($product->final_price, 2)"
+        :initialPrice="round($product->price, 2)"
+        :finalPrice="round($product->final_price, 2)"
         :message="!$product_stock ? 'Cet article est en rupture de stock' : ''" />
     @endforeach
     <article class="more-products product flex flex-col items-center justify-center">
@@ -76,7 +76,7 @@
     </div>
 </section>
 @php
-$product = $catalogs->random(1)->first()->products->random(1)->first();
+$product = $catalogs->random()->products->random()->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->first();
 @endphp
 <section id="product-of-the-week-container" class="md:w-[90%] max-w-[1280px] mx-auto mt-[10px] md:mt-16 px-[10px]">
     <div class=" title-container w-full mb-8">
@@ -91,7 +91,7 @@ $product = $catalogs->random(1)->first()->products->random(1)->first();
             </ul>
         </div>
         <div id="product-details-container" class="w-full lg:w-2/4 lg:pl-6">
-            <div id="product-detail" class="h-full flex flex-col">
+            <div id="product-detail" class="h-full flex flex-col pt-4 lg:pt-0">
                 <div>
                     <nav class="breadcrumb mt-2 lg:mt-0">
                         <ul class="flex items-center">
@@ -114,7 +114,7 @@ $product = $catalogs->random(1)->first()->products->random(1)->first();
                     </nav>
                     <div class="flex items-center">
                         <div class="title-container">
-                            <h2 class="my-2 lg:my-4 uppercase"><span>{{ ucfirst($product->name) }}</span></h2>
+                            <h2><span>{{ ucfirst($product->name) }}</span></h2>
                         </div>
                         @if(strtotime('-1 month', time()) > $product->created_at->timestamp)
                         <div class="new-badge">

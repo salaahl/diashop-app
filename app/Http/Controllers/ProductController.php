@@ -21,7 +21,8 @@ class ProductController extends Controller
     public function home()
     {
         $catalogs = Catalog::all();
-        $new_products = Product::orderBy('created_at', 'desc')->take(3)->get();
+        $new_products = Product::selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+            ->orderBy('created_at', 'desc')->take(3)->get();
 
         return view('home', [
             "catalogs" => $catalogs,
@@ -81,14 +82,15 @@ class ProductController extends Controller
      */
     public function product($catalog, $category, $product_id)
     {
-        $product = Product::where([
-            ['catalog_id', Catalog::where('name', $catalog)->first()->id],
-            ['category_id', Category::where([
-                ['name', $category],
-                ['catalog_id', Catalog::where('name', $catalog)->first()->id]
-            ])->first()->id],
-            ['id', $product_id]
-        ])->first();
+        $product = Product::selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+            ->where([
+                ['catalog_id', Catalog::where('name', $catalog)->first()->id],
+                ['category_id', Category::where([
+                    ['name', $category],
+                    ['catalog_id', Catalog::where('name', $catalog)->first()->id]
+                ])->first()->id],
+                ['id', $product_id]
+            ])->first();
 
         if (!$product) {
             return redirect()->route('404');

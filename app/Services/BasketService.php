@@ -11,7 +11,7 @@ class BasketService
     public function store($product_id, $size, $quantity)
     {
         $basket = session()->get("basket");
-        $product = Product::where("id", $product_id)->first();
+        $product = Product::selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->where("id", $product_id)->first();
 
         if ($basket) {
             // Je vérifie que le panier ne depasse pas les 30 produits
@@ -33,7 +33,7 @@ class BasketService
 
         $product_image = $product->img[0];
         $product->promotion ?
-            $price = round($product->price - ($product->price / 100 * $product->promotion), 2)
+            $price = round($product->final_price, 2)
             : $price = $product->price;
 
         // Les informations du produit à ajouter
@@ -73,7 +73,7 @@ class BasketService
         }
 
         // Je reattribue les quantités aux produits
-        $product = Product::where('id', $product_id)->first();
+        $product = Product::selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->where('id', $product_id)->first();
         $quantity_per_size = $product->quantity_per_size;
         $quantity_per_size[$size] += $quantity;
         $product->quantity_per_size = $quantity_per_size;
@@ -89,7 +89,7 @@ class BasketService
         // Je réattribue les quantités aux produits
         foreach ($basket as $items) {
             foreach ($items as $item) {
-                $product = Product::where('id', $item['id'])->first();
+                $product = Product::selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->where('id', $item['id'])->first();
                 $quantity_per_size = $product->quantity_per_size;
                 $quantity_per_size[$item['size']] += $item['quantity'];
                 $product->quantity_per_size = $quantity_per_size;

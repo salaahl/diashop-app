@@ -105,8 +105,8 @@ $product_stock += $quantity;
     :image1="$product->img[0]"
     :image2="$product->img[1]"
     :title="$product->name"
-    :initial_price="round($product->price, 2)"
-    :final_price="round($product->final_price, 2)"
+    :initialPrice="round($product->price, 2)"
+    :finalPrice="round($product->final_price, 2)"
     :message="!$product_stock ? 'Cet article est en rupture de stock' : ''" />
 @endforeach
 <aside class="w-full mt-[-0.5rem] mb-4">
