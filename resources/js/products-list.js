@@ -79,6 +79,8 @@ products.forEach((product) => {
 });
 
 // Filtres
-document.querySelector("#filters-form").addEventListener("change", function () {
-    this.submit();
-});
+if (document.querySelector("#filters-form")) {
+    document.querySelector("#filters-form").addEventListener("change", function () {
+        this.submit();
+    });
+}

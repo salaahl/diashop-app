@@ -121,7 +121,7 @@ $product_stock += $quantity;
 
 @else
 <div class="title-container">
-    <h2 class="uppercase"><span>Aucun résultat</span></h2>
+    <h2 class="uppercase">Aucun résultat</h2>
 </div>
 @endif
 @endsection

@@ -638,6 +638,7 @@ img {
 }
 
 @media (min-width: 1640px) {
+    /* Permet de colorer également l'arrière de la barre de navigation */
     main {
         margin-top: -80px;
         padding-top: 80px;
