@@ -22,7 +22,7 @@
 
 @section('main')
 @if(isset($categories))
-<div id="categories" class="relative flex w-full p-4 md:p-8 pb-2 md:pb-4 md:mb-8 rounded-lg bg-gray-50 overflow-x-auto">
+<section id="categories" class="relative flex w-full p-4 md:p-8 pb-2 md:pb-4 md:mb-8 rounded-lg bg-gray-50 overflow-x-auto">
     <div class="title-container catalog-name">
         <h1><span>{{ $products->first()->catalog->name }}</span></h1>
     </div>
@@ -57,7 +57,7 @@
         </article>
         @endforeach
     </div>
-</div>
+</section>
 @else
 <div class="title-container w-full my-8 md:mt-24 md:mb-32">
     <h1 class="w-fit m-auto search-title"><span>Résultats de votre recherche</span></h1>
@@ -95,6 +95,7 @@
     </form>
 </nav>
 
+<section id="products">
 @foreach($products as $product)
 @php
 $product_stock = 0;
@@ -112,6 +113,7 @@ $product_stock += $quantity;
     :finalPrice="round($product->final_price, 2)"
     :message="!$product_stock ? 'Cet article est en rupture de stock' : ''" />
 @endforeach
+</section>
 
 <aside class="w-full mt-[-0.5rem] mb-4">
     {{ $products->links() }}
@@ -119,7 +121,7 @@ $product_stock += $quantity;
 
 @else
 <div class="title-container">
-    <h2><span>Aucun résultat</span></h2>
+    <h2 class="uppercase"><span>Aucun résultat</span></h2>
 </div>
 @endif
 @endsection

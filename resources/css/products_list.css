@@ -18,11 +18,6 @@ h1.favorites-title {
     font-size: var(--h1-font-size);
 }
 
-main {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 #headers {
     width: 100%;
     margin: 25px auto;
@@ -97,6 +92,11 @@ main {
 #sort-by > label:hover,
 #sort-by > input[type="radio"]:checked + label {
     background-color: rgb(var(--accent-color-2), 0.25);
+}
+
+#products {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .product {
