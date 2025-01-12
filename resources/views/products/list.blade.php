@@ -63,6 +63,7 @@
     <h1 class="w-fit m-auto search-title"><span>Résultats de votre recherche</span></h1>
 </div>
 @endif
+if($products->count() > 0)
 <nav id="filters" class="w-full py-2 md:mt-12 mb-4">
     @php
     $size = request()->get('size');
@@ -92,7 +93,6 @@
         </div>
     </form>
 </nav>
-if($products->count() > 0)
 @foreach($products as $product)
 @php
 $product_stock = 0;
@@ -115,7 +115,7 @@ $product_stock += $quantity;
 </aside>
 @else
 <div class="title-container">
-    <h2>Aucun résultat</h2>
+    <h2><span>Aucun résultat</span></h2>
 </div>
 @endif
 @endsection
