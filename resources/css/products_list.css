@@ -82,6 +82,7 @@ h1.favorites-title {
 
 #sizes > label,
 #sort-by > label {
+    cursor: pointer;
     color: rgb(var(--accent-color-4), 0.75);
     background-color: rgb(243, 244, 246);
     transition: 0.15s background-color linear;
