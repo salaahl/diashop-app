@@ -63,7 +63,8 @@
     <h1 class="w-fit m-auto search-title"><span>Résultats de votre recherche</span></h1>
 </div>
 @endif
-if($products->count() > 0)
+
+@if($products->count() > 0)
 <nav id="filters" class="w-full py-2 md:mt-12 mb-4">
     @php
     $size = request()->get('size');
@@ -93,6 +94,7 @@ if($products->count() > 0)
         </div>
     </form>
 </nav>
+
 @foreach($products as $product)
 @php
 $product_stock = 0;
@@ -110,9 +112,11 @@ $product_stock += $quantity;
     :finalPrice="round($product->final_price, 2)"
     :message="!$product_stock ? 'Cet article est en rupture de stock' : ''" />
 @endforeach
+
 <aside class="w-full mt-[-0.5rem] mb-4">
     {{ $products->links() }}
 </aside>
+
 @else
 <div class="title-container">
     <h2><span>Aucun résultat</span></h2>
