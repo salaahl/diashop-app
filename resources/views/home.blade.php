@@ -90,7 +90,7 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
                 </li>
             </ul>
         </div>
-        <div id="product-details-container" class="w-full lg:w-2/4 lg:pl-6">
+        <div id="product-details-container" class="w-full md:w-2/4 max-w-2xl mx-auto md:px-6">
             <div id="product-detail" class="h-full flex flex-col pt-4 lg:pt-0">
                 <div>
                     <nav class="breadcrumb mt-2 lg:mt-0">

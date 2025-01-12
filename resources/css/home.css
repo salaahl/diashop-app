@@ -71,6 +71,7 @@ h1 > span {
     display: flex;
     align-items: center;
     transform: rotate(-90deg);
+    scroll-snap-align: center;
 }
 
 #new-products-container .title-container > h2:first-of-type > span {
@@ -291,6 +292,11 @@ h1 > span {
                 rgb(255, 255, 255, 1) 25px
             );
         mask-composite: intersect;
+    }
+
+    #testimonials-container > .title-container > h2 {
+        text-wrap: auto;
+        text-align: left;
     }
 
     #garanties-container {

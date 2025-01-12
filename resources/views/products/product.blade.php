@@ -27,7 +27,7 @@
             @endforeach
         </ul>
     </section>
-    <section id="product-details-container" class="w-full md:w-2/4 md:pl-6">
+    <section id="product-details-container" class="w-full md:w-2/4 max-w-2xl mx-auto md:px-6">
         <div id="product-detail" class="md:min-h-screen md:mt-[-80px] max-md:pt-4 md:py-[110px] sticky top-0">
             <div>
                 <nav class="breadcrumb">
@@ -238,17 +238,18 @@
     </div>
 </div>
 <!-- Autres produits -->
-@if(\App\Models\Product::where([
-["catalog_id", \App\Models\Catalog::where('name', $product->catalog->name)->first()->id],
-["id", "!=", $product->id],
-["name", "like", "%" . explode(' ', $product->name)[0] . "%"],
-])->count() > 0
-)
+@if($product->category->products()
+->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+->where('id', '!=', $product->id)->count() > 0)
 <section id="other-products-container" class="flex flex-wrap md:my-10 px-6 pb-6 bg-stone-200">
     <div class="title-container w-full my-8">
         <h2 class="w-fit uppercase"><span>Plus d'articles</span></h2>
     </div>
-    @foreach($product->category->products->where('id', '!=', $product->id)->take(3) as $product)
+    @foreach($product->category->products()
+    ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+    ->where('id', '!=', $product->id)
+    ->take(3)
+    ->get() as $product)
     @php
     $product_stock = 0;
     foreach($product->quantity_per_size as $size => $quantity) {
