@@ -92,6 +92,7 @@
         </div>
     </form>
 </nav>
+if($products->count() > 0)
 @foreach($products as $product)
 @php
 $product_stock = 0;
@@ -112,6 +113,11 @@ $product_stock += $quantity;
 <aside class="w-full mt-[-0.5rem] mb-4">
     {{ $products->links() }}
 </aside>
+@else
+<div class="title-container">
+    <h2>Aucun résultat</h2>
+</div>
+@endif
 @endsection
 
 @section('scripts')

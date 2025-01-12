@@ -495,12 +495,13 @@ img {
     font-family: "Truculenta", sans-serif;
     font-size: small;
     font-weight: bold;
+    color: white;
+    background-color: rgb(var(--accent-color-4));
     mask-image: url("/public/images/new_badge.png");
     mask-position: center;
     mask-size: contain;
     mask-repeat: no-repeat;
-    color: white;
-    background-color: rgb(var(--accent-color-4));
+    transform: rotate(-45deg);
 }
 
 /* Paramètres globaux du container d'une carte "produit" */
