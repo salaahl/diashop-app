@@ -57,8 +57,8 @@
         :message="!$product_stock ? 'Cet article est en rupture de stock' : ''" />
     @endforeach
     <article class="more-products product flex flex-col items-center justify-center">
-        <a href="{{ route('catalog', 'femme') }}" class="button-stylised-1 w-3/4 mx-auto mb-4">Nouveautés pour elle</a>
-        <a href="{{ route('catalog', 'homme') }}" class="button-stylised-1 w-3/4 mx-auto">Nouveautés pour lui</a>
+        <a href="{{ route('catalog', 'femme') }}" class="button-stylised-1 w-[85%] xl:w-3/4 mx-auto mb-4">Nouveautés pour elle</a>
+        <a href="{{ route('catalog', 'homme') }}" class="button-stylised-1 w-[85%] xl:w-3/4 mx-auto">Nouveautés pour lui</a>
     </article>
 </section>
 <section id="about-us-container" class="w-full max-w-[1440px] flex flex-wrap md:mt-16 mx-auto p-8 bg-[#fcdedc] md:rounded-xl overflow-auto">
@@ -78,22 +78,22 @@
 @php
 $product = $catalogs->random()->products->random()->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->first();
 @endphp
-<section id="product-of-the-week-container" class="md:w-[90%] max-w-[1280px] mx-auto mt-[10px] md:mt-16 px-[10px]">
+<section id="product-of-the-week-container" class="lg:w-[90%] max-w-[1280px] mx-auto mt-[10px] md:mt-16 px-[10px]">
     <div class=" title-container w-full mb-8">
         <h2 class="mt-8 mb-8 mx-auto"><span>À la une</span></h2>
     </div>
-    <div class="flex flex-wrap justify-between lg:flex-nowrap flex-col lg:flex-row">
-        <div id="product-images-container" class="h-auto w-full lg:w-2/4">
-            <ul class="h-full flex flex-nowrap lg:block snap-x snap-mandatory overflow-auto">
-                <li class="h-full lg:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start">
+    <div class="flex flex-wrap justify-between md:flex-nowrap flex-col md:flex-row">
+        <div id="product-images-container" class="h-auto w-full md:w-2/4">
+            <ul class="h-full flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
+                <li class="h-full md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start">
                     <x-cld-image public-id="{{ $product->img[0] }}" alt="{{ $product->name }}" class="h-full w-full object-cover object-center"></x-cld-image>
                 </li>
             </ul>
         </div>
-        <div id="product-details-container" class="w-full md:w-2/4 max-w-2xl mx-auto md:px-6">
-            <div id="product-detail" class="h-full flex flex-col pt-4 lg:pt-0">
+        <div id="product-details-container" class="w-full md:w-2/4 md:max-w-2xl mx-auto md:px-6">
+            <div id="product-detail" class="h-full flex flex-col pt-4 md:pt-0">
                 <div>
-                    <nav class="breadcrumb mt-2 lg:mt-0">
+                    <nav class="breadcrumb">
                         <ul class="flex items-center">
                             <li>
                                 <a href="{{ route('catalog', $product->catalog->name) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ $product->catalog->name }}</a>
@@ -123,14 +123,14 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
                         @endif
                     </div>
                     @if($product->promotion)
-                    <div class="flex mb-6 lg:mb-12">
+                    <div class="flex mb-6 md:mb-12">
                         <h2 id="price" class="w-min font-normal">{{ round($product->final_price, 2) }}€</h2>
                         <h2 class="w-min ml-4 font-normal line-through">{{ round($product->price, 2) }}€</h2>
                     </div>
                     @else
-                    <h2 id="price" class="w-min mb-6 lg:mb-12 font-normal">{{ round($product->price, 2) }}€</h2>
+                    <h2 id="price" class="w-min mb-6 md:mb-12 font-normal">{{ round($product->price, 2) }}€</h2>
                     @endif
-                    <div id="description" class="mb-8 lg:mb-24">{!! ucfirst($product->description) !!}</div>
+                    <div id="description" class="mb-8 md:mb-24">{!! ucfirst($product->description) !!}</div>
                 </div>
                 @php
                 $count = 0;
@@ -138,7 +138,7 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
                 $count += $quantity;
                 }
                 @endphp
-                <div class="max-lg:my-4">
+                <div class="max-md:my-4">
                     <a href="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" class="button-stylised-1 w-full mb-4">En savoir plus</a>
                     <div id="delivery-and-return-details" class="mb-10">
                         <h4 class="text-sm text-gray-500">Livraison express dans les deux jours ouvrés | standard sous cinq jours ouvrés</h4>
@@ -149,11 +149,11 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
         </div>
     </div>
 </section>
-<section id="testimonials-container" class="w-full lg:flex flex-nowrap items-center lg:mb-8 lg:mt-24 mx-auto p-4">
+<section id="testimonials-container" class="w-full lg:flex flex-nowrap items-center lg:mb-8 md:mt-24 mx-auto p-4">
     <div class="title-container w-fit">
         <h2 class="mb-8 lg:mb-0 lg:ml-4 lg:text-nowrap"><span>Ils nous font confiance</span></h2>
     </div>
-    <div id="testimonials" class="relative lg:flex flex-nowrap items-center lg:ml-12 snap-x snap-mandatory scroll-smooth overflow-auto">
+    <div id="testimonials" class="relative lg:flex flex-nowrap items-stretch lg:ml-12 snap-x snap-mandatory scroll-smooth overflow-auto">
         <div class="scroll-controls hidden absolute h-full w-full lg:flex items-center justify-between px-8">
             <button class="scroll-button scroll-left hide fixed p-6 bg-white/75 backdrop-blur rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-6 h-6">
@@ -193,10 +193,10 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
     </div>
 </section>
 <section id="garanties-container" class="md:h-[100px] w-full flex flex-col md:flex-row flex-nowrap items-center justify-between md:mt-24 p-4 bg-[rgb(var(--accent-color-1))] md:bg-white md:filter brightness-[0.99]">
-    <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Livraison gratuite à partir de {{ env('FREE_SHIPPING') / 100 }}€</div>
-    <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Satisfait ou remboursé</div>
-    <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Paiement sécurisé avec Stripe</div>
-    <div class="w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-gray-600 font-semibold bg-white/50 md:bg-transparent rounded-xl md:rounded-none">3x sans frais</div>
+    <div class="h-full w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-center text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Livraison gratuite à partir de {{ env('FREE_SHIPPING') / 100 }}€</div>
+    <div class="h-full w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-center text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Satisfait ou remboursé</div>
+    <div class="h-full w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-center text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Paiement sécurisé avec Stripe</div>
+    <div class="h-full w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-center text-gray-600 font-semibold bg-white/50 md:bg-transparent rounded-xl md:rounded-none">3x sans frais</div>
 </section>
 @endsection
 

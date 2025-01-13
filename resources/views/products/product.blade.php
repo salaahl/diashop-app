@@ -27,7 +27,7 @@
             @endforeach
         </ul>
     </section>
-    <section id="product-details-container" class="w-full md:w-2/4 max-w-2xl mx-auto md:px-6">
+    <section id="product-details-container" class="w-full md:w-2/4 md:max-w-2xl mx-auto md:px-6">
         <div id="product-detail" class="md:min-h-screen md:mt-[-80px] max-md:pt-4 md:py-[110px] sticky top-0">
             <div>
                 <nav class="breadcrumb">

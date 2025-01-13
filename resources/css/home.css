@@ -81,9 +81,27 @@ h1 > span {
     );
 }
 
+#new-products-container .product {
+    width: 49%;
+    min-width: 49%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    scroll-snap-align: center;
+}
+
+#about-us-container .title-container > h2 {
+    font-size: xx-large;
+}
+
+#about-us-container .title-container > h2 > span {
+    background-image: linear-gradient(
+        rgb(var(--accent-color-2)),
+        rgb(var(--accent-color-2))
+    );
+}
+
 #product-of-the-week-container > .title-container > h2:first-of-type {
     margin-left: 0;
-    font-size: xxx-large;
 }
 
 #product-of-the-week-container > .title-container > h2:first-of-type > span {
@@ -99,23 +117,6 @@ h1 > span {
         rgb(var(--accent-color-1)),
         rgb(var(--accent-color-1))
     );
-}
-
-#about-us-container .title-container > h2 {
-    font-size: xx-large;
-}
-
-#about-us-container .title-container > h2 > span {
-    background-image: linear-gradient(
-        rgb(var(--accent-color-2)),
-        rgb(var(--accent-color-2))
-    );
-}
-
-#new-products-container .product {
-    margin-left: 0.5%;
-    margin-right: 0.5%;
-    scroll-snap-align: center;
 }
 
 #testimonials::-webkit-scrollbar {
@@ -205,11 +206,6 @@ h1 > span {
         filter: opacity(0.8);
         margin-bottom: 50%;
     }
-
-    #new-products-container .product {
-        width: 49%;
-        min-width: 49%;
-    }
 }
 
 @media (min-width: 768px) {
@@ -263,13 +259,16 @@ h1 > span {
         box-shadow: rgb(243 244 246) 0px 0px 75px 0px;
     }
 
+    #new-products-container .title-container > h2 {
+        font-size: var(--h2-font-size);
+    }
+
     #new-products-container .product {
-        width: 20%;
-        min-width: 20%;
+        min-width: 30%;
     }
 
     #about-us-container .title-container > h2 {
-        font-size: xxx-large;
+        font-size: xx-large;
     }
 
     #product-of-the-week-container #product-images-container {
@@ -312,5 +311,21 @@ h1 > span {
             );
         mask-composite: intersect;
         box-shadow: rgb(243 244 246) 0px 24px 50px 0px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #new-products-container .title-container > h2 {
+        font-size: var(--h1-font-size);
+    }
+
+    #new-products-container .product {
+        width: 30%;
+        min-width: 20%;
+    }
+
+    #about-us-container .title-container > h2,
+    #product-of-the-week-container > .title-container > h2:first-of-type {
+        font-size: xxx-large;
     }
 }

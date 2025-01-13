@@ -72,7 +72,7 @@
     @endphp
     <form id="filters-form" class="flex flex-wrap justify-between items-center" action="" method="POST">
         @csrf
-        <div id="sizes" class="w-full lg:w-auto flex flex-wrap">
+        <div id="sizes" class="w-fit lg:w-auto flex flex-wrap">
             <input type="radio" name="size" id="size-s" value="s" @if($size=='s' ) checked @endif>
             <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-s">S</label>
             <input type="radio" name="size" id="size-m" value="m" @if($size=='m' ) checked @endif>
@@ -84,7 +84,7 @@
             <input type="radio" name="size" id="size-xxl" value="xxl" @if($size=='xxl' ) checked @endif>
             <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-xxl">XXL</label>
         </div>
-        <div id="sort-by" class="w-full lg:w-auto flex flex-wrap">
+        <div id="sort-by" class="w-fit lg:w-auto flex flex-wrap">
             <input type="radio" name="sort_by" id="filter_new" value="new" @if($sort_by=='new' || $sort_by=='' ) checked @endif>
             <label class="mt-4 lg:mt-0 mr-4 lg:mr-0 lg:ml-4 px-6 py-2 text-sm font-semibold text-white rounded-full" for="filter_new">Nouveautés</label>
             <input type="radio" name="sort_by" id="filter_price_lowest" value="price-lowest" @if($sort_by=='price-lowest' ) checked @endif>
