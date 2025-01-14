@@ -85,7 +85,7 @@
 </div>
 
 <div class="w-full max-w-[1024px] mx-auto flex justify-around mt-8 p-10 rounded-lg text-white bg-gray-800 shadow-md">
-    <ul id="shipping-address" class="w-full md:w-[40%]">
+    <ul id="shipping-address" class="w-[40%]">
         <li>
             <h3 class="mb-2 uppercase">Adresse de Livraison</h3>
         </li>
@@ -95,8 +95,8 @@
         <li>{{ $order->shipping_address['city'] }}</li>
         <li>{{ $order->shipping_address['country'] }}</li>
     </ul>
-    <div class="m-2 border-2 md:border-4 border-white"></div>
-    <ul id="billing-address" class="w-full md:w-[40%]">
+    <div class="my-2 mx-[10%] border-2 md:border-4 border-white"></div>
+    <ul id="billing-address" class="w-[40%]">
         <li>
             <h3 class="mb-2 uppercase">Adresse de facturation</h3>
         </li>
@@ -109,7 +109,7 @@
 </div>
 
 <div class="w-full max-w-[1024px] mx-auto flex justify-around mt-8 p-10 rounded-lg text-white bg-[rgb(var(--accent-color-1))] shadow-md">
-    <div class="w-full md:w-[40%]">
+    <div class="w-full w-[40%]">
         <h3 class="mb-2 uppercase">Détails de Livraison</h3>
         <ul id="shipping-estimate">
             <li><strong>Mode de Livraison :</strong> Livraison {{ $order->amount['shipping_cost'] == 1000 ? 'Express' : 'Standard' }}</li>
@@ -118,8 +118,8 @@
             <li><strong>Société de Livraison :</strong> {{ $order->amount['shipping_cost'] == 1000 ? 'La Poste' : 'UPS' }}</li>
         </ul>
     </div>
-    <div class="m-2 border-2 md:border-4 border-white"></div>
-    <div class="w-full md:w-[40%]">
+    <div class="my-2 mx-[10%] border-2 md:border-4 border-white"></div>
+    <div class="w-full w-[40%]">
         <h3 class="mb-2 uppercase">Total</h3>
         <ul>
             <li><strong>Frais de livraison :</strong> {{ $order->amount['shipping_cost'] / 100 }}€</li>
