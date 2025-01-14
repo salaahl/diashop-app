@@ -40,8 +40,8 @@ h2 {
 #other-products-container > .title-container > h2 > span {
     font-weight: 900;
     background-image: linear-gradient(
-        rgb(var(--accent-color-4)),
-        rgb(var(--accent-color-4))
+        rgb(var(--accent-color-4), 0.5),
+        rgb(var(--accent-color-4), 0.5)
     );
     background-size: 100% 35%;
     background-repeat: no-repeat;
