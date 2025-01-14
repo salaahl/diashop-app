@@ -47,11 +47,11 @@ if (document.querySelector("#categories")) {
         };
 
         scrollLeftButton.addEventListener("click", () => {
-            scrollableDiv.scrollBy({ left: -100, behavior: "smooth" });
+            scrollableDiv.scrollBy({ left: -150, behavior: "smooth" });
         });
 
         scrollRightButton.addEventListener("click", () => {
-            scrollableDiv.scrollBy({ left: 100, behavior: "smooth" });
+            scrollableDiv.scrollBy({ left: 150, behavior: "smooth" });
         });
 
         scrollableDiv.addEventListener("scroll", updateButtons);
