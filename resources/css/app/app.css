@@ -496,7 +496,7 @@ img {
     font-size: small;
     font-weight: bold;
     color: white;
-    background-color: rgb(var(--accent-color-4));
+    background-color: rgb(var(--accent-color-4), 0.75);
     mask-image: url("/public/images/new_badge.png");
     mask-position: center;
     mask-size: contain;
@@ -638,7 +638,7 @@ img {
 }
 
 @media (min-width: 1640px) {
-    /* Permet de colorer également l'arrière de la barre de navigation */
+    /* Permet d'éviter que le css doodle ne se propage à l'arrière de la barre de navigation */
     main {
         margin-top: -80px;
         padding-top: 80px;
