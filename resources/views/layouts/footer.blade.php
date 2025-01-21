@@ -1,4 +1,10 @@
 <section>
+    <div id="garanties-container" class="w-full max-w-screen-2xl flex flex-nowrap mx-auto pt-6">
+        <div class="w-1/4 flex flex-col xl:flex-row items-center justify-start xl:justify-center px-2 py-4 text-sm text-center text-gray-500 font-semibold md:border-r-4 md:border-gray-300">Livraison gratuite à partir de {{ env('FREE_SHIPPING') / 100 }}€</div>
+        <div class="w-1/4 flex flex-col xl:flex-row items-center justify-start xl:justify-center px-2 py-4 text-sm text-center text-gray-500 font-semibold md:border-r-4 md:border-gray-300">Satisfait ou remboursé</div>
+        <div class="w-1/4 flex flex-col xl:flex-row items-center justify-start xl:justify-center px-2 py-4 text-sm text-center text-gray-500 font-semibold md:border-r-4 md:border-gray-300">Paiement sécurisé avec Stripe</div>
+        <div class="w-1/4 flex flex-col xl:flex-row items-center justify-start xl:justify-center px-2 py-4 text-sm text-center text-gray-500 font-semibold">3x sans frais</div>
+    </div>
     <div class="md:w-3/4 max-w-screen-xl mx-auto pt-12 text-[5rem] font-[Truculenta] font-bold text-center uppercase text-gray-400">
         {{ env("APP_NAME") }}
     </div>

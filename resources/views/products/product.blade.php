@@ -198,6 +198,37 @@
         </div>
     </section>
 </div>
+<!-- Autres produits -->
+@if($product->category->products()
+->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+->where('id', '!=', $product->id)->count() > 0)
+<section id="other-products-container" class="flex flex-wrap md:my-10 px-6 md:p-6 bg-stone-200 md:overflow-hidden md:rounded-md">
+    <div class="title-container">
+        <h2 class="w-fit uppercase"><span>Plus d'articles</span></h2>
+    </div>
+    @foreach($product->category->products()
+    ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+    ->where('id', '!=', $product->id)
+    ->take(3)
+    ->get() as $product)
+    @php
+    $product_stock = 0;
+    foreach($product->quantity_per_size as $size => $quantity) {
+    $product_stock += $quantity;
+    }
+    @endphp
+    <x-product-card
+        :created="$product->created_at->timestamp"
+        :link="route('product', [$product->catalog->name, $product->category->name, $product->id])"
+        :image1="$product->img[0]"
+        :image2="$product->img[1]"
+        :title="$product->name"
+        :initialPrice="round($product->price, 2)"
+        :finalPrice="round($product->final_price, 2)"
+        :message="!$product_stock ? 'Cet article est en rupture de stock' : ''" />
+    @endforeach
+</section>
+@endif
 <!-- Modal -->
 <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed z-[250] justify-center items-center h-full w-full md:inset-0 backdrop-blur-lg">
     <div class="carousel-container">
@@ -237,37 +268,6 @@
         </div>
     </div>
 </div>
-<!-- Autres produits -->
-@if($product->category->products()
-->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
-->where('id', '!=', $product->id)->count() > 0)
-<section id="other-products-container" class="flex flex-wrap md:my-10 px-6 pb-6 bg-stone-200">
-    <div class="title-container w-full my-8">
-        <h2 class="w-fit uppercase"><span>Plus d'articles</span></h2>
-    </div>
-    @foreach($product->category->products()
-    ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
-    ->where('id', '!=', $product->id)
-    ->take(3)
-    ->get() as $product)
-    @php
-    $product_stock = 0;
-    foreach($product->quantity_per_size as $size => $quantity) {
-    $product_stock += $quantity;
-    }
-    @endphp
-    <x-product-card
-        :created="$product->created_at->timestamp"
-        :link="route('product', [$product->catalog->name, $product->category->name, $product->id])"
-        :image1="$product->img[0]"
-        :image2="$product->img[1]"
-        :title="$product->name"
-        :initialPrice="round($product->price, 2)"
-        :finalPrice="round($product->final_price, 2)"
-        :message="!$product_stock ? 'Cet article est en rupture de stock' : ''" />
-    @endforeach
-</section>
-@endif
 @endsection
 
 @section('scripts')

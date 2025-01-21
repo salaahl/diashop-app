@@ -37,7 +37,6 @@ h1 > span {
     text-decoration: none;
     background: linear-gradient(to top, white 0%, white 10%, transparent 0%)
         no-repeat left bottom / 0 100%;
-    transition: background-size 0.5s;
     transition: filter 0.25s linear, background 0.25s;
 }
 
@@ -69,9 +68,15 @@ h1 > span {
 
 #new-products-container .title-container {
     display: flex;
+    justify-content: center;
     align-items: center;
-    transform: rotate(-90deg);
+    width: 100px;
     scroll-snap-align: center;
+}
+
+#new-products-container .title-container > h2 {
+    margin-left: -5px;
+    transform: rotate(-90deg);
 }
 
 #new-products-container .title-container > h2:first-of-type > span {
@@ -89,10 +94,6 @@ h1 > span {
     scroll-snap-align: center;
 }
 
-#about-us-container .title-container > h2 {
-    font-size: xx-large;
-}
-
 #about-us-container .title-container > h2 > span {
     background-image: linear-gradient(
         rgb(var(--accent-color-2)),
@@ -100,11 +101,11 @@ h1 > span {
     );
 }
 
-#product-of-the-week-container > .title-container > h2:first-of-type {
+#product-of-the-week-container > .title-container > h2 {
     margin-left: 0;
 }
 
-#product-of-the-week-container > .title-container > h2:first-of-type > span {
+#product-of-the-week-container > .title-container > h2 > span {
     background-image: unset;
 }
 
@@ -136,28 +137,6 @@ h1 > span {
         rgba(243, 244, 246, 1) 0%,
         rgba(243, 244, 246, 0) 100%
     );
-}
-
-#garanties-container > div::before {
-    font-family: "Font Awesome 5 Free";
-    font-size: 1rem;
-    margin-right: 10px;
-}
-
-#garanties-container > div:first-of-type::before {
-    content: "\f0d1";
-}
-
-#garanties-container > div:nth-of-type(2)::before {
-    content: "\f4da";
-}
-
-#garanties-container > div:nth-of-type(3)::before {
-    content: "\f3ed";
-}
-
-#garanties-container > div:last-of-type::before {
-    content: "\f09d";
 }
 
 #end-container > .title-container > h2 {
@@ -263,10 +242,6 @@ h1 > span {
         min-width: 30%;
     }
 
-    #about-us-container .title-container > h2 {
-        font-size: xx-large;
-    }
-
     #product-of-the-week-container #product-images-container {
         box-shadow: rgba(255, 255, 255, 0.0333) 0px 1px 1px 0px inset,
             rgba(50, 50, 93, 0.0833) 0px 50px 100px -20px,
@@ -293,35 +268,37 @@ h1 > span {
         text-wrap: auto;
         text-align: left;
     }
-
-    #garanties-container {
-        mask-image: linear-gradient(
-                to left,
-                rgb(255, 255, 255, 0) 0%,
-                rgb(255, 255, 255, 1) 20px
-            ),
-            linear-gradient(
-                to right,
-                rgb(255, 255, 255, 0) 0%,
-                rgb(255, 255, 255, 1) 20px
-            );
-        mask-composite: intersect;
-        box-shadow: rgb(243 244 246) 0px 24px 50px 0px;
-    }
 }
 
 @media (min-width: 1024px) {
+    #about-us-container .title-container > h2,
+    #product-of-the-week-container > .title-container > h2:first-of-type {
+        font-size: xxx-large;
+    }
+}
+
+@media (min-width: 1280px) {
+    #new-products-container .title-container {
+        width: 10%;
+    }
+
     #new-products-container .title-container > h2 {
         font-size: var(--h1-font-size);
     }
 
     #new-products-container .product {
-        width: 30%;
-        min-width: 20%;
+        width: 24%;
+        min-width: 24%;
+        margin: 0;
     }
 
-    #about-us-container .title-container > h2,
-    #product-of-the-week-container > .title-container > h2:first-of-type {
-        font-size: xxx-large;
+    #new-products-container .product:last-of-type {
+        width: 18%;
+        min-width: 18%;
+    }
+
+    #new-products-container .product:nth-of-type(2),
+    #new-products-container .product:nth-of-type(4) {
+        margin: 0 0.2%;
     }
 }

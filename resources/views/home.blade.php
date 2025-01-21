@@ -35,8 +35,8 @@
         </a>
     </article>
 </section>
-<section id="new-products-container" class="flex flex-nowrap md:mt-16 mx-auto py-4 px-[10px] bg-gray-100 md:rounded-lg overflow-auto">
-    <div class="title-container ml-[-5%] mr-[-5%] xl:ml-[-10px] xl:mr-0">
+<section id="new-products-container" class="flex flex-nowrap md:mt-16 mx-auto py-4 px-[10px] bg-gray-100 md:rounded-lg overflow-auto xl:overflow-hidden">
+    <div class="title-container">
         <h2><span>Nouveautés</span></h2>
     </div>
     @foreach($new_products as $product)
@@ -149,7 +149,7 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
         </div>
     </div>
 </section>
-<section id="testimonials-container" class="w-full lg:flex flex-nowrap items-center lg:mb-8 md:mt-24 mx-auto p-4">
+<section id="testimonials-container" class="w-full lg:flex flex-nowrap items-center md:my-24 mx-auto p-4">
     <div class="title-container w-fit">
         <h2 class="mb-8 lg:mb-0 lg:ml-4 lg:text-nowrap"><span>Ils nous font confiance</span></h2>
     </div>
@@ -191,12 +191,6 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
             <span class="author">Sophie</span>
         </div>
     </div>
-</section>
-<section id="garanties-container" class="md:h-[100px] w-full flex flex-col md:flex-row flex-nowrap items-center justify-between md:mt-24 p-4 bg-[rgb(var(--accent-color-1))] md:bg-white md:filter brightness-[0.99]">
-    <div class="h-full w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-center text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Livraison gratuite à partir de {{ env('FREE_SHIPPING') / 100 }}€</div>
-    <div class="h-full w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-center text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Satisfait ou remboursé</div>
-    <div class="h-full w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-center text-gray-600 font-semibold bg-white/50 md:bg-transparent md:border-r-4 md:border-gray-300 rounded-xl md:rounded-none">Paiement sécurisé avec Stripe</div>
-    <div class="h-full w-full md:w-1/4 flex items-center justify-center my-2 px-2 py-4 text-sm text-center text-gray-600 font-semibold bg-white/50 md:bg-transparent rounded-xl md:rounded-none">3x sans frais</div>
 </section>
 @endsection
 

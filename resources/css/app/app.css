@@ -203,6 +203,28 @@ footer {
     filter: brightness(0.99);
 }
 
+footer #garanties-container > div::before {
+    font-family: "Font Awesome 5 Free";
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+footer #garanties-container > div:first-of-type::before {
+    content: "\f0d1";
+}
+
+footer #garanties-container > div:nth-of-type(2)::before {
+    content: "\f4da";
+}
+
+footer #garanties-container > div:nth-of-type(3)::before {
+    content: "\f3ed";
+}
+
+footer #garanties-container > div:last-of-type::before {
+    content: "\f09d";
+}
+
 img {
     height: 100%;
     width: 100%;
@@ -553,7 +575,7 @@ img {
 @media (max-width: 767px) {
     :root {
         --h1-font-size: x-large;
-        --h2-font-size: large;
+        --h2-font-size: larger;
         --h3-font-size: medium;
         --h4-font-size: initial;
         --container-padding-x: 10px;
@@ -583,6 +605,11 @@ img {
         background-position: bottom 25% left 0;
         background-size: 100%;
         background-repeat: no-repeat;
+    }
+
+    footer #garanties-container > div::before {
+        margin-right: 10px;
+        margin-bottom: 0;
     }
 }
 

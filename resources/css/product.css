@@ -33,6 +33,11 @@ h2 {
     margin-bottom: 5%;
 }
 
+#other-products-container .title-container {
+    width: 100%;
+    margin: 2rem 0;
+}
+
 #other-products-container > .title-container > h2 {
     font-size: var(--h2-font-size);
 }
@@ -67,7 +72,6 @@ Code du carousel
     width: auto;
 }
 
-/* Hide the images by default */
 .carousel-slide {
     position: relative;
     display: none;
@@ -75,12 +79,10 @@ Code du carousel
     width: 100%;
 }
 
-/* Add a pointer when hovering over the thumbnail images */
 .slide-cursor {
     cursor: pointer;
 }
 
-/* Next & previous buttons */
 .prev,
 .next {
     cursor: pointer;
@@ -97,19 +99,16 @@ Code du carousel
     transition: background-color 0.5s;
 }
 
-/* Position the "next button" to the right */
 .next {
     right: 0;
     border-radius: 3px 0 0 3px;
 }
 
-/* On hover, add a black background color with a little bit see-through */
 .prev:hover,
 .next:hover {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* Add a transparency effect for thumnbail images */
 .slide-cursor {
     filter: grayscale(1);
     transition: all 0.5s;
@@ -167,13 +166,30 @@ Code du carousel
         margin-bottom: 1%;
     }
 
+    #other-products-container .title-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 9%;
+        margin: 0;
+    }
+
+    #other-products-container .title-container > h2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: -1.5rem;
+        text-wrap: nowrap;
+        transform: rotate(-90deg);
+    }
+
     #other-products-container .product {
-        min-width: 30%;
-        max-width: 30%;
+        min-width: 30.2%;
+        max-width: 30.2%;
     }
 
     #other-products-container .product:nth-of-type(2) {
-        margin: auto 5%;
+        margin: auto 0.2%;
     }
 
     /* 
