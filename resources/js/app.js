@@ -56,7 +56,7 @@ window.addEventListener("load", () => {
 
             setTimeout(function () {
                 window.location.href = link.href;
-            }, 500);
+            }, 700);
         });
     });
 

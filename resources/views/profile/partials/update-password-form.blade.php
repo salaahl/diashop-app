@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __('Veillez à ce que votre compte utilise un mot de passe long et aléatoire pour rester sécurisé.') }}
+            {{ __('Veillez à utiliser un mot de passe long et aléatoire pour rester sécurisé') }}
         </p>
     </header>
 
@@ -40,7 +40,7 @@
                 x-show="show"
                 x-transition
                 x-init="setTimeout(() => show = false, 2000)"
-                class="ml-2 text-sm text-gray-600">{{ __('Sauvegardé.') }}</p>
+                class="ml-2 text-sm text-gray-600">{{ __('Mot de passe mis à jour') }}</p>
             @endif
         </div>
     </form>
