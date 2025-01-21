@@ -54,6 +54,7 @@ if (window.innerWidth > 767) {
     );
 
     const updateButtons = () => {
+        // La marge de 20px est ajoutée pour éviter les erreurs de calcul liées aux marges
         if (scrollableDiv.scrollLeft < 20) {
             scrollLeftButton.classList.add("hide");
         } else {
@@ -61,7 +62,7 @@ if (window.innerWidth > 767) {
         }
 
         if (
-            scrollableDiv.scrollLeft + scrollableDiv.clientWidth >=
+            scrollableDiv.scrollLeft + 20 + scrollableDiv.clientWidth >=
             scrollableDiv.scrollWidth
         ) {
             scrollRightButton.classList.add("hide");
@@ -71,11 +72,11 @@ if (window.innerWidth > 767) {
     };
 
     scrollLeftButton.addEventListener("click", () => {
-        scrollableDiv.scrollBy({ left: -150, behavior: "smooth" });
+        scrollableDiv.scrollBy({ left: -300, behavior: "smooth" });
     });
 
     scrollRightButton.addEventListener("click", () => {
-        scrollableDiv.scrollBy({ left: 150, behavior: "smooth" });
+        scrollableDiv.scrollBy({ left: 300, behavior: "smooth" });
     });
 
     scrollableDiv.addEventListener("scroll", updateButtons);
