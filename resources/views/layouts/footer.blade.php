@@ -1,4 +1,7 @@
 <section>
+    <div class="w-3/4 max-w-screen-xl mx-auto pt-12 text-[5rem] font-[Truculenta] font-bold text-center uppercase text-gray-400">
+        {{ env("APP_NAME") }}
+    </div>
     <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
         <nav class="flex flex-wrap justify-center -mx-5 -my-2">
             <div class="px-5 py-2">
