@@ -42,9 +42,6 @@ h1 > span {
 
 .title-container > h2 {
     width: fit-content;
-    text-transform: uppercase;
-    text-align: center;
-    text-wrap-style: balance;
     font-size: var(--h1-font-size);
     font-weight: 900;
     color: rgb(var(--accent-color-4));
