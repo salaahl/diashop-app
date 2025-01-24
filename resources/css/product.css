@@ -34,17 +34,23 @@ h2 {
     margin-bottom: 5%;
 }
 
-#other-products-container .title-container {
+#other-products-container .title-container,
+#viewed-products-container .title-container {
     width: 100%;
     margin: 2rem 0;
 }
 
-#other-products-container > .title-container > h2 {
+#other-products-container > .title-container > h2,
+#viewed-products-container > .title-container > h2 {
     font-size: var(--h2-font-size);
 }
 
-#other-products-container > .title-container > h2 > span {
+#other-products-container > .title-container > h2 > span,
+#viewed-products-container > .title-container > h2 > span {
     font-weight: 900;
+}
+
+#other-products-container > .title-container > h2 > span {
     background-image: linear-gradient(
         rgb(var(--accent-color-4), 0.5),
         rgb(var(--accent-color-4), 0.5)
@@ -143,12 +149,14 @@ Code du carousel
         padding-right: var(--container-padding-x);
     }
 
-    #other-products-container {
+    #other-products-container,
+    #viewed-products-container {
         justify-content: space-between;
     }
 
-    #other-products-container .product {
-        width: 49%;
+    #other-products-container .product,
+    #viewed-products-container .product {
+        width: 49.5%;
         margin-bottom: 2.5%;
     }
 
@@ -171,7 +179,7 @@ Code du carousel
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 9%;
+        width: 8%;
         margin: 0;
     }
 
@@ -185,11 +193,22 @@ Code du carousel
     }
 
     #other-products-container .product {
-        min-width: 30.2%;
-        max-width: 30.2%;
+        min-width: 22.85%;
+        max-width: 22.85%;
     }
 
-    #other-products-container .product:nth-of-type(2) {
+    #viewed-products-container .product {
+        min-width: 24.85%;
+        max-width: 24.85%;
+    }
+
+    #other-products-container .product:first-of-type,
+    #viewed-products-container .product:first-of-type {
+        margin-right: 0.2%;
+    }
+
+    #other-products-container .product:nth-of-type(3),
+    #viewed-products-container .product:nth-of-type(3) {
         margin: auto 0.2%;
     }
 

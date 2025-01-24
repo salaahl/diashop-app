@@ -209,7 +209,52 @@
     @foreach($product->category->products()
     ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
     ->where('id', '!=', $product->id)
-    ->take(3)
+    ->take(4)
+    ->get() as $product)
+    @php
+    $product_stock = 0;
+    foreach($product->quantity_per_size as $size => $quantity) {
+    $product_stock += $quantity;
+    }
+    @endphp
+    <x-product-card
+        :created="$product->created_at->timestamp"
+        :link="route('product', [$product->catalog->name, $product->category->name, $product->id])"
+        :image1="$product->img[0]"
+        :image2="$product->img[1]"
+        :title="$product->name"
+        :initialPrice="round($product->price, 2)"
+        :finalPrice="round($product->final_price, 2)"
+        :message="!$product_stock ? 'Cet article est en rupture de stock' : ''" />
+    @endforeach
+</section>
+@endif
+<!-- Récemment consultés -->
+@php
+$viewedProducts = array_slice(session()->get('viewed_products', []), 0, 4);
+
+// Ajoute le produit actuellement consulté à l'historique
+if(!in_array($product->id, $viewedProducts)) {
+array_unshift($viewedProducts, $product->id);
+session()->put('viewed_products', $viewedProducts);
+}
+
+// Si la valeur existe dans le tableau, je la supprime
+$key = array_search($product->id, $viewedProducts);
+
+if ($key) {
+unset($viewedProducts[$key]);
+}
+@endphp
+@if(count($viewedProducts) > 0)
+<section id="viewed-products-container" class="flex flex-wrap md:justify-center max-w-6xl mx-auto md:mb-10 px-6 md:p-6 md:overflow-hidden md:rounded-md">
+    <div class="title-container">
+        <h2 class="text-center uppercase"><span>Récemment consultés</span></h2>
+    </div>
+    @foreach(\App\Models\Product::selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+    ->where('id', '!=', $product->id)
+    ->whereIn('id', $viewedProducts)
+    ->take(4)
     ->get() as $product)
     @php
     $product_stock = 0;
