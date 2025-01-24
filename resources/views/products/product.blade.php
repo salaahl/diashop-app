@@ -238,15 +238,13 @@ if(!in_array($product->id, $viewedProducts)) {
 array_unshift($viewedProducts, $product->id);
 session()->put('viewed_products', $viewedProducts);
 }
-
-// Si la valeur existe dans le tableau, je la supprime
-$key = array_search($product->id, $viewedProducts);
-
-if ($key) {
-unset($viewedProducts[$key]);
-}
 @endphp
-@if(count($viewedProducts) > 0)
+@if(
+\App\Models\Product::selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+->where('id', '!=', $product->id)
+->whereIn('id', $viewedProducts)
+->count() > 0
+)
 <section id="viewed-products-container" class="flex flex-wrap md:justify-center max-w-6xl mx-auto md:mb-10 px-6 md:p-6 md:overflow-hidden md:rounded-md">
     <div class="title-container">
         <h2 class="text-center uppercase"><span>Récemment consultés</span></h2>
