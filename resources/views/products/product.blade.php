@@ -17,7 +17,7 @@
 @endsection
 
 @section('main')
-<div class="flex flex-wrap justify-between md:flex-nowrap flex-col md:flex-row">
+<div class="flex flex-wrap justify-between md:flex-nowrap flex-col md:flex-row mb-10">
     <section id="product-images-container" class="w-full md:w-2/4 mt-[-80px]">
         <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
             @foreach($product->img as $image)
@@ -148,7 +148,7 @@
                     @endif
                     @endauth
                 </div>
-                <div id="delivery-and-return-details" class="mb-10">
+                <div id="delivery-and-return-details">
                     <h4 class="text-sm text-gray-500">Livraison express dans les deux jours ouvrés | standard sous cinq jours ouvrés</h4>
                     <h4 class="text-sm text-gray-500">Retour possible sous 14 jours à compter de la date de livraison</h4>
                 </div>
@@ -202,7 +202,7 @@
 @if($product->category->products()
 ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
 ->where('id', '!=', $product->id)->count() > 0)
-<section id="other-products-container" class="flex flex-wrap md:my-10 px-6 md:p-6 bg-stone-200 md:overflow-hidden md:rounded-md">
+<section id="other-products-container" class="flex flex-wrap md:mb-10 px-6 md:p-6 bg-stone-200 md:overflow-hidden md:rounded-md">
     <div class="title-container">
         <h2 class="w-fit uppercase"><span>Plus d'articles</span></h2>
     </div>
