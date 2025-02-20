@@ -22,7 +22,7 @@
         <ul class="flex flex-nowrap md:block snap-x snap-mandatory overflow-auto">
             @foreach($product->img as $image)
             <li class="md:w-full min-w-[100vw] md:min-w-[auto] aspect-[3/4] snap-start" onclick="currentSlide('{{ $loop->iteration }}')" data-modal-target="default-modal" data-modal-toggle="default-modal">
-                <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" alt="{{ $product->name }}" class="h-full w-full object-cover object-center cursor-zoom-in"></x-cld-image>
+                <x-cld-image public-id="{{ $image }}" alt="{{ $product->name }}" class="h-full w-full object-cover object-center cursor-zoom-in"></x-cld-image>
             </li>
             @endforeach
         </ul>
@@ -285,7 +285,7 @@ session()->put('viewed_products', $viewedProducts);
                 </button>
                 @foreach($product->img as $image)
                 <div class="carousel-slide">
-                    <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="{{ $product->name }}"></x-cld-image>
+                    <x-cld-image public-id="{{ $image }}" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="{{ $product->name }}"></x-cld-image>
                     <div class="magnifier"></div>
                 </div>
                 @endforeach
@@ -305,7 +305,7 @@ session()->put('viewed_products', $viewedProducts);
         <div id="img-preview">
             @foreach($product->img as $image)
             <div class="preview-column" onclick="currentSlide('{{ $loop->iteration }}')">
-                <x-cld-image public-id="{{ str_replace('\\', '/', $image) }}" id="slide-button-{{ $loop->iteration }}" class="slide-cursor" alt="{{ $product->name }}"></x-cld-image>
+                <x-cld-image public-id="{{ $image }}" id="slide-button-{{ $loop->iteration }}" class="slide-cursor" alt="{{ $product->name }}"></x-cld-image>
             </div>
             @endforeach
         </div>
