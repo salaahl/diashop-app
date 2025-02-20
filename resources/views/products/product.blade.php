@@ -198,6 +198,45 @@
         </div>
     </section>
 </div>
+<!-- Modal -->
+<div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed z-[250] justify-center items-center h-full w-full md:inset-0 backdrop-blur-lg">
+    <div class="carousel-container">
+        <div id="slides-container" class="relative max-h-full">
+            <div class="relative shadow-2xl">
+                <button type="button" class="absolute top-1 right-1 md:top-2 md:right-2 z-[5] text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                @foreach($product->img as $image)
+                <div class="carousel-slide">
+                    <x-cld-image public-id="{{ $image }}" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="{{ $product->name }}"></x-cld-image>
+                    <div class="magnifier"></div>
+                </div>
+                @endforeach
+
+                <button class="prev" onclick="plusSlides(-1)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-4 h-4 md:w-6 md:h-6">
+                        <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+                    </svg>
+                </button>
+                <button class="next" onclick="plusSlides(1)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-4 h-4 md:w-6 md:h-6">
+                        <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="img-preview">
+            @foreach($product->img as $image)
+            <div class="preview-column" onclick="currentSlide('{{ $loop->iteration }}')">
+                <x-cld-image public-id="{{ $image }}" id="slide-button-{{ $loop->iteration }}" class="slide-cursor" alt="{{ $product->name }}"></x-cld-image>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
 <!-- Autres produits -->
 @if($product->category->products()
 ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
@@ -272,45 +311,6 @@ session()->put('viewed_products', $viewedProducts);
     @endforeach
 </section>
 @endif
-<!-- Modal -->
-<div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-hidden fixed z-[250] justify-center items-center h-full w-full md:inset-0 backdrop-blur-lg">
-    <div class="carousel-container">
-        <div id="slides-container" class="relative max-h-full">
-            <div class="relative shadow-2xl">
-                <button type="button" class="absolute top-1 right-1 md:top-2 md:right-2 z-[5] text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
-                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-                @foreach($product->img as $image)
-                <div class="carousel-slide">
-                    <x-cld-image public-id="{{ $image }}" class="h-auto w-screen md:h-[100dvh] md:w-auto" alt="{{ $product->name }}"></x-cld-image>
-                    <div class="magnifier"></div>
-                </div>
-                @endforeach
-
-                <button class="prev" onclick="plusSlides(-1)">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-4 h-4 md:w-6 md:h-6">
-                        <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
-                    </svg>
-                </button>
-                <button class="next" onclick="plusSlides(1)">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-4 h-4 md:w-6 md:h-6">
-                        <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <div id="img-preview">
-            @foreach($product->img as $image)
-            <div class="preview-column" onclick="currentSlide('{{ $loop->iteration }}')">
-                <x-cld-image public-id="{{ $image }}" id="slide-button-{{ $loop->iteration }}" class="slide-cursor" alt="{{ $product->name }}"></x-cld-image>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
 @endsection
 
 @section('scripts')
