@@ -106,6 +106,10 @@ h1 > span {
     background-image: unset;
 }
 
+#product-of-the-week-container #product-detail {
+    text-align: justify;
+}
+
 #product-of-the-week-container
     #product-detail
     .title-container
