@@ -141,8 +141,8 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
                 <div class="max-md:my-4">
                     <a href="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" class="button-stylised-1 w-full mb-4">En savoir plus</a>
                     <div id="delivery-and-return-details" class="mb-10">
-                        <h4 class="text-sm text-gray-500">Livraison express dans les deux jours ouvrés | standard sous cinq jours ouvrés</h4>
-                        <h4 class="text-sm text-gray-500">Retour possible sous 14 jours à compter de la date de livraison</h4>
+                        <h4 class="text-sm text-pretty text-gray-500">Livraison express dans les deux jours ouvrés | standard sous cinq jours ouvrés</h4>
+                        <h4 class="text-sm text-pretty text-gray-500">Retour possible sous 14 jours à compter de la date de livraison</h4>
                     </div>
                 </div>
             </div>
