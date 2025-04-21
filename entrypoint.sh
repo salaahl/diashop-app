@@ -1,24 +1,36 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Attendre que PostgreSQL soit prêt (timeout après 30 secondes)
-TIMEOUT=30
-COUNT=0
-until php -r "try { new PDO('pgsql:host=${DB_HOST};dbname=${DB_DATABASE}', '${DB_USERNAME}', '${DB_PASSWORD}'); exit(0); } catch (Exception \$e) { echo 'Erreur PDO: ' . \$e->getMessage(); exit(1); }" || [ $COUNT -ge $TIMEOUT ]; do
-    echo "En attente de la base de données PostgreSQL... ($COUNT/$TIMEOUT)"
-    sleep 2
-    COUNT=$((COUNT + 2))
-done
+set -e
 
-if [ $COUNT -ge $TIMEOUT ]; then
-    echo "Erreur : Impossible de se connecter à PostgreSQL après $TIMEOUT secondes"
-    exit 1
-fi
+echo "Running composer install..."
+composer install --no-dev --optimize-autoloader --working-dir=/var/www/html || { echo "Composer install failed"; exit 1; }
 
-# Exécuter les migrations
-php artisan migrate --force
+echo "Clearing caches..."
+php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
 
-# Exécuter les seeders (optionnel, commenter si non nécessaire)
-# php artisan db:seed --force
+echo "Testing database connection..."
+php -r "try { new PDO('pgsql:host=$DB_HOST;dbname=$DB_DATABASE', '$DB_USERNAME', '$DB_PASSWORD'); echo 'Database connection OK\n'; } catch (Exception \$e) { echo 'Database connection failed: ' . \$e->getMessage() . '\n'; exit(1); }"
 
-# Démarrer PHP-FPM
-exec php-fpm
+echo "Running migrations..."
+php artisan migrate --force || { echo "Migrations failed"; exit 1; }
+
+echo "Running seeders..."
+php artisan db:seed --force || { echo "Seeding failed"; exit 1; }
+
+echo "Vérification du dossier public/build..."
+ls -la /var/www/html/public/build || { echo "❌ Le dossier public/build est introuvable !"; exit 1; }
+
+echo "Caching config..."
+php artisan config:cache
+
+echo "Caching routes..."
+php artisan route:cache
+
+echo "Caching views..."
+php artisan view:cache
+
+echo "✅ Deployment completed successfully!"
+
+exec "$@"

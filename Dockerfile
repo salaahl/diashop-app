@@ -1,53 +1,45 @@
-# Étape 1 : builder les assets avec Node
-FROM node:20-alpine AS frontend
+# Étape 1 : Node pour build front
+FROM node:20-alpine AS node_build
 
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npm run build && ls -l /app/public/build || { echo "Error: public/build not created"; exit 1; }
+RUN npm run build
 
-# Étape 2 : Laravel + PHP
+# Étape 2 : PHP pour Laravel
 FROM php:8.3-fpm
 
-# Installer les dépendances système
+# Installe les extensions nécessaires
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
-    zip \
-    unzip \
-    git \
-    libpq-dev \
+    zip unzip git libpq-dev exif \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd pdo pdo_pgsql pgsql exif \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Installer Composer
+# Installe Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Définir le répertoire de travail
 WORKDIR /var/www/html
 
-# Copier les fichiers du projet Laravel
+# Copie tous les fichiers de Laravel
 COPY . .
 
-# Copier les assets compilés depuis l'étape Node
-COPY --from=frontend /app/public/build /var/www/html/public/build
+# Copie le build Vite généré
+COPY --from=node_build /app/public/build /var/www/html/public/build
 
-# Installer les dépendances PHP en production
-RUN composer install --optimize-autoloader --no-dev
+# Install deps Laravel
+RUN composer install --no-dev --optimize-autoloader
 
-# Permissions Laravel
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
-    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+# Permissions
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Scripts
-COPY scripts/00-laravel-deploy.sh /scripts/00-laravel-deploy.sh
-RUN chmod +x /scripts/00-laravel-deploy.sh
-
+# Entrypoint & script
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["php-fpm"]
