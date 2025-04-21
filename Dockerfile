@@ -41,5 +41,5 @@ RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["php-fpm"]
