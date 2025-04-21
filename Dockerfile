@@ -37,6 +37,9 @@ RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 COPY scripts/00-laravel-deploy.sh /scripts/00-laravel-deploy.sh
 RUN chmod +x /scripts/00-laravel-deploy.sh
 
+# Installer les dépendances Node.js
+RUN npm ci && npm run build
+
 # Copier et configurer le script entrypoint
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
