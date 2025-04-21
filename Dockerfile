@@ -29,11 +29,6 @@ COPY . .
 ARG COMPOSER_NO_DEV=true
 RUN composer install --optimize-autoloader --no-dev
 
-# Optimiser Laravel pour la production
-RUN php artisan config:cache \
-    && php artisan route:cache \
-    && php artisan view:cache
-
 # Donner les permissions nécessaires
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
