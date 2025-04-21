@@ -27,7 +27,7 @@ COPY . .
 
 # Installer les dépendances PHP en mode production
 ARG COMPOSER_NO_DEV=true
-RUN composer install --optimize-autoloader --no-dev --ignore-platform-req=ext-exif
+RUN composer install --optimize-autoloader --no-dev
 
 # Optimiser Laravel pour la production
 RUN php artisan config:cache \
