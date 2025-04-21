@@ -30,4 +30,8 @@ export default defineConfig({
             STANDARD_DELIVERY_CHARGES: "5.00",
         }),
     ],
+    build: {
+        outDir: "public/build", // Assure-toi que c'est bien public/build
+        manifest: true,
+    },
 });
