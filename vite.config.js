@@ -24,10 +24,10 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-        EnvironmentPlugin([
-            "APP_DEBUG",
-            "STRIPE_KEY",
-            "STANDARD_DELIVERY_CHARGES",
-        ]),
+        EnvironmentPlugin({
+            APP_DEBUG: "false",
+            STRIPE_KEY: "",
+            STANDARD_DELIVERY_CHARGES: "5.00",
+        }),
     ],
 });
