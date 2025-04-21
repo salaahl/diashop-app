@@ -1,4 +1,4 @@
-FROM php:8.0-fpm
+FROM php:8.3-fpm
 
 # Installer les dépendances système
 RUN apt-get update && apt-get install -y \
@@ -26,7 +26,6 @@ COPY . .
 
 # Installer les dépendances PHP en mode production
 ARG COMPOSER_NO_DEV=true
-RUN composer install --optimize-autoloader --no-dev
 
 # Optimiser Laravel pour la production
 RUN php artisan config:cache \
