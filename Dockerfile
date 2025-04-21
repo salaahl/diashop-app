@@ -9,8 +9,9 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     libpq-dev \
+    exif \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd pdo pdo_pgsql pgsql \
+    && docker-php-ext-install -j$(nproc) gd pdo pdo_pgsql pgsql exif \
     && echo "extension=pdo_pgsql.so" > /usr/local/etc/php/conf.d/docker-php-ext-pdo_pgsql.ini \
     && echo "extension=pgsql.so" > /usr/local/etc/php/conf.d/docker-php-ext-pgsql.ini \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
