@@ -24,14 +24,12 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-        EnvironmentPlugin({
-            APP_DEBUG: "false",
-            STRIPE_KEY: "",
-            STANDARD_DELIVERY_CHARGES: "5.00",
-        }),
+        /*
+        EnvironmentPlugin([
+            "APP_DEBUG",
+            "STRIPE_KEY",
+            "STANDARD_DELIVERY_CHARGES",
+        ]),
+        */
     ],
-    build: {
-        outDir: "public/build", // Assure-toi que c'est bien public/build
-        manifest: true,
-    },
 });

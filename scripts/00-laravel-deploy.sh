@@ -16,6 +16,9 @@ php -r "try { new PDO('pgsql:host=$DB_HOST;dbname=$DB_DATABASE', '$DB_USERNAME',
 echo "Running migrations..."
 php artisan migrate --force || { echo "Migrations failed"; exit 1; }
 
+echo "Running seeders..."
+php artisan db:seed --force || { echo "Seeding failed"; exit 1; }
+
 echo "Caching config..."
 php artisan config:cache
 
