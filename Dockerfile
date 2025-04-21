@@ -6,6 +6,7 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 RUN ls -al && npm run build
+ENV APP_DEBUG=true
 RUN npm run build
 
 # Étape 2 : Laravel + PHP
