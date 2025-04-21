@@ -36,7 +36,7 @@ COPY . .
 COPY --from=frontend /app/public/build /var/www/html/public/build
 
 # Installer les dépendances PHP en production
-RUN composer install --optimize-autoloader --no-dev --ignore-platform-req=ext-exif
+RUN composer install --optimize-autoloader --no-dev
 
 # Permissions Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
