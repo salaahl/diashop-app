@@ -42,4 +42,5 @@ RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["php-fpm"]
+CMD ["php", "-S", "0.0.0.0:80", "-t", "public"]
+
