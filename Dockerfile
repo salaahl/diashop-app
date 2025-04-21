@@ -37,6 +37,10 @@ RUN php artisan config:cache \
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
+# Copier le script de deployment
+COPY scripts/00-laravel-deploy.sh /scripts/00-laravel-deploy.sh
+RUN chmod +x /scripts/00-laravel-deploy.sh
+
 # Copier et configurer le script entrypoint
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
