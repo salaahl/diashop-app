@@ -42,9 +42,9 @@ services:
     image: postgres:15-alpine
     container_name: db
     environment:
-      POSTGRES_DB: diashop
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - dbdata:/var/lib/postgresql/data
     ports:
