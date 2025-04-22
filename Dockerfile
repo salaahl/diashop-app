@@ -20,9 +20,8 @@ RUN apk add --no-cache \
     git \
     libpq \
     libpq-dev \
-    exif-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd pdo pdo_pgsql pgsql exif
+    && docker-php-ext-install -j$(nproc) gd pdo pdo_pgsql pgsql
 
 # Installer Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
