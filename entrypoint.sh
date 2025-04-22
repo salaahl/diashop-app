@@ -3,7 +3,7 @@
 set -e
 
 echo "Running composer install..."
-composer install --no-dev --optimize-autoloader --working-dir=/var/www/html || { echo "Composer install failed"; exit 1; }
+composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-exif --working-dir=/var/www/html || { echo "Composer install failed"; exit 1; }
 
 echo "Clearing caches..."
 php artisan cache:clear
