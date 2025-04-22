@@ -8,7 +8,7 @@ COPY . .
 RUN npm run build
 
 # Étape 2 : PHP pour Laravel
-FROM php:8.3-fpm
+FROM php:8.3-fpm-alpine
 
 # Installe les extensions nécessaires
 RUN apt-get update && apt-get install -y \
@@ -43,4 +43,3 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["php", "-S", "0.0.0.0:80", "-t", "public"]
-
