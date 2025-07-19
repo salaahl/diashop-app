@@ -37,9 +37,9 @@
 <p>La gestion du site, y compris la publication de contenu et la gestion des opérations, est assurée par Dianaba Dia</p>
 
 <h3>3. Hébergeur du site</h3>
-<p>Le site est hébergé par Hostinger International Ltd.</p>
+<p>Le site est hébergé par la société Render, Inc.</p>
 <address>
-    Siège social : 61 Lordou Vironos Street, 6023 Larnaca, Chypre.
+    Siège social de Render : 340 S Lemon Ave #7160, Walnut, CA 91789, États-Unis
 </address>
 
 <h3>4. Collecte de données personnelles</h3>
