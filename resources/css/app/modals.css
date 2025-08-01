@@ -88,9 +88,30 @@
     background-color: rgb(var(--accent-color-1));
 }
 
+#close-basket-modal:hover,
+#close-search-modal:hover {
+    transform: rotate(360deg);
+}
+
 #close-basket-modal,
 #close-search-modal {
     border-radius: 999px;
+    transition: transform 0.25s ease-in-out;
+}
+
+.catalog-radio > label {
+    height: auto;
+    padding: 8px 14px;
+    font-weight: 700;
+    color: black;
+    background-color: #e5e7eb;
+    transition: background-color 0.25s;
+}
+
+.catalog-radio > label:hover,
+.catalog-radio > input[type="radio"]:checked + label {
+    color: white;
+    background-color: #222;
 }
 
 #basket-timeout {
@@ -114,6 +135,10 @@
 }
 
 @media (min-width: 768px) {
+    .catalog-radio > label {
+        padding: 12px 21px;
+    }
+
     #basket-body table .column-one {
         display: table-cell;
         width: 100px;
