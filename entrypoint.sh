@@ -8,8 +8,8 @@ if [ -z "$DB_HOST" ] || [ -z "$DB_DATABASE" ] || [ -z "$DB_USERNAME" ] || [ -z "
   exit 1
 fi
 
-# echo "Running composer install..."
-# composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-exif --working-dir=/var/www/html || { echo "Composer install failed"; exit 1; }
+echo "Running composer install..."
+composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-exif --working-dir=/var/www/html || { echo "Composer install failed"; exit 1; }
 
 # echo "Clearing caches..."
 # php artisan cache:clear
