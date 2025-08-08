@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        if (User::where('email', 'salaha.sokhona@gmail.com')->notExists()) {
+        if (!User::where('email', 'salaha.sokhona@gmail.com')->exists()) {
             User::factory()->create([
                 'firstname' => 'Salaha',
                 'lastname' => 'Sokhona',
@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             ]);
         }
 
-        if (User::where('email', 'salaha.sokhona@outlook.com')->notExists()) {
+        if (!User::where('email', 'salaha.sokhona@outlook.com')->exists()) {
             User::factory()->create([
                 'firstname' => 'Ousmane',
                 'lastname' => 'Sokhona',
