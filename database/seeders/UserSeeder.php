@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
                 'email' => 'salaha.sokhona@gmail.com',
                 'email_verified_at' => now(),
                 'role_id' => 1, // Utilisateur administrateur
-                'password' => bcrypt(env('ADMIN_PASSWORD')),
+                'password' => bcrypt('Sokhona'),
             ]);
         }
 
