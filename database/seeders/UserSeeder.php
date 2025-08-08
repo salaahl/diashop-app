@@ -12,14 +12,14 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        if (!User::where('email', 'salaha.sokhona@gmail.com')->exists()) {
+        if (!User::where('email', 'sokhona.salaha@gmail.com')->exists()) {
             User::factory()->create([
                 'firstname' => 'Salaha',
                 'lastname' => 'Sokhona',
-                'email' => 'salaha.sokhona@gmail.com',
+                'email' => 'sokhona.salaha@gmail.com',
                 'email_verified_at' => now(),
                 'role_id' => 1, // Utilisateur administrateur
-                'password' => bcrypt('Sokhona'),
+                'password' => bcrypt(env('ADMIN_PASSWORD')),
             ]);
         }
 
