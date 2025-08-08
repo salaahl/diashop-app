@@ -17,7 +17,6 @@ echo "Running migrations..."
 php artisan migrate --force || { echo "Migrations failed"; exit 1; }
 
 echo "Running seeders..."
-php artisan db:seed --force || { echo "Seeding failed, but continuing..."; true; }
 php artisan db:seed --class=VoyagerDatabaseSeeder --force || { echo "Seeding voyager database failed, but continuing..."; true; }
 
 echo "Vérification du dossier public/build..."
