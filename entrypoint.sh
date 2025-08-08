@@ -13,13 +13,10 @@ php artisan view:clear
 echo "Testing database connection..."
 php -r "try { new PDO('pgsql:host=$DB_HOST;dbname=$DB_DATABASE', '$DB_USERNAME', '$DB_PASSWORD'); echo 'Database connection OK\n'; } catch (Exception \$e) { echo 'Database connection failed: ' . \$e->getMessage() . '\n'; exit(1); }"
 
-echo "Running migrations..."
-php artisan migrate --force || { echo "Migrations failed"; exit 1; }
+echo "Running migrations and seeders..."
+php artisan migrate:fresh --seed --force || { echo "Migrations failed"; exit 1; }
 
-echo "Running seeders..."
-php artisan db:seed --force || { echo "Seeding failed, but continuing..."; true; }
-
-echo "Install voyager and run voyager database seeder..."
+echo "Install voyager and run voyager seeder..."
 php artisan voyager:install --force || { echo "Voyager install failed, but continuing..."; true; }
 php artisan db:seed --class=VoyagerDatabaseSeeder --force || { echo "Seeding voyager database failed, but continuing..."; true; }
 
