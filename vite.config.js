@@ -25,9 +25,9 @@ export default defineConfig({
             refresh: true,
         }),
         EnvironmentPlugin({
-            APP_DEBUG: false,
-            STRIPE_KEY: '',
-            STANDARD_DELIVERY_CHARGES: 0,
+            APP_DEBUG: process.env.APP_DEBUG || false,
+            STRIPE_KEY: process.env.STRIPE_KEY || "",
+            STANDARD_DELIVERY_CHARGES: process.env.STANDARD_DELIVERY_CHARGES || 699,
         }),
     ],
 });
