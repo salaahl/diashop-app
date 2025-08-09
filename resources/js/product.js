@@ -241,7 +241,8 @@ if (document.getElementById("add-basket")) {
                                 <div class="w-full">
                                     <h4 class="text-sm text-center text-gray-500 line-through">+ ${
                                         import.meta.env
-                                            .STANDARD_DELIVERY_CHARGES / 100
+                                            .VITE_STANDARD_DELIVERY_CHARGES /
+                                        100
                                     }€ de frais de livraison</h4>
                                     <h4 class="mb-2 text-sm text-center text-gray-500">Frais de livraison offerts !</h4>
                                     <h4 class="text-sm text-center text-gray-500">
@@ -263,12 +264,14 @@ if (document.getElementById("add-basket")) {
                                 `;
                         } else {
                             total +=
-                                import.meta.env.STANDARD_DELIVERY_CHARGES / 100;
+                                import.meta.env.VITE_STANDARD_DELIVERY_CHARGES /
+                                100;
                             basketFooter = `
                                 <div class="w-full">
                                     <h4 class="mb-2 text-sm text-center text-gray-500">+ ${
                                         import.meta.env
-                                            .STANDARD_DELIVERY_CHARGES / 100
+                                            .VITE_STANDARD_DELIVERY_CHARGES /
+                                        100
                                     }€ de frais de livraison</h4>
                                     <h4 class="text-sm text-center text-gray-500">
                                         Options de payement disponiles : Visa, Mastercard, CB & Paypal
