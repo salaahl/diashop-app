@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import EnvironmentPlugin from "vite-plugin-environment";
