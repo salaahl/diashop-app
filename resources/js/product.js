@@ -7,7 +7,10 @@ const popUp = $("#popup");
 const popUpTimer = 5000;
 let url = window.location.href;
 
-console.log(process.env.STANDARD_DELIVERY_CHARGES);
+console.log("🔍 RENDER TEST - Variables:", {
+    stripeKey: !!process.env.STRIPE_KEY,
+    deliveryCharges: process.env.STANDARD_DELIVERY_CHARGES,
+});
 
 // Loupe pour les photos d'articles en mode PC
 if (window.innerWidth > 1023) {
@@ -184,9 +187,7 @@ if (document.getElementById("add-basket")) {
                                         "</td>" +
                                         '<td class="column-five py-4 font-semibold text-gray-900">' +
                                         '<h4 class="price">' +
-                                        (
-                                            product.price * product.quantity
-                                        ).toFixed(2) +
+                                        (product.price * product.quantity).toFixed(2) +
                                         "</h4>" +
                                         "</td>" +
                                         '<td class="column-six py-4">' +
