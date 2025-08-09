@@ -1,4 +1,4 @@
-const stripe = Stripe(import.meta.env.STRIPE_KEY);
+const stripe = Stripe(import.meta.env.VITE_STRIPE_KEY);
 
 initialize();
 
