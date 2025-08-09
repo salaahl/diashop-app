@@ -8,9 +8,10 @@ const popUpTimer = 5000;
 let url = window.location.href;
 
 console.log(import.meta.env.VITE_TEST);
+console.log(import.meta.env.TEST);
 console.log(import.meta.env.STANDARD_DELIVERY_CHARGES);
 console.log(import.meta.env);
-console.log(process.env);
+console.log(process.env.STANDARD_DELIVERY_CHARGES);
 
 // Loupe pour les photos d'articles en mode PC
 if (window.innerWidth > 1023) {
