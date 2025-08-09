@@ -9,6 +9,8 @@ let url = window.location.href;
 
 console.log(import.meta.env.VITE_TEST);
 console.log(import.meta.env.STANDARD_DELIVERY_CHARGES);
+console.log(import.meta.env);
+console.log(process.env);
 
 // Loupe pour les photos d'articles en mode PC
 if (window.innerWidth > 1023) {
