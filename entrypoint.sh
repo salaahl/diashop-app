@@ -15,7 +15,6 @@ composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-exif -
 php artisan route:clear
 php artisan cache:clear
 php artisan config:clear
-php artisan route:cache
 
 echo "Testing database connection..."
 php -r "try { new PDO('pgsql:host=$DB_HOST;dbname=$DB_DATABASE', '$DB_USERNAME', '$DB_PASSWORD'); echo 'Database connection OK\n'; } catch (Exception \$e) { echo 'Database connection failed: ' . \$e->getMessage() . '\n'; exit(1); }"
