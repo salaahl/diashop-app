@@ -27,7 +27,7 @@
 @endsection
 
 @section('main')
-<div id="checkout" class="min-h-[85vh] pt-[50px]"></div>
+<div id="checkout" class="min-h-[85vh] md:py-[80px]"></div>
 <input type="hidden" id="clientSecret" name="clientSecret" value="{{ $clientSecret }}" />
 @endsection
 
