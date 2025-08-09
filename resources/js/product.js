@@ -182,7 +182,9 @@ if (document.getElementById("add-basket")) {
                                         "</td>" +
                                         '<td class="column-five py-4 font-semibold text-gray-900">' +
                                         '<h4 class="price">' +
-                                        (product.price * product.quantity).toFixed(2) +
+                                        (
+                                            product.price * product.quantity
+                                        ).toFixed(2) +
                                         "</h4>" +
                                         "</td>" +
                                         '<td class="column-six py-4">' +
@@ -238,8 +240,8 @@ if (document.getElementById("add-basket")) {
                             basketFooter = `
                                 <div class="w-full">
                                     <h4 class="text-sm text-center text-gray-500 line-through">+ ${
-                                        process.env.STANDARD_DELIVERY_CHARGES /
-                                        100
+                                        import.meta.env
+                                            .STANDARD_DELIVERY_CHARGES / 100
                                     }€ de frais de livraison</h4>
                                     <h4 class="mb-2 text-sm text-center text-gray-500">Frais de livraison offerts !</h4>
                                     <h4 class="text-sm text-center text-gray-500">
@@ -261,12 +263,12 @@ if (document.getElementById("add-basket")) {
                                 `;
                         } else {
                             total +=
-                                process.env.STANDARD_DELIVERY_CHARGES / 100;
+                                import.meta.env.STANDARD_DELIVERY_CHARGES / 100;
                             basketFooter = `
                                 <div class="w-full">
                                     <h4 class="mb-2 text-sm text-center text-gray-500">+ ${
-                                        process.env.STANDARD_DELIVERY_CHARGES /
-                                        100
+                                        import.meta.env
+                                            .STANDARD_DELIVERY_CHARGES / 100
                                     }€ de frais de livraison</h4>
                                     <h4 class="text-sm text-center text-gray-500">
                                         Options de payement disponiles : Visa, Mastercard, CB & Paypal
