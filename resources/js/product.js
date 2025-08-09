@@ -7,6 +7,8 @@ const popUp = $("#popup");
 const popUpTimer = 5000;
 let url = window.location.href;
 
+console.log(process.env.VITE_TEST);
+
 // Loupe pour les photos d'articles en mode PC
 if (window.innerWidth > 1023) {
     let zoomer = (function () {
