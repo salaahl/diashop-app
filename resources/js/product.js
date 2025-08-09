@@ -238,7 +238,7 @@ if (document.getElementById("add-basket")) {
                             basketFooter = `
                                 <div class="w-full">
                                     <h4 class="text-sm text-center text-gray-500 line-through">+ ${
-                                        process.env.STANDARD_DELIVERY_CHARGES /
+                                        Number(process.env.STANDARD_DELIVERY_CHARGES) /
                                         100
                                     }€ de frais de livraison</h4>
                                     <h4 class="mb-2 text-sm text-center text-gray-500">Frais de livraison offerts !</h4>

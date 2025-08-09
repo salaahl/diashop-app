@@ -15,6 +15,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
+        'eloquent.saving: App\Models\Product' => [
+            'App\Listeners\CleanImgField',
+        ],
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],

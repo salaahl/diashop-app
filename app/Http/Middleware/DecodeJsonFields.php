@@ -7,11 +7,10 @@ use Closure;
 class DecodeJsonFields
 {
     /**
-     * Liste des champs JSON à décoder avant sauvegarde.
+     * Liste des champs JSON à décoder avant sauvegarde via Laravel Voyager.
      */
     protected $jsonFields = [
         'quantity_per_size',
-        'img',
     ];
 
     /**
@@ -26,15 +25,6 @@ class DecodeJsonFields
                 // Si c’est une chaîne JSON valide, on décode
                 if (is_string($input[$field]) && $this->isJson($input[$field])) {
                     $input[$field] = json_decode($input[$field], true);
-                }
-
-                // Vérification spécifique pour le champ 'img'
-                if ($field === 'img') {
-                    if (!is_array($input[$field]) || count($input[$field]) < 2) {
-                        return redirect()->back()
-                            ->withInput()
-                            ->withErrors(['img' => 'Le champ "img" doit contenir entre deux et quatre images.']);
-                    }
                 }
             }
         }
