@@ -1,4 +1,3 @@
-import "dotenv/config";
 import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import EnvironmentPlugin from "vite-plugin-environment";
@@ -26,7 +25,7 @@ export default defineConfig({
             refresh: true,
         }),
         EnvironmentPlugin({
-            VITE_TEST: process.env.VITE_TEST,
+            TEST: process.env.VITE_TEST,
             APP_DEBUG: false,
             STRIPE_KEY: '',
             STANDARD_DELIVERY_CHARGES: 0,
