@@ -25,7 +25,7 @@ class CleanImgField
 
         /* 
         * Le "sur-enregistrement" d'identifiants peut avoir comme effet de "sur-encoder" les identifiants déjà en base.
-        * On doit donc les nettoyer pour qu'ils ne soient encodé qu'une seule fois, comme l'identifiant à ajouter.
+        * On doit donc les nettoyer pour qu'ils ne soient encodés qu'une seule fois, comme l'identifiant à ajouter.
         */
         while (is_string($original) && $this->isJson($original)) {
             $original = json_decode($original, true);
