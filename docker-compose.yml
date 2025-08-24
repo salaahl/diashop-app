@@ -1,38 +1,42 @@
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: ${APP_NAME}_app
-    restart: unless-stopped
-    volumes:
-      - .:/var/www/html
-    ports:
-      - "8080:80"
-    depends_on:
-      - db
-    env_file:
-        - .env
-    networks:
-      - laravel
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: ${APP_NAME}_app
+        restart: unless-stopped
+        volumes:
+            - .:/var/www/html
+        ports:
+            - "8080:80"
+        depends_on:
+            - db
+        env_file:
+            - .env
+        networks:
+            - laravel
 
-  db:
-    image: postgres:15-alpine
-    container_name: db_diashop
-    environment:
-      POSTGRES_DB: ${DB_DATABASE}
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-    volumes:
-      - dbdata:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-    networks:
-      - laravel
+    composer:
+        image: composer:latest
+        working_dir: /var/www/symfony
+
+    db:
+        image: postgres:15-alpine
+        container_name: db_diashop
+        environment:
+            POSTGRES_DB: ${DB_DATABASE}
+            POSTGRES_USER: ${DB_USERNAME}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+        volumes:
+            - dbdata:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+        networks:
+            - laravel
 
 networks:
-  laravel:
-    driver: bridge
+    laravel:
+        driver: bridge
 
 volumes:
-  dbdata:
+    dbdata:
