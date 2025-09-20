@@ -158,7 +158,7 @@ if (document.getElementById("add-basket")) {
                                         '">' +
                                         '<img class="h-auto w-16 md:w-24" src="https://res.cloudinary.com/dq8yfrr3w/image/upload/v1/' +
                                         product.img +
-                                        '">' +
+                                        ' alt="Image de l\'article">' +
                                         "</a>" +
                                         "</td>" +
                                         '<td class="column-two pl-2 py-4 font-semibold text-gray-900">' +
@@ -189,7 +189,7 @@ if (document.getElementById("add-basket")) {
                                         "</td>" +
                                         '<td class="column-six py-4">' +
                                         '<div class="flex justify-center align-center">' +
-                                        '<button type="button" class="remove-button">' +
+                                        '<button aria-label="Supprimer l\'article" type="button" class="remove-button">' +
                                         "<svg " +
                                         'xmlns="http://www.w3.org/2000/svg" ' +
                                         'viewBox="0 0 448 512" ' +

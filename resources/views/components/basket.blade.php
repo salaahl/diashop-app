@@ -34,7 +34,7 @@ $total = 0;
               stroke-width="4"
               d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
           </svg>
-          <span class="sr-only">Close modal</span>
+          <span class="sr-only">Fermer le panier</span>
         </button>
       </div>
       <!-- Modal body -->
@@ -110,7 +110,7 @@ $total = 0;
                 </td>
                 <td class="column-six py-4">
                   <div class="flex justify-center align-center">
-                    <button type="button" class="remove-button">
+                    <button aria-label="Supprimer l'article du panier" type="button" class="remove-button">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 448 512"

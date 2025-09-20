@@ -104,14 +104,14 @@
                     </select>
                 </div>
                 <div id="buttons" class="flex flex-wrap lg:flex-nowrap my-10">
-                    <button id="add-basket" class="button-stylised-1 w-full max-lg:mb-4" role="button">
+                    <button id="add-basket" class="button-stylised-1 w-full max-lg:mb-4">
                         <span>Ajouter au panier</span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="hidden h-[15px] ml-2">
                             <path fill="#000000" d="M253.3 35.1c6.1-11.8 1.5-26.3-10.2-32.4s-26.3-1.5-32.4 10.2L117.6 192H32c-17.7 0-32 14.3-32 32s14.3 32 32 32L83.9 463.5C91 492 116.6 512 146 512H430c29.4 0 55-20 62.1-48.5L544 256c17.7 0 32-14.3 32-32s-14.3-32-32-32H458.4L365.3 12.9C359.2 1.2 344.7-3.4 332.9 2.7s-16.3 20.6-10.2 32.4L404.3 192H171.7L253.3 35.1zM192 304v96c0 8.8-7.2 16-16 16s-16-7.2-16-16V304c0-8.8 7.2-16 16-16s16 7.2 16 16zm96-16c8.8 0 16 7.2 16 16v96c0 8.8-7.2 16-16 16s-16-7.2-16-16V304c0-8.8 7.2-16 16-16zm128 16v96c0 8.8-7.2 16-16 16s-16-7.2-16-16V304c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
                         </svg>
                     </button>
                     @guest
-                    <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom w-full lg:w-fit min-w-[250px] flex justify-center items-center lg:ml-5 opacity-50 pointer-events-none whitespace-nowrap" role="button">
+                    <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom w-full lg:w-fit min-w-[250px] flex justify-center items-center lg:ml-5 opacity-50 pointer-events-none whitespace-nowrap">
                         <span>Ajouter aux favoris</span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hidden h-[15px] ml-2">
                             <path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
@@ -120,26 +120,26 @@
                     @endguest
                     @auth
                     @if(\App\Models\Favorite::where([["user_id", Auth::user()->id], ["product_id", $product->id]])->first())
-                    <button id="remove-favorite" class="button-stylised-1 button-stylised-1-custom w-full lg:w-fit min-w-[250px] flex justify-center items-center lg:ml-5 whitespace-nowrap" role="button">
+                    <button id="remove-favorite" class="button-stylised-1 button-stylised-1-custom w-full lg:w-fit min-w-[250px] flex justify-center items-center lg:ml-5 whitespace-nowrap">
                         <span>Retirer des favoris</span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hidden h-[15px] ml-2">
                             <path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
                         </svg>
                     </button>
-                    <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom hidden w-full lg:w-fit min-w-[250px] flex justify-center items-center lg:ml-5 whitespace-nowrap" role="button">
+                    <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom hidden w-full lg:w-fit min-w-[250px] flex justify-center items-center lg:ml-5 whitespace-nowrap">
                         <span>Ajouter aux favoris</span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hidden h-[15px] ml-2">
                             <path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
                         </svg>
                     </button>
                     @else
-                    <button id="remove-favorite" class="button-stylised-1 button-stylised-1-custom hidden w-full lg:w-fit min-w-[250px] flex justify-center items-center lg:ml-5 whitespace-nowrap" role="button">
+                    <button id="remove-favorite" class="button-stylised-1 button-stylised-1-custom hidden w-full lg:w-fit min-w-[250px] flex justify-center items-center lg:ml-5 whitespace-nowrap">
                         <span>Retirer des favoris</span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hidden h-[15px] ml-2">
                             <path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
                         </svg>
                     </button>
-                    <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom w-full lg:w-fit min-w-[250px] flex justify-center items-center lg:ml-5 whitespace-nowrap" role="button">
+                    <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom w-full lg:w-fit min-w-[250px] flex justify-center items-center lg:ml-5 whitespace-nowrap">
                         <span>Ajouter aux favoris</span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hidden h-[15px] ml-2">
                             <path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
@@ -157,7 +157,7 @@
             <div class="md:h-2/4 max-md:mt-12 max-md:mb-16">
                 <h2>Ce produit est en rupture de stock.</h2>
                 @guest
-                <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom w-full min-w-[250px] flex justify-center items-center mt-8 mb-0 mx-0 opacity-50 pointer-events-none whitespace-nowrap" role="button">
+                <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom w-full min-w-[250px] flex justify-center items-center mt-8 mb-0 mx-0 opacity-50 pointer-events-none whitespace-nowrap">
                     <span>Ajouter aux favoris</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hidden h-[15px] ml-2">
                         <path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
@@ -166,26 +166,26 @@
                 @endguest
                 @auth
                 @if(\App\Models\Favorite::where([["user_id", Auth::user()->id], ["product_id", $product->id]])->first())
-                <button id="remove-favorite" class="button-stylised-1 button-stylised-1-custom w-full min-w-[250px] flex justify-center items-center mt-8 mb-0 mx-0 whitespace-nowrap" role="button">
+                <button id="remove-favorite" class="button-stylised-1 button-stylised-1-custom w-full min-w-[250px] flex justify-center items-center mt-8 mb-0 mx-0 whitespace-nowrap">
                     <span>Retirer des favoris</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hidden h-[15px] ml-2">
                         <path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
                     </svg>
                 </button>
-                <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom hidden w-full min-w-[250px] flex justify-center items-center mt-8 mb-0 mx-0 whitespace-nowrap" role="button">
+                <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom hidden w-full min-w-[250px] flex justify-center items-center mt-8 mb-0 mx-0 whitespace-nowrap">
                     <span>Ajouter aux favoris</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hidden h-[15px] ml-2">
                         <path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
                     </svg>
                 </button>
                 @else
-                <button id="remove-favorite" class="button-stylised-1 button-stylised-1-custom hidden w-full min-w-[250px] flex justify-center items-center mt-8 mb-0 mx-0 whitespace-nowrap" role="button">
+                <button id="remove-favorite" class="button-stylised-1 button-stylised-1-custom hidden w-full min-w-[250px] flex justify-center items-center mt-8 mb-0 mx-0 whitespace-nowrap">
                     <span>Retirer des favoris</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hidden h-[15px] ml-2">
                         <path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
                     </svg>
                 </button>
-                <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom w-full min-w-[250px] flex justify-center items-center mt-8 mb-0 mx-0 whitespace-nowrap" role="button">
+                <button id="add-favorite" class="button-stylised-1 button-stylised-1-custom w-full min-w-[250px] flex justify-center items-center mt-8 mb-0 mx-0 whitespace-nowrap">
                     <span>Ajouter aux favoris</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="hidden h-[15px] ml-2">
                         <path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
@@ -216,12 +216,12 @@
                 </div>
                 @endforeach
 
-                <button class="prev" onclick="plusSlides(-1)">
+                <button aria-label="Image précédente" class="prev" onclick="plusSlides(-1)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-4 h-4 md:w-6 md:h-6">
                         <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
                     </svg>
                 </button>
-                <button class="next" onclick="plusSlides(1)">
+                <button aria-label="Image suivante" class="next" onclick="plusSlides(1)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-4 h-4 md:w-6 md:h-6">
                         <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                     </svg>

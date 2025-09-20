@@ -64,7 +64,7 @@
 <section id="about-us-container" class="w-full max-w-[1440px] flex flex-wrap md:mt-16 mx-auto p-8 bg-[#fcdedc] md:rounded-xl overflow-auto">
     <div class="flex flex-col md:flex-row-reverse items-center justify-center">
         <div class="w-[90%] md:w-2/4 md:ml-12">
-            <img src="{{ asset('images/woman-catalog.jpg')}}" class="h-auto w-auto max-md:my-10 mx-auto md:rounded-lg border-[25px] border-white object-cover">
+            <img src="{{ asset('images/woman-catalog.jpg')}}" alt="Image d'une mannequin du site" class="h-auto w-auto max-md:my-10 mx-auto md:rounded-lg border-[25px] border-white object-cover">
         </div>
         <div class="w-full md:w-2/4">
             <div class="title-container w-full mb-8">
@@ -155,12 +155,12 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
     </div>
     <div id="testimonials" class="relative lg:flex flex-nowrap items-stretch lg:ml-12 snap-x snap-mandatory scroll-smooth overflow-auto">
         <div class="scroll-controls hidden absolute h-full w-full lg:flex items-center justify-between px-8">
-            <button class="scroll-button scroll-left hide fixed p-6 bg-white/75 backdrop-blur rounded-full">
+            <button aria-label="Défilement vers la gauche" class="scroll-button scroll-left hide fixed p-6 bg-white/75 backdrop-blur rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-6 h-6">
                     <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
                 </svg>
             </button>
-            <button class="scroll-button scroll-right fixed right-0 p-6 bg-white/75 backdrop-blur rounded-full">
+            <button aria-label="Défilement vers la droite" class="scroll-button scroll-right fixed right-0 p-6 bg-white/75 backdrop-blur rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-6 h-6">
                     <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                 </svg>

@@ -7,6 +7,7 @@
             <button
                 data-modal-target="search-modal"
                 data-modal-toggle="search-modal"
+                aria-label="Ouvrir la fenêtre de recherche d'articles"
                 class="search-btn nav-btn has-search-counter relative inline-flex items-center w-6 h-6 mr-4 justify-center text-sm text-gray-500"
                 type="button">
                 <svg class="w-[21px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
@@ -16,6 +17,7 @@
             <button
                 data-modal-target="basket-modal"
                 data-modal-toggle="basket-modal"
+                aria-label="Ouvrir le panier"
                 class="basket-btn nav-btn has-basket-counter relative inline-flex items-center w-6 h-6 justify-center text-sm text-gray-500"
                 type="button">
                 <svg class="w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="none">
@@ -109,6 +111,8 @@
                                 <a href="{{ route('favorites') }}" class="block my-2 lg:mr-4 px-4 py-2 max-lg:font-bold max-lg:text-lg w-fit mx-auto whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">
                                     Mes favoris
                                 </a>
+                            </ul>
+                        </div>
                     </li>
                     <li class="self-center">
                         <a href="{{ route('orders') }}" class="block my-2 lg:mr-4 px-4 py-2 max-lg:font-bold max-lg:text-lg w-fit mx-auto whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">

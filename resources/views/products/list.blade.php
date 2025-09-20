@@ -27,12 +27,12 @@
         <h1><span>{{ $products->first()->catalog->name }}</span></h1>
     </div>
     <div class="scroll-controls hidden absolute w-[calc(100%-4rem)] h-[calc(100%-2rem)] md:flex items-center justify-between">
-        <button class="scroll-button scroll-left hide p-6 bg-white/50 backdrop-blur rounded-full z-10">
+        <button aria-label="Défilement vers la gauche" class="scroll-button scroll-left hide p-6 bg-white/50 backdrop-blur rounded-full z-10">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-6 h-6">
                 <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
             </svg>
         </button>
-        <button class="scroll-button scroll-right p-6 bg-white/50 backdrop-blur rounded-full z-10">
+        <button aria-label="Défilement vers la droite" class="scroll-button scroll-right p-6 bg-white/50 backdrop-blur rounded-full z-10">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-6 h-6">
                 <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
             </svg>
