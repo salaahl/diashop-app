@@ -42,7 +42,7 @@ class StripePaymentController extends Controller
             );
         }
 
-        session()->forget('basket');
+        if (session()->has('basket')) session()->forget('basket');
 
         return view('stripe/confirmation', ['order' => $order]);
     }

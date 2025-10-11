@@ -763,7 +763,7 @@
                               <tr>
                                 <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px">
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
-                                    Le numéro de suivi vous sera communiqué dans un second mail, lorsque le colis sera expédié. Vous pourrez alors suivre son acheminement en temps réel.
+                                    Le numéro de suivi vous sera communiqué dans un second mail, lorsque le colis aura été expédié. Vous pourrez alors suivre son acheminement en temps réel.
                                   </p>
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;color:#020202;font-size:14px">
                                     <br>
