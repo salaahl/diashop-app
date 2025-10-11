@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Exception;
 use App\Services\StripePaymentService;
 
 class StripePaymentController extends Controller
 {
-    protected StripePaymentService $stripePaymentService; // L'instance StripePaymentService
+    protected StripePaymentService $stripePaymentService;
 
     public function __construct(StripePaymentService $stripePaymentService)
     {
@@ -30,20 +31,19 @@ class StripePaymentController extends Controller
         }
     }
 
-    public function confirmation($stripe_session_id)
+    public function confirmation($transactionId)
     {
-        try {
-            $order = $this->stripePaymentService->registerOrder($stripe_session_id);
-        } catch (Exception $e) {
+        $order = Order::where('stripe_transaction_id', $transactionId)->first();
+
+        if (!$order) {
             return redirect()->route('home')->with(
                 'error',
-                $e->getMessage() ??
-                    'Erreur lors de la validation de la commande. Veuillez prendre contact avec l\'administrateur du site.'
+                'Erreur lors de la validation de la commande. Veuillez prendre contact avec l\'administrateur du site.'
             );
         }
 
-        return view('stripe/confirmation', [
-            "order" => $order
-        ]);
+        session()->forget('basket');
+
+        return view('stripe/confirmation', ['order' => $order]);
     }
 }

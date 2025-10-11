@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\StripePaymentController;
+use App\Http\Controllers\StripeWebhookController;
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\Route;
 
@@ -62,6 +63,7 @@ Route::delete('basket/remove', [BasketController::class, 'remove'])->name('baske
 Route::delete('basket/destroy', [BasketController::class, 'destroy'])->name('basket.destroy');
 
 Route::get('checkout/', [StripePaymentController::class, 'checkout'])->name('checkout');
+Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
 Route::get('confirmation/{slug}', [StripePaymentController::class, 'confirmation'])->name('confirmation.show');
 
 Route::get('about-us/', function () {

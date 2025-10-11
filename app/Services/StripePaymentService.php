@@ -2,11 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Order;
-use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
-use App\Jobs\ConfirmationEmailJob;
-use App\Jobs\NewCommandEmailJob;
 use Exception;
 
 class StripePaymentService
@@ -125,97 +121,14 @@ class StripePaymentService
             'automatic_tax' => [
                 'enabled' => true,
             ],
+
+            // Ajout des métadonnées pour le webhook
+            'metadata' => [
+                'basket' => json_encode(session()->get("basket")),
+                'user_id' => Auth::id(), // Sera null si non connecté
+            ],
         ]);
 
         return $checkout_session->client_secret;
-    }
-
-    public function registerOrder($stripe_session_id)
-    {
-        $stripe = new \Stripe\StripeClient(env("STRIPE_SECRET"));
-        $session = $stripe->checkout->sessions->retrieve($stripe_session_id);
-
-        // On verifie que le payement est bien terminé
-        if ($session->status !== 'complete') {
-            throw new Exception("Le payement a échoué");
-        }
-
-        // On verifie que la commande n'existe pas
-        if (Order::where('stripe_transaction_id', $stripe_session_id)->first() !== null) {
-            return Order::where('stripe_transaction_id', $stripe_session_id)->first();
-        }
-
-        // Je retire la quantité commandée
-        foreach (session()->get("basket") as $items) {
-            foreach ($items as $item) {
-                $product = Product::where("id", $item['id'])->first();
-                $product_quantity = $product->quantity_per_size;
-                $product_quantity[$item['size']] -= $item['quantity'];
-                $product->quantity_per_size = $product_quantity;
-                $product->save();
-            }
-        }
-
-        $order = new Order();
-        $order->command_number = time();
-        $order->fullname = $session->customer_details->name;
-        $order->email = $session->customer_details->email;
-
-        $products = [];
-        foreach (session()->get("basket") as $items) {
-            foreach ($items as $item) {
-                $products[$item["id"]] = [
-                    $item["size"] => [
-                        "name" => $item["name"],
-                        "size" => $item["size"],
-                        "price" => $item["price"],
-                        "quantity" => $item["quantity"]
-                    ]
-                ];
-            }
-        }
-        $order->products = $products;
-        session()->forget("basket");
-
-        $billing_address = [
-            "fullname" => $session->customer_details->name,
-            "line1" => $session->customer_details->address['line1'],
-            "line2" => $session->customer_details->address['line2'],
-            "postal_code" => $session->customer_details->address['postal_code'],
-            "city" => $session->customer_details->address['city'],
-            "country" => $session->customer_details->address['country']
-        ];
-        $order->billing_address = $billing_address;
-
-        $shipping_address = [
-            "fullname" => $session->shipping_details->name,
-            "line1" => $session->shipping_details->address['line1'],
-            "line2" => $session->shipping_details->address['line2'],
-            "postal_code" => $session->shipping_details->address['postal_code'],
-            "city" => $session->shipping_details->address['city'],
-            "country" => $session->shipping_details->address['country']
-        ];
-        $order->shipping_address = $shipping_address;
-
-        if ($session->customer_details->phone)
-            $order->phone = $session->customer_details->phone;
-
-        if (Auth::user())
-            $order->user_id = Auth::user()->id;
-
-        $order->amount = [
-            "shipping_cost" => $session->shipping_cost->amount_total,
-            "amount_total" => $session->amount_total
-        ];
-
-        $order->stripe_transaction_id = $stripe_session_id;
-        $order->save();
-
-        // Mail de confirmation à l'acheteur
-        dispatch(new ConfirmationEmailJob($order));
-        // Notification à l'administrateur
-        dispatch(new NewCommandEmailJob($order));
-
-        return $order;
     }
 }

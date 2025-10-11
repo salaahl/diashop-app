@@ -112,7 +112,7 @@ class ProductController extends Controller
         }
 
         return response()->json([
-            'quantity' => $quantity[$request->size] > 0 ? 9 : $quantity[$request->size]
+            'quantity' => $quantity[$request->size] > 9 ? 9 : $quantity[$request->size]
         ]);
     }
 
