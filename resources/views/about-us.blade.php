@@ -53,12 +53,12 @@
 
     @keyframes fadeSlideIn {
         from {
-            margin-top: -5vh;
+            transform: translateY(-15%);
             opacity: 0;
         }
 
         to {
-            margin-top: -30vh;
+            transform: translateY(0);
             opacity: 1;
         }
     }
@@ -71,16 +71,17 @@
 
 @section('main')
 <section id="about-us" class="min-h-screen">
-    <div class="h-[10vh] md:h-[40vh] w-full hidden md:flex justify-center items-center overflow-hidden bg-gray-800"></div>
-    <div class="min-h-[40vh] w-full max-w-screen-xl mx-auto px-2 xl:px-0 md:mt-[-10vh] flex flex-col justify-center">
-        <div class="title-container md:h-[10vh] w-min md:w-auto flex justify-center items-center mx-auto">
-            <h1 class="my-8 md:mt-24 md:mb-32 md:text-white"><span>À propos de nous</span></h1>
+    <div class="min-h-[40vh] w-full mx-auto px-2 xl:px-0 flex flex-col justify-center">
+        <div class="title-container w-min md:w-auto flex justify-center items-center mx-auto">
+            <h1 class="mt-8 md:mt-24"><span>À propos de nous</span></h1>
         </div>
-        <img src="{{ asset('images/woman-catalog.jpg')}}" alt="Image d'une mannequin du site" class="h-auto w-3/4 md:h-[50vh] max-md:my-10 mx-auto aspect-square border-[25px] border-gray-200 md:border-white rounded-full object-cover">
-        <p class="md:mt-4 text-center font-[600]">Bienvenue chez {{ env("APP_NAME") }} !</p>
+        <div id="image-container" class="w-full my-10 md:my-0 p-6 md:p-0 bg-[#eeaeca] rounded-lg">
+            <img src="{{ asset('images/woman-catalog.jpg')}}" alt="Image d'une mannequin du site" class="h-auto w-3/4 md:h-[50vh] mx-auto aspect-square border-[25px] border-white rounded-full object-cover">
+        </div>
+        <p class="md:mt-4 text-lg text-center font-[600]">Bienvenue chez {{ env("APP_NAME") }} !</p>
         <p class="mt-8 text-justify">Je suis Dianaba, Parisienne passionnée de mode et exploratrice dans l’âme. À travers mes voyages, je sélectionne en personne des pièces uniques et de qualité qui apportent une touche d'authenticité à chaque garde-robe.</p>
         <p class="mt-8 text-justify">Notre collection de prêt-à-porter pour hommes et femmes reflète les dernières tendances mondiales, avec des vêtements soigneusement choisis pour allier style, confort et caractère. Chaque article incarne mon engagement pour une mode élégante et inspirée, importée spécialement pour vous ici à Paris.</p>
-        <p class="mt-8 text-center">Plongez dans cet univers où <span class="highlight">chaque pièce raconte une histoire et sublime votre style.</span></p>
+        <p class="my-8 text-center">Plongez dans cet univers où <span class="highlight">chaque pièce raconte une histoire et sublime votre style.</span></p>
     </div>
 </section>
 @endsection

@@ -3,6 +3,15 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
+        develop:
+            watch:
+                - action: sync
+                  path: ./web
+                  target: /src/web
+                  ignore:
+                      - node_modules/
+                - action: rebuild
+                  path: package.json
         container_name: ${APP_NAME}_app
         restart: unless-stopped
         volumes:
