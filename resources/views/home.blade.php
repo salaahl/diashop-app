@@ -61,17 +61,17 @@
         <a href="{{ route('catalog', 'homme') }}" class="button-stylised-1 w-[85%] xl:w-3/4 mx-auto">Nouveautés pour lui</a>
     </article>
 </section>
-<section id="about-us-container" class="w-full max-w-[1440px] flex flex-wrap md:mt-16 mx-auto p-8 bg-[#fcdedc] md:rounded-xl overflow-auto">
+<section id="about-us-container" class="w-full max-w-[1440px] flex flex-wrap md:mt-16 mx-auto p-12 bg-[#eeaeca] md:rounded-xl overflow-auto">
     <div class="flex flex-col md:flex-row-reverse items-center justify-center">
-        <div class="w-[90%] md:w-2/4 md:ml-12">
-            <img src="{{ asset('images/woman-catalog.jpg')}}" alt="Image d'une mannequin du site" class="h-auto w-auto max-md:my-10 mx-auto md:rounded-lg border-[25px] border-white object-cover">
+        <div class="w-[90%] md:w-2/4 md:ml-24">
+            <img src="{{ asset('images/woman-catalog.jpg')}}" alt="Image d'une mannequin du site" class="h-auto w-auto max-md:my-10 mx-auto md:rounded-[50px] border-[35px] border-white object-cover">
         </div>
         <div class="w-full md:w-2/4">
             <div class="title-container w-full mb-8">
                 <h2 class="mx-auto"><span>À propos de nous</span></h2>
             </div>
             <p class="mb-8 md:mb-16 text-justify">À travers mes voyages, je selectionne en personne des pièces uniques et de qualité qui apportent une touche d'authenticité à chaque garde-robe...</p>
-            <a href="{{ route('about-us') }}" class="button-stylised-1 w-full mb-4">En savoir plus</a>
+            <a href="{{ route('about-us') }}" class="button-stylised-1 w-3/4 mx-auto mb-4">En savoir plus</a>
         </div>
     </div>
 </section>
