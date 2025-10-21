@@ -104,7 +104,6 @@
                             class="dropdownNavbarBtn lg:hidden flex items-center justify-center w-full mb-2 p-2 text-sm uppercase text-gray-900 rounded-lg hover:bg-gray-200 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:w-auto">
                             <span class="text-2xl font-bold lg:text-normal lg:font-normal uppercase">Mon profil</span>
                         </button>
-
                         <!-- Dropdown menu -->
                         <div id="dropdownDashboard"
                             class="dropdownNavbar hidden z-10 lg:flex align-center w-full max-lg:mb-2 max-lg:rounded-lg overflow-hidden bg-gray-100 divide-y divide-gray-100 lg:absolute">
@@ -128,7 +127,6 @@
                                         Mes commandes
                                     </a>
                                 </li>
-
                                 <li class="self-center">
                                     <a href="{{ route('profile.edit') }}"
                                         class="block my-2 lg:mr-4 px-4 py-2 max-lg:font-bold max-lg:text-lg w-fit mx-auto whitespace-nowrap rounded-[5px] lg:rounded-full hover:bg-gray-200 transition duration-500">
