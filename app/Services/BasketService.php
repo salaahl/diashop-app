@@ -44,7 +44,7 @@ class BasketService
             'size' => $size,
             'quantity' => $quantity,
             'img' => $product_image,
-            'catalog' => $product->catalog->name,
+            'catalog' => $product->getCatalog()->name,
             'category' => $product->category->name
         ];
 

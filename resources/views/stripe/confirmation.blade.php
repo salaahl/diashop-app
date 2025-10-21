@@ -57,28 +57,26 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($order->products as $key => $product)
-            @foreach($product as $size)
+            @foreach($order->products as $product)
             <tr class="bg-white border-b hover:bg-gray-50">
                 <td class="max-md:hidden pt-4 pb-4 pl-4">
-                    <x-cld-image public-id="{{ \App\Models\Product::where('id', $key)->first()->img[0] }}" class="w-16 md:w-32 max-w-full max-h-full" alt="{{ $size['name'] }}"></x-cld-image>
+                    <x-cld-image public-id="{{ \App\Models\Product::where('id', $product->id)->first()->img[0] }}" class="w-16 md:w-32 max-w-full max-h-full" alt="{{ $product->pivot->product_name }}"></x-cld-image>
                 </td>
                 <td class="py-4 font-semibold text-gray-900">
-                    <h4 class="text-center">{{ ucfirst($size['name']) }}</h4>
+                    <h4 class="text-center">{{ ucfirst($product->pivot->product_name) }}</h4>
                 </td>
                 <td class="py-4 font-semibold text-gray-900">
-                    <h4 class="size uppercase">@if($size['size'] == "os") Unique @else {{ $size['size'] }} @endif</h4>
+                    <h4 class="size uppercase">@if($product->size == "os") Unique @else {{ $product->size }} @endif</h4>
                 </td>
                 <td class="max-md:hidden py-4 font-semibold text-gray-900">
-                    <h4 class="price">{{ $size['price'] }}</h4>
+                    <h4 class="price">{{ $product->pivot->price }}</h4>
                 </td>
                 <td class="py-4 font-semibold text-gray-900">
                     <div class="flex justify-center items-center">
-                        {{ $size['quantity'] }}
+                        {{ $product->pivot->quantity }}
                     </div>
                 </td>
             </tr>
-            @endforeach
             @endforeach
         </tbody>
     </table>

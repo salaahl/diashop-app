@@ -53,13 +53,20 @@ class Product extends Model
         return json_decode($value, true);
     }
 
-    public function catalog()
-    {
-        return $this->belongsTo(Catalog::class);
-    }
-
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_products')
+            ->withPivot('product_name', 'quantity', 'price')
+            ->withTimestamps();
+    }
+
+    public function getCatalog()
+    {
+        return $this->category ? $this->category->catalog : null;
     }
 }

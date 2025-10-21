@@ -84,7 +84,6 @@ class ProductController extends Controller
     {
         $product = Product::selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
             ->where([
-                ['catalog_id', Catalog::where('name', $catalog)->first()->id],
                 ['category_id', Category::where([
                     ['name', $category],
                     ['catalog_id', Catalog::where('name', $catalog)->first()->id]

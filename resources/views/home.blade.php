@@ -48,7 +48,7 @@
     @endphp
     <x-product-card
         :created="$product->created_at->timestamp"
-        :link="route('product', [$product->catalog->name, $product->category->name, $product->id])"
+        :link="route('product', [$product->getCatalog()->name, $product->category->name, $product->id])"
         :image1="$product->img[0]"
         :image2="$product->img[1]"
         :title="$product->name"
@@ -96,13 +96,13 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
                     <nav class="breadcrumb">
                         <ul class="flex items-center">
                             <li>
-                                <a href="{{ route('catalog', $product->catalog->name) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ $product->catalog->name }}</a>
+                                <a href="{{ route('catalog', $product->getCatalog()->name) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ $product->getCatalog()->name }}</a>
                             </li>
                             <li>
                                 <span class="mx-1 text-sm text-gray-700"> / </span>
                             </li>
                             <li>
-                                <a href="{{ route('category', [$product->catalog->name, $product->category->name]) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ strtolower($product->category->name) }}</a>
+                                <a href="{{ route('category', [$product->getCatalog()->name, $product->category->name]) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ strtolower($product->category->name) }}</a>
                             </li>
                             <li>
                                 <span class="mx-1 text-sm text-gray-700"> / </span>
@@ -139,7 +139,7 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
                 }
                 @endphp
                 <div class="max-md:my-4">
-                    <a href="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" class="button-stylised-1 w-full mb-4">En savoir plus</a>
+                    <a href="{{ route('product', [$product->getCatalog()->name, $product->category->name, $product->id]) }}" class="button-stylised-1 w-full mb-4">Voir l'article</a>
                     <div id="delivery-and-return-details" class="mb-10">
                         <h4 class="text-sm text-pretty text-gray-500">Livraison express dans les deux jours ouvrés | standard sous cinq jours ouvrés</h4>
                         <h4 class="text-sm text-pretty text-gray-500">Retour possible sous 14 jours à compter de la date de livraison</h4>

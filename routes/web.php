@@ -48,13 +48,10 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('search/{catalog}/{input}', [ProductController::class, 'search'])->name('search.product');
-Route::post('search/{catalog}/{input}', [ProductController::class, 'search'])->name('search.product.post');
 Route::post('search/', [ProductController::class, 'searchAsync'])->name('search.product.async');
 
 Route::get('catalog/{catalog}/', [ProductController::class, 'catalog'])->name('catalog');
-Route::post('catalog/{catalog}/', [ProductController::class, 'catalog'])->name('catalog.post');
 Route::get('catalog/{catalog}/{category}', [ProductController::class, 'category'])->name('category');
-Route::post('catalog/{catalog}/{category}', [ProductController::class, 'category'])->name('category.post');
 Route::get('catalog/{catalog}/{category}/{product_id}', [ProductController::class, 'product'])->name('product');
 Route::post('/get-stock', [ProductController::class, 'productStock'])->name('product.get-stock');
 

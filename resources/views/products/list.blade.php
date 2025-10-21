@@ -6,7 +6,7 @@
 @endsection
 
 @if(isset($categories))
-@section('title', 'Catalogue ' . $products->first()->catalog->name . ' - ')
+@section('title', 'Catalogue ' . $products->first()->getCatalog()->name . ' - ')
 @else
 @section('title', 'Résultats de votre recherche - ')
 @endif
@@ -24,7 +24,7 @@
 @if(isset($categories))
 <section id="categories" class="relative flex w-full p-4 md:p-8 pb-2 md:pb-4 md:mb-8 rounded-lg bg-gray-50 overflow-x-auto">
     <div class="title-container catalog-name">
-        <h1><span>{{ $products->first()->catalog->name }}</span></h1>
+        <h1><span>{{ $products->first()->getCatalog()->name }}</span></h1>
     </div>
     <div class="scroll-controls hidden absolute w-[calc(100%-4rem)] h-[calc(100%-2rem)] md:flex items-center justify-between">
         <button aria-label="Défilement vers la gauche" class="scroll-button scroll-left hide p-6 bg-white/50 backdrop-blur rounded-full z-10">
@@ -70,8 +70,7 @@
     $size = request()->get('size');
     $sort_by = request()->get('sort_by');
     @endphp
-    <form id="filters-form" class="flex flex-wrap justify-between items-center" action="" method="POST">
-        @csrf
+    <form id="filters-form" class="flex flex-wrap justify-between items-center" action="" method="GET">
         <div id="sizes" class="w-fit lg:w-auto flex flex-wrap">
             <input type="radio" name="size" id="size-s" value="s" @if($size=='s' ) checked @endif>
             <label class="mt-4 lg:mt-0 mr-4 px-4 py-2 text-sm font-semibold text-white rounded-full" for="size-s">S</label>
@@ -96,23 +95,23 @@
 </nav>
 
 <section id="products">
-@foreach($products as $product)
-@php
-$product_stock = 0;
-foreach($product->quantity_per_size as $size => $quantity) {
-$product_stock += $quantity;
-}
-@endphp
-<x-product-card
-    :created="$product->created_at->timestamp"
-    :link="route('product', [$product->catalog->name, $product->category->name, $product->id])"
-    :image1="$product->img[0]"
-    :image2="$product->img[1]"
-    :title="$product->name"
-    :initialPrice="round($product->price, 2)"
-    :finalPrice="round($product->final_price, 2)"
-    :message="!$product_stock ? 'Cet article est en rupture de stock' : ''" />
-@endforeach
+    @foreach($products as $product)
+    @php
+    $product_stock = 0;
+    foreach($product->quantity_per_size as $size => $quantity) {
+    $product_stock += $quantity;
+    }
+    @endphp
+    <x-product-card
+        :created="$product->created_at->timestamp"
+        :link="route('product', [$product->getCatalog()->name, $product->category->name, $product->id])"
+        :image1="$product->img[0]"
+        :image2="$product->img[1]"
+        :title="$product->name"
+        :initialPrice="round($product->price, 2)"
+        :finalPrice="round($product->final_price, 2)"
+        :message="!$product_stock ? 'Cet article est en rupture de stock' : ''" />
+    @endforeach
 </section>
 
 <aside class="w-full mt-[-0.5rem] mb-4">

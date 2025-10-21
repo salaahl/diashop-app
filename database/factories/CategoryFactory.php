@@ -15,7 +15,7 @@ class CategoryFactory extends Factory
     public function definition()
     {
         $images = [
-            'products/November2024/HqAHYdQKKkSLGeHUM6w4',
+            'products/November2024/gVX09v8iXPJsabL84vfo',
             'products/November2024/FDi3nUlYbRZIOwP0H90v',
             'products/November2024/xh8kWSboaIsxdj7iWQhV',
             'categories/November2024/Msc6c1mikMxK8qVFInUP',

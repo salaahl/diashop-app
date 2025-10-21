@@ -33,13 +33,13 @@
                 <nav class="breadcrumb">
                     <ul class="flex items-center">
                         <li>
-                            <a href="{{ route('catalog', $product->catalog->name) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ $product->catalog->name }}</a>
+                            <a href="{{ route('catalog', $product->getCatalog()->name) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ $product->getCatalog()->name }}</a>
                         </li>
                         <li>
                             <span class="mx-1 text-sm text-gray-700"> / </span>
                         </li>
                         <li>
-                            <a href="{{ route('category', [$product->catalog->name, $product->category->name]) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ strtolower($product->category->name) }}</a>
+                            <a href="{{ route('category', [$product->getCatalog()->name, $product->category->name]) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ strtolower($product->category->name) }}</a>
                         </li>
                         <li>
                             <span class="mx-1 text-sm text-gray-700"> / </span>
@@ -258,7 +258,7 @@
     @endphp
     <x-product-card
         :created="$product->created_at->timestamp"
-        :link="route('product', [$product->catalog->name, $product->category->name, $product->id])"
+        :link="route('product', [$product->getCatalog()->name, $product->category->name, $product->id])"
         :image1="$product->img[0]"
         :image2="$product->img[1]"
         :title="$product->name"
@@ -301,7 +301,7 @@ session()->put('viewed_products', $viewedProducts);
     @endphp
     <x-product-card
         :created="$product->created_at->timestamp"
-        :link="route('product', [$product->catalog->name, $product->category->name, $product->id])"
+        :link="route('product', [$product->getCatalog()->name, $product->category->name, $product->id])"
         :image1="$product->img[0]"
         :image2="$product->img[1]"
         :title="$product->name"
@@ -317,7 +317,7 @@ session()->put('viewed_products', $viewedProducts);
 @parent
 <script>
     window.Laravel = {
-        productStockUrl: "{{ route('product.get-stock', [$product->catalog->name, $product->category->name, $product->id]) }}"
+        productStockUrl: "{{ route('product.get-stock', [$product->getCatalog()->name, $product->category->name, $product->id]) }}"
     };
 </script>
 @vite('resources/js/product.js')

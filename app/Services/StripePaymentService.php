@@ -36,7 +36,7 @@ class StripePaymentService
         $shipping_options = [];
 
         // Somme à partir de laquelle la livraison est gratuite
-        if ($total > env('FREE_SHIPPING', 4999)) {
+        if ($total > env('VITE_FREE_SHIPPING', 4999)) {
             $shipping_options[] =
                 [
                     'shipping_rate_data' => [
@@ -82,27 +82,6 @@ class StripePaymentService
             ];
         }
 
-        $shipping_options[] = [
-            'shipping_rate_data' => [
-                'type' => 'fixed_amount',
-                'fixed_amount' => [
-                    'amount' => 1000,
-                    'currency' => 'eur',
-                ],
-                'display_name' => 'Livraison express',
-                'delivery_estimate' => [
-                    'minimum' => [
-                        'unit' => 'business_day',
-                        'value' => 2,
-                    ],
-                    'maximum' => [
-                        'unit' => 'business_day',
-                        'value' => 4,
-                    ],
-                ],
-            ],
-        ];
-
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         $checkout_session = $stripe->checkout->sessions->create([
             'ui_mode' => 'embedded',
@@ -125,7 +104,7 @@ class StripePaymentService
             // Ajout des métadonnées pour le webhook
             'metadata' => [
                 'basket' => json_encode(session()->get("basket")),
-                'user_id' => Auth::id(), // Sera null si non connecté
+                'user_id' => Auth::id(), // null si non connecté
             ],
         ]);
 

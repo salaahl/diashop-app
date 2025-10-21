@@ -81,7 +81,11 @@ products.forEach((product) => {
 
 // Filtres
 if (document.querySelector("#filters-form")) {
-    document.querySelector("#filters-form").addEventListener("change", function () {
-        this.submit();
-    });
+    document
+        .querySelectorAll('#filters-form input[type="radio"]')
+        .forEach((radio) => {
+            radio.addEventListener("change", function () {
+                document.getElementById("filters-form").submit();
+            });
+        });
 }

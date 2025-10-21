@@ -13,7 +13,7 @@ class Catalog extends Model
 
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasManyThrough(Product::class, Category::class);
     }
 
     public function categories()

@@ -449,7 +449,8 @@
                               <tr>
                                 <td align="left" style="padding:0;Margin:0">
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:36px;color:#020202;font-size:24px">
-                                    {{ env("APP_NAME") }}</p>
+                                    {{ env("APP_NAME") }}
+                                  </p>
                                 </td>
                               </tr>
                             </table>
@@ -579,14 +580,12 @@
                                     <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
                                       <strong>Date de la commande :</strong> {{ $order->created_at->toDateString() }}
                                     </li>
-                                    @foreach($order->products as $products)
-                                    @foreach($products as $product)
+                                    @foreach($order->products as $product)
                                     <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
-                                      <b>{{ ucfirst($product['name']) }}</b>
-                                      <br>- Taille : {{ strtoupper($product['size']) }}
-                                      <br>- Quantité : {{ $product['quantity'] }}
+                                      <b>{{ ucfirst($product->pivot->product_name) }}</b>
+                                      <br>- Taille : {{ strtoupper($product->size) }}
+                                      <br>- Quantité : {{ $product->pivot->quantity }}
                                     </li>
-                                    @endforeach
                                     @endforeach
                                     <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Jost, Arial, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#020202;font-size:14px">
                                       <strong>Total :</strong> {{ $order->amount['amount_total'] / 100 }}€ (dont {{ $order->amount['shipping_cost'] / 100 }}€ de frais de livraison)

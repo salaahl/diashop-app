@@ -63,7 +63,6 @@ class StripeWebhookService
                 ];
             }
         }
-        $order->products = $products;
 
         $billing_address = [
             "fullname" => $session->customer_details->name ?? 'N/A',
@@ -100,6 +99,14 @@ class StripeWebhookService
 
         $order->stripe_transaction_id = $stripe_session_id;
         $order->save();
+
+        foreach ($products as $product) {
+            $order->products()->attach($item['id'], [
+                'product_name' => $item['name'],
+                'quantity' => $item['quantity'],
+                'price' => $item['price'],
+            ]);
+        }
 
         // Envoi des emails
         dispatch(new ConfirmationEmailJob($order));

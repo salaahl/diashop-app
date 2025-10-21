@@ -15,19 +15,16 @@ beforeEach(function () {
     $productA = Product::factory()->create([
         'name' => 'Article 1',
         'price' => 9.99,
-        'catalog_id' => $catalog->id,
         'category_id' => $category->id,
     ]);
     $productB = Product::factory()->create([
         'name' => 'Article 2',
         'price' => 10,
-        'catalog_id' => $catalog->id,
         'category_id' => $category->id,
     ]);
     $productC = Product::factory()->create([
         'name' => 'Article 3',
         'price' => 29.95,
-        'catalog_id' => $catalog->id,
         'category_id' => $category->id,
     ]);
 });
