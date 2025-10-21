@@ -12,32 +12,36 @@ class ProductService
     public function filterProductsBySize($products, $size)
     {
         if ($size) {
-            $products = $products->whereRaw("JSON_UNQUOTE(JSON_EXTRACT(quantity_per_size, '$.\"$size\"')) > 0");
+            $products = $products->whereRaw("(quantity_per_size ->> ?)::int > 0", [$size]);
         }
 
         return $products->paginate(12);
     }
 
-
     public function getProductsByCatalog($catalog_id, $size, $sort_by)
     {
+        $catalog = Catalog::findOrFail($catalog_id);
+        $products = $catalog->products()->selectRaw(
+            '*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price'
+        );
+
         switch ($sort_by) {
             case "new":
-                $products = Product::where("catalog_id", $catalog_id)->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->orderBy('created_at', 'DESC');
+                $products = $products->orderBy('products.created_at', 'DESC');
                 break;
             case "price-lowest":
-                $products = Product::where("catalog_id", $catalog_id)->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->orderBy('final_price', 'ASC');
+                $products = $products->orderBy('final_price', 'ASC');
                 break;
             case "price-highest":
-                $products = Product::where("catalog_id", $catalog_id)->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->orderBy('final_price', 'DESC');
+                $products = $products->orderBy('final_price', 'DESC');
                 break;
             default:
-                $products = Product::where("catalog_id", $catalog_id)->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->orderBy('created_at', 'DESC');
+                $products = $products->orderBy('products.created_at', 'DESC');
         }
 
         $products = $this->filterProductsBySize($products, $size);
 
-        if (!$products) {
+        if ($products->isEmpty()) {
             throw new Exception("Aucun résultat");
         }
 
@@ -55,7 +59,7 @@ class ProductService
                         ->first()->id
                 )
                     ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
-                ->orderBy('created_at', 'DESC');
+                    ->orderBy('created_at', 'DESC');
                 break;
             case "price-lowest":
                 $products = Product::where(
@@ -64,8 +68,8 @@ class ProductService
                         ->where("name", $category)
                         ->first()->id
                 )
-                ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
-                ->orderBy('final_price', 'ASC');
+                    ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+                    ->orderBy('final_price', 'ASC');
                 break;
             case "price-highest":
                 $products = Product::where(
@@ -74,8 +78,8 @@ class ProductService
                         ->where("name", $category)
                         ->first()->id
                 )
-                ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
-                ->orderBy('final_price', 'DESC');
+                    ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+                    ->orderBy('final_price', 'DESC');
                 break;
             default:
                 $products = Product::where(
@@ -84,8 +88,8 @@ class ProductService
                         ->where("name", $category)
                         ->first()->id
                 )
-                ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
-                ->orderBy('created_at', 'DESC');
+                    ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+                    ->orderBy('created_at', 'DESC');
         }
 
         $products = $this->filterProductsBySize($products, $size);
@@ -99,43 +103,34 @@ class ProductService
 
     public function getProductsByQuery($catalog_id, $input, $size, $sort_by)
     {
+        $catalog = Catalog::findOrFail($catalog_id);
+        $products = $catalog->products()
+            ->selectRaw(
+                '*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price'
+            )
+            ->whereRaw('products.name ILIKE ?', ['%' . $input . '%']);
+
         switch ($sort_by) {
             case "new":
-                $products = Product::where([
-                    ["name", "like", "%" . $input . "%"],
-                    ["catalog_id", $catalog_id],
-                ])
-                ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
-                ->orderBy('created_at', 'DESC');
+                $products = $products
+                    ->orderBy('products.created_at', 'DESC');
                 break;
             case "price-lowest":
-                $products = Product::where([
-                    ["name", "like", "%" . $input . "%"],
-                    ["catalog_id", $catalog_id],
-                ])
-                ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
-                ->orderBy('final_price', 'ASC');
+                $products = $products
+                    ->orderBy('final_price', 'ASC');
                 break;
             case "price-highest":
-                $products = Product::where([
-                    ["name", "like", "%" . $input . "%"],
-                    ["catalog_id", $catalog_id],
-                ])
-                ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
-                ->orderBy('final_price', 'DESC');
+                $products = $products
+                    ->orderBy('final_price', 'DESC');
                 break;
             default:
-                $products = Product::where([
-                    ["name", "like", "%" . $input . "%"],
-                    ["catalog_id", $catalog_id],
-                ])
-                ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
-                ->orderBy('created_at', 'DESC');
+                $products = $products
+                    ->orderBy('products.created_at', 'DESC');
         }
 
         $products = $this->filterProductsBySize($products, $size);
 
-        if (!$products) {
+        if ($products->isEmpty()) {
             throw new Exception("Aucun résultat");
         }
 
@@ -146,10 +141,11 @@ class ProductService
     {
         $results = [];
         $catalog = Catalog::where("name", $catalog)->first();
-        $products = Product::where([
-            ["name", "like", "%" . $input . "%"],
-            ["catalog_id", $catalog->id],
-        ])->limit(5)->get();
+        $products = $catalog->products()
+            ->whereRaw(
+                'products.name ILIKE ?',
+                ['%' . $input . '%']
+            )->limit(5)->get();
 
         foreach ($products as $product) {
             $product_images = $product->img;

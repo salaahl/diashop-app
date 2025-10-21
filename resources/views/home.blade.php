@@ -48,7 +48,7 @@
     @endphp
     <x-product-card
         :created="$product->created_at->timestamp"
-        :link="route('product', [$product->catalog->name, $product->category->name, $product->id])"
+        :link="route('product', [$product->getCatalog()->name, $product->category->name, $product->id])"
         :image1="$product->img[0]"
         :image2="$product->img[1]"
         :title="$product->name"
@@ -61,17 +61,17 @@
         <a href="{{ route('catalog', 'homme') }}" class="button-stylised-1 w-[85%] xl:w-3/4 mx-auto">Nouveautés pour lui</a>
     </article>
 </section>
-<section id="about-us-container" class="w-full max-w-[1440px] flex flex-wrap md:mt-16 mx-auto p-8 bg-[#fcdedc] md:rounded-xl overflow-auto">
+<section id="about-us-container" class="w-full max-w-[1440px] flex flex-wrap md:mt-16 mx-auto p-12 bg-[#eeaeca] md:rounded-xl overflow-auto">
     <div class="flex flex-col md:flex-row-reverse items-center justify-center">
-        <div class="w-[90%] md:w-2/4 md:ml-12">
-            <img src="{{ asset('images/woman-catalog.jpg')}}" class="h-auto w-auto max-md:my-10 mx-auto md:rounded-lg border-[25px] border-white object-cover">
+        <div class="w-[90%] md:w-2/4 md:ml-24">
+            <img src="{{ asset('images/woman-catalog.jpg')}}" alt="Image d'une mannequin du site" class="h-auto w-auto max-md:my-10 mx-auto md:rounded-[50px] border-[35px] border-white object-cover">
         </div>
         <div class="w-full md:w-2/4">
             <div class="title-container w-full mb-8">
                 <h2 class="mx-auto"><span>À propos de nous</span></h2>
             </div>
             <p class="mb-8 md:mb-16 text-justify">À travers mes voyages, je selectionne en personne des pièces uniques et de qualité qui apportent une touche d'authenticité à chaque garde-robe...</p>
-            <a href="{{ route('about-us') }}" class="button-stylised-1 w-full mb-4">En savoir plus</a>
+            <a href="{{ route('about-us') }}" class="button-stylised-1 w-3/4 mx-auto mb-4">En savoir plus</a>
         </div>
     </div>
 </section>
@@ -96,13 +96,13 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
                     <nav class="breadcrumb">
                         <ul class="flex items-center">
                             <li>
-                                <a href="{{ route('catalog', $product->catalog->name) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ $product->catalog->name }}</a>
+                                <a href="{{ route('catalog', $product->getCatalog()->name) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ $product->getCatalog()->name }}</a>
                             </li>
                             <li>
                                 <span class="mx-1 text-sm text-gray-700"> / </span>
                             </li>
                             <li>
-                                <a href="{{ route('category', [$product->catalog->name, $product->category->name]) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ strtolower($product->category->name) }}</a>
+                                <a href="{{ route('category', [$product->getCatalog()->name, $product->category->name]) }}" class="text-sm text-gray-700 hover:text-gray-900">{{ strtolower($product->category->name) }}</a>
                             </li>
                             <li>
                                 <span class="mx-1 text-sm text-gray-700"> / </span>
@@ -139,7 +139,7 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
                 }
                 @endphp
                 <div class="max-md:my-4">
-                    <a href="{{ route('product', [$product->catalog->name, $product->category->name, $product->id]) }}" class="button-stylised-1 w-full mb-4">En savoir plus</a>
+                    <a href="{{ route('product', [$product->getCatalog()->name, $product->category->name, $product->id]) }}" class="button-stylised-1 w-full mb-4">Voir l'article</a>
                     <div id="delivery-and-return-details" class="mb-10">
                         <h4 class="text-sm text-pretty text-gray-500">Livraison express dans les deux jours ouvrés | standard sous cinq jours ouvrés</h4>
                         <h4 class="text-sm text-pretty text-gray-500">Retour possible sous 14 jours à compter de la date de livraison</h4>
@@ -155,12 +155,12 @@ $product = $catalogs->random()->products->random()->selectRaw('*, (price - (pric
     </div>
     <div id="testimonials" class="relative lg:flex flex-nowrap items-stretch lg:ml-12 snap-x snap-mandatory scroll-smooth overflow-auto">
         <div class="scroll-controls hidden absolute h-full w-full lg:flex items-center justify-between px-8">
-            <button class="scroll-button scroll-left hide fixed p-6 bg-white/75 backdrop-blur rounded-full">
+            <button aria-label="Défilement vers la gauche" class="scroll-button scroll-left hide fixed p-6 bg-white/75 backdrop-blur rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-6 h-6">
                     <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
                 </svg>
             </button>
-            <button class="scroll-button scroll-right fixed right-0 p-6 bg-white/75 backdrop-blur rounded-full">
+            <button aria-label="Défilement vers la droite" class="scroll-button scroll-right fixed right-0 p-6 bg-white/75 backdrop-blur rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-6 h-6">
                     <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                 </svg>

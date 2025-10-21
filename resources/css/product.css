@@ -49,6 +49,10 @@ h2 {
     font-weight: 900;
 }
 
+#viewed-products-container > .title-container > h2 > span::first-letter {
+    color: rgb(var(--accent-color-1), 1);
+}
+
 #other-products-container > .title-container > h2 > span {
     background-image: linear-gradient(
         rgb(var(--accent-color-4), 0.5),

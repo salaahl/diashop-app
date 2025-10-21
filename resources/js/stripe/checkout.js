@@ -1,10 +1,10 @@
-const stripe = Stripe(process.env.STRIPE_KEY);
+const stripe = Stripe(import.meta.env.VITE_STRIPE_KEY);
 
 initialize();
 
 async function initialize() {
     try {
-        const clientSecret = document.getElementById('clientSecret').value;
+        const clientSecret = document.getElementById("clientSecret").value;
         const checkout = await stripe.initEmbeddedCheckout({
             clientSecret,
         });

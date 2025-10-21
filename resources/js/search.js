@@ -49,10 +49,10 @@ const searchProducts = () => {
                                 '<div class="thumbnail">' +
                                 '<img src="https://res.cloudinary.com/dq8yfrr3w/image/upload/v1/' +
                                 product["img"][0] +
-                                '" />' +
+                                '" alt="Image de l\'article" />' +
                                 '<img src="https://res.cloudinary.com/dq8yfrr3w/image/upload/v1/' +
                                 product["img"][1] +
-                                '" />' +
+                                '" alt="Image de l\'article" />' +
                                 "</div>" +
                                 '<div class="details lg:flex justify-between px-1 py-2 mt-1">' +
                                 '<div class="w-full flex flex-wrap items-baseline justify-between">' +

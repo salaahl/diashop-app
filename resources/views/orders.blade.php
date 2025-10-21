@@ -43,23 +43,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($order->products as $product)
-                        @foreach($product as $item)
+                        @foreach($order->products()->get() as $product)
                         <tr class="bg-white border-b hover:bg-gray-50">
                             <td class="p-4">
-                                <h4 class="text-gray-500">{{ ucfirst($item['name']) }}</h4>
+                                <h4 class="text-gray-500">{{ ucfirst($product->pivot->product_name) }}</h4>
                             </td>
                             <td class="p-4">
-                                <h4 class="text-gray-500 uppercase">{{ $item['size'] }}</h4>
+                                <h4 class="text-gray-500 uppercase">{{ $product->size }}</h4>
                             </td>
                             <td class="p-4">
-                                <h4 class="text-gray-500">{{ $item['price'] }}</h4>
+                                <h4 class="text-gray-500">{{ $product->pivot->price }}</h4>
                             </td>
                             <td class="p-4">
-                                <h4 class="text-gray-500">{{ $item['quantity'] }}</h4>
+                                <h4 class="text-gray-500">{{ $product->pivot->quantity }}</h4>
                             </td>
                         </tr>
-                        @endforeach
                         @endforeach
                         <tr class="bg-white border-b hover:bg-gray-50">
                             <td colspan="4" class="p-4">

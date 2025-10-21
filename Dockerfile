@@ -1,4 +1,4 @@
-# Étape 1 : Node pour build front
+# Étape 1 : Build frontend avec Vite
 FROM node:20-alpine AS node_build
 
 WORKDIR /app
@@ -7,39 +7,44 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-# Étape 2 : PHP pour Laravel
-FROM php:8.3-fpm
+# Étape 2 : PHP 8.3 + extensions
+FROM php:8.3-fpm-alpine
 
-# Installe les extensions nécessaires
-RUN apt-get update && apt-get install -y \
+# Installer dépendances pour PHP et PostgreSQL
+RUN apk add --no-cache \
     libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    zip unzip git libpq-dev exif \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd pdo pdo_pgsql pgsql exif \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    libjpeg-turbo-dev \
+    freetype-dev \
+    zip \
+    unzip \
+    git \
+    libpq \
+    libpq-dev \
+ && docker-php-ext-configure gd --with-freetype --with-jpeg \
+ && docker-php-ext-install -j$(nproc) gd pdo pdo_pgsql pgsql exif \
+ && docker-php-ext-enable exif
 
-# Installe Composer
+# Installer Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Définir le dossier de travail
 WORKDIR /var/www/html
 
-# Copie tous les fichiers de Laravel
+# Copier le projet Laravel
 COPY . .
 
-# Copie le build Vite généré
+# Copier le build frontend
 COPY --from=node_build /app/public/build /var/www/html/public/build
 
-# Install deps Laravel
-RUN composer install --no-dev --optimize-autoloader
-
 # Permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache
 
-# Entrypoint & script
+# Entrypoint
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+
+EXPOSE 80
+
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["php", "-S", "0.0.0.0:80", "-t", "public"]

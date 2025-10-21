@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\StripePaymentController;
+use App\Http\Controllers\StripeWebhookController;
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,8 @@ Route::get('/404', function () {
 
 Route::get('/', [ProductController::class, 'home'])->name('home');
 
-Route::group(['prefix' => 'admin'], function () {
+// Voyager implémente déjà un middleware pour le role admin
+Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'decode.json']], function () {
     Voyager::routes();
 });
 
@@ -46,13 +48,10 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('search/{catalog}/{input}', [ProductController::class, 'search'])->name('search.product');
-Route::post('search/{catalog}/{input}', [ProductController::class, 'search'])->name('search.product.post');
 Route::post('search/', [ProductController::class, 'searchAsync'])->name('search.product.async');
 
 Route::get('catalog/{catalog}/', [ProductController::class, 'catalog'])->name('catalog');
-Route::post('catalog/{catalog}/', [ProductController::class, 'catalog'])->name('catalog.post');
 Route::get('catalog/{catalog}/{category}', [ProductController::class, 'category'])->name('category');
-Route::post('catalog/{catalog}/{category}', [ProductController::class, 'category'])->name('category.post');
 Route::get('catalog/{catalog}/{category}/{product_id}', [ProductController::class, 'product'])->name('product');
 Route::post('/get-stock', [ProductController::class, 'productStock'])->name('product.get-stock');
 
@@ -61,6 +60,7 @@ Route::delete('basket/remove', [BasketController::class, 'remove'])->name('baske
 Route::delete('basket/destroy', [BasketController::class, 'destroy'])->name('basket.destroy');
 
 Route::get('checkout/', [StripePaymentController::class, 'checkout'])->name('checkout');
+Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
 Route::get('confirmation/{slug}', [StripePaymentController::class, 'confirmation'])->name('confirmation.show');
 
 Route::get('about-us/', function () {

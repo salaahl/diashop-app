@@ -29,24 +29,19 @@
                             stroke-width="4"
                             d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                     </svg>
-                    <span class="sr-only">Close modal</span>
+                    <span class="sr-only">Fermer la fenêtre de recherche</span>
                 </button>
             </div>
             <!-- Modal body -->
             <div
                 id="search-body"
                 class="h-[80%] p-4 md:p-5 overflow-auto">
-
                 <form id="search-form" action="/search" method="POST" class="w-full">
-                    <div class="w-full flex justify-between">
-                        <div class="w-[48%] flex items-center ps-4 border border-gray-200 rounded">
-                            <input id="bordered-radio-1" type="radio" value="femme" name="catalog" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2" checked>
-                            <label for="bordered-radio-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900">Catalogue Femme</label>
-                        </div>
-                        <div class="w-[48%] flex items-center ps-4 border border-gray-200 rounded">
-                            <input id="bordered-radio-2" type="radio" value="homme" name="catalog" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
-                            <label for="bordered-radio-2" class="w-full py-4 ms-2 text-sm font-medium text-gray-900">Catalogue Homme</label>
-                        </div>
+                    <div class="catalog-radio w-full flex justify-between">
+                        <input id="bordered-radio-1" type="radio" value="femme" name="catalog" class="hidden" checked>
+                        <label for="bordered-radio-1" class="w-[48%] flex items-center ps-4 border border-gray-200 rounded">Catalogue Femme</label>
+                        <input id="bordered-radio-2" type="radio" value="homme" name="catalog" class="hidden">
+                        <label for="bordered-radio-2" class="w-[48%] flex items-center ps-4 border border-gray-200 rounded">Catalogue Homme</label>
                     </div>
                     <label for="search-input" class="mb-2 text-sm font-medium text-gray-900 sr-only">Rechercher</label>
                     <div class="relative">

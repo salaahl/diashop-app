@@ -30,7 +30,7 @@
     @endphp
     <x-product-card
         :created="$product->created_at->timestamp"
-        :link="route('product', [$product->catalog->name, $product->category->name, $product->id])"
+        :link="route('product', [$product->getCatalog()->name, $product->category->name, $product->id])"
         :image1="$product->img[0]"
         :image2="$product->img[1]"
         :title="$product->name"

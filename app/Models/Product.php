@@ -22,13 +22,51 @@ class Product extends Model
         'img' => 'array',
     ];
 
-    public function catalog()
+    // Accessor : pour l’interface d’administration uniquement
+    public function getImgAttribute($value)
     {
-        return $this->belongsTo(Catalog::class);
+        // Si tu es dans Voyager (admin), retourne une chaîne JSON
+        if (request()->is('admin/*')) {
+            if (is_array($value)) {
+                return json_encode($value, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            }
+
+            return $value;
+        }
+
+        // Sinon (sur le site normal), retourne bien l’array
+        return json_decode($value, true);
+    }
+
+    public function getQuantityPerSizeAttribute($value)
+    {
+        // Si tu es dans Voyager (admin), retourne une chaîne JSON
+        if (request()->is('admin/*')) {
+            if (is_array($value)) {
+                return json_encode($value, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            }
+
+            return $value;
+        }
+
+        // Sinon (sur le site normal), retourne bien l’array
+        return json_decode($value, true);
     }
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_products')
+            ->withPivot('product_name', 'quantity', 'price')
+            ->withTimestamps();
+    }
+
+    public function getCatalog()
+    {
+        return $this->category ? $this->category->catalog : null;
     }
 }

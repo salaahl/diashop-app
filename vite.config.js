@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
-import EnvironmentPlugin from "vite-plugin-environment";
 
 export default defineConfig({
     plugins: [
@@ -23,11 +22,6 @@ export default defineConfig({
                 "resources/js/products-list.js",
             ],
             refresh: true,
-        }),
-        EnvironmentPlugin({
-            APP_DEBUG: false,
-            STRIPE_KEY: '',
-            STANDARD_DELIVERY_CHARGES: 0,
         }),
     ],
 });

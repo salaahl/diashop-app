@@ -16,7 +16,6 @@ class Order extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'products' => 'array',
         'billing_address' => 'array',
         'shipping_address' => 'array',
         'amount' => 'array'
@@ -25,5 +24,12 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'order_products')
+            ->withPivot('product_name', 'quantity', 'price')
+            ->withTimestamps();
     }
 }

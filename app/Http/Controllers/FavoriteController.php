@@ -67,8 +67,11 @@ class FavoriteController extends Controller
 
         $products = null;
 
-        if (Product::whereIn("id", $products_id)->orderBy('created_at', 'ASC')->first()) {
-            $products = Product::whereIn("id", $products_id)->orderBy('created_at', 'ASC')->paginate(12);
+        if (Product::whereIn("id", $products_id)->first()) {
+            $products = Product::whereIn("id", $products_id)
+                ->selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')
+                ->orderBy('created_at', 'ASC')
+                ->paginate(12);
         }
 
         return view('favorites', [

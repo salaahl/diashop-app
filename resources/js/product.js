@@ -158,7 +158,7 @@ if (document.getElementById("add-basket")) {
                                         '">' +
                                         '<img class="h-auto w-16 md:w-24" src="https://res.cloudinary.com/dq8yfrr3w/image/upload/v1/' +
                                         product.img +
-                                        '">' +
+                                        '" alt="Image de l\'article">' +
                                         "</a>" +
                                         "</td>" +
                                         '<td class="column-two pl-2 py-4 font-semibold text-gray-900">' +
@@ -182,12 +182,14 @@ if (document.getElementById("add-basket")) {
                                         "</td>" +
                                         '<td class="column-five py-4 font-semibold text-gray-900">' +
                                         '<h4 class="price">' +
-                                        (product.price * product.quantity).toFixed(2) +
+                                        (
+                                            product.price * product.quantity
+                                        ).toFixed(2) +
                                         "</h4>" +
                                         "</td>" +
                                         '<td class="column-six py-4">' +
                                         '<div class="flex justify-center align-center">' +
-                                        '<button type="button" class="remove-button">' +
+                                        '<button aria-label="Supprimer l\'article" type="button" class="remove-button">' +
                                         "<svg " +
                                         'xmlns="http://www.w3.org/2000/svg" ' +
                                         'viewBox="0 0 448 512" ' +
@@ -238,7 +240,8 @@ if (document.getElementById("add-basket")) {
                             basketFooter = `
                                 <div class="w-full">
                                     <h4 class="text-sm text-center text-gray-500 line-through">+ ${
-                                        process.env.STANDARD_DELIVERY_CHARGES /
+                                        import.meta.env
+                                            .VITE_STANDARD_DELIVERY_CHARGES /
                                         100
                                     }€ de frais de livraison</h4>
                                     <h4 class="mb-2 text-sm text-center text-gray-500">Frais de livraison offerts !</h4>
@@ -261,11 +264,13 @@ if (document.getElementById("add-basket")) {
                                 `;
                         } else {
                             total +=
-                                process.env.STANDARD_DELIVERY_CHARGES / 100;
+                                import.meta.env.VITE_STANDARD_DELIVERY_CHARGES /
+                                100;
                             basketFooter = `
                                 <div class="w-full">
                                     <h4 class="mb-2 text-sm text-center text-gray-500">+ ${
-                                        process.env.STANDARD_DELIVERY_CHARGES /
+                                        import.meta.env
+                                            .VITE_STANDARD_DELIVERY_CHARGES /
                                         100
                                     }€ de frais de livraison</h4>
                                     <h4 class="text-sm text-center text-gray-500">
