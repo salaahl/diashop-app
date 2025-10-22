@@ -37,7 +37,7 @@ php artisan route:cache
 php artisan view:cache
 
 echo "Starting queue worker..."
-php artisan queue:listen 
+php artisan queue:work --daemon --tries=3 --timeout=90 &
 
 echo "✅ Deployment completed successfully!"
 

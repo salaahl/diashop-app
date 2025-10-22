@@ -31,7 +31,7 @@ services:
 
     db:
         image: postgres:15-alpine
-        container_name: db_diashop
+        container_name: ${APP_NAME}_${DB_HOST}
         environment:
             POSTGRES_DB: ${DB_DATABASE}
             POSTGRES_USER: ${DB_USERNAME}
@@ -39,7 +39,7 @@ services:
         volumes:
             - dbdata:/var/lib/postgresql/data
         ports:
-            - "5432:5432"
+            - "${DB_PORT}:${DB_PORT}"
         networks:
             - laravel
 
