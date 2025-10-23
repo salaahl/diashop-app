@@ -15,7 +15,7 @@ class CategorySeeder extends Seeder
         // Catalogues pour femmes
         Category::factory()->create([
             'name' => 'foulards',
-            'img' => 'categories/September2024/K5bLcIdu3B14COAwk92U',
+            'img' => 'products/November2024/gVX09v8iXPJsabL84vfo',
             'catalog_id' => 1,
         ]);
         Category::factory()->create([
@@ -37,7 +37,7 @@ class CategorySeeder extends Seeder
         ]);
         Category::factory()->create([
             'name' => 'sacs',
-            'img' => 'products/1ADPO093YKKH00N_E01.jfif',
+            'img' => 'categories/November2024/a0ebPzP86ivwpHTd3svS',
             'catalog_id' => 2,
         ]);
         Category::factory()->create([
