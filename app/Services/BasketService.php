@@ -67,13 +67,13 @@ class BasketService
         if (empty($basket[$product_id])) unset($basket[$product_id]); // On supprime également la clé du produit si elle ne contient plus rien
         session()->put("basket", $basket); // On enregistre le panier
 
-        // Si le panier est - désormais - vide alors supprimer
+        // Si le panier est - désormais - vide, alors supprimer
         if (empty(session()->get("basket"))) {
             $this->destroy();
         }
 
         // Je reattribue les quantités aux produits
-        $product = Product::selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->where('id', $product_id)->first();
+        $product = Product::where('id', $product_id)->first();
         $quantity_per_size = $product->quantity_per_size;
         $quantity_per_size[$size] += $quantity;
         $product->quantity_per_size = $quantity_per_size;
@@ -89,7 +89,7 @@ class BasketService
         // Je réattribue les quantités aux produits
         foreach ($basket as $items) {
             foreach ($items as $item) {
-                $product = Product::selectRaw('*, (price - (price * COALESCE(promotion, 0) / 100)) AS final_price')->where('id', $item['id'])->first();
+                $product = Product::where('id', $item['id'])->first();
                 $quantity_per_size = $product->quantity_per_size;
                 $quantity_per_size[$item['size']] += $item['quantity'];
                 $product->quantity_per_size = $quantity_per_size;

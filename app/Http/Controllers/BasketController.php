@@ -20,8 +20,8 @@ class BasketController extends Controller
     {
         // Validation du panier
         $request->validate([
-            "size" => ["required"],
-            "quantity" => ["required", "numeric", "min:1"],
+            "size" => ["required", "string", "min:1", "max: 3"],
+            "quantity" => ["required", "numeric", "min:1", "max: 9"],
             "product_id" => ["required", "numeric"],
         ]);
 

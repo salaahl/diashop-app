@@ -117,6 +117,13 @@ class ProductController extends Controller
 
     public function search(Request $request, $catalog, $input)
     {
+        $request->validate([
+            'catalog' => ['required', 'string', 'min:2', 'max:55'],
+            'input' => ['required', 'string', 'min:2', 'max:200'],
+            'size' => ['sometimes', 'string', 'in:s,m,l,xl,xxl'],
+            'sort_by' => ['sometimes', 'string', 'in:price-highest,price-lowest,new'],
+        ]);
+
         try {
             $catalog = Catalog::where("name", $catalog)->first();
             $products = $this->productService->getProductsByQuery(
@@ -139,6 +146,11 @@ class ProductController extends Controller
 
     public function searchAsync(Request $request)
     {
+        $request->validate([
+            'catalog' => ['required', 'string', 'min:2', 'max:55'],
+            'input' => ['required', 'string', 'min:2', 'max:200'],
+        ]);
+
         try {
             $products = $this->productService->searchProductsAsync($request->catalog, $request->input);
         } catch (Exception $e) {
