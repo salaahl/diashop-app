@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Exception;
+use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 
 class BasketService
@@ -26,11 +27,6 @@ class BasketService
             }
         }
 
-        // Je verifie que le stock est suffisant
-        if ($product->quantity_per_size[$size] < $quantity) {
-            throw new Exception("Stock insuffisant. Veuillez actualiser la page.");
-        }
-
         $product_image = $product->img[0];
         $product->promotion ?
             $price = round($product->final_price, 2)
@@ -49,10 +45,24 @@ class BasketService
         ];
 
         // Je retire la quantité au produit dans la BDD
-        $quantity_per_size = $product->quantity_per_size;
-        $quantity_per_size[$size] -= $quantity;
-        $product->quantity_per_size = $quantity_per_size;
-        $product->save();
+        DB::transaction(function () use ($product, $size, $quantity) {
+            // Réservation de la ligne du produit
+            // L'idée est d'éviter la survente dans le cas où plusieurs utilisateurs modifiraient le stock en parallèle
+            $product->lockForUpdate()->find($product->id);
+
+            // Relecture du stock
+            $quantity_per_size = $product->quantity_per_size;
+
+            // Je verifie que le stock est suffisant
+            if ($product->quantity_per_size[$size] < $quantity) {
+                throw new Exception("Stock insuffisant. Veuillez actualiser la page.");
+            }
+
+            $quantity_per_size[$size] -= $quantity;
+            $product->quantity_per_size = $quantity_per_size;
+
+            $product->save();
+        });
 
         $basket[$product_id][$size] = $product_details; // On ajoute ou on met à jour le produit au panier
         session()->put("basket", $basket); // On enregistre le panier
