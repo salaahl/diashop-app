@@ -75,7 +75,7 @@
         <div class="title-container w-min md:w-auto flex justify-center items-center mx-auto">
             <h1 class="mt-8 md:mt-24"><span>À propos de nous</span></h1>
         </div>
-        <div id="image-container" class="w-full my-10 md:my-0 p-6 md:p-0 bg-[#eeaeca] rounded-lg">
+        <div id="image-container" class="w-full my-10 md:my-0 p-6 md:px-0 bg-[#eeaeca] rounded-lg">
             <img src="{{ asset('images/woman-catalog.jpg')}}" alt="Image d'une mannequin du site" class="h-auto w-3/4 md:h-[50vh] mx-auto aspect-square border-[25px] border-white rounded-full object-cover">
         </div>
         <p class="md:mt-4 text-lg text-center font-[600]">Bienvenue chez {{ env("APP_NAME") }} !</p>
