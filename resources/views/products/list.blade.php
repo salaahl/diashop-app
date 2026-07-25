@@ -46,9 +46,9 @@
             class="category snap-start"
             @endif
             >
-            <a href="{{ '/catalog/' . $category->catalog->name . '/' . $category->name }}" class="block">
+            <a href="{{ '/catalog/' . $category->catalog->name . '/' . $category->name }}">
                 <div class="thumbnail rounded-full overflow-hidden">
-                    <x-cld-image public-id="{{ $category->img }}" alt="{{ $category->name }}"></x-cld-image>
+                    <x-cld-image public-id="{{ $category->img }}" alt="{{ $category->name }}" class="rounded-full"></x-cld-image>
                 </div>
                 <div class="details mt-4">
                     <h4 class="title font-normal text-center">{{ ucfirst($category->name) }}</h4>
