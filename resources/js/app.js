@@ -33,9 +33,9 @@ window.addEventListener("resize", resetHeight);
 resetHeight();
 
 // Loader des pages
-window.addEventListener("load", () => {
+window.addEventListener("pageshow", () => {
     // Gère l'affichage du loader
-    document.querySelector("#loader-container").classList.add("close");
+    document.querySelector("#loader-container")?.classList.add("close");
 
     document.querySelectorAll("a").forEach(function (link) {
         link.addEventListener("click", function (event) {
