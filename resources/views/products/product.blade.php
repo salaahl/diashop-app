@@ -66,33 +66,31 @@
                 <h2 id="price" class="font-normal">{{ round($product->price, 2) }}€</h2>
                 @endif
                 <div id="description">
-                    <details class="group bg-white rounded-xl">
+                    <details class="group bg-white rounded-xl" open>
                         <summary
-                            class="flex justify-between items-center p-4 font-semibold text-gray-800 cursor-pointer list-none select-none outline-none">
+                            class="flex justify-between items-center p-4 font-semibold cursor-pointer list-none select-none outline-none">
                             <h3 class="text-base font-semibold flex items-center gap-2">
                                 <span class="h-auto w-[20px]"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                                         <path
                                             d="M453.1 27.3L440.9 39.4C409.7 70.6 409.7 121.3 440.9 152.5C456.5 168.1 472.1 183.7 487.8 199.4C519 230.6 569.7 230.6 600.9 199.4L613 187.3C619.2 181.1 619.2 170.9 613 164.7L600.9 152.6C569.7 121.4 519 121.4 487.8 152.6C519 121.4 519 70.7 487.8 39.5L475.7 27.3C469.5 21.1 459.3 21.1 453.1 27.3zM331.6 160C286.4 160 244.5 180.4 216.6 214.3L273.3 271C282.7 280.4 282.7 295.6 273.3 304.9C263.9 314.2 248.7 314.3 239.4 304.9L191.6 257.2L67.2 530.8C61.7 542.9 64.3 557.2 73.7 566.7C83.1 576.2 97.4 578.7 109.6 573.2L251.2 508.8L207.4 465C198 455.6 198 440.4 207.4 431.1C216.8 421.8 232 421.7 241.3 431.1L297.8 487.6L393.1 444.3C446.2 420.2 480.3 367.2 480.3 308.8C480.3 226.6 413.7 160 331.5 160z" />
-                                    </svg></span>Description
+                                    </svg>
+                                </span>
+                                Description
                             </h3>
-                            <span class="text-gray-400 transition-transform duration-300 group-open:rotate-180">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
+                            <span class="transition-transform duration-300 group-open:rotate-180">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 640"
                                     fill="none"
-                                    viewBox="0 0 24 24"
                                     stroke-width="2.5"
                                     stroke="currentColor"
                                     class="w-4 h-4">
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                    <path d="M272 112C272 85.5 293.5 64 320 64C346.5 64 368 85.5 368 112C368 138.5 346.5 160 320 160C293.5 160 272 138.5 272 112zM224 256C224 238.3 238.3 224 256 224L320 224C337.7 224 352 238.3 352 256L352 512L384 512C401.7 512 416 526.3 416 544C416 561.7 401.7 576 384 576L256 576C238.3 576 224 561.7 224 544C224 526.3 238.3 512 256 512L288 512L288 288L256 288C238.3 288 224 273.7 224 256z" />
                                 </svg>
                             </span>
                         </summary>
                         <div class="border-t-3 border-gray-100 p-4 bg-gray-50/50 rounded-b-xl">
                             <h4
-                                class="text-sm text-gray-600 leading-relaxed font-normal">{!! ucfirst($product->description) !!}</h4>
+                                class="text-sm leading-relaxed font-normal">{!! ucfirst($product->description) !!}</h4>
                         </div>
                     </details>
                 </div>
@@ -383,6 +381,10 @@ session()->put('viewed_products', $viewedProducts);
         }
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " slide-active";
+    }
+
+    if (window.innerWidth > 767) {
+        document.getElementById('description').setAttribute('open', '');
     }
 </script>
 @endsection
