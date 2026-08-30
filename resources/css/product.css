@@ -33,6 +33,10 @@ h2 {
     margin-bottom: 5%;
 }
 
+#description > details {
+    background-color: rgb(var(--accent-color-2));
+}
+
 #other-products-container .title-container,
 #viewed-products-container .title-container {
     width: 100%;
