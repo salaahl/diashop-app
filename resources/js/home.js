@@ -27,8 +27,8 @@ if (window.innerWidth > 767) {
 document
     .querySelectorAll(
         window.innerWidth < 768
-            ? "main > section:nth-of-type(n+2)"
-            : "main > section:nth-of-type(n+3)"
+            ? "main > .strip > section:nth-of-type(n+2)"
+            : "main > .strip > section:nth-of-type(n+3)",
     )
     .forEach((ele) => {
         gsap.from(ele, {
@@ -47,10 +47,10 @@ if (window.innerWidth > 767) {
     const scrollableDiv =
         document.querySelector(".scroll-controls").parentElement;
     const scrollLeftButton = document.querySelector(
-        ".scroll-controls > .scroll-left"
+        ".scroll-controls > .scroll-left",
     );
     const scrollRightButton = document.querySelector(
-        ".scroll-controls > .scroll-right"
+        ".scroll-controls > .scroll-right",
     );
 
     const updateButtons = () => {
