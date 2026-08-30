@@ -29,12 +29,13 @@ h2 {
     margin-left: 2.5%;
 }
 
-#price {
+#price,
+#description {
     margin-bottom: 5%;
 }
 
 #description > details {
-    background-color: rgb(var(--accent-color-2));
+    background-color: rgb(var(--accent-color-2), 0.5);
 }
 
 #other-products-container .title-container,
