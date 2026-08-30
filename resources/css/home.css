@@ -37,7 +37,9 @@ h1 > span {
     text-decoration: none;
     background: linear-gradient(to top, white 0%, white 10%, transparent 0%)
         no-repeat left bottom / 0 100%;
-    transition: filter 0.25s linear, background 0.25s;
+    transition:
+        filter 0.25s linear,
+        background 0.25s;
 }
 
 .title-container > h2 {
@@ -58,24 +60,6 @@ h1 > span {
     background-position: 0 100%;
 }
 
-#new-products-container {
-    scroll-snap-type: x proximity;
-    scroll-behavior: smooth;
-}
-
-#new-products-container .title-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    scroll-snap-align: center;
-}
-
-#new-products-container .title-container > h2 {
-    margin-left: -5px;
-    transform: rotate(-90deg);
-}
-
 #new-products-container .title-container > h2:first-of-type > span {
     background-image: linear-gradient(
         rgb(var(--accent-color-3)),
@@ -83,7 +67,12 @@ h1 > span {
     );
 }
 
-#new-products-container .product {
+#new-products {
+    scroll-snap-type: x proximity;
+    scroll-behavior: smooth;
+}
+
+#new-products .product {
     width: 49%;
     min-width: 49%;
     margin-left: 0.5%;
@@ -167,6 +156,8 @@ h1 > span {
     }
 
     #catalogs-container {
+        position: sticky;
+        top: 0;
         scroll-snap-type: x mandatory;
         overflow: auto;
     }
@@ -181,6 +172,29 @@ h1 > span {
     #catalogs-container .catalog h3 {
         filter: opacity(0.8);
         margin-bottom: 50%;
+    }
+
+    .strip {
+        position: sticky;
+        top: 0;
+        margin-top: -150px;
+        border-radius: 200px 200px 0 0;
+        z-index: 999;
+        background-color: white;
+    }
+
+    #new-products-container {
+        border-top: 10px solid;
+        border-right: 10px solid;
+        border-bottom: 0;
+        border-left: 10px solid;
+        border-radius: 200px 200px 0 0;
+    }
+
+    #new-products-container .title-container > h2 {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 40px;
     }
 }
 
@@ -235,16 +249,27 @@ h1 > span {
         box-shadow: rgb(243 244 246) 0px 0px 75px 0px;
     }
 
-    #new-products-container .title-container > h2 {
-        font-size: var(--h2-font-size);
+    #new-products-container .title-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        scroll-snap-align: center;
     }
 
-    #new-products-container .product {
-        min-width: 30%;
+    #new-products-container .title-container > h2 {
+        margin-left: -5px;
+        font-size: var(--h2-font-size);
+        transform: rotate(-90deg);
+    }
+
+    #new-products .product {
+        min-width: calc(30% + 25px);
     }
 
     #product-of-the-week-container #product-images-container {
-        box-shadow: rgba(255, 255, 255, 0.0333) 0px 1px 1px 0px inset,
+        box-shadow:
+            rgba(255, 255, 255, 0.0333) 0px 1px 1px 0px inset,
             rgba(50, 50, 93, 0.0833) 0px 50px 100px -20px,
             rgba(0, 0, 0, 0.1) 0px 30px 60px -30px;
     }
@@ -252,7 +277,8 @@ h1 > span {
     #testimonials {
         scroll-padding-left: 25px;
         scroll-padding-right: 25px;
-        mask-image: linear-gradient(
+        mask-image:
+            linear-gradient(
                 to left,
                 rgb(255, 255, 255, 0) 0,
                 rgb(255, 255, 255, 1) 25px
@@ -287,19 +313,19 @@ h1 > span {
         font-size: var(--h1-font-size);
     }
 
-    #new-products-container .product {
-        width: 24%;
-        min-width: 24%;
+    #new-products .product {
+        width: 26.5%;
+        min-width: 26.5%;
         margin: 0;
     }
 
-    #new-products-container .product:last-of-type {
-        width: 18%;
-        min-width: 18%;
+    #new-products .product:last-of-type {
+        width: 20.5%;
+        min-width: 20.5%;
     }
 
-    #new-products-container .product:nth-of-type(2),
-    #new-products-container .product:nth-of-type(4) {
+    #new-products .product:nth-of-type(2),
+    #new-products .product:nth-of-type(4) {
         margin: 0 0.2%;
     }
 }
