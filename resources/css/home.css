@@ -164,7 +164,7 @@ h1 > span {
 
     #catalogs-container .catalog {
         min-width: 100vw;
-        height: calc(100vh - 15px);
+        height: 100vh;
         scroll-snap-align: start;
         animation: 1.4s ease 1.4s 1 normal none running translate;
     }
@@ -177,17 +177,16 @@ h1 > span {
     .strip {
         position: sticky;
         top: 0;
-        margin-top: -150px;
+        margin-top: -115px;
         border-radius: 200px 200px 0 0;
-        z-index: 999;
         background-color: white;
     }
 
     #new-products-container {
-        border-top: 10px solid;
-        border-right: 10px solid;
+        border-top: 10px dashed rgb(var(--accent-color-2), 1);
+        border-right: 10px solid whitesmoke;
         border-bottom: 0;
-        border-left: 10px solid;
+        border-left: 10px solid whitesmoke;
         border-radius: 200px 200px 0 0;
     }
 

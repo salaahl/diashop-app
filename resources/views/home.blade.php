@@ -40,7 +40,7 @@
         <div class="title-container">
             <h2><span>Nouveautés</span></h2>
         </div>
-        <div id="new-products" class="flex flex-nowrap px-4 md:px-0">
+        <div id="new-products" class="flex flex-nowrap px-4 md:px-0 overflow-auto">
             @foreach($new_products as $product)
             @php
             $product_stock = 0;
