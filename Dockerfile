@@ -20,6 +20,8 @@ RUN apk add --no-cache \
     git \
     libpq \
     libpq-dev \
+    gmp-dev \
+ && docker-php-ext-install gmp \
  && docker-php-ext-configure gd --with-freetype --with-jpeg \
  && docker-php-ext-install -j$(nproc) gd pdo pdo_pgsql pgsql exif \
  && docker-php-ext-enable exif
