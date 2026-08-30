@@ -9,8 +9,8 @@ h1 {
 
 h1 > span {
     background-image: linear-gradient(
-        rgb(var(--accent-color-3), 0.5),
-        rgb(var(--accent-color-3), 0.5)
+        rgb(var(--accent-color-4), 0.5),
+        rgb(var(--accent-color-4), 0.5)
     );
 }
 
