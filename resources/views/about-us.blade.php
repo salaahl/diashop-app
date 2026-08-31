@@ -78,7 +78,7 @@
         <div id="image-container" class="w-full my-10 md:my-0 p-6 md:px-0 bg-[#eeaeca] rounded-lg">
             <img src="{{ asset('images/woman-catalog.jpg')}}" alt="Image d'une mannequin du site" class="h-auto w-3/4 md:h-[50vh] mx-auto aspect-square border-[25px] border-white rounded-full object-cover">
         </div>
-        <p class="md:mt-4 text-lg text-center font-[600]">Bienvenue chez {{ env("APP_NAME") }} !</p>
+        <p class="md:mt-12 text-lg text-center font-[600]">Bienvenue chez {{ env("APP_NAME") }} !</p>
         <p class="mt-8 text-justify">Je suis Dianaba, Parisienne passionnée de mode et exploratrice dans l’âme. À travers mes voyages, je sélectionne en personne des pièces uniques et de qualité qui apportent une touche d'authenticité à chaque garde-robe.</p>
         <p class="mt-8 text-justify">Notre collection de prêt-à-porter pour hommes et femmes reflète les dernières tendances mondiales, avec des vêtements soigneusement choisis pour allier style, confort et caractère. Chaque article incarne mon engagement pour une mode élégante et inspirée, importée spécialement pour vous ici à Paris.</p>
         <p class="my-8 text-center">Plongez dans cet univers où <span class="highlight">chaque pièce raconte une histoire et sublime votre style.</span></p>
