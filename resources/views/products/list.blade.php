@@ -60,7 +60,7 @@
 </section>
 @else
 <div class="title-container w-full my-8 md:mt-24 md:mb-32">
-    <h1 class="w-fit m-auto search-title"><span>Résultats de votre recherche</span></h1>
+    <h1 class="w-fit m-auto search-title"><span>Résultats de <br> votre recherche</span></h1>
 </div>
 @endif
 
