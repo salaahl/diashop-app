@@ -55,7 +55,7 @@
 
 #basket-modal[aria-hidden="true"],
 #search-modal[aria-hidden="true"] {
-    transition-delay: 0.25s, 0s;
+    transition-delay: 0.15s, 0s;
 }
 
 #basket-title,
