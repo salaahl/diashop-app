@@ -124,7 +124,7 @@ class ProductController extends Controller
 
         $request->validate([
             'catalog' => ['required', 'string', 'min:2', 'max:55'],
-            'input' => ['required', 'string', 'min:2', 'max:200'],
+            'input' => ['required', 'string', 'min:2', 'max:55'],
             'size' => ['sometimes', 'string', 'in:s,m,l,xl,xxl'],
             'sort_by' => ['sometimes', 'string', 'in:price-highest,price-lowest,new'],
         ]);
