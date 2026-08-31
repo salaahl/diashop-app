@@ -217,7 +217,8 @@ Code du carousel
 
     #other-products-container .product:nth-of-type(3),
     #viewed-products-container .product:nth-of-type(3) {
-        margin: auto 0.2%;
+        margin-left: 0.2%;
+        margin-right: 0.2%;
     }
 
     /* 
