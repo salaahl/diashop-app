@@ -195,6 +195,21 @@ h1 > span {
         margin-top: 20px;
         margin-bottom: 40px;
     }
+
+    #new-products > .more-products {
+        justify-content: start;
+    }
+
+    #new-products > .more-products > .button-stylised-1 {
+        height: auto;
+        width: calc(100% - 10px);
+        margin: 0;
+        aspect-ratio: 9 / 6;
+    }
+
+    #new-products > .more-products > .button-stylised-1:first-of-type {
+        margin-bottom: 13.34px;
+    }
 }
 
 @media (min-width: 768px) {
@@ -313,14 +328,14 @@ h1 > span {
     }
 
     #new-products .product {
-        width: 26.5%;
-        min-width: 26.5%;
+        width: 26.3%;
+        min-width: 26.3%;
         margin: 0;
     }
 
     #new-products .product:last-of-type {
-        width: 20.5%;
-        min-width: 20.5%;
+        width: 20.3%;
+        min-width: 20.3%;
     }
 
     #new-products .product:nth-of-type(2),
