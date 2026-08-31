@@ -108,9 +108,7 @@ document.getElementById("search-input").addEventListener("input", function () {
     searchProducts();
 });
 
-$("#more-results").addEventListener("click", (e) => {
-    e.preventDefault();
-
+$("#more-results").addEventListener("click", () => {
     let catalog = $("#search-modal [name='catalog']:checked").value;
     let input = $("#search-input").value;
 
