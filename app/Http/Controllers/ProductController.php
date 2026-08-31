@@ -115,16 +115,20 @@ class ProductController extends Controller
         ]);
     }
 
-    public function search(Request $request, $catalog, $input)
+    public function search(Request $request, string $catalog, string $input)
     {
-        dd('Route atteinte !', $catalog, $input);
+        $request->merge([
+            'catalog' => $catalog,
+            'input'   => $input,
+        ]);
+
         $request->validate([
             'catalog' => ['required', 'string', 'min:2', 'max:55'],
             'input' => ['required', 'string', 'min:2', 'max:200'],
             'size' => ['sometimes', 'string', 'in:s,m,l,xl,xxl'],
             'sort_by' => ['sometimes', 'string', 'in:price-highest,price-lowest,new'],
         ]);
-        dd('Route atteinte 2 !', $catalog, $input);
+
         try {
             $catalog = Catalog::where("name", $catalog)->first();
             $products = $this->productService->getProductsByQuery(
