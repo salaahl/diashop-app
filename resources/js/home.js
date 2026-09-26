@@ -32,12 +32,12 @@ document
     )
     .forEach((ele) => {
         gsap.from(ele, {
-            y: window.innerWidth < 768 ? "15%" : "250",
+            y: window.innerWidth < 768 ? "150" : "250",
             opacity: window.innerWidth < 768 ? 0 : 1,
             duration: 0.4,
             scrollTrigger: {
                 trigger: ele,
-                start: window.innerWidth < 768 ? "0 90%" : "0 100%",
+                start: window.innerWidth < 768 ? "0 95%" : "0 100%",
             },
         });
     });
