@@ -27,12 +27,12 @@ if (window.innerWidth > 767) {
 document
     .querySelectorAll(
         window.innerWidth < 768
-            ? "main > .strip > section:nth-of-type(n+1)"
+            ? "main > .strip > section:nth-of-type(n+2)"
             : "main > .strip > section",
     )
     .forEach((ele) => {
         gsap.from(ele, {
-            y: window.innerWidth < 768 ? "100" : "250",
+            y: window.innerWidth < 768 ? "50" : "250",
             opacity: window.innerWidth < 768 ? 0 : 1,
             duration: 0.4,
             scrollTrigger: {
