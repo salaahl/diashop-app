@@ -37,8 +37,7 @@ document
             duration: 0.4,
             scrollTrigger: {
                 trigger: ele,
-                start: window.innerWidth < 768 ? "0 95%" : "0 100%",
-                markers: true,
+                start: window.innerWidth < 768 ? "0 100%" : "0 100%",
             },
         });
     });
