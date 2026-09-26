@@ -24,17 +24,23 @@ if (window.innerWidth > 767) {
 }
 
 // Animation des différentes sections
-document.querySelectorAll("main > .strip > section").forEach((ele) => {
-    gsap.from(ele, {
-        y: window.innerWidth < 768 ? "15%" : "125",
-        opacity: window.innerWidth < 768 ? 0 : 1,
-        duration: 0.4,
-        scrollTrigger: {
-            trigger: ele,
-            start: window.innerWidth < 768 ? "0 85%" : "0 100%",
-        },
+document
+    .querySelectorAll(
+        window.innerWidth < 768
+            ? "main > .strip > section"
+            : "main > .strip > section:nth-of-type(n+1)",
+    )
+    .forEach((ele) => {
+        gsap.from(ele, {
+            y: window.innerWidth < 768 ? "15%" : "50",
+            opacity: window.innerWidth < 768 ? 0 : 1,
+            duration: 0.4,
+            scrollTrigger: {
+                trigger: ele,
+                start: window.innerWidth < 768 ? "0 85%" : "0 100%",
+            },
+        });
     });
-});
 
 // Boutons de défilement des catégories
 if (window.innerWidth > 767) {
