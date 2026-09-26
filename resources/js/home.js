@@ -25,11 +25,7 @@ if (window.innerWidth > 767) {
 
 // Animation des différentes sections
 document
-    .querySelectorAll(
-        window.innerWidth < 768
-            ? "main > .strip > section:nth-of-type(n+2)"
-            : "main > .strip > section",
-    )
+    .querySelectorAll("main > .strip > section:nth-of-type(n+2)")
     .forEach((ele) => {
         gsap.from(ele, {
             y: window.innerWidth < 768 ? "100" : "250",
@@ -37,7 +33,7 @@ document
             duration: 0.4,
             scrollTrigger: {
                 trigger: ele,
-                start: window.innerWidth < 768 ? "0 100%" : "0 100%",
+                start: "0 100%",
             },
         });
     });
