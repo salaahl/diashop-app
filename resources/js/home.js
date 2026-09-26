@@ -28,7 +28,7 @@ document
     .querySelectorAll(
         window.innerWidth < 768
             ? "main > .strip > section"
-            : "main > .strip > section:nth-of-type(n+1)",
+            : "main > .strip > section:nth-of-type(n+2)",
     )
     .forEach((ele) => {
         gsap.from(ele, {
