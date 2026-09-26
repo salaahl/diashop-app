@@ -42,7 +42,7 @@ document
         });
     });
 
-// Boutons de défilement des catégories
+// Boutons de défilement des avis
 if (window.innerWidth > 767) {
     const scrollableDiv =
         document.querySelector(".scroll-controls").parentElement;
