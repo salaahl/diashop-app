@@ -27,7 +27,7 @@ Route::get('/404', function () {
 Route::get('/', [ProductController::class, 'home'])->name('home');
 
 // Voyager implémente déjà un middleware pour le role admin
-Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'decode.json']], function () {
+Route::group(['prefix' => env('VOYAGER_USER_REDIRECT', 'admin'), 'middleware' => ['web', 'auth', 'decode.json']], function () {
     Voyager::routes();
 });
 

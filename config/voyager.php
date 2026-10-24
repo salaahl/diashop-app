@@ -14,7 +14,7 @@ return [
         'add_default_role_on_register' => true,
         'default_role'                 => 'user',
         'default_avatar'               => 'users/default.png',
-        'redirect'                     => '/admin',
+        'redirect'                     => env('VOYAGER_USER_REDIRECT', '/admin'),
     ],
 
     /*
@@ -183,7 +183,7 @@ return [
 
     'primary_color' => '#22A7F0',
 
-    'show_dev_tips' => true, // Show development tip "How To Use:" in Menu and Settings
+    'show_dev_tips' => false, // Show development tip "How To Use:" in Menu and Settings
 
     // Here you can specify additional assets you would like to be included in the master.blade
     'additional_css' => [
@@ -235,10 +235,10 @@ return [
         'path'                => '/',
         'show_folders'        => true,
         'allow_upload'        => true,
-        'allow_move'          => true,
+        'allow_move'          => false,
         'allow_delete'        => true,
-        'allow_create_folder' => true,
-        'allow_rename'        => true,
+        'allow_create_folder' => false,
+        'allow_rename'        => false,
         /*'watermark'           => [
             'source'         => 'watermark.png',
             'position'       => 'bottom-left',
